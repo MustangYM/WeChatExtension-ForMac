@@ -7,9 +7,7 @@
 1. > 下载本项目到你的Mac上, 确保你的Mac上已经安装了微信App.
 
 2. > 在Rely/Install.sh执行这个安装脚本
-![Picure Crash](https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/QQ20190425-155120%402x.png)
-3. > 重启微信, 安装完成.
-
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/QQ20190425-155120%402x.png" width="500px"/>
+<img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/QQ20190425-155120%402x.png" width="1000px"/>
 </p>
+3. > 重启微信, 安装完成.
