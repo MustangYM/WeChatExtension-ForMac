@@ -5,4 +5,4 @@
 
 ## 安装方法
 < 1. 下载本项目到你的Mac上, 确保你的Mac上已经安装了微信App.
-< 2. ![Picure Crash] (https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/QQ20190425-155120%402x.png)
+< 2. ![Picure Crash](https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/QQ20190425-155120%402x.png)
