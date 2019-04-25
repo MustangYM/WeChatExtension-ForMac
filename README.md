@@ -9,3 +9,7 @@
 2. > 在Rely/Install.sh执行这个安装脚本
 ![Picure Crash](https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/QQ20190425-155120%402x.png)
 3. > 重启微信, 安装完成.
+
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/QQ20190425-155120%402x.png" width="500px"/>
+</p>
