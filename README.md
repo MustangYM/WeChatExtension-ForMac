@@ -14,4 +14,5 @@
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/QQ20190425-155120%402x.png" width="800px"/>
 </p>
-3. 重启微信, 安装完成.
+
+3. > 重启微信, 安装完成.
