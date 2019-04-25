@@ -1,0 +1,23 @@
+//
+//  PrefixHeader.pch
+//  WeChatExtension
+//
+//  Created by MustangYM on 2019/4/25.
+//  Copyright © 2019 MustangYM. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#define TKLocalizedString(key)  [[NSBundle bundleWithIdentifier:@"tk.WeChatPlugin"] localizedStringForKey:(key) value:@"" table:nil]
+#define WXLocalizedString(key)  [[NSBundle mainBundle] localizedStringForKey:(key) value:@"" table:nil]
+
+#ifdef __OBJC__
+#import "YMSwizzle.h"
+#import "XMLReader.h"
+#import "WeChatExtension.h"
+#import "YMConfig.h"
+#import "YMMessageManager.h"
+#endif
+
+#endif /* PrefixHeader_pch */
