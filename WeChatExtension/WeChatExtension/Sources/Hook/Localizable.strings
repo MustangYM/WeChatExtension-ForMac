@@ -1,0 +1,135 @@
+/* 
+  Localizable.strings
+  WeChatPlugin
+
+  Created by TK on 2018/4/14.
+  Copyright © 2018年 tk. All rights reserved.
+*/
+
+
+//  菜单栏
+"assistant.menu.title" = "微信小助手";
+"assistant.menu.revoke" = "开启消息防撤回";
+"assistant.menu.revokeSelf" = "拦截自己撤回消息";
+"assistant.menu.autoReply" = "自动回复设置";
+"assistant.menu.newWeChat" = "登录新微信";
+"assistant.menu.remoteControl" = "远程控制mac";
+"assistant.menu.windowSticky" = "微信窗口置顶";
+"assistant.menu.freeLogin" = "免认证登录";
+"assistant.menu.systemBrowser" = "使用系统浏览器";
+"assistant.menu.forbidCheck" = "禁止微信启动时检测更新";
+"assistant.menu.other" = "小助手🌚";
+"assistant.menu.enableAlfred" = "开启 Alfred 功能";
+"assistant.menu.updateAssistant" = "更新小助手…";
+"assistant.menu.aboutAssistant" = "关于小助手";
+
+//  撤回相关
+"assistant.revokeType.emoji" = "[表情]";
+"assistant.revokeType.image" = "[图片]";
+"assistant.revokeType.video" = "[视频]";
+"assistant.revokeType.voice" = "[语音]";
+"assistant.revokeType.other" = "[非文本]";
+"assistant.revoke.otherMessage.tip" = "TK拦截到一条撤回消息: ";
+"assistant.revoke.selfMessage.tip" = "你撤回了一条消息: ";
+
+//  免认证相关
+"assistant.autoAuth.tip" = "TK正在为你免认证登录~";
+"assistant.autoLogin.text" = "自动登录";
+
+
+//  回话选择
+"assistant.chat.stickyBottom" = "置底";
+"assistant.chat.unStickyBottom" = "取消置底";
+"assistant.chat.multiSelect" = "多选";
+"assistant.chat.unMultiSelect" = "取消多选";
+"assistant.chat.readAll" = "一键已读";
+"assistant.chat.clearEmpty" = "清除空会话";
+"assistant.chat.remove" = "移除";
+"assistant.chat.unread" = "标记未读";
+
+//  远程控制相关
+"assistant.remoteControl.getList" = "获取指令";
+"assistant.remoteControl.listTip" = "远程控制指令：\n(功能-指令-是否开启)\n\n";
+"assistant.remoteControl.recall" = "小助手收到一条指令：";
+"assistant.remoteControl.voiceRecall" = "小助手收到一条语音消息，转文字后👇👇👇：";
+"assistant.remoteControl.mac" = "macbook控制:";
+"assistant.remoteControl.app" = "app控制:";
+"assistant.remoteControl.neteaseMusic" = "网易云音乐控制:";
+"assistant.remoteControl.assistant" = "小助手控制:";
+"assistant.remoteControl.open" = "开启";
+"assistant.remoteControl.close" = "关闭";
+"assistant.remoteControl.contentPlaceHodler" = "请输入匹配的关键词";
+
+//  远程控制指令
+"Assistant.Directive.ScreenSave" = "屏幕保护";
+"Assistant.Directive.LockScreen" = "锁屏";
+"Assistant.Directive.Sleep" = "休眠";
+"Assistant.Directive.Shutdown" = "关机";
+"Assistant.Directive.Restart" = "重启";
+"Assistant.Directive.EmptyTrash" = "清空废纸篓";
+"Assistant.Directive.Mute" = "静音";
+"Assistant.Directive.KillQQ" = "退出 QQ";
+"Assistant.Directive.KillWeChat" = "退出 WeChat";
+"Assistant.Directive.KillChrome" = "退出 Chrome";
+"Assistant.Directive.KillSafari" = "退出 Safari";
+"Assistant.Directive.KillFirefox" = "退出 Firefox";
+"Assistant.Directive.KillAll" = "退出所有程序";
+"Assistant.Directive.Toggle" = "播放/暂停";
+"Assistant.Directive.Next" = "下一首";
+"Assistant.Directive.Previous" = "上一首";
+"Assistant.Directive.VolumeUp" = "增大音量";
+"Assistant.Directive.VolumeDown" = "VolumeDown";
+"Assistant.Directive.LikeChange" = "喜欢/取消喜欢";
+"Assistant.Directive.GetList" = "获取指令";
+"Assistant.Directive.AutoReplySwitch" = "自动回复开关";
+"Assistant.Directive.PreventRevokeSwitch" = "防撤回开关";
+"Assistant.Directive.AutoAuthSwitch" = "免认证登录开关";
+"Assistant.Directive.SwitchOn" = "开启";
+"Assistant.Directive.SwitchOff" = "关闭";
+
+//  自动回复
+"assistant.autoReply.title" = "自动回复设置";
+"assistant.autoReply.enable" = "开启自动回复";
+"assistant.autoReply.enableSpecific" = "开启特定回复";
+"assistant.autoReply.selectSpecific" = "查看(修改)选中联系人";
+"assistant.autoReply.enableRegEx" = "开启正则匹配";
+"assistant.autoReply.enableGroup" = "开启群聊自动回复";
+"assistant.autoReply.enableSingle" = "开启私聊自动回复";
+"assistant.autoReply.delay" = "延迟发送";
+"assistant.autoReply.timeUnit" = "秒";
+"assistant.autoReply.contentPlaceholder" = "请输入自动回复的内容（‘|’ 为随机回复其中任一内容）";
+"assistant.autoReply.keywordPlaceholder" = "请输入关键字（ ‘*’ 为任何消息都回复，‘|’ 为匹配多个关键字）";
+"assistant.autoReply.keyword" = "关键字";
+"assistant.autoReply.content" = "回复内容";
+"assistant.autoReply.list" = "自动回复列表";
+"assistant.autoReply.alert.confirm" = "确定";
+"assistant.autoReply.alert.title" = "您还有一条自动回复设置未完成";
+"assistant.autoReply.alert.content" = "请完善未完成的自动回复设置";
+
+//  版本更新
+"assistant.update.alret.cancle" = "取消";
+"assistant.update.alret.confirm" = "安装更新";
+"assistant.update.alret.title" = "检测到新版本！主要内容：👇";
+"assistant.update.alret.latest" = "当前为最新版本！主要内容：👇";
+"assistant.update.alret.forbid" = "不再提示";
+
+//  下载
+"assistant.download.title" = "更新小助手";
+"assistant.download.cancelTitle" = "已取消";
+"assistant.download.install" = "可以开始安装了";
+"assistant.download.error" = "更新错误！";
+"assistant.download.update" = "正在下载更新…";
+"assistant.download.relaunch" = "安装并重启应用";
+"assistant.download.cancel" = "取消";
+"assistant.download.reInstall" = "重试";
+"assistant.download.reDownload" = "重新下载";
+
+
+//  alfred 搜索
+"assistant.search.member" = "成员：";
+"assistant.search.friend" = "[好友]";
+"assistant.search.group" = "[群聊]";
+"assistant.search.official" = "[公众号]";
+"assistant.search.chatlog" = "以下为聊天记录👇🏻";
+"assistant.search.message.unread" = "未读";
+"assistant.search.yesterday" = "昨天";

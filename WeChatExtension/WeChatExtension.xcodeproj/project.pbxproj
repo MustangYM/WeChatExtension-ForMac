@@ -7,23 +7,123 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1876D1C92272B81A00A98CBE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1876D1C82272B81A00A98CBE /* Localizable.strings */; };
 		188A655822718C400096663E /* WeChatExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188A654E22718C400096663E /* WeChatExtension.framework */; };
 		188A655D22718C400096663E /* WeChatExtensionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A655C22718C400096663E /* WeChatExtensionTests.m */; };
-		188A655F22718C400096663E /* WeChatExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A655122718C400096663E /* WeChatExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		188A656A22718E330096663E /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 188A656922718E330096663E /* main.mm */; };
-		188A657722718EEB0096663E /* fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A657122718EEB0096663E /* fishhook.h */; };
-		188A657822718EEB0096663E /* YMSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A657222718EEB0096663E /* YMSwizzle.m */; };
-		188A657922718EEB0096663E /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A657322718EEB0096663E /* XMLReader.m */; };
-		188A657A22718EEB0096663E /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 188A657422718EEB0096663E /* fishhook.c */; };
-		188A657B22718EEB0096663E /* YMSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A657522718EEB0096663E /* YMSwizzle.h */; };
-		188A657C22718EEB0096663E /* XMLReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A657622718EEB0096663E /* XMLReader.h */; };
-		188A657F22718F6F0096663E /* NSObject+Hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A657D22718F6F0096663E /* NSObject+Hook.h */; };
-		188A658022718F6F0096663E /* NSObject+Hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A657E22718F6F0096663E /* NSObject+Hook.m */; };
-		188A6582227190970096663E /* PrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = 188A658122718F910096663E /* PrefixHeader.pch */; };
-		188A65852271979B0096663E /* YMConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65832271979B0096663E /* YMConfig.h */; };
-		188A65862271979B0096663E /* YMConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65842271979B0096663E /* YMConfig.m */; };
-		188A6589227198920096663E /* YMMessageManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A6587227198920096663E /* YMMessageManager.h */; };
-		188A658A227198920096663E /* YMMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A6588227198920096663E /* YMMessageManager.m */; };
+		188A65F42272ACBA0096663E /* TKAboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188A658E2272ACBA0096663E /* TKAboutWindowController.xib */; };
+		188A65F52272ACBA0096663E /* TKAboutWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65902272ACBA0096663E /* TKAboutWindowController.h */; };
+		188A65F62272ACBA0096663E /* TKAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65932272ACBA0096663E /* TKAboutWindowController.m */; };
+		188A65F72272ACBA0096663E /* TKDownloadWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65952272ACBA0096663E /* TKDownloadWindowController.m */; };
+		188A65F82272ACBA0096663E /* TKDownloadWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65962272ACBA0096663E /* TKDownloadWindowController.h */; };
+		188A65F92272ACBA0096663E /* TKDownloadWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188A65972272ACBA0096663E /* TKDownloadWindowController.xib */; };
+		188A65FA2272ACBA0096663E /* TKAutoReplyWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65992272ACBA0096663E /* TKAutoReplyWindowController.h */; };
+		188A65FB2272ACBA0096663E /* TKAutoReplyWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188A659A2272ACBA0096663E /* TKAutoReplyWindowController.xib */; };
+		188A65FC2272ACBA0096663E /* TKAutoReplyWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A659B2272ACBA0096663E /* TKAutoReplyWindowController.m */; };
+		188A65FD2272ACBA0096663E /* TKRemoteControlWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188A659D2272ACBA0096663E /* TKRemoteControlWindowController.xib */; };
+		188A65FE2272ACBA0096663E /* TKRemoteControlWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A659F2272ACBA0096663E /* TKRemoteControlWindowController.m */; };
+		188A65FF2272ACBA0096663E /* TKRemoteControlWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65A22272ACBA0096663E /* TKRemoteControlWindowController.h */; };
+		188A66002272ACBA0096663E /* TKWeChatPluginConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65A42272ACBA0096663E /* TKWeChatPluginConfig.m */; };
+		188A66012272ACBA0096663E /* TKWeChatPluginConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65A52272ACBA0096663E /* TKWeChatPluginConfig.h */; };
+		188A66022272ACBA0096663E /* TKCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65A72272ACBA0096663E /* TKCacheManager.m */; };
+		188A66032272ACBA0096663E /* TKAssistantMenuManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65A82272ACBA0096663E /* TKAssistantMenuManager.h */; };
+		188A66042272ACBA0096663E /* TKMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65A92272ACBA0096663E /* TKMessageManager.m */; };
+		188A66052272ACBA0096663E /* TKVersionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65AA2272ACBA0096663E /* TKVersionManager.m */; };
+		188A66062272ACBA0096663E /* TKRemoteControlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65AB2272ACBA0096663E /* TKRemoteControlManager.m */; };
+		188A66072272ACBA0096663E /* TKHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65AC2272ACBA0096663E /* TKHTTPManager.m */; };
+		188A66082272ACBA0096663E /* TKWebServerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65AD2272ACBA0096663E /* TKWebServerManager.h */; };
+		188A66092272ACBA0096663E /* TKAssistantMenuManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65AE2272ACBA0096663E /* TKAssistantMenuManager.m */; };
+		188A660A2272ACBA0096663E /* TKCacheManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65AF2272ACBA0096663E /* TKCacheManager.h */; };
+		188A660B2272ACBA0096663E /* TKRemoteControlManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65B02272ACBA0096663E /* TKRemoteControlManager.h */; };
+		188A660C2272ACBA0096663E /* TKVersionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65B12272ACBA0096663E /* TKVersionManager.h */; };
+		188A660D2272ACBA0096663E /* TKMessageManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65B22272ACBA0096663E /* TKMessageManager.h */; };
+		188A660E2272ACBA0096663E /* TKHTTPManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65B32272ACBA0096663E /* TKHTTPManager.h */; };
+		188A660F2272ACBA0096663E /* TKRemoteControlCommands.plist in Resources */ = {isa = PBXBuildFile; fileRef = 188A65B42272ACBA0096663E /* TKRemoteControlCommands.plist */; };
+		188A66102272ACBA0096663E /* TKWebServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65B52272ACBA0096663E /* TKWebServerManager.m */; };
+		188A66112272ACBA0096663E /* TKHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65B72272ACBA0096663E /* TKHelper.h */; };
+		188A66122272ACBA0096663E /* TKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65B82272ACBA0096663E /* TKUtility.m */; };
+		188A66132272ACBA0096663E /* TKHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65B92272ACBA0096663E /* TKHelper.m */; };
+		188A66142272ACBA0096663E /* TKUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65BA2272ACBA0096663E /* TKUtility.h */; };
+		188A66152272ACBA0096663E /* TKIgnoreSessonModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65BC2272ACBA0096663E /* TKIgnoreSessonModel.h */; };
+		188A66162272ACBA0096663E /* TKRemoteControlModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65BD2272ACBA0096663E /* TKRemoteControlModel.h */; };
+		188A66172272ACBA0096663E /* TKAutoReplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65BE2272ACBA0096663E /* TKAutoReplyModel.m */; };
+		188A66182272ACBA0096663E /* TKBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65BF2272ACBA0096663E /* TKBaseModel.m */; };
+		188A66192272ACBA0096663E /* TKIgnoreSessonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65C02272ACBA0096663E /* TKIgnoreSessonModel.m */; };
+		188A661A2272ACBA0096663E /* TKRemoteControlModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65C12272ACBA0096663E /* TKRemoteControlModel.m */; };
+		188A661B2272ACBA0096663E /* TKAutoReplyModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65C22272ACBA0096663E /* TKAutoReplyModel.h */; };
+		188A661C2272ACBA0096663E /* TKBaseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65C32272ACBA0096663E /* TKBaseModel.h */; };
+		188A661D2272ACBA0096663E /* NSButton+Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65C62272ACBA0096663E /* NSButton+Action.m */; };
+		188A661E2272ACBA0096663E /* NSMenu+Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65C72272ACBA0096663E /* NSMenu+Action.h */; };
+		188A661F2272ACBA0096663E /* NSTextField+Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65C82272ACBA0096663E /* NSTextField+Action.h */; };
+		188A66202272ACBA0096663E /* NSView+Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65C92272ACBA0096663E /* NSView+Action.m */; };
+		188A66212272ACBA0096663E /* NSWindowController+Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65CA2272ACBA0096663E /* NSWindowController+Action.m */; };
+		188A66222272ACBA0096663E /* NSString+Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65CB2272ACBA0096663E /* NSString+Action.m */; };
+		188A66232272ACBA0096663E /* NSMenuItem+Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65CC2272ACBA0096663E /* NSMenuItem+Action.h */; };
+		188A66242272ACBA0096663E /* NSDate+Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65CD2272ACBA0096663E /* NSDate+Action.m */; };
+		188A66252272ACBA0096663E /* NSMenu+Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65CE2272ACBA0096663E /* NSMenu+Action.m */; };
+		188A66262272ACBA0096663E /* NSButton+Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65CF2272ACBA0096663E /* NSButton+Action.h */; };
+		188A66272272ACBA0096663E /* NSView+Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65D02272ACBA0096663E /* NSView+Action.h */; };
+		188A66282272ACBA0096663E /* NSTextField+Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65D12272ACBA0096663E /* NSTextField+Action.m */; };
+		188A66292272ACBA0096663E /* NSWindowController+Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65D22272ACBA0096663E /* NSWindowController+Action.h */; };
+		188A662A2272ACBA0096663E /* NSDate+Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65D32272ACBA0096663E /* NSDate+Action.h */; };
+		188A662B2272ACBA0096663E /* NSString+Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65D42272ACBA0096663E /* NSString+Action.h */; };
+		188A662C2272ACBA0096663E /* NSMenuItem+Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65D52272ACBA0096663E /* NSMenuItem+Action.m */; };
+		188A662D2272ACBA0096663E /* ColorConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65D72272ACBA0096663E /* ColorConstant.h */; };
+		188A662E2272ACBA0096663E /* DefineConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65D82272ACBA0096663E /* DefineConstant.h */; };
+		188A662F2272ACBA0096663E /* NotifyConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65D92272ACBA0096663E /* NotifyConstant.h */; };
+		188A66302272ACBA0096663E /* TKPrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = 188A65DA2272ACBA0096663E /* TKPrefixHeader.pch */; };
+		188A66312272ACBA0096663E /* TKAutoReplyContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65DD2272ACBA0096663E /* TKAutoReplyContentView.m */; };
+		188A66322272ACBA0096663E /* TKAutoReplyCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65DE2272ACBA0096663E /* TKAutoReplyCell.h */; };
+		188A66332272ACBA0096663E /* TKAutoReplyContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65DF2272ACBA0096663E /* TKAutoReplyContentView.h */; };
+		188A66342272ACBA0096663E /* TKAutoReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65E02272ACBA0096663E /* TKAutoReplyCell.m */; };
+		188A66352272ACBA0096663E /* TKRemoteControlCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65E22272ACBA0096663E /* TKRemoteControlCell.h */; };
+		188A66362272ACBA0096663E /* TKRemoteControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65E32272ACBA0096663E /* TKRemoteControlCell.m */; };
+		188A66372272ACBA0096663E /* MMChatsTableCellView+hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65E52272ACBA0096663E /* MMChatsTableCellView+hook.h */; };
+		188A66382272ACBA0096663E /* WeChat+hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65E62272ACBA0096663E /* WeChat+hook.h */; };
+		188A66392272ACBA0096663E /* NSDictionary+Safe.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65E72272ACBA0096663E /* NSDictionary+Safe.h */; };
+		188A663A2272ACBA0096663E /* OPMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65E82272ACBA0096663E /* OPMessageModel.m */; };
+		188A663B2272ACBA0096663E /* MMStickerMessageCellView+hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65E92272ACBA0096663E /* MMStickerMessageCellView+hook.h */; };
+		188A663C2272ACBA0096663E /* OPMessageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65EA2272ACBA0096663E /* OPMessageTool.m */; };
+		188A663D2272ACBA0096663E /* OPMessageTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65EB2272ACBA0096663E /* OPMessageTool.h */; };
+		188A663E2272ACBA0096663E /* MMStickerMessageCellView+hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65EC2272ACBA0096663E /* MMStickerMessageCellView+hook.m */; };
+		188A663F2272ACBA0096663E /* OPMessageModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65ED2272ACBA0096663E /* OPMessageModel.h */; };
+		188A66402272ACBA0096663E /* NSDictionary+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65EE2272ACBA0096663E /* NSDictionary+Safe.m */; };
+		188A66412272ACBA0096663E /* WeChat+hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65EF2272ACBA0096663E /* WeChat+hook.m */; };
+		188A66422272ACBA0096663E /* MMChatsTableCellView+hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65F02272ACBA0096663E /* MMChatsTableCellView+hook.m */; };
+		188A66432272ACBA0096663E /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 188A65F22272ACBA0096663E /* fishhook.c */; };
+		188A66442272ACBA0096663E /* fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65F32272ACBA0096663E /* fishhook.h */; };
+		18A7A12E2272ACE300361A98 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A12D2272ACE300361A98 /* main.mm */; };
+		18A7A1302272ACE900361A98 /* WeChatPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A12F2272ACE900361A98 /* WeChatPlugin.h */; };
+		18A7A1342272AF5300361A98 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A7A1332272AF5300361A98 /* SystemConfiguration.framework */; };
+		18A7A1552272AFE600361A98 /* GCDWebServerFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A1372272AFE600361A98 /* GCDWebServerFunctions.h */; };
+		18A7A1562272AFE600361A98 /* GCDWebServerPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A1382272AFE600361A98 /* GCDWebServerPrivate.h */; };
+		18A7A1572272AFE600361A98 /* GCDWebServerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A1392272AFE600361A98 /* GCDWebServerResponse.m */; };
+		18A7A1582272AFE600361A98 /* GCDWebServerConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A13A2272AFE600361A98 /* GCDWebServerConnection.h */; };
+		18A7A1592272AFE600361A98 /* GCDWebServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A13B2272AFE600361A98 /* GCDWebServer.h */; };
+		18A7A15A2272AFE600361A98 /* GCDWebServerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A13C2272AFE600361A98 /* GCDWebServerRequest.m */; };
+		18A7A15B2272AFE600361A98 /* GCDWebServerHTTPStatusCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A13D2272AFE600361A98 /* GCDWebServerHTTPStatusCodes.h */; };
+		18A7A15C2272AFE600361A98 /* GCDWebServerResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A13E2272AFE600361A98 /* GCDWebServerResponse.h */; };
+		18A7A15D2272AFE600361A98 /* GCDWebServerFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A13F2272AFE600361A98 /* GCDWebServerFunctions.m */; };
+		18A7A15E2272AFE600361A98 /* GCDWebServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A1402272AFE600361A98 /* GCDWebServer.m */; };
+		18A7A15F2272AFE600361A98 /* GCDWebServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A1412272AFE600361A98 /* GCDWebServerConnection.m */; };
+		18A7A1602272AFE600361A98 /* GCDWebServerRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A1422272AFE600361A98 /* GCDWebServerRequest.h */; };
+		18A7A1612272AFE600361A98 /* GCDWebServerFileResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A1442272AFE600361A98 /* GCDWebServerFileResponse.h */; };
+		18A7A1622272AFE600361A98 /* GCDWebServerStreamedResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A1452272AFE600361A98 /* GCDWebServerStreamedResponse.h */; };
+		18A7A1632272AFE600361A98 /* GCDWebServerErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A1462272AFE600361A98 /* GCDWebServerErrorResponse.m */; };
+		18A7A1642272AFE600361A98 /* GCDWebServerDataResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A1472272AFE600361A98 /* GCDWebServerDataResponse.h */; };
+		18A7A1652272AFE600361A98 /* GCDWebServerFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A1482272AFE600361A98 /* GCDWebServerFileResponse.m */; };
+		18A7A1662272AFE600361A98 /* GCDWebServerDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A1492272AFE600361A98 /* GCDWebServerDataResponse.m */; };
+		18A7A1672272AFE600361A98 /* GCDWebServerErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A14A2272AFE600361A98 /* GCDWebServerErrorResponse.h */; };
+		18A7A1682272AFE600361A98 /* GCDWebServerStreamedResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A14B2272AFE600361A98 /* GCDWebServerStreamedResponse.m */; };
+		18A7A1692272AFE600361A98 /* GCDWebServerDataRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A14D2272AFE600361A98 /* GCDWebServerDataRequest.h */; };
+		18A7A16A2272AFE600361A98 /* GCDWebServerMultiPartFormRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A14E2272AFE600361A98 /* GCDWebServerMultiPartFormRequest.h */; };
+		18A7A16B2272AFE600361A98 /* GCDWebServerFileRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A14F2272AFE600361A98 /* GCDWebServerFileRequest.h */; };
+		18A7A16C2272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A1502272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.m */; };
+		18A7A16D2272AFE600361A98 /* GCDWebServerMultiPartFormRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A1512272AFE600361A98 /* GCDWebServerMultiPartFormRequest.m */; };
+		18A7A16E2272AFE600361A98 /* GCDWebServerDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A1522272AFE600361A98 /* GCDWebServerDataRequest.m */; };
+		18A7A16F2272AFE600361A98 /* GCDWebServerFileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A1532272AFE600361A98 /* GCDWebServerFileRequest.m */; };
+		18A7A1702272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A1542272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.h */; };
+		8EB413EE2E0AB9424DB91B42 /* libPods-WeChatExtensionTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B176B73969A171B6926048F /* libPods-WeChatExtensionTests.a */; };
+		B66566CE7CFB01C09E18EDC5 /* libPods-WeChatExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ECC036067C0A58DC4D5A272 /* libPods-WeChatExtension.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,26 +137,135 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1876D1C82272B81A00A98CBE /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		188A654E22718C400096663E /* WeChatExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeChatExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		188A655122718C400096663E /* WeChatExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeChatExtension.h; sourceTree = "<group>"; };
 		188A655222718C400096663E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		188A655722718C400096663E /* WeChatExtensionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeChatExtensionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		188A655C22718C400096663E /* WeChatExtensionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeChatExtensionTests.m; sourceTree = "<group>"; };
 		188A655E22718C400096663E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		188A656922718E330096663E /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
-		188A657122718EEB0096663E /* fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
-		188A657222718EEB0096663E /* YMSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMSwizzle.m; sourceTree = "<group>"; };
-		188A657322718EEB0096663E /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
-		188A657422718EEB0096663E /* fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
-		188A657522718EEB0096663E /* YMSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMSwizzle.h; sourceTree = "<group>"; };
-		188A657622718EEB0096663E /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
-		188A657D22718F6F0096663E /* NSObject+Hook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Hook.h"; sourceTree = "<group>"; };
-		188A657E22718F6F0096663E /* NSObject+Hook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Hook.m"; sourceTree = "<group>"; };
-		188A658122718F910096663E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		188A65832271979B0096663E /* YMConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMConfig.h; sourceTree = "<group>"; };
-		188A65842271979B0096663E /* YMConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMConfig.m; sourceTree = "<group>"; };
-		188A6587227198920096663E /* YMMessageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMMessageManager.h; sourceTree = "<group>"; };
-		188A6588227198920096663E /* YMMessageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMMessageManager.m; sourceTree = "<group>"; };
+		188A658F2272ACBA0096663E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TKAboutWindowController.xib; sourceTree = "<group>"; };
+		188A65902272ACBA0096663E /* TKAboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAboutWindowController.h; sourceTree = "<group>"; };
+		188A65912272ACBA0096663E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TKAboutWindowController.xib; sourceTree = "<group>"; };
+		188A65922272ACBA0096663E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant"; path = "zh-Hant.lproj/TKAboutWindowController.xib"; sourceTree = "<group>"; };
+		188A65932272ACBA0096663E /* TKAboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAboutWindowController.m; sourceTree = "<group>"; };
+		188A65952272ACBA0096663E /* TKDownloadWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDownloadWindowController.m; sourceTree = "<group>"; };
+		188A65962272ACBA0096663E /* TKDownloadWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDownloadWindowController.h; sourceTree = "<group>"; };
+		188A65972272ACBA0096663E /* TKDownloadWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKDownloadWindowController.xib; sourceTree = "<group>"; };
+		188A65992272ACBA0096663E /* TKAutoReplyWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAutoReplyWindowController.h; sourceTree = "<group>"; };
+		188A659A2272ACBA0096663E /* TKAutoReplyWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKAutoReplyWindowController.xib; sourceTree = "<group>"; };
+		188A659B2272ACBA0096663E /* TKAutoReplyWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAutoReplyWindowController.m; sourceTree = "<group>"; };
+		188A659E2272ACBA0096663E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/TKRemoteControlWindowController.xib"; sourceTree = "<group>"; };
+		188A659F2272ACBA0096663E /* TKRemoteControlWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKRemoteControlWindowController.m; sourceTree = "<group>"; };
+		188A65A02272ACBA0096663E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TKRemoteControlWindowController.xib; sourceTree = "<group>"; };
+		188A65A12272ACBA0096663E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant"; path = "zh-Hant.lproj/TKRemoteControlWindowController.xib"; sourceTree = "<group>"; };
+		188A65A22272ACBA0096663E /* TKRemoteControlWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKRemoteControlWindowController.h; sourceTree = "<group>"; };
+		188A65A42272ACBA0096663E /* TKWeChatPluginConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKWeChatPluginConfig.m; sourceTree = "<group>"; };
+		188A65A52272ACBA0096663E /* TKWeChatPluginConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKWeChatPluginConfig.h; sourceTree = "<group>"; };
+		188A65A72272ACBA0096663E /* TKCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCacheManager.m; sourceTree = "<group>"; };
+		188A65A82272ACBA0096663E /* TKAssistantMenuManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAssistantMenuManager.h; sourceTree = "<group>"; };
+		188A65A92272ACBA0096663E /* TKMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKMessageManager.m; sourceTree = "<group>"; };
+		188A65AA2272ACBA0096663E /* TKVersionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKVersionManager.m; sourceTree = "<group>"; };
+		188A65AB2272ACBA0096663E /* TKRemoteControlManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKRemoteControlManager.m; sourceTree = "<group>"; };
+		188A65AC2272ACBA0096663E /* TKHTTPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKHTTPManager.m; sourceTree = "<group>"; };
+		188A65AD2272ACBA0096663E /* TKWebServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKWebServerManager.h; sourceTree = "<group>"; };
+		188A65AE2272ACBA0096663E /* TKAssistantMenuManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAssistantMenuManager.m; sourceTree = "<group>"; };
+		188A65AF2272ACBA0096663E /* TKCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCacheManager.h; sourceTree = "<group>"; };
+		188A65B02272ACBA0096663E /* TKRemoteControlManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKRemoteControlManager.h; sourceTree = "<group>"; };
+		188A65B12272ACBA0096663E /* TKVersionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKVersionManager.h; sourceTree = "<group>"; };
+		188A65B22272ACBA0096663E /* TKMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKMessageManager.h; sourceTree = "<group>"; };
+		188A65B32272ACBA0096663E /* TKHTTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKHTTPManager.h; sourceTree = "<group>"; };
+		188A65B42272ACBA0096663E /* TKRemoteControlCommands.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TKRemoteControlCommands.plist; sourceTree = "<group>"; };
+		188A65B52272ACBA0096663E /* TKWebServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKWebServerManager.m; sourceTree = "<group>"; };
+		188A65B72272ACBA0096663E /* TKHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKHelper.h; sourceTree = "<group>"; };
+		188A65B82272ACBA0096663E /* TKUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKUtility.m; sourceTree = "<group>"; };
+		188A65B92272ACBA0096663E /* TKHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKHelper.m; sourceTree = "<group>"; };
+		188A65BA2272ACBA0096663E /* TKUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKUtility.h; sourceTree = "<group>"; };
+		188A65BC2272ACBA0096663E /* TKIgnoreSessonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKIgnoreSessonModel.h; sourceTree = "<group>"; };
+		188A65BD2272ACBA0096663E /* TKRemoteControlModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKRemoteControlModel.h; sourceTree = "<group>"; };
+		188A65BE2272ACBA0096663E /* TKAutoReplyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAutoReplyModel.m; sourceTree = "<group>"; };
+		188A65BF2272ACBA0096663E /* TKBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKBaseModel.m; sourceTree = "<group>"; };
+		188A65C02272ACBA0096663E /* TKIgnoreSessonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKIgnoreSessonModel.m; sourceTree = "<group>"; };
+		188A65C12272ACBA0096663E /* TKRemoteControlModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKRemoteControlModel.m; sourceTree = "<group>"; };
+		188A65C22272ACBA0096663E /* TKAutoReplyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAutoReplyModel.h; sourceTree = "<group>"; };
+		188A65C32272ACBA0096663E /* TKBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKBaseModel.h; sourceTree = "<group>"; };
+		188A65C62272ACBA0096663E /* NSButton+Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSButton+Action.m"; sourceTree = "<group>"; };
+		188A65C72272ACBA0096663E /* NSMenu+Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMenu+Action.h"; sourceTree = "<group>"; };
+		188A65C82272ACBA0096663E /* NSTextField+Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextField+Action.h"; sourceTree = "<group>"; };
+		188A65C92272ACBA0096663E /* NSView+Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Action.m"; sourceTree = "<group>"; };
+		188A65CA2272ACBA0096663E /* NSWindowController+Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindowController+Action.m"; sourceTree = "<group>"; };
+		188A65CB2272ACBA0096663E /* NSString+Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Action.m"; sourceTree = "<group>"; };
+		188A65CC2272ACBA0096663E /* NSMenuItem+Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMenuItem+Action.h"; sourceTree = "<group>"; };
+		188A65CD2272ACBA0096663E /* NSDate+Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Action.m"; sourceTree = "<group>"; };
+		188A65CE2272ACBA0096663E /* NSMenu+Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMenu+Action.m"; sourceTree = "<group>"; };
+		188A65CF2272ACBA0096663E /* NSButton+Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSButton+Action.h"; sourceTree = "<group>"; };
+		188A65D02272ACBA0096663E /* NSView+Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Action.h"; sourceTree = "<group>"; };
+		188A65D12272ACBA0096663E /* NSTextField+Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextField+Action.m"; sourceTree = "<group>"; };
+		188A65D22272ACBA0096663E /* NSWindowController+Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindowController+Action.h"; sourceTree = "<group>"; };
+		188A65D32272ACBA0096663E /* NSDate+Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Action.h"; sourceTree = "<group>"; };
+		188A65D42272ACBA0096663E /* NSString+Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Action.h"; sourceTree = "<group>"; };
+		188A65D52272ACBA0096663E /* NSMenuItem+Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMenuItem+Action.m"; sourceTree = "<group>"; };
+		188A65D72272ACBA0096663E /* ColorConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorConstant.h; sourceTree = "<group>"; };
+		188A65D82272ACBA0096663E /* DefineConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefineConstant.h; sourceTree = "<group>"; };
+		188A65D92272ACBA0096663E /* NotifyConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifyConstant.h; sourceTree = "<group>"; };
+		188A65DA2272ACBA0096663E /* TKPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKPrefixHeader.pch; sourceTree = "<group>"; };
+		188A65DD2272ACBA0096663E /* TKAutoReplyContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAutoReplyContentView.m; sourceTree = "<group>"; };
+		188A65DE2272ACBA0096663E /* TKAutoReplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAutoReplyCell.h; sourceTree = "<group>"; };
+		188A65DF2272ACBA0096663E /* TKAutoReplyContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAutoReplyContentView.h; sourceTree = "<group>"; };
+		188A65E02272ACBA0096663E /* TKAutoReplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAutoReplyCell.m; sourceTree = "<group>"; };
+		188A65E22272ACBA0096663E /* TKRemoteControlCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKRemoteControlCell.h; sourceTree = "<group>"; };
+		188A65E32272ACBA0096663E /* TKRemoteControlCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKRemoteControlCell.m; sourceTree = "<group>"; };
+		188A65E52272ACBA0096663E /* MMChatsTableCellView+hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMChatsTableCellView+hook.h"; sourceTree = "<group>"; };
+		188A65E62272ACBA0096663E /* WeChat+hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WeChat+hook.h"; sourceTree = "<group>"; };
+		188A65E72272ACBA0096663E /* NSDictionary+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Safe.h"; sourceTree = "<group>"; };
+		188A65E82272ACBA0096663E /* OPMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPMessageModel.m; sourceTree = "<group>"; };
+		188A65E92272ACBA0096663E /* MMStickerMessageCellView+hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMStickerMessageCellView+hook.h"; sourceTree = "<group>"; };
+		188A65EA2272ACBA0096663E /* OPMessageTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPMessageTool.m; sourceTree = "<group>"; };
+		188A65EB2272ACBA0096663E /* OPMessageTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPMessageTool.h; sourceTree = "<group>"; };
+		188A65EC2272ACBA0096663E /* MMStickerMessageCellView+hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MMStickerMessageCellView+hook.m"; sourceTree = "<group>"; };
+		188A65ED2272ACBA0096663E /* OPMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPMessageModel.h; sourceTree = "<group>"; };
+		188A65EE2272ACBA0096663E /* NSDictionary+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Safe.m"; sourceTree = "<group>"; };
+		188A65EF2272ACBA0096663E /* WeChat+hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WeChat+hook.m"; sourceTree = "<group>"; };
+		188A65F02272ACBA0096663E /* MMChatsTableCellView+hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MMChatsTableCellView+hook.m"; sourceTree = "<group>"; };
+		188A65F22272ACBA0096663E /* fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
+		188A65F32272ACBA0096663E /* fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
+		18A7A12D2272ACE300361A98 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		18A7A12F2272ACE900361A98 /* WeChatPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatPlugin.h; sourceTree = "<group>"; };
+		18A7A1312272AF0000361A98 /* libGCDWebServer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libGCDWebServer.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		18A7A1332272AF5300361A98 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		18A7A1372272AFE600361A98 /* GCDWebServerFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerFunctions.h; sourceTree = "<group>"; };
+		18A7A1382272AFE600361A98 /* GCDWebServerPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerPrivate.h; sourceTree = "<group>"; };
+		18A7A1392272AFE600361A98 /* GCDWebServerResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerResponse.m; sourceTree = "<group>"; };
+		18A7A13A2272AFE600361A98 /* GCDWebServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerConnection.h; sourceTree = "<group>"; };
+		18A7A13B2272AFE600361A98 /* GCDWebServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServer.h; sourceTree = "<group>"; };
+		18A7A13C2272AFE600361A98 /* GCDWebServerRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerRequest.m; sourceTree = "<group>"; };
+		18A7A13D2272AFE600361A98 /* GCDWebServerHTTPStatusCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerHTTPStatusCodes.h; sourceTree = "<group>"; };
+		18A7A13E2272AFE600361A98 /* GCDWebServerResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerResponse.h; sourceTree = "<group>"; };
+		18A7A13F2272AFE600361A98 /* GCDWebServerFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerFunctions.m; sourceTree = "<group>"; };
+		18A7A1402272AFE600361A98 /* GCDWebServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServer.m; sourceTree = "<group>"; };
+		18A7A1412272AFE600361A98 /* GCDWebServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerConnection.m; sourceTree = "<group>"; };
+		18A7A1422272AFE600361A98 /* GCDWebServerRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerRequest.h; sourceTree = "<group>"; };
+		18A7A1442272AFE600361A98 /* GCDWebServerFileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerFileResponse.h; sourceTree = "<group>"; };
+		18A7A1452272AFE600361A98 /* GCDWebServerStreamedResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerStreamedResponse.h; sourceTree = "<group>"; };
+		18A7A1462272AFE600361A98 /* GCDWebServerErrorResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerErrorResponse.m; sourceTree = "<group>"; };
+		18A7A1472272AFE600361A98 /* GCDWebServerDataResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerDataResponse.h; sourceTree = "<group>"; };
+		18A7A1482272AFE600361A98 /* GCDWebServerFileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerFileResponse.m; sourceTree = "<group>"; };
+		18A7A1492272AFE600361A98 /* GCDWebServerDataResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerDataResponse.m; sourceTree = "<group>"; };
+		18A7A14A2272AFE600361A98 /* GCDWebServerErrorResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerErrorResponse.h; sourceTree = "<group>"; };
+		18A7A14B2272AFE600361A98 /* GCDWebServerStreamedResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerStreamedResponse.m; sourceTree = "<group>"; };
+		18A7A14D2272AFE600361A98 /* GCDWebServerDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerDataRequest.h; sourceTree = "<group>"; };
+		18A7A14E2272AFE600361A98 /* GCDWebServerMultiPartFormRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerMultiPartFormRequest.h; sourceTree = "<group>"; };
+		18A7A14F2272AFE600361A98 /* GCDWebServerFileRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerFileRequest.h; sourceTree = "<group>"; };
+		18A7A1502272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerURLEncodedFormRequest.m; sourceTree = "<group>"; };
+		18A7A1512272AFE600361A98 /* GCDWebServerMultiPartFormRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerMultiPartFormRequest.m; sourceTree = "<group>"; };
+		18A7A1522272AFE600361A98 /* GCDWebServerDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerDataRequest.m; sourceTree = "<group>"; };
+		18A7A1532272AFE600361A98 /* GCDWebServerFileRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerFileRequest.m; sourceTree = "<group>"; };
+		18A7A1542272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerURLEncodedFormRequest.h; sourceTree = "<group>"; };
+		1ECC036067C0A58DC4D5A272 /* libPods-WeChatExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B176B73969A171B6926048F /* libPods-WeChatExtensionTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatExtensionTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		97F2E3244C2E5DD8CF65AB97 /* Pods-WeChatExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatExtension/Pods-WeChatExtension.release.xcconfig"; sourceTree = "<group>"; };
+		C341AF31F4497191220003D6 /* Pods-WeChatExtensionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatExtensionTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatExtensionTests/Pods-WeChatExtensionTests.release.xcconfig"; sourceTree = "<group>"; };
+		C528D93AD05C43BF7DE46757 /* Pods-WeChatExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatExtension/Pods-WeChatExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		D58A7B70D43142014A02CCF8 /* Pods-WeChatExtensionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatExtensionTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatExtensionTests/Pods-WeChatExtensionTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +273,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A7A1342272AF5300361A98 /* SystemConfiguration.framework in Frameworks */,
+				B66566CE7CFB01C09E18EDC5 /* libPods-WeChatExtension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				188A655822718C400096663E /* WeChatExtension.framework in Frameworks */,
+				8EB413EE2E0AB9424DB91B42 /* libPods-WeChatExtensionTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +296,8 @@
 				188A655022718C400096663E /* WeChatExtension */,
 				188A655B22718C400096663E /* WeChatExtensionTests */,
 				188A654F22718C400096663E /* Products */,
+				3BE15FE6D0885057511EB199 /* Pods */,
+				600807371BAE90444753E469 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,10 +313,10 @@
 		188A655022718C400096663E /* WeChatExtension */ = {
 			isa = PBXGroup;
 			children = (
-				188A656B22718EB10096663E /* Classes */,
-				188A655122718C400096663E /* WeChatExtension.h */,
-				188A656922718E330096663E /* main.mm */,
+				188A658B2272ACBA0096663E /* Sources */,
 				188A655222718C400096663E /* Info.plist */,
+				18A7A12D2272ACE300361A98 /* main.mm */,
+				18A7A12F2272ACE900361A98 /* WeChatPlugin.h */,
 			);
 			path = WeChatExtension;
 			sourceTree = "<group>";
@@ -116,64 +330,311 @@
 			path = WeChatExtensionTests;
 			sourceTree = "<group>";
 		};
-		188A656B22718EB10096663E /* Classes */ = {
+		188A658B2272ACBA0096663E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				188A656C22718EB10096663E /* Rely */,
-				188A656D22718EB10096663E /* Category */,
-				188A656E22718EB10096663E /* Config */,
-				188A656F22718EB10096663E /* Third */,
-				188A657022718EB10096663E /* Manager */,
+				18A7A1352272AFE600361A98 /* GCDWebServer */,
+				188A658C2272ACBA0096663E /* WindowControllers */,
+				188A65A32272ACBA0096663E /* Config */,
+				188A65A62272ACBA0096663E /* Managers */,
+				188A65B62272ACBA0096663E /* Utils */,
+				188A65BB2272ACBA0096663E /* Models */,
+				188A65C42272ACBA0096663E /* Common */,
+				188A65DB2272ACBA0096663E /* Views */,
+				188A65E42272ACBA0096663E /* Hook */,
+				188A65F12272ACBA0096663E /* Vendor */,
 			);
-			path = Classes;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		188A656C22718EB10096663E /* Rely */ = {
+		188A658C2272ACBA0096663E /* WindowControllers */ = {
 			isa = PBXGroup;
 			children = (
-				188A658122718F910096663E /* PrefixHeader.pch */,
-				188A657122718EEB0096663E /* fishhook.h */,
-				188A657422718EEB0096663E /* fishhook.c */,
-				188A657522718EEB0096663E /* YMSwizzle.h */,
-				188A657222718EEB0096663E /* YMSwizzle.m */,
-				188A657622718EEB0096663E /* XMLReader.h */,
-				188A657322718EEB0096663E /* XMLReader.m */,
+				188A658D2272ACBA0096663E /* About */,
+				188A65942272ACBA0096663E /* Download */,
+				188A65982272ACBA0096663E /* AutoReply */,
+				188A659C2272ACBA0096663E /* RemoteControl */,
 			);
-			path = Rely;
+			path = WindowControllers;
 			sourceTree = "<group>";
 		};
-		188A656D22718EB10096663E /* Category */ = {
+		188A658D2272ACBA0096663E /* About */ = {
 			isa = PBXGroup;
 			children = (
-				188A657D22718F6F0096663E /* NSObject+Hook.h */,
-				188A657E22718F6F0096663E /* NSObject+Hook.m */,
+				188A658E2272ACBA0096663E /* TKAboutWindowController.xib */,
+				188A65902272ACBA0096663E /* TKAboutWindowController.h */,
+				188A65932272ACBA0096663E /* TKAboutWindowController.m */,
 			);
-			path = Category;
+			path = About;
 			sourceTree = "<group>";
 		};
-		188A656E22718EB10096663E /* Config */ = {
+		188A65942272ACBA0096663E /* Download */ = {
 			isa = PBXGroup;
 			children = (
-				188A65832271979B0096663E /* YMConfig.h */,
-				188A65842271979B0096663E /* YMConfig.m */,
+				188A65952272ACBA0096663E /* TKDownloadWindowController.m */,
+				188A65962272ACBA0096663E /* TKDownloadWindowController.h */,
+				188A65972272ACBA0096663E /* TKDownloadWindowController.xib */,
+			);
+			path = Download;
+			sourceTree = "<group>";
+		};
+		188A65982272ACBA0096663E /* AutoReply */ = {
+			isa = PBXGroup;
+			children = (
+				188A65992272ACBA0096663E /* TKAutoReplyWindowController.h */,
+				188A659A2272ACBA0096663E /* TKAutoReplyWindowController.xib */,
+				188A659B2272ACBA0096663E /* TKAutoReplyWindowController.m */,
+			);
+			path = AutoReply;
+			sourceTree = "<group>";
+		};
+		188A659C2272ACBA0096663E /* RemoteControl */ = {
+			isa = PBXGroup;
+			children = (
+				188A659D2272ACBA0096663E /* TKRemoteControlWindowController.xib */,
+				188A659F2272ACBA0096663E /* TKRemoteControlWindowController.m */,
+				188A65A22272ACBA0096663E /* TKRemoteControlWindowController.h */,
+			);
+			path = RemoteControl;
+			sourceTree = "<group>";
+		};
+		188A65A32272ACBA0096663E /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				188A65A42272ACBA0096663E /* TKWeChatPluginConfig.m */,
+				188A65A52272ACBA0096663E /* TKWeChatPluginConfig.h */,
 			);
 			path = Config;
 			sourceTree = "<group>";
 		};
-		188A656F22718EB10096663E /* Third */ = {
+		188A65A62272ACBA0096663E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				188A65AF2272ACBA0096663E /* TKCacheManager.h */,
+				188A65A72272ACBA0096663E /* TKCacheManager.m */,
+				188A65A82272ACBA0096663E /* TKAssistantMenuManager.h */,
+				188A65AE2272ACBA0096663E /* TKAssistantMenuManager.m */,
+				188A65B02272ACBA0096663E /* TKRemoteControlManager.h */,
+				188A65AB2272ACBA0096663E /* TKRemoteControlManager.m */,
+				188A65B22272ACBA0096663E /* TKMessageManager.h */,
+				188A65A92272ACBA0096663E /* TKMessageManager.m */,
+				188A65B12272ACBA0096663E /* TKVersionManager.h */,
+				188A65AA2272ACBA0096663E /* TKVersionManager.m */,
+				188A65B32272ACBA0096663E /* TKHTTPManager.h */,
+				188A65AC2272ACBA0096663E /* TKHTTPManager.m */,
+				188A65AD2272ACBA0096663E /* TKWebServerManager.h */,
+				188A65B52272ACBA0096663E /* TKWebServerManager.m */,
+				188A65B42272ACBA0096663E /* TKRemoteControlCommands.plist */,
 			);
-			path = Third;
+			path = Managers;
 			sourceTree = "<group>";
 		};
-		188A657022718EB10096663E /* Manager */ = {
+		188A65B62272ACBA0096663E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				188A6587227198920096663E /* YMMessageManager.h */,
-				188A6588227198920096663E /* YMMessageManager.m */,
+				188A65B72272ACBA0096663E /* TKHelper.h */,
+				188A65B82272ACBA0096663E /* TKUtility.m */,
+				188A65B92272ACBA0096663E /* TKHelper.m */,
+				188A65BA2272ACBA0096663E /* TKUtility.h */,
 			);
-			path = Manager;
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		188A65BB2272ACBA0096663E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				188A65BC2272ACBA0096663E /* TKIgnoreSessonModel.h */,
+				188A65BD2272ACBA0096663E /* TKRemoteControlModel.h */,
+				188A65BE2272ACBA0096663E /* TKAutoReplyModel.m */,
+				188A65BF2272ACBA0096663E /* TKBaseModel.m */,
+				188A65C02272ACBA0096663E /* TKIgnoreSessonModel.m */,
+				188A65C12272ACBA0096663E /* TKRemoteControlModel.m */,
+				188A65C22272ACBA0096663E /* TKAutoReplyModel.h */,
+				188A65C32272ACBA0096663E /* TKBaseModel.h */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		188A65C42272ACBA0096663E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				188A65C52272ACBA0096663E /* Category */,
+				188A65D62272ACBA0096663E /* Macro */,
+				188A65DA2272ACBA0096663E /* TKPrefixHeader.pch */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		188A65C52272ACBA0096663E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				188A65C62272ACBA0096663E /* NSButton+Action.m */,
+				188A65C72272ACBA0096663E /* NSMenu+Action.h */,
+				188A65C82272ACBA0096663E /* NSTextField+Action.h */,
+				188A65C92272ACBA0096663E /* NSView+Action.m */,
+				188A65CA2272ACBA0096663E /* NSWindowController+Action.m */,
+				188A65CB2272ACBA0096663E /* NSString+Action.m */,
+				188A65CC2272ACBA0096663E /* NSMenuItem+Action.h */,
+				188A65CD2272ACBA0096663E /* NSDate+Action.m */,
+				188A65CE2272ACBA0096663E /* NSMenu+Action.m */,
+				188A65CF2272ACBA0096663E /* NSButton+Action.h */,
+				188A65D02272ACBA0096663E /* NSView+Action.h */,
+				188A65D12272ACBA0096663E /* NSTextField+Action.m */,
+				188A65D22272ACBA0096663E /* NSWindowController+Action.h */,
+				188A65D32272ACBA0096663E /* NSDate+Action.h */,
+				188A65D42272ACBA0096663E /* NSString+Action.h */,
+				188A65D52272ACBA0096663E /* NSMenuItem+Action.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		188A65D62272ACBA0096663E /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				188A65D72272ACBA0096663E /* ColorConstant.h */,
+				188A65D82272ACBA0096663E /* DefineConstant.h */,
+				188A65D92272ACBA0096663E /* NotifyConstant.h */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
+		188A65DB2272ACBA0096663E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				188A65DC2272ACBA0096663E /* AutoReply */,
+				188A65E12272ACBA0096663E /* RemoteControl */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		188A65DC2272ACBA0096663E /* AutoReply */ = {
+			isa = PBXGroup;
+			children = (
+				188A65DD2272ACBA0096663E /* TKAutoReplyContentView.m */,
+				188A65DE2272ACBA0096663E /* TKAutoReplyCell.h */,
+				188A65DF2272ACBA0096663E /* TKAutoReplyContentView.h */,
+				188A65E02272ACBA0096663E /* TKAutoReplyCell.m */,
+			);
+			path = AutoReply;
+			sourceTree = "<group>";
+		};
+		188A65E12272ACBA0096663E /* RemoteControl */ = {
+			isa = PBXGroup;
+			children = (
+				188A65E22272ACBA0096663E /* TKRemoteControlCell.h */,
+				188A65E32272ACBA0096663E /* TKRemoteControlCell.m */,
+			);
+			path = RemoteControl;
+			sourceTree = "<group>";
+		};
+		188A65E42272ACBA0096663E /* Hook */ = {
+			isa = PBXGroup;
+			children = (
+				188A65E62272ACBA0096663E /* WeChat+hook.h */,
+				188A65EF2272ACBA0096663E /* WeChat+hook.m */,
+				188A65E52272ACBA0096663E /* MMChatsTableCellView+hook.h */,
+				188A65F02272ACBA0096663E /* MMChatsTableCellView+hook.m */,
+				188A65ED2272ACBA0096663E /* OPMessageModel.h */,
+				188A65E82272ACBA0096663E /* OPMessageModel.m */,
+				188A65E92272ACBA0096663E /* MMStickerMessageCellView+hook.h */,
+				188A65EC2272ACBA0096663E /* MMStickerMessageCellView+hook.m */,
+				188A65EA2272ACBA0096663E /* OPMessageTool.m */,
+				188A65EB2272ACBA0096663E /* OPMessageTool.h */,
+				188A65E72272ACBA0096663E /* NSDictionary+Safe.h */,
+				188A65EE2272ACBA0096663E /* NSDictionary+Safe.m */,
+				1876D1C82272B81A00A98CBE /* Localizable.strings */,
+			);
+			path = Hook;
+			sourceTree = "<group>";
+		};
+		188A65F12272ACBA0096663E /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				188A65F22272ACBA0096663E /* fishhook.c */,
+				188A65F32272ACBA0096663E /* fishhook.h */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		18A7A1352272AFE600361A98 /* GCDWebServer */ = {
+			isa = PBXGroup;
+			children = (
+				18A7A1362272AFE600361A98 /* Core */,
+				18A7A1432272AFE600361A98 /* Responses */,
+				18A7A14C2272AFE600361A98 /* Requests */,
+			);
+			path = GCDWebServer;
+			sourceTree = "<group>";
+		};
+		18A7A1362272AFE600361A98 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				18A7A1372272AFE600361A98 /* GCDWebServerFunctions.h */,
+				18A7A1382272AFE600361A98 /* GCDWebServerPrivate.h */,
+				18A7A1392272AFE600361A98 /* GCDWebServerResponse.m */,
+				18A7A13A2272AFE600361A98 /* GCDWebServerConnection.h */,
+				18A7A13B2272AFE600361A98 /* GCDWebServer.h */,
+				18A7A13C2272AFE600361A98 /* GCDWebServerRequest.m */,
+				18A7A13D2272AFE600361A98 /* GCDWebServerHTTPStatusCodes.h */,
+				18A7A13E2272AFE600361A98 /* GCDWebServerResponse.h */,
+				18A7A13F2272AFE600361A98 /* GCDWebServerFunctions.m */,
+				18A7A1402272AFE600361A98 /* GCDWebServer.m */,
+				18A7A1412272AFE600361A98 /* GCDWebServerConnection.m */,
+				18A7A1422272AFE600361A98 /* GCDWebServerRequest.h */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		18A7A1432272AFE600361A98 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				18A7A1442272AFE600361A98 /* GCDWebServerFileResponse.h */,
+				18A7A1452272AFE600361A98 /* GCDWebServerStreamedResponse.h */,
+				18A7A1462272AFE600361A98 /* GCDWebServerErrorResponse.m */,
+				18A7A1472272AFE600361A98 /* GCDWebServerDataResponse.h */,
+				18A7A1482272AFE600361A98 /* GCDWebServerFileResponse.m */,
+				18A7A1492272AFE600361A98 /* GCDWebServerDataResponse.m */,
+				18A7A14A2272AFE600361A98 /* GCDWebServerErrorResponse.h */,
+				18A7A14B2272AFE600361A98 /* GCDWebServerStreamedResponse.m */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		18A7A14C2272AFE600361A98 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				18A7A14D2272AFE600361A98 /* GCDWebServerDataRequest.h */,
+				18A7A14E2272AFE600361A98 /* GCDWebServerMultiPartFormRequest.h */,
+				18A7A14F2272AFE600361A98 /* GCDWebServerFileRequest.h */,
+				18A7A1502272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.m */,
+				18A7A1512272AFE600361A98 /* GCDWebServerMultiPartFormRequest.m */,
+				18A7A1522272AFE600361A98 /* GCDWebServerDataRequest.m */,
+				18A7A1532272AFE600361A98 /* GCDWebServerFileRequest.m */,
+				18A7A1542272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.h */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		3BE15FE6D0885057511EB199 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C528D93AD05C43BF7DE46757 /* Pods-WeChatExtension.debug.xcconfig */,
+				97F2E3244C2E5DD8CF65AB97 /* Pods-WeChatExtension.release.xcconfig */,
+				D58A7B70D43142014A02CCF8 /* Pods-WeChatExtensionTests.debug.xcconfig */,
+				C341AF31F4497191220003D6 /* Pods-WeChatExtensionTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		600807371BAE90444753E469 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				18A7A1332272AF5300361A98 /* SystemConfiguration.framework */,
+				18A7A1312272AF0000361A98 /* libGCDWebServer.a */,
+				1ECC036067C0A58DC4D5A272 /* libPods-WeChatExtension.a */,
+				8B176B73969A171B6926048F /* libPods-WeChatExtensionTests.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,14 +644,62 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				188A655F22718C400096663E /* WeChatExtension.h in Headers */,
-				188A657C22718EEB0096663E /* XMLReader.h in Headers */,
-				188A6582227190970096663E /* PrefixHeader.pch in Headers */,
-				188A657F22718F6F0096663E /* NSObject+Hook.h in Headers */,
-				188A657722718EEB0096663E /* fishhook.h in Headers */,
-				188A65852271979B0096663E /* YMConfig.h in Headers */,
-				188A6589227198920096663E /* YMMessageManager.h in Headers */,
-				188A657B22718EEB0096663E /* YMSwizzle.h in Headers */,
+				188A65FA2272ACBA0096663E /* TKAutoReplyWindowController.h in Headers */,
+				18A7A16B2272AFE600361A98 /* GCDWebServerFileRequest.h in Headers */,
+				188A66032272ACBA0096663E /* TKAssistantMenuManager.h in Headers */,
+				188A661E2272ACBA0096663E /* NSMenu+Action.h in Headers */,
+				188A66152272ACBA0096663E /* TKIgnoreSessonModel.h in Headers */,
+				188A662F2272ACBA0096663E /* NotifyConstant.h in Headers */,
+				188A663F2272ACBA0096663E /* OPMessageModel.h in Headers */,
+				18A7A15B2272AFE600361A98 /* GCDWebServerHTTPStatusCodes.h in Headers */,
+				18A7A1602272AFE600361A98 /* GCDWebServerRequest.h in Headers */,
+				18A7A1642272AFE600361A98 /* GCDWebServerDataResponse.h in Headers */,
+				18A7A15C2272AFE600361A98 /* GCDWebServerResponse.h in Headers */,
+				188A662B2272ACBA0096663E /* NSString+Action.h in Headers */,
+				188A660B2272ACBA0096663E /* TKRemoteControlManager.h in Headers */,
+				18A7A16A2272AFE600361A98 /* GCDWebServerMultiPartFormRequest.h in Headers */,
+				188A660E2272ACBA0096663E /* TKHTTPManager.h in Headers */,
+				188A66332272ACBA0096663E /* TKAutoReplyContentView.h in Headers */,
+				188A66112272ACBA0096663E /* TKHelper.h in Headers */,
+				188A66442272ACBA0096663E /* fishhook.h in Headers */,
+				188A66232272ACBA0096663E /* NSMenuItem+Action.h in Headers */,
+				18A7A1582272AFE600361A98 /* GCDWebServerConnection.h in Headers */,
+				188A66322272ACBA0096663E /* TKAutoReplyCell.h in Headers */,
+				188A661C2272ACBA0096663E /* TKBaseModel.h in Headers */,
+				188A66272272ACBA0096663E /* NSView+Action.h in Headers */,
+				188A663B2272ACBA0096663E /* MMStickerMessageCellView+hook.h in Headers */,
+				188A66082272ACBA0096663E /* TKWebServerManager.h in Headers */,
+				188A660D2272ACBA0096663E /* TKMessageManager.h in Headers */,
+				188A662D2272ACBA0096663E /* ColorConstant.h in Headers */,
+				18A7A1692272AFE600361A98 /* GCDWebServerDataRequest.h in Headers */,
+				18A7A1562272AFE600361A98 /* GCDWebServerPrivate.h in Headers */,
+				188A65FF2272ACBA0096663E /* TKRemoteControlWindowController.h in Headers */,
+				188A66162272ACBA0096663E /* TKRemoteControlModel.h in Headers */,
+				188A66382272ACBA0096663E /* WeChat+hook.h in Headers */,
+				18A7A1672272AFE600361A98 /* GCDWebServerErrorResponse.h in Headers */,
+				18A7A1552272AFE600361A98 /* GCDWebServerFunctions.h in Headers */,
+				188A66142272ACBA0096663E /* TKUtility.h in Headers */,
+				188A66352272ACBA0096663E /* TKRemoteControlCell.h in Headers */,
+				188A660A2272ACBA0096663E /* TKCacheManager.h in Headers */,
+				188A66012272ACBA0096663E /* TKWeChatPluginConfig.h in Headers */,
+				188A662E2272ACBA0096663E /* DefineConstant.h in Headers */,
+				188A65F52272ACBA0096663E /* TKAboutWindowController.h in Headers */,
+				18A7A1302272ACE900361A98 /* WeChatPlugin.h in Headers */,
+				188A66392272ACBA0096663E /* NSDictionary+Safe.h in Headers */,
+				188A660C2272ACBA0096663E /* TKVersionManager.h in Headers */,
+				188A66302272ACBA0096663E /* TKPrefixHeader.pch in Headers */,
+				188A661F2272ACBA0096663E /* NSTextField+Action.h in Headers */,
+				188A66262272ACBA0096663E /* NSButton+Action.h in Headers */,
+				18A7A1702272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.h in Headers */,
+				18A7A1612272AFE600361A98 /* GCDWebServerFileResponse.h in Headers */,
+				188A66372272ACBA0096663E /* MMChatsTableCellView+hook.h in Headers */,
+				18A7A1622272AFE600361A98 /* GCDWebServerStreamedResponse.h in Headers */,
+				188A663D2272ACBA0096663E /* OPMessageTool.h in Headers */,
+				188A662A2272ACBA0096663E /* NSDate+Action.h in Headers */,
+				188A661B2272ACBA0096663E /* TKAutoReplyModel.h in Headers */,
+				188A65F82272ACBA0096663E /* TKDownloadWindowController.h in Headers */,
+				18A7A1592272AFE600361A98 /* GCDWebServer.h in Headers */,
+				188A66292272ACBA0096663E /* NSWindowController+Action.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +710,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 188A656222718C400096663E /* Build configuration list for PBXNativeTarget "WeChatExtension" */;
 			buildPhases = (
+				E3A7009003A837328F71491B /* [CP] Check Pods Manifest.lock */,
 				188A654922718C400096663E /* Headers */,
 				188A654A22718C400096663E /* Sources */,
 				188A654B22718C400096663E /* Frameworks */,
@@ -220,6 +730,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 188A656522718C400096663E /* Build configuration list for PBXNativeTarget "WeChatExtensionTests" */;
 			buildPhases = (
+				40C35106C7D038A6D8AE0BD2 /* [CP] Check Pods Manifest.lock */,
 				188A655322718C400096663E /* Sources */,
 				188A655422718C400096663E /* Frameworks */,
 				188A655522718C400096663E /* Resources */,
@@ -257,6 +768,9 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
+				"zh-Hant",
+				"zh-Hans",
 			);
 			mainGroup = 188A654422718C400096663E;
 			productRefGroup = 188A654F22718C400096663E /* Products */;
@@ -274,6 +788,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				188A65FD2272ACBA0096663E /* TKRemoteControlWindowController.xib in Resources */,
+				1876D1C92272B81A00A98CBE /* Localizable.strings in Resources */,
+				188A65F92272ACBA0096663E /* TKDownloadWindowController.xib in Resources */,
+				188A660F2272ACBA0096663E /* TKRemoteControlCommands.plist in Resources */,
+				188A65FB2272ACBA0096663E /* TKAutoReplyWindowController.xib in Resources */,
+				188A65F42272ACBA0096663E /* TKAboutWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +824,50 @@
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\napp_name=\"WeChat\"\nframework_name=\"WeChatExtension\"\napp_bundle_path=\"/Applications/${app_name}.app/Contents/MacOS\"\napp_executable_path=\"${app_bundle_path}/${app_name}\"\napp_executable_backup_path=\"${app_executable_path}_backup\"\nframework_path=\"${app_bundle_path}/${framework_name}.framework\"\n# 备份WeChat原始可执行文件\nif [ ! -f \"$app_executable_backup_path\" ]\nthen\ncp \"$app_executable_path\" \"$app_executable_backup_path\"\nfi\n\ncp -r \"${BUILT_PRODUCTS_DIR}/${framework_name}.framework\" ${app_bundle_path}\n./insert_dylib --all-yes \"${framework_path}/${framework_name}\" \"$app_executable_backup_path\" \"$app_executable_path\"\n\n";
 		};
+		40C35106C7D038A6D8AE0BD2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WeChatExtensionTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3A7009003A837328F71491B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WeChatExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -311,13 +875,56 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				188A656A22718E330096663E /* main.mm in Sources */,
-				188A657922718EEB0096663E /* XMLReader.m in Sources */,
-				188A658022718F6F0096663E /* NSObject+Hook.m in Sources */,
-				188A658A227198920096663E /* YMMessageManager.m in Sources */,
-				188A65862271979B0096663E /* YMConfig.m in Sources */,
-				188A657A22718EEB0096663E /* fishhook.c in Sources */,
-				188A657822718EEB0096663E /* YMSwizzle.m in Sources */,
+				18A7A15E2272AFE600361A98 /* GCDWebServer.m in Sources */,
+				188A663A2272ACBA0096663E /* OPMessageModel.m in Sources */,
+				18A7A1632272AFE600361A98 /* GCDWebServerErrorResponse.m in Sources */,
+				188A661A2272ACBA0096663E /* TKRemoteControlModel.m in Sources */,
+				188A65FE2272ACBA0096663E /* TKRemoteControlWindowController.m in Sources */,
+				188A66022272ACBA0096663E /* TKCacheManager.m in Sources */,
+				18A7A16F2272AFE600361A98 /* GCDWebServerFileRequest.m in Sources */,
+				188A66222272ACBA0096663E /* NSString+Action.m in Sources */,
+				188A663E2272ACBA0096663E /* MMStickerMessageCellView+hook.m in Sources */,
+				18A7A15D2272AFE600361A98 /* GCDWebServerFunctions.m in Sources */,
+				18A7A15F2272AFE600361A98 /* GCDWebServerConnection.m in Sources */,
+				18A7A12E2272ACE300361A98 /* main.mm in Sources */,
+				188A66202272ACBA0096663E /* NSView+Action.m in Sources */,
+				188A65FC2272ACBA0096663E /* TKAutoReplyWindowController.m in Sources */,
+				188A662C2272ACBA0096663E /* NSMenuItem+Action.m in Sources */,
+				188A661D2272ACBA0096663E /* NSButton+Action.m in Sources */,
+				188A66412272ACBA0096663E /* WeChat+hook.m in Sources */,
+				188A66282272ACBA0096663E /* NSTextField+Action.m in Sources */,
+				18A7A16C2272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.m in Sources */,
+				188A66182272ACBA0096663E /* TKBaseModel.m in Sources */,
+				188A66362272ACBA0096663E /* TKRemoteControlCell.m in Sources */,
+				188A66062272ACBA0096663E /* TKRemoteControlManager.m in Sources */,
+				188A66252272ACBA0096663E /* NSMenu+Action.m in Sources */,
+				188A66002272ACBA0096663E /* TKWeChatPluginConfig.m in Sources */,
+				188A65F72272ACBA0096663E /* TKDownloadWindowController.m in Sources */,
+				188A66192272ACBA0096663E /* TKIgnoreSessonModel.m in Sources */,
+				188A66212272ACBA0096663E /* NSWindowController+Action.m in Sources */,
+				188A66342272ACBA0096663E /* TKAutoReplyCell.m in Sources */,
+				188A66052272ACBA0096663E /* TKVersionManager.m in Sources */,
+				18A7A16E2272AFE600361A98 /* GCDWebServerDataRequest.m in Sources */,
+				18A7A1662272AFE600361A98 /* GCDWebServerDataResponse.m in Sources */,
+				18A7A1652272AFE600361A98 /* GCDWebServerFileResponse.m in Sources */,
+				188A66432272ACBA0096663E /* fishhook.c in Sources */,
+				188A65F62272ACBA0096663E /* TKAboutWindowController.m in Sources */,
+				188A66132272ACBA0096663E /* TKHelper.m in Sources */,
+				188A66172272ACBA0096663E /* TKAutoReplyModel.m in Sources */,
+				188A66422272ACBA0096663E /* MMChatsTableCellView+hook.m in Sources */,
+				18A7A1682272AFE600361A98 /* GCDWebServerStreamedResponse.m in Sources */,
+				188A66092272ACBA0096663E /* TKAssistantMenuManager.m in Sources */,
+				188A663C2272ACBA0096663E /* OPMessageTool.m in Sources */,
+				188A66072272ACBA0096663E /* TKHTTPManager.m in Sources */,
+				18A7A1572272AFE600361A98 /* GCDWebServerResponse.m in Sources */,
+				188A66102272ACBA0096663E /* TKWebServerManager.m in Sources */,
+				188A66122272ACBA0096663E /* TKUtility.m in Sources */,
+				18A7A15A2272AFE600361A98 /* GCDWebServerRequest.m in Sources */,
+				18A7A16D2272AFE600361A98 /* GCDWebServerMultiPartFormRequest.m in Sources */,
+				188A66402272ACBA0096663E /* NSDictionary+Safe.m in Sources */,
+				188A66312272ACBA0096663E /* TKAutoReplyContentView.m in Sources */,
+				188A66242272ACBA0096663E /* NSDate+Action.m in Sources */,
+				188A66042272ACBA0096663E /* TKMessageManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +945,29 @@
 			targetProxy = 188A655922718C400096663E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		188A658E2272ACBA0096663E /* TKAboutWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				188A658F2272ACBA0096663E /* en */,
+				188A65912272ACBA0096663E /* Base */,
+				188A65922272ACBA0096663E /* zh-Hant */,
+			);
+			name = TKAboutWindowController.xib;
+			sourceTree = "<group>";
+		};
+		188A659D2272ACBA0096663E /* TKRemoteControlWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				188A659E2272ACBA0096663E /* zh-Hans */,
+				188A65A02272ACBA0096663E /* Base */,
+				188A65A12272ACBA0096663E /* zh-Hant */,
+			);
+			name = TKRemoteControlWindowController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		188A656022718C400096663E /* Debug */ = {
@@ -459,6 +1089,7 @@
 		};
 		188A656322718C400096663E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C528D93AD05C43BF7DE46757 /* Pods-WeChatExtension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -469,7 +1100,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = WeChatExtension/Classes/Rely/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = WeChatExtension/Sources/Common/TKPrefixHeader.pch;
 				INFOPLIST_FILE = WeChatExtension/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -485,6 +1116,7 @@
 		};
 		188A656422718C400096663E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97F2E3244C2E5DD8CF65AB97 /* Pods-WeChatExtension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -495,7 +1127,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = WeChatExtension/Classes/Rely/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = WeChatExtension/Sources/Common/TKPrefixHeader.pch;
 				INFOPLIST_FILE = WeChatExtension/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -511,6 +1143,7 @@
 		};
 		188A656622718C400096663E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D58A7B70D43142014A02CCF8 /* Pods-WeChatExtensionTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -528,6 +1161,7 @@
 		};
 		188A656722718C400096663E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C341AF31F4497191220003D6 /* Pods-WeChatExtensionTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;

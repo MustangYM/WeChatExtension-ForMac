@@ -1,0 +1,30 @@
+//
+//  TKPrefixHeader.pch
+//  WeChatPlugin
+//
+//  Created by TK on 2017/8/20.
+//  Copyright © 2017年 tk. All rights reserved.
+//
+
+#ifndef TKPrefixHeader_pch
+#define TKPrefixHeader_pch
+
+#ifdef __OBJC__
+#import "ColorConstant.h"
+#import "DefineConstant.h"
+#import "NotifyConstant.h"
+#import "NSView+Action.h"
+#import "NSButton+Action.h"
+#import "NSTextField+Action.h"
+#import "NSMenu+Action.h"
+#import "NSString+Action.h"
+#import "NSDate+Action.h"
+#import "NSWindowController+Action.h"
+#import "WeChatPlugin.h"
+#import "TKUtility.h"
+
+#import "TKWeChatPluginConfig.h"
+#import "TKHelper.h"
+#endif
+
+#endif /* TKPrefixHeader_pch */
