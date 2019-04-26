@@ -12,6 +12,11 @@
 <img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/launch.gif" width="800px"/>
 </p>
 
+## 消息撤回
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/revoke.gif" width="800px"/>
+</p>
+
 ## 安装方法
 1. > 下载本项目到你的Mac上, 确保你的Mac上已经安装了微信App.
 
