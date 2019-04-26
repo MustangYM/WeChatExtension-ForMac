@@ -29,11 +29,11 @@
 "assistant.revokeType.video" = "[视频]";
 "assistant.revokeType.voice" = "[语音]";
 "assistant.revokeType.other" = "[非文本]";
-"assistant.revoke.otherMessage.tip" = "TK拦截到一条撤回消息: ";
+"assistant.revoke.otherMessage.tip" = "拦截到一条撤回消息: ";
 "assistant.revoke.selfMessage.tip" = "你撤回了一条消息: ";
 
 //  免认证相关
-"assistant.autoAuth.tip" = "TK正在为你免认证登录~";
+"assistant.autoAuth.tip" = "免认证登录";
 "assistant.autoLogin.text" = "自动登录";
 
 
