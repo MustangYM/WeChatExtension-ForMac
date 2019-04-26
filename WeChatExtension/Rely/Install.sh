@@ -41,5 +41,4 @@ fi
 if [[ "$result" == 'y' ]]; then
     cp -r "${shell_path}/Plugin/${framework_name}.framework" ${app_bundle_path}
     ${shell_path}/insert_dylib --all-yes "${framework_path}/${framework_name}" "$app_executable_backup_path" "$app_executable_path"
-    ${shell_path}/UpdateRemoteControlCommandsPlist.py
 fi
