@@ -82,7 +82,7 @@
     tk_hookMethod(objc_getClass("MMNotificationService"), @selector(userNotificationCenter:didActivateNotification:), [self class], @selector(hook_userNotificationCenter:didActivateNotification:));
     tk_hookMethod(objc_getClass("MMNotificationService"), @selector(getNotificationContentWithMsgData:), [self class], @selector(hook_getNotificationContentWithMsgData:));
     //      登录逻辑
-    tk_hookMethod(objc_getClass("AccountService"), @selector(onAuthOKOfUser:withSessionKey:withServerId:autoAuthKey:isAutoAuth:), [self class], @selector(hook_onAuthOKOfUser:withSessionKey:withServerId:autoAuthKey:isAutoAuth:));
+    tk_hookMethod(objc_getClass("MMMainViewController"), @selector(viewDidLoad), [self class], @selector(hook_mainViewControllerDidLoad));
 
     //      自带浏览器打开链接
     tk_hookClassMethod(objc_getClass("MMWebViewHelper"), @selector(preHandleWebUrlStr:withMessage:), [self class], @selector(hook_preHandleWebUrlStr:withMessage:));
@@ -435,9 +435,8 @@
     }
 }
 
-- (void)hook_onAuthOKOfUser:(id)arg1 withSessionKey:(id)arg2 withServerId:(id)arg3 autoAuthKey:(id)arg4 isAutoAuth:(BOOL)arg5 {
-    [self hook_onAuthOKOfUser:arg1 withSessionKey:arg2 withServerId:arg3 autoAuthKey:arg4 isAutoAuth:arg5];
-
+- (void)hook_mainViewControllerDidLoad {
+    [self hook_mainViewControllerDidLoad];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if ([[TKWeChatPluginConfig sharedConfig] alfredEnable]) {
             [[TKWebServerManager shareManager] startServer];
@@ -449,7 +448,6 @@
         preventMenu.enabled = YES;
     });
 }
-
 - (void)hook_sendLogoutCGIWithCompletion:(id)arg1 {
     BOOL autoAuthEnable = [[TKWeChatPluginConfig sharedConfig] autoAuthEnable];
     WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
