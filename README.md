@@ -7,7 +7,7 @@
 > 适用于Mac版的WeChat拓展功能, 由于之前大家常用的WeChatPlugin在未知的情况下被删除, 坊间猜测原因, 众说纷纭, 我们不去深究了.
 本着开源的精神, 我决定继续维护这个项目, 继续站在[tk](https://github.com/TKkk-iOSer)大佬的肩膀上战斗, 对[tk](https://github.com/TKkk-iOSer)在此表示感谢!
 
-# 最新支持版本
+## 最新支持版本
 >  mac版微信2.3.24
 
 ## 免认证登录与多开
