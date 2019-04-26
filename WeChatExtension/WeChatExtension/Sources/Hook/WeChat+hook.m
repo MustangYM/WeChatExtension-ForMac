@@ -48,7 +48,6 @@
     
     tk_hookMethod(objc_getClass("MessageService"), @selector(SendNamecardMsgFromUser: toUser: containingContact:), [self class], @selector(hook_SendNamecardMsgFromUser:toUser:containingContact:));
     
-//    - (id)SendEmoticonMsgFromUsr:(id)arg1 toUsrName:(id)arg2 md5:(id)arg3 emoticonType:(unsigned int)arg4;
     tk_hookMethod(objc_getClass("MessageService"), @selector(SendEmoticonMsgFromUsr: toUsrName: md5: emoticonType:), [self class], @selector(hook_SendEmoticonMsgFromUsr:toUsrName:md5:emoticonType:));
     
     
@@ -168,134 +167,12 @@
     return [self hook_notifyAddMsgOnMainThread:arg1 msgData:msgData];
 }
 
-- (void)hook_onAddMsg:(id)arg1 msgData:(id)arg2 {
-    MessageData *msgData = (MessageData *)arg2;
-//    NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
-    return [self hook_onAddMsg:arg1 msgData:msgData];
-}
-
-- (void)hook_cdnDownloadMgrDownloaded:(int)arg1 of:(int)arg2 withMessage:(MessageData *)arg3 type:(int)arg4 tryShow:(BOOL)arg5 {
-    
-    
-    return [self hook_cdnDownloadMgrDownloaded:arg1 of:arg2 withMessage:arg3 type:arg4 tryShow:arg5];
-}
-
-//视频消息
-- (void)hook_cdnDownloadMgrDidFinishedDownloadWithMessage:(MessageData *)arg1 type:(int)arg2 {
-    //只做图片和视频消息下载后的处理.
-    if (arg1.messageType == 43) {
-        if (arg1.messageType == 43 && arg1.m_nsVideoPath.length > 0) {
-            
-        }
-    }
-
-    [self hook_cdnDownloadMgrDidFinishedDownloadWithMessage:arg1 type:arg2];
-}
-
 - (void)hook_originalImageDidLoadWithUniqueID:(id)arg1 image:(id)arg2; {
     
     
     return [self hook_originalImageDidLoadWithUniqueID:arg1 image:arg2];
 }
 
-//处理图片消息
-- (void)hook_downloadImageFinishedWithMessage:(MessageData *)arg1 type:(int)arg2 isSuccess:(BOOL)arg3 {
-    if (arg1.messageType == 3) {
-        //此处通过MMMessageCacheMgr的_cdnDownloadTasks获到图片在磁盘中的path,拿到高清图
-    }
-    [self hook_downloadImageFinishedWithMessage:arg1 type:arg2 isSuccess:arg3];
-}
-
-- (id)hook_SendImgMessage:(id)arg1 toUsrName:(id)arg2 thumbImgData:(id)arg3 midImgData:(id)arg4 imgData:(id)arg5 imgInfo:(id)arg6 {
-    return [self hook_SendImgMessage:arg1 toUsrName:arg2 thumbImgData:arg3 midImgData:arg4 imgData:arg5 imgInfo:arg6];
-}
-
-- (id)hook_SendVideoMessage:(id)arg1 toUsrName:(id)arg2 videoInfo:(id)arg3 msgType:(unsigned int)arg4 refMesageData:(id)arg5 {
-    return [self hook_SendVideoMessage:arg1 toUsrName:arg2 videoInfo:arg3 msgType:arg4 refMesageData:arg5];
-}
-
-- (id)hook_SendLocationMsgFromUser:(id)arg1 toUser:(id)arg2 withLatitude:(double)arg3 longitude:(double)arg4 poiName:(id)arg5 label:(id)arg6 {
-    return [self hook_SendLocationMsgFromUser:arg1 toUser:arg2 withLatitude:arg3 longitude:arg4 poiName:arg5 label:arg6];
-}
-
-- (void)hook_sendImageMessageWithImage:(id)arg1 {
-    
-    return [self hook_sendImageMessageWithImage:arg1];
-}
-
-- (id)hook_SendNamecardMsgFromUser:(id)arg1 toUser:(id)arg2 containingContact:(id)arg3 {
-    
-    return [self hook_SendNamecardMsgFromUser:arg1 toUser:arg2 containingContact:arg3];
-}
-
-- (id)hook_SendEmoticonMsgFromUsr:(id)arg1 toUsrName:(id)arg2 md5:(id)arg3 emoticonType:(unsigned int)arg4 {
-    
-    return [self hook_SendEmoticonMsgFromUsr:arg1 toUsrName:arg2 md5:arg3 emoticonType:arg4];
-}
-
-//收到消息
-- (void)hook_receivedMsg:(id)arg1 isFirstSync:(BOOL)arg2 {
-    if ([arg1 isKindOfClass:NSArray.class]) {
-        //1文本消息, 3图片消息,34语音,50语音电话,视频电话,48位置消息,49共享实时位置, 42名片消息, 红包.10000结束实时位置, 51结束的信号, 10000添加好友消息
-        [(NSArray *)arg1 enumerateObjectsUsingBlock:^(AddMsg*  _Nonnull addMsg, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSString *nick = nil;
-            NSString *avatar = nil;
-            NSString *textMsg = nil;
-            //获取会话
-            MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
-            WCContactData *msgContact = [sessionMgr getContact:addMsg.fromUserName.string];
-            NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
-            
-            if ([addMsg.fromUserName.string containsString:@"@chatroom"]) {
-                NSLog(@"--收到群消息Type:%d\nFromUserName:%@",addMsg.msgType,addMsg.fromUserName.string);
-                avatar = @"群消息无头像";
-                nick = addMsg.fromUserName.string;
-                NSRange range = [addMsg.content.string rangeOfString:@":\n"];
-                if (range.length > 0) {
-                    textMsg = [addMsg.content.string substringFromIndex:range.location + range.length];
-                }
-            } else {
-                avatar = msgContact.m_nsHeadImgUrl;
-                nick = msgContact.m_nsNickName;
-                textMsg = addMsg.content.string;
-            }
-            
-            //不管公众号消息和自己发来的消息, 语音电话, 视频电话,
-            if (!([msgContact isBrandContact] || [msgContact isSelf])
-                && ![currentUserName isEqualToString:addMsg.fromUserName.string]
-                && ![msgContact.m_nsNickName isEqualToString:@"微信团队"]
-                && ![msgContact.m_nsNickName isEqualToString:@"文件传输助手"]) {
-                //拿昵称
-                NSLog(@"--拿到昵称:%@",nick);
-                //拿头像
-                NSLog(@"--拿到头像:%@",avatar);
-                //文本消息
-                if (addMsg.msgType == 1) {
-                    NSLog(@"--文本消息:%@",textMsg);
-                } else if (addMsg.msgType == 3) {
-                    NSLog(@"--图片消息:%@",addMsg.imgBuf.buffer);
-//                    MMMessageCacheMgr *cacheMgr = [[objc_getClass("MMMessageCacheMgr") alloc] init];
-//                    OPPictureModel *picModel = [OPPictureModel modelWithParseXML:addMsg.content.string];
-//                    MMCDNDownloadMgrExt *downLoadMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMCDNDownloadMgrExt")];
-//                    [cacheMgr originalImageWithPreviewMessage:[OPMessageTool getMessageData:addMsg] completion:^(NSString *imageKey, NSImage *image){
-//                        NSLog(@"---%@",image);
-//                    }];
-//                    NSString *path = [[OPMessageTool getMessageData:addMsg] originalImageFilePath];
-//
-//                    NSLog(@"aaa%@",path);
-                    
-                } else if (addMsg.msgType == 34) {
-                    NSLog(@"--语音消息:%@",addMsg.imgBuf.buffer);
-                    OPVoiceModel *voModel = [OPVoiceModel modelWithParseXML:addMsg.content.string];
-                } else if (addMsg.msgType == 43) {
-                    NSLog(@"--视频消息:%@",addMsg.imgBuf.buffer);
-                    OPVideoModel *videoModel = [OPVideoModel modelWithParseXML:addMsg.content.string];
-                }
-            }
-        }];
-    }
-    return [self hook_receivedMsg:arg1 isFirstSync:arg2];
-}
 
 /**
  hook 微信撤回消息
