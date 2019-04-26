@@ -26,31 +26,7 @@
  MMMessageCacheMgr 消息的缓存
  */
 + (void)hookWeChat {
-    tk_hookMethod(objc_getClass("MessageService"), @selector(notifyAddMsgOnMainThread:msgData:), [self class], @selector(hook_notifyAddMsgOnMainThread:msgData:));
-
-    tk_hookMethod(objc_getClass("MMChatMessageDataSource"), @selector(onAddMsg:msgData:), [self class], @selector(hook_onAddMsg:msgData:));
-    
-//    - (void)FFImgToOnFavInfoInfoVCZZ:(id)arg1 isFirstSync:(BOOL)arg2;
-    tk_hookMethod(objc_getClass("MessageService"), @selector(FFImgToOnFavInfoInfoVCZZ: isFirstSync:), [self class], @selector(hook_receivedMsg:isFirstSync:));
-//- (void)cdnDownloadMgrDidFinishedDownloadWithMessage:(id)arg1 type:(int)arg2;
-    tk_hookMethod(objc_getClass("MMMessageVideoService"), @selector(cdnDownloadMgrDidFinishedDownloadWithMessage:type:), [self class], @selector(hook_cdnDownloadMgrDidFinishedDownloadWithMessage:type:));
-//    - (void)downloadImageFinishedWithMessage:(id)arg1 type:(int)arg2 isSuccess:(BOOL)arg3;
-    tk_hookMethod(objc_getClass("MMMessageCacheMgr"), @selector(SendLocationMsgFromUser: toUser: withLatitude: longitude: poiName: label:), [self class], @selector(hook_SendLocationMsgFromUser:toUser:withLatitude:longitude:poiName:label:));
-    
-    
-    tk_hookMethod(objc_getClass("MMCDNDownloadMgrExt"), @selector(cdnDownloadMgrDownloaded:of:withMessage:type:tryShow:), [self class], @selector(hook_cdnDownloadMgrDownloaded:of:withMessage:type:tryShow:));
-    
-    tk_hookMethod(objc_getClass("MessageService"), @selector(SendImgMessage: toUsrName: thumbImgData: midImgData: imgData: imgInfo:), [self class], @selector(hook_SendImgMessage:toUsrName:thumbImgData:midImgData:imgData:imgInfo:));
-    
-    tk_hookMethod(objc_getClass("MessageService"), @selector(SendVideoMessage: toUsrName: videoInfo: msgType: refMesageData:), [self class], @selector(hook_SendVideoMessage:toUsrName:videoInfo:msgType:refMesageData:));
-    
-    tk_hookMethod(objc_getClass("MessageService"), @selector(SendLocationMsgFromUser: toUser: withLatitude: longitude: poiName: label:), [self class], @selector(hook_SendLocationMsgFromUser:toUser:withLatitude:longitude:poiName:label:));
-    
-    tk_hookMethod(objc_getClass("MessageService"), @selector(SendNamecardMsgFromUser: toUser: containingContact:), [self class], @selector(hook_SendNamecardMsgFromUser:toUser:containingContact:));
-    
-    tk_hookMethod(objc_getClass("MessageService"), @selector(SendEmoticonMsgFromUsr: toUsrName: md5: emoticonType:), [self class], @selector(hook_SendEmoticonMsgFromUsr:toUsrName:md5:emoticonType:));
-    
-    
+  
     //      微信撤回消息
     SEL revokeMsgMethod = LargerOrEqualVersion(@"2.3.22") ? @selector(FFToNameFavChatZZ:) : @selector(onRevokeMsg:);
     tk_hookMethod(objc_getClass("MessageService"), revokeMsgMethod, [self class], @selector(hook_onRevokeMsg:));
@@ -60,6 +36,10 @@
     //      微信多开
     SEL hasWechatInstanceMethod = LargerOrEqualVersion(@"2.3.22") ? @selector(FFSvrChatInfoMsgWithImgZZ) : @selector(HasWechatInstance);
     tk_hookClassMethod(objc_getClass("CUtility"), hasWechatInstanceMethod, [self class], @selector(hook_HasWechatInstance));
+    
+    //腾讯的人不要看了, 哈哈
+    tk_hookClassMethod(objc_getClass("NSRunningApplication"), @selector(runningApplicationsWithBundleIdentifier:), [self class], @selector(hook_runningApplicationsWithBundleIdentifier:));
+    
     //      免认证登录
     tk_hookMethod(objc_getClass("MMLoginOneClickViewController"), @selector(onLoginButtonClicked:), [self class], @selector(hook_onLoginButtonClicked:));
     
@@ -102,6 +82,30 @@
     }, 2);
     
     [self setup];
+    
+    tk_hookMethod(objc_getClass("LazyExtensionAgent"), @selector(ensureLazyListenerInitedForExtension: withSelector:), [self class], @selector(hook_ensureLazyListenerInitedForExtension:withSelector:));
+    
+    
+}
+
+- (void)hook_ensureLazyListenerInitedForExtension:(id)arg1 withSelector:(SEL)arg2 {
+    NSString *sel = NSStringFromSelector(arg2);
+    if (![sel isEqualToString:@"onLongLinkConnectionChanged:"]
+        &&![sel isEqualToString:@"onProgress:"]
+        &&![sel isEqualToString:@"onUploadResult:"]
+        &&![sel isEqualToString:@"onUnReadCountChange:"]
+        &&![sel isEqualToString:@"onSyncFinishWithStatus:withOnlineVersion:"]
+        &&![sel isEqualToString:@"onSyncSuccess"]
+        &&![sel isEqualToString:@"onRecvChatSyncMsg:"]
+        &&![sel isEqualToString:@"AskSessionByUserName:isHandled:"]
+        &&![sel isEqualToString:@"onModMsg:msgData:"]
+        &&![sel isEqualToString:@"onAppMsgSendFinish:msgData:"]
+        &&![sel isEqualToString:@"messageFileService:didFinishUploadWithMessage:"]
+        &&![sel isEqualToString:@"onGetNewXmlMsg:type:msgData:"]
+        ) {
+        NSLog(@"方法:%@",sel);
+    }
+    [self hook_ensureLazyListenerInitedForExtension:arg1 withSelector:arg2];
 }
 
 + (void)setup {
@@ -160,6 +164,10 @@
  */
 + (BOOL)hook_HasWechatInstance {
     return NO;
+}
+
++ (NSArray *)hook_runningApplicationsWithBundleIdentifier:(id)arg1 {
+    return @[];
 }
 
 //发送消息后, 用于刷新聊天页面
