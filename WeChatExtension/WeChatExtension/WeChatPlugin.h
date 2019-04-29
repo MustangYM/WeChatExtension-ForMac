@@ -282,6 +282,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 //- (void)TopSessionByUserName:(id)arg1;
 - (void)processOnEnterSession:(id)arg1 isFromLocal:(BOOL)arg2;
 - (void)UnmuteSessionByUserName:(id)arg1;
+- (void)unmuteSessionByUserName:(id)arg1 syncToServer:(BOOL)arg2;
 - (void)UntopSessionByUserName:(id)arg1;
 - (void)deleteSessionWithoutSyncToServerWithUserName:(id)arg1;
 - (void)changeSessionUnreadCountWithUserName:(id)arg1 to:(unsigned int)arg2;

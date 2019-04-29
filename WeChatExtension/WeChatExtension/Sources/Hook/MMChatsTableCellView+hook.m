@@ -131,7 +131,7 @@
     } else {
         [ignoreSessions removeObjectAtIndex:index];
         if (sessionInfo.m_bShowUnReadAsRedDot && sessionInfo.m_nsUserName) {
-            [sessionMgr UnmuteSessionByUserName:sessionInfo.m_nsUserName];
+            [sessionMgr unmuteSessionByUserName:sessionInfo.m_nsUserName syncToServer:YES];
         }
     }
     if ([sessionMgr respondsToSelector:@selector(FFDataSvrMgrSvrFavZZ)]) {
