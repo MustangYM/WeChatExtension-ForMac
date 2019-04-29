@@ -22,6 +22,13 @@
     return manager;
 }
 
+- (NSString *)currentVersion {
+    NSDictionary *infoDictionary = [[NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"] infoDictionary];
+    CFShow((__bridge CFTypeRef)(infoDictionary));
+    // app版本
+    return [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+}
+
 - (void)checkVersionFinish:(void (^)(TKVersionStatus, NSString *))finish {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSDictionary *localInfo = [[TKWeChatPluginConfig sharedConfig] localInfoPlist];

@@ -22,8 +22,8 @@ static NSString * const kTKForbidCheckVersionKey = @"kTKForbidCheckVersionKey";
 static NSString * const kTKAlfredEnableKey = @"kTKAlfredEnableKey";
 static NSString * const kTKCheckUpdateWechatEnableKey = @"kTKCheckUpdateWechatEnableKey";
 static NSString * const kTKSystemBrowserEnableKey = @"kTKSystemBrowserEnableKey";
-static NSString * const kTKWeChatResourcesPath = @"/Applications/WeChat.app/Contents/MacOS/WeChatPlugin.framework/Resources/";
-static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubusercontent.com/TKkk-iOSer/WeChatPlugin-MacOS/master/Other/Products/Debug/WeChatPlugin.framework/Resources/Info.plist";
+static NSString * const kTKWeChatResourcesPath = @"/Applications/WeChat.app/Contents/MacOS/WeChatExtension.framework/Resources/";
+static NSString * const kTKWeChatRemotePlistPath = @"https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/WeChatExtension/Info.plist";
 
 @interface TKWeChatPluginConfig ()
 

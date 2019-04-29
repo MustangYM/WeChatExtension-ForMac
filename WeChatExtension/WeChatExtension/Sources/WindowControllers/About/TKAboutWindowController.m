@@ -21,12 +21,15 @@
     [super windowDidLoad];
     self.window.backgroundColor = [NSColor whiteColor];
     NSDictionary *localInfo = [[TKWeChatPluginConfig sharedConfig] localInfoPlist];
+    if (!localInfo) {
+        return;
+    }
     NSString *localBundle = localInfo[@"CFBundleShortVersionString"];
     self.versionLabel.stringValue = localBundle;
     
-    NSString *path = [[NSBundle bundleWithIdentifier:@"tk.WeChatPlugin"] pathForResource:@"about" ofType:@"rtfd"];
-    [self.textView readRTFDFromFile:path];
-    self.textView.selectable = YES;
+//    NSString *path = [[NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"] pathForResource:@"about" ofType:@"rtfd"];
+//    [self.textView readRTFDFromFile:path];
+//    self.textView.selectable = YES;
 }
 
 @end

@@ -124,47 +124,8 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
                                                            state:0];
     
     //测试发送消息
-    NSMenuItem *sendTextMsg = [NSMenuItem menuItemWithTitle:@"发送文字消息"
-                                                    action:@selector(onSendTextMsg:)
-                                                    target:self
-                                             keyEquivalent:@""
-                                                     state:0];
-    
-    NSMenuItem *sendPicMsg = [NSMenuItem menuItemWithTitle:@"发送图片消息"
-                                                 action:@selector(onSendPicMsg:)
-                                                 target:self
-                                          keyEquivalent:@""
-                                                  state:0];
-    
-    NSMenuItem *sendVideoMsg = [NSMenuItem menuItemWithTitle:@"发送视频消息"
-                                                 action:@selector(onSendVideoMsg:)
-                                                 target:self
-                                          keyEquivalent:@""
-                                                  state:0];
-    
-    NSMenuItem *sendVoiceMsg = [NSMenuItem menuItemWithTitle:@"发送语音消息"
-                                                 action:@selector(onSendVoiceMsg:)
-                                                 target:self
-                                          keyEquivalent:@""
-                                                  state:0];
-    
-    NSMenuItem *sendLocationMsg = [NSMenuItem menuItemWithTitle:@"发送位置消息"
-                                                 action:@selector(onSendLocationMsg:)
-                                                 target:self
-                                          keyEquivalent:@""
-                                                  state:0];
-    NSMenuItem *sendNameCardMsg = [NSMenuItem menuItemWithTitle:@"发送名片消息"
-                                                         action:@selector(onSendNameCardMsg:)
-                                                         target:self
-                                                  keyEquivalent:@""
-                                                          state:0];
-    NSMenuItem *sendEmjMsg = [NSMenuItem menuItemWithTitle:@"发送表情消息"
-                                                         action:@selector(onSendEmjMsg:)
-                                                         target:self
-                                                  keyEquivalent:@""
-                                                          state:0];
-    NSMenuItem *sendURLMsg = [NSMenuItem menuItemWithTitle:@"发送URL消息"
-                                                    action:@selector(onSendURLMsg:)
+    NSMenuItem *currentVersionItem = [NSMenuItem menuItemWithTitle:[NSString stringWithFormat:@"当前版本%@",[TKVersionManager shareManager].currentVersion]
+                                                    action:@selector(onCurrentVersion:)
                                                     target:self
                                              keyEquivalent:@""
                                                      state:0];
@@ -183,7 +144,8 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
                         onTopItem,
                         autoAuthItem,
                         enableSystemBrowserItem,
-                        pluginItem
+                        pluginItem,
+                        currentVersionItem
                         ]];
     WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
     if ([wechat respondsToSelector:@selector(checkForUpdatesInBackground)]) {
@@ -396,4 +358,7 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
     [remoteControlWC show];
 }
 
+- (void)onCurrentVersion:(NSMenuItem *)item {
+    
+}
 @end
