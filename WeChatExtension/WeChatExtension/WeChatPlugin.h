@@ -275,7 +275,8 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 
 @interface MMSessionMgr : NSObject
 @property(retain, nonatomic) NSMutableArray *m_arrSession;
-- (id)GetSessionAtIndex:(unsigned long long)arg1;
+- (id)getAllSessions;
+- (id)GetSessionAtIndex:(unsigned long long)arg1;//2.3.24废弃
 - (id)sessionInfoByUserName:(id)arg1;
 - (void)MuteSessionByUserName:(id)arg1;
 - (void)onUnReadCountChange:(id)arg1;
