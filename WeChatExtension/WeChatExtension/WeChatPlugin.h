@@ -526,3 +526,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @interface MMChatMessageDataSource : NSObject
 - (void)onAddMsg:(id)arg1 msgData:(id)arg2;
 @end
+
+@interface MMVoiceTranscribeCGI : NSObject
+- (void)transcribeVoiceMessage:(id)arg1 withCompletion:(id)arg2;
+@end

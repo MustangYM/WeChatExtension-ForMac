@@ -579,16 +579,17 @@
         [TKRemoteControlManager executeRemoteControlCommandWithMsg:addMsg.content.string];
     } else if (addMsg.msgType == 34) {
         //      此为语音消息
-        MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
-        MessageData *msgData = [msgService GetMsgData:addMsg.fromUserName.string svrId:addMsg.newMsgId];
-        long long mesSvrID = msgData.mesSvrID;
-        NSString *sessionName = msgData.fromUsrName;
-        [msgService TranscribeVoiceMessage:msgData completion:^ {
-            MessageData *callbackMsgData = [msgService GetMsgData:sessionName svrId:mesSvrID];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [TKRemoteControlManager executeRemoteControlCommandWithVoiceMsg:callbackMsgData.msgVoiceText];
-            });
-        }];
+//        MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+//        MMVoiceTranscribeCGI *cgi = [[objc_getClass("MMVoiceTranscribeCGI") alloc] init];
+//        MessageData *msgData = [msgService GetMsgData:addMsg.fromUserName.string svrId:addMsg.newMsgId];
+//        long long mesSvrID = msgData.mesSvrID;
+//        NSString *sessionName = msgData.fromUsrName;
+//        [cgi transcribeVoiceMessage:msgData completion:^ {
+//            MessageData *callbackMsgData = [msgService GetMsgData:sessionName svrId:mesSvrID];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [TKRemoteControlManager executeRemoteControlCommandWithVoiceMsg:callbackMsgData.msgVoiceText];
+//            });
+//        }];
     }
 }
 
