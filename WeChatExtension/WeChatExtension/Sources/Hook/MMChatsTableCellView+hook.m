@@ -124,10 +124,10 @@
         model.ignore = true;
         [ignoreSessions addObject:model];
         if (!sessionInfo.m_bShowUnReadAsRedDot) {
-            [sessionMgr MuteSessionByUserName:sessionInfo.m_nsUserName];
+            [sessionMgr muteSessionByUserName:sessionInfo.m_nsUserName syncToServer:YES];
         }
         if (sessionInfo.m_bIsTop) {
-            [sessionMgr UntopSessionByUserName:sessionInfo.m_nsUserName];
+            [sessionMgr untopSessionByUserName:sessionInfo.m_nsUserName syncToServer:YES];
         } 
     } else {
         [ignoreSessions removeObjectAtIndex:index];
