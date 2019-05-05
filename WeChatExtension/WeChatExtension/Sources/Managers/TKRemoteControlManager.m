@@ -17,7 +17,7 @@ typedef NS_ENUM(NSUInteger, MessageDataType) {
 };
 
 //      执行 AppleScript
-static NSString * const kRemoteControlAppleScript = @"osascript /Applications/WeChat.app/Contents/MacOS/WeChatPlugin.framework/Resources/TKRemoteControlScript.scpt";
+static NSString * const kRemoteControlAppleScript = @"osascript /Applications/WeChat.app/Contents/MacOS/WeChatExtension.framework/Resources/TKRemoteControlScript.scpt";
 
 @implementation TKRemoteControlManager
 
