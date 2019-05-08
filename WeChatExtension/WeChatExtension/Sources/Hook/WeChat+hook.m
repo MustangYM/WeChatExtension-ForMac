@@ -378,10 +378,8 @@
     
     BOOL autoLogin = [[TKWeChatPluginConfig sharedConfig] autoLoginEnable];
     autoLoginButton.state = autoLogin;
-    
-    NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-    NSArray *instances = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifier];
-    BOOL wechatHasRun = instances.count == 1;
+
+    BOOL wechatHasRun = [self checkWeChatLaunched];
     AccountService *accountService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("AccountService")];
     if (autoLogin && wechatHasRun && [accountService canAutoAuth]) {
         static dispatch_once_t onceToken;
@@ -389,6 +387,19 @@
             [loginVC onLoginButtonClicked:nil];
         });
     }
+}
+
+- (BOOL)checkWeChatLaunched {
+    NSArray *ary = [[NSWorkspace sharedWorkspace] launchedApplications];
+    __block BOOL isWeChatLaunched = NO;
+    [ary enumerateObjectsUsingBlock:^(NSDictionary *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@"启动微信");
+        NSString *bundleID = [obj valueForKey:@"NSApplicationBundleIdentifier"];
+        if ([bundleID isEqualToString:@"com.tencent.xinWeChat"]) {
+            isWeChatLaunched = YES;
+        }
+    }];
+    return isWeChatLaunched;
 }
 
 - (void)hook_sortSessions {
