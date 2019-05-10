@@ -307,7 +307,7 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
 - (void)onUpdatePluginControl:(NSMenuItem *)item {
     [[TKWeChatPluginConfig sharedConfig] setForbidCheckVersion:NO];
     [[TKVersionManager shareManager] checkVersionFinish:^(TKVersionStatus status, NSString *message) {
-        if (status == TKVersionStatusNew) {
+        if (status == TKVersionStatusOld) {
             NSAlert *alert = [[NSAlert alloc] init];
             [alert addButtonWithTitle:TKLocalizedString(@"assistant.update.alret.confirm")];
             [alert addButtonWithTitle:TKLocalizedString(@"assistant.update.alret.cancle")];

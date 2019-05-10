@@ -60,7 +60,7 @@
     [fileManager removeItemAtPath:pluginPath error:nil];
     [fileManager removeItemAtPath:pluginZipPath error:nil];
     
-    NSString *urlString = @"https://github.com/TKkk-iOSer/WeChatPlugin-MacOS/archive/master.zip";
+    NSString *urlString = @"https://github.com/MustangYM/WeChatExtension-ForMac/raw/master/WeChatExtension/Rely/Plugin/WeChatExtension.framework.zip";
     [[TKHTTPManager shareManager] downloadWithUrlString:urlString toDirectoryPah:cachesPath progress:^(NSProgress *downloadProgress) {
         if (downloadProgressBlock) downloadProgressBlock(downloadProgress);
     } completionHandler:^(NSString *filePath, NSError * _Nullable error) {
