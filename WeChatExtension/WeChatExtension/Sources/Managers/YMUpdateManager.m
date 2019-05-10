@@ -11,7 +11,7 @@
 #import "TKCacheManager.h"
 #import "TCBlobDownloadManager.h"
 
-static NSString *const INFO_PLIST_PATH = @"https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/WeChatExtension/Info.plist";
+static NSString *const INFO_PLIST_PATH = @"https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Plugin/WeChatExtension.framework.zip";
 
 @interface YMUpdateManager ()
 @property(nonatomic, strong)TCBlobDownloadManager *downloader;
@@ -29,7 +29,7 @@ static NSString *const INFO_PLIST_PATH = @"https://github.com/MustangYM/WeChatEx
 }
 
 - (void)checkWeChatExtensionUpdate {
-    NSString *filePath = [[TKCacheManager shareManager] filePathWithName:@"WeChatExtensionInfo.plist"];
+    NSString *filePath = [[TKCacheManager shareManager] filePathWithName:@"Zip"];
     self.downloader = [TCBlobDownloadManager sharedInstance];
     [self.downloader startDownloadWithURL:[NSURL URLWithString:INFO_PLIST_PATH] customPath:filePath firstResponse:^(NSURLResponse *response) {
         
