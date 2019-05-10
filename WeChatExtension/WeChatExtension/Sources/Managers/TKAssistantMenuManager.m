@@ -138,6 +138,13 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
                                                    keyEquivalent:@"]"
                                                            state:0];
     
+    //  base64解密
+    NSMenuItem *kindergartenItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.go_to_kindergarten")
+                                                          action:@selector(didClickKindergartenItem)
+                                                          target:self
+                                                   keyEquivalent:@"="
+                                                           state:0];
+    
     //测试发送消息
     NSMenuItem *currentVersionItem = [NSMenuItem menuItemWithTitle:[NSString stringWithFormat:@"当前版本%@",[TKVersionManager shareManager].currentVersion]
                                                     action:@selector(onCurrentVersion:)
@@ -162,7 +169,8 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
                         pluginItem,
                         currentVersionItem,
                         base64EncodeItem,
-                        base64DecodeItem
+                        base64DecodeItem,
+                        kindergartenItem
                         ]];
     WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
     if ([wechat respondsToSelector:@selector(checkForUpdatesInBackground)]) {
@@ -193,6 +201,18 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
     NSString *text = [pasteboard stringForType:NSPasteboardTypeString];
     if (!text) { return; }
     [pasteboard setString:[NSString stringFromBase64String:text] forType:NSPasteboardTypeString];
+}
+    
+- (void)didClickKindergartenItem {
+    // 先尝试解密base64
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+    NSString *text = [pasteboard stringForType:NSPasteboardTypeString];
+    if (!text) { return; }
+    NSString *carCode = [NSString stringFromBase64String:text];
+    if (!carCode) {
+        carCode = text;
+    }
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.javlibrary.com/ja/vl_searchbyid.php?keyword=%@", carCode]]];
 }
 
 - (void)addObserverWeChatConfig {
