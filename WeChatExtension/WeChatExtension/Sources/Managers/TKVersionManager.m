@@ -52,7 +52,7 @@
 - (void)downloadPluginProgress:(void (^)(NSProgress *downloadProgress))downloadProgressBlock completionHandler:(void (^)(NSString *filePath, NSError * _Nullable error))completionHandler {
     NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
     
-    NSString *pluginName = @"WeChatPlugin-MacOS-master";
+    NSString *pluginName = @"WeChatExtension";
     NSString *pluginPath = [NSString stringWithFormat:@"%@/%@",cachesPath,pluginName];
     NSString *pluginZipPath = [NSString stringWithFormat:@"%@.zip",pluginPath];
     
