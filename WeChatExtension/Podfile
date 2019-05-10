@@ -6,6 +6,7 @@ target 'WeChatExtension' do
   # use_frameworks!
 
   # Pods for WeChatExtension
+  pod 'Base64'
 
   target 'WeChatExtensionTests' do
     inherit! :search_paths

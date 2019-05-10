@@ -1,3 +1,16 @@
-PODFILE CHECKSUM: 3a55d3c6243e87700ab1973ce3e6f94bbfe18083
+PODS:
+  - Base64 (1.1.2)
 
-COCOAPODS: 1.5.3
+DEPENDENCIES:
+  - Base64
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Base64
+
+SPEC CHECKSUMS:
+  Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
+
+PODFILE CHECKSUM: 210cc00d2caa87c432722994adfd3bad9544784d
+
+COCOAPODS: 1.6.1

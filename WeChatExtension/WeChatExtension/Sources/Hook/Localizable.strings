@@ -22,6 +22,8 @@
 "assistant.menu.enableAlfred" = "开启 Alfred 功能";
 "assistant.menu.updateAssistant" = "更新小助手…";
 "assistant.menu.aboutAssistant" = "关于小助手";
+"assistant.menu.base64_encode" = "Base64加密";
+"assistant.menu.base64_decode" = "Base64解密";
 
 //  撤回相关
 "assistant.revokeType.emoji" = "[表情]";

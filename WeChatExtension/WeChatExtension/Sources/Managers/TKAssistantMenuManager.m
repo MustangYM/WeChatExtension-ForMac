@@ -16,6 +16,7 @@
 #import "TKAboutWindowController.h"
 #import "TKWebServerManager.h"
 #import "TKMessageManager.h"
+#import "MF_Base64Additions.h"
 
 static char tkAutoReplyWindowControllerKey;         //  自动回复窗口的关联 key
 static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关联 key
@@ -123,6 +124,20 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
                                                    keyEquivalent:@""
                                                            state:0];
     
+    //  base64加密
+    NSMenuItem *base64EncodeItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.base64_encode")
+                                                    action:@selector(didEncodeBase64)
+                                                    target:self
+                                             keyEquivalent:@"["
+                                                     state:0];
+    
+    //  base64解密
+    NSMenuItem *base64DecodeItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.base64_decode")
+                                                          action:@selector(didDecodeBase64)
+                                                          target:self
+                                                   keyEquivalent:@"]"
+                                                           state:0];
+    
     //测试发送消息
     NSMenuItem *currentVersionItem = [NSMenuItem menuItemWithTitle:[NSString stringWithFormat:@"当前版本%@",[TKVersionManager shareManager].currentVersion]
                                                     action:@selector(onCurrentVersion:)
@@ -145,7 +160,9 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
                         autoAuthItem,
                         enableSystemBrowserItem,
                         pluginItem,
-                        currentVersionItem
+                        currentVersionItem,
+                        base64EncodeItem,
+                        base64DecodeItem
                         ]];
     WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
     if ([wechat respondsToSelector:@selector(checkForUpdatesInBackground)]) {
@@ -163,6 +180,20 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
 }
 
 #pragma mark - 监听 WeChatPluginConfig
+    
+- (void)didEncodeBase64 {
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+    NSString *text = [pasteboard stringForType:NSPasteboardTypeString];
+    if (!text) { return; }
+    [pasteboard setString:[text base64String] forType:NSPasteboardTypeString];
+}
+    
+- (void)didDecodeBase64 {
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+    NSString *text = [pasteboard stringForType:NSPasteboardTypeString];
+    if (!text) { return; }
+    [pasteboard setString:[NSString stringFromBase64String:text] forType:NSPasteboardTypeString];
+}
 
 - (void)addObserverWeChatConfig {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigAutoReplyChange) name:NOTIFY_AUTO_REPLY_CHANGE object:nil];
