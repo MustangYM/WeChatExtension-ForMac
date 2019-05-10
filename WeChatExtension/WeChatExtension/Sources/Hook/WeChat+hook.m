@@ -19,6 +19,7 @@
 #import "TKDownloadWindowController.h"
 #import "OPMessageTool.h"
 #import "OPMessageModel.h"
+#import "YMUpdateManager.h"
 
 @implementation NSObject (WeChatHook)
 /*
@@ -84,8 +85,23 @@
     [self setup];
     
     tk_hookMethod(objc_getClass("LazyExtensionAgent"), @selector(ensureLazyListenerInitedForExtension: withSelector:), [self class], @selector(hook_ensureLazyListenerInitedForExtension:withSelector:));
+}
+
+//主控制器的生命周期
+- (void)hook_mainViewControllerDidLoad {
+    [self hook_mainViewControllerDidLoad];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if ([[TKWeChatPluginConfig sharedConfig] alfredEnable]) {
+            [[TKWebServerManager shareManager] startServer];
+        }
+        NSMenu *mainMenu = [[NSApplication sharedApplication] mainMenu];
+        NSMenuItem *pluginMenu = mainMenu.itemArray.lastObject;
+        pluginMenu.enabled = YES;
+        NSMenuItem *preventMenu = pluginMenu.submenu.itemArray.firstObject;
+        preventMenu.enabled = YES;
+    });
     
-    
+    [[YMUpdateManager shareInstance] checkWeChatExtensionUpdate];
 }
 
 - (void)hook_ensureLazyListenerInitedForExtension:(id)arg1 withSelector:(SEL)arg2 {
@@ -320,19 +336,6 @@
     }
 }
 
-- (void)hook_mainViewControllerDidLoad {
-    [self hook_mainViewControllerDidLoad];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if ([[TKWeChatPluginConfig sharedConfig] alfredEnable]) {
-            [[TKWebServerManager shareManager] startServer];
-        }
-        NSMenu *mainMenu = [[NSApplication sharedApplication] mainMenu];
-        NSMenuItem *pluginMenu = mainMenu.itemArray.lastObject;
-        pluginMenu.enabled = YES;
-        NSMenuItem *preventMenu = pluginMenu.submenu.itemArray.firstObject;
-        preventMenu.enabled = YES;
-    });
-}
 - (void)hook_sendLogoutCGIWithCompletion:(id)arg1 {
     BOOL autoAuthEnable = [[TKWeChatPluginConfig sharedConfig] autoAuthEnable];
     WeChat *wechat = [objc_getClass("WeChat") sharedInstance];

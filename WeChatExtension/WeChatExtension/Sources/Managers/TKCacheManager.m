@@ -63,10 +63,17 @@
     return [manager fileExistsAtPath:filePath];
 }
 
-- (NSString *)filePathWithName:(NSString *)fileName {
+- (NSString *)gifFilePathWithName:(NSString *)fileName {
     if (![self fileExistsWithName:fileName]) return nil;
     
     fileName = [fileName stringByAppendingString:@".gif"];
+    return [self.cacheDirectory stringByAppendingString:fileName];
+}
+
+- (NSString *)filePathWithName:(NSString *)fileName {
+    if (fileName.length == 0) {
+        return nil;
+    }
     return [self.cacheDirectory stringByAppendingString:fileName];
 }
 

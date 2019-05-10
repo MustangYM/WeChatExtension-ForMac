@@ -123,6 +123,13 @@
 		18A7A16F2272AFE600361A98 /* GCDWebServerFileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A1532272AFE600361A98 /* GCDWebServerFileRequest.m */; };
 		18A7A1702272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A1542272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.h */; };
 		18D8B18E227EFEC3007AE9EC /* TKRemoteControlScript.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 18D8B18D227EFDFF007AE9EC /* TKRemoteControlScript.scpt */; };
+		3644BDF92285545500EDE358 /* TCBlobDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3644BDF42285545500EDE358 /* TCBlobDownloadManager.m */; };
+		3644BDFA2285545500EDE358 /* TCBlobDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3644BDF52285545500EDE358 /* TCBlobDownloader.m */; };
+		3644BDFB2285545500EDE358 /* TCBlobDownloadManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3644BDF62285545500EDE358 /* TCBlobDownloadManager.h */; };
+		3644BDFC2285545500EDE358 /* TCBlobDownload.h in Headers */ = {isa = PBXBuildFile; fileRef = 3644BDF72285545500EDE358 /* TCBlobDownload.h */; };
+		3644BDFD2285545500EDE358 /* TCBlobDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 3644BDF82285545500EDE358 /* TCBlobDownloader.h */; };
+		3644BE002285549100EDE358 /* YMUpdateManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3644BDFE2285549100EDE358 /* YMUpdateManager.h */; };
+		3644BE012285549100EDE358 /* YMUpdateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3644BDFF2285549100EDE358 /* YMUpdateManager.m */; };
 		8EB413EE2E0AB9424DB91B42 /* libPods-WeChatExtensionTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B176B73969A171B6926048F /* libPods-WeChatExtensionTests.a */; };
 		B66566CE7CFB01C09E18EDC5 /* libPods-WeChatExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ECC036067C0A58DC4D5A272 /* libPods-WeChatExtension.a */; };
 /* End PBXBuildFile section */
@@ -263,6 +270,13 @@
 		18A7A1542272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerURLEncodedFormRequest.h; sourceTree = "<group>"; };
 		18D8B18D227EFDFF007AE9EC /* TKRemoteControlScript.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = TKRemoteControlScript.scpt; sourceTree = "<group>"; };
 		1ECC036067C0A58DC4D5A272 /* libPods-WeChatExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3644BDF42285545500EDE358 /* TCBlobDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCBlobDownloadManager.m; sourceTree = "<group>"; };
+		3644BDF52285545500EDE358 /* TCBlobDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCBlobDownloader.m; sourceTree = "<group>"; };
+		3644BDF62285545500EDE358 /* TCBlobDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCBlobDownloadManager.h; sourceTree = "<group>"; };
+		3644BDF72285545500EDE358 /* TCBlobDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCBlobDownload.h; sourceTree = "<group>"; };
+		3644BDF82285545500EDE358 /* TCBlobDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCBlobDownloader.h; sourceTree = "<group>"; };
+		3644BDFE2285549100EDE358 /* YMUpdateManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMUpdateManager.h; sourceTree = "<group>"; };
+		3644BDFF2285549100EDE358 /* YMUpdateManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMUpdateManager.m; sourceTree = "<group>"; };
 		8B176B73969A171B6926048F /* libPods-WeChatExtensionTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatExtensionTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97F2E3244C2E5DD8CF65AB97 /* Pods-WeChatExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatExtension/Pods-WeChatExtension.release.xcconfig"; sourceTree = "<group>"; };
 		C341AF31F4497191220003D6 /* Pods-WeChatExtensionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatExtensionTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatExtensionTests/Pods-WeChatExtensionTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -336,6 +350,7 @@
 		188A658B2272ACBA0096663E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				3644BDF32285545500EDE358 /* TCB */,
 				18A7A1352272AFE600361A98 /* GCDWebServer */,
 				188A658C2272ACBA0096663E /* WindowControllers */,
 				188A65A32272ACBA0096663E /* Config */,
@@ -427,6 +442,8 @@
 				188A65AC2272ACBA0096663E /* TKHTTPManager.m */,
 				188A65AD2272ACBA0096663E /* TKWebServerManager.h */,
 				188A65B52272ACBA0096663E /* TKWebServerManager.m */,
+				3644BDFE2285549100EDE358 /* YMUpdateManager.h */,
+				3644BDFF2285549100EDE358 /* YMUpdateManager.m */,
 				188A65B42272ACBA0096663E /* TKRemoteControlCommands.plist */,
 			);
 			path = Managers;
@@ -618,6 +635,18 @@
 			path = Requests;
 			sourceTree = "<group>";
 		};
+		3644BDF32285545500EDE358 /* TCB */ = {
+			isa = PBXGroup;
+			children = (
+				3644BDF42285545500EDE358 /* TCBlobDownloadManager.m */,
+				3644BDF52285545500EDE358 /* TCBlobDownloader.m */,
+				3644BDF62285545500EDE358 /* TCBlobDownloadManager.h */,
+				3644BDF72285545500EDE358 /* TCBlobDownload.h */,
+				3644BDF82285545500EDE358 /* TCBlobDownloader.h */,
+			);
+			path = TCB;
+			sourceTree = "<group>";
+		};
 		3BE15FE6D0885057511EB199 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -647,6 +676,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3644BDFB2285545500EDE358 /* TCBlobDownloadManager.h in Headers */,
+				3644BDFD2285545500EDE358 /* TCBlobDownloader.h in Headers */,
 				188A65FA2272ACBA0096663E /* TKAutoReplyWindowController.h in Headers */,
 				18A7A16B2272AFE600361A98 /* GCDWebServerFileRequest.h in Headers */,
 				188A66032272ACBA0096663E /* TKAssistantMenuManager.h in Headers */,
@@ -672,6 +703,7 @@
 				188A66272272ACBA0096663E /* NSView+Action.h in Headers */,
 				188A663B2272ACBA0096663E /* MMStickerMessageCellView+hook.h in Headers */,
 				188A66082272ACBA0096663E /* TKWebServerManager.h in Headers */,
+				3644BE002285549100EDE358 /* YMUpdateManager.h in Headers */,
 				188A660D2272ACBA0096663E /* TKMessageManager.h in Headers */,
 				188A662D2272ACBA0096663E /* ColorConstant.h in Headers */,
 				18A7A1692272AFE600361A98 /* GCDWebServerDataRequest.h in Headers */,
@@ -690,6 +722,7 @@
 				18A7A1302272ACE900361A98 /* WeChatPlugin.h in Headers */,
 				188A66392272ACBA0096663E /* NSDictionary+Safe.h in Headers */,
 				188A660C2272ACBA0096663E /* TKVersionManager.h in Headers */,
+				3644BDFC2285545500EDE358 /* TCBlobDownload.h in Headers */,
 				188A66302272ACBA0096663E /* TKPrefixHeader.pch in Headers */,
 				188A661F2272ACBA0096663E /* NSTextField+Action.h in Headers */,
 				188A66262272ACBA0096663E /* NSButton+Action.h in Headers */,
@@ -897,6 +930,7 @@
 				188A661D2272ACBA0096663E /* NSButton+Action.m in Sources */,
 				188A66412272ACBA0096663E /* WeChat+hook.m in Sources */,
 				188A66282272ACBA0096663E /* NSTextField+Action.m in Sources */,
+				3644BDF92285545500EDE358 /* TCBlobDownloadManager.m in Sources */,
 				18A7A16C2272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.m in Sources */,
 				188A66182272ACBA0096663E /* TKBaseModel.m in Sources */,
 				188A66362272ACBA0096663E /* TKRemoteControlCell.m in Sources */,
@@ -904,6 +938,7 @@
 				188A66252272ACBA0096663E /* NSMenu+Action.m in Sources */,
 				188A66002272ACBA0096663E /* TKWeChatPluginConfig.m in Sources */,
 				188A65F72272ACBA0096663E /* TKDownloadWindowController.m in Sources */,
+				3644BDFA2285545500EDE358 /* TCBlobDownloader.m in Sources */,
 				188A66192272ACBA0096663E /* TKIgnoreSessonModel.m in Sources */,
 				188A66212272ACBA0096663E /* NSWindowController+Action.m in Sources */,
 				188A66342272ACBA0096663E /* TKAutoReplyCell.m in Sources */,
@@ -918,6 +953,7 @@
 				188A66422272ACBA0096663E /* MMChatsTableCellView+hook.m in Sources */,
 				18A7A1682272AFE600361A98 /* GCDWebServerStreamedResponse.m in Sources */,
 				188A66092272ACBA0096663E /* TKAssistantMenuManager.m in Sources */,
+				3644BE012285549100EDE358 /* YMUpdateManager.m in Sources */,
 				188A663C2272ACBA0096663E /* OPMessageTool.m in Sources */,
 				188A66072272ACBA0096663E /* TKHTTPManager.m in Sources */,
 				18A7A1572272AFE600361A98 /* GCDWebServerResponse.m in Sources */,
