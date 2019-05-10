@@ -155,7 +155,7 @@ if [[ $1 == "-n" ]] && [[ -z ${downloaded_version} ]]; then
 echo_with_date "未安装微信小助手，也没有下载过安装包，所以即使使用了 -n 参数，仍需要检查并下载新版本"
 fi
 echo_with_date "正在查询新版本……"
-latest_version=$(curl --retry 2 -I -s https://github.com/TKkk-iOSer/WeChatPlugin-MacOS/releases/latest | grep Location | sed -n 's/.*\/v\(.*\)/\1/p')
+latest_version=$(curl --retry 2 -I -s https://github.com/MustangYM/WeChatExtension-ForMac/releases/latest | grep Location | sed -n 's/.*\/v\(.*\)/\1/p')
 if [[ -z "$latest_version" ]]; then
 echo_with_date "查询新版本时失败，请稍后重试"
 exit 1

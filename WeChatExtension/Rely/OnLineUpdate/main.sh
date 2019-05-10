@@ -19,7 +19,7 @@ fi
 
 echo "开始下载 Oh My WeChat..."
 # 从 GitHub 上下载脚本
-curl --retry 2 -o ${omw_bin_file} https://raw.githubusercontent.com/lmk123/oh-my-wechat/master/main.sh
+curl --retry 2 -o ${omw_bin_file} https://raw.githubusercontent.com/MustangYM/WeChatExtension-ForMac/master/WeChatExtension/Rely/OnLineUpdate/main.sh
 # 本地开发时直接将文件复制过去
 #cp ./main.sh ${omw_bin_file}
 
