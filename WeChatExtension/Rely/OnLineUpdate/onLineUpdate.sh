@@ -62,10 +62,10 @@ echo_with_date "详情请参阅文档 https://github.com/lmk123/oh-my-wechat#omw
 # 下载压缩包
 curl --retry 2 -L -o ${1}.zip https://github.com/MustangYM/WeChatExtension-ForMac/raw/master/WeChatExtension/Rely/Plugin/v${1}.zip
 if [[ 0 -eq $? ]]; then
-# 解压为同名文件夹
+# 解压为同名文件夹,
 unzip -o -q ${1}.zip
 # 删除压缩包
-rm ${1}.zip
+#rm ${1}.zip
 echo_with_date "下载完成"
 else
 echo_with_date "下载失败，请稍后重试。"
