@@ -179,7 +179,7 @@ echo_with_date "已删除 v${downloaded_version} 的安装包"
 fi
 
 echo_with_date "开始安装微信小助手……"
-./WeChatExtensio-MacOS-${_version}/Install.sh
+./WeChatExtension-MacOS-${_version}/Install.sh
 echo_with_date "微信小助手安装完成。"
 installed="1"
 fi
