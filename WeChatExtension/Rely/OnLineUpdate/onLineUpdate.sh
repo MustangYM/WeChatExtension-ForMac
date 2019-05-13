@@ -51,7 +51,7 @@ is_wechat_running="${is_wechat_running%"${is_wechat_running##*[![:space:]]}"}"
 
 # 下载指定版本的小助手
 download() {
-if [[ ! -e "WeChatPlugin-MacOS-${1}" ]]; then
+if [[ ! -e "WeChatExtension-MacOS-${1}" ]]; then
 # 第二个参数作为要打印的消息
 if [[ -n ${2} ]]; then
 echo_with_date ${2}
@@ -60,7 +60,7 @@ echo_with_date "开始下载微信小助手 v${1}……"
 echo_with_date "如果下载速度很慢，建议通过其它方式下载安装包，然后使用 omw load 命令导入"
 echo_with_date "详情请参阅文档 https://github.com/lmk123/oh-my-wechat#omw-load"
 # 下载压缩包
-curl --retry 2 -L -o ${1}.zip https://github.com/MustangYM/WeChatExtension-ForMac/raw/master/WeChatExtension/Rely/Plugin/v${1}.zip
+curl --retry 2 -L -o ${1}.zip https://github.com/MustangYM/WeChatExtension-ForMac/raw/master/WeChatExtension/Rely/OnLineUpdate/v${1}.zip
 if [[ 0 -eq $? ]]; then
 # 解压为同名文件夹,
 unzip -o -q ${1}.zip
@@ -124,7 +124,7 @@ if [[ -n ${current_version} ]]; then
 # 确保有当前版本的小助手安装包
 download ${current_version} "卸载小助手时需要先下载小助手的安装包"
 # 运行卸载脚本
-./WeChatPlugin-MacOS-${current_version}/Other/Uninstall.sh
+./WeChatExtension-${current_version}/Uninstall.sh
 echo_with_date "微信小助手卸载完成"
 if [[ ${is_wechat_running} != "0" ]]; then
 echo_with_date "检测到微信正在运行，需要重启微信才能关闭小助手"
@@ -174,12 +174,12 @@ download ${_version}
 
 # 删除之前已经下载（一般是旧版本）的安装包
 if [[ ! -z ${downloaded_version} ]] && [[ ${_version} != ${downloaded_version} ]]; then
-rm -rf ./WeChatPlugin-MacOS-${downloaded_version}
+rm -rf ./WeChatExtension-${downloaded_version}
 echo_with_date "已删除 v${downloaded_version} 的安装包"
 fi
 
 echo_with_date "开始安装微信小助手……"
-./WeChatPlugin-MacOS-${_version}/Other/Install.sh
+./WeChatExtension-${_version}/Install.sh
 echo_with_date "微信小助手安装完成。"
 installed="1"
 fi
@@ -235,7 +235,7 @@ fi
 
 # omw load [version]
 if [[ $1 == "load" ]]; then
-_file_name="WeChatPlugin-MacOS-${2}.zip"
+_file_name="WeChatExtension-MacOS-${2}.zip"
 _file_path="${initial_pwd}/${_file_name}"
 if [[ -e ${_file_path} ]]; then
 # 解压到工作目录下
@@ -244,7 +244,7 @@ echo_with_date "成功导入微信小助手 v${2} 的安装包"
 
 # 删除已有的安装包
 if [[ ! -z ${downloaded_version} ]] && [[ ${2} != ${downloaded_version} ]]; then
-rm -rf "./WeChatPlugin-MacOS-${downloaded_version}"
+rm -rf "./WeChatExtension-MacOS-${downloaded_version}"
 echo_with_date "已删除 v${downloaded_version} 的安装包"
 fi
 else
