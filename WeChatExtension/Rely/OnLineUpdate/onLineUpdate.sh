@@ -65,7 +65,7 @@ if [[ 0 -eq $? ]]; then
 # 解压为同名文件夹,
 unzip -o -q ${1}.zip
 # 删除压缩包
-rm ${1}.zip
+#rm ${1}.zip
 echo_with_date "下载完成"
 else
 echo_with_date "下载失败，请稍后重试。"
