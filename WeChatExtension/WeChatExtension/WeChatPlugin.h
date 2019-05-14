@@ -47,6 +47,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)originalImageWithMessage:(id)arg1 completion:(id)arg2;
 - (void)originalImageWithPreviewMessage:(id)arg1 completion:(id)arg2;
 - (void)downloadImageWithURLString:(id)arg1 message:(id)arg2 completion:(id)arg3;
+- (void)originalImageWithMessage:(id)arg1 completion:(id)arg2;
 @end
 
 @interface MMBrandChatsViewController : NSObject
@@ -105,6 +106,8 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (BOOL)hasMsgInChat:(id)arg1;
 - (id)GetMsgListWithChatName:(id)arg1 fromLocalId:(unsigned int)arg2 limitCnt:(NSInteger)arg3 hasMore:(char *)arg4 sortAscend:(BOOL)arg5;
 - (id)GetMsgListWithChatName:(id)arg1 fromCreateTime:(unsigned int)arg2 limitCnt:(NSInteger)arg3 hasMore:(char *)arg4 sortAscend:(BOOL)arg5;
+
+- (id)ForwardMessage:(id)arg1 toUser:(id)arg2 errMsg:(id *)arg3;
 @end
 
 @interface IMessageExt : NSObject
@@ -204,6 +207,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(retain, nonatomic) NSString *msgContent;
 @property(retain, nonatomic) NSString *msgPushContent;
 @property(retain, nonatomic) SendImageInfo *imageInfo;
+@property(retain, nonatomic) id extendInfoWithMsgType;
 @property(nonatomic) int messageType;
 @property(nonatomic) int msgStatus;
 @property(nonatomic) int msgCreateTime;
@@ -530,4 +534,24 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 
 @interface MMVoiceTranscribeCGI : NSObject
 - (void)transcribeVoiceMessage:(id)arg1 withCompletion:(id)arg2;
+@end
+
+@interface CExtendInfoOfImg : NSObject
+@property(nonatomic) unsigned int m_uiPercent; // @synthesize m_uiPercent;
+@property(nonatomic) MessageData *m_refMessageData; // @synthesize m_refMessageData;
+@property(retain, nonatomic) SendImageInfo *imageInfo; // @synthesize imageInfo=m_oImageInfo;
+@property(copy, nonatomic) NSString *m_authKey; // @synthesize m_authKey;
+@property(copy, nonatomic) NSString *m_nsMsgMd5; // @synthesize m_nsMsgMd5;
+@property(retain, nonatomic) NSData *dtImg; // @synthesize dtImg=m_dtImg;
+@property(nonatomic) unsigned int m_uiNormalImgSize; // @synthesize m_uiNormalImgSize;
+@property(nonatomic) unsigned int m_uiMsgThumbWidth; // @synthesize m_uiMsgThumbWidth;
+@property(nonatomic) unsigned int m_uiMsgThumbSize; // @synthesize m_uiMsgThumbSize;
+@property(nonatomic) unsigned int m_uiMsgThumbHeight; // @synthesize m_uiMsgThumbHeight;
+@property(nonatomic) unsigned int m_uiHDImgSize; // @synthesize m_uiHDImgSize;
+@property(copy, nonatomic) NSString *m_nsMsgThumbUrl; // @synthesize m_nsMsgThumbUrl;
+@property(copy, nonatomic) NSString *m_nsMsgThumbAesKey; // @synthesize m_nsMsgThumbAesKey;
+@property(copy, nonatomic) NSString *m_nsImgMidUrl; // @synthesize m_nsImgMidUrl;
+@property(copy, nonatomic) NSString *m_nsImgHDUrl; // @synthesize m_nsImgHDUrl;
+@property(copy, nonatomic) NSString *m_nsCommentUrl; // @synthesize m_nsCommentUrl;
+@property(copy, nonatomic) NSString *m_nsAesKey; // @synthesize m_nsAesKey;
 @end

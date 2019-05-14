@@ -237,6 +237,9 @@
         //      获取原始的撤回提示消息
         MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
         MessageData *revokeMsgData = [msgService GetMsgData:session svrId:[newmsgid integerValue]];
+        
+        [[TKMessageManager shareManager] asyncRevokeMessage:revokeMsgData];
+        
         if ([revokeMsgData isSendFromSelf] && ![[TKWeChatPluginConfig sharedConfig] preventSelfRevokeEnable]) {
             [self hook_onRevokeMsg:msgData];
             return;
@@ -259,6 +262,8 @@
     }
 }
 
+                          
+                               
 /**
  hook 微信消息同步
  

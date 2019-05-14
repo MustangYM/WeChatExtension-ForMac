@@ -10,6 +10,7 @@
 #import "WeChatPlugin.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "TKCacheManager.h"
+#import "YMDownloadMgr.h"
 
 @interface TKMessageManager()
 @property (nonatomic, strong) MessageService *service;
@@ -172,6 +173,38 @@
         [msgData SetPlayingSoundStatus:1];
         [voicePlayer playWithVoiceMessage:msgData isUnplayedBeforePlay:msgData.IsUnPlayed];
     }
+}
+
+- (void)asyncRevokeMessage:(MessageData *)revokeMsgData {
+    MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+    
+    NSArray *pushMsgAry = [revokeMsgData.msgPushContent componentsSeparatedByString:@":"];
+    NSString *msgFromNickName = pushMsgAry.count > 1 ? pushMsgAry[0] : revokeMsgData.fromUsrName;
+    
+    NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
+    if (revokeMsgData.messageType == 1) {
+        [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"拦截到一条撤回消息\n%@:%@", msgFromNickName,revokeMsgData.msgContent] atUserList:nil];
+    } else if (revokeMsgData.messageType == 3) {
+        [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"拦截到一条撤回消息\n%@",revokeMsgData.msgPushContent] atUserList:nil];
+        MMMessageCacheMgr *mgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMMessageCacheMgr")];
+        [[YMDownloadMgr new] downloadImageWithMsg:revokeMsgData];
+        
+        __weak __typeof (self) wself = self;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [mgr originalImageWithMessage:revokeMsgData completion:^(NSString *name, NSImage *image){
+                NSData *originalData = [image TIFFRepresentation];
+                NSData *thumData = [wself getCompressImageDataWithImg:image rate:0.07];
+                SendImageInfo *info = [[objc_getClass("SendImageInfo") alloc] init];
+                info.m_uiThumbWidth = 120;
+                info.m_uiThumbHeight = 67;
+                info.m_uiOriginalWidth  = 1920;
+                info.m_uiOriginalHeight = 1080;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [msgService SendImgMessage:currentUserName toUsrName:currentUserName thumbImgData:thumData midImgData:thumData imgData:originalData imgInfo:info];
+                });
+            }];
+        });
+        }
 }
 
 - (MessageService *)service {
