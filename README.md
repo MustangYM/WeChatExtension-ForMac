@@ -10,7 +10,7 @@
 ## 最新支持版本
 >  mac版微信2.3.24
 
-## 拦截撤回消息并同步到手机端
+## 手机端也能收到被撤回的消息
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/revokeAsync.jpg" width="800px"/>
 </p>
