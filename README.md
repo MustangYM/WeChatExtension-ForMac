@@ -14,6 +14,7 @@
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/revokeAsync.jpg" width="800px"/>
 </p>
+
 > 如果Mac拦截到A发送来的消息, 手机也会同步收到的这条已经拦截的消息. 目前只支持同步文字消息与图片消息, 其他类型也可以做, 感觉意义不大.
 
 ## 免认证登录与多开
