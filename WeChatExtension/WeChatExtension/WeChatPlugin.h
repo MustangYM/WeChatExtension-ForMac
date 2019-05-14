@@ -190,6 +190,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(retain, nonatomic) NSString *m_nsHeadHDMd5;
 @property(retain, nonatomic) NSString *m_nsAliasName;
 @property(retain, nonatomic) NSString *avatarCacheKey;
+@property(retain, nonatomic) NSString *msgFromNickName;
 @property(nonatomic) BOOL m_isShowRedDot;
 - (BOOL)isBrandContact;
 - (BOOL)isSelf;

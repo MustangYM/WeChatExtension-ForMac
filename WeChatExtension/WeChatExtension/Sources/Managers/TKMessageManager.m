@@ -180,13 +180,28 @@
     
     NSArray *pushMsgAry = [revokeMsgData.msgPushContent componentsSeparatedByString:@":"];
     NSString *msgFromNickName = pushMsgAry.count > 1 ? pushMsgAry[0] : revokeMsgData.fromUsrName;
+    MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
+    WCContactData *msgContact = [sessionMgr getContact:revokeMsgData.fromUsrName];
+    
     
     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
     if (revokeMsgData.messageType == 1) {
-        [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"拦截到一条撤回消息\n%@:%@", msgFromNickName,revokeMsgData.msgContent] atUserList:nil];
+        if ([revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
+            NSArray *msgAry = [revokeMsgData.msgContent componentsSeparatedByString:@":"];
+            NSString *msgContent = msgAry.count > 1 ? msgAry[1] : revokeMsgData.msgContent;
+            [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"拦截到一条撤回消息\n%@\n%@:%@", msgContact.m_nsNickName, msgFromNickName, msgContent] atUserList:nil];
+        } else {
+            [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"拦截到一条撤回消息\n%@:%@", msgFromNickName,revokeMsgData.msgContent] atUserList:nil];
+        }
     } else if (revokeMsgData.messageType == 3) {
-        [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"拦截到一条撤回消息\n%@",revokeMsgData.msgPushContent] atUserList:nil];
+        if ([revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
+            [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"拦截到一条撤回消息\n%@\n%@", msgContact.m_nsNickName, revokeMsgData.msgPushContent] atUserList:nil];
+        } else {
+            [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"拦截到一条撤回消息\n%@",revokeMsgData.msgPushContent] atUserList:nil];
+        }
+        
         MMMessageCacheMgr *mgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMMessageCacheMgr")];
+        
         [[YMDownloadMgr new] downloadImageWithMsg:revokeMsgData];
         
         __weak __typeof (self) wself = self;
