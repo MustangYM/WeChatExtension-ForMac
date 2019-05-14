@@ -103,8 +103,12 @@ typedef NS_ENUM(NSUInteger, TKDownloadState) {
         case TKDownloadStateFinish: {
             NSString *directoryName = [self.filePath stringByDeletingLastPathComponent];
             NSString *fileName = [[self.filePath lastPathComponent] stringByDeletingPathExtension];
-            NSString *cmdString = [NSString stringWithFormat:@"cd %@ && unzip -n %@.zip && ./%@/Update.sh && killall WeChat && sleep 2s && open /Applications/WeChat.app",directoryName, fileName, fileName];
+            NSString *cmdString = [NSString stringWithFormat:@"cd %@ && unzip -n %@.zip && ./%@/Update.sh",directoryName, fileName, fileName];
             [TKRemoteControlManager executeShellCommand:cmdString];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSString *cmd = @"killall WeChat && sleep 2s && open /Applications/WeChat.app";
+                [TKRemoteControlManager executeShellCommand:cmd];
+            });
             break;
         }
         case TKDownloadStateError: {
