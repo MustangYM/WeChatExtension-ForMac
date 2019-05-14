@@ -10,6 +10,12 @@
 ## 最新支持版本
 >  mac版微信2.3.24
 
+## 拦截撤回消息并同步到手机端
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/revokeAsync.jpg" width="800px"/>
+</p>
+> 如果Mac拦截到A发送来的消息, 手机也会同步收到的这条已经拦截的消息. 目前只支持同步文字消息与图片消息, 其他类型也可以做, 感觉意义不大.
+
 ## 免认证登录与多开
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/launch.gif" width="800px"/>
@@ -32,6 +38,7 @@
 
 ## 更新日志
 ```
+2019-5-14 如果Mac拦截到A发送来的消息, 手机也会同步收到的这条已经拦截的消息, 小助手一键更新.
 2019-5-10 目前更新还很不方便, 稍后会加入更加方便的一键更新.
 2019-5-10 现在在最新版的微信中的多开和消息撤回是可以用的, 如果不能用, 请检查小助手的版本. 
 
