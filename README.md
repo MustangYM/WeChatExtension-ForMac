@@ -5,10 +5,17 @@
 
 ## 声明
 > 适用于Mac版的WeChat拓展功能, 由于之前大家常用的WeChatPlugin在默认分支切换成remove了, 坊间猜测原因, 众说纷纭, 我们不去深究了.
-本着开源的精神, 我决定继续维护这个项目, 继续站在[tk](https://github.com/TKkk-iOSer)大佬的肩膀上战斗, 对[tk](https://github.com/TKkk-iOSer)在此表示感谢!
+本着开源的精神, 我决定继续维护这个项目, 对[tk](https://github.com/TKkk-iOSer)在此表示感谢!
 
 ## 最新支持版本
 >  mac版微信2.3.24
+
+## 手机端也能收到被撤回的消息
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/revokeAsync.jpg" width="800px"/>
+</p>
+
+> 如果Mac拦截到A发送来的消息, 手机也会同步收到的这条已经拦截的消息(自己发送给自己). 目前只支持同步文字消息与图片消息, 其他类型也可以做, 感觉意义不大.
 
 ## 免认证登录与多开
 <p align="center">
@@ -32,6 +39,7 @@
 
 ## 更新日志
 ```
+2019-5-14 如果Mac拦截到A发送来的消息, 手机也会同步收到的这条已经拦截的消息, 小助手一键更新.
 2019-5-10 目前更新还很不方便, 稍后会加入更加方便的一键更新.
 2019-5-10 现在在最新版的微信中的多开和消息撤回是可以用的, 如果不能用, 请检查小助手的版本. 
 
