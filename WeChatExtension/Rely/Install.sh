@@ -39,6 +39,6 @@ read -t 150 -p "已安装微信小助手，是否覆盖？[y/n]:" result
 fi
 
 if [[ "$result" == 'y' ]]; then
-    cp -r "${shell_path}/Plugin/${framework_name}.framework" ${app_bundle_path}
+    cp -r "${shell_path}/Plugin/WeChatExtension/${framework_name}.framework" ${app_bundle_path}
     ${shell_path}/insert_dylib --all-yes "${framework_path}/${framework_name}" "$app_executable_backup_path" "$app_executable_path"
 fi
