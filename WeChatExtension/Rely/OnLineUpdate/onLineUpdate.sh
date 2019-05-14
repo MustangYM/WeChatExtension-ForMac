@@ -77,25 +77,25 @@ fi
 plist_path="${HOME}/Library/LaunchAgents/cn.limingkai.oh-my-wechat.plist"
 
 open_auto_start() {
-#cat > ${plist_path} <<EOL
-#<?xml version="1.0" encoding="UTF-8"?>
-#<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-#<plist version="1.0">
-#<dict>
-#<key>Label</key>
-#<string>cn.limingkai.oh-my-wechat</string>
-#<key>ProgramArguments</key>
-#<array>
-#<string>/usr/local/bin/omw</string>
-#<string>silent</string>
-#<string>${1}</string>
-#</array>
-#<key>RunAtLoad</key>
-#<true/>
-#</dict>
-#</plist>
-#EOL
-#echo_with_date "已开启开机自启动"
+cat > ${plist_path} <<EOL
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+<key>Label</key>
+<string>cn.limingkai.oh-my-wechat</string>
+<key>ProgramArguments</key>
+<array>
+<string>/usr/local/bin/omw</string>
+<string>silent</string>
+<string>${1}</string>
+</array>
+<key>RunAtLoad</key>
+<true/>
+</dict>
+</plist>
+EOL
+echo_with_date "已开启开机自启动"
 }
 
 close_auto_start() {
