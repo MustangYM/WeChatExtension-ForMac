@@ -176,6 +176,10 @@
 }
 
 - (void)asyncRevokeMessage:(MessageData *)revokeMsgData {
+    if (![TKWeChatPluginConfig sharedConfig].preventAsyncRevokeToPhone) {
+        return;
+    }
+    
     MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
     
     NSArray *pushMsgAry = [revokeMsgData.msgPushContent componentsSeparatedByString:@":"];

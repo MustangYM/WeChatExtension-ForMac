@@ -14,6 +14,7 @@
 
 static NSString * const kTKPreventRevokeEnableKey = @"kTKPreventRevokeEnableKey";
 static NSString * const kTKPreventSelfRevokeEnableKey = @"kTKPreventSelfRevokeEnableKey";
+static NSString * const kTKPreventAsyncRevokeKey = @"kTKPreventAsyncRevokeKey";
 static NSString * const kTKAutoReplyEnableKey = @"kTKAutoReplyEnableKey";
 static NSString * const kTKAutoAuthEnableKey = @"kTKAutoAuthEnableKey";
 static NSString * const kTKAutoLoginEnableKey = @"kTKAutoLoginEnableKey";
@@ -60,6 +61,7 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
         _alfredEnable = [[NSUserDefaults standardUserDefaults] boolForKey:kTKAlfredEnableKey];
         _checkUpdateWechatEnable = [[NSUserDefaults standardUserDefaults] boolForKey:kTKCheckUpdateWechatEnableKey];
         _systemBrowserEnable = [[NSUserDefaults standardUserDefaults] boolForKey:kTKSystemBrowserEnableKey];
+        _preventAsyncRevokeToPhone = [[NSUserDefaults standardUserDefaults] boolForKey:kTKPreventAsyncRevokeKey];
     }
     return self;
 }
@@ -121,6 +123,12 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 - (void)setSystemBrowserEnable:(BOOL)systemBrowserEnable {
     _systemBrowserEnable = systemBrowserEnable;
     [[NSUserDefaults standardUserDefaults] setBool:_systemBrowserEnable forKey:kTKSystemBrowserEnableKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)setPreventAsyncRevokeToPhone:(BOOL)preventAsyncRevokeToPhone {
+    _preventAsyncRevokeToPhone = preventAsyncRevokeToPhone;
+    [[NSUserDefaults standardUserDefaults] setBool:_preventAsyncRevokeToPhone forKey:kTKPreventAsyncRevokeKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

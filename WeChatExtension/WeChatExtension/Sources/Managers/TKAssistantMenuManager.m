@@ -47,8 +47,14 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
                                                             keyEquivalent:@""
                                                                     state:[[TKWeChatPluginConfig sharedConfig] preventSelfRevokeEnable]];
         
+        NSMenuItem *preventAsyncRevokeItem = [NSMenuItem menuItemWithTitle:@"防撤回同步到手机"
+                                                                   action:@selector(onPreventAsyncRevokeToPhone:)
+                                                                   target:self
+                                                            keyEquivalent:@""
+                                                                    state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeToPhone]];
+        
         NSMenu *subPreventMenu = [[NSMenu alloc] initWithTitle:TKLocalizedString(@"assistant.menu.revoke")];
-        [subPreventMenu addItems:@[preventSelfRevokeItem]];
+        [subPreventMenu addItems:@[preventSelfRevokeItem, preventAsyncRevokeItem]];
         preventRevokeItem.submenu = subPreventMenu;
     }
     
@@ -211,8 +217,14 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
                                                             keyEquivalent:@""
                                                                     state:[[TKWeChatPluginConfig sharedConfig] preventSelfRevokeEnable]];
         
+        NSMenuItem *preventAsyncRevokeItem = [NSMenuItem menuItemWithTitle:@"防撤回同步到手机"
+                                                                    action:@selector(onPreventAsyncRevokeToPhone:)
+                                                                    target:self
+                                                             keyEquivalent:@""
+                                                                     state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeToPhone]];
+        
         NSMenu *subPreventMenu = [[NSMenu alloc] initWithTitle:TKLocalizedString(@"assistant.menu.revoke")];
-        [subPreventMenu addItems:@[preventSelfRevokeItem]];
+        [subPreventMenu addItems:@[preventSelfRevokeItem, preventAsyncRevokeItem]];
         item.submenu = subPreventMenu;
     } else {
         item.submenu = nil;
@@ -228,6 +240,11 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
 - (void)onPreventSelfRevoke:(NSMenuItem *)item {
     item.state = !item.state;
     [[TKWeChatPluginConfig sharedConfig] setPreventSelfRevokeEnable:item.state];
+}
+
+- (void)onPreventAsyncRevokeToPhone:(NSMenuItem *)item {
+    item.state = !item.state;
+    [[TKWeChatPluginConfig sharedConfig] setPreventAsyncRevokeToPhone:item.state];
 }
 
 /**
