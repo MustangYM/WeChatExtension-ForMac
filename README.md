@@ -44,12 +44,9 @@
 [![Contributors](https://opencollective.com/WeChatExtension-ForMac/contributors.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/graphs/contributors)
 
 ## 感谢捐赠者
-<table><tr><td align="center"><a href="https://github.com/EGOISTK21"><img src="https://avatars0.githubusercontent.com/u/17921692?s=400&v=4" width="100px;" alt="EGOISTK21"/><br></br><sub><b>EGOISTK21</b></sub></td></tr></table>
-
-[EGOISTK21](https://github.com/EGOISTK21)
-<p align="half">
-<img src="https://avatars0.githubusercontent.com/u/17921692?s=400&v=4" width="80px">
-</p>
+<table><tr><td align="center">
+  <a href="https://github.com/EGOISTK21"><img src="https://avatars0.githubusercontent.com/u/17921692?s=400&v=4" width="100px;" alt="EGOISTK21"/><br></br><sub><b>EGOISTK21</b></sub> 
+  </td></tr></table>
 
 ## 更新日志
 ```
