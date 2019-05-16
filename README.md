@@ -37,6 +37,12 @@
 
 3. > 重启微信, 安装完成.
 
+## 感谢捐赠者
+[EGOISTK21](https://github.com/EGOISTK21)
+<p align="half">
+<img src="https://avatars0.githubusercontent.com/u/17921692?s=400&v=4" width="80px">
+</p>
+
 ## 更新日志
 ```
 2019-5-14 如果Mac拦截到A发送来的消息, 手机也会同步收到的这条已经拦截的消息, 小助手一键更新.
@@ -44,9 +50,4 @@
 2019-5-10 现在在最新版的微信中的多开和消息撤回是可以用的, 如果不能用, 请检查小助手的版本. 
 
 ```
-## 感谢捐赠者
-[EGOISTK21](https://github.com/EGOISTK21)
-<p align="half">
-<img src="https://avatars0.githubusercontent.com/u/17921692?s=400&v=4" width="80px">
-</p>
 
