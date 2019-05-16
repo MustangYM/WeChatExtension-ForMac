@@ -45,7 +45,7 @@
 
 ```
 ## 感谢捐赠者
-[EGOISTK21](https://github.com/EGOISTK21)
+[EGOISTK21](https://github.com/EGOISTK21) [EGOISTK21](https://github.com/EGOISTK21)
 <p align="half">
 <img src="https://avatars0.githubusercontent.com/u/17921692?s=400&v=4" width="80px"> <img src="https://avatars0.githubusercontent.com/u/17921692?s=400&v=4" width="80px">
 </p>
