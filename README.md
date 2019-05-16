@@ -44,3 +44,5 @@
 2019-5-10 现在在最新版的微信中的多开和消息撤回是可以用的, 如果不能用, 请检查小助手的版本. 
 
 ```
+## 感谢捐赠者
+[https://avatars0.githubusercontent.com/u/17921692?s=400&v=4](https://github.com/EGOISTK21)
