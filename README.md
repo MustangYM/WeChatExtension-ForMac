@@ -37,12 +37,6 @@
 
 3. > 重启微信, 安装完成.
 
-## 贡献者
-
-感谢为这个项目作出贡献的人们. [[Contribute](CONTRIBUTING.md)].
-
-[![Contributors](https://opencollective.com/WeChatExtension-ForMac/contributors.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/graphs/contributors)
-
 ## 感谢捐赠者
 <table><tr>
   <td align="center">
@@ -50,8 +44,8 @@
    <br></br><sub><b>EGOISTK21</b></sub>
     
   <td align="center">
-  <a href="https://github.com/EGOISTK21"><img src="https://avatars0.githubusercontent.com/u/17921692?s=400&v=4" width="100px;" alt="EGOISTK21"/>
-  <br></br><sub><b>EGOISTK21</b></sub>
+  <a href="https://github.com/CoderLineChan"><img src="https://avatars1.githubusercontent.com/u/21659158?s=400&v=4" width="100px;" alt="CoderLineChan"/>
+  <br></br><sub><b>CoderLineChan</b></sub>
   
 </td></tr></table>
 
