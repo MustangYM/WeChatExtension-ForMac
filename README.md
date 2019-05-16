@@ -37,6 +37,12 @@
 
 3. > 重启微信, 安装完成.
 
+## 贡献者
+
+感谢为这个项目作出贡献的人们. [[Contribute](CONTRIBUTING.md)].
+
+[![Contributors](https://opencollective.com/mustangym666)](https://github.com/MustangYM/WeChatExtension-ForMac/graphs/contributors)
+
 ## 感谢捐赠者
 [EGOISTK21](https://github.com/EGOISTK21)
 <p align="half">
