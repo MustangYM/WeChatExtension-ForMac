@@ -41,7 +41,7 @@
 
 感谢为这个项目作出贡献的人们. [[Contribute](CONTRIBUTING.md)].
 
-[![Contributors](https://opencollective.com/mustangym666)](https://github.com/MustangYM/WeChatExtension-ForMac/graphs/contributors)
+[![Contributors](https://opencollective.com/WeChatExtension-ForMac/contributors.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/graphs/contributors)
 
 ## 感谢捐赠者
 [EGOISTK21](https://github.com/EGOISTK21)
