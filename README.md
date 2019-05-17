@@ -1,4 +1,4 @@
-＃WeChatExtension-ForMac
+
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/face.png" width="1000px"/>
 </p>
