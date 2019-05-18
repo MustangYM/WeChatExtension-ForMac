@@ -4,8 +4,8 @@
 </p>
 
 ## 声明
-> 适用于Mac版的WeChat拓展功能, 由于之前大家常用的WeChatPlugin在默认分支切换成remove了, 坊间猜测原因, 众说纷纭, 我们不去深究了.
-本着开源的精神, 我决定重启这个项目, 对[tk](https://github.com/TKkk-iOSer)在此表示感谢!
+> 适用于Mac版的WeChat拓展功能, 由于之前大家常用的WeChatPlugin在默认分支切换成remove删库了, 坊间猜测原因, 众说纷纭, 我们不去深究了.
+本着开源的精神, 我决定继续维护这个项目, 对[tk](https://github.com/TKkk-iOSer)在此表示感谢!
 
 ## 最新支持版本
 >  mac版微信2.3.24
