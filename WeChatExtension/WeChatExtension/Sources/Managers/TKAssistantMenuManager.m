@@ -204,15 +204,20 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
 }
     
 - (void)didClickKindergartenItem {
-    // 先尝试解密base64
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     NSString *text = [pasteboard stringForType:NSPasteboardTypeString];
     if (!text) { return; }
-    NSString *carCode = [NSString stringFromBase64String:text];
-    if (!carCode) {
-        carCode = text;
+    // 先尝试解密base64
+    NSString *result = [NSString stringFromBase64String:text];
+    if (!result) {
+        result = text;
     }
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.javlibrary.com/ja/vl_searchbyid.php?keyword=%@", carCode]]];
+    if ([result hasPrefix:@"http"] ||
+        [result hasPrefix:@"magnet"]) {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:result]];
+        return;
+    }
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.javlibrary.com/ja/vl_searchbyid.php?keyword=%@", result]]];
 }
 
 - (void)addObserverWeChatConfig {
