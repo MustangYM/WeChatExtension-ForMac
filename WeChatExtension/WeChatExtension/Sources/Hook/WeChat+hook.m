@@ -65,7 +65,7 @@
     tk_hookMethod(objc_getClass("MMMainViewController"), @selector(viewDidLoad), [self class], @selector(hook_mainViewControllerDidLoad));
 
     //      自带浏览器打开链接
-    tk_hookClassMethod(objc_getClass("MMWebViewHelper"), @selector(preHandleWebUrlStr:withMessage:), [self class], @selector(hook_preHandleWebUrlStr:withMessage:));
+    LargerOrEqualVersion(@"2.3.22") ? tk_hookClassMethod(objc_getClass("MMWebViewHelper"), @selector(handleWebViewDataItem:windowId:), [self class], @selector(hook_handleWebViewDataItem:windowId:)) :  tk_hookClassMethod(objc_getClass("MMWebViewHelper"), @selector(preHandleWebUrlStr:withMessage:), [self class], @selector(hook_preHandleWebUrlStr:withMessage:));
     
     tk_hookMethod(objc_getClass("MMURLHandler"), @selector(startGetA8KeyWithURL:), [self class], @selector(hook_startGetA8KeyWithURL:));
     tk_hookMethod(objc_getClass("WeChat"), @selector(applicationDidFinishLaunching:), [self class], @selector(hook_applicationDidFinishLaunching:));
@@ -86,6 +86,7 @@
     
     tk_hookMethod(objc_getClass("LazyExtensionAgent"), @selector(ensureLazyListenerInitedForExtension: withSelector:), [self class], @selector(hook_ensureLazyListenerInitedForExtension:withSelector:));
 }
+
 
 //主控制器的生命周期
 - (void)hook_mainViewControllerDidLoad {
@@ -484,6 +485,16 @@
         return YES;
     } else {
         return [self hook_preHandleWebUrlStr:arg1 withMessage:arg2];
+    }
+}
+
+- (void)hook_handleWebViewDataItem:(id)arg1 windowId:(id)arg2 {
+    WebViewDataItem *item = (WebViewDataItem *)arg1;
+    if ([[TKWeChatPluginConfig sharedConfig] systemBrowserEnable]) {
+        MMURLHandler *urlHander = [objc_getClass("MMURLHandler") defaultHandler];
+        [urlHander openURLWithDefault:item.urlString];
+    } else {
+         [self hook_handleWebViewDataItem:arg1 windowId:arg2];
     }
 }
 

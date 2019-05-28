@@ -524,6 +524,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 
 @interface MMWebViewHelper : NSObject
 + (BOOL)preHandleWebUrlStr:(id)arg1 withMessage:(id)arg2;
++ (void)handleWebViewDataItem:(id)arg1 windowId:(id)arg2;
 @end
 
 @interface XMLDictionaryParser : NSObject
@@ -563,3 +564,10 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)checkForUpdatesInBackground;
 @end
 
+@interface WebViewDataItem : NSObject
+@property(nonatomic) BOOL isForceWebView; // @synthesize isForceWebView=_isForceWebView;
+@property(retain, nonatomic) NSDictionary *extraData; // @synthesize extraData=_extraData;
+@property(retain, nonatomic) WCContactData *brandContact; // @synthesize
+@property(retain, nonatomic) MessageData *message; // @synthesize message=_message;
+@property(retain, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
+@end
