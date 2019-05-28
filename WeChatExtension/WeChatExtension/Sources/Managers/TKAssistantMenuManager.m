@@ -153,7 +153,8 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
                         pluginItem,
                         currentVersionItem
                         ]];
-    WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
+
+    id wechat = LargerOrEqualVersion(@"2.3.22") ? [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMUpdateMgr")] : [objc_getClass("WeChat") sharedInstance];
     if ([wechat respondsToSelector:@selector(checkForUpdatesInBackground)]) {
         [subMenu insertItem:forbidCheckUpdateItem atIndex:6];
     }

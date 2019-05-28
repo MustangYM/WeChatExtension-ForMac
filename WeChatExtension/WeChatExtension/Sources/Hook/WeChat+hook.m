@@ -453,7 +453,7 @@
     }
     if ([wechat respondsToSelector:@selector(checkForUpdatesInBackground)]) {
         //      去除刚启动微信更新弹窗提醒
-        tk_hookMethod(objc_getClass("WeChat"), @selector(checkForUpdatesInBackground), [self class], @selector(hook_checkForUpdatesInBackground));
+        LargerOrEqualVersion(@"2.3.22") ? tk_hookMethod(objc_getClass("WeChat"), @selector(checkForUpdatesInBackground), [self class], @selector(hook_checkForUpdatesInBackground)) : tk_hookMethod(objc_getClass("MMUpdateMgr"), @selector(checkForUpdatesInBackground), [self class], @selector(hook_checkForUpdatesInBackground));
     }
     
     [[TKAssistantMenuManager shareManager] initAssistantMenuItems];

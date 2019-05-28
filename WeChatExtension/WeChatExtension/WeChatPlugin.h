@@ -455,6 +455,8 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 + (BOOL)containsHTTPString:(id)arg1;
 @end
 
+
+
 @interface UserDefaultsService : NSObject
 - (void)setString:(id)arg1 forKey:(id)arg2;
 - (id)stringForKey:(id)arg1;
@@ -556,3 +558,8 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(copy, nonatomic) NSString *m_nsCommentUrl; // @synthesize m_nsCommentUrl;
 @property(copy, nonatomic) NSString *m_nsAesKey; // @synthesize m_nsAesKey;
 @end
+
+@interface MMUpdateMgr : NSObject
+- (void)checkForUpdatesInBackground;
+@end
+
