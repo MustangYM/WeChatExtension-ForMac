@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>MyLock</key>
-	<string>0</string>
+	<string>1</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
