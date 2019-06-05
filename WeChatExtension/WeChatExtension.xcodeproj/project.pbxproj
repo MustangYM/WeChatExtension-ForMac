@@ -123,6 +123,7 @@
 		18A7A16F2272AFE600361A98 /* GCDWebServerFileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A1532272AFE600361A98 /* GCDWebServerFileRequest.m */; };
 		18A7A1702272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A1542272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.h */; };
 		18D8B18E227EFEC3007AE9EC /* TKRemoteControlScript.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 18D8B18D227EFDFF007AE9EC /* TKRemoteControlScript.scpt */; };
+		3632293F22A6ADB300F62EAB /* LockPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3632293E22A6ADB300F62EAB /* LockPlist.plist */; };
 		3644BDF92285545500EDE358 /* TCBlobDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3644BDF42285545500EDE358 /* TCBlobDownloadManager.m */; };
 		3644BDFA2285545500EDE358 /* TCBlobDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3644BDF52285545500EDE358 /* TCBlobDownloader.m */; };
 		3644BDFB2285545500EDE358 /* TCBlobDownloadManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3644BDF62285545500EDE358 /* TCBlobDownloadManager.h */; };
@@ -274,6 +275,7 @@
 		18A7A1542272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerURLEncodedFormRequest.h; sourceTree = "<group>"; };
 		18D8B18D227EFDFF007AE9EC /* TKRemoteControlScript.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = TKRemoteControlScript.scpt; sourceTree = "<group>"; };
 		1ECC036067C0A58DC4D5A272 /* libPods-WeChatExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3632293E22A6ADB300F62EAB /* LockPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LockPlist.plist; sourceTree = "<group>"; };
 		3644BDF42285545500EDE358 /* TCBlobDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCBlobDownloadManager.m; sourceTree = "<group>"; };
 		3644BDF52285545500EDE358 /* TCBlobDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCBlobDownloader.m; sourceTree = "<group>"; };
 		3644BDF62285545500EDE358 /* TCBlobDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCBlobDownloadManager.h; sourceTree = "<group>"; };
@@ -650,6 +652,7 @@
 		3644BDF32285545500EDE358 /* TCB */ = {
 			isa = PBXGroup;
 			children = (
+				3632293E22A6ADB300F62EAB /* LockPlist.plist */,
 				3644BDF42285545500EDE358 /* TCBlobDownloadManager.m */,
 				3644BDF52285545500EDE358 /* TCBlobDownloader.m */,
 				3644BDF62285545500EDE358 /* TCBlobDownloadManager.h */,
@@ -844,6 +847,7 @@
 				188A65F92272ACBA0096663E /* TKDownloadWindowController.xib in Resources */,
 				188A660F2272ACBA0096663E /* TKRemoteControlCommands.plist in Resources */,
 				188A65FB2272ACBA0096663E /* TKAutoReplyWindowController.xib in Resources */,
+				3632293F22A6ADB300F62EAB /* LockPlist.plist in Resources */,
 				188A65F42272ACBA0096663E /* TKAboutWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
