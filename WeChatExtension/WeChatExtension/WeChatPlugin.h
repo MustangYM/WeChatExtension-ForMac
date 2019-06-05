@@ -191,6 +191,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(retain, nonatomic) NSString *m_nsAliasName;
 @property(retain, nonatomic) NSString *avatarCacheKey;
 @property(retain, nonatomic) NSString *msgFromNickName;
+@property(nonatomic) unsigned int m_uiSex;
 @property(nonatomic) BOOL m_isShowRedDot;
 - (BOOL)isBrandContact;
 - (BOOL)isSelf;
@@ -281,6 +282,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @interface MMSessionMgr : NSObject
 @property(retain, nonatomic) NSMutableArray *m_arrSession;
 - (id)getAllSessions;
+- (id)GetAllSessions;
 - (id)GetSessionAtIndex:(unsigned long long)arg1;//2.3.24废弃
 - (id)sessionInfoByUserName:(id)arg1;
 - (void)MuteSessionByUserName:(id)arg1;
@@ -571,3 +573,4 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(retain, nonatomic) MessageData *message; // @synthesize message=_message;
 @property(retain, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 @end
+

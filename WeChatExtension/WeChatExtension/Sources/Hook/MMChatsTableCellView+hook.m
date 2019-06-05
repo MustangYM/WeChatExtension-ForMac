@@ -22,13 +22,26 @@
 }
 
 - (void)hooktableView:(NSTableView *)arg1 rowGotMouseDown:(long long)arg2 {
-    [self hooktableView:arg1 rowGotMouseDown:arg2];
+    
+    @try {
+         [self hooktableView:arg1 rowGotMouseDown:arg2];
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
+    }
+    
+    MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
+    NSArray *allSessions = nil;
+    if (LargerOrEqualVersion(@"2.3.22")) {
+         allSessions = [sessionMgr getAllSessions];
+    } else {
+         allSessions = [sessionMgr GetAllSessions];
+    }
+    MMSessionInfo *sessionInfo = [allSessions objectAtIndex:arg2];
     
     if ([[TKWeChatPluginConfig sharedConfig] multipleSelectionEnable]) {
         NSMutableArray *selectSessions = [[TKWeChatPluginConfig sharedConfig] selectSessions];
-        MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
-        NSArray *allSessions = [sessionMgr getAllSessions];
-        MMSessionInfo *sessionInfo = [allSessions objectAtIndex:arg2];
         if ([selectSessions containsObject:sessionInfo]) {
             [selectSessions removeObject:sessionInfo];
         } else {
