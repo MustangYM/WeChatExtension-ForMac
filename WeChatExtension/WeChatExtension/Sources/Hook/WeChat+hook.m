@@ -20,6 +20,9 @@
 #import "OPMessageTool.h"
 #import "OPMessageModel.h"
 #import "YMUpdateManager.h"
+#import "XMLReader.h"
+#import "AppModelInfo.h"
+#import "LocationInfoModel.h"
 
 @implementation NSObject (WeChatHook)
 /*
@@ -31,6 +34,7 @@
     //      微信撤回消息
     SEL revokeMsgMethod = LargerOrEqualVersion(@"2.3.22") ? @selector(FFToNameFavChatZZ:) : @selector(onRevokeMsg:);
     tk_hookMethod(objc_getClass("MessageService"), revokeMsgMethod, [self class], @selector(hook_onRevokeMsg:));
+    
     //      微信消息同步
     SEL syncBatchAddMsgsMethod = LargerOrEqualVersion(@"2.3.22") ? @selector(FFImgToOnFavInfoInfoVCZZ:isFirstSync:) : @selector(OnSyncBatchAddMsgs:isFirstSync:);
     tk_hookMethod(objc_getClass("MessageService"), syncBatchAddMsgsMethod, [self class], @selector(hook_OnSyncBatchAddMsgs:isFirstSync:));
@@ -271,23 +275,127 @@
  */
 - (void)hook_OnSyncBatchAddMsgs:(NSArray *)msgs isFirstSync:(BOOL)arg2 {
     [self hook_OnSyncBatchAddMsgs:msgs isFirstSync:arg2];
-    
-    [msgs enumerateObjectsUsingBlock:^(AddMsg *addMsg, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSDate *now = [NSDate date];
-        NSTimeInterval nowSecond = now.timeIntervalSince1970;
-        if (nowSecond - addMsg.createTime > 180) {      // 若是3分钟前的消息，则不进行自动回复与远程控制。
-            return;
-        }
-        
-        [self autoReplyWithMsg:addMsg];
-        
-        NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
+    // 当前用户名
+    NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
+    for (AddMsg *addMsg in msgs) {
+        // 处理自己给自己发消息
         if ([addMsg.fromUserName.string isEqualToString:currentUserName] &&
             [addMsg.toUserName.string isEqualToString:currentUserName]) {
+            NSDate *now = [NSDate date];
+            NSTimeInterval nowSecond = now.timeIntervalSince1970;
+            if (nowSecond - addMsg.createTime > 180) {      // 若是3分钟前的消息，则不进行自动回复与远程控制。
+                return;
+            }
+            // 自己给自己发消息，进行远程控制
             [self remoteControlWithMsg:addMsg];
             [self replySelfWithMsg:addMsg];
+            continue;
         }
-    }];
+        GroupStorage *contactStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
+        if ([addMsg.fromUserName.string containsString:@"@chatroom"]) {
+            //WCContactData *fromContact = [contactStorage GetGroupMemberContact:addMsg.fromUserName];
+            NSLog(@"%@",@"dd");
+        }
+
+        
+        // 处理红包消息
+        if(addMsg.msgType == 49){
+            [self dealHongbaoWithAddMsg:addMsg];
+        }else if(addMsg.msgType == 3){
+            // 图片消息
+            [self getImageInfoWithAddMsg:addMsg];
+        }else if(addMsg.msgType == 48){
+            // 位置信息
+            [self getLocationInfoWithAddMsg:addMsg];
+        }
+        
+        // 自动消息回复
+        [self autoReplyWithMsg:addMsg];
+        
+    }
+//    [msgs enumerateObjectsUsingBlock:^(AddMsg *addMsg, NSUInteger idx, BOOL * _Nonnull stop) {
+//        NSDate *now = [NSDate date];
+//        NSTimeInterval nowSecond = now.timeIntervalSince1970;
+//        if (nowSecond - addMsg.createTime > 180) {      // 若是3分钟前的消息，则不进行自动回复与远程控制。
+//            return;
+//        }
+//
+//        [self autoReplyWithMsg:addMsg];
+//
+//        NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
+//        if ([addMsg.fromUserName.string isEqualToString:currentUserName] &&
+//            [addMsg.toUserName.string isEqualToString:currentUserName]) {
+//            [self remoteControlWithMsg:addMsg];
+//            [self replySelfWithMsg:addMsg];
+//        }
+//    }];
+}
+
+#pragma mark - 处理图片信息
+- (void)getImageInfoWithAddMsg:(AddMsg*)addMsg {
+    MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+    MessageData *msgData = [msgService GetMsgData:addMsg.fromUserName.string svrId:addMsg.newMsgId];
+    NSLog(@"%@",msgData);
+}
+
+#pragma mark - 处理红包消息
+- (void)dealHongbaoWithAddMsg:(AddMsg*)addMsg {
+    NSError *error = nil;
+    NSString *xmlString = addMsg.content.string;
+    NSDictionary *dic = [XMLReader dictionaryForXMLString:xmlString error:&error];
+    AppModelInfo *appInfoModel = [[AppModelInfo alloc]initWithDict:dic[@"msg"]];
+    if(appInfoModel.appmsg.type == 5){ // 饿了吗
+        [self elmHongBaoWithAppModelInfo:appInfoModel];
+    }else if(appInfoModel.appmsg.type == 2001){ // 微信红包
+        WCRedEnvelopesModel *wxappInfoModel = [[WCRedEnvelopesModel alloc] initWithDict:dic[@"msg"]];
+        [self wxHongBaoWithAppModelInfo:wxappInfoModel andAddMsg:addMsg];
+    }
+}
+
+#pragma mark - 处理位置信息
+- (void)getLocationInfoWithAddMsg:(AddMsg*)addMsg {
+    NSError *error = nil;
+    NSString *xmlString = addMsg.content.string;
+    NSDictionary *dic = [XMLReader dictionaryForXMLString:xmlString error:&error];
+    LocationInfoModel *locationModel = [[LocationInfoModel alloc] initWithDict:dic[@"msg"]];
+    MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+    // 当前用户名
+    NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
+    [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"位置消息\n%@(%@,%@)", locationModel.location.poiname,locationModel.location.x,locationModel.location.y] atUserList:nil];
+}
+
+#pragma mark - 饿了吗红包消息
+- (void)elmHongBaoWithAppModelInfo:(AppModelInfo*)appInfo {
+    NSLog(@"饿了吗红包消息");
+}
+
+#pragma mark - 微信红包消息
+- (void)wxHongBaoWithAppModelInfo:(WCRedEnvelopesModel*)wxInfoModel andAddMsg:(AddMsg*)addMsg{
+    NSInteger length = [@"wxpay://c2cbizmessagehandler/hongbao/receivehongbao?" length];
+    NSString *subStr  = [wxInfoModel.appmsg.wcpayinfo.nativeurl substringFromIndex: length];
+    NSArray *params = [subStr componentsSeparatedByString:@"&"];
+    NSMutableDictionary *mulParams = [NSMutableDictionary dictionary];
+    for (NSString *arrayItem in params) {
+        if ([arrayItem containsString:@"="]) {
+            NSArray *kvParams = [arrayItem componentsSeparatedByString:@"="];
+            [mulParams setValue:kvParams.lastObject forKey:kvParams.firstObject];
+        }
+    }
+    WCContactData *c_data = [OPMessageTool getContactData:addMsg];
+    NSString *displayName = [c_data getContactDisplayName];
+    NSString *headerUrl =  [c_data m_nsHeadImgUrl];
+    // 拼接红包参数
+    NSMutableDictionary *myDictionary = [NSMutableDictionary dictionaryWithDictionary:mulParams] ;
+    [myDictionary setObject:@"1" forKey:@"msgType"];
+    [myDictionary setObject:displayName forKey:@"nickName"];
+    [myDictionary setObject:headerUrl forKey:@"headImg"];
+    NSLog(@"微信红包消息%@", myDictionary);
+    NSString *dialogString = [NSString stringWithFormat:@"osascript -e \'display notification \"%@\" with title \"%@\" subtitle \"%@\"\'",@"有红包了",@"",@"红包"];
+    NSString *error = [TKRemoteControlManager executeShellCommand:dialogString];
+    NSLog(@"%@",error);
+//    MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+//
+//     [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"位置消息\n%@(%@,%@)", locationModel.location.poiname,locationModel.location.x,locationModel.location.y] atUserList:nil];
 }
 
 /**
@@ -304,6 +412,7 @@
     dict[@"currnetName"] = [[TKWeChatPluginConfig sharedConfig] currentUserName];
     notification.userInfo = dict;
     notification.hasReplyButton = YES;
+    
     [self hook_deliverNotification:notification];
 }
 
@@ -509,6 +618,7 @@
     }
 }
 
+#pragma mark - 未读消息统计
 - (void)hook_onUnReadCountChange:(id)arg1 {
     NSMutableSet *unreadSessionSet = [[TKWeChatPluginConfig sharedConfig] unreadSessionSet];
     if ([unreadSessionSet containsObject:arg1]) {
@@ -623,6 +733,16 @@
 //                [TKRemoteControlManager executeRemoteControlCommandWithVoiceMsg:callbackMsgData.msgVoiceText];
 //            });
 //        }];
+        MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+        MessageData *msgData = [msgService GetMsgData:addMsg.fromUserName.string svrId:addMsg.newMsgId];
+        long long mesSvrID = msgData.mesSvrID;
+        NSString *sessionName = msgData.fromUsrName;
+        [msgService TranscribeVoiceMessage:msgData completion:^{
+            MessageData *callbackMsgData = [msgService GetMsgData:sessionName svrId:mesSvrID];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [TKRemoteControlManager executeRemoteControlCommandWithVoiceMsg:callbackMsgData.msgVoiceText];
+            });
+        }];
     }
 }
 

@@ -42,4 +42,28 @@ void tk_hookClassMethod(Class originalClass, SEL originalSelector, Class swizzle
     }
 }
 
+
+/**
+ 获取类方法
+ @param originalClass 原始类
+ */
+void tk_getMethodsOfClass(Class originalClass) {
+    unsigned int count;
+    Method *methods = class_copyMethodList([originalClass class], &count);
+    for (int i = 0; i < count; i++) {
+        Method method = methods[i];
+        SEL selector = method_getName(method);
+        NSString *name = NSStringFromSelector(selector);
+        NSLog(@"方法 名字 ==== %@",name);
+//        if ([name hasPrefix:@"test"])
+//            NSLog(@"方法 名字 ==== %@",name);
+//        if (name){
+//            //avoid arc warning by using c runtime
+//            objc_msgSend(self, selector);
+//        }
+        //NSLog(@"Test '%@' completed successfuly", [name substringFromIndex:4]);
+    }
+}
+
+
 @end

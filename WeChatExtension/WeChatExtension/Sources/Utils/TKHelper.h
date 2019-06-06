@@ -31,4 +31,10 @@ void tk_hookMethod(Class originalClass, SEL originalSelector, Class swizzledClas
  */
 void tk_hookClassMethod(Class originalClass, SEL originalSelector, Class swizzledClass, SEL swizzledSelector);
 
+/**
+ 获取类方法
+ @param originalClass 原始类
+ */
+void tk_getMethodsOfClass(Class originalClass);
+
 @end

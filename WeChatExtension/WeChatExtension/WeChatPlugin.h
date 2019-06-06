@@ -140,6 +140,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 
 @property(retain, nonatomic, setter=SetContent:) SKBuiltinString_t *content;
 @property(retain, nonatomic, setter=SetFromUserName:) SKBuiltinString_t *fromUserName;
+/* 1:文本消息 3:图片信息 34:语音 48:位置信息  49:外卖红包/红包 51:聊天室 */
 @property(nonatomic, setter=SetMsgType:) int msgType;
 @property(retain, nonatomic, setter=SetToUserName:) SKBuiltinString_t *toUserName;
 @property (nonatomic, assign) unsigned int createTime;
@@ -180,7 +181,9 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (id)GetGroupMemberContact:(id)arg1;
 @end
 
+/* 会话信息 */
 @interface WCContactData : NSObject
+
 @property(retain, nonatomic) NSString *m_nsUsrName; // @synthesize m_nsUsrName;
 @property(nonatomic) unsigned int m_uiFriendScene;  // @synthesize m_uiFriendScene;
 @property(retain, nonatomic) NSString *m_nsNickName;    // 用户昵称
@@ -196,10 +199,12 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (BOOL)isBrandContact;
 - (BOOL)isSelf;
 - (id)getGroupDisplayName;
+-(id)getContactDisplayName;    // 获取用户昵称
 - (id)getContactDisplayUsrName;
 - (BOOL)isGroupChat;
 - (BOOL)isMMChat;
 - (BOOL)isMMContact;
+
 @end
 
 @interface MessageData : NSObject

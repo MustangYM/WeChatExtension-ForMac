@@ -10,6 +10,9 @@
 #import <objc/runtime.h>
 
 @implementation OPMessageTool
+/**
+ 将AddMsg转换成MessageData
+ */
 + (MessageData *)getMessageData:(AddMsg *)addMsg {
     if (!addMsg) {
         return nil;
@@ -18,6 +21,9 @@
     return [msgService GetMsgData:addMsg.fromUserName.string svrId:addMsg.newMsgId];
 }
 
+/**
+ 通过AddMsg获取会话Data
+ */
 + (WCContactData *)getContactData:(AddMsg *)addMsg {
     if (!addMsg) {
         return nil;
