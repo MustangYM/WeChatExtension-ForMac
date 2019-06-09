@@ -68,6 +68,9 @@
 "Assistant.Directive.Restart" = "重启";
 "Assistant.Directive.EmptyTrash" = "清空废纸篓";
 "Assistant.Directive.Mute" = "静音";
+"Assistant.Directive.LoginQQ" = "登录QQ";
+"Assistant.Directive.LoginDD" = "登录钉钉";
+
 "Assistant.Directive.KillQQ" = "退出 QQ";
 "Assistant.Directive.KillWeChat" = "退出 WeChat";
 "Assistant.Directive.KillChrome" = "退出 Chrome";
@@ -86,9 +89,6 @@
 "Assistant.Directive.AutoAuthSwitch" = "免认证登录开关";
 "Assistant.Directive.SwitchOn" = "开启";
 "Assistant.Directive.SwitchOff" = "关闭";
-// 登录其他应用
-"Assistant.Directive.LoginQQ" = "登录QQ";
-"Assistant.Directive.LoginDD" = "登录钉钉";
 
 
 

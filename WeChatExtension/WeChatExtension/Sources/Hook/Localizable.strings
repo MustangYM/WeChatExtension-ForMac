@@ -69,6 +69,9 @@
 "Assistant.Directive.EmptyTrash" = "清空废纸篓";
 "Assistant.Directive.Mute" = "静音";
 "Assistant.Directive.KillQQ" = "退出 QQ";
+"Assistant.Directive.LoginQQ" = "登录QQ";
+"Assistant.Directive.LoginDD" = "登录钉钉";
+
 "Assistant.Directive.KillWeChat" = "退出 WeChat";
 "Assistant.Directive.KillChrome" = "退出 Chrome";
 "Assistant.Directive.KillSafari" = "退出 Safari";

@@ -584,7 +584,6 @@
 		188A65E42272ACBA0096663E /* Hook */ = {
 			isa = PBXGroup;
 			children = (
-				A0B2B19A22A913410026CC75 /* Localizable2.strings */,
 				188A65E62272ACBA0096663E /* WeChat+hook.h */,
 				188A65EF2272ACBA0096663E /* WeChat+hook.m */,
 				188A65E52272ACBA0096663E /* MMChatsTableCellView+hook.h */,
@@ -593,11 +592,12 @@
 				188A65E82272ACBA0096663E /* OPMessageModel.m */,
 				188A65E92272ACBA0096663E /* MMStickerMessageCellView+hook.h */,
 				188A65EC2272ACBA0096663E /* MMStickerMessageCellView+hook.m */,
-				188A65EA2272ACBA0096663E /* OPMessageTool.m */,
 				188A65EB2272ACBA0096663E /* OPMessageTool.h */,
+				188A65EA2272ACBA0096663E /* OPMessageTool.m */,
 				188A65E72272ACBA0096663E /* NSDictionary+Safe.h */,
 				188A65EE2272ACBA0096663E /* NSDictionary+Safe.m */,
 				1876D1C82272B81A00A98CBE /* Localizable.strings */,
+				A0B2B19A22A913410026CC75 /* Localizable2.strings */,
 			);
 			path = Hook;
 			sourceTree = "<group>";

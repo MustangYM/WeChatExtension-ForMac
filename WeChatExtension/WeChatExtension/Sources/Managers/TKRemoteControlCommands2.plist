@@ -91,7 +91,7 @@
 			<key>executeCommand</key>
 			<string>loginqq</string>
 			<key>keyword</key>
-			<string>Loginqq</string>
+			<string>LoginQQ</string>
 			<key>function</key>
 			<string>Assistant.Directive.LoginQQ</string>
 			<key>enable</key>
@@ -103,7 +103,7 @@
 			<key>executeCommand</key>
 			<string>logindd</string>
 			<key>keyword</key>
-			<string>Logindd</string>
+			<string>LoginDD</string>
 			<key>function</key>
 			<string>Assistant.Directive.LoginDD</string>
 			<key>enable</key>

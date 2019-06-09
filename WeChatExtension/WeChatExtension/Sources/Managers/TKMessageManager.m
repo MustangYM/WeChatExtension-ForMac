@@ -61,8 +61,10 @@
 
 - (void)sendVideoMessage:(id)msgContent toUserName:(id)toUser {
     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
-    NSString *path = @"/Users/mustangym/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/674ee0d7348d38ffe4c08885f4bafe11/Message/MessageTemp/82fbc4af3eb8d0ec7a94741888c5d56d/Video/1548316408491888_1548316686660991_1548319384284652.mp4";
+//    NSString *path = @"/Users/mustangym/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/674ee0d7348d38ffe4c08885f4bafe11/Message/MessageTemp/82fbc4af3eb8d0ec7a94741888c5d56d/Video/1548316408491888_1548316686660991_1548319384284652.mp4";
+    NSString *path = [NSString stringWithFormat:@"/Users/zhouwei/Desktop/1559544012191110.mp4"];
     SendVideoinfo *videoInfo = [[objc_getClass("SendVideoInfo") alloc] init];
+    
     NSData *data = [NSData dataWithContentsOfFile:path];
     videoInfo.video_path = path;
     NSImage *face = [objc_getClass("MMFileTypeHelper") firstFrameImageOfVideoWithFilePath:path];

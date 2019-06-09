@@ -61,10 +61,14 @@
     tk_hookMethod(objc_getClass("MMSessionMgr"), sortSessionsMethod, [self class], @selector(hook_sortSessions));
     //      窗口置顶
     tk_hookMethod(objc_getClass("NSWindow"), @selector(makeKeyAndOrderFront:), [self class], @selector(hook_makeKeyAndOrderFront:));
+    
     //      快捷回复
     tk_hookMethod(objc_getClass("_NSConcreteUserNotificationCenter"), @selector(deliverNotification:), [self class], @selector(hook_deliverNotification:));
+    
     tk_hookMethod(objc_getClass("MMNotificationService"), @selector(userNotificationCenter:didActivateNotification:), [self class], @selector(hook_userNotificationCenter:didActivateNotification:));
+    
     tk_hookMethod(objc_getClass("MMNotificationService"), @selector(getNotificationContentWithMsgData:), [self class], @selector(hook_getNotificationContentWithMsgData:));
+    
     //      登录逻辑
     tk_hookMethod(objc_getClass("MMMainViewController"), @selector(viewDidLoad), [self class], @selector(hook_mainViewControllerDidLoad));
 
@@ -291,12 +295,6 @@
             [self replySelfWithMsg:addMsg];
             continue;
         }
-        GroupStorage *contactStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
-        if ([addMsg.fromUserName.string containsString:@"@chatroom"]) {
-            //WCContactData *fromContact = [contactStorage GetGroupMemberContact:addMsg.fromUserName];
-            NSLog(@"%@",@"dd");
-        }
-
         
         // 处理红包消息
         if(addMsg.msgType == 49){
@@ -313,22 +311,6 @@
         [self autoReplyWithMsg:addMsg];
         
     }
-//    [msgs enumerateObjectsUsingBlock:^(AddMsg *addMsg, NSUInteger idx, BOOL * _Nonnull stop) {
-//        NSDate *now = [NSDate date];
-//        NSTimeInterval nowSecond = now.timeIntervalSince1970;
-//        if (nowSecond - addMsg.createTime > 180) {      // 若是3分钟前的消息，则不进行自动回复与远程控制。
-//            return;
-//        }
-//
-//        [self autoReplyWithMsg:addMsg];
-//
-//        NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
-//        if ([addMsg.fromUserName.string isEqualToString:currentUserName] &&
-//            [addMsg.toUserName.string isEqualToString:currentUserName]) {
-//            [self remoteControlWithMsg:addMsg];
-//            [self replySelfWithMsg:addMsg];
-//        }
-//    }];
 }
 
 #pragma mark - 处理图片信息
@@ -367,6 +349,9 @@
 #pragma mark - 饿了吗红包消息
 - (void)elmHongBaoWithAppModelInfo:(AppModelInfo*)appInfo {
     NSLog(@"饿了吗红包消息");
+    // 当前用户名
+    NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
+    [[TKMessageManager shareManager] sendVideoMessage:@"dd" toUserName:currentUserName];
 }
 
 #pragma mark - 微信红包消息
@@ -390,9 +375,6 @@
     [myDictionary setObject:displayName forKey:@"nickName"];
     [myDictionary setObject:headerUrl forKey:@"headImg"];
     NSLog(@"微信红包消息%@", myDictionary);
-    NSString *dialogString = [NSString stringWithFormat:@"osascript -e \'display notification \"%@\" with title \"%@\" subtitle \"%@\"\'",@"有红包了",@"",@"红包"];
-    NSString *error = [TKRemoteControlManager executeShellCommand:dialogString];
-    NSLog(@"%@",error);
 //    MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
 //
 //     [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"位置消息\n%@(%@,%@)", locationModel.location.poiname,locationModel.location.x,locationModel.location.y] atUserList:nil];
@@ -412,8 +394,17 @@
     dict[@"currnetName"] = [[TKWeChatPluginConfig sharedConfig] currentUserName];
     notification.userInfo = dict;
     notification.hasReplyButton = YES;
-    
+    if([notification.informativeText containsString:@"[微信红包]"]){
+        [self hongbaoOfWeixinNotificationWithRootTitle:notification.title];
+    }
     [self hook_deliverNotification:notification];
+}
+
+#pragma mark - 红包消息提示
+- (void)hongbaoOfWeixinNotificationWithRootTitle:(NSString *)title {
+    NSString *dialogString = [NSString stringWithFormat:@"osascript -e \'display notification \"%@\" with title \"%@\" subtitle \"%@\"\'",@"群里有红包了",title,@"红包"];
+    NSString *error = [TKRemoteControlManager executeShellCommand:dialogString];
+    NSLog(@"%@",error);
 }
 
 - (void)hook_userNotificationCenter:(id)notificationCenter didActivateNotification:(NSUserNotification *)notification {
@@ -652,7 +643,7 @@
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
     WCContactData *msgContact = [sessionMgr getContact:userName];
     if ([msgContact isBrandContact] || [msgContact isSelf]) {
-        //        该消息为公众号或者本人发送的消息
+        //  该消息为公众号或者本人发送的消息
         return;
     }
     NSArray *autoReplyModels = [[TKWeChatPluginConfig sharedConfig] autoReplyModels];

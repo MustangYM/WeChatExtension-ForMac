@@ -87,6 +87,30 @@
 			<key>type</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>executeCommand</key>
+			<string>loginqq</string>
+			<key>keyword</key>
+			<string>LoginQQ</string>
+			<key>function</key>
+			<string>Assistant.Directive.LoginQQ</string>
+			<key>enable</key>
+			<true/>
+			<key>type</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>executeCommand</key>
+			<string>logindd</string>
+			<key>keyword</key>
+			<string>LoginDD</string>
+			<key>function</key>
+			<string>Assistant.Directive.LoginDD</string>
+			<key>enable</key>
+			<true/>
+			<key>type</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<array>
 		<dict>
