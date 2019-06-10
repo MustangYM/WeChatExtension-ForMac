@@ -13,7 +13,7 @@
 "assistant.menu.revokeSelf" = "拦截自己撤回消息";
 "assistant.menu.autoReply" = "自动回复设置";
 "assistant.menu.newWeChat" = "登录新微信";
-"assistant.menu.remoteControl" = "远程控制mac";
+"assistant.menu.remoteControl" = "远程控制Mac";
 "assistant.menu.windowSticky" = "微信窗口置顶";
 "assistant.menu.freeLogin" = "免认证登录";
 "assistant.menu.systemBrowser" = "使用系统浏览器";
@@ -52,8 +52,8 @@
 "assistant.remoteControl.listTip" = "远程控制指令：\n(功能-指令-是否开启)\n\n";
 "assistant.remoteControl.recall" = "小助手收到一条指令：";
 "assistant.remoteControl.voiceRecall" = "小助手收到一条语音消息，转文字后👇👇👇：";
-"assistant.remoteControl.mac" = "macbook控制:";
-"assistant.remoteControl.app" = "app控制:";
+"assistant.remoteControl.mac" = "MacBook控制:";
+"assistant.remoteControl.app" = "APP控制:";
 "assistant.remoteControl.neteaseMusic" = "网易云音乐控制:";
 "assistant.remoteControl.assistant" = "小助手控制:";
 "assistant.remoteControl.open" = "开启";
@@ -78,7 +78,7 @@
 "Assistant.Directive.Next" = "下一首";
 "Assistant.Directive.Previous" = "上一首";
 "Assistant.Directive.VolumeUp" = "增大音量";
-"Assistant.Directive.VolumeDown" = "VolumeDown";
+"Assistant.Directive.VolumeDown" = "减小音量";
 "Assistant.Directive.LikeChange" = "喜欢/取消喜欢";
 "Assistant.Directive.GetList" = "获取指令";
 "Assistant.Directive.AutoReplySwitch" = "自动回复开关";
