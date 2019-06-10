@@ -1,9 +1,9 @@
 //
-//  OPMessageModel.h
+//  YMMessageModel.h
 //  WeChatPlugin
 //
 //  Created by MustangYM on 2019/1/23.
-//  Copyright © 2019 YY Inc. All rights reserved.
+//  Copyright © 2019 MustangYM. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

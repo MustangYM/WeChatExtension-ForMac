@@ -1,15 +1,15 @@
 //
-//  OPMessageTool.m
+//  YMMessageTool.m
 //  WeChatPlugin
 //
 //  Created by MustangYM on 2019/1/22.
-//  Copyright © 2019 YY Inc. All rights reserved.
+//  Copyright © 2019 MustangYM. All rights reserved.
 //
 
-#import "OPMessageTool.h"
+#import "YMMessageTool.h"
 #import <objc/runtime.h>
 
-@implementation OPMessageTool
+@implementation YMMessageTool
 + (MessageData *)getMessageData:(AddMsg *)addMsg {
     if (!addMsg) {
         return nil;

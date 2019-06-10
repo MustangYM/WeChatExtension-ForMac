@@ -182,11 +182,15 @@
     
     MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
     
-    NSArray *pushMsgAry = [revokeMsgData.msgPushContent componentsSeparatedByString:@":"];
+    NSArray *pushMsgAry = revokeMsgData.msgPushContent.length > 0 ? [revokeMsgData.msgPushContent componentsSeparatedByString:@":"] : [revokeMsgData.msgContent componentsSeparatedByString:@":"];
     NSString *msgFromNickName = pushMsgAry.count > 1 ? pushMsgAry[0] : revokeMsgData.fromUsrName;
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
     WCContactData *msgContact = [sessionMgr getContact:revokeMsgData.fromUsrName];
     
+    NSArray *wxidAry = [revokeMsgData.msgContent componentsSeparatedByString:@":"];
+    NSString *fromWxid = wxidAry.count > 1 ? wxidAry[0] : nil;
+    ContactStorage *contactStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("ContactStorage")];
+//    WCContactData *chatMemContact = [contactStorage GetContactWithUserName:fromWxid updateIfNeeded:YES];
     
     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
     if (revokeMsgData.messageType == 1) {
