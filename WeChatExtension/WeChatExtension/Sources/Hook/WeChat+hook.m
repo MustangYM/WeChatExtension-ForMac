@@ -17,8 +17,8 @@
 #import "TKVersionManager.h"
 #import "TKRemoteControlManager.h"
 #import "TKDownloadWindowController.h"
-#import "OPMessageTool.h"
-#import "OPMessageModel.h"
+#import "YMMessageTool.h"
+#import "YMMessageModel.h"
 #import "YMUpdateManager.h"
 
 @implementation NSObject (WeChatHook)
