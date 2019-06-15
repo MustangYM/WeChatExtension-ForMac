@@ -1,9 +1,9 @@
 //
 //  TKUtility.h
-//  WeChatPlugin
+//  WeChatExtension
 //
-//  Created by TK on 2019/1/12.
-//  Copyright © 2019 tk. All rights reserved.
+//  Created by WeChatExtension on 2019/1/12.
+//  Copyright © 2019 WeChatExtension. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

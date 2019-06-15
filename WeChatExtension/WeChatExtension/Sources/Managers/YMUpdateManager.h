@@ -2,7 +2,7 @@
 //  YMUpdateManager.h
 //  WeChatExtension
 //
-//  Created by YanMao on 2019/5/10.
+//  Created by MustangYM on 2019/5/10.
 //  Copyright © 2019 MustangYM. All rights reserved.
 //
 

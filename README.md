@@ -22,7 +22,7 @@
 <img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/launch.gif" width="800px"/>
 </p>
 
-## 消息撤回
+## 消息防撤回
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/revoke.gif" width="800px"/>
 </p>

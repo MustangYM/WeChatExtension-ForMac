@@ -1,9 +1,9 @@
 //
 //  NSDate+Action.h
-//  WeChatPlugin
+//  WeChatExtension
 //
-//  Created by TK on 2018/7/25.
-//  Copyright © 2018年 tk. All rights reserved.
+//  Created by WeChatExtension on 2018/7/25.
+//  Copyright © 2018年 WeChatExtension. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
