@@ -37,7 +37,12 @@
 
 3. > 依次打开文件夹
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/WX20190619-112452.png" width="800px"/>
+<img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/WX20190619-113413%402x.png" width="800px"/>
+</p>
+
+4. > 打开你电脑中的终端工具
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/WX20190619-113911%402x.png" width="800px"/>
 </p>
 
 2. > 在Rely/Install.sh执行这个安装脚本
