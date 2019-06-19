@@ -28,7 +28,17 @@
 </p>
 
 ## 安装方法
-1. > 下载本项目到你的Mac上, 确保你的Mac上已经安装了微信App.
+1. > 确保你的Mac上已经安装了微信App.
+
+2. > 下载本项目到你的电脑里, 并双击打开.
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/WX20190619-112238.png" width="800px"/>
+</p>
+
+3. > 依次打开文件夹
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/WX20190619-112452.png" width="800px"/>
+</p>
 
 2. > 在Rely/Install.sh执行这个安装脚本
 <p align="center">
