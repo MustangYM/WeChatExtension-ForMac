@@ -28,7 +28,22 @@
 </p>
 
 ## 安装方法
-1. > 下载本项目到你的Mac上, 确保你的Mac上已经安装了微信App.
+1. > 确保你的Mac上已经安装了微信App.
+
+2. > 下载本项目到你的电脑里, 并双击打开.
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/WX20190619-112238.png" width="800px"/>
+</p>
+
+3. > 依次打开文件夹
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/WX20190619-113413%402x.png" width="800px"/>
+</p>
+
+4. > 打开你电脑中的终端工具
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/WX20190619-113911%402x.png" width="800px"/>
+</p>
 
 2. > 在Rely/Install.sh执行这个安装脚本
 <p align="center">
@@ -51,6 +66,7 @@
 
 ## 更新日志
 ```
+2019-6-19 详细安装方法
 2019-6-5  修复会话多选闪退, 点击公众号类型消息闪退
 2019-5-28 支持系统浏览器打开网页
 2019-5-14 如果Mac拦截到A发送来的消息, 手机也会同步收到的这条已经拦截的消息, 小助手一键更新.
