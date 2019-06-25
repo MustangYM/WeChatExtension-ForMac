@@ -53,8 +53,8 @@
 3. > 重启微信, 安装完成.
 
 ## 怎么卸载?
-1. 在Rely文件夹中找到Uninstall.sh
-2. 拖到终端工具中, 回车执行即可
+1. > 在Rely文件夹中找到Uninstall.sh
+2. > 拖到终端工具中, 回车执行即可
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/WX20190625-102808%402x.png" width="800px"/>
 </p>
