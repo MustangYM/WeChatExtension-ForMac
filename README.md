@@ -11,7 +11,7 @@
 >  mac版微信2.3.25
 
 ## 手机端也能收到被撤回的消息
-1. >
+1. > 如果Mac拦截到A发送来的消息, 手机也会同步收到的这条已经拦截的消息(自己发送给自己). 目前只支持同步文字消息与图片消息, 其他类型也可以做, 但意义不大.
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/revokeAsync.jpg" width="800px"/>
 </p>
@@ -20,9 +20,6 @@
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/WX20190625-111206%402x.png" width="600px"/>
 </p>
-
-
-> 如果Mac拦截到A发送来的消息, 手机也会同步收到的这条已经拦截的消息(自己发送给自己). 目前只支持同步文字消息与图片消息, 其他类型也可以做, 感觉意义不大.
 
 ## 免认证登录与多开
 <p align="center">
