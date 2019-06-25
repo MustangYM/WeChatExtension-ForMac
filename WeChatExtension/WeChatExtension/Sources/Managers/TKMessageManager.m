@@ -180,6 +180,14 @@
         return;
     }
     
+    if (![[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeSignal] && ![revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
+        return;
+    }
+    
+    if (![[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeChatRoom] && [revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
+        return;
+    }
+    
     MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
     
     NSArray *pushMsgAry = revokeMsgData.msgPushContent.length > 0 ? [revokeMsgData.msgPushContent componentsSeparatedByString:@":"] : [revokeMsgData.msgContent componentsSeparatedByString:@":"];

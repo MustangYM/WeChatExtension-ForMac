@@ -52,6 +52,19 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
                                                                    target:self
                                                             keyEquivalent:@""
                                                                     state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeToPhone]];
+        NSMenuItem *asyncRevokeSignalItem = [NSMenuItem menuItemWithTitle:@"同步单聊"
+                                                                    action:@selector(onAsyncRevokeSignal:)
+                                                                    target:self
+                                                             keyEquivalent:@""
+                                                                     state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeSignal]];
+        NSMenuItem *asyncRevokeChatRoomItem = [NSMenuItem menuItemWithTitle:@"同步群聊"
+                                                                    action:@selector(onAsyncRevokeChatRoom:)
+                                                                    target:self
+                                                             keyEquivalent:@""
+                                                                     state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeChatRoom]];
+        NSMenu *subAsyncMenu = [[NSMenu alloc] initWithTitle:@""];
+        [subAsyncMenu addItems:@[asyncRevokeSignalItem, asyncRevokeChatRoomItem]];
+        preventAsyncRevokeItem.submenu = subAsyncMenu;
         
         NSMenu *subPreventMenu = [[NSMenu alloc] initWithTitle:TKLocalizedString(@"assistant.menu.revoke")];
         [subPreventMenu addItems:@[preventSelfRevokeItem, preventAsyncRevokeItem]];
@@ -224,6 +237,20 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
                                                              keyEquivalent:@""
                                                                      state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeToPhone]];
         
+        NSMenuItem *asyncRevokeSignalItem = [NSMenuItem menuItemWithTitle:@"同步单聊"
+                                                                   action:@selector(onAsyncRevokeSignal:)
+                                                                   target:self
+                                                            keyEquivalent:@""
+                                                                    state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeSignal]];
+        NSMenuItem *asyncRevokeChatRoomItem = [NSMenuItem menuItemWithTitle:@"同步群聊"
+                                                                     action:@selector(onAsyncRevokeChatRoom:)
+                                                                     target:self
+                                                              keyEquivalent:@""
+                                                                      state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeChatRoom]];
+        NSMenu *subAsyncMenu = [[NSMenu alloc] initWithTitle:@""];
+        [subAsyncMenu addItems:@[asyncRevokeSignalItem, asyncRevokeChatRoomItem]];
+        preventAsyncRevokeItem.submenu = subAsyncMenu;
+        
         NSMenu *subPreventMenu = [[NSMenu alloc] initWithTitle:TKLocalizedString(@"assistant.menu.revoke")];
         [subPreventMenu addItems:@[preventSelfRevokeItem, preventAsyncRevokeItem]];
         item.submenu = subPreventMenu;
@@ -246,6 +273,16 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
 - (void)onPreventAsyncRevokeToPhone:(NSMenuItem *)item {
     item.state = !item.state;
     [[TKWeChatPluginConfig sharedConfig] setPreventAsyncRevokeToPhone:item.state];
+}
+
+- (void)onAsyncRevokeSignal:(NSMenuItem *)item {
+    item.state = !item.state;
+    [[TKWeChatPluginConfig sharedConfig] setPreventAsyncRevokeSignal:item.state];
+}
+
+- (void)onAsyncRevokeChatRoom:(NSMenuItem *)item {
+    item.state = !item.state;
+    [[TKWeChatPluginConfig sharedConfig] setPreventAsyncRevokeChatRoom:item.state];
 }
 
 /**
