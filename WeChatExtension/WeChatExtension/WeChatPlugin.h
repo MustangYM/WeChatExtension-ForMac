@@ -171,6 +171,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (id)GetAllFavContacts;
 - (id)GetAllFriendContacts;
 - (id)GetContactWithUserName:(id)arg1 updateIfNeeded:(BOOL)arg2;
+- (id)getContactCache:(id)arg1;
 @end
 
 @interface GroupStorage : NSObject
@@ -192,6 +193,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(retain, nonatomic) NSString *m_nsAliasName;
 @property(retain, nonatomic) NSString *avatarCacheKey;
 @property(retain, nonatomic) NSString *msgFromNickName;
+@property(retain, nonatomic) NSString *m_nsOwner;
 @property(nonatomic) unsigned int m_uiSex;
 @property(nonatomic) BOOL m_isShowRedDot;
 - (BOOL)isBrandContact;
@@ -209,6 +211,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(retain, nonatomic) NSString *toUsrName;
 @property(retain, nonatomic) NSString *msgContent;
 @property(retain, nonatomic) NSString *msgPushContent;
+@property(retain, nonatomic) NSString *msgRealChatUsr;
 @property(retain, nonatomic) SendImageInfo *imageInfo;
 @property(retain, nonatomic) id extendInfoWithMsgType;
 @property(nonatomic) int messageType;

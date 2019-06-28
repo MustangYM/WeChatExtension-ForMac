@@ -15,7 +15,7 @@
 #import "TKDownloadWindowController.h"
 #import "TKAboutWindowController.h"
 #import "TKWebServerManager.h"
-#import "TKMessageManager.h"
+#import "YMMessageManager.h"
 
 static char tkAutoReplyWindowControllerKey;         //  自动回复窗口的关联 key
 static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关联 key

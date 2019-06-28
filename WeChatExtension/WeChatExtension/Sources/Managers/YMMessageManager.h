@@ -1,5 +1,5 @@
 //
-//  TKMessageManager.h
+//  YMMessageManager.h
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2018/4/23.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TKMessageManager : NSObject
+@interface YMMessageManager : NSObject
 
 + (instancetype)shareManager;
 

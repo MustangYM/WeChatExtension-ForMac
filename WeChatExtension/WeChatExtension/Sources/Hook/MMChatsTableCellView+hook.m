@@ -9,7 +9,7 @@
 #import "MMChatsTableCellView+hook.h"
 #import "WeChatPlugin.h"
 #import "TKIgnoreSessonModel.h"
-#import "TKMessageManager.h"
+#import "YMMessageManager.h"
 
 @implementation NSObject (MMChatsTableCellViewHook)
 
@@ -173,7 +173,7 @@
 
     [arrSession enumerateObjectsUsingBlock:^(MMSessionInfo *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [[TKMessageManager shareManager] clearUnRead:obj.m_nsUserName];
+            [[YMMessageManager shareManager] clearUnRead:obj.m_nsUserName];
         });
     }];
 }
