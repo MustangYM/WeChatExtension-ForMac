@@ -75,7 +75,7 @@
 
  <td align="center">
   <a href="https://github.com/RyanLiGod"><img src="https://avatars2.githubusercontent.com/u/10303946?s=400&v=4" width="100px;" alt="RyanLiGod"/>
-  <br></br><sub><b>CoderLineChan</b></sub>
+  <br></br><sub><b>RyanLiGod</b></sub>
 </td></tr></table>
 
 ## 更新日志
