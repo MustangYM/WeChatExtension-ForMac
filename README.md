@@ -79,7 +79,7 @@
   
    <td align="center">
   <a href="https://github.com/JpacheGitHub"><img src="https://avatars2.githubusercontent.com/u/15686977?s=400&v=4" width="100px;" alt="JpacheGitHub"/>
-  <br></br><sub><JpacheGitHub</b></sub>
+  <br></br><sub><b>JpacheGitHub</b></sub>
   
 </td></tr></table>
 
