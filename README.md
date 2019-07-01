@@ -94,6 +94,7 @@
 
 ## 维护不易, 可以请我喝咖啡
 >捐赠的朋友请在支付宝留言留下你的GitHub，如果你愿意，我会把你的头像和昵称列在“捐赠墙”上。
+
 <p align =“center”>
 <img src =“https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/WX20190625-152059%402x.png"width =”300px“/>
 </ p>
