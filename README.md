@@ -76,6 +76,11 @@
  <td align="center">
   <a href="https://github.com/RyanLiGod"><img src="https://avatars2.githubusercontent.com/u/10303946?s=400&v=4" width="100px;" alt="RyanLiGod"/>
   <br></br><sub><b>RyanLiGod</b></sub>
+  
+   <td align="center">
+  <a href="https://github.com/JpacheGitHub"><img src="https://avatars2.githubusercontent.com/u/15686977?s=400&v=4" width="100px;" alt="JpacheGitHub"/>
+  <br></br><sub><JpacheGitHub</b></sub>
+  
 </td></tr></table>
 
 ## 更新日志
