@@ -197,7 +197,11 @@
     while (emptyArrSession.count > 0) {
         [emptyArrSession enumerateObjectsUsingBlock:^(MMSessionInfo *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if (obj.m_nsUserName.length > 0) {
-                [sessionMgr removeSessionOfUser:obj.m_nsUserName isDelMsg:NO];
+                if (LargerOrEqualVersion(@"2.3.25")) {
+                    [sessionMgr removeSessionOfUser:obj.m_nsUserName isDelMsg:NO];
+                } else {
+                    [sessionMgr deleteSessionWithoutSyncToServerWithUserName:obj.m_nsUserName];
+                }
             }
             [emptyArrSession removeObject:obj];
         }];
