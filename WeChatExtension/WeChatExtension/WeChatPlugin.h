@@ -298,12 +298,17 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)unmuteSessionByUserName:(id)arg1 syncToServer:(BOOL)arg2;
 - (void)untopSessionByUserName:(id)arg1 syncToServer:(BOOL)arg2;
 - (void)deleteSessionWithoutSyncToServerWithUserName:(id)arg1;
+- (void)storageDeleteSessionInfo:(id)arg1;
 - (void)changeSessionUnreadCountWithUserName:(id)arg1 to:(unsigned int)arg2;
 - (void)removeSessionOfUser:(id)arg1 isDelMsg:(BOOL)arg2;
 - (void)sortSessions;
 - (void)FFDataSvrMgrSvrFavZZ;
 - (id)getContact:(id)arg1;
 - (void)onEnterSession:(id)arg1;
+@end
+
+@interface BrandSessionMgr : NSObject
+- (void)deleteSessionOfUserName:(id)arg1 isDelMsg:(BOOL)arg2;
 @end
 
 @interface LogoutCGI : NSTableCellView

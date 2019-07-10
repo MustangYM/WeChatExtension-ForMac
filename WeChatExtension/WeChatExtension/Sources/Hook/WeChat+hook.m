@@ -87,7 +87,7 @@
     
     tk_hookMethod(objc_getClass("LazyExtensionAgent"), @selector(ensureLazyListenerInitedForExtension: withSelector:), [self class], @selector(hook_ensureLazyListenerInitedForExtension:withSelector:));
     
-//    [ANYMethodLog logMethodWithClass:[objc_getClass("ContactStorage") class] condition:^BOOL(SEL sel) {
+//    [ANYMethodLog logMethodWithClass:[objc_getClass("MMSessionMgr") class] condition:^BOOL(SEL sel) {
 //        return YES;
 //    } before:^(id target, SEL sel, NSArray *args, int deep) {
 //        NSLog(@"\n🐸类名:%@ 👍方法:%@\n%@", target, NSStringFromSelector(sel),args);

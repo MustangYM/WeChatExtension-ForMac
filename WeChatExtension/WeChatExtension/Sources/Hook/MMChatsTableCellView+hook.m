@@ -180,6 +180,7 @@
 
 - (void)contextMenuClearEmptySession {
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
+    
     MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
     
     NSMutableArray *arrSession = sessionMgr.m_arrSession;
@@ -195,7 +196,9 @@
     
     while (emptyArrSession.count > 0) {
         [emptyArrSession enumerateObjectsUsingBlock:^(MMSessionInfo *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [sessionMgr deleteSessionWithoutSyncToServerWithUserName:obj.m_nsUserName];
+            if (obj.m_nsUserName.length > 0) {
+                [sessionMgr removeSessionOfUser:obj.m_nsUserName isDelMsg:NO];
+            }
             [emptyArrSession removeObject:obj];
         }];
     }
