@@ -20,6 +20,7 @@
 #import "YMMessageTool.h"
 #import "YMMessageModel.h"
 #import "YMUpdateManager.h"
+#import "YMThemeMgr.h"
 
 @implementation NSObject (WeChatHook)
 /*
@@ -85,8 +86,61 @@
     [self setup];
     
     tk_hookMethod(objc_getClass("LazyExtensionAgent"), @selector(ensureLazyListenerInitedForExtension: withSelector:), [self class], @selector(hook_ensureLazyListenerInitedForExtension:withSelector:));
+    
+    tk_hookMethod(objc_getClass("NSView"), @selector(addSubview:), [self class], @selector(hook_initWithFrame:));
+    
+     tk_hookMethod(objc_getClass("MMComposeInputViewController"), @selector(viewDidLoad), [self class], @selector(hook_ComposeInputViewControllerViewDidLoad));
+    
+     tk_hookMethod(objc_getClass("MMChatMessageViewController"), @selector(viewDidLoad), [self class], @selector(hook_ChatMessageViewControllerViewDidLoad));
+    
+    tk_hookMethod(objc_getClass("NSScrollView"), @selector(initWithFrame:), [self class], @selector(hook_scrollViewInitWithFrame:));
+    
+}
+//@interface MMMessageScrollView : NSView
+//- (void)startLoading;
+//@end
+
+- (instancetype)hook_scrollViewInitWithFrame:(NSRect)frameRect {
+    NSScrollView *view = (NSScrollView *)self;
+    [[YMThemeMgr shareInstance] changeTheme:view.contentView];
+    return [self hook_scrollViewInitWithFrame:frameRect];
 }
 
+- (void)hook_ChatMessageViewControllerViewDidLoad {
+    [self hook_ChatMessageViewControllerViewDidLoad];
+    MMChatMessageViewController *controller = (MMChatMessageViewController *)self;
+    NSView *view = controller.messageTableView;
+    [[YMThemeMgr shareInstance] changeTheme:view];
+    [[YMThemeMgr shareInstance] changeTheme:controller.view];
+}
+- (void)hook_ComposeInputViewControllerViewDidLoad {
+    [self hook_ComposeInputViewControllerViewDidLoad];
+    MMComposeInputViewController *controller = (MMComposeInputViewController *)self;
+    [[YMThemeMgr shareInstance] changeTheme:controller.view];
+}
+
+- (void)hook_initWithFrame:(NSView *)view {
+    [self hook_initWithFrame:view];
+    
+    if ([view isKindOfClass:[objc_getClass("NSButtonImageView") class]]) {
+        return;
+    }
+    
+    NSResponder *responder = view;
+    NSViewController *controller = nil;
+    while ((responder = [responder nextResponder])){
+        if ([responder isKindOfClass: [NSViewController class]]){
+           controller = (NSViewController *)responder;
+        }
+    }
+    //MMComposeInputViewController  MMChatMessageViewController
+    if ([controller isKindOfClass:[objc_getClass("MMMainViewController") class]]
+        || [controller isKindOfClass:[objc_getClass("MMChatMessageViewController") class]]
+        || [controller isKindOfClass:[objc_getClass("MMComposeInputViewController") class]]
+        || [view isKindOfClass:[objc_getClass("MMComposeTextView") class]]) {
+      [[YMThemeMgr shareInstance] changeTheme:view];
+    }
+}
 
 //主控制器的生命周期
 - (void)hook_mainViewControllerDidLoad {

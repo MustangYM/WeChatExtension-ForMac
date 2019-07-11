@@ -1,8 +1,8 @@
 //
-//  YMUpdateManager.h
+//  YMThemeMgr.h
 //  WeChatExtension
 //
-//  Created by MustangYM on 2019/5/10.
+//  Created by MustangYM on 2019/6/11.
 //  Copyright © 2019 MustangYM. All rights reserved.
 //
 
@@ -10,9 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YMUpdateManager : NSObject
-+ (id)shareInstance;
-- (void)checkWeChatExtensionUpdate;
+@interface YMThemeMgr : NSObject
++ (instancetype)shareInstance;
+- (void)changeTheme:(NSView *)view;
 @end
 
 NS_ASSUME_NONNULL_END

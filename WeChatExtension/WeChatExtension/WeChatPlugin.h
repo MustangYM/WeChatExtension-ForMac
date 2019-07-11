@@ -152,6 +152,16 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(retain, nonatomic) MMBrandChatsViewController *brandChatsViewController;
 @end
 
+@interface MMComposeInputViewController : NSViewController
+- (void)viewDidLoad;
+@end
+
+@interface MMMainViewController : NSViewController
+@property(retain, nonatomic) MMChatsViewController *chatsViewController;
+- (void)viewDidLoad;
+- (void)dealloc;
+@end
+
 @interface WeChat : NSObject
 + (id)sharedInstance;
 @property(nonatomic) MMChatsViewController *chatsViewController;
@@ -313,7 +323,18 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)userNotificationCenter:(id)arg1 didActivateNotification:(id)arg2;
 @end
 
+@interface MMMessageScrollView : NSView
+- (void)startLoading;
+- (void)viewDidMoveToWindow;
+@end
+
+@interface MMTableView : NSTableView
+
+@end
+
 @interface MMChatMessageViewController : NSViewController
+- (void)viewDidLoad;
+@property(nonatomic) __weak MMTableView *messageTableView;
 @property(retain, nonatomic) WCContactData *chatContact;
 - (void)onClickSession;
 @end
