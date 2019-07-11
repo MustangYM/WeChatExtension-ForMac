@@ -15,6 +15,7 @@
     }
     ContactStorage *contactStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("ContactStorage")];
     WCContactData *data = [contactStorage getContactCache:username];
+    
     return data.m_nsNickName;
 }
 

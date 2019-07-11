@@ -193,12 +193,10 @@
     
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
     WCContactData *msgContact = [sessionMgr getContact:revokeMsgData.fromUsrName];
-    
+
     NSString *msgFromNickName = @"";
     if ([revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
-//        NSArray *wxidAry = [revokeMsgData.msgContent componentsSeparatedByString:@":"];
-//        NSString *fromWxid = wxidAry.count > 1 ? wxidAry[0] : nil;
-        msgFromNickName = [YMIMContactsManager getGroupMemberNickName:msgContact.m_nsOwner];
+        msgFromNickName = [YMIMContactsManager getGroupMemberNickName:msgContact.m_nsOwner] ?: revokeMsgData.groupChatSenderDisplayName;
     } else {
         msgFromNickName = [YMIMContactsManager getWeChatNickName:revokeMsgData.fromUsrName];
     }

@@ -172,6 +172,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (id)GetAllFriendContacts;
 - (id)GetContactWithUserName:(id)arg1 updateIfNeeded:(BOOL)arg2;
 - (id)getContactCache:(id)arg1;
+- (id)GetContactsWithUserNames:(id)arg1;
 @end
 
 @interface GroupStorage : NSObject
