@@ -1,9 +1,9 @@
 //
 //  DefineConstant.h
-//  WeChatPlugin
+//  WeChatExtension
 //
-//  Created by TK on 2018/4/14.
-//  Copyright © 2018年 tk. All rights reserved.
+//  Created by WeChatExtension on 2018/4/14.
+//  Copyright © 2018年 WeChatExtension. All rights reserved.
 //
 
 #ifndef DefineConstant_h

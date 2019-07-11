@@ -1,22 +1,23 @@
 //
-//  TKMessageManager.m
-//  WeChatPlugin
+//  YMMessageManager.m
+//  WeChatExtension
 //
-//  Created by TK on 2018/4/23.
-//  Copyright © 2018年 tk. All rights reserved.
+//  Created by WeChatExtension on 2018/4/23.
+//  Copyright © 2018年 WeChatExtension. All rights reserved.
 //
 
-#import "TKMessageManager.h"
+#import "YMMessageManager.h"
 #import "WeChatPlugin.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "TKCacheManager.h"
-#import "YMDownloadMgr.h"
+#import "YMDownloadManager.h"
+#import "YMIMContactsManager.h"
 
-@interface TKMessageManager()
+@interface YMMessageManager()
 @property (nonatomic, strong) MessageService *service;
 @end
 
-@implementation TKMessageManager
+@implementation YMMessageManager
 
 + (instancetype)shareManager {
     static id manager = nil;
@@ -180,40 +181,57 @@
         return;
     }
     
+    if (![[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeSignal] && ![revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
+        return;
+    }
+    
+    if (![[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeChatRoom] && [revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
+        return;
+    }
+    
     MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
     
-    NSArray *pushMsgAry = revokeMsgData.msgPushContent.length > 0 ? [revokeMsgData.msgPushContent componentsSeparatedByString:@":"] : [revokeMsgData.msgContent componentsSeparatedByString:@":"];
-    NSString *msgFromNickName = pushMsgAry.count > 1 ? pushMsgAry[0] : revokeMsgData.fromUsrName;
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
     WCContactData *msgContact = [sessionMgr getContact:revokeMsgData.fromUsrName];
-    
-    NSArray *wxidAry = [revokeMsgData.msgContent componentsSeparatedByString:@":"];
-    NSString *fromWxid = wxidAry.count > 1 ? wxidAry[0] : nil;
-    ContactStorage *contactStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("ContactStorage")];
-//    WCContactData *chatMemContact = [contactStorage GetContactWithUserName:fromWxid updateIfNeeded:YES];
+
+    NSString *msgFromNickName = @"";
+    if ([revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
+        msgFromNickName = [YMIMContactsManager getGroupMemberNickName:msgContact.m_nsOwner] ?: revokeMsgData.groupChatSenderDisplayName;
+    } else {
+        msgFromNickName = [YMIMContactsManager getWeChatNickName:revokeMsgData.fromUsrName];
+    }
     
     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
     if (revokeMsgData.messageType == 1) {
-        if ([revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
-            NSArray *msgAry = [revokeMsgData.msgContent componentsSeparatedByString:@":"];
-            NSString *msgContent = msgAry.count > 1 ? msgAry[1] : revokeMsgData.msgContent;
-            [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"拦截到一条撤回消息\n%@\n%@:%@", msgContact.m_nsNickName, msgFromNickName, msgContent] atUserList:nil];
+        if (@available(macOS 10.10, *)) {
+            if ([revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
+                NSArray *msgAry = [revokeMsgData.msgContent componentsSeparatedByString:@":"];
+                NSString *msgContent = msgAry.count > 1 ? msgAry[1] : revokeMsgData.msgContent;
+                msgContent = [msgContent stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+                [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"--拦截到一条撤回消息--\n群名:%@\n撤回人:%@\n内容:%@", msgContact.m_nsNickName.length > 0 ? msgContact.m_nsNickName : @"群聊", msgFromNickName, msgContent] atUserList:nil];
+            } else {
+                [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"--拦截到一条撤回消息--\n撤回人:%@\n内容:%@", msgFromNickName,revokeMsgData.msgContent] atUserList:nil];
+            }
         } else {
-            [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"拦截到一条撤回消息\n%@:%@", msgFromNickName,revokeMsgData.msgContent] atUserList:nil];
+            // Fallback on earlier versions
         }
     } else if (revokeMsgData.messageType == 3) {
-        if ([revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
-            [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"拦截到一条撤回消息\n%@\n%@", msgContact.m_nsNickName, revokeMsgData.msgPushContent] atUserList:nil];
+        if (@available(macOS 10.10, *)) {
+            if ([revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
+                [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"--拦截到一条撤回消息--\n群名:%@\n%@:[图片]", msgContact.m_nsNickName.length > 0 ? msgContact.m_nsNickName : @"群聊", msgFromNickName] atUserList:nil];
+            } else {
+                [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"--拦截到一条撤回消息--\n%@:[图片]",msgFromNickName] atUserList:nil];
+            }
         } else {
-            [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"拦截到一条撤回消息\n%@",revokeMsgData.msgPushContent] atUserList:nil];
+            // Fallback on earlier versions
         }
         
         MMMessageCacheMgr *mgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMMessageCacheMgr")];
         
-        [[YMDownloadMgr new] downloadImageWithMsg:revokeMsgData];
+        [[YMDownloadManager new] downloadImageWithMsg:revokeMsgData];
         
         __weak __typeof (self) wself = self;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [mgr originalImageWithMessage:revokeMsgData completion:^(NSString *name, NSImage *image){
                 NSData *originalData = [image TIFFRepresentation];
                 NSData *thumData = [wself getCompressImageDataWithImg:image rate:0.07];

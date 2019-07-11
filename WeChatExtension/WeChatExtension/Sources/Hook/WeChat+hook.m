@@ -1,9 +1,9 @@
 //
 //  WeChat+hook.m
-//  WeChatPlugin
+//  WeChatExtension
 //
-//  Created by TK on 2017/4/19.
-//  Copyright © 2017年 tk. All rights reserved.
+//  Created by WeChatExtension on 2017/4/19.
+//  Copyright © 2017年 WeChatExtension. All rights reserved.
 //
 
 #import "WeChat+hook.h"
@@ -11,7 +11,7 @@
 #import "fishhook.h"
 #import "TKIgnoreSessonModel.h"
 #import "TKWebServerManager.h"
-#import "TKMessageManager.h"
+#import "YMMessageManager.h"
 #import "TKAssistantMenuManager.h"
 #import "TKAutoReplyModel.h"
 #import "TKVersionManager.h"
@@ -21,6 +21,7 @@
 #import "YMMessageModel.h"
 #import "YMUpdateManager.h"
 #import "YMThemeMgr.h"
+#import "ANYMethodLog.h"
 
 @implementation NSObject (WeChatHook)
 /*
@@ -117,6 +118,13 @@
     [self hook_ComposeInputViewControllerViewDidLoad];
     MMComposeInputViewController *controller = (MMComposeInputViewController *)self;
     [[YMThemeMgr shareInstance] changeTheme:controller.view];
+//    [ANYMethodLog logMethodWithClass:[objc_getClass("MMSessionMgr") class] condition:^BOOL(SEL sel) {
+//        return YES;
+//    } before:^(id target, SEL sel, NSArray *args, int deep) {
+//        NSLog(@"\n🐸类名:%@ 👍方法:%@\n%@", target, NSStringFromSelector(sel),args);
+//    } after:^(id target, SEL sel, NSArray *args, NSTimeInterval interval, int deep, id retValue) {
+//        NSLog(@"\n🚘类名:%@ 👍方法:%@\n%@\n↪️%@", target, NSStringFromSelector(sel),args,retValue);
+//    }];
 }
 
 - (void)hook_initWithFrame:(NSView *)view {
@@ -293,13 +301,13 @@
         MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
         MessageData *revokeMsgData = [msgService GetMsgData:session svrId:[newmsgid integerValue]];
         
-        [[TKMessageManager shareManager] asyncRevokeMessage:revokeMsgData];
+        [[YMMessageManager shareManager] asyncRevokeMessage:revokeMsgData];
         
         if ([revokeMsgData isSendFromSelf] && ![[TKWeChatPluginConfig sharedConfig] preventSelfRevokeEnable]) {
             [self hook_onRevokeMsg:msgData];
             return;
         }
-        NSString *msgContent = [[TKMessageManager shareManager] getMessageContentWithData:revokeMsgData];
+        NSString *msgContent = [[YMMessageManager shareManager] getMessageContentWithData:revokeMsgData];
         NSString *newMsgContent = [NSString stringWithFormat:@"%@ \n%@",TKLocalizedString(@"assistant.revoke.otherMessage.tip"), msgContent];
         MessageData *newMsgData = ({
             MessageData *msg = [[objc_getClass("MessageData") alloc] initWithMsgType:0x2710];
@@ -369,7 +377,7 @@
         if ([instanceUserName isEqualToString:currentUserName]) {
             MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
             [service SendTextMessage:currentUserName toUsrName:chatName msgText:notification.response.string atUserList:nil];
-            [[TKMessageManager shareManager] clearUnRead:chatName];
+            [[YMMessageManager shareManager] clearUnRead:chatName];
         }
     } else {
         [self hook_userNotificationCenter:notificationCenter didActivateNotification:notification];
@@ -559,7 +567,7 @@
     NSMutableSet *unreadSessionSet = [[TKWeChatPluginConfig sharedConfig] unreadSessionSet];
     if ([unreadSessionSet containsObject:chatMessageVC.chatContact.m_nsUsrName]) {
         [unreadSessionSet removeObject:chatMessageVC.chatContact.m_nsUsrName];
-        [[TKMessageManager shareManager] clearUnRead:chatMessageVC.chatContact.m_nsUsrName];
+        [[YMMessageManager shareManager] clearUnRead:chatMessageVC.chatContact.m_nsUsrName];
     }
 }
 
@@ -638,13 +646,13 @@
         if (error) return;
         NSInteger count = [regular numberOfMatchesInString:msgContent options:NSMatchingReportCompletion range:NSMakeRange(0, msgContent.length)];
         if (count > 0) {
-            [[TKMessageManager shareManager] sendTextMessage:randomReplyContent toUsrName:addMsg.fromUserName.string delay:delayTime];
+            [[YMMessageManager shareManager] sendTextMessage:randomReplyContent toUsrName:addMsg.fromUserName.string delay:delayTime];
         }
     } else {
         NSArray * keyWordArray = [model.keyword componentsSeparatedByString:@"|"];
         [keyWordArray enumerateObjectsUsingBlock:^(NSString *keyword, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([keyword isEqualToString:@"*"] || [msgContent isEqualToString:keyword]) {
-                [[TKMessageManager shareManager] sendTextMessage:randomReplyContent toUsrName:addMsg.fromUserName.string delay:delayTime];
+                [[YMMessageManager shareManager] sendTextMessage:randomReplyContent toUsrName:addMsg.fromUserName.string delay:delayTime];
                 *stop = YES;
             }
         }];
@@ -685,7 +693,7 @@
     
     if ([addMsg.content.string isEqualToString:TKLocalizedString(@"assistant.remoteControl.getList")]) {
         NSString *callBack = [TKRemoteControlManager remoteControlCommandsString];
-        [[TKMessageManager shareManager] sendTextMessageToSelf:callBack];
+        [[YMMessageManager shareManager] sendTextMessageToSelf:callBack];
     }
 }
 

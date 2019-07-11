@@ -1,6 +1,6 @@
 //
 //  YMMessageModel.m
-//  WeChatPlugin
+//  WeChatExtension
 //
 //  Created by MustangYM on 2019/1/23.
 //  Copyright © 2019 MustangYM. All rights reserved.

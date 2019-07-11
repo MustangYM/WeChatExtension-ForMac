@@ -1,9 +1,9 @@
 //
 //  TKWebServerManager.m
-//  WeChatPlugin
+//  WeChatExtension
 //
-//  Created by TK on 2018/3/18.
-//  Copyright © 2018年 tk. All rights reserved.
+//  Created by WeChatExtension on 2018/3/18.
+//  Copyright © 2018年 WeChatExtension. All rights reserved.
 //
 
 #import "TKWebServerManager.h"
@@ -11,7 +11,7 @@
 #import <GCDWebServer.h>
 #import <GCDWebServerDataResponse.h>
 #import <GCDWebServerURLEncodedFormRequest.h>
-#import "TKMessageManager.h"
+#import "YMMessageManager.h"
 #import "TKCacheManager.h"
 
 @interface TKWebServerManager ()
@@ -163,7 +163,7 @@ static int port=52700;
         if (userId) {
             NSMutableArray *chatLogList = [NSMutableArray array];
             
-            NSArray *msgDataList = [[TKMessageManager shareManager] getMsgListWithChatName:userId minMesLocalId:0 limitCnt:count];
+            NSArray *msgDataList = [[YMMessageManager shareManager] getMsgListWithChatName:userId minMesLocalId:0 limitCnt:count];
             [msgDataList enumerateObjectsUsingBlock:^(MessageData * _Nonnull msgData, NSUInteger idx, BOOL * _Nonnull stop) {
                 [chatLogList addObject:[weakSelf dictFromMessageData:msgData]];
             }];
@@ -251,17 +251,17 @@ static int port=52700;
                                           toUsrName:requestBody[@"userId"]
                                             msgText:requestBody[@"content"]
                                          atUserList:nil];
-                    [[TKMessageManager shareManager] clearUnRead:requestBody[@"userId"]];
+                    [[YMMessageManager shareManager] clearUnRead:requestBody[@"userId"]];
                     
                 } else if (content.length == 0 && requestBody[@"srvId"]) {
                     if (requestBody[@"srvId"]) {
                         NSInteger srvId = [requestBody[@"srvId"] integerValue];
                         if (srvId != 0) {
                             MessageData *msgData = [messageService GetMsgData:userId svrId:srvId];
-                            [[TKMessageManager shareManager] playVoiceWithMessageData:msgData];
+                            [[YMMessageManager shareManager] playVoiceWithMessageData:msgData];
                         }
                     }
-                    [[TKMessageManager shareManager] clearUnRead:userId];
+                    [[YMMessageManager shareManager] clearUnRead:userId];
                 }
             });
             return [GCDWebServerResponse responseWithStatusCode:200];
@@ -381,7 +381,7 @@ static int port=52700;
     MessageData *msgData = sessionInfo.m_packedInfo.m_msgData;
     
     NSString *title = [self getUserNameWithContactData:contact showOriginName:YES];
-    NSString *msgContent = [[TKMessageManager shareManager] getMessageContentWithData:msgData];
+    NSString *msgContent = [[YMMessageManager shareManager] getMessageContentWithData:msgData];
     NSString *imgPath = [[TKCacheManager shareManager] cacheAvatarWithContact:contact];
     
     NSString *wechatId = [contact getContactDisplayUsrName];
@@ -411,7 +411,7 @@ static int port=52700;
     }
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
     WCContactData *msgContact = [sessionMgr getContact:msgData.fromUsrName];
-    NSString *title = [[TKMessageManager shareManager] getMessageContentWithData:msgData];
+    NSString *title = [[YMMessageManager shareManager] getMessageContentWithData:msgData];
     
     NSString *url;
     long long voiceMessSvrId = 0;

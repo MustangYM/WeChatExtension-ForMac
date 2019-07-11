@@ -1,9 +1,9 @@
 //
 //  TKWeChatPluginConfig.m
-//  WeChatPlugin
+//  WeChatExtension
 //
-//  Created by TK on 2017/4/19.
-//  Copyright © 2017年 tk. All rights reserved.
+//  Created by WeChatExtension on 2017/4/19.
+//  Copyright © 2017年 WeChatExtension. All rights reserved.
 //
 
 #import "TKWeChatPluginConfig.h"
@@ -15,6 +15,8 @@
 static NSString * const kTKPreventRevokeEnableKey = @"kTKPreventRevokeEnableKey";
 static NSString * const kTKPreventSelfRevokeEnableKey = @"kTKPreventSelfRevokeEnableKey";
 static NSString * const kTKPreventAsyncRevokeKey = @"kTKPreventAsyncRevokeKey";
+static NSString * const KPreventAsyncRevokeSignal = @"KPreventAsyncRevokeSignal";
+static NSString * const KPreventAsyncRevokeChatRoom = @"KPreventAsyncRevokeChatRoom";
 static NSString * const kTKAutoReplyEnableKey = @"kTKAutoReplyEnableKey";
 static NSString * const kTKAutoAuthEnableKey = @"kTKAutoAuthEnableKey";
 static NSString * const kTKAutoLoginEnableKey = @"kTKAutoLoginEnableKey";
@@ -62,6 +64,8 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
         _checkUpdateWechatEnable = [[NSUserDefaults standardUserDefaults] boolForKey:kTKCheckUpdateWechatEnableKey];
         _systemBrowserEnable = [[NSUserDefaults standardUserDefaults] boolForKey:kTKSystemBrowserEnableKey];
         _preventAsyncRevokeToPhone = [[NSUserDefaults standardUserDefaults] boolForKey:kTKPreventAsyncRevokeKey];
+        _preventAsyncRevokeSignal = [[NSUserDefaults standardUserDefaults] boolForKey:KPreventAsyncRevokeSignal];
+        _preventAsyncRevokeChatRoom = [[NSUserDefaults standardUserDefaults] boolForKey:KPreventAsyncRevokeChatRoom];
     }
     return self;
 }
@@ -129,6 +133,18 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 - (void)setPreventAsyncRevokeToPhone:(BOOL)preventAsyncRevokeToPhone {
     _preventAsyncRevokeToPhone = preventAsyncRevokeToPhone;
     [[NSUserDefaults standardUserDefaults] setBool:_preventAsyncRevokeToPhone forKey:kTKPreventAsyncRevokeKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)setPreventAsyncRevokeSignal:(BOOL)preventAsyncRevokeSignal {
+    _preventAsyncRevokeSignal = preventAsyncRevokeSignal;
+    [[NSUserDefaults standardUserDefaults] setBool:_preventAsyncRevokeSignal forKey:KPreventAsyncRevokeSignal];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)setPreventAsyncRevokeChatRoom:(BOOL)preventAsyncRevokeChatRoom {
+    _preventAsyncRevokeChatRoom = preventAsyncRevokeChatRoom;
+    [[NSUserDefaults standardUserDefaults] setBool:_preventAsyncRevokeChatRoom forKey:KPreventAsyncRevokeChatRoom];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

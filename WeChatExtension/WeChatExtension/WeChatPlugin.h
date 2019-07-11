@@ -1,9 +1,9 @@
 //
-//  WeChatPlugin.h
-//  WeChatPlugin
+//  WeChatExtension.h
+//  WeChatExtension
 //
-//  Created by TK on 2017/4/19.
-//  Copyright © 2017年 tk. All rights reserved.
+//  Created by WeChatExtension on 2017/4/19.
+//  Copyright © 2017年 WeChatExtension. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
@@ -181,6 +181,8 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (id)GetAllFavContacts;
 - (id)GetAllFriendContacts;
 - (id)GetContactWithUserName:(id)arg1 updateIfNeeded:(BOOL)arg2;
+- (id)getContactCache:(id)arg1;
+- (id)GetContactsWithUserNames:(id)arg1;
 @end
 
 @interface GroupStorage : NSObject
@@ -202,6 +204,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(retain, nonatomic) NSString *m_nsAliasName;
 @property(retain, nonatomic) NSString *avatarCacheKey;
 @property(retain, nonatomic) NSString *msgFromNickName;
+@property(retain, nonatomic) NSString *m_nsOwner;
 @property(nonatomic) unsigned int m_uiSex;
 @property(nonatomic) BOOL m_isShowRedDot;
 - (BOOL)isBrandContact;
@@ -219,6 +222,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(retain, nonatomic) NSString *toUsrName;
 @property(retain, nonatomic) NSString *msgContent;
 @property(retain, nonatomic) NSString *msgPushContent;
+@property(retain, nonatomic) NSString *msgRealChatUsr;
 @property(retain, nonatomic) SendImageInfo *imageInfo;
 @property(retain, nonatomic) id extendInfoWithMsgType;
 @property(nonatomic) int messageType;
@@ -305,12 +309,17 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)unmuteSessionByUserName:(id)arg1 syncToServer:(BOOL)arg2;
 - (void)untopSessionByUserName:(id)arg1 syncToServer:(BOOL)arg2;
 - (void)deleteSessionWithoutSyncToServerWithUserName:(id)arg1;
+- (void)storageDeleteSessionInfo:(id)arg1;
 - (void)changeSessionUnreadCountWithUserName:(id)arg1 to:(unsigned int)arg2;
 - (void)removeSessionOfUser:(id)arg1 isDelMsg:(BOOL)arg2;
 - (void)sortSessions;
 - (void)FFDataSvrMgrSvrFavZZ;
 - (id)getContact:(id)arg1;
 - (void)onEnterSession:(id)arg1;
+@end
+
+@interface BrandSessionMgr : NSObject
+- (void)deleteSessionOfUserName:(id)arg1 isDelMsg:(BOOL)arg2;
 @end
 
 @interface LogoutCGI : NSTableCellView

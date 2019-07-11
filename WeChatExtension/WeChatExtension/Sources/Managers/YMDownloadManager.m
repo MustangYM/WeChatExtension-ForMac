@@ -1,21 +1,21 @@
 //
-//  YMDownloadMgr.m
+//  YMDownloadManager.m
 //
 //  Created by MustangYM on 2019/2/20.
 //  Copyright © 2019 . All rights reserved.
 //
 
-#import "YMDownloadMgr.h"
+#import "YMDownloadManager.h"
 #import "XMLReader.h"
 #import <CommonCrypto/CommonDigest.h>
 
-@interface YMDownloadMgr ()
+@interface YMDownloadManager ()
 @property (nonatomic,strong)NSURLSession *session;
 @property (nonatomic,strong)NSData *resumeData;
 @property (nonatomic,strong)NSMutableDictionary *taskDict;
 @end
 
-@implementation YMDownloadMgr
+@implementation YMDownloadManager
 - (void)downloadImageWithMsg:(MessageData *)msg{
     if(msg.messageType != 3)return;
     MMCDNDownloadMgr *cdnDownloadService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMCDNDownloadMgr")];
