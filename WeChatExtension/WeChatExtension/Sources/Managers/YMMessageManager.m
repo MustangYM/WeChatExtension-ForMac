@@ -196,7 +196,7 @@
 
     NSString *msgFromNickName = @"";
     if ([revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
-        msgFromNickName = [YMIMContactsManager getGroupMemberNickName:msgContact.m_nsOwner] ?: revokeMsgData.groupChatSenderDisplayName;
+        msgFromNickName = revokeMsgData.groupChatSenderDisplayName.length > 0 ? revokeMsgData.groupChatSenderDisplayName : [YMIMContactsManager getGroupMemberNickName:msgContact.m_nsOwner];
     } else {
         msgFromNickName = [YMIMContactsManager getWeChatNickName:revokeMsgData.fromUsrName];
     }
@@ -218,7 +218,7 @@
     } else if (revokeMsgData.messageType == 3) {
         if (@available(macOS 10.10, *)) {
             if ([revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
-                [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"--拦截到一条撤回消息--\n群名:%@\n%@:[图片]", msgContact.m_nsNickName.length > 0 ? msgContact.m_nsNickName : @"群聊", msgFromNickName] atUserList:nil];
+                [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"--拦截到一条撤回消息--\n群名:%@\n撤回人:%@\n内容:[图片]", msgContact.m_nsNickName.length > 0 ? msgContact.m_nsNickName : @"群聊", msgFromNickName] atUserList:nil];
             } else {
                 [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"--拦截到一条撤回消息--\n%@:[图片]",msgFromNickName] atUserList:nil];
             }
