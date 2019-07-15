@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleIdentifiergs</key>
-	<string>93DFCAF3D923EC47EDB8580667473987</string>
 	<key>MyLock</key>
 	<string>1</string>
 	<key>CFBundleDevelopmentRegion</key>
