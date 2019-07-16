@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14835.7" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14835.7"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,7 +18,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="670" height="520"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="670" height="520"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -27,8 +28,8 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
-                            <tabViewItem label="Macbook" identifier="0" id="sNP-nR-n56">
-                                <view key="view" id="IAk-5N-FY9">
+                            <tabViewItem label="Mac 控制" identifier="0" id="sNP-nR-n56">
+                                <view key="view" ambiguous="YES" id="IAk-5N-FY9">
                                     <rect key="frame" x="10" y="33" width="610" height="399"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -36,7 +37,7 @@
                                             <rect key="frame" x="115" y="17" width="164" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="小助手已支持語音遠程控制" id="JDf-Rp-jEj">
-                                                <font key="font" size="13" name=".PingFangSC-Medium"/>
+                                                <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -45,7 +46,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="APP控制" identifier="1" id="kWv-JR-wGj">
-                                <view key="view" ambiguous="YES" id="iVA-JL-GJu">
+                                <view key="view" id="iVA-JL-GJu">
                                     <rect key="frame" x="10" y="33" width="610" height="399"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
@@ -59,7 +60,7 @@
                                             <rect key="frame" x="17" y="17" width="559" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="若想使用該功能，請於“系統偏好設置 ==&gt; 安全性與隱私 ==&gt; 隱私 ==&gt; 輔助功能”中添加微信" id="qpH-CW-UVl">
-                                                <font key="font" size="13" name=".PingFangSC-Medium"/>
+                                                <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -91,7 +92,7 @@
                         <rect key="frame" x="82" y="20" width="495" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="為避免誤觸，遠程控制僅在向自己發送指令有效，他人發送或者發送給他人均無效。" id="EiN-zX-6I8">
-                            <font key="font" size="13" name=".PingFangSC-Medium"/>
+                            <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -101,6 +102,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
+            <point key="canvasLocation" x="140" y="147"/>
         </window>
     </objects>
 </document>

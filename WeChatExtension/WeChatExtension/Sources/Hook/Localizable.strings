@@ -75,8 +75,8 @@
 "Assistant.Directive.KillFirefox" = "退出 Firefox";
 "Assistant.Directive.KillAll" = "退出所有程序";
 "Assistant.Directive.Toggle" = "播放/暂停";
-"Assistant.Directive.Next" = "下一首";
-"Assistant.Directive.Previous" = "上一首";
+"Assistant.Directive.Next" = "下一曲";
+"Assistant.Directive.Previous" = "上一曲";
 "Assistant.Directive.VolumeUp" = "增大音量";
 "Assistant.Directive.VolumeDown" = "减小音量";
 "Assistant.Directive.LikeChange" = "喜欢/取消喜欢";
