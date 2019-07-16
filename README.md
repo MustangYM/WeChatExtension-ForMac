@@ -4,19 +4,19 @@
 </p>
 
 ## 声明
-> 适用于Mac版的WeChat拓展功能, 由于之前大家常用的WeChatPlugin在默认分支切换成remove删库了, 坊间猜测原因, 众说纷纭, 我们不去深究了.
-本着开源的精神, 我决定继续维护这个项目, 对[tk](https://github.com/TKkk-iOSer)在此表示感谢!
+> 适用于Mac版的WeChat拓展功能，由于之前大家常用的WeChatPlugin在默认分支切换成remove删库了，坊间猜测原因，众说纷纭，我们不去深究了。
+本着开源的精神，我决定继续维护这个项目，对[tk](https://github.com/TKkk-iOSer)在此表示感谢！
 
 ## 最新支持版本
 >  mac版微信2.3.25
 
 ## 手机端也能收到被撤回的消息
-1. > 如果Mac拦截到A发送来的消息, 手机也会同步收到的这条已经拦截的消息(自己发送给自己). 目前只支持同步文字消息与图片消息, 其他类型也可以做, 但意义不大.
+1. > 如果Mac拦截到A发送来的消息，手机也会同步收到的这条已经拦截的消息(自己发送给自己)。目前只支持同步文字消息与图片消息，其他类型也可以做，但意义不大。
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/revokeAsync.jpg" width="800px"/>
 </p>
 
-2. > 可以对同步的消息进行筛选, 以免群消息打扰
+2. > 可以对同步的消息进行筛选，以免群消息打扰
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/WX20190625-111206%402x.png" width="600px"/>
 </p>
@@ -32,9 +32,9 @@
 </p>
 
 ## 安装方法
-1. > 确保你的Mac上已经安装了微信App.
+1. > 确保你的Mac上已经安装了微信App。
 
-2. > 下载本项目到你的电脑里, 并双击打开.
+2. > 下载本项目到你的电脑里，并进行解压。或者你也可以点击[这里](https://github.com/MustangYM/WeChatExtension-ForMac/archive/master.zip)进行下载。
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/WX20190619-112238.png" width="800px"/>
 </p>
@@ -49,16 +49,16 @@
 <img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/WX20190619-113911%402x.png" width="800px"/>
 </p>
 
-2. > 在Rely/Install.sh执行这个安装脚本
+2. > 打开Rely文件夹，在终端里执行Install.sh这个安装脚本
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/QQ20190425-155120%402x.png" width="800px"/>
 </p>
 
-3. > 重启微信, 安装完成.
+3. > 重启微信，安装完成
 
 ## 怎么卸载?
 1. > 在Rely文件夹中找到Uninstall.sh
-2. > 拖到终端工具中, 回车执行即可
+2. > 拖到终端工具中，回车执行即可
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/WX20190625-102808%402x.png" width="800px"/>
 </p>
