@@ -9,7 +9,7 @@
 #import "MMChatsTableCellView+hook.h"
 #import "WeChatPlugin.h"
 #import "TKIgnoreSessonModel.h"
-#import "TKMessageManager.h"
+#import "YMMessageManager.h"
 
 @implementation NSObject (MMChatsTableCellViewHook)
 
@@ -173,13 +173,14 @@
 
     [arrSession enumerateObjectsUsingBlock:^(MMSessionInfo *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [[TKMessageManager shareManager] clearUnRead:obj.m_nsUserName];
+            [[YMMessageManager shareManager] clearUnRead:obj.m_nsUserName];
         });
     }];
 }
 
 - (void)contextMenuClearEmptySession {
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
+    
     MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
     
     NSMutableArray *arrSession = sessionMgr.m_arrSession;
@@ -195,7 +196,13 @@
     
     while (emptyArrSession.count > 0) {
         [emptyArrSession enumerateObjectsUsingBlock:^(MMSessionInfo *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [sessionMgr deleteSessionWithoutSyncToServerWithUserName:obj.m_nsUserName];
+            if (obj.m_nsUserName.length > 0) {
+                if (LargerOrEqualVersion(@"2.3.25")) {
+                    [sessionMgr removeSessionOfUser:obj.m_nsUserName isDelMsg:NO];
+                } else {
+                    [sessionMgr deleteSessionWithoutSyncToServerWithUserName:obj.m_nsUserName];
+                }
+            }
             [emptyArrSession removeObject:obj];
         }];
     }

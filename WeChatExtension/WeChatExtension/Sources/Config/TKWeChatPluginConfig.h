@@ -13,7 +13,9 @@
 
 @property (nonatomic, assign) BOOL preventRevokeEnable;                 /**<    是否开启防撤回    */
 @property (nonatomic, assign) BOOL preventSelfRevokeEnable;             /**<    是否防撤回自己    */
-@property(nonatomic, assign)  BOOL preventAsyncRevokeToPhone;           /**<    是否将防撤回同步到手机    */
+@property (nonatomic, assign)  BOOL preventAsyncRevokeToPhone;           /**<    是否将防撤回同步到手机    */
+@property (nonatomic, assign) BOOL preventAsyncRevokeSignal;             /**<    只同步单聊    */
+@property (nonatomic, assign) BOOL preventAsyncRevokeChatRoom;           /**<    只同步群聊    */
 @property (nonatomic, assign) BOOL autoReplyEnable;                     /**<    是否开启自动回复  */
 @property (nonatomic, assign) BOOL autoAuthEnable;                      /**<    是否免认证登录    */
 @property (nonatomic, assign) BOOL autoLoginEnable;                     /**<    是否自动登录      */

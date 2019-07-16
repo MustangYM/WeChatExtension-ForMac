@@ -11,7 +11,7 @@
 #import "fishhook.h"
 #import "TKIgnoreSessonModel.h"
 #import "TKWebServerManager.h"
-#import "TKMessageManager.h"
+#import "YMMessageManager.h"
 #import "TKAssistantMenuManager.h"
 #import "TKAutoReplyModel.h"
 #import "TKVersionManager.h"
@@ -20,6 +20,8 @@
 #import "YMMessageTool.h"
 #import "YMMessageModel.h"
 #import "YMUpdateManager.h"
+#import "YMThemeMgr.h"
+#import "ANYMethodLog.h"
 
 @implementation NSObject (WeChatHook)
 /*
@@ -85,8 +87,68 @@
     [self setup];
     
     tk_hookMethod(objc_getClass("LazyExtensionAgent"), @selector(ensureLazyListenerInitedForExtension: withSelector:), [self class], @selector(hook_ensureLazyListenerInitedForExtension:withSelector:));
+    
+    tk_hookMethod(objc_getClass("NSView"), @selector(addSubview:), [self class], @selector(hook_initWithFrame:));
+    
+     tk_hookMethod(objc_getClass("MMComposeInputViewController"), @selector(viewDidLoad), [self class], @selector(hook_ComposeInputViewControllerViewDidLoad));
+    
+     tk_hookMethod(objc_getClass("MMChatMessageViewController"), @selector(viewDidLoad), [self class], @selector(hook_ChatMessageViewControllerViewDidLoad));
+    
+    tk_hookMethod(objc_getClass("NSScrollView"), @selector(initWithFrame:), [self class], @selector(hook_scrollViewInitWithFrame:));
+    
+}
+//@interface MMMessageScrollView : NSView
+//- (void)startLoading;
+//@end
+
+- (instancetype)hook_scrollViewInitWithFrame:(NSRect)frameRect {
+    NSScrollView *view = (NSScrollView *)self;
+    [[YMThemeMgr shareInstance] changeTheme:view.contentView];
+    return [self hook_scrollViewInitWithFrame:frameRect];
 }
 
+- (void)hook_ChatMessageViewControllerViewDidLoad {
+    [self hook_ChatMessageViewControllerViewDidLoad];
+    MMChatMessageViewController *controller = (MMChatMessageViewController *)self;
+    NSView *view = controller.messageTableView;
+    [[YMThemeMgr shareInstance] changeTheme:view];
+    [[YMThemeMgr shareInstance] changeTheme:controller.view];
+}
+- (void)hook_ComposeInputViewControllerViewDidLoad {
+    [self hook_ComposeInputViewControllerViewDidLoad];
+    MMComposeInputViewController *controller = (MMComposeInputViewController *)self;
+    [[YMThemeMgr shareInstance] changeTheme:controller.view];
+//    [ANYMethodLog logMethodWithClass:[objc_getClass("MMSessionMgr") class] condition:^BOOL(SEL sel) {
+//        return YES;
+//    } before:^(id target, SEL sel, NSArray *args, int deep) {
+//        NSLog(@"\n🐸类名:%@ 👍方法:%@\n%@", target, NSStringFromSelector(sel),args);
+//    } after:^(id target, SEL sel, NSArray *args, NSTimeInterval interval, int deep, id retValue) {
+//        NSLog(@"\n🚘类名:%@ 👍方法:%@\n%@\n↪️%@", target, NSStringFromSelector(sel),args,retValue);
+//    }];
+}
+
+- (void)hook_initWithFrame:(NSView *)view {
+    [self hook_initWithFrame:view];
+    
+    if ([view isKindOfClass:[objc_getClass("NSButtonImageView") class]]) {
+        return;
+    }
+    
+    NSResponder *responder = view;
+    NSViewController *controller = nil;
+    while ((responder = [responder nextResponder])){
+        if ([responder isKindOfClass: [NSViewController class]]){
+           controller = (NSViewController *)responder;
+        }
+    }
+    //MMComposeInputViewController  MMChatMessageViewController
+    if ([controller isKindOfClass:[objc_getClass("MMMainViewController") class]]
+        || [controller isKindOfClass:[objc_getClass("MMChatMessageViewController") class]]
+        || [controller isKindOfClass:[objc_getClass("MMComposeInputViewController") class]]
+        || [view isKindOfClass:[objc_getClass("MMComposeTextView") class]]) {
+      [[YMThemeMgr shareInstance] changeTheme:view];
+    }
+}
 
 //主控制器的生命周期
 - (void)hook_mainViewControllerDidLoad {
@@ -239,13 +301,13 @@
         MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
         MessageData *revokeMsgData = [msgService GetMsgData:session svrId:[newmsgid integerValue]];
         
-        [[TKMessageManager shareManager] asyncRevokeMessage:revokeMsgData];
+        [[YMMessageManager shareManager] asyncRevokeMessage:revokeMsgData];
         
         if ([revokeMsgData isSendFromSelf] && ![[TKWeChatPluginConfig sharedConfig] preventSelfRevokeEnable]) {
             [self hook_onRevokeMsg:msgData];
             return;
         }
-        NSString *msgContent = [[TKMessageManager shareManager] getMessageContentWithData:revokeMsgData];
+        NSString *msgContent = [[YMMessageManager shareManager] getMessageContentWithData:revokeMsgData];
         NSString *newMsgContent = [NSString stringWithFormat:@"%@ \n%@",TKLocalizedString(@"assistant.revoke.otherMessage.tip"), msgContent];
         MessageData *newMsgData = ({
             MessageData *msg = [[objc_getClass("MessageData") alloc] initWithMsgType:0x2710];
@@ -315,7 +377,7 @@
         if ([instanceUserName isEqualToString:currentUserName]) {
             MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
             [service SendTextMessage:currentUserName toUsrName:chatName msgText:notification.response.string atUserList:nil];
-            [[TKMessageManager shareManager] clearUnRead:chatName];
+            [[YMMessageManager shareManager] clearUnRead:chatName];
         }
     } else {
         [self hook_userNotificationCenter:notificationCenter didActivateNotification:notification];
@@ -505,7 +567,7 @@
     NSMutableSet *unreadSessionSet = [[TKWeChatPluginConfig sharedConfig] unreadSessionSet];
     if ([unreadSessionSet containsObject:chatMessageVC.chatContact.m_nsUsrName]) {
         [unreadSessionSet removeObject:chatMessageVC.chatContact.m_nsUsrName];
-        [[TKMessageManager shareManager] clearUnRead:chatMessageVC.chatContact.m_nsUsrName];
+        [[YMMessageManager shareManager] clearUnRead:chatMessageVC.chatContact.m_nsUsrName];
     }
 }
 
@@ -584,13 +646,13 @@
         if (error) return;
         NSInteger count = [regular numberOfMatchesInString:msgContent options:NSMatchingReportCompletion range:NSMakeRange(0, msgContent.length)];
         if (count > 0) {
-            [[TKMessageManager shareManager] sendTextMessage:randomReplyContent toUsrName:addMsg.fromUserName.string delay:delayTime];
+            [[YMMessageManager shareManager] sendTextMessage:randomReplyContent toUsrName:addMsg.fromUserName.string delay:delayTime];
         }
     } else {
         NSArray * keyWordArray = [model.keyword componentsSeparatedByString:@"|"];
         [keyWordArray enumerateObjectsUsingBlock:^(NSString *keyword, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([keyword isEqualToString:@"*"] || [msgContent isEqualToString:keyword]) {
-                [[TKMessageManager shareManager] sendTextMessage:randomReplyContent toUsrName:addMsg.fromUserName.string delay:delayTime];
+                [[YMMessageManager shareManager] sendTextMessage:randomReplyContent toUsrName:addMsg.fromUserName.string delay:delayTime];
                 *stop = YES;
             }
         }];
@@ -631,7 +693,7 @@
     
     if ([addMsg.content.string isEqualToString:TKLocalizedString(@"assistant.remoteControl.getList")]) {
         NSString *callBack = [TKRemoteControlManager remoteControlCommandsString];
-        [[TKMessageManager shareManager] sendTextMessageToSelf:callBack];
+        [[YMMessageManager shareManager] sendTextMessageToSelf:callBack];
     }
 }
 
