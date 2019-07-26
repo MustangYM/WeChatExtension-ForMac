@@ -31,6 +31,12 @@
 <img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/revoke.gif" width="800px"/>
 </p>
 
+## 屏蔽更新
+勾选"禁止更新"后, 微信检测更新的逻辑会被屏蔽掉, 包括手动"检测更新"的按钮. 取消勾选"禁止更新"后并重启微信, 则恢复原有更新检测逻辑
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/WX20190726-183915%402x.png" width="800px"/>
+</p>
+
 ## 安装方法
 1. > 确保你的Mac上已经安装了微信App.
 
