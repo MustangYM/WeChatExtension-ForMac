@@ -118,7 +118,7 @@
     [self hook_ComposeInputViewControllerViewDidLoad];
     MMComposeInputViewController *controller = (MMComposeInputViewController *)self;
     [[YMThemeMgr shareInstance] changeTheme:controller.view];
-//    [ANYMethodLog logMethodWithClass:[objc_getClass("MMSessionMgr") class] condition:^BOOL(SEL sel) {
+//    [ANYMethodLog logMethodWithClass:[objc_getClass("MMUpdateMgr") class] condition:^BOOL(SEL sel) {
 //        return YES;
 //    } before:^(id target, SEL sel, NSArray *args, int deep) {
 //        NSLog(@"\n🐸类名:%@ 👍方法:%@\n%@", target, NSStringFromSelector(sel),args);
@@ -514,11 +514,18 @@
     if ([NSObject hook_HasWechatInstance]) {
         wechat.hasAuthOK = YES;
     }
-    if ([wechat respondsToSelector:@selector(checkForUpdatesInBackground)]) {
-        //      去除刚启动微信更新弹窗提醒
+    
+    if (LargerOrEqualVersion(@"2.3.24")) {
+        tk_hookMethod(objc_getClass("WeChat"), @selector(setupCheckUpdateIfNeeded), [self class], @selector(hook_checkForUpdatesInBackground));
 
-        LargerOrEqualVersion(@"2.3.24") ? tk_hookMethod(objc_getClass("MMUpdateMgr"), @selector(checkForUpdatesInBackground), [self class], @selector(hook_checkForUpdatesInBackground)) : tk_hookMethod(objc_getClass("WeChat"), @selector(checkForUpdatesInBackground), [self class], @selector(hook_checkForUpdatesInBackground));
+        tk_hookMethod(objc_getClass("MMUpdateMgr"), @selector(sparkleUpdater), [self class], @selector(hook_sparkleUpdater));
+    } else {
+        if ([wechat respondsToSelector:@selector(checkForUpdatesInBackground)]) {
+            //      去除刚启动微信更新弹窗提醒
+            tk_hookMethod(objc_getClass("WeChat"), @selector(checkForUpdatesInBackground), [self class], @selector(hook_checkForUpdatesInBackground));
+        }
     }
+    
     
     [[TKAssistantMenuManager shareManager] initAssistantMenuItems];
     [self hook_applicationDidFinishLaunching:arg1];
@@ -537,6 +544,13 @@
     if ([[TKWeChatPluginConfig sharedConfig] checkUpdateWechatEnable]) {
         [self hook_checkForUpdatesInBackground];
     }
+}
+
+- (id)hook_sparkleUpdater {
+    if (![[TKWeChatPluginConfig sharedConfig] checkUpdateWechatEnable]) {
+        return nil;
+    }
+    return [self hook_sparkleUpdater];
 }
 
 //  是否使用微信浏览器

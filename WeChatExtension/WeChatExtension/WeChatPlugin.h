@@ -172,6 +172,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)_clearAllUnreadMessages:(id)arg1;
 - (void)onAuthOK:(BOOL)arg1;
 - (void)checkForUpdatesInBackground;
+- (void)setupCheckUpdateIfNeeded;
 @end
 
 @interface ContactStorage : NSObject
@@ -596,6 +597,8 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 
 @interface MMUpdateMgr : NSObject
 - (void)checkForUpdatesInBackground;
+- (void)checkForUpdates:(id)arg1;
+- (id)sparkleUpdater;
 @end
 
 @interface WebViewDataItem : NSObject
