@@ -315,6 +315,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)sortSessions;
 - (void)FFDataSvrMgrSvrFavZZ;
 - (id)getContact:(id)arg1;
+- (id)getSessionContact:(id)arg1;
 - (void)onEnterSession:(id)arg1;
 @end
 

@@ -192,8 +192,14 @@
     MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
     
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
-    WCContactData *msgContact = [sessionMgr getContact:revokeMsgData.fromUsrName];
-
+    
+    WCContactData *msgContact = nil;
+    if (LargerOrEqualVersion(@"2.3.26")) {
+        msgContact = [sessionMgr getSessionContact:revokeMsgData.fromUsrName];
+    } else {
+        msgContact = [sessionMgr getContact:revokeMsgData.fromUsrName];
+    }
+    
     NSString *msgFromNickName = @"";
     if ([revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
         msgFromNickName = revokeMsgData.groupChatSenderDisplayName.length > 0 ? revokeMsgData.groupChatSenderDisplayName : [YMIMContactsManager getGroupMemberNickName:msgContact.m_nsOwner];
