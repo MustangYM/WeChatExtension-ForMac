@@ -487,6 +487,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 + (id)defaultHandler;
 - (void)startGetA8KeyWithURL:(id)arg1;
 - (BOOL)openURLWithDefault:(id)arg1;
+- (void)openURLWithDefault:(id)arg1 useA8Key:(BOOL)arg2;
 + (BOOL)containsHTTPString:(id)arg1;
 @end
 
