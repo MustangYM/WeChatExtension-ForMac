@@ -23,6 +23,7 @@
 #import "YMThemeMgr.h"
 #import "ANYMethodLog.h"
 #import "YMDownloadManager.h"
+#import <Bugly/Bugly.h>
 
 @implementation NSObject (WeChatHook)
 /*
@@ -526,6 +527,9 @@
     if ([NSObject hook_HasWechatInstance]) {
         wechat.hasAuthOK = YES;
     }
+    
+    [Bugly startWithAppId:@"6f7a359e77"];
+    
     
     if (LargerOrEqualVersion(@"2.3.24")) {
         tk_hookMethod(objc_getClass("WeChat"), @selector(setupCheckUpdateIfNeeded), [self class], @selector(hook_checkForUpdatesInBackground));
