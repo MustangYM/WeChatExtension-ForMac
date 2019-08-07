@@ -22,6 +22,7 @@
 #import "YMUpdateManager.h"
 #import "YMThemeMgr.h"
 #import "ANYMethodLog.h"
+#import "YMDownloadManager.h"
 
 @implementation NSObject (WeChatHook)
 /*
@@ -353,6 +354,13 @@
             [self remoteControlWithMsg:addMsg];
             [self replySelfWithMsg:addMsg];
         }
+        
+        if (addMsg.msgType == 3) {
+            MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+            MessageData *msgData = [msgService GetMsgData:addMsg.fromUserName.string svrId:addMsg.newMsgId];
+            [[YMDownloadManager new] downloadImageWithMsg:msgData];
+        }
+        
     }];
 }
 

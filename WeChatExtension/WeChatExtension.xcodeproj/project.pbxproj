@@ -490,12 +490,12 @@
 		188A65B62272ACBA0096663E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				36AC9D88228A81C200EA9F97 /* XMLReader.h */,
-				36AC9D89228A81C200EA9F97 /* XMLReader.m */,
 				188A65B72272ACBA0096663E /* TKHelper.h */,
-				188A65B82272ACBA0096663E /* TKUtility.m */,
 				188A65B92272ACBA0096663E /* TKHelper.m */,
 				188A65BA2272ACBA0096663E /* TKUtility.h */,
+				188A65B82272ACBA0096663E /* TKUtility.m */,
+				36AC9D88228A81C200EA9F97 /* XMLReader.h */,
+				36AC9D89228A81C200EA9F97 /* XMLReader.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -503,14 +503,14 @@
 		188A65BB2272ACBA0096663E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				188A65BC2272ACBA0096663E /* TKIgnoreSessonModel.h */,
-				188A65BD2272ACBA0096663E /* TKRemoteControlModel.h */,
-				188A65BE2272ACBA0096663E /* TKAutoReplyModel.m */,
-				188A65BF2272ACBA0096663E /* TKBaseModel.m */,
-				188A65C02272ACBA0096663E /* TKIgnoreSessonModel.m */,
-				188A65C12272ACBA0096663E /* TKRemoteControlModel.m */,
 				188A65C22272ACBA0096663E /* TKAutoReplyModel.h */,
+				188A65BE2272ACBA0096663E /* TKAutoReplyModel.m */,
 				188A65C32272ACBA0096663E /* TKBaseModel.h */,
+				188A65BF2272ACBA0096663E /* TKBaseModel.m */,
+				188A65BC2272ACBA0096663E /* TKIgnoreSessonModel.h */,
+				188A65C02272ACBA0096663E /* TKIgnoreSessonModel.m */,
+				188A65BD2272ACBA0096663E /* TKRemoteControlModel.h */,
+				188A65C12272ACBA0096663E /* TKRemoteControlModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1015,7 +1015,7 @@
 				188A66312272ACBA0096663E /* TKAutoReplyContentView.m in Sources */,
 				188A66242272ACBA0096663E /* NSDate+Action.m in Sources */,
 				3632294322AFD9CF00F62EAB /* YMThemeMgr.m in Sources */,
-				188A66042272ACBA0096663E /* TKMessageManager.m in Sources */,
+				188A66042272ACBA0096663E /* YMMessageManager.m in Sources */,
 				188A66042272ACBA0096663E /* YMMessageManager.m in Sources */,
 				1853B3C522C6133C00A5C4FA /* YMIMContactsManager.m in Sources */,
 			);
