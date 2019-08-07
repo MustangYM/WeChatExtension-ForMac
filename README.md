@@ -44,7 +44,8 @@
   <br></br><sub><b>lmk123</b></sub>
   
 </td></tr></table>
- 感谢[lmk123](https://github.com/lmk123)为此项目开发的懒癌安装[Oh My WeChat](https://github.com/lmk123/oh-my-wechat)
+
+感谢 [lmk123](https://github.com/lmk123)为此项目开发的懒癌安装 [Oh My WeChat](https://github.com/lmk123/oh-my-wechat)
 
 打开`应用程序-实用工具-Terminal(终端)`，执行下面的命令安装 [Oh My WeChat](https://github.com/lmk123/oh-my-wechat)：
 
