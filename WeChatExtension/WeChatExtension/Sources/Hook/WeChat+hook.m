@@ -23,7 +23,7 @@
 #import "YMThemeMgr.h"
 #import "ANYMethodLog.h"
 #import "YMDownloadManager.h"
-#import <Bugly/Bugly.h>
+
 
 @implementation NSObject (WeChatHook)
 /*
@@ -528,7 +528,13 @@
         wechat.hasAuthOK = YES;
     }
     
-    [Bugly startWithAppId:@"6f7a359e77"];
+//    [Bugly startWithAppId:@"6f7a359e77"];
+//    NSDictionary *localInfo = [[TKWeChatPluginConfig sharedConfig] localInfoPlist];
+//    NSString *localBundle = localInfo[@"CFBundleShortVersionString"];
+//    NSDictionary *dict = [NSBundle mainBundle].infoDictionary;
+//
+//    [Bugly setValue:localBundle forKey:@"PLUGIN_VERSION"];
+//    [Bugly setValue:dict[@"CFBundleShortVersionString"] forKey:@"WECHAT_VERSION"];
     
     
     if (LargerOrEqualVersion(@"2.3.24")) {
@@ -638,7 +644,14 @@
     NSString *userName = addMsg.fromUserName.string;
     
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
-    WCContactData *msgContact = [sessionMgr getContact:userName];
+    WCContactData *msgContact = nil;
+    
+    if (LargerOrEqualVersion(@"2.3.26")) {
+        msgContact = [sessionMgr getSessionContact:userName];
+    } else {
+        msgContact = [sessionMgr getContact:userName];
+    }
+    
     if ([msgContact isBrandContact] || [msgContact isSelf]) {
         //        该消息为公众号或者本人发送的消息
         return;

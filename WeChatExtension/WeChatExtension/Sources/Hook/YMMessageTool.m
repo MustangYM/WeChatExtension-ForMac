@@ -23,6 +23,11 @@
         return nil;
     }
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
+    
+    if (LargerOrEqualVersion(@"2.3.26")) {
+        return [sessionMgr getSessionContact:addMsg.fromUserName.string];
+    }
+
     return [sessionMgr getContact:addMsg.fromUserName.string];
 }
 @end
