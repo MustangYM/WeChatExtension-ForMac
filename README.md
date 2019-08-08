@@ -40,10 +40,11 @@
 </p>
 
 ## 懒癌版安装
+
 <p align="center">
-<img src="
-https://avatars1.githubusercontent.com/u/5035625?s=400&v=4" width="400px"/>
+<img src="https://avatars1.githubusercontent.com/u/5035625?s=400&v=4" width="200px"/>
 </p>
+
 感谢 [lmk123](https://github.com/lmk123)为此项目开发的懒癌安装 [Oh My WeChat](https://github.com/lmk123/oh-my-wechat)
 
 打开`应用程序-实用工具-Terminal(终端)`，执行下面的命令安装 [Oh My WeChat](https://github.com/lmk123/oh-my-wechat)：
