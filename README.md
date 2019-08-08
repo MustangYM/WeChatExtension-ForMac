@@ -41,7 +41,7 @@
 
 ## 懒癌版安装
 
-<p align="center">
+<p align="left">
 <img src="https://avatars1.githubusercontent.com/u/5035625?s=400&v=4" width="200px"/>
 </p>
 
