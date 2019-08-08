@@ -3,6 +3,8 @@
 <img src="https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Pictures/face.png" width="1000px"/>
 </p>
 
+![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v1.9.6-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.3.26-blue.svg)
+
 ## 声明
 > 适用于Mac版的WeChat拓展功能, 由于之前大家常用的WeChatPlugin在默认分支切换成remove删库了, 坊间猜测原因, 众说纷纭, 我们不去深究了.
 本着开源的精神, 我决定继续维护这个项目, 对[tk](https://github.com/TKkk-iOSer)在此表示感谢!
