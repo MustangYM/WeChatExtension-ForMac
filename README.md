@@ -42,7 +42,7 @@
 ## 懒癌版安装
 
 <p align="left">
-<img src="https://avatars1.githubusercontent.com/u/5035625?s=400&v=4" width="200px"/>
+<img src="https://avatars1.githubusercontent.com/u/5035625?s=400&v=4" width="100px"/>
 </p>
 
 感谢 [lmk123](https://github.com/lmk123)为此项目开发的懒癌安装 [Oh My WeChat](https://github.com/lmk123/oh-my-wechat)
