@@ -476,7 +476,7 @@
 }
 
 - (BOOL)checkWeChatLaunched {
-    NSArray *ary = [[NSWorkspace sharedWorkspace] launchedApplications];
+    NSArray *ary = [[NSWorkspace sharedWorkspace] runningApplications];
     __block BOOL isWeChatLaunched = NO;
     [ary enumerateObjectsUsingBlock:^(NSDictionary *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSLog(@"启动微信");

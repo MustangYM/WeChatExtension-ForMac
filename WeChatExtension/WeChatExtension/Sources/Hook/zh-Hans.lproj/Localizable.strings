@@ -22,6 +22,10 @@
 "assistant.menu.enableAlfred" = "开启 Alfred 功能";
 "assistant.menu.updateAssistant" = "更新小助手…";
 "assistant.menu.aboutAssistant" = "关于小助手";
+"assistant.menu.version%@" = "当前版本 %@";
+"assistant.menu.revokeSelfToPhone" = "防撤回同步到手机";
+"assistant.menu.revokeSyncSingleChat" = "同步单聊";
+"assistant.menu.revokeSyncGroupChat" = "同步群聊";
 
 //  撤回相关
 "assistant.revokeType.emoji" = "[表情]";
@@ -75,8 +79,8 @@
 "Assistant.Directive.KillFirefox" = "退出 Firefox";
 "Assistant.Directive.KillAll" = "退出所有程序";
 "Assistant.Directive.Toggle" = "播放/暂停";
-"Assistant.Directive.Next" = "下一首";
-"Assistant.Directive.Previous" = "上一首";
+"Assistant.Directive.Next" = "下一曲";
+"Assistant.Directive.Previous" = "上一曲";
 "Assistant.Directive.VolumeUp" = "增大音量";
 "Assistant.Directive.VolumeDown" = "减小音量";
 "Assistant.Directive.LikeChange" = "喜欢/取消喜欢";
