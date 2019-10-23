@@ -17,14 +17,14 @@
         <window title="Remote Control Setting" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="670" height="520"/>
+            <rect key="contentRect" x="196" y="240" width="670" height="559"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="670" height="520"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <rect key="frame" x="0.0" y="0.0" width="670" height="559"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <tabView drawsBackground="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WoN-94-FsZ">
-                        <rect key="frame" x="20" y="43" width="630" height="445"/>
+                        <rect key="frame" x="20" y="43" width="630" height="484"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="MacBook" identifier="0" id="sNP-nR-n56">
@@ -83,7 +83,7 @@
                             </tabViewItem>
                             <tabViewItem label="Assistant" identifier="3" id="5Vc-7I-XmY">
                                 <view key="view" id="1oJ-Fj-CIe">
-                                    <rect key="frame" x="10" y="33" width="610" height="399"/>
+                                    <rect key="frame" x="10" y="33" width="610" height="438"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
@@ -134,7 +134,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="140" y="147"/>
+            <point key="canvasLocation" x="140" y="166.5"/>
         </window>
     </objects>
 </document>

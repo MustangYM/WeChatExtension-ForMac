@@ -303,9 +303,6 @@
 		96B578AE2360A20E00F3F66C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TKAboutWindowController.strings"; sourceTree = "<group>"; };
 		96B578AF2360A21100F3F66C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/TKAboutWindowController.strings"; sourceTree = "<group>"; };
 		96B578B02360A21400F3F66C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TKAboutWindowController.strings; sourceTree = "<group>"; };
-		96B578B22360A2A900F3F66C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TKRemoteControlWindowController.strings; sourceTree = "<group>"; };
-		96B578B32360A2AE00F3F66C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TKRemoteControlWindowController.strings"; sourceTree = "<group>"; };
-		96B578B42360A2B200F3F66C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/TKRemoteControlWindowController.strings"; sourceTree = "<group>"; };
 		96B578B52360A92500F3F66C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
 		96B578BC2360A9D100F3F66C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Info.plist; sourceTree = "<group>"; };
 		96B578BD2360A9D200F3F66C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/Info.plist"; sourceTree = "<group>"; };
@@ -313,6 +310,9 @@
 		96B578C02360AA8A00F3F66C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		96B578C22360AA9000F3F66C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		96B578C32360AA9200F3F66C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		96D8D0952360BC6A0025BAD6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TKRemoteControlWindowController.strings; sourceTree = "<group>"; };
+		96D8D0972360BC6C0025BAD6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TKRemoteControlWindowController.strings"; sourceTree = "<group>"; };
+		96D8D0992360BC6E0025BAD6 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/TKRemoteControlWindowController.strings"; sourceTree = "<group>"; };
 		97F2E3244C2E5DD8CF65AB97 /* Pods-WeChatExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatExtension/Pods-WeChatExtension.release.xcconfig"; sourceTree = "<group>"; };
 		C341AF31F4497191220003D6 /* Pods-WeChatExtensionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatExtensionTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatExtensionTests/Pods-WeChatExtensionTests.release.xcconfig"; sourceTree = "<group>"; };
 		C528D93AD05C43BF7DE46757 /* Pods-WeChatExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatExtension/Pods-WeChatExtension.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1073,9 +1073,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				188A65A02272ACBA0096663E /* Base */,
-				96B578B22360A2A900F3F66C /* en */,
-				96B578B32360A2AE00F3F66C /* zh-Hans */,
-				96B578B42360A2B200F3F66C /* zh-Hant */,
+				96D8D0952360BC6A0025BAD6 /* en */,
+				96D8D0972360BC6C0025BAD6 /* zh-Hans */,
+				96D8D0992360BC6E0025BAD6 /* zh-Hant */,
 			);
 			name = TKRemoteControlWindowController.xib;
 			sourceTree = "<group>";
