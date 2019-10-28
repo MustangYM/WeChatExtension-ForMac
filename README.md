@@ -137,7 +137,5 @@ curl -o- -L https://raw.githubusercontent.com/lmk123/oh-my-wechat/master/install
 
 ## 交流QQ群
 > 一群 229555512
-> 二群 239049786
-
 ## 维护不易, 可以请我喝咖啡
 > 算了吧, 咱逆向的都是屌丝, 哪有闲钱.
