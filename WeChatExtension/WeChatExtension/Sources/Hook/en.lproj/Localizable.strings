@@ -1,0 +1,139 @@
+/*
+  Localizable.strings
+  WeChatPlugin
+
+  Created by WeChatExtension on 2018/4/14.
+  Copyright © 2018年 WeChatExtension. All rights reserved.
+*/
+
+
+//  菜单栏
+"assistant.menu.title" = "Wechat Assistant";
+"assistant.menu.revoke" = "Revoke";
+"assistant.menu.revokeSelf" = "Revoke Self";
+"assistant.menu.autoReply" = "Auto-Reply";
+"assistant.menu.newWeChat" = "New WeChat";
+"assistant.menu.remoteControl" = "Remote Control Mac";
+"assistant.menu.windowSticky" = "Window Sticky";
+"assistant.menu.freeLogin" = "Free-Login";
+"assistant.menu.systemBrowser" = "System Browser";
+"assistant.menu.forbidCheck" = "Forbid Update";
+"assistant.menu.other" = "Wechat Assistant🌚";
+"assistant.menu.enableAlfred" = "Enable Alfred";
+"assistant.menu.updateAssistant" = "Update Wechat Assistant…";
+"assistant.menu.aboutAssistant" = "About Wechat Assistant";
+"assistant.menu.version%@" = "Version %@";
+"assistant.menu.revokeSelfToPhone" = "Revoke Sync To Phone";
+"assistant.menu.revokeSyncSingleChat" = "Sync Single Chat";
+"assistant.menu.revokeSyncGroupChat" = "Sync Group Chat";
+
+//  撤回相关
+"assistant.revokeType.emoji" = "[Emoji]";
+"assistant.revokeType.image" = "[Image]";
+"assistant.revokeType.video" = "[Video]";
+"assistant.revokeType.voice" = "[Voice]";
+"assistant.revokeType.other" = "[Other]";
+"assistant.revoke.otherMessage.tip" = "Intercepted a message revoke: ";
+"assistant.revoke.selfMessage.tip" = "You recoked a message: ";
+
+//  免认证相关
+"assistant.autoAuth.tip" = "Auto-Auth";
+"assistant.autoLogin.text" = "Auto-Login";
+
+
+//  回话选择
+"assistant.chat.stickyBottom" = "Stick Bottom";
+"assistant.chat.unStickyBottom" = "Unsick Bottom";
+"assistant.chat.multiSelect" = "Multi Select";
+"assistant.chat.unMultiSelect" = "Un Multi Select";
+"assistant.chat.readAll" = "Read All";
+"assistant.chat.clearEmpty" = "Clear Empty";
+"assistant.chat.remove" = "Remove";
+"assistant.chat.unread" = "Unread";
+
+//  远程控制相关
+"assistant.remoteControl.getList" = "Get List";
+"assistant.remoteControl.listTip" = "Remote control instruction：\n(Function - Command - On or Off)\n\n";
+"assistant.remoteControl.recall" = "Wechat Assistant received an instruction：";
+"assistant.remoteControl.voiceRecall" = "Wechat Assistant received a voice instruction and after turning the text👇👇👇：";
+"assistant.remoteControl.mac" = "MacBook Control:";
+"assistant.remoteControl.app" = "APP Control:";
+"assistant.remoteControl.neteaseMusic" = "Netease Music Control:";
+"assistant.remoteControl.assistant" = "Wechat Assistant Control:";
+"assistant.remoteControl.open" = "On";
+"assistant.remoteControl.close" = "Off";
+"assistant.remoteControl.contentPlaceHodler" = "Please enter a matching keyword";
+
+//  远程控制指令
+"Assistant.Directive.ScreenSave" = "Screen Saver";
+"Assistant.Directive.LockScreen" = "Lock Screen";
+"Assistant.Directive.Sleep" = "Slepp";
+"Assistant.Directive.Shutdown" = "Shutdown";
+"Assistant.Directive.Restart" = "Reboot";
+"Assistant.Directive.EmptyTrash" = "Empty Trash";
+"Assistant.Directive.Mute" = "Mute";
+"Assistant.Directive.KillQQ" = "Exit QQ";
+"Assistant.Directive.KillWeChat" = "Exit WeChat";
+"Assistant.Directive.KillChrome" = "Exit Chrome";
+"Assistant.Directive.KillSafari" = "Exit Safari";
+"Assistant.Directive.KillFirefox" = "Exit Firefox";
+"Assistant.Directive.KillAll" = "Exit All";
+"Assistant.Directive.Toggle" = "Toggle";
+"Assistant.Directive.Next" = "Next";
+"Assistant.Directive.Previous" = "Previous";
+"Assistant.Directive.VolumeUp" = "Volume Up";
+"Assistant.Directive.VolumeDown" = "Volume Down";
+"Assistant.Directive.LikeChange" = "Like Change";
+"Assistant.Directive.GetList" = "Get List";
+"Assistant.Directive.AutoReplySwitch" = "Auto-Reply";
+"Assistant.Directive.PreventRevokeSwitch" = "Prevent Revoke";
+"Assistant.Directive.AutoAuthSwitch" = "Auto-Auth";
+"Assistant.Directive.SwitchOn" = "On";
+"Assistant.Directive.SwitchOff" = "Off";
+
+//  自动回复
+"assistant.autoReply.title" = "Auto-Reply";
+"assistant.autoReply.enable" = "Enable Auto-Reply";
+"assistant.autoReply.enableSpecific" = "Enable Specific Reply";
+"assistant.autoReply.selectSpecific" = "View (Modify) selected contacts";
+"assistant.autoReply.enableRegEx" = "Enable Regular Matching";
+"assistant.autoReply.enableGroup" = "Enable Group";
+"assistant.autoReply.enableSingle" = "Enable Single";
+"assistant.autoReply.delay" = "Delay";
+"assistant.autoReply.timeUnit" = "Minute";
+"assistant.autoReply.contentPlaceholder" = "Please enter the content of the auto-reply (‘|’ is a random response to any of the content)";
+"assistant.autoReply.keywordPlaceholder" = "Please enter a keyword ( ‘*’ replies to any message, ‘|’ matches multiple keywords)";
+"assistant.autoReply.keyword" = "Key Words";
+"assistant.autoReply.content" = "Reply Content";
+"assistant.autoReply.list" = "Reply List";
+"assistant.autoReply.alert.confirm" = "Confirm";
+"assistant.autoReply.alert.title" = "You have an auto-reply setting not completed";
+"assistant.autoReply.alert.content" = "Please refine your outstanding auto-reply settings";
+
+//  版本更新
+"assistant.update.alret.cancle" = "Cancel";
+"assistant.update.alret.confirm" = "Install Update";
+"assistant.update.alret.title" = "A new version has been detected! main content：👇";
+"assistant.update.alret.latest" = "Currently the latest version! main content：👇";
+"assistant.update.alret.forbid" = "Do not remind again";
+
+//  下载
+"assistant.download.title" = "Update Wechat Assistant";
+"assistant.download.cancelTitle" = "Canceled";
+"assistant.download.install" = "You can start the installation";
+"assistant.download.error" = "Update Error！";
+"assistant.download.update" = "Downloading updates…";
+"assistant.download.relaunch" = "Install and restart the app";
+"assistant.download.cancel" = "Cancel";
+"assistant.download.reInstall" = "Reinstall";
+"assistant.download.reDownload" = "Redownload";
+
+
+//  alfred 搜索
+"assistant.search.member" = "Member：";
+"assistant.search.friend" = "[Friend]";
+"assistant.search.group" = "[Group]";
+"assistant.search.official" = "[Official]";
+"assistant.search.chatlog" = "The following is the chat history👇🏻";
+"assistant.search.message.unread" = "Unread";
+"assistant.search.yesterday" = "Yesterday";

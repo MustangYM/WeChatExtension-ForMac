@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,36 +17,43 @@
         <window title="Remote Control Setting" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="670" height="520"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="contentRect" x="196" y="240" width="670" height="559"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="670" height="520"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <rect key="frame" x="0.0" y="0.0" width="670" height="559"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <tabView fixedFrame="YES" drawsBackground="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WoN-94-FsZ">
-                        <rect key="frame" x="20" y="43" width="630" height="445"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <tabView drawsBackground="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WoN-94-FsZ">
+                        <rect key="frame" x="20" y="43" width="630" height="484"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
-                            <tabViewItem label="Macbook" identifier="0" id="sNP-nR-n56">
+                            <tabViewItem label="MacBook" identifier="0" id="sNP-nR-n56">
                                 <view key="view" id="IAk-5N-FY9">
                                     <rect key="frame" x="10" y="33" width="610" height="399"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lv9-ri-gWd">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lv9-ri-gWd">
                                             <rect key="frame" x="115" y="17" width="300" height="17"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="17" id="bFL-yx-GFW"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="296" id="t4u-Sk-d4l"/>
+                                            </constraints>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Now remote control support voice recognition" id="JDf-Rp-jEj">
-                                                <font key="font" size="13" name=".PingFangSC-Medium"/>
+                                                <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Lv9-ri-gWd" firstAttribute="leading" secondItem="IAk-5N-FY9" secondAttribute="leading" constant="117" id="BYZ-TQ-SJt"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Lv9-ri-gWd" secondAttribute="trailing" constant="20" symbolic="YES" id="FFP-FA-BE3"/>
+                                        <constraint firstAttribute="bottom" secondItem="Lv9-ri-gWd" secondAttribute="bottom" constant="17" id="rCB-oW-cCE"/>
+                                    </constraints>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="APP" identifier="1" id="kWv-JR-wGj">
-                                <view key="view" ambiguous="YES" id="iVA-JL-GJu">
+                                <view key="view" id="iVA-JL-GJu">
                                     <rect key="frame" x="10" y="33" width="610" height="399"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
@@ -55,21 +63,27 @@
                                     <rect key="frame" x="10" y="33" width="610" height="399"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kwl-L5-YwP">
-                                            <rect key="frame" x="17" y="17" width="577" height="17"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Allow WeChat Control in &quot;System Preferences-Security &amp; Privacy-Privacy-Accessibility&quot;" id="qpH-CW-UVl">
-                                                <font key="font" size="13" name=".PingFangSC-Medium"/>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kwl-L5-YwP">
+                                            <rect key="frame" x="15" y="17" width="581" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="17" id="L2b-pH-CGO"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Allow WeChat Control in &quot;System Preferences -&gt; Security &amp; Privacy -&gt; Privacy -&gt; Accessibility&quot;" id="qpH-CW-UVl">
+                                                <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="kwl-L5-YwP" firstAttribute="centerX" secondItem="FCO-eB-j0J" secondAttribute="centerX" id="0ng-WX-kGe"/>
+                                        <constraint firstAttribute="bottom" secondItem="kwl-L5-YwP" secondAttribute="bottom" constant="17" id="dqa-sU-uY6"/>
+                                    </constraints>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Assistant" identifier="3" id="5Vc-7I-XmY">
                                 <view key="view" id="1oJ-Fj-CIe">
-                                    <rect key="frame" x="10" y="33" width="610" height="399"/>
+                                    <rect key="frame" x="10" y="33" width="610" height="438"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
@@ -78,29 +92,49 @@
                             <outlet property="delegate" destination="-2" id="gLJ-15-ouy"/>
                         </connections>
                     </tabView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J1L-Ly-Rmw">
-                        <rect key="frame" x="25" y="16" width="117" height="26"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="⚠️Attention: " id="pyh-Mz-b2h">
-                            <font key="font" size="13" name="AppleColorEmoji"/>
-                            <color key="textColor" red="0.95428575227915313" green="0.054907046790266048" blue="0.027834490462353378" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Koj-RI-ARh">
-                        <rect key="frame" x="123" y="20" width="376" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Remote Control is available only when send it to yourself " id="EiN-zX-6I8">
-                            <font key="font" size="13" name=".PingFangSC-Medium"/>
-                            <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
+                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9uD-wG-Q1c">
+                        <rect key="frame" x="27" y="25" width="431" height="16"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J1L-Ly-Rmw">
+                                <rect key="frame" x="-2" y="0.0" width="90" height="16"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="⚠️ Attention: " id="pyh-Mz-b2h">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" red="0.95428575227915313" green="0.054907046790266048" blue="0.027834490462353378" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Koj-RI-ARh">
+                                <rect key="frame" x="84" y="0.0" width="349" height="16"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Remote Control is available only when send it to yourself " id="EiN-zX-6I8">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <visibilityPriorities>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                        </visibilityPriorities>
+                        <customSpacing>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                        </customSpacing>
+                    </stackView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="WoN-94-FsZ" firstAttribute="leading" secondItem="9uD-wG-Q1c" secondAttribute="leading" id="7HE-T7-X90"/>
+                    <constraint firstItem="WoN-94-FsZ" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="27" id="H2X-Un-ARc"/>
+                    <constraint firstAttribute="bottom" secondItem="WoN-94-FsZ" secondAttribute="bottom" constant="53" id="IKh-JO-msM"/>
+                    <constraint firstItem="WoN-94-FsZ" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="VM5-kO-KdX"/>
+                    <constraint firstItem="9uD-wG-Q1c" firstAttribute="top" secondItem="WoN-94-FsZ" secondAttribute="bottom" constant="12" id="cjE-Gd-84q"/>
+                    <constraint firstItem="WoN-94-FsZ" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="38" id="vK3-nz-sCg"/>
+                </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
+            <point key="canvasLocation" x="140" y="166.5"/>
         </window>
     </objects>
 </document>
