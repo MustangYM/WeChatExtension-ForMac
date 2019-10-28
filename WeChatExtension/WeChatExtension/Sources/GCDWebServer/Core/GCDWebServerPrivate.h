@@ -170,7 +170,7 @@ static inline NSError* GCDWebServerMakePosixError(int code) {
   return [NSError errorWithDomain:NSPOSIXErrorDomain code:code userInfo:@{NSLocalizedDescriptionKey : (NSString*)[NSString stringWithUTF8String:strerror(code)]}];
 }
 
-extern void GCDWebServerInitializeFunctions();
+extern void GCDWebServerInitializeFunctions(void);
 extern NSString* _Nullable GCDWebServerNormalizeHeaderValue(NSString* _Nullable value);
 extern NSString* _Nullable GCDWebServerTruncateHeaderValue(NSString* _Nullable value);
 extern NSString* _Nullable GCDWebServerExtractHeaderValueParameter(NSString* _Nullable value, NSString* attribute);
