@@ -119,6 +119,7 @@ curl -o- -L https://raw.githubusercontent.com/lmk123/oh-my-wechat/master/install
 
 ## 更新日志
 ```
+2019-10-28 优化英文系统下的文案
 2019-8-07 修复联系人信息获取接口改变导致自动回复和Alfred的大面积闪退, sorry. 新增自动下载聊天高清图功能.
 2019-7-26 适配2.3.26版本, 修复闪退, 屏蔽更新.
 2019-7-10 修复清除空会话闪退
