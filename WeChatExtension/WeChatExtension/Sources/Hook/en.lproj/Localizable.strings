@@ -67,7 +67,7 @@
 //  远程控制指令
 "Assistant.Directive.ScreenSave" = "Screen Saver";
 "Assistant.Directive.LockScreen" = "Lock Screen";
-"Assistant.Directive.Sleep" = "Slepp";
+"Assistant.Directive.Sleep" = "Sleep";
 "Assistant.Directive.Shutdown" = "Shutdown";
 "Assistant.Directive.Restart" = "Reboot";
 "Assistant.Directive.EmptyTrash" = "Empty Trash";
