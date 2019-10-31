@@ -124,13 +124,6 @@
     [self hook_ComposeInputViewControllerViewDidLoad];
     MMComposeInputViewController *controller = (MMComposeInputViewController *)self;
     [[YMThemeMgr shareInstance] changeTheme:controller.view];
-//    [ANYMethodLog logMethodWithClass:[objc_getClass("MMUpdateMgr") class] condition:^BOOL(SEL sel) {
-//        return YES;
-//    } before:^(id target, SEL sel, NSArray *args, int deep) {
-//        NSLog(@"\n🐸类名:%@ 👍方法:%@\n%@", target, NSStringFromSelector(sel),args);
-//    } after:^(id target, SEL sel, NSArray *args, NSTimeInterval interval, int deep, id retValue) {
-//        NSLog(@"\n🚘类名:%@ 👍方法:%@\n%@\n↪️%@", target, NSStringFromSelector(sel),args,retValue);
-//    }];
 }
 
 - (void)hook_initWithFrame:(NSView *)view {
@@ -527,15 +520,6 @@
     if ([NSObject hook_HasWechatInstance]) {
         wechat.hasAuthOK = YES;
     }
-    
-//    [Bugly startWithAppId:@"6f7a359e77"];
-//    NSDictionary *localInfo = [[TKWeChatPluginConfig sharedConfig] localInfoPlist];
-//    NSString *localBundle = localInfo[@"CFBundleShortVersionString"];
-//    NSDictionary *dict = [NSBundle mainBundle].infoDictionary;
-//
-//    [Bugly setValue:localBundle forKey:@"PLUGIN_VERSION"];
-//    [Bugly setValue:dict[@"CFBundleShortVersionString"] forKey:@"WECHAT_VERSION"];
-    
     
     if (LargerOrEqualVersion(@"2.3.24")) {
         tk_hookMethod(objc_getClass("WeChat"), @selector(setupCheckUpdateIfNeeded), [self class], @selector(hook_checkForUpdatesInBackground));
