@@ -526,6 +526,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 
 @interface PathUtility : NSObject
 + (id)GetCurUserCachePath;
++ (id)GetCurUserDocumentPath;
 + (id)emoticonPath:(id)arg1;
 + (id)getMsgVideoPathWithMessage:(id)arg1;
 + (id)getMsgVideoPathWithUserName:(id)arg1 localId:(unsigned int)arg2;

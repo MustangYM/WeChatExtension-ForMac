@@ -131,7 +131,7 @@
         NSString *imgMd5Str = [headImgUrl performSelector:@selector(md5String)];
         MMAvatarService *avatarService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMAvatarService")];
 
-        NSString *userCache =  [objc_getClass("PathUtility") GetCurUserCachePath];
+        NSString *userCache =  [objc_getClass("PathUtility") GetCurUserDocumentPath];
         imgPath = [NSString stringWithFormat:@"%@/avatar/%@",userCache, imgMd5Str];
 
         NSFileManager *fileMgr = [NSFileManager defaultManager];
