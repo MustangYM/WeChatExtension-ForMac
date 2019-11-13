@@ -132,7 +132,7 @@
         MMAvatarService *avatarService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMAvatarService")];
 
         NSString *userCache =  [objc_getClass("PathUtility") GetCurUserDocumentPath];
-        imgPath = [NSString stringWithFormat:@"%@/avatar/%@",userCache, imgMd5Str];
+        imgPath = [NSString stringWithFormat:@"%@/Avatar/%@",userCache, imgMd5Str];
 
         NSFileManager *fileMgr = [NSFileManager defaultManager];
         if (imgPath && ![fileMgr fileExistsAtPath:imgPath] && ![self.avatarSet containsObject:imgPath]) {
