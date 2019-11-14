@@ -11,6 +11,7 @@
 FOUNDATION_EXPORT double WeChatPluginVersionNumber;
 FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 
+#define kRGBColor(r,g,b,a) [NSColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
 #pragma mark - 微信原始的部分类与方法
 
 @interface MMFileTypeHelper : NSObject
@@ -152,8 +153,20 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(retain, nonatomic) MMBrandChatsViewController *brandChatsViewController;
 @end
 
+@interface MMContactsViewController : NSViewController
+@property(nonatomic) __weak NSTableView *tableView;
+@end
+
 @interface MMComposeInputViewController : NSViewController
 - (void)viewDidLoad;
+@end
+
+@interface MMComposeTextView : NSTextView
+
+@end
+
+@interface MMFavoritesListMediaCell : NSView
+
 @end
 
 @interface MMMainViewController : NSViewController
@@ -286,15 +299,6 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)cellViewReloadData:(MMSessionInfo *)arg1;
 @end
 
-@interface MMChatsTableCellView : NSTableCellView
-@property(nonatomic) __weak id <MMChatsTableCellViewDelegate> delegate;
-@property(retain, nonatomic) MMSessionInfo *sessionInfo;
-- (void)menuWillOpen:(id)arg1;
-- (void)contextMenuSticky:(id)arg1;
-- (void)contextMenuDelete:(id)arg1;
-- (void)tableView:(NSTableView *)arg1 rowGotMouseDown:(long long)arg2;
-@end
-
 @interface MMSessionMgr : NSObject
 @property(retain, nonatomic) NSMutableArray *m_arrSession;
 - (id)getAllSessions;
@@ -334,7 +338,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)userNotificationCenter:(id)arg1 didActivateNotification:(id)arg2;
 @end
 
-@interface MMMessageScrollView : NSView
+@interface MMMessageScrollView : NSScrollView
 - (void)startLoading;
 - (void)viewDidMoveToWindow;
 @end
@@ -611,3 +615,42 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(retain, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 @end
 
+@interface MMImageView : NSImageView
+
+@end
+
+@interface MMTextField : NSTextField
+
+@end
+
+@interface MMSidebarLabelTextField : NSTextField
+
+@end
+
+@interface MMView : NSView
+
+@end
+
+@interface MMChatsTableCellView : NSTableCellView
+@property(nonatomic) __weak id <MMChatsTableCellViewDelegate> delegate;
+@property(retain, nonatomic) MMSessionInfo *sessionInfo;
+@property(retain, nonatomic) MMImageView *openimGroupFlag; // @synthesize openimGroupFlag=_openimGroupFlag;
+@property(retain, nonatomic) MMImageView *sendFailedImg; // @synthesize sendFailedImg=_sendFailedImg;
+@property(nonatomic) BOOL shouldDrawFocusRing; // @synthesize shouldDrawFocusRing=_shouldDrawFocusRing;
+@property(readonly, nonatomic) NSString *userName; // @synthesize userName=_userName;
+@property(retain, nonatomic) NSString *messageTime; // @synthesize messageTime=_messageTime;
+@property(retain, nonatomic) MMTextField *nickName; // @synthesize nickName=_nickName;
+@property(retain, nonatomic) MMSidebarLabelTextField *timeLabel; // @synthesize timeLabel=_timeLabel;
+@property(retain, nonatomic) MMSidebarLabelTextField *summary; //  @synthesize muteIndicator=_muteIndicator;
+@property(retain, nonatomic) MMView *seperator; // @synthesize seperator=_seperator;
+@property(retain, nonatomic) NSView *stickyBackgroundView; // @synthesize stickyBackgroundView=_stickyBackgroundView;
+@property(nonatomic) BOOL shouldRemoveHighlight; // @synthesize shouldRemoveHighlight=_shouldRemoveHighlight;
+@property(retain, nonatomic) NSView *containerView; // @synthesize containerView=_containerView;
+
+@property(nonatomic) BOOL selected; // @synthesize selected=_selected;
+- (void)menuWillOpen:(id)arg1;
+- (void)contextMenuSticky:(id)arg1;
+- (void)contextMenuDelete:(id)arg1;
+- (void)tableView:(NSTableView *)arg1 rowGotMouseDown:(long long)arg2;
+- (id)initWithFrame:(struct CGRect)arg1;
+@end

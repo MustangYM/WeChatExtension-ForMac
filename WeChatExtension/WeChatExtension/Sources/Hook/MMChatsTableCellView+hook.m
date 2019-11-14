@@ -283,7 +283,11 @@
         [selectSessions  enumerateObjectsUsingBlock:^(MMSessionInfo *sessionInfo, NSUInteger idx, BOOL * _Nonnull stop) {
             NSString *sessionUserName = sessionInfo.m_nsUserName;
             if (sessionUserName.length != 0) {
-                [sessionMgr deleteSessionWithoutSyncToServerWithUserName:sessionUserName];
+                if (LargerOrEqualVersion(@"2.3.25")) {
+                    [sessionMgr removeSessionOfUser:sessionUserName isDelMsg:NO];
+                } else {
+                    [sessionMgr deleteSessionWithoutSyncToServerWithUserName:sessionUserName];
+                }
             }
         }];
         [[TKWeChatPluginConfig sharedConfig] setMultipleSelectionEnable:NO];

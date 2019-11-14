@@ -19,11 +19,15 @@
 }
 
 - (void)changeTheme:(NSView *)view {
-//    CALayer *viewLayer = [CALayer layer];
-//    [viewLayer setBackgroundColor:[NSColor redColor].CGColor];
-//
-//    [view setWantsLayer:YES];
-//    [view setNeedsDisplay:YES];
-//    [view setLayer:viewLayer];
+    [self changeTheme:view color:kRGBColor(61, 62, 60, 1)];
+}
+
+- (void)changeTheme:(NSView *)view color:(NSColor *)color
+{
+    CALayer *viewLayer = [CALayer layer];
+    [viewLayer setBackgroundColor:color.CGColor];
+    [view setWantsLayer:YES];
+    [view setNeedsDisplay:YES];
+    [view setLayer:viewLayer];
 }
 @end
