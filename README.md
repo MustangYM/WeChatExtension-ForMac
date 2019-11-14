@@ -119,6 +119,7 @@ curl -o- -L https://raw.githubusercontent.com/lmk123/oh-my-wechat/master/install
 
 ## 更新日志
 ```
+2019-11-14 修复多选会话后批量删除闪退
 2019-11-1  修复Alfred头像不显示问题
 2019-10-28 优化英文系统下的文案
 2019-8-07 修复联系人信息获取接口改变导致自动回复和Alfred的大面积闪退, sorry. 新增自动下载聊天高清图功能.
