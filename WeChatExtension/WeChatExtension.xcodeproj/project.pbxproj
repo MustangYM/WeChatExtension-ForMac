@@ -437,8 +437,8 @@
 		188A65942272ACBA0096663E /* Download */ = {
 			isa = PBXGroup;
 			children = (
-				188A65952272ACBA0096663E /* TKDownloadWindowController.m */,
 				188A65962272ACBA0096663E /* TKDownloadWindowController.h */,
+				188A65952272ACBA0096663E /* TKDownloadWindowController.m */,
 				188A65972272ACBA0096663E /* TKDownloadWindowController.xib */,
 			);
 			path = Download;
