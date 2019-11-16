@@ -6,7 +6,7 @@
 	<dict>
 		<key>Resources/Base.lproj/TKAboutWindowController.nib</key>
 		<data>
-		KmsyJty5EyKt9HCtj57a0m9R3ys=
+		e0mILmUVDvz7RE44qmKtXAomKFc=
 		</data>
 		<key>Resources/Base.lproj/TKRemoteControlWindowController.nib</key>
 		<data>
@@ -14,7 +14,7 @@
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		YfR4kSvcV/2TGF6Y7DkbvD+QlNk=
+		HSJ1cwo3+zdCiGSYVAhN2/7OB3k=
 		</data>
 		<key>Resources/LockPlist.plist</key>
 		<data>
@@ -124,11 +124,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			KmsyJty5EyKt9HCtj57a0m9R3ys=
+			e0mILmUVDvz7RE44qmKtXAomKFc=
 			</data>
 			<key>hash2</key>
 			<data>
-			Bvm0RjXl3kssZev2cg6EhApYMSxVOyaEP0WoIDwfgrE=
+			wXn8/o4yejn2CNSx7GXwPkxVupG/QU2BnRPF3Yem1cU=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TKRemoteControlWindowController.nib</key>
@@ -146,11 +146,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			YfR4kSvcV/2TGF6Y7DkbvD+QlNk=
+			HSJ1cwo3+zdCiGSYVAhN2/7OB3k=
 			</data>
 			<key>hash2</key>
 			<data>
-			BtQrD8oSmadXZafSMD1uBP+wEp/2HEIrOD2LDRWEviE=
+			0bRogd/b0F11vXdnYQ6tDVfqCOZuPi+jNJtEGHNNXAQ=
 			</data>
 		</dict>
 		<key>Resources/LockPlist.plist</key>
