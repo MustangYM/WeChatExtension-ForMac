@@ -1,9 +1,9 @@
 //
 //  TKAutoReplyCell.m
-//  WeChatPlugin
+//  WeChatExtension
 //
-//  Created by TK on 2017/8/21.
-//  Copyright © 2017年 tk. All rights reserved.
+//  Created by WeChatExtension on 2017/8/21.
+//  Copyright © 2017年 WeChatExtension. All rights reserved.
 //
 
 #import "TKAutoReplyCell.h"

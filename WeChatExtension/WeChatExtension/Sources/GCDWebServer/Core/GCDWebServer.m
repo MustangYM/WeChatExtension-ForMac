@@ -242,12 +242,12 @@ static void _ExecuteMainThreadRunLoopSources() {
     GWS_DCHECK(_activeConnections >= 0);
     if (_activeConnections == 0) {
       dispatch_async(dispatch_get_main_queue(), ^{
-        if (_disconnectTimer) {
-          CFRunLoopTimerInvalidate(_disconnectTimer);
-          CFRelease(_disconnectTimer);
-          _disconnectTimer = NULL;
+          if (self->_disconnectTimer) {
+              CFRunLoopTimerInvalidate(self->_disconnectTimer);
+              CFRelease(self->_disconnectTimer);
+              self->_disconnectTimer = NULL;
         }
-        if (_connected == NO) {
+          if (self->_connected == NO) {
           [self _didConnect];
         }
       });
@@ -296,18 +296,18 @@ static void _ExecuteMainThreadRunLoopSources() {
     _activeConnections -= 1;
     if (_activeConnections == 0) {
       dispatch_async(dispatch_get_main_queue(), ^{
-        if ((_disconnectDelay > 0.0) && (_source4 != NULL)) {
-          if (_disconnectTimer) {
-            CFRunLoopTimerInvalidate(_disconnectTimer);
-            CFRelease(_disconnectTimer);
+          if ((self->_disconnectDelay > 0.0) && (self->_source4 != NULL)) {
+              if (self->_disconnectTimer) {
+              CFRunLoopTimerInvalidate(self->_disconnectTimer);
+                  CFRelease(self->_disconnectTimer);
           }
-          _disconnectTimer = CFRunLoopTimerCreateWithHandler(kCFAllocatorDefault, CFAbsoluteTimeGetCurrent() + _disconnectDelay, 0.0, 0, 0, ^(CFRunLoopTimerRef timer) {
+              self->_disconnectTimer = CFRunLoopTimerCreateWithHandler(kCFAllocatorDefault, CFAbsoluteTimeGetCurrent() + self->_disconnectDelay, 0.0, 0, 0, ^(CFRunLoopTimerRef timer) {
             GWS_DCHECK([NSThread isMainThread]);
             [self _didDisconnect];
-            CFRelease(_disconnectTimer);
-            _disconnectTimer = NULL;
+                  CFRelease(self->_disconnectTimer);
+                  self->_disconnectTimer = NULL;
           });
-          CFRunLoopAddTimer(CFRunLoopGetMain(), _disconnectTimer, kCFRunLoopCommonModes);
+              CFRunLoopAddTimer(CFRunLoopGetMain(), self->_disconnectTimer, kCFRunLoopCommonModes);
         } else {
           [self _didDisconnect];
         }
@@ -478,7 +478,7 @@ static inline NSString* _EncodeBase64(NSString* string) {
         GWS_LOG_DEBUG(@"Did close %s listening socket %i", isIPv6 ? "IPv6" : "IPv4", listeningSocket);
       }
     }
-    dispatch_group_leave(_sourceGroup);
+      dispatch_group_leave(self->_sourceGroup);
 
   });
   dispatch_source_set_event_handler(source, ^{
@@ -503,7 +503,7 @@ static inline NSString* _EncodeBase64(NSString* string) {
         int noSigPipe = 1;
         setsockopt(socket, SOL_SOCKET, SO_NOSIGPIPE, &noSigPipe, sizeof(noSigPipe));  // Make sure this socket cannot generate SIG_PIPE
 
-        GCDWebServerConnection* connection = [[_connectionClass alloc] initWithServer:self localAddress:localAddress remoteAddress:remoteAddress socket:socket];  // Connection will automatically retain itself while opened
+          GCDWebServerConnection* connection = [[self->_connectionClass alloc] initWithServer:self localAddress:localAddress remoteAddress:remoteAddress socket:socket];  // Connection will automatically retain itself while opened
         [connection self];  // Prevent compiler from complaining about unused variable / useless statement
       } else {
         GWS_LOG_ERROR(@"Failed accepting %s socket: %s (%i)", isIPv6 ? "IPv6" : "IPv4", strerror(errno), errno);
@@ -632,7 +632,7 @@ static inline NSString* _EncodeBase64(NSString* string) {
   GWS_LOG_INFO(@"%@ started on port %i and reachable at %@", [self class], (int)_port, self.serverURL);
   if ([_delegate respondsToSelector:@selector(webServerDidStart:)]) {
     dispatch_async(dispatch_get_main_queue(), ^{
-      [_delegate webServerDidStart:self];
+        [self->_delegate webServerDidStart:self];
     });
   }
 
@@ -693,10 +693,10 @@ static inline NSString* _EncodeBase64(NSString* string) {
   _authenticationDigestAccounts = nil;
 
   dispatch_async(dispatch_get_main_queue(), ^{
-    if (_disconnectTimer) {
-      CFRunLoopTimerInvalidate(_disconnectTimer);
-      CFRelease(_disconnectTimer);
-      _disconnectTimer = NULL;
+      if (self->_disconnectTimer) {
+          CFRunLoopTimerInvalidate(self->_disconnectTimer);
+          CFRelease(self->_disconnectTimer);
+          self->_disconnectTimer = NULL;
       [self _didDisconnect];
     }
   });
@@ -704,7 +704,7 @@ static inline NSString* _EncodeBase64(NSString* string) {
   GWS_LOG_INFO(@"%@ stopped", [self class]);
   if ([_delegate respondsToSelector:@selector(webServerDidStop:)]) {
     dispatch_async(dispatch_get_main_queue(), ^{
-      [_delegate webServerDidStop:self];
+        [self->_delegate webServerDidStop:self];
     });
   }
 }

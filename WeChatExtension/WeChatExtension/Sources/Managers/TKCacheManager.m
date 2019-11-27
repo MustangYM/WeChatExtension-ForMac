@@ -1,9 +1,9 @@
 //
 //  TKCacheManager.m
-//  WeChatPlugin
+//  WeChatExtension
 //
-//  Created by TK on 2018/8/3.
-//  Copyright © 2018年 tk. All rights reserved.
+//  Created by WeChatExtension on 2018/8/3.
+//  Copyright © 2018年 WeChatExtension. All rights reserved.
 //
 
 #import "TKCacheManager.h"
@@ -131,7 +131,7 @@
         NSString *imgMd5Str = [headImgUrl performSelector:@selector(md5String)];
         MMAvatarService *avatarService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMAvatarService")];
 
-        NSString *userCache =  [objc_getClass("PathUtility") GetCurUserCachePath];
+        NSString *userCache =  [objc_getClass("PathUtility") GetCurUserDocumentPath];
         imgPath = [NSString stringWithFormat:@"%@/avatar/%@",userCache, imgMd5Str];
 
         NSFileManager *fileMgr = [NSFileManager defaultManager];

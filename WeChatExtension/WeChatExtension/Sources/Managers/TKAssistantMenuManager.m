@@ -1,9 +1,9 @@
 //
 //  TKAssistantMenuManager.m
-//  WeChatPlugin
+//  WeChatExtension
 //
-//  Created by TK on 2018/4/24.
-//  Copyright © 2018年 tk. All rights reserved.
+//  Created by WeChatExtension on 2018/4/24.
+//  Copyright © 2018年 WeChatExtension. All rights reserved.
 //
 
 #import "TKAssistantMenuManager.h"
@@ -15,7 +15,7 @@
 #import "TKDownloadWindowController.h"
 #import "TKAboutWindowController.h"
 #import "TKWebServerManager.h"
-#import "TKMessageManager.h"
+#import "YMMessageManager.h"
 
 static char tkAutoReplyWindowControllerKey;         //  自动回复窗口的关联 key
 static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关联 key
@@ -47,11 +47,28 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
                                                             keyEquivalent:@""
                                                                     state:[[TKWeChatPluginConfig sharedConfig] preventSelfRevokeEnable]];
         
-        NSMenuItem *preventAsyncRevokeItem = [NSMenuItem menuItemWithTitle:@"防撤回同步到手机"
+        NSMenuItem *preventAsyncRevokeItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.revokeSelfToPhone")
                                                                    action:@selector(onPreventAsyncRevokeToPhone:)
                                                                    target:self
                                                             keyEquivalent:@""
                                                                     state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeToPhone]];
+        
+        if ([[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeToPhone]) {
+            NSMenuItem *asyncRevokeSignalItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.revokeSyncSingleChat")
+                                                                       action:@selector(onAsyncRevokeSignal:)
+                                                                       target:self
+                                                                keyEquivalent:@""
+                                                                        state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeSignal]];
+            NSMenuItem *asyncRevokeChatRoomItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.revokeSyncGroupChat")
+                                                                         action:@selector(onAsyncRevokeChatRoom:)
+                                                                         target:self
+                                                                  keyEquivalent:@""
+                                                                          state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeChatRoom]];
+            NSMenu *subAsyncMenu = [[NSMenu alloc] initWithTitle:@""];
+            [subAsyncMenu addItems:@[asyncRevokeSignalItem, asyncRevokeChatRoomItem]];
+            preventAsyncRevokeItem.submenu = subAsyncMenu;
+        }
+        
         
         NSMenu *subPreventMenu = [[NSMenu alloc] initWithTitle:TKLocalizedString(@"assistant.menu.revoke")];
         [subPreventMenu addItems:@[preventSelfRevokeItem, preventAsyncRevokeItem]];
@@ -130,7 +147,7 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
                                                            state:0];
     
     //测试发送消息
-    NSMenuItem *currentVersionItem = [NSMenuItem menuItemWithTitle:[NSString stringWithFormat:@"当前版本%@",[TKVersionManager shareManager].currentVersion]
+    NSMenuItem *currentVersionItem = [NSMenuItem menuItemWithTitle:[NSString stringWithFormat:TKLocalizedString(@"assistant.menu.version%@"),[TKVersionManager shareManager].currentVersion]
                                                     action:@selector(onCurrentVersion:)
                                                     target:self
                                              keyEquivalent:@""
@@ -155,9 +172,7 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
                         ]];
 
     id wechat = LargerOrEqualVersion(@"2.3.24") ? [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMUpdateMgr")] : [objc_getClass("WeChat") sharedInstance];
-    if ([wechat respondsToSelector:@selector(checkForUpdatesInBackground)]) {
-        [subMenu insertItem:forbidCheckUpdateItem atIndex:6];
-    }
+    [subMenu insertItem:forbidCheckUpdateItem atIndex:6];
     [subMenu setSubmenu:subPluginMenu forItem:pluginItem];
     NSMenuItem *menuItem = [[NSMenuItem alloc] init];
     [menuItem setTitle:TKLocalizedString(@"assistant.menu.title")];
@@ -218,11 +233,29 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
                                                             keyEquivalent:@""
                                                                     state:[[TKWeChatPluginConfig sharedConfig] preventSelfRevokeEnable]];
         
-        NSMenuItem *preventAsyncRevokeItem = [NSMenuItem menuItemWithTitle:@"防撤回同步到手机"
+        NSMenuItem *preventAsyncRevokeItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.revokeSelfToPhone")
                                                                     action:@selector(onPreventAsyncRevokeToPhone:)
                                                                     target:self
                                                              keyEquivalent:@""
                                                                      state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeToPhone]];
+        
+        if (preventAsyncRevokeItem.state) {
+            NSMenuItem *asyncRevokeSignalItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.revokeSyncSingleChat")
+                                                                       action:@selector(onAsyncRevokeSignal:)
+                                                                       target:self
+                                                                keyEquivalent:@""
+                                                                        state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeSignal]];
+            NSMenuItem *asyncRevokeChatRoomItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.revokeSyncGroupChat")
+                                                                         action:@selector(onAsyncRevokeChatRoom:)
+                                                                         target:self
+                                                                  keyEquivalent:@""
+                                                                          state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeChatRoom]];
+            NSMenu *subAsyncMenu = [[NSMenu alloc] initWithTitle:@""];
+            [subAsyncMenu addItems:@[asyncRevokeSignalItem, asyncRevokeChatRoomItem]];
+            preventAsyncRevokeItem.submenu = subAsyncMenu;
+        } else {
+            preventAsyncRevokeItem.submenu = nil;
+        }
         
         NSMenu *subPreventMenu = [[NSMenu alloc] initWithTitle:TKLocalizedString(@"assistant.menu.revoke")];
         [subPreventMenu addItems:@[preventSelfRevokeItem, preventAsyncRevokeItem]];
@@ -246,6 +279,35 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
 - (void)onPreventAsyncRevokeToPhone:(NSMenuItem *)item {
     item.state = !item.state;
     [[TKWeChatPluginConfig sharedConfig] setPreventAsyncRevokeToPhone:item.state];
+    [[TKWeChatPluginConfig sharedConfig] setPreventAsyncRevokeSignal:item.state];
+    [[TKWeChatPluginConfig sharedConfig] setPreventAsyncRevokeChatRoom:item.state];
+    if (item.state) {
+        NSMenuItem *asyncRevokeSignalItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.revokeSyncSingleChat")
+                                                                   action:@selector(onAsyncRevokeSignal:)
+                                                                   target:self
+                                                            keyEquivalent:@""
+                                                                    state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeSignal]];
+        NSMenuItem *asyncRevokeChatRoomItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.revokeSyncGroupChat")
+                                                                     action:@selector(onAsyncRevokeChatRoom:)
+                                                                     target:self
+                                                              keyEquivalent:@""
+                                                                      state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeChatRoom]];
+        NSMenu *subAsyncMenu = [[NSMenu alloc] initWithTitle:@""];
+        [subAsyncMenu addItems:@[asyncRevokeSignalItem, asyncRevokeChatRoomItem]];
+        item.submenu = subAsyncMenu;
+    } else {
+        item.submenu = nil;
+    }
+}
+
+- (void)onAsyncRevokeSignal:(NSMenuItem *)item {
+    item.state = !item.state;
+    [[TKWeChatPluginConfig sharedConfig] setPreventAsyncRevokeSignal:item.state];
+}
+
+- (void)onAsyncRevokeChatRoom:(NSMenuItem *)item {
+    item.state = !item.state;
+    [[TKWeChatPluginConfig sharedConfig] setPreventAsyncRevokeChatRoom:item.state];
 }
 
 /**

@@ -1,15 +1,15 @@
 //
 //  TKRemoteControlManager.m
-//  WeChatPlugin
+//  WeChatExtension
 //
-//  Created by TK on 2018/4/24.
-//  Copyright © 2018年 tk. All rights reserved.
+//  Created by WeChatExtension on 2018/4/24.
+//  Copyright © 2018年 WeChatExtension. All rights reserved.
 //
 
 #import "TKRemoteControlManager.h"
 #import "TKWeChatPluginConfig.h"
 #import "TKRemoteControlModel.h"
-#import "TKMessageManager.h"
+#import "YMMessageManager.h"
 
 typedef NS_ENUM(NSUInteger, MessageDataType) {
     MessageDataTypeText,
@@ -49,7 +49,7 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
                         NSString *errorMsg = [self executeAppleScriptCommand:model.executeCommand];
                         if ([errorMsg containsString:@"TKRemoteControlScript.scpt:"]) {
                             NSString *result = [errorMsg substringFromString:@"TKRemoteControlScript.scpt:"];
-                            [[TKMessageManager shareManager] sendTextMessageToSelf:result];
+                            [[YMMessageManager shareManager] sendTextMessageToSelf:result];
                         }
                         //      bug: 有些程序在第一次时会无法关闭，需要再次关闭
                         if ([model.function isEqualToString:@"Assistant.Directive.KillAll"]) {
@@ -69,8 +69,8 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
                 
                 if (model.type != TKRemoteControlTypePlugin) {
                     NSString *callBack = [NSString stringWithFormat:@"%@%@", TKLocalizedString(@"assistant.remoteControl.recall"), TKLocalizedString(model.function)];
-                    [[TKMessageManager shareManager] sendTextMessageToSelf:callBack];
-                    [[TKMessageManager shareManager] clearUnRead:[objc_getClass("CUtility") GetCurrentUserName]];
+                    [[YMMessageManager shareManager] sendTextMessageToSelf:callBack];
+                    [[YMMessageManager shareManager] clearUnRead:[objc_getClass("CUtility") GetCurrentUserName]];
                 }
                 *stop = YES;
                 *subStop = YES;
@@ -135,7 +135,7 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_AUTO_AUTH_CHANGE object:nil];
     }
     
-    [[TKMessageManager shareManager] sendTextMessageToSelf:callBack];
+    [[YMMessageManager shareManager] sendTextMessageToSelf:callBack];
 }
 
 + (NSString *)remoteControlCommandsString {

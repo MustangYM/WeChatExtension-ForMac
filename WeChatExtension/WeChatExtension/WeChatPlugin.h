@@ -1,9 +1,9 @@
 //
-//  WeChatPlugin.h
-//  WeChatPlugin
+//  WeChatExtension.h
+//  WeChatExtension
 //
-//  Created by TK on 2017/4/19.
-//  Copyright © 2017年 tk. All rights reserved.
+//  Created by WeChatExtension on 2017/4/19.
+//  Copyright © 2017年 WeChatExtension. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
@@ -11,6 +11,7 @@
 FOUNDATION_EXPORT double WeChatPluginVersionNumber;
 FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 
+#define kRGBColor(r,g,b,a) [NSColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
 #pragma mark - 微信原始的部分类与方法
 
 @interface MMFileTypeHelper : NSObject
@@ -152,6 +153,28 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(retain, nonatomic) MMBrandChatsViewController *brandChatsViewController;
 @end
 
+@interface MMContactsViewController : NSViewController
+@property(nonatomic) __weak NSTableView *tableView;
+@end
+
+@interface MMComposeInputViewController : NSViewController
+- (void)viewDidLoad;
+@end
+
+@interface MMComposeTextView : NSTextView
+
+@end
+
+@interface MMFavoritesListMediaCell : NSView
+
+@end
+
+@interface MMMainViewController : NSViewController
+@property(retain, nonatomic) MMChatsViewController *chatsViewController;
+- (void)viewDidLoad;
+- (void)dealloc;
+@end
+
 @interface WeChat : NSObject
 + (id)sharedInstance;
 @property(nonatomic) MMChatsViewController *chatsViewController;
@@ -162,6 +185,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)_clearAllUnreadMessages:(id)arg1;
 - (void)onAuthOK:(BOOL)arg1;
 - (void)checkForUpdatesInBackground;
+- (void)setupCheckUpdateIfNeeded;
 @end
 
 @interface ContactStorage : NSObject
@@ -170,6 +194,9 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (id)GetAllBrandContacts;
 - (id)GetAllFavContacts;
 - (id)GetAllFriendContacts;
+- (id)GetContactWithUserName:(id)arg1 updateIfNeeded:(BOOL)arg2;
+- (id)getContactCache:(id)arg1;
+- (id)GetContactsWithUserNames:(id)arg1;
 @end
 
 @interface GroupStorage : NSObject
@@ -191,6 +218,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(retain, nonatomic) NSString *m_nsAliasName;
 @property(retain, nonatomic) NSString *avatarCacheKey;
 @property(retain, nonatomic) NSString *msgFromNickName;
+@property(retain, nonatomic) NSString *m_nsOwner;
 @property(nonatomic) unsigned int m_uiSex;
 @property(nonatomic) BOOL m_isShowRedDot;
 - (BOOL)isBrandContact;
@@ -208,6 +236,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(retain, nonatomic) NSString *toUsrName;
 @property(retain, nonatomic) NSString *msgContent;
 @property(retain, nonatomic) NSString *msgPushContent;
+@property(retain, nonatomic) NSString *msgRealChatUsr;
 @property(retain, nonatomic) SendImageInfo *imageInfo;
 @property(retain, nonatomic) id extendInfoWithMsgType;
 @property(nonatomic) int messageType;
@@ -270,15 +299,6 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)cellViewReloadData:(MMSessionInfo *)arg1;
 @end
 
-@interface MMChatsTableCellView : NSTableCellView
-@property(nonatomic) __weak id <MMChatsTableCellViewDelegate> delegate;
-@property(retain, nonatomic) MMSessionInfo *sessionInfo;
-- (void)menuWillOpen:(id)arg1;
-- (void)contextMenuSticky:(id)arg1;
-- (void)contextMenuDelete:(id)arg1;
-- (void)tableView:(NSTableView *)arg1 rowGotMouseDown:(long long)arg2;
-@end
-
 @interface MMSessionMgr : NSObject
 @property(retain, nonatomic) NSMutableArray *m_arrSession;
 - (id)getAllSessions;
@@ -294,12 +314,18 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)unmuteSessionByUserName:(id)arg1 syncToServer:(BOOL)arg2;
 - (void)untopSessionByUserName:(id)arg1 syncToServer:(BOOL)arg2;
 - (void)deleteSessionWithoutSyncToServerWithUserName:(id)arg1;
+- (void)storageDeleteSessionInfo:(id)arg1;
 - (void)changeSessionUnreadCountWithUserName:(id)arg1 to:(unsigned int)arg2;
 - (void)removeSessionOfUser:(id)arg1 isDelMsg:(BOOL)arg2;
 - (void)sortSessions;
 - (void)FFDataSvrMgrSvrFavZZ;
 - (id)getContact:(id)arg1;
+- (id)getSessionContact:(id)arg1;
 - (void)onEnterSession:(id)arg1;
+@end
+
+@interface BrandSessionMgr : NSObject
+- (void)deleteSessionOfUserName:(id)arg1 isDelMsg:(BOOL)arg2;
 @end
 
 @interface LogoutCGI : NSTableCellView
@@ -312,7 +338,18 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)userNotificationCenter:(id)arg1 didActivateNotification:(id)arg2;
 @end
 
+@interface MMMessageScrollView : NSScrollView
+- (void)startLoading;
+- (void)viewDidMoveToWindow;
+@end
+
+@interface MMTableView : NSTableView
+
+@end
+
 @interface MMChatMessageViewController : NSViewController
+- (void)viewDidLoad;
+@property(nonatomic) __weak MMTableView *messageTableView;
 @property(retain, nonatomic) WCContactData *chatContact;
 - (void)onClickSession;
 @end
@@ -454,6 +491,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 + (id)defaultHandler;
 - (void)startGetA8KeyWithURL:(id)arg1;
 - (BOOL)openURLWithDefault:(id)arg1;
+- (void)openURLWithDefault:(id)arg1 useA8Key:(BOOL)arg2;
 + (BOOL)containsHTTPString:(id)arg1;
 @end
 
@@ -492,6 +530,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 
 @interface PathUtility : NSObject
 + (id)GetCurUserCachePath;
++ (id)GetCurUserDocumentPath;
 + (id)emoticonPath:(id)arg1;
 + (id)getMsgVideoPathWithMessage:(id)arg1;
 + (id)getMsgVideoPathWithUserName:(id)arg1 localId:(unsigned int)arg2;
@@ -564,6 +603,8 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 
 @interface MMUpdateMgr : NSObject
 - (void)checkForUpdatesInBackground;
+- (void)checkForUpdates:(id)arg1;
+- (id)sparkleUpdater;
 @end
 
 @interface WebViewDataItem : NSObject
@@ -574,3 +615,42 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(retain, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 @end
 
+@interface MMImageView : NSImageView
+
+@end
+
+@interface MMTextField : NSTextField
+
+@end
+
+@interface MMSidebarLabelTextField : NSTextField
+
+@end
+
+@interface MMView : NSView
+
+@end
+
+@interface MMChatsTableCellView : NSTableCellView
+@property(nonatomic) __weak id <MMChatsTableCellViewDelegate> delegate;
+@property(retain, nonatomic) MMSessionInfo *sessionInfo;
+@property(retain, nonatomic) MMImageView *openimGroupFlag; // @synthesize openimGroupFlag=_openimGroupFlag;
+@property(retain, nonatomic) MMImageView *sendFailedImg; // @synthesize sendFailedImg=_sendFailedImg;
+@property(nonatomic) BOOL shouldDrawFocusRing; // @synthesize shouldDrawFocusRing=_shouldDrawFocusRing;
+@property(readonly, nonatomic) NSString *userName; // @synthesize userName=_userName;
+@property(retain, nonatomic) NSString *messageTime; // @synthesize messageTime=_messageTime;
+@property(retain, nonatomic) MMTextField *nickName; // @synthesize nickName=_nickName;
+@property(retain, nonatomic) MMSidebarLabelTextField *timeLabel; // @synthesize timeLabel=_timeLabel;
+@property(retain, nonatomic) MMSidebarLabelTextField *summary; //  @synthesize muteIndicator=_muteIndicator;
+@property(retain, nonatomic) MMView *seperator; // @synthesize seperator=_seperator;
+@property(retain, nonatomic) NSView *stickyBackgroundView; // @synthesize stickyBackgroundView=_stickyBackgroundView;
+@property(nonatomic) BOOL shouldRemoveHighlight; // @synthesize shouldRemoveHighlight=_shouldRemoveHighlight;
+@property(retain, nonatomic) NSView *containerView; // @synthesize containerView=_containerView;
+
+@property(nonatomic) BOOL selected; // @synthesize selected=_selected;
+- (void)menuWillOpen:(id)arg1;
+- (void)contextMenuSticky:(id)arg1;
+- (void)contextMenuDelete:(id)arg1;
+- (void)tableView:(NSTableView *)arg1 rowGotMouseDown:(long long)arg2;
+- (id)initWithFrame:(struct CGRect)arg1;
+@end

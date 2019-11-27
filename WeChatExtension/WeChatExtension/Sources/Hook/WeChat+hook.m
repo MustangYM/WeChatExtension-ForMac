@@ -1,9 +1,9 @@
 //
 //  WeChat+hook.m
-//  WeChatPlugin
+//  WeChatExtension
 //
-//  Created by TK on 2017/4/19.
-//  Copyright © 2017年 tk. All rights reserved.
+//  Created by WeChatExtension on 2017/4/19.
+//  Copyright © 2017年 WeChatExtension. All rights reserved.
 //
 
 #import "WeChat+hook.h"
@@ -11,15 +11,19 @@
 #import "fishhook.h"
 #import "TKIgnoreSessonModel.h"
 #import "TKWebServerManager.h"
-#import "TKMessageManager.h"
+#import "YMMessageManager.h"
 #import "TKAssistantMenuManager.h"
 #import "TKAutoReplyModel.h"
 #import "TKVersionManager.h"
 #import "TKRemoteControlManager.h"
 #import "TKDownloadWindowController.h"
-#import "OPMessageTool.h"
-#import "OPMessageModel.h"
+#import "YMMessageTool.h"
+#import "YMMessageModel.h"
 #import "YMUpdateManager.h"
+#import "YMThemeMgr.h"
+#import "ANYMethodLog.h"
+#import "YMDownloadManager.h"
+
 
 @implementation NSObject (WeChatHook)
 /*
@@ -65,7 +69,11 @@
     tk_hookMethod(objc_getClass("MMMainViewController"), @selector(viewDidLoad), [self class], @selector(hook_mainViewControllerDidLoad));
 
     //      自带浏览器打开链接
-    LargerOrEqualVersion(@"2.3.22") ? tk_hookClassMethod(objc_getClass("MMWebViewHelper"), @selector(handleWebViewDataItem:windowId:), [self class], @selector(hook_handleWebViewDataItem:windowId:)) :  tk_hookClassMethod(objc_getClass("MMWebViewHelper"), @selector(preHandleWebUrlStr:withMessage:), [self class], @selector(hook_preHandleWebUrlStr:withMessage:));
+    if (LargerOrEqualVersion(@"2.3.22")) {
+        tk_hookClassMethod(objc_getClass("MMWebViewHelper"), @selector(handleWebViewDataItem:windowId:), [self class], @selector(hook_handleWebViewDataItem:windowId:));
+    } else {
+        tk_hookClassMethod(objc_getClass("MMWebViewHelper"), @selector(preHandleWebUrlStr:withMessage:), [self class], @selector(hook_preHandleWebUrlStr:withMessage:));
+    }
     
     tk_hookMethod(objc_getClass("MMURLHandler"), @selector(startGetA8KeyWithURL:), [self class], @selector(hook_startGetA8KeyWithURL:));
     tk_hookMethod(objc_getClass("WeChat"), @selector(applicationDidFinishLaunching:), [self class], @selector(hook_applicationDidFinishLaunching:));
@@ -84,9 +92,96 @@
     
     [self setup];
     
-    tk_hookMethod(objc_getClass("LazyExtensionAgent"), @selector(ensureLazyListenerInitedForExtension: withSelector:), [self class], @selector(hook_ensureLazyListenerInitedForExtension:withSelector:));
+    //暂不执行以下代码, 关于黑夜模式的修改, 但还存在一定的问题, 想尝鲜的小伙伴可以把以下代码注释打开, 编译后自己放到微信里面玩.
+//    tk_hookMethod(objc_getClass("NSView"), @selector(addSubview:), [self class], @selector(hook_initWithFrame:));
+//
+//     tk_hookMethod(objc_getClass("MMComposeInputViewController"), @selector(viewDidLoad), [self class], @selector(hook_ComposeInputViewControllerViewDidLoad));
+//
+//     tk_hookMethod(objc_getClass("MMChatMessageViewController"), @selector(viewDidLoad), [self class], @selector(hook_ChatMessageViewControllerViewDidLoad));
+//
+//    tk_hookMethod(objc_getClass("NSScrollView"), @selector(initWithFrame:), [self class], @selector(hook_scrollViewInitWithFrame:));
+//
+//    tk_hookMethod(objc_getClass("MMChatsTableCellView"), @selector(initWithFrame:), [self class], @selector(cellhook_initWithFrame:));
+//    tk_hookMethod(objc_getClass("MMTextField"), @selector(setTextColor:), [self class], @selector(hook_setTextColor:));
 }
 
+- (void)hook_setTextColor:(NSColor *)arg1
+{
+    arg1 = kRGBColor(49, 110, 105, 1);
+    [self hook_setTextColor:arg1];
+}
+
+- (id)cellhook_initWithFrame:(struct CGRect)arg1
+{
+    return [self cellhook_initWithFrame:arg1];
+}
+
+- (instancetype)hook_scrollViewInitWithFrame:(NSRect)frameRect {
+    NSScrollView *view = (NSScrollView *)self;
+    [[YMThemeMgr shareInstance] changeTheme:view.contentView];
+    return [self hook_scrollViewInitWithFrame:frameRect];
+}
+
+- (void)hook_ChatMessageViewControllerViewDidLoad {
+    [self hook_ChatMessageViewControllerViewDidLoad];
+}
+- (void)hook_ComposeInputViewControllerViewDidLoad {
+    [self hook_ComposeInputViewControllerViewDidLoad];
+    MMComposeInputViewController *controller = (MMComposeInputViewController *)self;
+    [[YMThemeMgr shareInstance] changeTheme:controller.view];
+}
+
+- (void)hook_initWithFrame:(NSView *)view {
+    [self hook_initWithFrame:view];
+    
+    if ([view isKindOfClass:[objc_getClass("NSButtonImageView") class]]) {
+        return;
+    }
+    
+    NSResponder *responder = view;
+    NSViewController *controller = nil;
+    while ((responder = [responder nextResponder])){
+        if ([responder isKindOfClass: [NSViewController class]]){
+           controller = (NSViewController *)responder;
+        }
+    }
+    
+    
+    if ([view isKindOfClass:[objc_getClass("MMComposeTextView") class]]) {
+        MMComposeTextView *textView = (MMComposeTextView *)view;
+        textView.insertionPointColor = [NSColor whiteColor];
+        textView.backgroundColor = kRGBColor(113, 113, 117, 1.0);
+    }
+    
+    if ([view isKindOfClass:[objc_getClass("SwipeDeleteView") class]]) {
+        [[YMThemeMgr shareInstance] changeTheme:view];
+    }
+    
+    
+    if ([view isKindOfClass:[objc_getClass("MMFavoritesListMediaCell") class]]) {
+        [[YMThemeMgr shareInstance] changeTheme:view];
+    }
+    
+    if ([controller isKindOfClass:[objc_getClass("MMChatMessageViewController") class]]) {
+        MMChatMessageViewController *msgViewController = (MMChatMessageViewController *)controller;
+        [msgViewController.messageTableView setBackgroundColor:kRGBColor(61, 62, 60, 1)];
+        [[msgViewController.messageTableView enclosingScrollView] setDrawsBackground:NO];
+        [[YMThemeMgr shareInstance] changeTheme:view];
+    }
+    
+    if ( [controller isKindOfClass:[objc_getClass("MMComposeInputViewController") class]]
+        ||
+        [controller isKindOfClass:[objc_getClass("MMMainViewController") class]]
+        ||
+        [controller isKindOfClass:[objc_getClass("MMContactsDetailViewController") class]]
+        ||
+        [controller isKindOfClass:[objc_getClass("MMFavoriteDetailViewContoller") class]]
+        ) {
+        
+      [[YMThemeMgr shareInstance] changeTheme:view];
+    }
+    
+}
 
 //主控制器的生命周期
 - (void)hook_mainViewControllerDidLoad {
@@ -107,25 +202,6 @@
     });
 }
 
-- (void)hook_ensureLazyListenerInitedForExtension:(id)arg1 withSelector:(SEL)arg2 {
-    NSString *sel = NSStringFromSelector(arg2);
-    if (![sel isEqualToString:@"onLongLinkConnectionChanged:"]
-        &&![sel isEqualToString:@"onProgress:"]
-        &&![sel isEqualToString:@"onUploadResult:"]
-        &&![sel isEqualToString:@"onUnReadCountChange:"]
-        &&![sel isEqualToString:@"onSyncFinishWithStatus:withOnlineVersion:"]
-        &&![sel isEqualToString:@"onSyncSuccess"]
-        &&![sel isEqualToString:@"onRecvChatSyncMsg:"]
-        &&![sel isEqualToString:@"AskSessionByUserName:isHandled:"]
-        &&![sel isEqualToString:@"onModMsg:msgData:"]
-        &&![sel isEqualToString:@"onAppMsgSendFinish:msgData:"]
-        &&![sel isEqualToString:@"messageFileService:didFinishUploadWithMessage:"]
-        &&![sel isEqualToString:@"onGetNewXmlMsg:type:msgData:"]
-        ) {
-        NSLog(@"方法:%@",sel);
-    }
-    [self hook_ensureLazyListenerInitedForExtension:arg1 withSelector:arg2];
-}
 
 + (void)setup {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -239,13 +315,13 @@
         MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
         MessageData *revokeMsgData = [msgService GetMsgData:session svrId:[newmsgid integerValue]];
         
-        [[TKMessageManager shareManager] asyncRevokeMessage:revokeMsgData];
+        [[YMMessageManager shareManager] asyncRevokeMessage:revokeMsgData];
         
         if ([revokeMsgData isSendFromSelf] && ![[TKWeChatPluginConfig sharedConfig] preventSelfRevokeEnable]) {
             [self hook_onRevokeMsg:msgData];
             return;
         }
-        NSString *msgContent = [[TKMessageManager shareManager] getMessageContentWithData:revokeMsgData];
+        NSString *msgContent = [[YMMessageManager shareManager] getMessageContentWithData:revokeMsgData];
         NSString *newMsgContent = [NSString stringWithFormat:@"%@ \n%@",TKLocalizedString(@"assistant.revoke.otherMessage.tip"), msgContent];
         MessageData *newMsgData = ({
             MessageData *msg = [[objc_getClass("MessageData") alloc] initWithMsgType:0x2710];
@@ -287,6 +363,13 @@
             [self remoteControlWithMsg:addMsg];
             [self replySelfWithMsg:addMsg];
         }
+        
+        if (addMsg.msgType == 3) {
+            MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+            MessageData *msgData = [msgService GetMsgData:addMsg.fromUserName.string svrId:addMsg.newMsgId];
+            [[YMDownloadManager new] downloadImageWithMsg:msgData];
+        }
+        
     }];
 }
 
@@ -315,7 +398,7 @@
         if ([instanceUserName isEqualToString:currentUserName]) {
             MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
             [service SendTextMessage:currentUserName toUsrName:chatName msgText:notification.response.string atUserList:nil];
-            [[TKMessageManager shareManager] clearUnRead:chatName];
+            [[YMMessageManager shareManager] clearUnRead:chatName];
         }
     } else {
         [self hook_userNotificationCenter:notificationCenter didActivateNotification:notification];
@@ -452,11 +535,18 @@
     if ([NSObject hook_HasWechatInstance]) {
         wechat.hasAuthOK = YES;
     }
-    if ([wechat respondsToSelector:@selector(checkForUpdatesInBackground)]) {
-        //      去除刚启动微信更新弹窗提醒
+    
+    if (LargerOrEqualVersion(@"2.3.24")) {
+        tk_hookMethod(objc_getClass("WeChat"), @selector(setupCheckUpdateIfNeeded), [self class], @selector(hook_checkForUpdatesInBackground));
 
-        LargerOrEqualVersion(@"2.3.24") ? tk_hookMethod(objc_getClass("MMUpdateMgr"), @selector(checkForUpdatesInBackground), [self class], @selector(hook_checkForUpdatesInBackground)) : tk_hookMethod(objc_getClass("WeChat"), @selector(checkForUpdatesInBackground), [self class], @selector(hook_checkForUpdatesInBackground));
+        tk_hookMethod(objc_getClass("MMUpdateMgr"), @selector(sparkleUpdater), [self class], @selector(hook_sparkleUpdater));
+    } else {
+        if ([wechat respondsToSelector:@selector(checkForUpdatesInBackground)]) {
+            //      去除刚启动微信更新弹窗提醒
+            tk_hookMethod(objc_getClass("WeChat"), @selector(checkForUpdatesInBackground), [self class], @selector(hook_checkForUpdatesInBackground));
+        }
     }
+    
     
     [[TKAssistantMenuManager shareManager] initAssistantMenuItems];
     [self hook_applicationDidFinishLaunching:arg1];
@@ -477,6 +567,13 @@
     }
 }
 
+- (id)hook_sparkleUpdater {
+    if (![[TKWeChatPluginConfig sharedConfig] checkUpdateWechatEnable]) {
+        return nil;
+    }
+    return [self hook_sparkleUpdater];
+}
+
 //  是否使用微信浏览器
 + (BOOL)hook_preHandleWebUrlStr:(id)arg1 withMessage:(id)arg2 {
     if ([[TKWeChatPluginConfig sharedConfig] systemBrowserEnable]) {
@@ -492,7 +589,13 @@
     WebViewDataItem *item = (WebViewDataItem *)arg1;
     if ([[TKWeChatPluginConfig sharedConfig] systemBrowserEnable]) {
         MMURLHandler *urlHander = [objc_getClass("MMURLHandler") defaultHandler];
-        [urlHander openURLWithDefault:item.urlString];
+
+        if (LargerOrEqualVersion(@"2.3.26")) {
+            [urlHander openURLWithDefault:item.urlString useA8Key:NO];
+        } else {
+            [urlHander openURLWithDefault:item.urlString];
+        }
+
     } else {
          [self hook_handleWebViewDataItem:arg1 windowId:arg2];
     }
@@ -505,7 +608,7 @@
     NSMutableSet *unreadSessionSet = [[TKWeChatPluginConfig sharedConfig] unreadSessionSet];
     if ([unreadSessionSet containsObject:chatMessageVC.chatContact.m_nsUsrName]) {
         [unreadSessionSet removeObject:chatMessageVC.chatContact.m_nsUsrName];
-        [[TKMessageManager shareManager] clearUnRead:chatMessageVC.chatContact.m_nsUsrName];
+        [[YMMessageManager shareManager] clearUnRead:chatMessageVC.chatContact.m_nsUsrName];
     }
 }
 
@@ -540,7 +643,14 @@
     NSString *userName = addMsg.fromUserName.string;
     
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
-    WCContactData *msgContact = [sessionMgr getContact:userName];
+    WCContactData *msgContact = nil;
+    
+    if (LargerOrEqualVersion(@"2.3.26")) {
+        msgContact = [sessionMgr getSessionContact:userName];
+    } else {
+        msgContact = [sessionMgr getContact:userName];
+    }
+    
     if ([msgContact isBrandContact] || [msgContact isSelf]) {
         //        该消息为公众号或者本人发送的消息
         return;
@@ -584,13 +694,13 @@
         if (error) return;
         NSInteger count = [regular numberOfMatchesInString:msgContent options:NSMatchingReportCompletion range:NSMakeRange(0, msgContent.length)];
         if (count > 0) {
-            [[TKMessageManager shareManager] sendTextMessage:randomReplyContent toUsrName:addMsg.fromUserName.string delay:delayTime];
+            [[YMMessageManager shareManager] sendTextMessage:randomReplyContent toUsrName:addMsg.fromUserName.string delay:delayTime];
         }
     } else {
         NSArray * keyWordArray = [model.keyword componentsSeparatedByString:@"|"];
         [keyWordArray enumerateObjectsUsingBlock:^(NSString *keyword, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([keyword isEqualToString:@"*"] || [msgContent isEqualToString:keyword]) {
-                [[TKMessageManager shareManager] sendTextMessage:randomReplyContent toUsrName:addMsg.fromUserName.string delay:delayTime];
+                [[YMMessageManager shareManager] sendTextMessage:randomReplyContent toUsrName:addMsg.fromUserName.string delay:delayTime];
                 *stop = YES;
             }
         }];
@@ -631,7 +741,7 @@
     
     if ([addMsg.content.string isEqualToString:TKLocalizedString(@"assistant.remoteControl.getList")]) {
         NSString *callBack = [TKRemoteControlManager remoteControlCommandsString];
-        [[TKMessageManager shareManager] sendTextMessageToSelf:callBack];
+        [[YMMessageManager shareManager] sendTextMessageToSelf:callBack];
     }
 }
 
