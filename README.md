@@ -117,7 +117,7 @@ curl -o- -L https://raw.githubusercontent.com/lmk123/oh-my-wechat/master/install
   
    <td align="center">
   <a href="https://github.com/reinstallsys"><img src="https://avatars3.githubusercontent.com/u/5747138?s=400&v=4" width="100px;" alt="reinstallsys"/>
-  <br></br><sub><b>imjonat</b></sub>
+  <br></br><sub><b>reinstallsys</b></sub>
   
 </td></tr></table>
 
