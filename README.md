@@ -150,21 +150,11 @@ Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com
 
 <a href="https://opencollective.com/mustangym666#backers" target="_blank"><img src="https://opencollective.com/mustangym666/backers.svg?width=890"></a>
 
+## 请我抽烟
 
-## Sponsors
-
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/mustangym666#sponsor)]
-
-<a href="https://opencollective.com/mustangym666/sponsor/0/website" target="_blank"><img src="https://opencollective.com/mustangym666/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/mustangym666/sponsor/1/website" target="_blank"><img src="https://opencollective.com/mustangym666/sponsor/1/avatar.svg"></a>
-<a href="https://opencollective.com/mustangym666/sponsor/2/website" target="_blank"><img src="https://opencollective.com/mustangym666/sponsor/2/avatar.svg"></a>
-<a href="https://opencollective.com/mustangym666/sponsor/3/website" target="_blank"><img src="https://opencollective.com/mustangym666/sponsor/3/avatar.svg"></a>
-<a href="https://opencollective.com/mustangym666/sponsor/4/website" target="_blank"><img src="https://opencollective.com/mustangym666/sponsor/4/avatar.svg"></a>
-<a href="https://opencollective.com/mustangym666/sponsor/5/website" target="_blank"><img src="https://opencollective.com/mustangym666/sponsor/5/avatar.svg"></a>
-<a href="https://opencollective.com/mustangym666/sponsor/6/website" target="_blank"><img src="https://opencollective.com/mustangym666/sponsor/6/avatar.svg"></a>
-<a href="https://opencollective.com/mustangym666/sponsor/7/website" target="_blank"><img src="https://opencollective.com/mustangym666/sponsor/7/avatar.svg"></a>
-<a href="https://opencollective.com/mustangym666/sponsor/8/website" target="_blank"><img src="https://opencollective.com/mustangym666/sponsor/8/avatar.svg"></a>
-<a href="https://opencollective.com/mustangym666/sponsor/9/website" target="_blank"><img src="https://opencollective.com/mustangym666/sponsor/9/avatar.svg"></a>
+ <p align="left">
+ <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/aliPay.png" width="200"/>
+ </p>
 
 ## 交流QQ群
 229555512
