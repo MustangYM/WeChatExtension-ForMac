@@ -150,8 +150,7 @@ Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com
 
 <a href="https://opencollective.com/mustangym666#backers" target="_blank"><img src="https://opencollective.com/mustangym666/backers.svg?width=890"></a>
 
-## 请我抽烟
-没想着致富, 本来也是tk功劳多, 写这玩意费烟, 少侠留下GitHub账号, 在下张榜感谢.
+## 可以请我喝杯咖啡
  <p align="left">
  <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/aliPay.png" width="200"/>
  </p>
