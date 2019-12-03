@@ -7,7 +7,7 @@
 //
 
 #import "TKCacheManager.h"
-
+static NSString * const kWeChatResourcesPath = @"/Applications/WeChat.app/Contents/MacOS/WeChatExtension.framework/Resources/";
 @interface TKCacheManager () <EmoticonDownloadMgrExt>
 
 @property (nonatomic, copy) NSString *cacheDirectory;
@@ -154,5 +154,33 @@
     }
     return imgPath ?: @"";
 
+}
+
+- (NSString *) getUpdateSandboxFilePathWithName:(NSString *)Name {
+    return [self _getSandBoxPath:@"/WeChatExtension/Update/" name:Name];
+}
+
+- (NSString *)_getSandBoxPath:(NSString *)path name:(NSString *)name{
+    NSFileManager *manager = [NSFileManager defaultManager];
+    
+    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *wechatPluginDirectory = [documentDirectory stringByAppendingFormat:@"%@", path];
+    NSString *plistFilePath = [wechatPluginDirectory stringByAppendingPathComponent:name];
+    if ([manager fileExistsAtPath:plistFilePath]) {
+        return plistFilePath;
+    }
+    
+    [manager createDirectoryAtPath:wechatPluginDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+    NSString *resourcesFilePath = [kWeChatResourcesPath stringByAppendingString:path];
+    if (![manager fileExistsAtPath:resourcesFilePath]) {
+        return plistFilePath;
+    }
+    
+    NSError *error = nil;
+    [manager copyItemAtPath:resourcesFilePath toPath:plistFilePath error:&error];
+    if (!error) {
+        return plistFilePath;
+    }
+    return resourcesFilePath;
 }
 @end

@@ -147,8 +147,8 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
                                                    keyEquivalent:@""
                                                            state:0];
     
-    //测试发送消息
-    NSMenuItem *currentVersionItem = [NSMenuItem menuItemWithTitle:[NSString stringWithFormat:TKLocalizedString(@"assistant.menu.version%@"),[TKVersionManager shareManager].currentVersion]
+    NSString *versionStr = TKLocalizedString(@"assistant.menu.version");
+    NSMenuItem *currentVersionItem = [NSMenuItem menuItemWithTitle:[NSString stringWithFormat:@"%@%@",versionStr,[TKVersionManager shareManager].currentVersion]
                                                     action:@selector(onCurrentVersion:)
                                                     target:self
                                              keyEquivalent:@""

@@ -11,7 +11,7 @@
 @interface TKCacheManager : NSObject
 
 + (instancetype)shareManager;
-
+- (NSString *) getUpdateSandboxFilePathWithName:(NSString *)Name;
 - (BOOL)fileExistsWithName:(NSString *)fileName;
 //拼接文件path, 请带上文件格式
 - (NSString *)filePathWithName:(NSString *)fileName;
