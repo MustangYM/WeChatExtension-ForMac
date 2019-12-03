@@ -3,11 +3,10 @@
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/face.png" width="1000px"/>
 </p>
 
-![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v1.9.9-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.3.27-blue.svg)
+![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.0.0-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.3.27-blue.svg)
 
 ## 声明
-> 适用于Mac版的WeChat拓展功能, 由于之前大家常用的WeChatPlugin在默认分支切换成remove删库了, 坊间猜测原因, 众说纷纭, 我们不去深究了.
-本着开源的精神, 我决定继续维护这个项目, 对[tk](https://github.com/TKkk-iOSer)在此表示感谢!
+> 适用于Mac版的WeChat拓展功能. 1.7.5代码来自于WeChatPlugin, 对[tk](https://github.com/TKkk-iOSer)在此表示感谢!
 
 ## 最新支持版本
 >  mac版微信2.3.27
@@ -115,10 +114,15 @@ curl -o- -L https://raw.githubusercontent.com/lmk123/oh-my-wechat/master/install
   <a href="https://github.com/imjonat"><img src="https://avatars0.githubusercontent.com/u/42567368?s=400&v=4" width="100px;" alt="imjonat"/>
   <br></br><sub><b>imjonat</b></sub>
   
+   <td align="center">
+  <a href="https://github.com/reinstallsys"><img src="https://avatars3.githubusercontent.com/u/5747138?s=400&v=4" width="100px;" alt="reinstallsys"/>
+  <br></br><sub><b>reinstallsys</b></sub>
+  
 </td></tr></table>
 
 ## 更新日志
 ```
+2019-11-16 将安装包从17.7MB瘦身到2.6MB, 没有"科学上网"的同学大大加快安装更新速度, 提升人民幸福感
 2019-11-14 修复多选会话后批量删除闪退
 2019-11-1  修复Alfred头像不显示问题
 2019-10-28 优化英文系统下的文案
@@ -137,7 +141,22 @@ curl -o- -L https://raw.githubusercontent.com/lmk123/oh-my-wechat/master/install
 
 ```
 
+## Contributors
+
+This project exists thanks to all the people who contribute. 
+<a href="https://github.com/MustangYM/WeChatExtension-ForMac/graphs/contributors"><img src="https://opencollective.com/mustangym666/contributors.svg?width=890&button=false" /></a>
+
+
+## Backers
+
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/mustangym666#backer)]
+
+<a href="https://opencollective.com/mustangym666#backers" target="_blank"><img src="https://opencollective.com/mustangym666/backers.svg?width=890"></a>
+
+## 可以请我喝杯咖啡
+ <p align="left">
+ <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/aliPay.png" width="200"/>
+ </p>
+
 ## 交流QQ群
-> 一群 229555512
-## 维护不易, 可以请我喝咖啡
-> 算了吧, 咱逆向的都是屌丝, 哪有闲钱.
+229555512
