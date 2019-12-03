@@ -3,7 +3,7 @@
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/face.png" width="1000px"/>
 </p>
 
-![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.0.0-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.3.27-blue.svg)
+![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.1.0-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.3.27-blue.svg)
 
 ## 声明
 > 适用于Mac版的WeChat拓展功能. 1.7.5代码来自于WeChatPlugin, 对[tk](https://github.com/TKkk-iOSer)在此表示感谢!
