@@ -11,6 +11,18 @@
 ## 最新支持版本
 >  mac版微信2.3.27
 
+## AI自动撩妹
+> 腾讯AI人工智能(ZZ)自动回复, 能理解上下文语义, 在收到指定对象消息后的5~8秒内自动回复消息(大部分情况下比较智能, 偶尔智障).
+1. > 开启前
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191203-181321%402x.png" width="800px"/>
+</p>
+
+2. > 开启后
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191203-184352%402x.png" width="800px"/>
+</p>
+
 ## 手机端也能收到被撤回的消息
 1. > 如果Mac拦截到A发送来的消息, 手机也会同步收到的这条已经拦截的消息(自己发送给自己). 目前只支持同步文字消息与图片消息, 其他类型也可以做, 但意义不大.
 <p align="center">
