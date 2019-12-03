@@ -18,7 +18,12 @@
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191203-181321%402x.png" width="800px"/>
 </p>
 
-2. > 开启后
+2. > 设置
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WechatIMG498.png" width="800px"/>
+</p>
+
+3. > 开启后
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191203-184352%402x.png" width="800px"/>
 </p>
