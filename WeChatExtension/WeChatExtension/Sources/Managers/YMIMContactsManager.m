@@ -36,4 +36,18 @@
     ContactStorage *contactStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("ContactStorage")];
     return [contactStorage GetAllFriendContacts];
 }
+
++ (NSString *)getWeChatAvatar:(NSString *)userName {
+    NSArray *arr = [self getAllFriendContacts];
+    __block NSString *temp = nil;
+    [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        WCContactData *contactData = (WCContactData *)obj;
+        if ([contactData.m_nsUsrName isEqualToString:userName]) {
+            temp = contactData.m_nsHeadImgUrl;
+        }
+    }];
+    
+    return temp;
+}
+
 @end

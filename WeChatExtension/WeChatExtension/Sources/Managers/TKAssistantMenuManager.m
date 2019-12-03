@@ -16,6 +16,7 @@
 #import "TKAboutWindowController.h"
 #import "TKWebServerManager.h"
 #import "YMMessageManager.h"
+#import "YMAIReplyWindowController.h"
 
 static char tkAutoReplyWindowControllerKey;         //  自动回复窗口的关联 key
 static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关联 key
@@ -317,10 +318,10 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
  */
 - (void)onAutoReply:(NSMenuItem *)item {
     WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
-    TKAutoReplyWindowController *autoReplyWC = objc_getAssociatedObject(wechat, &tkAutoReplyWindowControllerKey);
+    YMAIReplyWindowController *autoReplyWC = objc_getAssociatedObject(wechat, &tkAutoReplyWindowControllerKey);
 
     if (!autoReplyWC) {
-        autoReplyWC = [[TKAutoReplyWindowController alloc] initWithWindowNibName:@"TKAutoReplyWindowController"];
+        autoReplyWC = [[YMAIReplyWindowController alloc] initWithWindowNibName:@"TKAutoReplyWindowController"];
         objc_setAssociatedObject(wechat, &tkAutoReplyWindowControllerKey, autoReplyWC, OBJC_ASSOCIATION_RETAIN);
     }
     [autoReplyWC show];

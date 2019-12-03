@@ -194,7 +194,7 @@
     [self.layer setNeedsDisplay];
 }
 
-- (void)setModel:(TKAutoReplyModel *)model {
+- (void)setModel:(YMAutoReplyModel *)model {
     _model = model;
     self.keywordTextField.stringValue = model.keyword != nil ? model.keyword : @"";
     self.autoReplyContentField.stringValue = model.replyContent != nil ? model.replyContent : @"";

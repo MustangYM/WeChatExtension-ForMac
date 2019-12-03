@@ -1,5 +1,5 @@
 //
-//  TKUtility.h
+//  YMUtility.h
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2019/1/12.
@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-#define LargerOrEqualVersion(version) [TKUtility isLargerOrEqualVersion:version]
+#define LargerOrEqualVersion(version) [YMUtility isLargerOrEqualVersion:version]
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TKUtility : NSObject
+@interface YMUtility : NSObject
 
 + (BOOL)isLargerOrEqualVersion:(NSString *)version;
 

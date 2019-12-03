@@ -21,10 +21,10 @@
 #import "NSDate+Action.h"
 #import "NSWindowController+Action.h"
 #import "WeChatPlugin.h"
-#import "TKUtility.h"
+#import "YMUtility.h"
 
 #import "TKWeChatPluginConfig.h"
-#import "TKHelper.h"
+#import "YMHelper.h"
 #endif
 
 #endif /* TKPrefixHeader_pch */

@@ -161,7 +161,7 @@
         self.contentView.hidden = NO;
     }
     __block NSInteger emptyModelIndex = -1;
-    [self.autoReplyModels enumerateObjectsUsingBlock:^(TKAutoReplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.autoReplyModels enumerateObjectsUsingBlock:^(YMAutoReplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
         if (model.hasEmptyKeywordOrReplyContent) {
             emptyModelIndex = idx;
             *stop = YES;
@@ -180,7 +180,7 @@
         return;
     };
     
-    TKAutoReplyModel *model = [[TKAutoReplyModel alloc] init];
+    YMAutoReplyModel *model = [[YMAutoReplyModel alloc] init];
     [self.autoReplyModels addObject:model];
     [self.tableView reloadData];
     self.contentView.model = model;
@@ -232,11 +232,11 @@
     self.reduceButton.enabled = tableView.selectedRow != -1;
     
     if (tableView.selectedRow != -1) {
-        TKAutoReplyModel *model = self.autoReplyModels[tableView.selectedRow];
+        YMAutoReplyModel *model = self.autoReplyModels[tableView.selectedRow];
         self.contentView.model = model;
         self.lastSelectIndex = tableView.selectedRow;
         __block NSInteger emptyModelIndex = -1;
-        [self.autoReplyModels enumerateObjectsUsingBlock:^(TKAutoReplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self.autoReplyModels enumerateObjectsUsingBlock:^(YMAutoReplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
             if (model.hasEmptyKeywordOrReplyContent) {
                 emptyModelIndex = idx;
                 *stop = YES;

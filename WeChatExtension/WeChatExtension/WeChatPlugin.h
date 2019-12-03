@@ -12,6 +12,7 @@ FOUNDATION_EXPORT double WeChatPluginVersionNumber;
 FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 
 #define kRGBColor(r,g,b,a) [NSColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+#define kArc4random_Double_inSpace(a,b) a<b ? rand() / (float)RAND_MAX * (b-a) * 1 + (a) : rand() / (float)RAND_MAX * (a-b) * 1 + (b)
 #pragma mark - 微信原始的部分类与方法
 
 @interface MMFileTypeHelper : NSObject
@@ -466,6 +467,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @end
 
 @interface AFHTTPResponseSerializer : NSObject
+@property (nonatomic, copy, nullable) NSSet <NSString *> *acceptableContentTypes;
 @end
 
 @interface AFURLSessionManager : NSObject
@@ -477,14 +479,46 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @end
 
 @interface AFHTTPRequestSerializer : NSObject
+@property (nullable, copy) NSData *HTTPBody;
 + (id)serializer;
+@property (nonatomic, assign) NSTimeInterval timeoutInterval;
 @property(nonatomic) unsigned long long cachePolicy;
+- (void)setValue:(nullable NSString *)value
+forHTTPHeaderField:(NSString *)field;
+@property (nonatomic, strong) NSSet <NSString *> *HTTPMethodsEncodingParametersInURI;
+@end
+
+@protocol AFMultipartFormData
+- (void)appendPartWithFormData:(NSData *)data
+                          name:(NSString *)name;
+
+- (void)appendPartWithFileData:(NSData *)data
+                          name:(NSString *)name
+                      fileName:(NSString *)fileName
+                      mimeType:(NSString *)mimeType;
 @end
 
 @interface AFHTTPSessionManager : NSObject
 + (AFHTTPSessionManager *)manager;
 @property(retain, nonatomic) AFHTTPRequestSerializer *requestSerializer;
 @property(retain, nonatomic) AFHTTPResponseSerializer *responseSerializer;
+- (nullable NSURLSessionDataTask *)POST:(NSString *)URLString
+                             parameters:(nullable id)parameters
+              constructingBodyWithBlock:(nullable void (^)(id <AFMultipartFormData> formData))block
+                                success:(nullable void (^)(NSURLSessionDataTask *task, id _Nullable responseObject))success
+                                failure:(nullable void (^)(NSURLSessionDataTask * _Nullable task, NSError *error))failure;
+
+- (nullable NSURLSessionDataTask *)POST:(NSString *)URLString
+                             parameters:(nullable id)parameters
+                               progress:(nullable void (^)(NSProgress *uploadProgress))uploadProgress
+                                success:(nullable void (^)(NSURLSessionDataTask *task, id _Nullable responseObject))success
+                                failure:(nullable void (^)(NSURLSessionDataTask * _Nullable task, NSError *error))failure;
+
+- (nullable NSURLSessionDataTask *)GET:(NSString *)URLString
+                            parameters:(nullable id)parameters
+                              progress:(nullable void (^)(NSProgress *downloadProgress))downloadProgress
+                               success:(nullable void (^)(NSURLSessionDataTask *task, id _Nullable responseObject))success
+                               failure:(nullable void (^)(NSURLSessionDataTask * _Nullable task, NSError *error))failure;
 @end
 
 @interface MMURLHandler : NSObject
@@ -654,3 +688,4 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)tableView:(NSTableView *)arg1 rowGotMouseDown:(long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 @end
+

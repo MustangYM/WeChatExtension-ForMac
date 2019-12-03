@@ -106,6 +106,8 @@
 "assistant.autoReply.keyword" = "Key Words";
 "assistant.autoReply.content" = "Reply Content";
 "assistant.autoReply.list" = "Reply List";
+"assistant.autoReply.aiTitle" = "AI auto reply";
+"assistant.autoReply.aiDes" = "AI robot automatically chat with girls, with context semantic understanding";
 "assistant.autoReply.alert.confirm" = "Confirm";
 "assistant.autoReply.alert.title" = "You have an auto-reply setting not completed";
 "assistant.autoReply.alert.content" = "Please refine your outstanding auto-reply settings";

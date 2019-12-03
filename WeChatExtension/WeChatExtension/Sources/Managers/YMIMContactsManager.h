@@ -11,5 +11,7 @@
 @interface YMIMContactsManager : NSObject
 + (NSString *)getGroupMemberNickName:(NSString *)username;
 + (NSString *)getWeChatNickName:(NSString *)username;
++ (NSString *)getWeChatAvatar:(NSString *)userName;
+
 @end
 

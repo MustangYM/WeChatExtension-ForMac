@@ -78,7 +78,7 @@
     }
 }
 
-- (void)setModel:(TKAutoReplyModel *)model {
+- (void)setModel:(YMAutoReplyModel *)model {
     _model = model;
     if (model.keyword == nil && model.replyContent == nil) return;
     

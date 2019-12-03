@@ -106,6 +106,8 @@
 "assistant.autoReply.keyword" = "关键字";
 "assistant.autoReply.content" = "回复内容";
 "assistant.autoReply.list" = "自动回复列表";
+"assistant.autoReply.aiDes" = "AI机器人自动撩妹, 具备上下文语义理解";
+"assistant.autoReply.aiTitle" = "AI自动回复";
 "assistant.autoReply.alert.confirm" = "确定";
 "assistant.autoReply.alert.title" = "您还有一条自动回复设置未完成";
 "assistant.autoReply.alert.content" = "请完善未完成的自动回复设置";

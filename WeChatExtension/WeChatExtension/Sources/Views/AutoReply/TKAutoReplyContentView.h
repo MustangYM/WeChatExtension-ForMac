@@ -7,11 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "TKAutoReplyModel.h"
+#import "YMAutoReplyModel.h"
 
 @interface TKAutoReplyContentView : NSView
 
-@property (nonatomic, strong) TKAutoReplyModel *model;
+@property (nonatomic, strong) YMAutoReplyModel *model;
 @property (nonatomic, copy) void (^endEdit)(void);
 
 @end

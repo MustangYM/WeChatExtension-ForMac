@@ -10,11 +10,11 @@
 		</data>
 		<key>Resources/Base.lproj/TKRemoteControlWindowController.nib</key>
 		<data>
-		uhAU+mXzLxWCmbQaUO+hkEzaVGo=
+		iI4dLhrYSM7pc86aYX220ecRFdo=
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		HSJ1cwo3+zdCiGSYVAhN2/7OB3k=
+		tuG6+SVczBrh/wKsH38HfVnxgSg=
 		</data>
 		<key>Resources/LockPlist.plist</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Resources/TKAutoReplyWindowController.nib</key>
 		<data>
-		odBU68KzzoSYsPD1oOH2lCuLCg0=
+		qT5ekQukoj1yfsf4vGIi5jCcYlE=
 		</data>
 		<key>Resources/TKDownloadWindowController.nib</key>
 		<data>
@@ -36,11 +36,15 @@
 		<data>
 		av7zIpc33acb18BlVZcS6BtoHNI=
 		</data>
+		<key>Resources/YMAIReplyWindowController.nib</key>
+		<data>
+		6Q1Ey2f4FLBcxvGCkD5WMVb1ZFk=
+		</data>
 		<key>Resources/en.lproj/Localizable.strings</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			65c8kQVXINMSVDhvaVjB7AFv2JY=
+			WOjsL9PzmeZESP31pgwYRuKZ9iU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -49,7 +53,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			CtMufRHXnlon9fB2aOmVguMAAZ8=
+			En5kI5Kwuj0ECtiYhxSiHWJ1qnc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -67,7 +71,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			pOsj7yJ18jgeAXEZ1f4lWEvObqc=
+			eikxI/GSpcTbYkiYOWRgvPrLfcM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -76,7 +80,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+eQ9NKM6VJMlvqd0sMxa1WADbQQ=
+			IMUqcFi8mFK9fnIiaLOGc8AMv5k=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -94,7 +98,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			pOsj7yJ18jgeAXEZ1f4lWEvObqc=
+			eikxI/GSpcTbYkiYOWRgvPrLfcM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -103,7 +107,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+eQ9NKM6VJMlvqd0sMxa1WADbQQ=
+			IMUqcFi8mFK9fnIiaLOGc8AMv5k=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -135,22 +139,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			uhAU+mXzLxWCmbQaUO+hkEzaVGo=
+			iI4dLhrYSM7pc86aYX220ecRFdo=
 			</data>
 			<key>hash2</key>
 			<data>
-			PaGYRqZtoMgyGltsBe6k91iNQ+RXR9xfLfjz1v03N8E=
+			KXa9rbGpVOyhuHAdgYPF5Hf7d/Nr7OIYSQvmCC767MA=
 			</data>
 		</dict>
 		<key>Resources/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			HSJ1cwo3+zdCiGSYVAhN2/7OB3k=
+			tuG6+SVczBrh/wKsH38HfVnxgSg=
 			</data>
 			<key>hash2</key>
 			<data>
-			0bRogd/b0F11vXdnYQ6tDVfqCOZuPi+jNJtEGHNNXAQ=
+			vYZzFo33nNGRN7TJraq35mfNv/KVyjg95PU2fl/OeKo=
 			</data>
 		</dict>
 		<key>Resources/LockPlist.plist</key>
@@ -168,11 +172,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			odBU68KzzoSYsPD1oOH2lCuLCg0=
+			qT5ekQukoj1yfsf4vGIi5jCcYlE=
 			</data>
 			<key>hash2</key>
 			<data>
-			TwAuNVdm+RqWURmYo71GkQfu88QK00CWOtebea25MbE=
+			iFvxXJyq98E3/eJId6XjR17ms7UjDrQjV75FFiESzIE=
 			</data>
 		</dict>
 		<key>Resources/TKDownloadWindowController.nib</key>
@@ -208,15 +212,26 @@
 			xlgKwlYWKsJlb7x0HGYVT8oQd05f8Ki2p+Ad+Q+Qnlg=
 			</data>
 		</dict>
+		<key>Resources/YMAIReplyWindowController.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			6Q1Ey2f4FLBcxvGCkD5WMVb1ZFk=
+			</data>
+			<key>hash2</key>
+			<data>
+			uu42QYCn8sglsjuEsmZSTuSoNlBdnHJ9fcAfV9MBzyo=
+			</data>
+		</dict>
 		<key>Resources/en.lproj/Localizable.strings</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			65c8kQVXINMSVDhvaVjB7AFv2JY=
+			WOjsL9PzmeZESP31pgwYRuKZ9iU=
 			</data>
 			<key>hash2</key>
 			<data>
-			hD9GbeDv9L9TfEImXQTumLeKF2ccK4Hu6tUkTp0g7eM=
+			RQpPg494SaltFC7BnRPwTrzTq9vyEAa8akqjnRYNfjo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -225,11 +240,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			CtMufRHXnlon9fB2aOmVguMAAZ8=
+			En5kI5Kwuj0ECtiYhxSiHWJ1qnc=
 			</data>
 			<key>hash2</key>
 			<data>
-			3qWZtXDIbrfOR5JXM7mTwKxhhttNxQoBIG5yG9JEpzc=
+			A/l7xX41GpZ1U7PRPvb+MvAJGksaE7Ol/4q/zClRZ6I=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -251,11 +266,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			pOsj7yJ18jgeAXEZ1f4lWEvObqc=
+			eikxI/GSpcTbYkiYOWRgvPrLfcM=
 			</data>
 			<key>hash2</key>
 			<data>
-			DlCENiX9EHOZsUsQUYPY4OIwKk7zvai5Ck8rWrG5cXA=
+			Ng/rPxcYNdlBUz+IyWlgTKOa5dQN8KlPGbvpb/P3+6o=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -264,11 +279,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+eQ9NKM6VJMlvqd0sMxa1WADbQQ=
+			IMUqcFi8mFK9fnIiaLOGc8AMv5k=
 			</data>
 			<key>hash2</key>
 			<data>
-			LbPL8gGXxXom/6L43QUAup3MYiCh0JoE/9heU56UAzM=
+			5BWii4xd5oucPRR3kmDLRV0TzeqLkJwbpPvQFOD2Qag=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -290,11 +305,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			pOsj7yJ18jgeAXEZ1f4lWEvObqc=
+			eikxI/GSpcTbYkiYOWRgvPrLfcM=
 			</data>
 			<key>hash2</key>
 			<data>
-			DlCENiX9EHOZsUsQUYPY4OIwKk7zvai5Ck8rWrG5cXA=
+			Ng/rPxcYNdlBUz+IyWlgTKOa5dQN8KlPGbvpb/P3+6o=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -303,11 +318,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+eQ9NKM6VJMlvqd0sMxa1WADbQQ=
+			IMUqcFi8mFK9fnIiaLOGc8AMv5k=
 			</data>
 			<key>hash2</key>
 			<data>
-			LbPL8gGXxXom/6L43QUAup3MYiCh0JoE/9heU56UAzM=
+			5BWii4xd5oucPRR3kmDLRV0TzeqLkJwbpPvQFOD2Qag=
 			</data>
 			<key>optional</key>
 			<true/>

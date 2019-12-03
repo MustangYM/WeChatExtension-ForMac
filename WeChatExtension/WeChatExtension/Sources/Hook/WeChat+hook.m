@@ -13,7 +13,7 @@
 #import "TKWebServerManager.h"
 #import "YMMessageManager.h"
 #import "TKAssistantMenuManager.h"
-#import "TKAutoReplyModel.h"
+#import "YMAutoReplyModel.h"
 #import "TKVersionManager.h"
 #import "TKRemoteControlManager.h"
 #import "TKDownloadWindowController.h"
@@ -23,7 +23,8 @@
 #import "YMThemeMgr.h"
 #import "ANYMethodLog.h"
 #import "YMDownloadManager.h"
-
+#import "YMNetWorkHelper.h"
+#import<CommonCrypto/CommonDigest.h>
 
 @implementation NSObject (WeChatHook)
 /*
@@ -91,6 +92,10 @@
     }, 2);
     
     [self setup];
+    
+    [[YMNetWorkHelper share] GET:@"我爱你啊" session:@"1234" success:^(NSString *content, NSString *session) {
+        
+    }];
     
     //暂不执行以下代码, 关于黑夜模式的修改, 但还存在一定的问题, 想尝鲜的小伙伴可以把以下代码注释打开, 编译后自己放到微信里面玩.
 //    tk_hookMethod(objc_getClass("NSView"), @selector(addSubview:), [self class], @selector(hook_initWithFrame:));
@@ -636,9 +641,8 @@
  @param addMsg 接收的消息
  */
 - (void)autoReplyWithMsg:(AddMsg *)addMsg {
-    //    addMsg.msgType != 49
-    if (![[TKWeChatPluginConfig sharedConfig] autoReplyEnable]) return;
-    if (addMsg.msgType != 1 && addMsg.msgType != 3) return;
+    
+    if (addMsg.msgType != 1) return;
     
     NSString *userName = addMsg.fromUserName.string;
     
@@ -656,55 +660,19 @@
         return;
     }
     NSArray *autoReplyModels = [[TKWeChatPluginConfig sharedConfig] autoReplyModels];
-    [autoReplyModels enumerateObjectsUsingBlock:^(TKAutoReplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (!model.enable) return;
-        if (!model.replyContent || model.replyContent.length == 0) return;
-        
-        if (model.enableSpecificReply) {
-            if ([model.specificContacts containsObject:userName]) {
-                [self replyWithMsg:addMsg model:model];
-            }
-            return;
+    if (autoReplyModels.count < 1) {
+        return;
+    }
+    YMAutoReplyModel *model = nil;
+    model = autoReplyModels[0];
+    
+    [model.specificContacts enumerateObjectsUsingBlock:^(NSString *wxid, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([wxid isEqualToString:addMsg.fromUserName.string]) {
+            [[YMNetWorkHelper share] GET:addMsg.content.string session:wxid success:^(NSString *content, NSString *session) {
+                [[YMMessageManager shareManager] sendTextMessage:content toUsrName:addMsg.fromUserName.string delay:kArc4random_Double_inSpace(3, 8)];
+            }];
         }
-        if ([addMsg.fromUserName.string containsString:@"@chatroom"] && !model.enableGroupReply) return;
-        if (![addMsg.fromUserName.string containsString:@"@chatroom"] && !model.enableSingleReply) return;
-        
-        [self replyWithMsg:addMsg model:model];
     }];
-}
-
-- (void)replyWithMsg:(AddMsg *)addMsg model:(TKAutoReplyModel *)model {
-    NSString *msgContent = addMsg.content.string;
-    if ([addMsg.fromUserName.string containsString:@"@chatroom"]) {
-        NSRange range = [msgContent rangeOfString:@":\n"];
-        if (range.length > 0) {
-            msgContent = [msgContent substringFromIndex:range.location + range.length];
-        }
-    }
-    
-    NSArray *replyArray = [model.replyContent componentsSeparatedByString:@"|"];
-    int index = arc4random() % replyArray.count;
-    NSString *randomReplyContent = replyArray[index];
-    NSInteger delayTime = model.enableDelay ? model.delayTime : 0;
-    
-    if (model.enableRegex) {
-        NSString *regex = model.keyword;
-        NSError *error;
-        NSRegularExpression *regular = [NSRegularExpression regularExpressionWithPattern:regex options:NSRegularExpressionCaseInsensitive error:&error];
-        if (error) return;
-        NSInteger count = [regular numberOfMatchesInString:msgContent options:NSMatchingReportCompletion range:NSMakeRange(0, msgContent.length)];
-        if (count > 0) {
-            [[YMMessageManager shareManager] sendTextMessage:randomReplyContent toUsrName:addMsg.fromUserName.string delay:delayTime];
-        }
-    } else {
-        NSArray * keyWordArray = [model.keyword componentsSeparatedByString:@"|"];
-        [keyWordArray enumerateObjectsUsingBlock:^(NSString *keyword, NSUInteger idx, BOOL * _Nonnull stop) {
-            if ([keyword isEqualToString:@"*"] || [msgContent isEqualToString:keyword]) {
-                [[YMMessageManager shareManager] sendTextMessage:randomReplyContent toUsrName:addMsg.fromUserName.string delay:delayTime];
-                *stop = YES;
-            }
-        }];
-    }
 }
 
 /**

@@ -1,14 +1,14 @@
 //
-//  TKAutoReplyModel.m
+//  YMAutoReplyModel.m
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2017/8/18.
 //  Copyright © 2017年 WeChatExtension. All rights reserved.
 //
 
-#import "TKAutoReplyModel.h"
+#import "YMAutoReplyModel.h"
 
-@implementation TKAutoReplyModel
+@implementation YMAutoReplyModel
 
 - (instancetype)initWithDict:(NSDictionary *)dict {
     self = [super init];
@@ -22,7 +22,7 @@
         self.enableDelay = [dict[@"enableDelay"] boolValue];
         self.delayTime = [dict[@"delayTime"] floatValue];
         self.enableSpecificReply = [dict[@"enableSpecificReply"] boolValue];
-        self.specificContacts = dict[@"specificContacts"] ? : [NSArray array];
+        self.specificContacts = dict[@"specificContacts"] ? : [NSMutableArray array];
     }
     return self;
 }
@@ -45,9 +45,9 @@
     return (self.keyword == nil || self.replyContent == nil || [self.keyword isEqualToString:@""] || [self.replyContent isEqualToString:@""]);
 }
 
-- (NSArray *)specificContacts {
+- (NSMutableArray *)specificContacts {
     if (!_specificContacts) {
-        _specificContacts = [NSArray array];
+        _specificContacts = [NSMutableArray array];
     }
     return _specificContacts;
 }

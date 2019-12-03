@@ -1,14 +1,14 @@
 //
-//  TKUtility.m
+//  YMUtility.m
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2019/1/12.
 //  Copyright © 2019 WeChatExtension. All rights reserved.
 //
 
-#import "TKUtility.h"
+#import "YMUtility.h"
 
-@implementation TKUtility
+@implementation YMUtility
 
 + (BOOL)isLargerOrEqualVersion:(NSString *)version {
     NSDictionary *dict = [NSBundle mainBundle].infoDictionary;

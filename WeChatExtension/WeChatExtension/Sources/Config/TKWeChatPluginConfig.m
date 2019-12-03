@@ -8,7 +8,7 @@
 
 #import "TKWeChatPluginConfig.h"
 #import "TKRemoteControlModel.h"
-#import "TKAutoReplyModel.h"
+#import "YMAutoReplyModel.h"
 #import "TKIgnoreSessonModel.h"
 #import "WeChatPlugin.h"
 
@@ -151,14 +151,14 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 #pragma mark - 自动回复
 - (NSArray *)autoReplyModels {
     if (!_autoReplyModels) {
-        _autoReplyModels = [self getModelsWithClass:[TKAutoReplyModel class] filePath:self.autoReplyPlistFilePath];
+        _autoReplyModels = [self getModelsWithClass:[YMAutoReplyModel class] filePath:self.autoReplyPlistFilePath];
     }
     return _autoReplyModels;
 }
 
 - (void)saveAutoReplyModels {
     NSMutableArray *needSaveModels = [NSMutableArray array];
-    [_autoReplyModels enumerateObjectsUsingBlock:^(TKAutoReplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+    [_autoReplyModels enumerateObjectsUsingBlock:^(YMAutoReplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
         if (model.hasEmptyKeywordOrReplyContent) {
             model.enable = NO;
             model.enableGroupReply = NO;
@@ -261,7 +261,7 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 
 - (NSString *)autoReplyPlistFilePath {
     if (!_autoReplyPlistFilePath) {
-        _autoReplyPlistFilePath = [self getSandboxFilePathWithPlistName:@"TKAutoReplyModels.plist"];
+        _autoReplyPlistFilePath = [self getSandboxFilePathWithPlistName:@"YMAutoReplyModels.plist"];
     }
     return _autoReplyPlistFilePath;
 }
