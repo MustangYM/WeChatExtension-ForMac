@@ -139,6 +139,7 @@ curl -o- -L https://raw.githubusercontent.com/lmk123/oh-my-wechat/master/install
 
 ## 更新日志
 ```
+2019-12-04 适配OSX10.14.6, 修复翻译问题, 增加AI自动聊天
 2019-11-16 将安装包从17.7MB瘦身到2.6MB, 没有"科学上网"的同学大大加快安装更新速度, 提升人民幸福感
 2019-11-14 修复多选会话后批量删除闪退
 2019-11-1  修复Alfred头像不显示问题
