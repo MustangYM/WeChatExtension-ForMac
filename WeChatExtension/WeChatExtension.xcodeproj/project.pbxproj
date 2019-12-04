@@ -167,6 +167,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1802C086239826CB0061823C /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/TKAboutWindowController.strings"; sourceTree = "<group>"; };
+		1802C087239826CB0061823C /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/TKRemoteControlWindowController.strings"; sourceTree = "<group>"; };
+		1802C088239826CB0061823C /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "en-GB"; path = "en-GB.lproj/Info.plist"; sourceTree = "<group>"; };
+		1802C089239826CB0061823C /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1853B3BB22C6105900A5C4FA /* ANYMethodLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANYMethodLog.m; sourceTree = "<group>"; };
 		1853B3BD22C6105900A5C4FA /* ANYMethodLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANYMethodLog.h; sourceTree = "<group>"; };
 		1853B3C222C6133C00A5C4FA /* YMIMContactsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMIMContactsManager.h; sourceTree = "<group>"; };
@@ -899,6 +903,7 @@
 				Base,
 				"zh-Hant",
 				"zh-Hans",
+				"en-GB",
 			);
 			mainGroup = 188A654422718C400096663E;
 			productRefGroup = 188A654F22718C400096663E /* Products */;
@@ -1097,6 +1102,7 @@
 				96B578AE2360A20E00F3F66C /* zh-Hans */,
 				96B578AF2360A21100F3F66C /* zh-Hant */,
 				96B578B02360A21400F3F66C /* en */,
+				1802C086239826CB0061823C /* en-GB */,
 			);
 			name = TKAboutWindowController.xib;
 			sourceTree = "<group>";
@@ -1108,6 +1114,7 @@
 				96D8D0952360BC6A0025BAD6 /* en */,
 				96D8D0972360BC6C0025BAD6 /* zh-Hans */,
 				96D8D0992360BC6E0025BAD6 /* zh-Hant */,
+				1802C087239826CB0061823C /* en-GB */,
 			);
 			name = TKRemoteControlWindowController.xib;
 			sourceTree = "<group>";
@@ -1119,6 +1126,7 @@
 				96B578BC2360A9D100F3F66C /* en */,
 				96B578BD2360A9D200F3F66C /* zh-Hans */,
 				96B578BE2360A9D300F3F66C /* zh-Hant */,
+				1802C088239826CB0061823C /* en-GB */,
 			);
 			name = Info.plist;
 			sourceTree = "<group>";
@@ -1129,6 +1137,7 @@
 				96B578C02360AA8A00F3F66C /* en */,
 				96B578C22360AA9000F3F66C /* zh-Hans */,
 				96B578C32360AA9200F3F66C /* zh-Hant */,
+				1802C089239826CB0061823C /* en-GB */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

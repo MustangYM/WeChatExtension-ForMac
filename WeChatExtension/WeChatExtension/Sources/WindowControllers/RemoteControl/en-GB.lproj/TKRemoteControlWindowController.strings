@@ -1,0 +1,27 @@
+
+/* Class = "NSTabViewItem"; label = "Assistant"; ObjectID = "5Vc-7I-XmY"; */
+"5Vc-7I-XmY.label" = "Assistant";
+
+/* Class = "NSTextFieldCell"; title = "Remote Control is available only when send it to yourself "; ObjectID = "EiN-zX-6I8"; */
+"EiN-zX-6I8.title" = "Remote Control is available only when send it to yourself ";
+
+/* Class = "NSWindow"; title = "Remote Control Setting"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "Remote Control Setting";
+
+/* Class = "NSTextFieldCell"; title = "Now remote control support voice recognition"; ObjectID = "JDf-Rp-jEj"; */
+"JDf-Rp-jEj.title" = "Now remote control support voice recognition";
+
+/* Class = "NSTabViewItem"; label = "APP"; ObjectID = "kWv-JR-wGj"; */
+"kWv-JR-wGj.label" = "APP";
+
+/* Class = "NSTabViewItem"; label = "NeteaseMusic"; ObjectID = "pJO-yQ-9vs"; */
+"pJO-yQ-9vs.label" = "NeteaseMusic";
+
+/* Class = "NSTextFieldCell"; title = "⚠️ Attention: "; ObjectID = "pyh-Mz-b2h"; */
+"pyh-Mz-b2h.title" = "⚠️ Attention: ";
+
+/* Class = "NSTextFieldCell"; title = "Allow WeChat Control in \"System Preferences -> Security & Privacy -> Privacy -> Accessibility\""; ObjectID = "qpH-CW-UVl"; */
+"qpH-CW-UVl.title" = "Allow WeChat Control in \"System Preferences -> Security & Privacy -> Privacy -> Accessibility\"";
+
+/* Class = "NSTabViewItem"; label = "MacBook"; ObjectID = "sNP-nR-n56"; */
+"sNP-nR-n56.label" = "MacBook";

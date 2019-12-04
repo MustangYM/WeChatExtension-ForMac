@@ -6,15 +6,15 @@
 	<dict>
 		<key>Resources/Base.lproj/TKAboutWindowController.nib</key>
 		<data>
-		e0mILmUVDvz7RE44qmKtXAomKFc=
+		v8yDBTeZicML4NhB111psESansM=
 		</data>
 		<key>Resources/Base.lproj/TKRemoteControlWindowController.nib</key>
 		<data>
-		50aj8HQZP1ev+VXzqp/pt9h4Vao=
+		6S/1sVi1BUrSKqoHs/2eVtbYOLA=
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		57PXKmYmhTRaO4LhF0eQpFnd9Kw=
+		udJvoP1Xstoou/0GzL7pvFMoY3c=
 		</data>
 		<key>Resources/LockPlist.plist</key>
 		<data>
@@ -40,6 +40,33 @@
 		<data>
 		6Q1Ey2f4FLBcxvGCkD5WMVb1ZFk=
 		</data>
+		<key>Resources/en-GB.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			DiWP+aeEP1SgiYkwMtKnEDBIl10=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/en-GB.lproj/TKAboutWindowController.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			En5kI5Kwuj0ECtiYhxSiHWJ1qnc=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/en-GB.lproj/TKRemoteControlWindowController.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			yicbl0AGjVaESs8ECdq/mDA6c/M=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 		<key>Resources/en.lproj/Localizable.strings</key>
 		<dict>
 			<key>hash</key>
@@ -132,33 +159,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			e0mILmUVDvz7RE44qmKtXAomKFc=
+			v8yDBTeZicML4NhB111psESansM=
 			</data>
 			<key>hash2</key>
 			<data>
-			wXn8/o4yejn2CNSx7GXwPkxVupG/QU2BnRPF3Yem1cU=
+			RTB6Sbrn+UXCrCMZxDtG+rClpotPuYTwQTgMEaC0bQ4=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/TKRemoteControlWindowController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			50aj8HQZP1ev+VXzqp/pt9h4Vao=
+			6S/1sVi1BUrSKqoHs/2eVtbYOLA=
 			</data>
 			<key>hash2</key>
 			<data>
-			BMEJcIWyfA1LSDkZr0QPtR75BX8APavRI0k9LM14AOc=
+			nS4ubto+8Wc7zd88+xg6WIzQg3ZlrfsyS91xFl/knCg=
 			</data>
 		</dict>
 		<key>Resources/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			57PXKmYmhTRaO4LhF0eQpFnd9Kw=
+			udJvoP1Xstoou/0GzL7pvFMoY3c=
 			</data>
 			<key>hash2</key>
 			<data>
-			w2JA2Hn7Zof23yzgQ/OTECU2F7vNWsEI2MIeYry8RiI=
+			6N1jyzV0h7h3UupRZEkFaZsAcPTYx306DpifUhsW7eo=
 			</data>
 		</dict>
 		<key>Resources/LockPlist.plist</key>
@@ -226,6 +253,45 @@
 			<data>
 			uu42QYCn8sglsjuEsmZSTuSoNlBdnHJ9fcAfV9MBzyo=
 			</data>
+		</dict>
+		<key>Resources/en-GB.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			DiWP+aeEP1SgiYkwMtKnEDBIl10=
+			</data>
+			<key>hash2</key>
+			<data>
+			e/aUkt8ecgkq8BbhtR3i335DLscc8szkBI9/rwCcDKM=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/en-GB.lproj/TKAboutWindowController.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			En5kI5Kwuj0ECtiYhxSiHWJ1qnc=
+			</data>
+			<key>hash2</key>
+			<data>
+			A/l7xX41GpZ1U7PRPvb+MvAJGksaE7Ol/4q/zClRZ6I=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/en-GB.lproj/TKRemoteControlWindowController.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			yicbl0AGjVaESs8ECdq/mDA6c/M=
+			</data>
+			<key>hash2</key>
+			<data>
+			FVyRkb3dRdNz/YUwiOy8VcVNvFYzvhodatyBhglUc8I=
+			</data>
+			<key>optional</key>
+			<true/>
 		</dict>
 		<key>Resources/en.lproj/Localizable.strings</key>
 		<dict>
