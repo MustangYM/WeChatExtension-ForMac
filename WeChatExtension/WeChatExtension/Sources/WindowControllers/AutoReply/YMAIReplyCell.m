@@ -51,13 +51,27 @@
 - (void)setWxid:(NSString *)wxid
 {
     _wxid = wxid;
+    NSString *nickName = @"";
+    NSString *avatarUrl = @"";
+    NSBundle *bundle = [NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"];
+    NSString *imgPathTwo= [bundle pathForImageResource:@"order_avatar.png"];
+    NSImage *placeholder = [[NSImage alloc] initWithContentsOfFile:imgPathTwo];
+    
+    if ([wxid containsString:@"@chatroom"]) {
+        MMSessionInfo *info = [YMIMContactsManager getSessionInfo:wxid];
+        nickName = info.m_packedInfo.m_contact.m_nsNickName;
+        avatarUrl = info.m_packedInfo.m_contact.m_nsHeadImgUrl;
+    } else {
+        avatarUrl = [YMIMContactsManager getWeChatAvatar:wxid];
+        nickName = [YMIMContactsManager getWeChatNickName:wxid];
+    }
+    
     __weak __typeof (self) wself = self;
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSImage *image = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:[YMIMContactsManager getWeChatAvatar:wxid]]];
+        NSImage *image = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:avatarUrl]];
         dispatch_async(dispatch_get_main_queue(), ^{
-            wself.avatar.image = image;
-            NSString *name = [YMIMContactsManager getWeChatNickName:wxid];
-            wself.nameLabel.stringValue = name ?: wxid;
+            wself.avatar.image = image ?: placeholder;
+            wself.nameLabel.stringValue = nickName.length > 0 ? nickName : wxid;
         });
         
     });

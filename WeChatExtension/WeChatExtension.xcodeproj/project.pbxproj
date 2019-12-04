@@ -128,6 +128,7 @@
 		18B5D4A022FAC7AD008206F5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B5D49F22FAC7AD008206F5 /* Security.framework */; };
 		18B5D4A222FAC7B9008206F5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B5D4A122FAC7B9008206F5 /* libz.tbd */; };
 		18B5D4A422FAC7C1008206F5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B5D4A322FAC7C1008206F5 /* libc++.tbd */; };
+		18B606DE23979FC6000A41DC /* order_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B606DD23979FC6000A41DC /* order_avatar.png */; };
 		18D298522394EE60009EE6B0 /* YMNetWorkHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D298502394EE60009EE6B0 /* YMNetWorkHelper.h */; };
 		18D298532394EE60009EE6B0 /* YMNetWorkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D298512394EE60009EE6B0 /* YMNetWorkHelper.m */; };
 		18D298ED23960C18009EE6B0 /* YMAIReplyWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D298EA23960C18009EE6B0 /* YMAIReplyWindowController.h */; };
@@ -289,6 +290,7 @@
 		18B5D49F22FAC7AD008206F5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		18B5D4A122FAC7B9008206F5 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		18B5D4A322FAC7C1008206F5 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		18B606DD23979FC6000A41DC /* order_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = order_avatar.png; sourceTree = "<group>"; };
 		18D298502394EE60009EE6B0 /* YMNetWorkHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMNetWorkHelper.h; sourceTree = "<group>"; };
 		18D298512394EE60009EE6B0 /* YMNetWorkHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMNetWorkHelper.m; sourceTree = "<group>"; };
 		18D298EA23960C18009EE6B0 /* YMAIReplyWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMAIReplyWindowController.h; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 		188A655022718C400096663E /* WeChatExtension */ = {
 			isa = PBXGroup;
 			children = (
+				18B606DD23979FC6000A41DC /* order_avatar.png */,
 				96B578B62360A92500F3F66C /* Info.plist */,
 				18A7A12D2272ACE300361A98 /* main.mm */,
 				188A658B2272ACBA0096663E /* Sources */,
@@ -922,6 +925,7 @@
 				188A65FB2272ACBA0096663E /* TKAutoReplyWindowController.xib in Resources */,
 				3632293F22A6ADB300F62EAB /* LockPlist.plist in Resources */,
 				188A65F42272ACBA0096663E /* TKAboutWindowController.xib in Resources */,
+				18B606DE23979FC6000A41DC /* order_avatar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

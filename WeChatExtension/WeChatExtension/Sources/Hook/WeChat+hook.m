@@ -668,7 +668,24 @@
     
     [model.specificContacts enumerateObjectsUsingBlock:^(NSString *wxid, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([wxid isEqualToString:addMsg.fromUserName.string]) {
-            [[YMNetWorkHelper share] GET:addMsg.content.string session:wxid success:^(NSString *content, NSString *session) {
+            
+            NSString *content = @"";
+            NSString *session = @"";
+            if ([wxid containsString:@"@chatroom"]) {
+                NSArray *contents = [addMsg.content.string componentsSeparatedByString:@":\n"];
+                NSArray *sessions = [wxid componentsSeparatedByString:@"@"];
+                if (contents.count > 1) {
+                    content = contents[1];
+                }
+                if (sessions.count > 1) {
+                    session = sessions[0];
+                }
+            } else {
+                content = addMsg.content.string;
+                content = wxid;
+            }
+            
+            [[YMNetWorkHelper share] GET:content session:session success:^(NSString *content, NSString *session) {
                 [[YMMessageManager shareManager] sendTextMessage:content toUsrName:addMsg.fromUserName.string delay:kArc4random_Double_inSpace(3, 8)];
             }];
         }

@@ -14,7 +14,7 @@
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		wULfb1R5t4UVZKQbsjDzJfdF3wk=
+		57PXKmYmhTRaO4LhF0eQpFnd9Kw=
 		</data>
 		<key>Resources/LockPlist.plist</key>
 		<data>
@@ -67,6 +67,10 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>Resources/order_avatar.png</key>
+		<data>
+		PM2ScxZ02KoYsRiqLSaQ5gCVIUI=
+		</data>
 		<key>Resources/zh-Hans.lproj/Localizable.strings</key>
 		<dict>
 			<key>hash</key>
@@ -150,11 +154,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			wULfb1R5t4UVZKQbsjDzJfdF3wk=
+			57PXKmYmhTRaO4LhF0eQpFnd9Kw=
 			</data>
 			<key>hash2</key>
 			<data>
-			0nviwl5iq1SGETlZcDfAeaO8i31mhQQO7xI9l5wD6LA=
+			w2JA2Hn7Zof23yzgQ/OTECU2F7vNWsEI2MIeYry8RiI=
 			</data>
 		</dict>
 		<key>Resources/LockPlist.plist</key>
@@ -261,6 +265,17 @@
 			</data>
 			<key>optional</key>
 			<true/>
+		</dict>
+		<key>Resources/order_avatar.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			PM2ScxZ02KoYsRiqLSaQ5gCVIUI=
+			</data>
+			<key>hash2</key>
+			<data>
+			3IXCSZD7hEBjWmWSlsah4/4caW0aKdRPeeC36Wc4wyk=
+			</data>
 		</dict>
 		<key>Resources/zh-Hans.lproj/Localizable.strings</key>
 		<dict>

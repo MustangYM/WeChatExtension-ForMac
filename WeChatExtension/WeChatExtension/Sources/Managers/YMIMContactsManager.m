@@ -50,4 +50,15 @@
     return temp;
 }
 
++ (MMSessionInfo *)getSessionInfo:(NSString *)userName
+{
+    MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
+    __block MMSessionInfo *info = nil;
+    [sessionMgr.m_arrSession enumerateObjectsUsingBlock:^(MMSessionInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.m_nsUserName isEqualToString:userName]) {
+            info = obj;
+        }
+    }];
+    return info;
+}
 @end

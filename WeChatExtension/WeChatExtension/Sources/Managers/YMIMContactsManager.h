@@ -12,6 +12,6 @@
 + (NSString *)getGroupMemberNickName:(NSString *)username;
 + (NSString *)getWeChatNickName:(NSString *)username;
 + (NSString *)getWeChatAvatar:(NSString *)userName;
-
++ (MMSessionInfo *)getSessionInfo:(NSString *)userName;
 @end
 
