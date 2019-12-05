@@ -135,6 +135,10 @@ curl -o- -L https://raw.githubusercontent.com/lmk123/oh-my-wechat/master/install
   <a href="https://github.com/reinstallsys"><img src="https://avatars3.githubusercontent.com/u/5747138?s=400&v=4" width="100px;" alt="reinstallsys"/>
   <br></br><sub><b>reinstallsys</b></sub>
   
+   <td align="center">
+  <a href="https://github.com/snowdreams1006"><img src="https://avatars1.githubusercontent.com/u/23238267?s=400&v=4" width="100px;" alt="snowdreams1006"/>
+  <br></br><sub><b>snowdreams1006</b></sub>
+  
 </td></tr></table>
 
 ## 更新日志
