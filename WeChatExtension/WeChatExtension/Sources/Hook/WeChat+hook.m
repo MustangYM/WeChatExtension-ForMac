@@ -682,7 +682,7 @@
                 }
             } else {
                 content = addMsg.content.string;
-                content = wxid;
+                session = wxid;
             }
             
             [[YMNetWorkHelper share] GET:content session:session success:^(NSString *content, NSString *session) {
