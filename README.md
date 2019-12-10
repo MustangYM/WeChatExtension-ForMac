@@ -3,7 +3,7 @@
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/face.png" width="1000px"/>
 </p>
 
-![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.1.0-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.3.27-blue.svg)
+![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.1.0-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.3.29-blue.svg)
 
 支持[企业微信](https://github.com/MustangYM/WeChatICU-ForMac),由此进.
 
@@ -11,7 +11,7 @@
 > 适用于Mac版的WeChat拓展功能. 1.7.5代码来自于WeChatPlugin, 对[tk](https://github.com/TKkk-iOSer)在此表示感谢!
 
 ## 最新支持版本
->  mac版微信2.3.27
+>  mac版微信2.3.29
 
 ## AI自动撩妹
 > 腾讯AI人工智能(ZZ)自动回复, 能理解上下文语义, 在收到指定对象消息后的5~8秒内自动回复消息(大部分情况下比较智能, 偶尔智障).
@@ -145,6 +145,7 @@ curl -o- -L https://raw.githubusercontent.com/lmk123/oh-my-wechat/master/install
 
 ## 更新日志
 ```
+2019-12-10 适配2.3.29微信客户端, 消息撤回逻辑问题得以修复
 2019-12-04 适配OSX10.14.6, 修复翻译问题, 增加AI自动聊天
 2019-11-16 将安装包从17.7MB瘦身到2.6MB, 没有"科学上网"的同学大大加快安装更新速度, 提升人民幸福感
 2019-11-14 修复多选会话后批量删除闪退
