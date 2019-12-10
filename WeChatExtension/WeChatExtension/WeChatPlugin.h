@@ -130,6 +130,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @end
 
 @interface AddMsg : NSObject
++ (id)parseFromData:(id)arg1;
 @property(retain, nonatomic, setter=SetPushContent:) NSString *pushContent;
 @property(readonly, nonatomic) BOOL hasPushContent;
 @property(retain, nonatomic, setter=SetMsgSource:) NSString *msgSource;
@@ -689,3 +690,14 @@ forHTTPHeaderField:(NSString *)field;
 - (id)initWithFrame:(struct CGRect)arg1;
 @end
 
+@interface CmdItem : NSObject
++ (id)parseFromData:(id)arg1;
+@property(retain, nonatomic, setter=SetCmdBuf:) SKBuiltinBuffer_t *cmdBuf; // @synthesize cmdBuf;
+@property(readonly, nonatomic) BOOL hasCmdBuf; // @synthesize hasCmdBuf;
+@property(nonatomic, setter=SetCmdId:) int cmdId; // @synthesize cmdId;
+@property(readonly, nonatomic) BOOL hasCmdId; // @synthesize hasCmdId;
+@end
+
+@interface AddMsgSyncCmdHandler : NSObject
+- (void)handleSyncCmdId:(id)arg1 withSyncCmdItems:(id)arg2 onComplete:(id)arg3;
+@end
