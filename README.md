@@ -51,6 +51,12 @@
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/revoke.gif" width="800px"/>
 </p>
 
+## Alfred
+确保你电脑中有安装Alfred, 双击此文件进行安装.
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191217-103633%402x.png" width="800px"/>
+</p>
+
 ## 屏蔽更新
 勾选"禁止更新"后, 微信检测更新的逻辑会被屏蔽掉, 包括手动"检查更新"的按钮. 取消勾选"禁止更新"后并重启微信, 则恢复原有更新检测逻辑.
 <p align="center">
