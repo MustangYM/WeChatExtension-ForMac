@@ -89,6 +89,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)notifyAddMsgOnMainThread:(id)arg1 msgData:(id)arg2;
 - (void)onRevokeMsg:(id)arg1;
 - (void)FFToNameFavChatZZ:(id)arg1;
+- (void)FFToNameFavChatZZ:(id)arg1 sessionMsgList:(id)arg2;
 - (void)OnSyncBatchAddMsgs:(NSArray *)arg1 isFirstSync:(BOOL)arg2;
 - (void)FFImgToOnFavInfoInfoVCZZ:(id)arg1 isFirstSync:(BOOL)arg2;
 

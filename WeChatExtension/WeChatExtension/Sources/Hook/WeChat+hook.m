@@ -31,7 +31,9 @@
 + (void)hookWeChat {
   //      微信撤回消息
     if (LargerOrEqualVersion(@"2.3.29")) {
-         hookMethod(objc_getClass("AddMsgSyncCmdHandler"), @selector(handleSyncCmdId: withSyncCmdItems:onComplete:), [self class], @selector(hook_handleSyncCmdId: withSyncCmdItems:onComplete:));
+//         hookMethod(objc_getClass("AddMsgSyncCmdHandler"), @selector(handleSyncCmdId: withSyncCmdItems:onComplete:), [self class], @selector(hook_handleSyncCmdId: withSyncCmdItems:onComplete:));
+        hookMethod(objc_getClass("MessageService"), @selector(FFToNameFavChatZZ:sessionMsgList:), [self class], @selector(hook_FFToNameFavChatZZ:sessionMsgList:));
+      
     } else {
         SEL revokeMsgMethod = LargerOrEqualVersion(@"2.3.22") ? @selector(FFToNameFavChatZZ:) : @selector(onRevokeMsg:);
         hookMethod(objc_getClass("MessageService"), revokeMsgMethod, [self class], @selector(hook_onRevokeMsg:));
@@ -290,19 +292,36 @@
 
 
 #pragma mark - 撤回
-- (void)hook_handleSyncCmdId:(id)arg1 withSyncCmdItems:(id)arg2 onComplete:(id)arg3
+//备用撤回
+//- (void)hook_handleSyncCmdId:(id)arg1 withSyncCmdItems:(id)arg2 onComplete:(id)arg3
+//{
+//    NSArray <CmdItem *>*p_arg2 = (NSArray *)arg2;
+//    __weak __typeof (self) wself = self;
+//    [p_arg2 enumerateObjectsUsingBlock:^(CmdItem * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
+//        AddMsg *addMsg = [objc_getClass("AddMsg") parseFromData:item.cmdBuf.buffer];
+//        NSString *msg = addMsg.content.string;
+//        if ([msg rangeOfString:@"<sysmsg"].length <= 0) {
+//          [wself hook_handleSyncCmdId:arg1 withSyncCmdItems:arg2 onComplete:arg3];
+//          return;
+//        }
+//        [wself _doParseRevokeMsg:msg msgData:nil arg1:arg1 arg2:arg2 arg3:arg3];
+//    }];
+//}
+
+- (void)hook_FFToNameFavChatZZ:(id)msgData sessionMsgList:(id)arg2
 {
-    NSArray <CmdItem *>*p_arg2 = (NSArray *)arg2;
-    __weak __typeof (self) wself = self;
-    [p_arg2 enumerateObjectsUsingBlock:^(CmdItem * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
-        AddMsg *addMsg = [objc_getClass("AddMsg") parseFromData:item.cmdBuf.buffer];
-        NSString *msg = addMsg.content.string;
-        if ([msg rangeOfString:@"<sysmsg"].length <= 0) {
-          [wself hook_handleSyncCmdId:arg1 withSyncCmdItems:arg2 onComplete:arg3];
-          return;
-        }
-        [wself _doParseRevokeMsg:msg msgData:nil arg1:arg1 arg2:arg2 arg3:arg3];
-    }];
+    if (![[TKWeChatPluginConfig sharedConfig] preventRevokeEnable]) {
+        [self hook_FFToNameFavChatZZ:msgData sessionMsgList:arg2];
+        return;
+    }
+    id msg = msgData;
+    if ([msgData isKindOfClass:objc_getClass("MessageData")]) {
+        msg = [msgData valueForKey:@"msgContent"];
+    }
+    
+    if ([msg rangeOfString:@"<sysmsg"].length <= 0) return;
+    
+    [self _doParseRevokeMsg:msg msgData:msgData arg1:nil arg2:arg2 arg3:nil];
 }
 
 - (void)hook_onRevokeMsg:(id)msgData {
@@ -350,7 +369,7 @@
         if ([revokeMsgData isSendFromSelf] && ![[TKWeChatPluginConfig sharedConfig] preventSelfRevokeEnable]) {
             
             if (LargerOrEqualVersion(@"2.3.29")) {
-                [self hook_handleSyncCmdId:arg1 withSyncCmdItems:arg2 onComplete:arg3];
+                [self hook_FFToNameFavChatZZ:msgData sessionMsgList:arg2];
             } else {
                 [self hook_onRevokeMsg:msgData];
             }
