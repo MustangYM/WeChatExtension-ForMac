@@ -156,6 +156,7 @@ curl -o- -L https://raw.githubusercontent.com/lmk123/oh-my-wechat/master/install
 
 ## 更新日志
 ```
+2019-12-20 显示小程序消息详情
 2019-12-17 修复Alfred聊天记录为空问题
 2019-12-10 适配2.3.29微信客户端, 消息撤回逻辑问题得以修复
 2019-12-04 适配OSX10.14.6, 修复翻译问题, 增加AI自动聊天
