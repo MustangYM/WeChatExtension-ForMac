@@ -55,6 +55,7 @@
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191220-200407%402x.png" width="800px"/>
 </p>
+
 ## Alfred
 确保你电脑中有安装Alfred, 双击此文件进行安装.
 <p align="center">
