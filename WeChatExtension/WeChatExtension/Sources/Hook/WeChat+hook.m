@@ -423,6 +423,53 @@
             [[YMDownloadManager new] downloadImageWithMsg:msgData];
         }
         
+        // 显示小程序信息
+        if(addMsg.msgType == 49){
+            //      xml 转 dict
+            XMLDictionaryParser *xmlParser = [objc_getClass("XMLDictionaryParser") sharedInstance];
+            NSDictionary *msgDict = [xmlParser dictionaryWithString:addMsg.content.string];
+            //NSLog(@"收到信息%@",msgDict);
+            //公众号消息也是49 但是公众号消息没有appinfo.version
+            if (msgDict && msgDict[@"appmsg"][@"title"] && msgDict[@"appinfo"][@"version"]) {
+                NSString *title=@"";//小程序标题
+                NSString *url =@"";//web url
+                NSString *appid = @"";//小程序appid
+                NSString *pagepath = @"";//路径
+                NSString *shareId = @"";//分享参数
+                NSString *sourcedisplayname = @"";//小程序名字
+                if(msgDict[@"appmsg"][@"title"])
+                    title = msgDict[@"appmsg"][@"title"];
+                if(msgDict[@"appmsg"][@"url"])
+                    url = msgDict[@"appmsg"][@"url"];
+                if(msgDict[@"appmsg"][@"weappinfo"][@"appid"])
+                    appid = msgDict[@"appmsg"][@"weappinfo"][@"appid"];
+                if(msgDict[@"appmsg"][@"weappinfo"][@"pagepath"])
+                    pagepath = msgDict[@"appmsg"][@"weappinfo"][@"pagepath"];
+                if(msgDict[@"appmsg"][@"weappinfo"][@"shareId"])
+                    shareId = msgDict[@"appmsg"][@"weappinfo"][@"shareId"];
+                if(msgDict[@"appmsg"][@"sourcedisplayname"])
+                    sourcedisplayname = msgDict[@"appmsg"][@"sourcedisplayname"];
+                
+                MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+                NSString *newmsgid = msgDict[@"revokemsg"][@"newmsgid"];
+                NSString *session =  msgDict[@"fromusername"];
+
+                NSString *newMsgContent = [NSString stringWithFormat:@"%@ \n小程序名称：%@ (%@) \n标题：%@ \n路径：%@ \n分享参数：%@",@"收到个小程序",sourcedisplayname,appid,title,pagepath,shareId];
+                MessageData *newMsgData = ({
+                    MessageData *msg = [[objc_getClass("MessageData") alloc] initWithMsgType:0x2710];
+                    [msg setFromUsrName:msgDict[@"fromusername"]];
+                    [msg setToUsrName:msgDict[@"fromusername"]];
+                    [msg setMsgStatus:4];
+                    [msg setMsgContent:newMsgContent];
+                    [msg setMsgCreateTime:[[NSDate date] timeIntervalSince1970]];
+                    //   [msg setMesLocalID:[revokeMsgData mesLocalID]];
+                    msg;
+                });
+                
+                [msgService AddLocalMsg:session msgData:newMsgData];
+            }
+        }
+        
     }];
 }
 
