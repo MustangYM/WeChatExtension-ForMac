@@ -19,5 +19,7 @@
  通过AddMsg获取会话Data
  */
 + (WCContactData *)getContactData:(AddMsg *)addMsg;
+
++ (void)parseMiniProgramMsg:(AddMsg *)addMsg;
 @end
 
