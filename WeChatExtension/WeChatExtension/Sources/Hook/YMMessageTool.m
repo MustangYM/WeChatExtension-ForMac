@@ -38,8 +38,17 @@
     if(addMsg.msgType == 49){
         
         //      xml 转 dict
+        NSString *msgContentStr = nil;
+        if ([addMsg.fromUserName.string containsString:@"@chatroom"]) {
+            NSArray *msgAry = [addMsg.content.string componentsSeparatedByString:@":\n<?xml"];
+            if (msgAry.count > 1) {
+                msgContentStr = [NSString stringWithFormat:@"<?xml %@",msgAry[1]];
+            }
+        } else {
+            msgContentStr = addMsg.content.string;
+        }
         NSError *error;
-        NSDictionary *xmlDict = [XMLReader dictionaryForXMLString:addMsg.content.string error:&error];
+        NSDictionary *xmlDict = [XMLReader dictionaryForXMLString:msgContentStr error:&error];
         NSDictionary *msgDict = [xmlDict valueForKey:@"msg"];
         NSDictionary *appMsgDict = [msgDict valueForKey:@"appmsg"];
         NSDictionary *weappInfoDict = [appMsgDict valueForKey:@"weappinfo"];
@@ -76,7 +85,7 @@
                 title = [NSString stringWithFormat:@"%@...",title];
             }
             
-            NSString *newMsgContent = [NSString stringWithFormat:@"%@ \n小程序名称：%@ (%@) \n标题：%@ \n",@"收到个小程序",sourcedisplayname,appid,title];
+            NSString *newMsgContent = [NSString stringWithFormat:@"%@ \n小程序名称：%@ (%@) \n标题：%@ \n",@"收到小程序消息",sourcedisplayname,appid,title];
             MessageData *newMsgData = ({
                 MessageData *msg = [[objc_getClass("MessageData") alloc] initWithMsgType:0x2710];
                 [msg setFromUsrName:session];
