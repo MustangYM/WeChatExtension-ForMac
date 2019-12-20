@@ -110,13 +110,13 @@
 //    hookMethod(objc_getClass("MMTextField"), @selector(setTextColor:), [self class], @selector(hook_setTextColor:));
     
     
-    [ANYMethodLog logMethodWithClass:[objc_getClass("MMWebViewHelper") class] condition:^BOOL(SEL sel) {
-        return YES;
-    } before:^(id target, SEL sel, NSArray *args, int deep) {
-        NSLog(@"\n🐸类名:%@ 👍方法:%@\n%@", target, NSStringFromSelector(sel),args);
-    } after:^(id target, SEL sel, NSArray *args, NSTimeInterval interval, int deep, id retValue) {
-        NSLog(@"\n🚘类名:%@ 👍方法:%@\n%@\n↪️%@", target, NSStringFromSelector(sel),args,retValue);
-    }];
+//    [ANYMethodLog logMethodWithClass:[objc_getClass("MMWebViewHelper") class] condition:^BOOL(SEL sel) {
+//        return YES;
+//    } before:^(id target, SEL sel, NSArray *args, int deep) {
+//        NSLog(@"\n🐸类名:%@ 👍方法:%@\n%@", target, NSStringFromSelector(sel),args);
+//    } after:^(id target, SEL sel, NSArray *args, NSTimeInterval interval, int deep, id retValue) {
+//        NSLog(@"\n🚘类名:%@ 👍方法:%@\n%@\n↪️%@", target, NSStringFromSelector(sel),args,retValue);
+//    }];
 }
 
 - (void)hook_setTextColor:(NSColor *)arg1
