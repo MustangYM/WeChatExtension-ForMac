@@ -51,11 +51,11 @@
 		188A66152272ACBA0096663E /* TKIgnoreSessonModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65BC2272ACBA0096663E /* TKIgnoreSessonModel.h */; };
 		188A66162272ACBA0096663E /* TKRemoteControlModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65BD2272ACBA0096663E /* TKRemoteControlModel.h */; };
 		188A66172272ACBA0096663E /* YMAutoReplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65BE2272ACBA0096663E /* YMAutoReplyModel.m */; };
-		188A66182272ACBA0096663E /* TKBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65BF2272ACBA0096663E /* TKBaseModel.m */; };
+		188A66182272ACBA0096663E /* YMBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65BF2272ACBA0096663E /* YMBaseModel.m */; };
 		188A66192272ACBA0096663E /* TKIgnoreSessonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65C02272ACBA0096663E /* TKIgnoreSessonModel.m */; };
 		188A661A2272ACBA0096663E /* TKRemoteControlModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65C12272ACBA0096663E /* TKRemoteControlModel.m */; };
 		188A661B2272ACBA0096663E /* YMAutoReplyModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65C22272ACBA0096663E /* YMAutoReplyModel.h */; };
-		188A661C2272ACBA0096663E /* TKBaseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65C32272ACBA0096663E /* TKBaseModel.h */; };
+		188A661C2272ACBA0096663E /* YMBaseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65C32272ACBA0096663E /* YMBaseModel.h */; };
 		188A661D2272ACBA0096663E /* NSButton+Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65C62272ACBA0096663E /* NSButton+Action.m */; };
 		188A661E2272ACBA0096663E /* NSMenu+Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65C72272ACBA0096663E /* NSMenu+Action.h */; };
 		188A661F2272ACBA0096663E /* NSTextField+Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65C82272ACBA0096663E /* NSTextField+Action.h */; };
@@ -215,11 +215,11 @@
 		188A65BC2272ACBA0096663E /* TKIgnoreSessonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKIgnoreSessonModel.h; sourceTree = "<group>"; };
 		188A65BD2272ACBA0096663E /* TKRemoteControlModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKRemoteControlModel.h; sourceTree = "<group>"; };
 		188A65BE2272ACBA0096663E /* YMAutoReplyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMAutoReplyModel.m; sourceTree = "<group>"; };
-		188A65BF2272ACBA0096663E /* TKBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKBaseModel.m; sourceTree = "<group>"; };
+		188A65BF2272ACBA0096663E /* YMBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMBaseModel.m; sourceTree = "<group>"; };
 		188A65C02272ACBA0096663E /* TKIgnoreSessonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKIgnoreSessonModel.m; sourceTree = "<group>"; };
 		188A65C12272ACBA0096663E /* TKRemoteControlModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKRemoteControlModel.m; sourceTree = "<group>"; };
 		188A65C22272ACBA0096663E /* YMAutoReplyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMAutoReplyModel.h; sourceTree = "<group>"; };
-		188A65C32272ACBA0096663E /* TKBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKBaseModel.h; sourceTree = "<group>"; };
+		188A65C32272ACBA0096663E /* YMBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMBaseModel.h; sourceTree = "<group>"; };
 		188A65C62272ACBA0096663E /* NSButton+Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSButton+Action.m"; sourceTree = "<group>"; };
 		188A65C72272ACBA0096663E /* NSMenu+Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMenu+Action.h"; sourceTree = "<group>"; };
 		188A65C82272ACBA0096663E /* NSTextField+Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextField+Action.h"; sourceTree = "<group>"; };
@@ -462,8 +462,8 @@
 			isa = PBXGroup;
 			children = (
 				188A65992272ACBA0096663E /* TKAutoReplyWindowController.h */,
-				188A659A2272ACBA0096663E /* TKAutoReplyWindowController.xib */,
 				188A659B2272ACBA0096663E /* TKAutoReplyWindowController.m */,
+				188A659A2272ACBA0096663E /* TKAutoReplyWindowController.xib */,
 				18D298EA23960C18009EE6B0 /* YMAIReplyWindowController.h */,
 				18D298EB23960C18009EE6B0 /* YMAIReplyWindowController.m */,
 				18D298EC23960C18009EE6B0 /* YMAIReplyWindowController.xib */,
@@ -542,8 +542,8 @@
 			children = (
 				188A65C22272ACBA0096663E /* YMAutoReplyModel.h */,
 				188A65BE2272ACBA0096663E /* YMAutoReplyModel.m */,
-				188A65C32272ACBA0096663E /* TKBaseModel.h */,
-				188A65BF2272ACBA0096663E /* TKBaseModel.m */,
+				188A65C32272ACBA0096663E /* YMBaseModel.h */,
+				188A65BF2272ACBA0096663E /* YMBaseModel.m */,
 				188A65BC2272ACBA0096663E /* TKIgnoreSessonModel.h */,
 				188A65C02272ACBA0096663E /* TKIgnoreSessonModel.m */,
 				188A65BD2272ACBA0096663E /* TKRemoteControlModel.h */,
@@ -773,7 +773,7 @@
 				188A66232272ACBA0096663E /* NSMenuItem+Action.h in Headers */,
 				18A7A1582272AFE600361A98 /* GCDWebServerConnection.h in Headers */,
 				188A66322272ACBA0096663E /* TKAutoReplyCell.h in Headers */,
-				188A661C2272ACBA0096663E /* TKBaseModel.h in Headers */,
+				188A661C2272ACBA0096663E /* YMBaseModel.h in Headers */,
 				188A66272272ACBA0096663E /* NSView+Action.h in Headers */,
 				188A663B2272ACBA0096663E /* MMStickerMessageCellView+hook.h in Headers */,
 				188A66082272ACBA0096663E /* TKWebServerManager.h in Headers */,
@@ -994,7 +994,7 @@
 				188A66282272ACBA0096663E /* NSTextField+Action.m in Sources */,
 				3644BDF92285545500EDE358 /* TCBlobDownloadManager.m in Sources */,
 				18A7A16C2272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.m in Sources */,
-				188A66182272ACBA0096663E /* TKBaseModel.m in Sources */,
+				188A66182272ACBA0096663E /* YMBaseModel.m in Sources */,
 				188A66362272ACBA0096663E /* TKRemoteControlCell.m in Sources */,
 				188A66062272ACBA0096663E /* TKRemoteControlManager.m in Sources */,
 				188A66252272ACBA0096663E /* NSMenu+Action.m in Sources */,

@@ -16,46 +16,64 @@
 @end
 
 @implementation YMAIReplyCell
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self _initSubViews];
+    }
+    return self;
+}
+
+- (void)_initSubViews
+{
+    self.avatar = ({
+           NSImageView *avatar = [[NSImageView alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
+           avatar.wantsLayer = YES;
+           avatar.layer.cornerRadius = 3;
+           avatar;
+       });
+       
+       self.nameLabel = ({
+           NSTextField *label = [NSTextField tk_labelWithString:@""];
+           label.textColor = [NSColor blackColor];
+           [[label cell] setLineBreakMode:NSLineBreakByCharWrapping];
+           [[label cell] setTruncatesLastVisibleLine:YES];
+           label.font = [NSFont systemFontOfSize:12];
+           label.frame = NSMakeRect(50, 30, 260, 16);
+           label;
+       });
+       
+       self.bottomLine = ({
+           NSBox *line = [[NSBox alloc] init];
+           line.boxType = NSBoxSeparator;
+           line.frame = NSMakeRect(0, 0, 300, 1);
+           line;
+       });
+       
+       [self addSubviews:@[self.avatar,
+                           self.nameLabel,
+                           self.bottomLine]];
+}
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    self.avatar = ({
-        NSImageView *avatar = [[NSImageView alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
-        avatar.wantsLayer = YES;
-        avatar.layer.cornerRadius = 3;
-        avatar;
-    });
-    
-    self.nameLabel = ({
-        NSTextField *label = [NSTextField tk_labelWithString:@""];
-        label.textColor = [NSColor blackColor];
-        [[label cell] setLineBreakMode:NSLineBreakByCharWrapping];
-        [[label cell] setTruncatesLastVisibleLine:YES];
-        label.font = [NSFont systemFontOfSize:12];
-        label.frame = NSMakeRect(50, 30, 260, 16);
-        label;
-    });
-    
-    self.bottomLine = ({
-        NSBox *line = [[NSBox alloc] init];
-        line.boxType = NSBoxSeparator;
-        line.frame = NSMakeRect(0, 0, 300, 1);
-        line;
-    });
-    
-    [self addSubviews:@[self.avatar,
-                        self.nameLabel,
-                        self.bottomLine]];
+   
 }
 
 - (void)setWxid:(NSString *)wxid
 {
     _wxid = wxid;
+    
+    if (!wxid) {
+        return;
+    }
+    
     NSString *nickName = @"";
     NSString *avatarUrl = @"";
     NSBundle *bundle = [NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"];
-    NSString *imgPathTwo= [bundle pathForImageResource:@"order_avatar.png"];
-    NSImage *placeholder = [[NSImage alloc] initWithContentsOfFile:imgPathTwo];
+    NSString *imgPath= [bundle pathForImageResource:@"order_avatar.png"];
+    NSImage *placeholder = [[NSImage alloc] initWithContentsOfFile:imgPath];
     
     if ([wxid containsString:@"@chatroom"]) {
         MMSessionInfo *info = [YMIMContactsManager getSessionInfo:wxid];

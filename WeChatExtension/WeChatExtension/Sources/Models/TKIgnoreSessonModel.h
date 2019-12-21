@@ -6,9 +6,9 @@
 //  Copyright © 2017年 WeChatExtension. All rights reserved.
 //
 
-#import "TKBaseModel.h"
+#import "YMBaseModel.h"
 
-@interface TKIgnoreSessonModel : TKBaseModel
+@interface TKIgnoreSessonModel : YMBaseModel
 
 @property (nonatomic, copy) NSString *selfContact;
 @property (nonatomic, copy) NSString *userName;

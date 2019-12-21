@@ -9,13 +9,13 @@
 #import "YMAIReplyWindowController.h"
 #import "YMAIReplyCell.h"
 #import "YMAutoReplyModel.h"
+#import "TKWeChatPluginConfig.h"
 
 @interface YMAIReplyWindowController ()<NSTabViewDelegate, NSTableViewDataSource>
 @property (nonatomic, strong) NSTableView *tableView;
 @property (nonatomic, strong) NSButton *addButton;
 @property (nonatomic, strong) NSButton *reduceButton;
-@property (nonatomic, strong) NSMutableArray *autoReplyModels;
-@property (nonatomic, strong) YMAutoReplyModel *model;
+@property (nonatomic, strong) YMAIAutoModel *AIModel;
 @property (nonatomic, assign) NSInteger currentIdx;
 @property (nonatomic, strong) NSTextField *desLabel;
 @end
@@ -24,14 +24,12 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    self.autoReplyModels = [[TKWeChatPluginConfig sharedConfig] autoReplyModels];
-    if (self.autoReplyModels.count > 0) {
-        self.model = self.autoReplyModels[0];
-        [self.autoReplyModels removeAllObjects];
+    if ([[TKWeChatPluginConfig sharedConfig] AIReplyModel]) {
+        self.AIModel = [[TKWeChatPluginConfig sharedConfig] AIReplyModel];
     } else {
-        self.model = [YMAutoReplyModel new];
+        self.AIModel = [YMAIAutoModel new];
+        [[TKWeChatPluginConfig sharedConfig] saveAIAutoReplyModel:self.AIModel];
     }
-    
     [self initSubviews];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowShouldClosed:) name:NSWindowWillCloseNotification object:nil];
 }
@@ -40,10 +38,9 @@
     if (notification.object != self.window) {
         return;
     }
-    if (self.model) {
-        [self.autoReplyModels addObject:self.model];
+    if (self.AIModel) {
+        [[TKWeChatPluginConfig sharedConfig] saveAIAutoReplyModel:self.AIModel];
     }
-    [[TKWeChatPluginConfig sharedConfig] saveAutoReplyModels];
 }
 
 - (void)initSubviews
@@ -115,41 +112,44 @@
     MMSessionPickerLogic *logic = [picker.listViewController valueForKey:@"m_logic"];
     NSMutableOrderedSet *orderSet = [logic valueForKey:@"_selectedUserNamesSet"];
     
-    [orderSet addObjectsFromArray:self.model.specificContacts];
-    [picker.choosenViewController setValue:self.model.specificContacts forKey:@"selectedUserNames"];
+    [orderSet addObjectsFromArray:self.AIModel.specificContacts];
+    [picker.choosenViewController setValue:self.AIModel.specificContacts forKey:@"selectedUserNames"];
     [picker beginSheetForWindow:self.window completionHandler:^(NSOrderedSet *a1) {
         NSMutableArray *array = [NSMutableArray array];
         [a1 enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [array addObject:obj];
         }];
-        self.model.specificContacts = [array copy];
-        [self.tableView reloadData];
+        self.AIModel.specificContacts = [array copy];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+           [self.tableView reloadData];
+        });
     }];
 }
 
 - (void)reduceModel {
-    if (self.currentIdx< self.model.specificContacts.count) {
+    if (self.currentIdx< self.AIModel.specificContacts.count) {
         NSMutableArray *array = [NSMutableArray array];
-        [self.model.specificContacts enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self.AIModel.specificContacts enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if (idx != self.currentIdx) {
                 [array addObject:obj];
             }
         }];
-        self.model.specificContacts = [array copy];
+        self.AIModel.specificContacts = [array copy];
     }
     [self.tableView reloadData];
 }
 
 #pragma mark -
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return self.model.specificContacts.count;
+    return self.AIModel.specificContacts.count;
 }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     YMAIReplyCell *cell = [[YMAIReplyCell alloc] init];
     cell.frame = NSMakeRect(0, 0, self.tableView.frame.size.width, 40);
-    if (row < self.model.specificContacts.count) {
-        cell.wxid = self.model.specificContacts[row];
+    if (row < self.AIModel.specificContacts.count) {
+        cell.wxid = self.AIModel.specificContacts[row];
     }
     return cell;
 }

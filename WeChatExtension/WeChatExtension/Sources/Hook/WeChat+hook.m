@@ -25,7 +25,7 @@
 #import "YMDownloadManager.h"
 #import "YMNetWorkHelper.h"
 #import<CommonCrypto/CommonDigest.h>
-
+#import "YMIMContactsManager.h"
 @implementation NSObject (WeChatHook)
 
 + (void)hookWeChat {
@@ -700,14 +700,12 @@
         //        该消息为公众号或者本人发送的消息
         return;
     }
-    NSArray *autoReplyModels = [[TKWeChatPluginConfig sharedConfig] autoReplyModels];
-    if (autoReplyModels.count < 1) {
+    YMAIAutoModel *AIModel = [[TKWeChatPluginConfig sharedConfig] AIReplyModel];
+    if (AIModel.specificContacts.count < 1) {
         return;
     }
-    YMAutoReplyModel *model = nil;
-    model = autoReplyModels[0];
     
-    [model.specificContacts enumerateObjectsUsingBlock:^(NSString *wxid, NSUInteger idx, BOOL * _Nonnull stop) {
+    [AIModel.specificContacts enumerateObjectsUsingBlock:^(NSString *wxid, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([wxid isEqualToString:addMsg.fromUserName.string]) {
             
             NSString *content = @"";
@@ -743,6 +741,30 @@
     if (![[TKWeChatPluginConfig sharedConfig] autoReplyEnable]) return;
     if (addMsg.msgType != 1 && addMsg.msgType != 3) return;
     
+    YMAIAutoModel *AIModel = [[TKWeChatPluginConfig sharedConfig] AIReplyModel];
+    if ([[TKWeChatPluginConfig sharedConfig] autoReplyEnable]) {
+        __block BOOL flag = NO;
+        [AIModel.specificContacts enumerateObjectsUsingBlock:^(NSString * _Nonnull aiUsr, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([aiUsr isEqualToString:addMsg.fromUserName.string]) {
+                if (*stop) *stop = YES;
+                flag = YES;
+            }
+        }];
+        
+        if (flag) {
+            NSString *nick = nil;
+            if ([addMsg.fromUserName.string containsString:@"@chatroom"]) {
+                nick = @"此群";
+            } else {
+                nick = [YMIMContactsManager getWeChatNickName:addMsg.fromUserName.string];
+            }
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [YMMessageTool addLocalWarningMsg:[NSString stringWithFormat:@"⚠️警告⚠️\n您对@%@ 设置了AI回复且同时打开了自动回复\n小助手将只会对@%@ 进行AI回复",nick,nick] fromUsr:addMsg.fromUserName.string];
+            });
+            return;
+        }
+    };
+    
     NSString *userName = addMsg.fromUserName.string;
     
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
@@ -764,8 +786,9 @@
         }
         if ([addMsg.fromUserName.string containsString:@"@chatroom"] && !model.enableGroupReply) return;
         if (![addMsg.fromUserName.string containsString:@"@chatroom"] && !model.enableSingleReply) return;
-        
-        [self replyWithMsg:addMsg model:model];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+           [self replyWithMsg:addMsg model:model];
+        });
     }];
 }
 
