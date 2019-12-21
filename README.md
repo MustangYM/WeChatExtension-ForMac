@@ -1,3 +1,22 @@
+# 说明
+## 本项目forked from MustangYM/WeChatExtension-ForMac
+## 做了以下修改
+> 显示小程序信息 如： <br><br>
+收到个小程序 <br>
+小程序名称：哔哩哔哩 (wx7564fd5313d24844) <br>
+标题：【2020年1月】某科学的超电磁炮T 本PV【尽梨了字幕组】 <br><br>
+
+> 显示红包信息 如<br><br>
+收到微信红包 <br>
+红包标题：恭喜发财，大吉大利<br><br>
+
+> 显示转账信息 如<br><br>
+收到转账信息 <br>
+转账描述：【￥0.01】恭喜发财<br><br>
+
+### 最后感谢 [MustangYM](https://github.com/MustangYM) 和 [tk](https://github.com/TKkk-iOSer) 的无私付出
+### （完）下面内容为原项目信息
+ 
 
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/face.png" width="1000px"/>
