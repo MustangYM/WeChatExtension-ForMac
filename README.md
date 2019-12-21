@@ -1,16 +1,3 @@
-# 说明
-## 本项目forked from MustangYM/WeChatExtension-ForMac
-## 做了一个修改
-> 显示小程序信息 如： <br><br>
-收到个小程序 <br>
-小程序名称：哔哩哔哩 (wx7564fd5313d24844) <br>
-标题：【2020年1月】某科学的超电磁炮T 本PV【尽梨了字幕组】 <br>
-路径：pages/video/video.html?avid=79334201&page=0&ald_share_src=c6e0ae2542b3bc53ba0e06b007b8879e <br>
-分享参数：1_wx7564fd5313d24844_2856182244_1576830162_12 
-
-### 最后感谢 [MustangYM](https://github.com/MustangYM) 和 [tk](https://github.com/TKkk-iOSer) 的无私付出
-### （完）下面内容为原项目信息
- 
 
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/face.png" width="1000px"/>
@@ -62,6 +49,11 @@
 ## 消息防撤回
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/revoke.gif" width="800px"/>
+</p>
+
+## 显示小程序详情
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191220-200407%402x.png" width="800px"/>
 </p>
 
 ## Alfred
@@ -164,6 +156,7 @@ curl -o- -L https://raw.githubusercontent.com/lmk123/oh-my-wechat/master/install
 
 ## 更新日志
 ```
+2019-12-20 显示小程序消息详情
 2019-12-17 修复Alfred聊天记录为空问题
 2019-12-10 适配2.3.29微信客户端, 消息撤回逻辑问题得以修复
 2019-12-04 适配OSX10.14.6, 修复翻译问题, 增加AI自动聊天

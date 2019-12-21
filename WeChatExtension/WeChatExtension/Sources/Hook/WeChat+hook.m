@@ -108,15 +108,7 @@
 //
 //    hookMethod(objc_getClass("MMChatsTableCellView"), @selector(initWithFrame:), [self class], @selector(cellhook_initWithFrame:));
 //    hookMethod(objc_getClass("MMTextField"), @selector(setTextColor:), [self class], @selector(hook_setTextColor:));
-    
-    
-    [ANYMethodLog logMethodWithClass:[objc_getClass("MMWebViewHelper") class] condition:^BOOL(SEL sel) {
-        return YES;
-    } before:^(id target, SEL sel, NSArray *args, int deep) {
-        NSLog(@"\n🐸类名:%@ 👍方法:%@\n%@", target, NSStringFromSelector(sel),args);
-    } after:^(id target, SEL sel, NSArray *args, NSTimeInterval interval, int deep, id retValue) {
-        NSLog(@"\n🚘类名:%@ 👍方法:%@\n%@\n↪️%@", target, NSStringFromSelector(sel),args,retValue);
-    }];
+
 }
 
 - (void)hook_setTextColor:(NSColor *)arg1
@@ -423,51 +415,8 @@
             [[YMDownloadManager new] downloadImageWithMsg:msgData];
         }
         
-        // 显示小程序信息
-        if(addMsg.msgType == 49){
-            //      xml 转 dict
-            XMLDictionaryParser *xmlParser = [objc_getClass("XMLDictionaryParser") sharedInstance];
-            NSDictionary *msgDict = [xmlParser dictionaryWithString:addMsg.content.string];
-            //NSLog(@"收到信息%@",msgDict);
-            //公众号消息也是49 但是公众号消息没有appinfo.version
-            if (msgDict && msgDict[@"appmsg"][@"title"] && msgDict[@"appinfo"][@"version"]) {
-                NSString *title=@"";//小程序标题
-                NSString *url =@"";//web url
-                NSString *appid = @"";//小程序appid
-                NSString *pagepath = @"";//路径
-                NSString *shareId = @"";//分享参数
-                NSString *sourcedisplayname = @"";//小程序名字
-                if(msgDict[@"appmsg"][@"title"])
-                    title = msgDict[@"appmsg"][@"title"];
-                if(msgDict[@"appmsg"][@"url"])
-                    url = msgDict[@"appmsg"][@"url"];
-                if(msgDict[@"appmsg"][@"weappinfo"][@"appid"])
-                    appid = msgDict[@"appmsg"][@"weappinfo"][@"appid"];
-                if(msgDict[@"appmsg"][@"weappinfo"][@"pagepath"])
-                    pagepath = msgDict[@"appmsg"][@"weappinfo"][@"pagepath"];
-                if(msgDict[@"appmsg"][@"weappinfo"][@"shareId"])
-                    shareId = msgDict[@"appmsg"][@"weappinfo"][@"shareId"];
-                if(msgDict[@"appmsg"][@"sourcedisplayname"])
-                    sourcedisplayname = msgDict[@"appmsg"][@"sourcedisplayname"];
-                
-                MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
-                NSString *newmsgid = msgDict[@"revokemsg"][@"newmsgid"];
-                NSString *session =  msgDict[@"fromusername"];
-
-                NSString *newMsgContent = [NSString stringWithFormat:@"%@ \n小程序名称：%@ (%@) \n标题：%@ \n路径：%@ \n分享参数：%@",@"收到个小程序",sourcedisplayname,appid,title,pagepath,shareId];
-                MessageData *newMsgData = ({
-                    MessageData *msg = [[objc_getClass("MessageData") alloc] initWithMsgType:0x2710];
-                    [msg setFromUsrName:msgDict[@"fromusername"]];
-                    [msg setToUsrName:msgDict[@"fromusername"]];
-                    [msg setMsgStatus:4];
-                    [msg setMsgContent:newMsgContent];
-                    [msg setMsgCreateTime:[[NSDate date] timeIntervalSince1970]];
-                    //   [msg setMesLocalID:[revokeMsgData mesLocalID]];
-                    msg;
-                });
-                
-                [msgService AddLocalMsg:session msgData:newMsgData];
-            }
+        if (addMsg.msgType == 49) {
+            [YMMessageTool parseMiniProgramMsg:addMsg];
         }
         
     }];
