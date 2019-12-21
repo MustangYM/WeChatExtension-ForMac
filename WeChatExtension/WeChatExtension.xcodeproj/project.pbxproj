@@ -11,6 +11,8 @@
 		1853B3C122C6105900A5C4FA /* ANYMethodLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 1853B3BD22C6105900A5C4FA /* ANYMethodLog.h */; };
 		1853B3C422C6133C00A5C4FA /* YMIMContactsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1853B3C222C6133C00A5C4FA /* YMIMContactsManager.h */; };
 		1853B3C522C6133C00A5C4FA /* YMIMContactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853B3C322C6133C00A5C4FA /* YMIMContactsManager.m */; };
+		185DE0E023ACE208007651B5 /* NSDictionary+Safe.h in Headers */ = {isa = PBXBuildFile; fileRef = 185DE0DE23ACE207007651B5 /* NSDictionary+Safe.h */; };
+		185DE0E123ACE208007651B5 /* NSDictionary+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 185DE0DF23ACE208007651B5 /* NSDictionary+Safe.m */; };
 		188A655822718C400096663E /* WeChatExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188A654E22718C400096663E /* WeChatExtension.framework */; };
 		188A655D22718C400096663E /* WeChatExtensionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A655C22718C400096663E /* WeChatExtensionTests.m */; };
 		188A65F42272ACBA0096663E /* TKAboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188A658E2272ACBA0096663E /* TKAboutWindowController.xib */; };
@@ -82,14 +84,12 @@
 		188A66362272ACBA0096663E /* TKRemoteControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65E32272ACBA0096663E /* TKRemoteControlCell.m */; };
 		188A66372272ACBA0096663E /* MMChatsTableCellView+hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65E52272ACBA0096663E /* MMChatsTableCellView+hook.h */; };
 		188A66382272ACBA0096663E /* WeChat+hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65E62272ACBA0096663E /* WeChat+hook.h */; };
-		188A66392272ACBA0096663E /* NSDictionary+Safe.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65E72272ACBA0096663E /* NSDictionary+Safe.h */; };
 		188A663A2272ACBA0096663E /* YMMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65E82272ACBA0096663E /* YMMessageModel.m */; };
 		188A663B2272ACBA0096663E /* MMStickerMessageCellView+hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65E92272ACBA0096663E /* MMStickerMessageCellView+hook.h */; };
 		188A663C2272ACBA0096663E /* YMMessageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65EA2272ACBA0096663E /* YMMessageTool.m */; };
 		188A663D2272ACBA0096663E /* YMMessageTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65EB2272ACBA0096663E /* YMMessageTool.h */; };
 		188A663E2272ACBA0096663E /* MMStickerMessageCellView+hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65EC2272ACBA0096663E /* MMStickerMessageCellView+hook.m */; };
 		188A663F2272ACBA0096663E /* YMMessageModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65ED2272ACBA0096663E /* YMMessageModel.h */; };
-		188A66402272ACBA0096663E /* NSDictionary+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65EE2272ACBA0096663E /* NSDictionary+Safe.m */; };
 		188A66412272ACBA0096663E /* WeChat+hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65EF2272ACBA0096663E /* WeChat+hook.m */; };
 		188A66422272ACBA0096663E /* MMChatsTableCellView+hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65F02272ACBA0096663E /* MMChatsTableCellView+hook.m */; };
 		188A66432272ACBA0096663E /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 188A65F22272ACBA0096663E /* fishhook.c */; };
@@ -153,7 +153,6 @@
 		36AC9D8B228A81C200EA9F97 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AC9D89228A81C200EA9F97 /* XMLReader.m */; };
 		8EB413EE2E0AB9424DB91B42 /* libPods-WeChatExtensionTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B176B73969A171B6926048F /* libPods-WeChatExtensionTests.a */; };
 		96B578BF2360AA8A00F3F66C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B578C12360AA8A00F3F66C /* Localizable.strings */; };
-		B66566CE7CFB01C09E18EDC5 /* libPods-WeChatExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ECC036067C0A58DC4D5A272 /* libPods-WeChatExtension.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +174,8 @@
 		1853B3BD22C6105900A5C4FA /* ANYMethodLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANYMethodLog.h; sourceTree = "<group>"; };
 		1853B3C222C6133C00A5C4FA /* YMIMContactsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMIMContactsManager.h; sourceTree = "<group>"; };
 		1853B3C322C6133C00A5C4FA /* YMIMContactsManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMIMContactsManager.m; sourceTree = "<group>"; };
+		185DE0DE23ACE207007651B5 /* NSDictionary+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Safe.h"; sourceTree = "<group>"; };
+		185DE0DF23ACE208007651B5 /* NSDictionary+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Safe.m"; sourceTree = "<group>"; };
 		188A654E22718C400096663E /* WeChatExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeChatExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		188A655722718C400096663E /* WeChatExtensionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeChatExtensionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		188A655C22718C400096663E /* WeChatExtensionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeChatExtensionTests.m; sourceTree = "<group>"; };
@@ -247,14 +248,12 @@
 		188A65E32272ACBA0096663E /* TKRemoteControlCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKRemoteControlCell.m; sourceTree = "<group>"; };
 		188A65E52272ACBA0096663E /* MMChatsTableCellView+hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMChatsTableCellView+hook.h"; sourceTree = "<group>"; };
 		188A65E62272ACBA0096663E /* WeChat+hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WeChat+hook.h"; sourceTree = "<group>"; };
-		188A65E72272ACBA0096663E /* NSDictionary+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Safe.h"; sourceTree = "<group>"; };
 		188A65E82272ACBA0096663E /* YMMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMMessageModel.m; sourceTree = "<group>"; };
 		188A65E92272ACBA0096663E /* MMStickerMessageCellView+hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMStickerMessageCellView+hook.h"; sourceTree = "<group>"; };
 		188A65EA2272ACBA0096663E /* YMMessageTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMMessageTool.m; sourceTree = "<group>"; };
 		188A65EB2272ACBA0096663E /* YMMessageTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMMessageTool.h; sourceTree = "<group>"; };
 		188A65EC2272ACBA0096663E /* MMStickerMessageCellView+hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MMStickerMessageCellView+hook.m"; sourceTree = "<group>"; };
 		188A65ED2272ACBA0096663E /* YMMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMMessageModel.h; sourceTree = "<group>"; };
-		188A65EE2272ACBA0096663E /* NSDictionary+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Safe.m"; sourceTree = "<group>"; };
 		188A65EF2272ACBA0096663E /* WeChat+hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WeChat+hook.m"; sourceTree = "<group>"; };
 		188A65F02272ACBA0096663E /* MMChatsTableCellView+hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MMChatsTableCellView+hook.m"; sourceTree = "<group>"; };
 		188A65F22272ACBA0096663E /* fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
@@ -333,10 +332,6 @@
 		96D8D0952360BC6A0025BAD6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TKRemoteControlWindowController.strings; sourceTree = "<group>"; };
 		96D8D0972360BC6C0025BAD6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TKRemoteControlWindowController.strings"; sourceTree = "<group>"; };
 		96D8D0992360BC6E0025BAD6 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/TKRemoteControlWindowController.strings"; sourceTree = "<group>"; };
-		97F2E3244C2E5DD8CF65AB97 /* Pods-WeChatExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatExtension/Pods-WeChatExtension.release.xcconfig"; sourceTree = "<group>"; };
-		C341AF31F4497191220003D6 /* Pods-WeChatExtensionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatExtensionTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatExtensionTests/Pods-WeChatExtensionTests.release.xcconfig"; sourceTree = "<group>"; };
-		C528D93AD05C43BF7DE46757 /* Pods-WeChatExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatExtension/Pods-WeChatExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		D58A7B70D43142014A02CCF8 /* Pods-WeChatExtensionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatExtensionTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatExtensionTests/Pods-WeChatExtensionTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,7 +343,6 @@
 				18B5D4A222FAC7B9008206F5 /* libz.tbd in Frameworks */,
 				18B5D4A022FAC7AD008206F5 /* Security.framework in Frameworks */,
 				18A7A1342272AF5300361A98 /* SystemConfiguration.framework in Frameworks */,
-				B66566CE7CFB01C09E18EDC5 /* libPods-WeChatExtension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,7 +373,6 @@
 				188A655022718C400096663E /* WeChatExtension */,
 				188A655B22718C400096663E /* WeChatExtensionTests */,
 				188A654F22718C400096663E /* Products */,
-				3BE15FE6D0885057511EB199 /* Pods */,
 				600807371BAE90444753E469 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -634,19 +627,19 @@
 		188A65E42272ACBA0096663E /* Hook */ = {
 			isa = PBXGroup;
 			children = (
-				188A65E62272ACBA0096663E /* WeChat+hook.h */,
-				188A65EF2272ACBA0096663E /* WeChat+hook.m */,
+				96B578C12360AA8A00F3F66C /* Localizable.strings */,
 				188A65E52272ACBA0096663E /* MMChatsTableCellView+hook.h */,
 				188A65F02272ACBA0096663E /* MMChatsTableCellView+hook.m */,
-				188A65ED2272ACBA0096663E /* YMMessageModel.h */,
-				188A65E82272ACBA0096663E /* YMMessageModel.m */,
 				188A65E92272ACBA0096663E /* MMStickerMessageCellView+hook.h */,
 				188A65EC2272ACBA0096663E /* MMStickerMessageCellView+hook.m */,
-				188A65EA2272ACBA0096663E /* YMMessageTool.m */,
+				185DE0DE23ACE207007651B5 /* NSDictionary+Safe.h */,
+				185DE0DF23ACE208007651B5 /* NSDictionary+Safe.m */,
+				188A65E62272ACBA0096663E /* WeChat+hook.h */,
+				188A65EF2272ACBA0096663E /* WeChat+hook.m */,
+				188A65ED2272ACBA0096663E /* YMMessageModel.h */,
+				188A65E82272ACBA0096663E /* YMMessageModel.m */,
 				188A65EB2272ACBA0096663E /* YMMessageTool.h */,
-				188A65E72272ACBA0096663E /* NSDictionary+Safe.h */,
-				188A65EE2272ACBA0096663E /* NSDictionary+Safe.m */,
-				96B578C12360AA8A00F3F66C /* Localizable.strings */,
+				188A65EA2272ACBA0096663E /* YMMessageTool.m */,
 			);
 			path = Hook;
 			sourceTree = "<group>";
@@ -732,17 +725,6 @@
 			path = TCB;
 			sourceTree = "<group>";
 		};
-		3BE15FE6D0885057511EB199 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C528D93AD05C43BF7DE46757 /* Pods-WeChatExtension.debug.xcconfig */,
-				97F2E3244C2E5DD8CF65AB97 /* Pods-WeChatExtension.release.xcconfig */,
-				D58A7B70D43142014A02CCF8 /* Pods-WeChatExtensionTests.debug.xcconfig */,
-				C341AF31F4497191220003D6 /* Pods-WeChatExtensionTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		600807371BAE90444753E469 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -798,6 +780,7 @@
 				3644BE002285549100EDE358 /* YMUpdateManager.h in Headers */,
 				188A660D2272ACBA0096663E /* YMMessageManager.h in Headers */,
 				188A662D2272ACBA0096663E /* ColorConstant.h in Headers */,
+				185DE0E023ACE208007651B5 /* NSDictionary+Safe.h in Headers */,
 				18D298ED23960C18009EE6B0 /* YMAIReplyWindowController.h in Headers */,
 				18A7A1692272AFE600361A98 /* GCDWebServerDataRequest.h in Headers */,
 				1853B3C422C6133C00A5C4FA /* YMIMContactsManager.h in Headers */,
@@ -814,7 +797,6 @@
 				188A662E2272ACBA0096663E /* DefineConstant.h in Headers */,
 				188A65F52272ACBA0096663E /* TKAboutWindowController.h in Headers */,
 				18A7A1302272ACE900361A98 /* WeChatPlugin.h in Headers */,
-				188A66392272ACBA0096663E /* NSDictionary+Safe.h in Headers */,
 				188A660C2272ACBA0096663E /* TKVersionManager.h in Headers */,
 				36AC9D87228A813F00EA9F97 /* YMDownloadManager.h in Headers */,
 				3644BDFC2285545500EDE358 /* TCBlobDownload.h in Headers */,
@@ -842,7 +824,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 188A656222718C400096663E /* Build configuration list for PBXNativeTarget "WeChatExtension" */;
 			buildPhases = (
-				E3A7009003A837328F71491B /* [CP] Check Pods Manifest.lock */,
 				188A654922718C400096663E /* Headers */,
 				188A654A22718C400096663E /* Sources */,
 				188A654B22718C400096663E /* Frameworks */,
@@ -983,28 +964,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E3A7009003A837328F71491B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-WeChatExtension-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1053,6 +1012,7 @@
 				188A65F62272ACBA0096663E /* TKAboutWindowController.m in Sources */,
 				188A66132272ACBA0096663E /* YMHelper.m in Sources */,
 				188A66172272ACBA0096663E /* YMAutoReplyModel.m in Sources */,
+				185DE0E123ACE208007651B5 /* NSDictionary+Safe.m in Sources */,
 				188A66422272ACBA0096663E /* MMChatsTableCellView+hook.m in Sources */,
 				18A7A1682272AFE600361A98 /* GCDWebServerStreamedResponse.m in Sources */,
 				188A66092272ACBA0096663E /* TKAssistantMenuManager.m in Sources */,
@@ -1066,7 +1026,6 @@
 				18D298F3239610F8009EE6B0 /* YMAIReplyCell.m in Sources */,
 				18A7A15A2272AFE600361A98 /* GCDWebServerRequest.m in Sources */,
 				18A7A16D2272AFE600361A98 /* GCDWebServerMultiPartFormRequest.m in Sources */,
-				188A66402272ACBA0096663E /* NSDictionary+Safe.m in Sources */,
 				188A66312272ACBA0096663E /* TKAutoReplyContentView.m in Sources */,
 				188A66242272ACBA0096663E /* NSDate+Action.m in Sources */,
 				18D298532394EE60009EE6B0 /* YMNetWorkHelper.m in Sources */,
@@ -1266,13 +1225,12 @@
 		};
 		188A656322718C400096663E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C528D93AD05C43BF7DE46757 /* Pods-WeChatExtension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = CMN9N2C3G8;
+				DEVELOPMENT_TEAM = 2U23P5CPX2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1300,13 +1258,12 @@
 		};
 		188A656422718C400096663E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97F2E3244C2E5DD8CF65AB97 /* Pods-WeChatExtension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = CMN9N2C3G8;
+				DEVELOPMENT_TEAM = 2U23P5CPX2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1334,7 +1291,6 @@
 		};
 		188A656622718C400096663E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D58A7B70D43142014A02CCF8 /* Pods-WeChatExtensionTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -1353,7 +1309,6 @@
 		};
 		188A656722718C400096663E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C341AF31F4497191220003D6 /* Pods-WeChatExtensionTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;

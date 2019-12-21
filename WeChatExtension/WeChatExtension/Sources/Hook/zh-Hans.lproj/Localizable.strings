@@ -28,6 +28,9 @@
 "assistant.menu.revokeSyncSingleChat" = "同步单聊";
 "assistant.menu.revokeSyncGroupChat" = "同步群聊";
 
+// 关于窗口
+"about.projectHomepageLabel" = "项目主页:";
+
 //  撤回相关
 "assistant.revokeType.emoji" = "[表情]";
 "assistant.revokeType.image" = "[图片]";
@@ -140,3 +143,14 @@
 "assistant.search.chatlog" = "以下为聊天记录👇🏻";
 "assistant.search.message.unread" = "未读";
 "assistant.search.yesterday" = "昨天";
+
+//  信息扩展
+"assistant.msgInfo.miniprogram" = "收到小程序消息";
+"assistant.msgInfo.miniprogram.name" = "小程序名称：";
+"assistant.msgInfo.miniprogram.title" = "标题：";
+"assistant.msgInfo.miniprogram.path" = "路径：";
+"assistant.msgInfo.miniprogram.share" = "参数：";
+"assistant.msgInfo.wcpay.redPacket" = "收到微信红包";
+"assistant.msgInfo.wcpay.redPacket.title" = "红包标题：";
+"assistant.msgInfo.wcpay.transfer" = "收到转账信息";
+"assistant.msgInfo.wcpay.transfer.desc" = "转账描述：";

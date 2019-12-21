@@ -1,9 +1,9 @@
 //
 //  NSDictionary+Safe.h
-//  YYMobileFramework
+//  WeChatExtension
 //
-//  Created by wuwei on 14-3-19.
-//  Copyright (c) 2014年 MustangYM. All rights reserved.
+//  Created by WeChatExtension on 14-3-19.
+//  Copyright (c) WeChatExtension. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

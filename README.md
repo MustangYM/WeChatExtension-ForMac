@@ -1,4 +1,3 @@
-
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/face.png" width="1000px"/>
 </p>
@@ -49,6 +48,17 @@
 ## 消息防撤回
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/revoke.gif" width="800px"/>
+</p>
+
+## 显示小程序详情
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191220-200407%402x.png" width="800px"/>
+</p>
+
+## Alfred
+确保你电脑中有安装Alfred, 双击此文件进行安装.
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191217-103633%402x.png" width="800px"/>
 </p>
 
 ## 屏蔽更新
@@ -145,6 +155,8 @@ curl -o- -L https://raw.githubusercontent.com/lmk123/oh-my-wechat/master/install
 
 ## 更新日志
 ```
+2019-12-20 显示小程序消息详情
+2019-12-17 修复Alfred聊天记录为空问题
 2019-12-10 适配2.3.29微信客户端, 消息撤回逻辑问题得以修复
 2019-12-04 适配OSX10.14.6, 修复翻译问题, 增加AI自动聊天
 2019-11-16 将安装包从17.7MB瘦身到2.6MB, 没有"科学上网"的同学大大加快安装更新速度, 提升人民幸福感

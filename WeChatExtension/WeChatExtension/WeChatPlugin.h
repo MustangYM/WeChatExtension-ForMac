@@ -89,7 +89,9 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)notifyAddMsgOnMainThread:(id)arg1 msgData:(id)arg2;
 - (void)onRevokeMsg:(id)arg1;
 - (void)FFToNameFavChatZZ:(id)arg1;
+- (void)FFToNameFavChatZZ:(id)arg1 sessionMsgList:(id)arg2;
 - (void)OnSyncBatchAddMsgs:(NSArray *)arg1 isFirstSync:(BOOL)arg2;
+- (void)OnSyncBatchAddFunctionMsgs:(id)arg1 isFirstSync:(BOOL)arg2;
 - (void)FFImgToOnFavInfoInfoVCZZ:(id)arg1 isFirstSync:(BOOL)arg2;
 
 - (id)SendTextMessage:(id)arg1 toUsrName:(id)arg2 msgText:(id)arg3 atUserList:(id)arg4;
@@ -108,6 +110,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (BOOL)hasMsgInChat:(id)arg1;
 - (id)GetMsgListWithChatName:(id)arg1 fromLocalId:(unsigned int)arg2 limitCnt:(NSInteger)arg3 hasMore:(char *)arg4 sortAscend:(BOOL)arg5;
 - (id)GetMsgListWithChatName:(id)arg1 fromCreateTime:(unsigned int)arg2 limitCnt:(NSInteger)arg3 hasMore:(char *)arg4 sortAscend:(BOOL)arg5;
+- (id)GetMsgListWithChatName:(id)arg1 fromCreateTime:(unsigned int)arg2 localId:(unsigned long long)arg3 limitCnt:(unsigned int)arg4 hasMore:(char *)arg5 sortAscend:(BOOL)arg6;
 
 - (id)ForwardMessage:(id)arg1 toUser:(id)arg2 errMsg:(id *)arg3;
 @end
