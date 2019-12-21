@@ -87,7 +87,6 @@ static NSString const *AI_API = @"https://api.ai.qq.com/fcgi-bin/nlp/nlp_textcha
     [self.manager POST:url parameters:parame progress:^(NSProgress *uploadProgress) {
         
     } success:^(NSURLSessionDataTask *task, id   _Nullable responseObject) {
-        NSDictionary *myDictionary = [self returnDictionaryWithDataPath:responseObject];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError *error) {
         failure ? failure(error , nil) : nil;
@@ -167,7 +166,7 @@ static NSString const *AI_API = @"https://api.ai.qq.com/fcgi-bin/nlp/nlp_textcha
     for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
         [output appendFormat:@"%02x", digest[i]];
     }
-    return  output;
+        return  output;
 }
 
 @end

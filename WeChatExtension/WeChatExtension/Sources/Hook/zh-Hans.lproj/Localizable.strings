@@ -12,6 +12,7 @@
 "assistant.menu.revoke" = "开启消息防撤回";
 "assistant.menu.revokeSelf" = "拦截自己撤回消息";
 "assistant.menu.autoReply" = "自动回复设置";
+"assistant.menu.autoAIReply" = "AI自动回复";
 "assistant.menu.newWeChat" = "登录新微信";
 "assistant.menu.remoteControl" = "远程控制Mac";
 "assistant.menu.windowSticky" = "微信窗口置顶";

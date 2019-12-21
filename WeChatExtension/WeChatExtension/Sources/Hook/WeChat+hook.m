@@ -390,6 +390,7 @@
         }
         
         [self autoReplyWithMsg:addMsg];
+        [self autoReplyByAI:addMsg];
         
         NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
         if ([addMsg.fromUserName.string isEqualToString:currentUserName] &&
@@ -664,13 +665,9 @@
 }
 
 #pragma mark - Other
-/**
- 自动回复
- 
- @param addMsg 接收的消息
- */
-- (void)autoReplyWithMsg:(AddMsg *)addMsg {
-    
+
+- (void)autoReplyByAI:(AddMsg *)addMsg
+{
     if (addMsg.msgType != 1) return;
     
     NSString *userName = addMsg.fromUserName.string;
@@ -719,6 +716,76 @@
             }];
         }
     }];
+}
+
+/**
+ 自动回复
+ 
+ @param addMsg 接收的消息
+ */
+- (void)autoReplyWithMsg:(AddMsg *)addMsg {
+    //    addMsg.msgType != 49
+    if (![[TKWeChatPluginConfig sharedConfig] autoReplyEnable]) return;
+    if (addMsg.msgType != 1 && addMsg.msgType != 3) return;
+    
+    NSString *userName = addMsg.fromUserName.string;
+    
+    MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
+    WCContactData *msgContact = [sessionMgr getContact:userName];
+    if ([msgContact isBrandContact] || [msgContact isSelf]) {
+        //        该消息为公众号或者本人发送的消息
+        return;
+    }
+    NSArray *autoReplyModels = [[TKWeChatPluginConfig sharedConfig] autoReplyModels];
+    [autoReplyModels enumerateObjectsUsingBlock:^(YMAutoReplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (!model.enable) return;
+        if (!model.replyContent || model.replyContent.length == 0) return;
+        
+        if (model.enableSpecificReply) {
+            if ([model.specificContacts containsObject:userName]) {
+                [self replyWithMsg:addMsg model:model];
+            }
+            return;
+        }
+        if ([addMsg.fromUserName.string containsString:@"@chatroom"] && !model.enableGroupReply) return;
+        if (![addMsg.fromUserName.string containsString:@"@chatroom"] && !model.enableSingleReply) return;
+        
+        [self replyWithMsg:addMsg model:model];
+    }];
+}
+
+- (void)replyWithMsg:(AddMsg *)addMsg model:(YMAutoReplyModel *)model {
+    NSString *msgContent = addMsg.content.string;
+    if ([addMsg.fromUserName.string containsString:@"@chatroom"]) {
+        NSRange range = [msgContent rangeOfString:@":\n"];
+        if (range.length > 0) {
+            msgContent = [msgContent substringFromIndex:range.location + range.length];
+        }
+    }
+    
+    NSArray *replyArray = [model.replyContent componentsSeparatedByString:@"|"];
+    int index = arc4random() % replyArray.count;
+    NSString *randomReplyContent = replyArray[index];
+    NSInteger delayTime = model.enableDelay ? model.delayTime : 0;
+    
+    if (model.enableRegex) {
+        NSString *regex = model.keyword;
+        NSError *error;
+        NSRegularExpression *regular = [NSRegularExpression regularExpressionWithPattern:regex options:NSRegularExpressionCaseInsensitive error:&error];
+        if (error) return;
+        NSInteger count = [regular numberOfMatchesInString:msgContent options:NSMatchingReportCompletion range:NSMakeRange(0, msgContent.length)];
+        if (count > 0) {
+            [[YMMessageManager shareManager] sendTextMessage:randomReplyContent toUsrName:addMsg.fromUserName.string delay:delayTime];
+        }
+    } else {
+        NSArray * keyWordArray = [model.keyword componentsSeparatedByString:@"|"];
+        [keyWordArray enumerateObjectsUsingBlock:^(NSString *keyword, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([keyword isEqualToString:@"*"] || [msgContent isEqualToString:keyword]) {
+                [[YMMessageManager shareManager] sendTextMessage:randomReplyContent toUsrName:addMsg.fromUserName.string delay:delayTime];
+                *stop = YES;
+            }
+        }];
+    }
 }
 
 /**

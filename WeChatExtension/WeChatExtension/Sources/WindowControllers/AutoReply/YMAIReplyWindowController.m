@@ -49,7 +49,7 @@
 - (void)initSubviews
 {
     self.window.title = TKLocalizedString(@"assistant.autoReply.aiTitle");
-    NSInteger leftSpace = 110;
+    NSInteger leftSpace = -50;
     NSScrollView *scrollView = ({
         NSScrollView *scrollView = [[NSScrollView alloc] init];
         scrollView.hasVerticalScroller = YES;
@@ -94,7 +94,7 @@
         [[label cell] setLineBreakMode:NSLineBreakByCharWrapping];
         [[label cell] setTruncatesLastVisibleLine:YES];
         label.font = [NSFont systemFontOfSize:12];
-        label.frame = NSMakeRect(220, 400, 300, 50);
+        label.frame = NSMakeRect(80, 400, 300, 50);
         label;
     });
 
