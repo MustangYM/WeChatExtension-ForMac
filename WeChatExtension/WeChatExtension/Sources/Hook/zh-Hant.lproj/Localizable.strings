@@ -27,6 +27,9 @@
 "assistant.menu.revokeSyncSingleChat" = "同步单聊";
 "assistant.menu.revokeSyncGroupChat" = "同步群聊";
 
+// 关于窗口
+"about.projectHomepageLabel" = "項目主頁:";
+
 //  撤回相关
 "assistant.revokeType.emoji" = "[表情]";
 "assistant.revokeType.image" = "[图片]";

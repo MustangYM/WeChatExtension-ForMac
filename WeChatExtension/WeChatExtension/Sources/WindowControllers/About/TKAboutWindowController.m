@@ -10,8 +10,8 @@
 
 @interface TKAboutWindowController ()
 
-@property (unsafe_unretained) IBOutlet NSTextView *textView;
 @property (weak) IBOutlet NSTextField *versionLabel;
+@property (weak) IBOutlet NSTextField *projectHomepageLabel;
 
 @end
 
@@ -26,10 +26,15 @@
     }
     NSString *localBundle = localInfo[@"CFBundleShortVersionString"];
     self.versionLabel.stringValue = localBundle;
+    self.projectHomepageLabel.stringValue = TKLocalizedString(@"about.projectHomepageLabel");
     
 //    NSString *path = [[NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"] pathForResource:@"about" ofType:@"rtfd"];
 //    [self.textView readRTFDFromFile:path];
 //    self.textView.selectable = YES;
+}
+
+- (IBAction)didClickHomepageURL:(NSButton *)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/MustangYM/WeChatExtension-ForMac"]];
 }
 
 @end

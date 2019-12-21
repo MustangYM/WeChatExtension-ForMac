@@ -27,6 +27,9 @@
 "assistant.menu.revokeSyncSingleChat" = "Sync Single Chat";
 "assistant.menu.revokeSyncGroupChat" = "Sync Group Chat";
 
+// 关于窗口
+"about.projectHomepageLabel" = "Project Homepage:";
+
 //  撤回相关
 "assistant.revokeType.emoji" = "[Emoji]";
 "assistant.revokeType.image" = "[Image]";
