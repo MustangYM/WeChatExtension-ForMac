@@ -139,3 +139,14 @@
 "assistant.search.chatlog" = "The following is the chat history👇🏻";
 "assistant.search.message.unread" = "Unread";
 "assistant.search.yesterday" = "Yesterday";
+
+//  信息扩展
+"assistant.msgInfo.miniprogram" = "Receive mini program messages";
+"assistant.msgInfo.miniprogram.name" = "Name:";
+"assistant.msgInfo.miniprogram.title" = "Title:";
+"assistant.msgInfo.miniprogram.path" = "Path:";
+"assistant.msgInfo.miniprogram.share" = "Value:";
+"assistant.msgInfo.wcpay.redPacket" = "Receive red packet";
+"assistant.msgInfo.wcpay.redPacket.title" = "Title:";
+"assistant.msgInfo.wcpay.transfer" = "Receive transfer";
+"assistant.msgInfo.wcpay.transfer.desc" = "desc:";
