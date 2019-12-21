@@ -145,7 +145,7 @@
 "assistant.msgInfo.miniprogram.name" = "小程序名称：";
 "assistant.msgInfo.miniprogram.title" = "标题：";
 "assistant.msgInfo.miniprogram.path" = "路径：";
-"assistant.msgInfo.miniprogram.share" = "参数：";
+"assistant.msgInfo.miniprogram.url" = "来源：";
 "assistant.msgInfo.wcpay.redPacket" = "收到微信红包";
 "assistant.msgInfo.wcpay.redPacket.title" = "红包标题：";
 "assistant.msgInfo.wcpay.transfer" = "收到转账信息";

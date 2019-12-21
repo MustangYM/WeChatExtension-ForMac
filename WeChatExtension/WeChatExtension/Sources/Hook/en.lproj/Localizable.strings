@@ -145,8 +145,8 @@
 "assistant.msgInfo.miniprogram.name" = "Name:";
 "assistant.msgInfo.miniprogram.title" = "Title:";
 "assistant.msgInfo.miniprogram.path" = "Path:";
-"assistant.msgInfo.miniprogram.share" = "Value:";
+"assistant.msgInfo.miniprogram.url" = "From:";
 "assistant.msgInfo.wcpay.redPacket" = "Receive red packet";
 "assistant.msgInfo.wcpay.redPacket.title" = "Title:";
 "assistant.msgInfo.wcpay.transfer" = "Receive transfer";
-"assistant.msgInfo.wcpay.transfer.desc" = "desc:";
+"assistant.msgInfo.wcpay.transfer.desc" = "Desc:";

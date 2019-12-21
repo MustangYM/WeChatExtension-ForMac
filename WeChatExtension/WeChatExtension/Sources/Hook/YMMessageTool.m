@@ -60,13 +60,12 @@
         
         NSString *session = addMsg.fromUserName.string;
         
-        if (type.intValue == 33) {// 显示小程序信息
+        if (type.intValue == 33 || type.intValue == 36) {// 显示小程序信息
             NSDictionary *weappInfoDict = [appMsgDict valueForKey:@"weappinfo"];
             NSString *title = @"";
             NSString *url = @"";
             NSString *appid = @"";
             NSString *pagepath = @"";
-            NSString *shareId = @"";
             NSString *sourcedisplayname = @"";
             NSDictionary *titleDict = [appMsgDict valueForKey:@"title"];
             title = [titleDict valueForKey:@"text"];
@@ -80,8 +79,6 @@
             NSDictionary *pagepathDict = [weappInfoDict valueForKey:@"pagepath"];
             pagepath = [pagepathDict valueForKey:@"text"];
             
-            NSDictionary *shareIdDict = [weappInfoDict valueForKey:@"shareId"];
-            shareId = [shareIdDict valueForKey:@"text"];
             
             NSDictionary *sourcedisplaynameDict = [appMsgDict valueForKey:@"sourcedisplayname"];
             sourcedisplayname = [sourcedisplaynameDict valueForKey:@"text"];
@@ -93,27 +90,43 @@
                 title = [NSString stringWithFormat:@"%@...",title];
             }
             
-            //显示p路径和分享参数 有需要再开启
-//            NSString *newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@ (%@) \n%@%@ \n%@%@ \n%@%@ \n",
-//                                       TKLocalizedString(@"assistant.msgInfo.miniprogram"),
-//                                       TKLocalizedString(@"assistant.msgInfo.miniprogram.name"),
-//                                       sourcedisplayname,
-//                                       appid,
-//                                       TKLocalizedString(@"assistant.msgInfo.miniprogram.title"),
-//                                       title,
-//                                       TKLocalizedString(@"assistant.msgInfo.miniprogram.path"),
-//                                       pagepath,
-//                                       TKLocalizedString(@"assistant.msgInfo.miniprogram.share"),
-//                                       shareId
-//                                       ];
-            NSString *newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@ (%@) \n%@%@ \n",
-                                        TKLocalizedString(@"assistant.msgInfo.miniprogram"),
-                                        TKLocalizedString(@"assistant.msgInfo.miniprogram.name"),
-                                        sourcedisplayname,
-                                        appid,
-                                        TKLocalizedString(@"assistant.msgInfo.miniprogram.title"),
-                                        title
-                                        ];
+            NSString *newMsgContent = @"";
+            //显示p路径 有需要再开启
+            //            newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@ (%@) \n%@%@ \n%@%@ \n%@%@ \n",
+            //                TKLocalizedString(@"assistant.msgInfo.miniprogram"),
+            //                TKLocalizedString(@"assistant.msgInfo.miniprogram.name"),
+            //                sourcedisplayname,
+            //                appid,
+            //                TKLocalizedString(@"assistant.msgInfo.miniprogram.title"),
+            //                title,
+            //                TKLocalizedString(@"assistant.msgInfo.miniprogram.path"),
+            //                pagepath
+            //                ];
+            if(type.intValue == 36){//36为app分享小程序
+                NSDictionary *urlDict = [appMsgDict valueForKey:@"url"];
+                NSString *url = [urlDict valueForKey:@"text"];
+                
+                newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@ (%@) \n%@%@ \n%@%@ \n",
+                                 TKLocalizedString(@"assistant.msgInfo.miniprogram"),
+                                 TKLocalizedString(@"assistant.msgInfo.miniprogram.name"),
+                                 sourcedisplayname,
+                                 appid,
+                                 TKLocalizedString(@"assistant.msgInfo.miniprogram.title"),
+                                 title,
+                                 TKLocalizedString(@"assistant.msgInfo.miniprogram.url"),
+                                 url
+                                 ];
+            }else{
+                newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@ (%@) \n%@%@ \n",
+                                 TKLocalizedString(@"assistant.msgInfo.miniprogram"),
+                                 TKLocalizedString(@"assistant.msgInfo.miniprogram.name"),
+                                 sourcedisplayname,
+                                 appid,
+                                 TKLocalizedString(@"assistant.msgInfo.miniprogram.title"),
+                                 title
+                                 ];
+            }
+            
             MessageData *newMsgData = ({
                 MessageData *msg = [[objc_getClass("MessageData") alloc] initWithMsgType:0x2710];
                 [msg setFromUsrName:session];
@@ -125,7 +138,7 @@
             });
             
             [msgService AddLocalMsg:session msgData:newMsgData];
-                   
+            
         } else if(type.intValue == 2001) {// 显示红包信息
             NSDictionary *wcpayInfoDict = [appMsgDict valueForKey:@"wcpayinfo"];
             NSString *title = @"";
