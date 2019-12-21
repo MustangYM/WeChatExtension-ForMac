@@ -85,7 +85,7 @@
                 title = [NSString stringWithFormat:@"%@...",title];
             }
             
-            NSString *newMsgContent = [NSString stringWithFormat:@"%@ \n小程序名称：%@ (%@) \n标题：%@ \n",@"收到小程序消息",sourcedisplayname,appid,title];
+            NSString *newMsgContent = [NSString stringWithFormat:@"%@ \n小程序名称：%@ \n标题：%@ \n",@"收到小程序消息",sourcedisplayname,title];
             MessageData *newMsgData = ({
                 MessageData *msg = [[objc_getClass("MessageData") alloc] initWithMsgType:0x2710];
                 [msg setFromUsrName:session];
