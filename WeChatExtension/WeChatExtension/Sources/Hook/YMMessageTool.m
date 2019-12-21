@@ -106,11 +106,10 @@
 //                                       TKLocalizedString(@"assistant.msgInfo.miniprogram.share"),
 //                                       shareId
 //                                       ];
-            NSString *newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@ (%@) \n%@%@ \n",
+            NSString *newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@ \n%@%@ \n",
                                         TKLocalizedString(@"assistant.msgInfo.miniprogram"),
                                         TKLocalizedString(@"assistant.msgInfo.miniprogram.name"),
                                         sourcedisplayname,
-                                        appid,
                                         TKLocalizedString(@"assistant.msgInfo.miniprogram.title"),
                                         title
                                         ];
