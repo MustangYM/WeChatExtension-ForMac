@@ -61,24 +61,14 @@
         NSString *session = addMsg.fromUserName.string;
         
         if (type.intValue == 33 || type.intValue == 36) {// 显示小程序信息
-            NSDictionary *weappInfoDict = [appMsgDict valueForKey:@"weappinfo"];
             NSString *title = @"";
             NSString *url = @"";
-            NSString *appid = @"";
-            NSString *pagepath = @"";
             NSString *sourcedisplayname = @"";
             NSDictionary *titleDict = [appMsgDict valueForKey:@"title"];
             title = [titleDict valueForKey:@"text"];
             
             NSDictionary *urlDict = [appMsgDict valueForKey:@"url"];
             url = [urlDict valueForKey:@"text"];
-            
-            NSDictionary *appidDict = [weappInfoDict valueForKey:@"appid"];
-            appid = [appidDict valueForKey:@"text"];
-            
-            NSDictionary *pagepathDict = [weappInfoDict valueForKey:@"pagepath"];
-            pagepath = [pagepathDict valueForKey:@"text"];
-            
             
             NSDictionary *sourcedisplaynameDict = [appMsgDict valueForKey:@"sourcedisplayname"];
             sourcedisplayname = [sourcedisplaynameDict valueForKey:@"text"];
@@ -95,28 +85,22 @@
                 NSDictionary *urlDict = [appMsgDict valueForKey:@"url"];
                 NSString *url = [urlDict valueForKey:@"text"];
                 
-                newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@(%@) \n%@%@ \n%@%@ \n%@%@ \n",
+                newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@ \n%@%@ \n%@%@ \n",
                                  TKLocalizedString(@"assistant.msgInfo.miniprogram"),
                                  TKLocalizedString(@"assistant.msgInfo.miniprogram.name"),
                                  sourcedisplayname,
-                                 appid,
                                  TKLocalizedString(@"assistant.msgInfo.miniprogram.title"),
                                  title,
-                                 TKLocalizedString(@"assistant.msgInfo.miniprogram.path"),
-                                 pagepath,
                                  TKLocalizedString(@"assistant.msgInfo.miniprogram.url"),
                                  url
                                  ];
             }else{
-                newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@(%@) \n%@%@ \n%@%@ \n",
+                newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@ \n%@%@ \n",
                                  TKLocalizedString(@"assistant.msgInfo.miniprogram"),
                                  TKLocalizedString(@"assistant.msgInfo.miniprogram.name"),
                                  sourcedisplayname,
-                                 appid,
                                  TKLocalizedString(@"assistant.msgInfo.miniprogram.title"),
-                                 title,
-                                 TKLocalizedString(@"assistant.msgInfo.miniprogram.path"),
-                                 pagepath
+                                 title
                                  ];
             }
             
