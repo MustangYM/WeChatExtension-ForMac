@@ -91,38 +91,33 @@
             }
             
             NSString *newMsgContent = @"";
-            //显示p路径 有需要再开启
-            //            newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@ (%@) \n%@%@ \n%@%@ \n%@%@ \n",
-            //                TKLocalizedString(@"assistant.msgInfo.miniprogram"),
-            //                TKLocalizedString(@"assistant.msgInfo.miniprogram.name"),
-            //                sourcedisplayname,
-            //                appid,
-            //                TKLocalizedString(@"assistant.msgInfo.miniprogram.title"),
-            //                title,
-            //                TKLocalizedString(@"assistant.msgInfo.miniprogram.path"),
-            //                pagepath
-            //                ];
             if(type.intValue == 36){//36为app分享小程序
                 NSDictionary *urlDict = [appMsgDict valueForKey:@"url"];
                 NSString *url = [urlDict valueForKey:@"text"];
                 
-                newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@ \n%@%@ \n%@%@ \n",
+                newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@(%@) \n%@%@ \n%@%@ \n%@%@ \n",
                                  TKLocalizedString(@"assistant.msgInfo.miniprogram"),
                                  TKLocalizedString(@"assistant.msgInfo.miniprogram.name"),
                                  sourcedisplayname,
+                                 appid,
                                  TKLocalizedString(@"assistant.msgInfo.miniprogram.title"),
                                  title,
+                                 TKLocalizedString(@"assistant.msgInfo.miniprogram.path"),
+                                 pagepath,
                                  TKLocalizedString(@"assistant.msgInfo.miniprogram.url"),
                                  url
                                  ];
             }else{
-                newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@ \n%@%@ \n",
-                                TKLocalizedString(@"assistant.msgInfo.miniprogram"),
-                                TKLocalizedString(@"assistant.msgInfo.miniprogram.name"),
-                                sourcedisplayname,
-                                TKLocalizedString(@"assistant.msgInfo.miniprogram.title"),
-                                title
-                                ];
+                newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@(%@) \n%@%@ \n%@%@ \n",
+                                 TKLocalizedString(@"assistant.msgInfo.miniprogram"),
+                                 TKLocalizedString(@"assistant.msgInfo.miniprogram.name"),
+                                 sourcedisplayname,
+                                 appid,
+                                 TKLocalizedString(@"assistant.msgInfo.miniprogram.title"),
+                                 title,
+                                 TKLocalizedString(@"assistant.msgInfo.miniprogram.path"),
+                                 pagepath
+                                 ];
             }
             
             MessageData *newMsgData = ({
