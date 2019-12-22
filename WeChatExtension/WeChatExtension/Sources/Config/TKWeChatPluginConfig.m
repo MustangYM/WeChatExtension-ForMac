@@ -156,6 +156,21 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
     return _autoReplyModels;
 }
 
+- (YMAIAutoModel *)AIReplyModel {
+    NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"AIAutoReply.data"];
+    return [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+}
+
+- (void)saveAIAutoReplyModel:(YMAIAutoModel *)model
+{
+    if (!model) {
+        return;
+    }
+    NSString *temp = NSTemporaryDirectory();
+     NSString *filePath = [temp stringByAppendingPathComponent:@"AIAutoReply.data"];
+     [NSKeyedArchiver archiveRootObject:model toFile:filePath];
+}
+
 - (void)saveAutoReplyModels {
     NSMutableArray *needSaveModels = [NSMutableArray array];
     [_autoReplyModels enumerateObjectsUsingBlock:^(YMAutoReplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -220,7 +235,7 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 
 - (void)saveIgnoreSessionModels {
     NSMutableArray *needSaveArray = [NSMutableArray array];
-    [self.ignoreSessionModels enumerateObjectsUsingBlock:^(TKBaseModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.ignoreSessionModels enumerateObjectsUsingBlock:^(YMBaseModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [needSaveArray addObject:obj.dictionary];
     }];
     
@@ -259,18 +274,18 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
     return _remoteControlPlistFilePath;
 }
 
-- (NSString *)autoReplyPlistFilePath {
-    if (!_autoReplyPlistFilePath) {
-        _autoReplyPlistFilePath = [self getSandboxFilePathWithPlistName:@"YMAutoReplyModels.plist"];
-    }
-    return _autoReplyPlistFilePath;
-}
-
 - (NSString *)ignoreSessionPlistFilePath {
     if (!_ignoreSessionPlistFilePath) {
         _ignoreSessionPlistFilePath = [self getSandboxFilePathWithPlistName:@"TKIgnoreSessons.plist"];
     }
     return _ignoreSessionPlistFilePath;
+}
+
+- (NSString *)autoReplyPlistFilePath {
+    if (!_autoReplyPlistFilePath) {
+        _autoReplyPlistFilePath = [self getSandboxFilePathWithPlistName:@"YMAutoReplyModels.plist"];
+    }
+    return _autoReplyPlistFilePath;
 }
 
 #pragma mark - 获取本地 & github 上的小助手 info 信息

@@ -187,4 +187,25 @@
         }
     }
 }
+
++ (void)addLocalWarningMsg:(NSString *)msg fromUsr:(NSString *)fromUsr
+{
+    if (!msg || !fromUsr) {
+        return;
+    }
+    MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+    NSString *newMsgContent = msg;
+    MessageData *newMsgData = ({
+        MessageData *msg = [[objc_getClass("MessageData") alloc] initWithMsgType:0x2710];
+        [msg setFromUsrName:fromUsr];
+        [msg setToUsrName:fromUsr];
+        [msg setMsgStatus:4];
+        [msg setMsgContent:newMsgContent];
+        [msg setMsgCreateTime:[[NSDate date] timeIntervalSince1970]];
+        msg;
+    });
+    
+    [msgService AddLocalMsg:fromUsr msgData:newMsgData];
+    
+}
 @end

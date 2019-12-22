@@ -6,9 +6,9 @@
 //  Copyright © 2017年 WeChatExtension. All rights reserved.
 //
 
-#import "TKBaseModel.h"
+#import "YMBaseModel.h"
 
-@interface YMAutoReplyModel : TKBaseModel
+@interface YMAutoReplyModel : YMBaseModel
 
 @property (nonatomic, assign) BOOL enable;                  /**<    是否开启自动回复     */
 @property (nonatomic, copy) NSString *keyword;              /**<    自动回复关键字       */
@@ -19,8 +19,11 @@
 @property (nonatomic, assign) BOOL enableDelay;             /**<    是否开启延迟回复     */
 @property (nonatomic, assign) NSInteger delayTime;          /**<    延迟时间            */
 @property (nonatomic, assign) BOOL enableSpecificReply;     /**<    是否开启特定回复     */
-@property (nonatomic, strong) NSMutableArray *specificContacts;    /**<    特定回复的联系人     */
-
+@property (nonatomic, strong) NSArray *specificContacts;    /**<    特定回复的联系人     */
 - (BOOL)hasEmptyKeywordOrReplyContent;
 
+@end
+
+@interface YMAIAutoModel : YMBaseModel<NSCoding>
+@property (nonatomic, strong) NSMutableArray *specificContacts;    /**<    特定回复的联系人     */
 @end

@@ -8,7 +8,7 @@
 
 
 #import <Foundation/Foundation.h>
-
+@class YMAIAutoModel;
 @interface TKWeChatPluginConfig : NSObject
 
 @property (nonatomic, assign) BOOL preventRevokeEnable;                 /**<    是否开启防撤回    */
@@ -34,11 +34,12 @@
 @property (nonatomic, copy) NSString *currentUserName;                   /**<    当前用户的id     */
 @property (nonatomic, copy, readonly) NSDictionary *localInfoPlist;
 @property (nonatomic, copy, readonly) NSDictionary *romoteInfoPlist;
+@property (nonatomic, strong) YMAIAutoModel *AIReplyModel;
 
 - (void)saveAutoReplyModels;
 - (void)saveRemoteControlModels;
 - (void)saveIgnoreSessionModels;
-
+- (void)saveAIAutoReplyModel:(YMAIAutoModel *)model;
 + (instancetype)sharedConfig;
 
 @end

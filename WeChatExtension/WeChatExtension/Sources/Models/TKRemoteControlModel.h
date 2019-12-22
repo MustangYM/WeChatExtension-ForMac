@@ -6,7 +6,7 @@
 //  Copyright © 2017年 WeChatExtension. All rights reserved.
 //
 
-#import "TKBaseModel.h"
+#import "YMBaseModel.h"
 
 typedef NS_ENUM(NSUInteger, TKRemoteControlType) {
     TKRemoteControlTypeShell = 1,
@@ -14,7 +14,7 @@ typedef NS_ENUM(NSUInteger, TKRemoteControlType) {
     TKRemoteControlTypePlugin,
 };
 
-@interface TKRemoteControlModel : TKBaseModel
+@interface TKRemoteControlModel : YMBaseModel
 
 @property (nonatomic, assign) BOOL enable;
 @property (nonatomic, copy) NSString *keyword;

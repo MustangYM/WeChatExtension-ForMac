@@ -18,9 +18,10 @@
 #import "YMMessageManager.h"
 #import "YMAIReplyWindowController.h"
 
-static char tkAutoReplyWindowControllerKey;         //  自动回复窗口的关联 key
-static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关联 key
-static char tkAboutWindowControllerKey;             //  关于窗口的关联 key
+static char kAutoReplyWindowControllerKey;         //  自动回复窗口的关联 key
+static char kAIAutoReplyWindowControllerKey;         //  AI回复窗口的关联 key
+static char kRemoteControlWindowControllerKey;     //  远程控制窗口的关联 key
+static char kAboutWindowControllerKey;             //  关于窗口的关联 key
 
 @implementation TKAssistantMenuManager
 
@@ -82,6 +83,13 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
                                                        target:self
                                                 keyEquivalent:@"k"
                                                         state:[[TKWeChatPluginConfig sharedConfig] autoReplyEnable]];
+    //        自动回复
+       NSMenuItem *autoAIReplyItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.autoAIReply")
+                                                          action:@selector(onAutoAIReply:)
+                                                          target:self
+                                                   keyEquivalent:@"k"
+                                                           state:NO];
+    
     //        登录新微信
     NSMenuItem *newWeChatItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.newWeChat")
                                                        action:@selector(onNewWechatInstance:)
@@ -163,6 +171,7 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
 
     [subMenu addItems:@[preventRevokeItem,
                         autoReplyItem,
+                        autoAIReplyItem,
                         commandItem,
                         newWeChatItem,
                         onTopItem,
@@ -318,13 +327,24 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
  */
 - (void)onAutoReply:(NSMenuItem *)item {
     WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
-    YMAIReplyWindowController *autoReplyWC = objc_getAssociatedObject(wechat, &tkAutoReplyWindowControllerKey);
+    TKAutoReplyWindowController *autoReplyWC = objc_getAssociatedObject(wechat, &kAutoReplyWindowControllerKey);
 
     if (!autoReplyWC) {
-        autoReplyWC = [[YMAIReplyWindowController alloc] initWithWindowNibName:@"TKAutoReplyWindowController"];
-        objc_setAssociatedObject(wechat, &tkAutoReplyWindowControllerKey, autoReplyWC, OBJC_ASSOCIATION_RETAIN);
+        autoReplyWC = [[TKAutoReplyWindowController alloc] initWithWindowNibName:@"TKAutoReplyWindowController"];
+        objc_setAssociatedObject(wechat, &kAutoReplyWindowControllerKey, autoReplyWC, OBJC_ASSOCIATION_RETAIN);
     }
     [autoReplyWC show];
+}
+
+- (void)onAutoAIReply:(NSMenuItem *)item {
+    WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
+      YMAIReplyWindowController *autoReplyWC = objc_getAssociatedObject(wechat, &kAIAutoReplyWindowControllerKey);
+
+      if (!autoReplyWC) {
+          autoReplyWC = [[YMAIReplyWindowController alloc] initWithWindowNibName:@"YMAIReplyWindowController"];
+          objc_setAssociatedObject(wechat, &kAIAutoReplyWindowControllerKey, autoReplyWC, OBJC_ASSOCIATION_RETAIN);
+      }
+      [autoReplyWC show];
 }
 
 /**
@@ -343,11 +363,11 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
  */
 - (void)onRemoteControl:(NSMenuItem *)item {
     WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
-    TKRemoteControlWindowController *remoteControlWC = objc_getAssociatedObject(wechat, &tkRemoteControlWindowControllerKey);
+    TKRemoteControlWindowController *remoteControlWC = objc_getAssociatedObject(wechat, &kRemoteControlWindowControllerKey);
     
     if (!remoteControlWC) {
         remoteControlWC = [[TKRemoteControlWindowController alloc] initWithWindowNibName:@"TKRemoteControlWindowController"];
-        objc_setAssociatedObject(wechat, &tkRemoteControlWindowControllerKey, remoteControlWC, OBJC_ASSOCIATION_RETAIN);
+        objc_setAssociatedObject(wechat, &kRemoteControlWindowControllerKey, remoteControlWC, OBJC_ASSOCIATION_RETAIN);
     }
     
     [remoteControlWC show];
@@ -429,11 +449,11 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
 
 - (void)onAboutPluginControl:(NSMenuItem *)item {
     WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
-    TKAboutWindowController *remoteControlWC = objc_getAssociatedObject(wechat, &tkAboutWindowControllerKey);
+    TKAboutWindowController *remoteControlWC = objc_getAssociatedObject(wechat, &kAboutWindowControllerKey);
     
     if (!remoteControlWC) {
         remoteControlWC = [[TKAboutWindowController alloc] initWithWindowNibName:@"TKAboutWindowController"];
-        objc_setAssociatedObject(wechat, &tkAboutWindowControllerKey, remoteControlWC, OBJC_ASSOCIATION_RETAIN);
+        objc_setAssociatedObject(wechat, &kAboutWindowControllerKey, remoteControlWC, OBJC_ASSOCIATION_RETAIN);
     }
     
     [remoteControlWC show];

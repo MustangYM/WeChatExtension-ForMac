@@ -21,5 +21,6 @@
 + (WCContactData *)getContactData:(AddMsg *)addMsg;
 
 + (void)parseMiniProgramMsg:(AddMsg *)addMsg;
++ (void)addLocalWarningMsg:(NSString *)msg fromUsr:(NSString *)fromUsr;
 @end
 

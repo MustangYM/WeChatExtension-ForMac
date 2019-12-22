@@ -1,14 +1,14 @@
 //
-//  TKBaseModel.m
+//  YMBaseModel.m
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2017/9/17.
 //  Copyright © 2017年 WeChatExtension. All rights reserved.
 //
 
-#import "TKBaseModel.h"
+#import "YMBaseModel.h"
 
-@implementation TKBaseModel
+@implementation YMBaseModel
 
 - (instancetype)initWithDict:(NSDictionary *)dict {
     NSAssert(NO, @"the mothed initWithDict: must be override by subclass");

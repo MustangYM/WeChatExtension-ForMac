@@ -1,5 +1,5 @@
 //
-//  TKBaseModel.h
+//  YMBaseModel.h
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2017/9/17.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TKBaseModel : NSObject
+@interface YMBaseModel : NSObject
 
 - (instancetype)initWithDict:(NSDictionary *)dict;
 - (NSDictionary *)dictionary;

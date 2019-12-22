@@ -12,6 +12,7 @@
 "assistant.menu.revoke" = "Revoke";
 "assistant.menu.revokeSelf" = "Revoke Self";
 "assistant.menu.autoReply" = "Auto-Reply";
+"assistant.menu.autoAIReply" = "AI-ReplySetting";
 "assistant.menu.newWeChat" = "New WeChat";
 "assistant.menu.remoteControl" = "Remote Control Mac";
 "assistant.menu.windowSticky" = "Window Sticky";
