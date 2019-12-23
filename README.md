@@ -52,13 +52,13 @@
 
 ## 显示小程序详情
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191220-200407%402x.png" width="800px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191220-2004071%402x.png" width="800px"/>
 </p>
 
 ## Alfred
 确保你电脑中有安装Alfred, 双击此文件进行安装.
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191217-103633%402x.png" width="800px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191217-1036331%402x.png" width="800px"/>
 </p>
 
 ## 屏蔽更新
