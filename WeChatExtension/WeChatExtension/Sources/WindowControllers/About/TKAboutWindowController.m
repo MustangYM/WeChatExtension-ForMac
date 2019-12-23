@@ -26,7 +26,7 @@
     }
     NSString *localBundle = localInfo[@"CFBundleShortVersionString"];
     self.versionLabel.stringValue = localBundle;
-    self.projectHomepageLabel.stringValue = TKLocalizedString(@"about.projectHomepageLabel");
+    self.projectHomepageLabel.stringValue = YMLocalizedString(@"about.projectHomepageLabel");
     
 //    NSString *path = [[NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"] pathForResource:@"about" ofType:@"rtfd"];
 //    [self.textView readRTFDFromFile:path];

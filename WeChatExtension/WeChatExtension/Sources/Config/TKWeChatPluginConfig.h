@@ -8,6 +8,12 @@
 
 
 #import <Foundation/Foundation.h>
+
+typedef NS_ENUM(NSInteger, PluginLanguageType) {
+    PluginLanguageTypeZH,
+    PluginLanguageTypeEN
+};
+
 @class YMAIAutoModel;
 @interface TKWeChatPluginConfig : NSObject
 
@@ -35,7 +41,7 @@
 @property (nonatomic, copy, readonly) NSDictionary *localInfoPlist;
 @property (nonatomic, copy, readonly) NSDictionary *romoteInfoPlist;
 @property (nonatomic, strong) YMAIAutoModel *AIReplyModel;
-
+@property (nonatomic, assign) PluginLanguageType languageType;
 - (void)saveAutoReplyModels;
 - (void)saveRemoteControlModels;
 - (void)saveIgnoreSessionModels;

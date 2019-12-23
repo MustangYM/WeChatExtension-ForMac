@@ -45,7 +45,7 @@
 
 - (void)initSubviews
 {
-    self.window.title = TKLocalizedString(@"assistant.autoReply.aiTitle");
+    self.window.title = YMLocalizedString(@"assistant.autoReply.aiTitle");
     NSInteger leftSpace = -50;
     NSScrollView *scrollView = ({
         NSScrollView *scrollView = [[NSScrollView alloc] init];
@@ -63,7 +63,7 @@
         tableView.delegate = self;
         tableView.dataSource = self;
         NSTableColumn *column = [[NSTableColumn alloc] init];
-        column.title = TKLocalizedString(@"assistant.autoReply.list");
+        column.title = YMLocalizedString(@"assistant.autoReply.list");
         column.width = 300;
         [tableView addTableColumn:column];
         tableView;
@@ -86,7 +86,7 @@
     });
     
     self.desLabel = ({
-        NSTextField *label = [NSTextField tk_labelWithString:TKLocalizedString(@"assistant.autoReply.aiDes")];
+        NSTextField *label = [NSTextField tk_labelWithString:YMLocalizedString(@"assistant.autoReply.aiDes")];
         label.textColor = kRGBColor(39, 162, 20, 1.0);
         [[label cell] setLineBreakMode:NSLineBreakByCharWrapping];
         [[label cell] setTruncatesLastVisibleLine:YES];

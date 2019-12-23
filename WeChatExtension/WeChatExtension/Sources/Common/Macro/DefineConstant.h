@@ -9,7 +9,7 @@
 #ifndef DefineConstant_h
 #define DefineConstant_h
 
-#define TKLocalizedString(key)  [[NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"] localizedStringForKey:(key) value:@"" table:nil]
+#define YMLocalizedString(key)  [[NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"] localizedStringForKey:(key) value:@"" table:nil]
 #define WXLocalizedString(key)  [[NSBundle mainBundle] localizedStringForKey:(key) value:@"" table:nil]
 
 #endif /* DefineConstant_h */

@@ -115,6 +115,8 @@
 "assistant.autoReply.alert.confirm" = "确定";
 "assistant.autoReply.alert.title" = "您还有一条自动回复设置未完成";
 "assistant.autoReply.alert.content" = "请完善未完成的自动回复设置";
+"assistant.autoReply.warning" = "警告";
+
 
 //  版本更新
 "assistant.update.alret.cancle" = "取消";

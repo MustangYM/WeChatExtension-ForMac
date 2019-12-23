@@ -37,14 +37,14 @@
 
 - (void)initSubviews {
     self.enableSpecificReplyBtn = ({
-        NSButton *btn = [NSButton tk_checkboxWithTitle:TKLocalizedString(@"assistant.autoReply.enableSpecific") target:self action:@selector(clickEnableSpecificReplyBtn:)];
+        NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoReply.enableSpecific") target:self action:@selector(clickEnableSpecificReplyBtn:)];
         btn.frame = NSMakeRect(20, 0, 400, 20);
         
         btn;
     });
 
     self.selectSessionButton = ({
-        NSButton *btn = [NSButton tk_buttonWithTitle:TKLocalizedString(@"assistant.autoReply.selectSpecific") target:self action:@selector(clickSelectSessionButton:)];
+        NSButton *btn = [NSButton tk_buttonWithTitle:YMLocalizedString(@"assistant.autoReply.selectSpecific") target:self action:@selector(clickSelectSessionButton:)];
         btn.frame = NSMakeRect(200, 0, 150, 20);
         btn.bezelStyle = NSBezelStyleTexturedRounded;
 
@@ -52,28 +52,28 @@
     });
 
     self.enableRegexBtn = ({
-        NSButton *btn = [NSButton tk_checkboxWithTitle:TKLocalizedString(@"assistant.autoReply.enableRegEx") target:self action:@selector(clickEnableRegexBtn:)];
+        NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoReply.enableRegEx") target:self action:@selector(clickEnableRegexBtn:)];
         btn.frame = NSMakeRect(20, 25, 400, 20);
         
         btn;
     });
     
     self.enableGroupReplyBtn = ({
-        NSButton *btn = [NSButton tk_checkboxWithTitle:TKLocalizedString(@"assistant.autoReply.enableGroup") target:self action:@selector(clickEnableGroupBtn:)];
+        NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoReply.enableGroup") target:self action:@selector(clickEnableGroupBtn:)];
         btn.frame = NSMakeRect(20, 50, 400, 20);
         
         btn;
     });
     
     self.enableSingleReplyBtn = ({
-        NSButton *btn = [NSButton tk_checkboxWithTitle:TKLocalizedString(@"assistant.autoReply.enableSingle") target:self action:@selector(clickEnableSingleBtn:)];
+        NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoReply.enableSingle") target:self action:@selector(clickEnableSingleBtn:)];
         btn.frame = NSMakeRect(200, 50, 400, 20);
         
         btn;
     });
     
     self.enableDelayBtn = ({
-        NSButton *btn = [NSButton tk_checkboxWithTitle:TKLocalizedString(@"assistant.autoReply.delay") target:self action:@selector(clickEnableDelayBtn:)];
+        NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoReply.delay") target:self action:@selector(clickEnableDelayBtn:)];
         btn.frame = NSMakeRect(200, 25, 85, 20);
         
         btn;
@@ -82,7 +82,7 @@
     self.delayField = ({
         NSTextField *textField = [[NSTextField alloc] init];
         textField.frame = NSMakeRect(CGRectGetMaxX(self.enableDelayBtn.frame), 25, 60, 20);
-        textField.placeholderString = TKLocalizedString(@"assistant.autoReply.timeUnit");
+        textField.placeholderString = YMLocalizedString(@"assistant.autoReply.timeUnit");
         textField.delegate = self;
         textField.alignment = NSTextAlignmentRight;
         NSNumberFormatter * formater = [[NSNumberFormatter alloc] init];
@@ -97,14 +97,14 @@
     self.autoReplyContentField = ({
         NSTextField *textField = [[NSTextField alloc] init];
         textField.frame = NSMakeRect(20, 80, 350, 175);
-        textField.placeholderString = TKLocalizedString(@"assistant.autoReply.contentPlaceholder");
+        textField.placeholderString = YMLocalizedString(@"assistant.autoReply.contentPlaceholder");
         textField.delegate = self;
         
         textField;
     });
     
     self.autoReplyLabel = ({
-        NSString *text = [NSString stringWithFormat:@"%@: ",TKLocalizedString(@"assistant.autoReply.content")];
+        NSString *text = [NSString stringWithFormat:@"%@: ",YMLocalizedString(@"assistant.autoReply.content")];
         NSTextField *label = [NSTextField tk_labelWithString:text];
         label.frame = NSMakeRect(20, 260, 350, 20);
         
@@ -114,14 +114,14 @@
     self.keywordTextField = ({
         NSTextField *textField = [[NSTextField alloc] init];
         textField.frame = NSMakeRect(20, 300, 350, 50);
-        textField.placeholderString = TKLocalizedString(@"assistant.autoReply.keywordPlaceholder");
+        textField.placeholderString = YMLocalizedString(@"assistant.autoReply.keywordPlaceholder");
         textField.delegate = self;
         
         textField;
     });
     
     self.keywordLabel = ({
-         NSString *text = [NSString stringWithFormat:@"%@: ",TKLocalizedString(@"assistant.autoReply.keyword")];
+         NSString *text = [NSString stringWithFormat:@"%@: ",YMLocalizedString(@"assistant.autoReply.keyword")];
         NSTextField *label = [NSTextField tk_labelWithString:text];
         label.frame = NSMakeRect(20, 355, 350, 20);
         

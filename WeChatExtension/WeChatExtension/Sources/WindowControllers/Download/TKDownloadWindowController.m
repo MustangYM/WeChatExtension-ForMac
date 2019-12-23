@@ -58,10 +58,10 @@ typedef NS_ENUM(NSUInteger, TKDownloadState) {
 
 - (void)downloadPlugin {
     self.downloadState = TKDownloadStateProgress;
-    self.window.title = TKLocalizedString(@"assistant.download.title");
-    self.titleLabel.stringValue = TKLocalizedString(@"assistant.download.update");
+    self.window.title = YMLocalizedString(@"assistant.download.title");
+    self.titleLabel.stringValue = YMLocalizedString(@"assistant.download.update");
     self.progressView.doubleValue = 0;
-    [self setupInstallBtnTitle:TKLocalizedString(@"assistant.download.cancel")];
+    [self setupInstallBtnTitle:YMLocalizedString(@"assistant.download.cancel")];
     
     [[TKVersionManager shareManager] downloadPluginProgress:^(NSProgress *downloadProgress) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -77,18 +77,18 @@ typedef NS_ENUM(NSUInteger, TKDownloadState) {
             if (error) {
                 self.downloadState = TKDownloadStateError;
                 if (error.code == NSURLErrorCancelled) {
-                    self.titleLabel.stringValue = TKLocalizedString(@"assistant.download.cancelTitle");
-                    [self setupInstallBtnTitle:TKLocalizedString(@"assistant.download.reDownload")];
+                    self.titleLabel.stringValue = YMLocalizedString(@"assistant.download.cancelTitle");
+                    [self setupInstallBtnTitle:YMLocalizedString(@"assistant.download.reDownload")];
                     self.progressLabel.stringValue = @"";
                 } else {
-                    self.titleLabel.stringValue = TKLocalizedString(@"assistant.download.error");
-                    [self setupInstallBtnTitle:TKLocalizedString(@"assistant.download.reInstall")];
+                    self.titleLabel.stringValue = YMLocalizedString(@"assistant.download.error");
+                    [self setupInstallBtnTitle:YMLocalizedString(@"assistant.download.reInstall")];
                 }
                 return;
             }
             self.downloadState = TKDownloadStateFinish;
-            [self setupInstallBtnTitle:TKLocalizedString(@"assistant.download.relaunch")];
-            self.titleLabel.stringValue = TKLocalizedString(@"assistant.download.install");
+            [self setupInstallBtnTitle:YMLocalizedString(@"assistant.download.relaunch")];
+            self.titleLabel.stringValue = YMLocalizedString(@"assistant.download.install");
             self.filePath = filePath;
         });
     }];
