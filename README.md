@@ -14,15 +14,17 @@
 
 ## 同时支持自定义回复和AI自动撩妹
 - 腾讯AI人工智能(ZZ)自动回复, 能理解上下文语义, 在收到指定对象消息后的5~8秒内自动回复消息(大部分情况下比较智能, 偶尔智障).
-  - 开启前
+1. > 开启前
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191203-181321%402x.png" width="800px"/>
 </p>
-  - 设置
+
+2. > 设置
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WechatIMG498.png" width="800px"/>
 </p>
-  - 开启后
+
+3. > 开启后
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191203-184352%402x.png" width="800px"/>
 </p>
