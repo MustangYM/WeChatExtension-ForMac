@@ -80,30 +80,26 @@
                 title = [NSString stringWithFormat:@"%@...",title];
             }
             
-            NSString *newMsgContent = @"";
-            if(type.intValue == 36){//36为app分享小程序
-                NSDictionary *urlDict = [appMsgDict valueForKey:@"url"];
-                NSString *url = [urlDict valueForKey:@"text"];
-                
-                newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@ \n%@%@ \n%@%@ \n",
-                                 TKLocalizedString(@"assistant.msgInfo.miniprogram"),
-                                 TKLocalizedString(@"assistant.msgInfo.miniprogram.name"),
-                                 sourcedisplayname,
-                                 TKLocalizedString(@"assistant.msgInfo.miniprogram.title"),
-                                 title,
-                                 TKLocalizedString(@"assistant.msgInfo.miniprogram.url"),
-                                 url
-                                 ];
-            }else{
-                newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@ \n%@%@ \n",
-                                 TKLocalizedString(@"assistant.msgInfo.miniprogram"),
-                                 TKLocalizedString(@"assistant.msgInfo.miniprogram.name"),
-                                 sourcedisplayname,
-                                 TKLocalizedString(@"assistant.msgInfo.miniprogram.title"),
-                                 title
-                                 ];
-            }
-            
+            //显示p路径和分享参数 有需要再开启
+//            NSString *newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@ (%@) \n%@%@ \n%@%@ \n%@%@ \n",
+//                                       YMLocalizedString(@"assistant.msgInfo.miniprogram"),
+//                                       YMLocalizedString(@"assistant.msgInfo.miniprogram.name"),
+//                                       sourcedisplayname,
+//                                       appid,
+//                                       YMLocalizedString(@"assistant.msgInfo.miniprogram.title"),
+//                                       title,
+//                                       YMLocalizedString(@"assistant.msgInfo.miniprogram.path"),
+//                                       pagepath,
+//                                       YMLocalizedString(@"assistant.msgInfo.miniprogram.share"),
+//                                       shareId
+//                                       ];
+            NSString *newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@ \n%@%@ \n",
+                                        YMLocalizedString(@"assistant.msgInfo.miniprogram"),
+                                        YMLocalizedString(@"assistant.msgInfo.miniprogram.name"),
+                                        sourcedisplayname,
+                                        YMLocalizedString(@"assistant.msgInfo.miniprogram.title"),
+                                        title
+                                        ];
             MessageData *newMsgData = ({
                 MessageData *msg = [[objc_getClass("MessageData") alloc] initWithMsgType:0x2710];
                 [msg setFromUsrName:session];
@@ -124,8 +120,8 @@
             
             MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
             NSString *newMsgContent = [NSString stringWithFormat:@"%@ \n%@%@ \n",
-                                       TKLocalizedString(@"assistant.msgInfo.wcpay.redPacket"),
-                                       TKLocalizedString(@"assistant.msgInfo.wcpay.redPacket.title"),
+                                       YMLocalizedString(@"assistant.msgInfo.wcpay.redPacket"),
+                                       YMLocalizedString(@"assistant.msgInfo.wcpay.redPacket.title"),
                                        title
                                        ];
             MessageData *newMsgData = ({
@@ -152,8 +148,8 @@
             
             MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
             NSString *newMsgContent = [NSString stringWithFormat:@"%@ \n%@【%@】%@ \n",
-                                       TKLocalizedString(@"assistant.msgInfo.wcpay.transfer"),
-                                       TKLocalizedString(@"assistant.msgInfo.wcpay.transfer.desc"),
+                                       YMLocalizedString(@"assistant.msgInfo.wcpay.transfer"),
+                                       YMLocalizedString(@"assistant.msgInfo.wcpay.transfer.desc"),
                                        feedesc,
                                        payMemo
                                        ];

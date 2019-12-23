@@ -89,20 +89,20 @@
         }
     }];
 
-    NSString *itemString = isIgnore ? TKLocalizedString(@"assistant.chat.unStickyBottom") : TKLocalizedString(@"assistant.chat.stickyBottom");
+    NSString *itemString = isIgnore ? YMLocalizedString(@"assistant.chat.unStickyBottom") : YMLocalizedString(@"assistant.chat.stickyBottom");
     NSMenuItem *preventRevokeItem = [[NSMenuItem alloc] initWithTitle:itemString action:@selector(contextMenuStickyBottom) keyEquivalent:@""];
     
     BOOL multipleSelectionEnable = [[TKWeChatPluginConfig sharedConfig] multipleSelectionEnable];
-    NSString *multipleSelectionString = multipleSelectionEnable ? TKLocalizedString(@"assistant.chat.unMultiSelect") : TKLocalizedString(@"assistant.chat.multiSelect");
+    NSString *multipleSelectionString = multipleSelectionEnable ? YMLocalizedString(@"assistant.chat.unMultiSelect") : YMLocalizedString(@"assistant.chat.multiSelect");
     NSMenuItem *multipleSelectionItem = [[NSMenuItem alloc] initWithTitle:multipleSelectionString action:@selector(contextMenuMutipleSelection) keyEquivalent:@""];
     
-    NSMenuItem *clearUnReadItem = [[NSMenuItem alloc] initWithTitle:TKLocalizedString(@"assistant.chat.readAll") action:@selector(contextMenuClearUnRead) keyEquivalent:@""];
+    NSMenuItem *clearUnReadItem = [[NSMenuItem alloc] initWithTitle:YMLocalizedString(@"assistant.chat.readAll") action:@selector(contextMenuClearUnRead) keyEquivalent:@""];
     
-    NSMenuItem *clearEmptySessionItem = [[NSMenuItem alloc] initWithTitle:TKLocalizedString(@"assistant.chat.clearEmpty") action:@selector(contextMenuClearEmptySession) keyEquivalent:@""];
+    NSMenuItem *clearEmptySessionItem = [[NSMenuItem alloc] initWithTitle:YMLocalizedString(@"assistant.chat.clearEmpty") action:@selector(contextMenuClearEmptySession) keyEquivalent:@""];
     
-    NSMenuItem *removeSessionItem = [[NSMenuItem alloc] initWithTitle:TKLocalizedString(@"assistant.chat.remove") action:@selector(contextMenuRemoveSession) keyEquivalent:@""];
+    NSMenuItem *removeSessionItem = [[NSMenuItem alloc] initWithTitle:YMLocalizedString(@"assistant.chat.remove") action:@selector(contextMenuRemoveSession) keyEquivalent:@""];
 
-    NSMenuItem *unreadSessionItem = [[NSMenuItem alloc] initWithTitle:TKLocalizedString(@"assistant.chat.unread") action:@selector(contextMenuUnreadSession) keyEquivalent:@""];
+    NSMenuItem *unreadSessionItem = [[NSMenuItem alloc] initWithTitle:YMLocalizedString(@"assistant.chat.unread") action:@selector(contextMenuUnreadSession) keyEquivalent:@""];
 
     [arg1 addItems:@[[NSMenuItem separatorItem],
                      preventRevokeItem,

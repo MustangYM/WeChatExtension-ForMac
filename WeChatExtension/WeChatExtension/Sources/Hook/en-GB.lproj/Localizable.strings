@@ -115,6 +115,8 @@
 "assistant.autoReply.alert.confirm" = "Confirm";
 "assistant.autoReply.alert.title" = "You have an auto-reply setting not completed";
 "assistant.autoReply.alert.content" = "Please refine your outstanding auto-reply settings";
+"assistant.autoReply.warning" = "Warning";
+
 
 //  版本更新
 "assistant.update.alret.cancle" = "Cancel";

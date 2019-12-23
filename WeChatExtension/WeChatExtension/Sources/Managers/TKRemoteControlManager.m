@@ -23,7 +23,7 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
 
 + (void)executeRemoteControlCommandWithVoiceMsg:(NSString *)msg {
     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
-    NSString *callBack = [NSString stringWithFormat:@"%@\n\n\n%@", TKLocalizedString(@"assistant.remoteControl.voiceRecall"), msg];
+    NSString *callBack = [NSString stringWithFormat:@"%@\n\n\n%@", YMLocalizedString(@"assistant.remoteControl.voiceRecall"), msg];
     MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
     [service SendTextMessage:currentUserName toUsrName:currentUserName msgText:callBack atUserList:nil];
     
@@ -68,7 +68,7 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
                 }
                 
                 if (model.type != TKRemoteControlTypePlugin) {
-                    NSString *callBack = [NSString stringWithFormat:@"%@%@", TKLocalizedString(@"assistant.remoteControl.recall"), TKLocalizedString(model.function)];
+                    NSString *callBack = [NSString stringWithFormat:@"%@%@", YMLocalizedString(@"assistant.remoteControl.recall"), YMLocalizedString(model.function)];
                     [[YMMessageManager shareManager] sendTextMessageToSelf:callBack];
                     [[YMMessageManager shareManager] clearUnRead:[objc_getClass("CUtility") GetCurrentUserName]];
                 }
@@ -81,7 +81,7 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
 
 + (BOOL)shouldExecuteRemoteControlWithModel:(TKRemoteControlModel *)model msg:(NSString *)msg msgType:(MessageDataType)type {
     if (model.enable && ![model.keyword isEqualToString:@""]) {
-        if ((type == MessageDataTypeText && [msg isEqualToString:model.keyword]) || (type == MessageDataTypeVoice && ([msg containsString:model.keyword] || [msg containsString:TKLocalizedString(model.function)]))) {
+        if ((type == MessageDataTypeText && [msg isEqualToString:model.keyword]) || (type == MessageDataTypeVoice && ([msg containsString:model.keyword] || [msg containsString:YMLocalizedString(model.function)]))) {
             return YES;
         } else {
             return NO;
@@ -122,16 +122,16 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
     if ([cmd isEqualToString:@"getDirectiveList"]) {
         callBack = [TKRemoteControlManager remoteControlCommandsString];
     } else if ([cmd isEqualToString:@"AutoReplySwitch"]) {
-        NSString *status = config.autoReplyEnable ? TKLocalizedString(@"Assistant.Directive.SwitchOff") : TKLocalizedString(@"Assistant.Directive.SwitchOn");
-        callBack = [NSString stringWithFormat:@"%@-%@",TKLocalizedString(@"Assistant.Directive.AutoReplySwitch"),status];
+        NSString *status = config.autoReplyEnable ? YMLocalizedString(@"Assistant.Directive.SwitchOff") : YMLocalizedString(@"Assistant.Directive.SwitchOn");
+        callBack = [NSString stringWithFormat:@"%@-%@",YMLocalizedString(@"Assistant.Directive.AutoReplySwitch"),status];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_AUTO_REPLY_CHANGE object:nil];
     } else if ([cmd isEqualToString:@"PreventRevokeSwitch"]) {
-        NSString *status = config.preventRevokeEnable ? TKLocalizedString(@"Assistant.Directive.SwitchOff") : TKLocalizedString(@"Assistant.Directive.SwitchOn");
-        callBack = [NSString stringWithFormat:@"%@-%@",TKLocalizedString(@"Assistant.Directive.PreventRevokeSwitch"),status];
+        NSString *status = config.preventRevokeEnable ? YMLocalizedString(@"Assistant.Directive.SwitchOff") : YMLocalizedString(@"Assistant.Directive.SwitchOn");
+        callBack = [NSString stringWithFormat:@"%@-%@",YMLocalizedString(@"Assistant.Directive.PreventRevokeSwitch"),status];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_PREVENT_REVOKE_CHANGE object:nil];
     } else if ([cmd isEqualToString:@"AutoAuthSwitch"]) {
-        NSString *status = config.autoAuthEnable ? TKLocalizedString(@"Assistant.Directive.SwitchOff") : TKLocalizedString(@"Assistant.Directive.SwitchOn");
-        callBack = [NSString stringWithFormat:@"%@-%@",TKLocalizedString(@"Assistant.Directive.AutoAuthSwitch"),status];
+        NSString *status = config.autoAuthEnable ? YMLocalizedString(@"Assistant.Directive.SwitchOff") : YMLocalizedString(@"Assistant.Directive.SwitchOn");
+        callBack = [NSString stringWithFormat:@"%@-%@",YMLocalizedString(@"Assistant.Directive.AutoAuthSwitch"),status];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_AUTO_AUTH_CHANGE object:nil];
     }
     
@@ -139,28 +139,28 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
 }
 
 + (NSString *)remoteControlCommandsString {
-    NSMutableString *replyContent = [NSMutableString stringWithString:TKLocalizedString(@"assistant.remoteControl.listTip")];
+    NSMutableString *replyContent = [NSMutableString stringWithString:YMLocalizedString(@"assistant.remoteControl.listTip")];
     
     NSArray *remoteControlModels = [TKWeChatPluginConfig sharedConfig].remoteControlModels;
     [remoteControlModels enumerateObjectsUsingBlock:^(NSArray *subModels, NSUInteger index, BOOL * _Nonnull stop) {
         switch (index) {
             case 0:
-                [replyContent appendFormat:@"%@\n",TKLocalizedString(@"assistant.remoteControl.mac")];
+                [replyContent appendFormat:@"%@\n",YMLocalizedString(@"assistant.remoteControl.mac")];
                 break;
             case 1:
-                [replyContent appendFormat:@"%@\n",TKLocalizedString(@"assistant.remoteControl.app")];
+                [replyContent appendFormat:@"%@\n",YMLocalizedString(@"assistant.remoteControl.app")];
                 break;
             case 2:
-                [replyContent appendFormat:@"%@\n",TKLocalizedString(@"assistant.remoteControl.neteaseMusic")];
+                [replyContent appendFormat:@"%@\n",YMLocalizedString(@"assistant.remoteControl.neteaseMusic")];
                 break;
             case 3:
-                [replyContent appendFormat:@"%@\n",TKLocalizedString(@"assistant.remoteControl.assistant")];
+                [replyContent appendFormat:@"%@\n",YMLocalizedString(@"assistant.remoteControl.assistant")];
                 break;
             default:
                 break;
         }
         [subModels enumerateObjectsUsingBlock:^(TKRemoteControlModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
-            [replyContent appendFormat:@"%@-%@-%@\n", TKLocalizedString(model.function), model.keyword, model.enable ? TKLocalizedString(@"assistant.remoteControl.open") : TKLocalizedString(@"assistant.remoteControl.close")];
+            [replyContent appendFormat:@"%@-%@-%@\n", YMLocalizedString(model.function), model.keyword, model.enable ? YMLocalizedString(@"assistant.remoteControl.open") : YMLocalizedString(@"assistant.remoteControl.close")];
         }];
         [replyContent appendString:@"\n"];
     }];

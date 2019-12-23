@@ -343,5 +343,18 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
     return resourcesFilePath;
 }
 
+
+-(PluginLanguageType)languageType
+{
+    NSArray *languages = [NSLocale preferredLanguages];
+    PluginLanguageType type = PluginLanguageTypeEN;;
+    if (languages.count > 0) {
+        NSString *language = languages.firstObject;
+        if ([language hasPrefix:@"zh"]) {
+            type = PluginLanguageTypeZH;
+        }
+    }
+    return type;
+}
 @end
 

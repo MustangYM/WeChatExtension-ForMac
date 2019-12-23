@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.2.0</string>
+	<string>2.3.0</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>NSHumanReadableCopyright</key>
@@ -25,6 +25,6 @@
 	<key>showUpdateWindow</key>
 	<true/>
 	<key>versionInfo</key>
-	<string>v2.2.0(2019-12-06):\n👉🏻  适配微信2.3.29消息防撤回\n👉🏻  修复翻译问题\n👉🏻  AI自动撩妹\n👉🏻  加速一键更新, 安装包瘦身\n👉🏻  聊天框多选删除闪退BUG\n👉🏻  Alfred头像Bug\n👉🏻  优化适配英文系统\n👉🏻 修复2.3.26疯狂闪退 \n\n\nv1.9.2(2019-06-28):\n👉🏻  群聊撤回显示真实联系人, 修复消息筛选Bug\n👉🏻  修复会话多选以及公众号信息点击闪退\n👉🏻  用系统浏览器打开网页\n👉🏻  将拦截到的撤回消息同步到手机端\n👉🏼 支持一键更新 \n\n\nv1.8.0(2019-01-13):\n👉🏻  适配微信 Version. 2.3.24\n👉🏼  适配多开, 置底闪退, 置顶闪退等各种闪退\n\n\nv1.7.3 (2018-10-22)：\n👉🏻  适配微信 Version. 2.3.19\n👉🏼  修复安全漏洞(请务必更新，若有安装QQ插件也需要更新)\n👉🏽  菜单栏-关于小助手-新增 alfred 开关(若不使用 aflred 可关闭) \n</string>
+	<string>v2.3.0(2019-12-23):\n👉🏻  恢复老版本自动回复, 优化AI界面\n👉🏻  适配微信2.3.29消息防撤回\n👉🏻  修复翻译问题\n👉🏻  AI自动撩妹\n👉🏻  加速一键更新, 安装包瘦身\n👉🏻  聊天框多选删除闪退BUG\n👉🏻  Alfred头像Bug\n👉🏻  优化适配英文系统\n👉🏻 修复2.3.26疯狂闪退 \n\n\nv1.9.2(2019-06-28):\n👉🏻  群聊撤回显示真实联系人, 修复消息筛选Bug\n👉🏻  修复会话多选以及公众号信息点击闪退\n👉🏻  用系统浏览器打开网页\n👉🏻  将拦截到的撤回消息同步到手机端\n👉🏼 支持一键更新 \n\n\nv1.8.0(2019-01-13):\n👉🏻  适配微信 Version. 2.3.24\n👉🏼  适配多开, 置底闪退, 置顶闪退等各种闪退\n\n\nv1.7.3 (2018-10-22)：\n👉🏻  适配微信 Version. 2.3.19\n👉🏼  修复安全漏洞(请务必更新，若有安装QQ插件也需要更新)\n👉🏽  菜单栏-关于小助手-新增 alfred 开关(若不使用 aflred 可关闭) \n</string>
 </dict>
 </plist>
