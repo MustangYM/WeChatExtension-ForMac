@@ -7,24 +7,22 @@
 支持[企业微信](https://github.com/MustangYM/WeChatICU-ForMac),由此进.
 
 ## 声明
-> 适用于Mac版的WeChat拓展功能. 1.7.5代码来自于WeChatPlugin, 对[tk](https://github.com/TKkk-iOSer)在此表示感谢!
+- 适用于Mac版的WeChat拓展功能. 1.7.5代码来自于WeChatPlugin, 对[tk](https://github.com/TKkk-iOSer)在此表示感谢!
 
 ## 最新支持版本
->  mac版微信2.3.29
+-  mac版微信2.3.29
 
 ## 同时支持自定义回复和AI自动撩妹
-> 腾讯AI人工智能(ZZ)自动回复, 能理解上下文语义, 在收到指定对象消息后的5~8秒内自动回复消息(大部分情况下比较智能, 偶尔智障).
-1. > 开启前
+- 腾讯AI人工智能(ZZ)自动回复, 能理解上下文语义, 在收到指定对象消息后的5~8秒内自动回复消息(大部分情况下比较智能, 偶尔智障).
+  - 开启前
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191203-181321%402x.png" width="800px"/>
 </p>
-
-2. > 设置
+  - 设置
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WechatIMG498.png" width="800px"/>
 </p>
-
-3. > 开启后
+  - 开启后
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191203-184352%402x.png" width="800px"/>
 </p>
@@ -122,10 +120,7 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
 ```
 
 - 手动卸载
-  -  在Rely文件夹中找到Uninstall.sh
-  ----
-  -  拖到终端工具中, 回车执行即可
-  ---
+  -  将Uninstall.sh拖到终端工具中, 回车执行即可
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190625-102808%402x.png" width="800px"/>
 </p>
