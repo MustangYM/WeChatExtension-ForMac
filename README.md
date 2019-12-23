@@ -67,6 +67,11 @@
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190726-183915%402x.png" width="800px"/>
 </p>
 
+## 普通安装(clone最新版本并安装)
+```
+sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/MustangYM/WeChatExtension-ForMac && cd WeChatExtension-ForMac/WeChatExtension/Rely && ./Install.sh
+```
+
 ## 懒癌版安装
 
 <p align="left">
@@ -84,7 +89,7 @@ curl -o- -L https://raw.githubusercontent.com/lmk123/oh-my-wechat/master/install
 安装完成后会自动安装微信插件，可以访问 [Oh My WeChat 的项目主页](https://github.com/lmk123/oh-my-wechat#oh-my-wechat)查看更多用法。
 
 
-## 普通安装
+## 手动安装
 
 #### 1. 确保你的Mac上已经安装了微信App.
 
@@ -111,8 +116,14 @@ curl -o- -L https://raw.githubusercontent.com/lmk123/oh-my-wechat/master/install
 #### 6. 重启微信, 安装完成.
 
 ## 怎么卸载?
-1. > 在Rely文件夹中找到Uninstall.sh
-2. > 拖到终端工具中, 回车执行即可
+- 自动卸载
+```
+sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/MustangYM/WeChatExtension-ForMac && cd WeChatExtension-ForMac/WeChatExtension/Rely && ./Uninstall.sh
+```
+
+- 手动卸载
+  - 1. > 在Rely文件夹中找到Uninstall.sh
+  - 2. > 拖到终端工具中, 回车执行即可
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190625-102808%402x.png" width="800px"/>
 </p>
