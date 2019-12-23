@@ -122,8 +122,10 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
 ```
 
 - 手动卸载
-  - 1. > 在Rely文件夹中找到Uninstall.sh
-  - 2. > 拖到终端工具中, 回车执行即可
+  -  在Rely文件夹中找到Uninstall.sh
+  ----
+  -  拖到终端工具中, 回车执行即可
+  ---
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190625-102808%402x.png" width="800px"/>
 </p>
