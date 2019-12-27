@@ -47,6 +47,9 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 - (void)saveIgnoreSessionModels;
 - (void)saveAIAutoReplyModel:(YMAIAutoModel *)model;
 + (instancetype)sharedConfig;
+- (NSString *)getSandboxFilePathWithPlistName:(NSString *)plistName;
 
+- (void)saveMonitorQuitMembers:(NSMutableArray *)members;
+- (NSMutableArray *)getMonitorQuitMembers;
 @end
 

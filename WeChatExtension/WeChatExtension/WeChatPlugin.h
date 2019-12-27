@@ -93,7 +93,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)OnSyncBatchAddMsgs:(NSArray *)arg1 isFirstSync:(BOOL)arg2;
 - (void)OnSyncBatchAddFunctionMsgs:(id)arg1 isFirstSync:(BOOL)arg2;
 - (void)FFImgToOnFavInfoInfoVCZZ:(id)arg1 isFirstSync:(BOOL)arg2;
-
+- (id)GetMsgListWithChatName:(id)arg1 fromCreateTime:(unsigned int)arg2 limitCnt:(NSInteger)arg3 hasMore:(char *)arg4 sortAscend:(BOOL)arg5;
 - (id)SendTextMessage:(id)arg1 toUsrName:(id)arg2 msgText:(id)arg3 atUserList:(id)arg4;
 - (id)SendImgMessage:(id)arg1 toUsrName:(id)arg2 thumbImgData:(id)arg3 midImgData:(id)arg4 imgData:(id)arg5 imgInfo:(id)arg6;
 - (id)SendVideoMessage:(id)arg1 toUsrName:(id)arg2 videoInfo:(id)arg3 msgType:(unsigned int)arg4 refMesageData:(id)arg5;
@@ -109,7 +109,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (BOOL)ClearUnRead:(id)arg1 FromCreateTime:(unsigned int)arg2 ToCreateTime:(unsigned int)arg3;
 - (BOOL)hasMsgInChat:(id)arg1;
 - (id)GetMsgListWithChatName:(id)arg1 fromLocalId:(unsigned int)arg2 limitCnt:(NSInteger)arg3 hasMore:(char *)arg4 sortAscend:(BOOL)arg5;
-- (id)GetMsgListWithChatName:(id)arg1 fromCreateTime:(unsigned int)arg2 limitCnt:(NSInteger)arg3 hasMore:(char *)arg4 sortAscend:(BOOL)arg5;
+- (id)GetMsgListWithChatName:(id)arg1 fromMinCreateTime:(unsigned int)arg2 localId:(unsigned long long)arg3 limitCnt:(unsigned int)arg4 hasMore:(char *)arg5;
 - (id)GetMsgListWithChatName:(id)arg1 fromCreateTime:(unsigned int)arg2 localId:(unsigned long long)arg3 limitCnt:(unsigned int)arg4 hasMore:(char *)arg5 sortAscend:(BOOL)arg6;
 
 - (id)ForwardMessage:(id)arg1 toUser:(id)arg2 errMsg:(id *)arg3;
@@ -202,6 +202,10 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (id)GetContactWithUserName:(id)arg1 updateIfNeeded:(BOOL)arg2;
 - (id)getContactCache:(id)arg1;
 - (id)GetContactsWithUserNames:(id)arg1;
+- (id)GetGroupMemberContact:(id)arg1;
+- (id)GetGroupContact:(id)arg1;
+- (id)GetAllGroups;
+- (id)GetGroupContactList:(id)arg1 ContactType:(id)arg2;
 @end
 
 @interface GroupStorage : NSObject
@@ -210,6 +214,14 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 }
 - (id)GetAllGroups;
 - (id)GetGroupMemberContact:(id)arg1;
+- (void)UpdateGroupMemberDetailIfNeeded:(id)arg1 withCompletion:(id)arg2;
+- (BOOL)IsGroupContactExist:(id)arg1;
+- (BOOL)IsGroupMemberContactExist:(id)arg1;
+- (id)GetGroupContactList:(unsigned int)arg1 ContactType:(unsigned int)arg2;
+@end
+
+@interface ChatRoomData : NSObject
+@property(retain, nonatomic) NSMutableDictionary *m_dicData;
 @end
 
 @interface WCContactData : NSObject
@@ -224,6 +236,8 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(retain, nonatomic) NSString *avatarCacheKey;
 @property(retain, nonatomic) NSString *msgFromNickName;
 @property(retain, nonatomic) NSString *m_nsOwner;
+@property(retain, nonatomic) NSString *m_nsChatRoomMemList;
+@property(retain, nonatomic) ChatRoomData *m_chatRoomData;
 @property(nonatomic) unsigned int m_uiSex;
 @property(nonatomic) BOOL m_isShowRedDot;
 - (BOOL)isBrandContact;

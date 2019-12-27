@@ -7,8 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YMBaseModel.h"
+
+@interface YMMonitorChildInfo : YMBaseModel
+@property (nonatomic, assign) NSTimeInterval quitTimestamp;
+@property (nonatomic, copy) NSString *usrName;
+@property (nonatomic, copy) NSString *group;
+@end
 
 @interface YMIMContactsManager : NSObject
++ (instancetype)shareInstance;
+- (void)monitorQuitGroup:(WCContactData *)groupData;
+
++ (NSString *)getGroupMemberNickNameFromCache:(NSString *)username;
 + (NSString *)getGroupMemberNickName:(NSString *)username;
 + (NSString *)getWeChatNickName:(NSString *)username;
 + (NSString *)getWeChatAvatar:(NSString *)userName;

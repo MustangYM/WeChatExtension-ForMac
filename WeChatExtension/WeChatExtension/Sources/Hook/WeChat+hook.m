@@ -88,6 +88,8 @@
     hookMethod(objc_getClass("MMChatMessageViewController"), @selector(onClickSession), [self class], @selector(hook_onClickSession));
     hookMethod(objc_getClass("MMSessionMgr"), @selector(onUnReadCountChange:), [self class], @selector(hook_onUnReadCountChange:));
 
+    hookMethod(objc_getClass("GroupStorage"), @selector(UpdateGroupMemberDetailIfNeeded:withCompletion:), [self class], @selector(hook_UpdateGroupMemberDetailIfNeeded:withCompletion:));
+    
     //      替换沙盒路径
     rebind_symbols((struct rebinding[2]) {
         { "NSSearchPathForDirectoriesInDomains", swizzled_NSSearchPathForDirectoriesInDomains, (void *)&original_NSSearchPathForDirectoriesInDomains },
@@ -109,6 +111,14 @@
 //    hookMethod(objc_getClass("MMChatsTableCellView"), @selector(initWithFrame:), [self class], @selector(cellhook_initWithFrame:));
 //    hookMethod(objc_getClass("MMTextField"), @selector(setTextColor:), [self class], @selector(hook_setTextColor:));
 
+    [ANYMethodLog logMethodWithClass:[objc_getClass("GroupStorage") class] condition:^BOOL(SEL sel) {
+        return YES;
+    } before:^(id target, SEL sel, NSArray *args, int deep) {
+        NSLog(@"\n🐸类名:%@ 👍 方法:%@\n%@", target, NSStringFromSelector(sel),args);
+    } after:^(id target, SEL sel, NSArray *args, NSTimeInterval interval, int deep, id retValue) {
+        NSLog(@"\n🚘类名:%@ 👍方法:%@\n%@\n↪️%@", target, NSStringFromSelector(sel),args,retValue);
+    }];
+    
 }
 
 - (void)hook_setTextColor:(NSColor *)arg1
@@ -394,6 +404,7 @@
     [self hook_OnSyncBatchAddMsgs:msgs isFirstSync:arg2];
     
     [msgs enumerateObjectsUsingBlock:^(AddMsg *addMsg, NSUInteger idx, BOOL * _Nonnull stop) {
+        
         NSDate *now = [NSDate date];
         NSTimeInterval nowSecond = now.timeIntervalSince1970;
         if (nowSecond - addMsg.createTime > 180) {      // 若是3分钟前的消息，则不进行自动回复与远程控制。
@@ -907,4 +918,11 @@ NSString *swizzled_NSHomeDirectory(void) {
     return [NSString stringWithFormat:@"%@/Library/Containers/com.tencent.xinWeChat/Data",original_NSHomeDirectory()];
 }
 
+
+#pragma mark -
+- (void)hook_UpdateGroupMemberDetailIfNeeded:(id)arg1 withCompletion:(id)arg2
+{
+    [[YMIMContactsManager shareInstance] monitorQuitGroup:arg1];
+    [self hook_UpdateGroupMemberDetailIfNeeded:arg1 withCompletion:arg2];
+}
 @end
