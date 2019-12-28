@@ -11,7 +11,7 @@
 #import "YMAutoReplyModel.h"
 #import "TKIgnoreSessonModel.h"
 #import "WeChatPlugin.h"
-
+#import "YMIMContactsManager.h"
 static NSString * const kTKPreventRevokeEnableKey = @"kTKPreventRevokeEnableKey";
 static NSString * const kTKPreventSelfRevokeEnableKey = @"kTKPreventSelfRevokeEnableKey";
 static NSString * const kTKPreventAsyncRevokeKey = @"kTKPreventAsyncRevokeKey";
@@ -33,7 +33,7 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 @property (nonatomic, copy) NSString *remoteControlPlistFilePath;
 @property (nonatomic, copy) NSString *autoReplyPlistFilePath;
 @property (nonatomic, copy) NSString *ignoreSessionPlistFilePath;
-
+@property (nonatomic, copy) NSString *quitMemberPlistPath;
 @property (nonatomic, copy) NSDictionary *localInfoPlist;
 @property (nonatomic, copy) NSDictionary *romoteInfoPlist;
 
@@ -288,6 +288,35 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
     return _autoReplyPlistFilePath;
 }
 
+- (NSString *)quitMemberPlistPath
+{
+    if (!_quitMemberPlistPath) {
+        _quitMemberPlistPath = [self getSandboxFilePathWithPlistName:@"quitMembersPlist.plist"];
+    }
+    return _quitMemberPlistPath;
+}
+
+#pragma mark -
+- (void)saveMonitorQuitMembers:(NSMutableArray *)members
+{
+    if (!members) {
+        return;
+    }
+    
+    NSMutableArray *needSaveArray = [NSMutableArray array];
+    [members enumerateObjectsUsingBlock:^(YMMonitorChildInfo *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [needSaveArray addObject:obj.dictionary];
+    }];
+    
+    [needSaveArray writeToFile:self.quitMemberPlistPath atomically:YES];
+}
+
+- (NSMutableArray *)getMonitorQuitMembers
+{
+    NSMutableArray *arr = [self getMonitorQuitModelsWithClass:[YMMonitorChildInfo class] filePath:self.quitMemberPlistPath];
+    return arr;
+}
+
 #pragma mark - 获取本地 & github 上的小助手 info 信息
 - (NSDictionary *)localInfoPlist {
     if (!_localInfoPlist) {
@@ -306,6 +335,19 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 }
 
 #pragma mark - common
+
+- (NSMutableArray *)getMonitorQuitModelsWithClass:(Class)class filePath:(NSString *)filePath {
+    NSArray *originModels = [NSArray arrayWithContentsOfFile:filePath];
+    NSMutableArray *newModels = [NSMutableArray array];
+    
+    __weak Class weakClass = class;
+    [originModels enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        YMMonitorChildInfo *model = [[weakClass alloc] initWithDict:obj];
+        [newModels addObject:model];
+    }];
+    return newModels;
+}
+
 - (NSMutableArray *)getModelsWithClass:(Class)class filePath:(NSString *)filePath {
     NSArray *originModels = [NSArray arrayWithContentsOfFile:filePath];
     NSMutableArray *newModels = [NSMutableArray array];

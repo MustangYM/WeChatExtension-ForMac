@@ -52,6 +52,12 @@
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191217-1036331%402x.png" width="800px"/>
 </p>
 
+## 退群监控
+退群提醒, 同一人在同一群里的退出提醒7天内不再重复提示.
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191227-200134%402x.png" width="800px"/>
+</p>
+
 ## 屏蔽更新
 勾选"禁止更新"后, 微信检测更新的逻辑会被屏蔽掉, 包括手动"检查更新"的按钮. 取消勾选"禁止更新"后并重启微信, 则恢复原有更新检测逻辑.
 <p align="center">
@@ -156,6 +162,7 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
 
 ## 更新日志
 ```
+2019-12-27 退群提醒
 2019-12-23 发布2.3.0版本, 新增显示小程序信息, 转账金额
 2019-12-22 还原老版自动回复, 优化AI自动回复界面
 2019-12-20 显示小程序消息详情
