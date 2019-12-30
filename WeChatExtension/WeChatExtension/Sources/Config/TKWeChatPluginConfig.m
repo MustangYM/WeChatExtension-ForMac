@@ -410,7 +410,7 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 
 - (NSString *)languageSetting:(NSString *)chinese english:(NSString *)english
 {
-    if (_languageType == PluginLanguageTypeZH) {
+    if ([TKWeChatPluginConfig sharedConfig].languageType == PluginLanguageTypeZH) {
         return chinese;
     }
     return english;
