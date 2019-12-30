@@ -149,7 +149,7 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
                                                    keyEquivalent:@""
                                                            state:0];
     //        关于小助手
-    NSMenuItem *abountPluginItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.aboutAssistant")
+    NSMenuItem *aboutPluginItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.aboutAssistant")
                                                           action:@selector(onAboutPluginControl:)
                                                           target:self
                                                    keyEquivalent:@""
@@ -172,7 +172,7 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
     NSMenu *subPluginMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.other")];
     [subPluginMenu addItems:@[enableAlfredItem,
                              updatePluginItem,
-                             abountPluginItem]];
+                             aboutPluginItem]];
     
     NSMenu *subMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.title")];
 

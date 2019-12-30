@@ -8,7 +8,9 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TKAboutWindowController">
             <connections>
+                <outlet property="homePageTitleLabel" destination="rOg-r0-aZC" id="Yud-lZ-27u"/>
                 <outlet property="projectHomepageLabel" destination="rOg-r0-aZC" id="G6y-Pe-VLs"/>
+                <outlet property="titleLabel" destination="sr5-5O-c5V" id="mMb-7x-xY0"/>
                 <outlet property="versionLabel" destination="otL-9x-BRK" id="FbB-9S-4ah"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
