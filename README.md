@@ -200,5 +200,3 @@ Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com
 
 <a href="https://opencollective.com/mustangym666#backers" target="_blank"><img src="https://opencollective.com/mustangym666/backers.svg?width=890"></a>
 
-## 交流QQ群
-229555512
