@@ -24,6 +24,7 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @property (nonatomic, assign) BOOL preventAsyncRevokeChatRoom;           /**<    只同步群聊    */
 @property (nonatomic, assign) BOOL autoReplyEnable;                     /**<    是否开启自动回复  */
 @property (nonatomic, assign) BOOL autoAuthEnable;                      /**<    是否免认证登录    */
+@property (nonatomic, assign) BOOL quitMonitorEnable;
 @property (nonatomic, assign) BOOL autoLoginEnable;                     /**<    是否自动登录      */
 @property (nonatomic, assign) BOOL onTop;                               /**<    是否要置顶微信    */
 @property (nonatomic, assign) BOOL multipleSelectionEnable;             /**<    是否要进行多选    */

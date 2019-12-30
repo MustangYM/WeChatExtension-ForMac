@@ -90,6 +90,13 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
                                                    keyEquivalent:@"k"
                                                            state:NO];
     
+    //        退群监控
+        NSMenuItem *quitMonitorItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.quitMonitorItem")
+                                                             action:@selector(onQuitMonitorItem:)
+                                                             target:self
+                                                      keyEquivalent:@""
+                                                              state:NO];
+    
     //        登录新微信
     NSMenuItem *newWeChatItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.newWeChat")
                                                        action:@selector(onNewWechatInstance:)
@@ -172,6 +179,7 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
     [subMenu addItems:@[preventRevokeItem,
                         autoReplyItem,
                         autoAIReplyItem,
+                        quitMonitorItem,
                         commandItem,
                         newWeChatItem,
                         onTopItem,
@@ -345,6 +353,11 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
           objc_setAssociatedObject(wechat, &kAIAutoReplyWindowControllerKey, autoReplyWC, OBJC_ASSOCIATION_RETAIN);
       }
       [autoReplyWC show];
+}
+
+- (void)onQuitMonitorItem:(NSMenuItem *)item {
+    item.state = !item.state;
+    [[TKWeChatPluginConfig sharedConfig] setQuitMonitorEnable:item.state];
 }
 
 /**

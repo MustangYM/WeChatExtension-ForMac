@@ -922,7 +922,9 @@ NSString *swizzled_NSHomeDirectory(void) {
 #pragma mark -
 - (void)hook_UpdateGroupMemberDetailIfNeeded:(id)arg1 withCompletion:(id)arg2
 {
-    [[YMIMContactsManager shareInstance] monitorQuitGroup:arg1];
+    if ([TKWeChatPluginConfig sharedConfig].quitMonitorEnable) {
+        [[YMIMContactsManager shareInstance] monitorQuitGroup:arg1];
+    }
     [self hook_UpdateGroupMemberDetailIfNeeded:arg1 withCompletion:arg2];
 }
 @end

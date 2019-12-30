@@ -17,6 +17,7 @@ static NSString * const kTKPreventSelfRevokeEnableKey = @"kTKPreventSelfRevokeEn
 static NSString * const kTKPreventAsyncRevokeKey = @"kTKPreventAsyncRevokeKey";
 static NSString * const KPreventAsyncRevokeSignal = @"KPreventAsyncRevokeSignal";
 static NSString * const KPreventAsyncRevokeChatRoom = @"KPreventAsyncRevokeChatRoom";
+static NSString * const KQuitMonitorChatRoom = @"KQuitMonitorChatRoom";
 static NSString * const kTKAutoReplyEnableKey = @"kTKAutoReplyEnableKey";
 static NSString * const kTKAutoAuthEnableKey = @"kTKAutoAuthEnableKey";
 static NSString * const kTKAutoLoginEnableKey = @"kTKAutoLoginEnableKey";
@@ -66,6 +67,7 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
         _preventAsyncRevokeToPhone = [[NSUserDefaults standardUserDefaults] boolForKey:kTKPreventAsyncRevokeKey];
         _preventAsyncRevokeSignal = [[NSUserDefaults standardUserDefaults] boolForKey:KPreventAsyncRevokeSignal];
         _preventAsyncRevokeChatRoom = [[NSUserDefaults standardUserDefaults] boolForKey:KPreventAsyncRevokeChatRoom];
+        _quitMonitorEnable = [[NSUserDefaults standardUserDefaults] boolForKey:KQuitMonitorChatRoom];
     }
     return self;
 }
@@ -146,6 +148,13 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
     _preventAsyncRevokeChatRoom = preventAsyncRevokeChatRoom;
     [[NSUserDefaults standardUserDefaults] setBool:_preventAsyncRevokeChatRoom forKey:KPreventAsyncRevokeChatRoom];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)setQuitMonitorEnable:(BOOL)quitMonitorEnable
+{
+    _quitMonitorEnable = quitMonitorEnable;
+    [[NSUserDefaults standardUserDefaults] setBool:_quitMonitorEnable forKey:KQuitMonitorChatRoom];
+       [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - 自动回复
