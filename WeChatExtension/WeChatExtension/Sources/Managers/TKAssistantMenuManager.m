@@ -36,32 +36,32 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
 
 - (void)initAssistantMenuItems {
     //        消息防撤回
-    NSMenuItem *preventRevokeItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.revoke")
+    NSMenuItem *preventRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"开启消息防撤回", @"Revoke")
                                                            action:@selector(onPreventRevoke:)
                                                            target:self
                                                     keyEquivalent:@"t"
                                                             state:[[TKWeChatPluginConfig sharedConfig] preventRevokeEnable]];
     if ([[TKWeChatPluginConfig sharedConfig] preventRevokeEnable]) {
         //        防撤回自己
-        NSMenuItem *preventSelfRevokeItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.revokeSelf")
+        NSMenuItem *preventSelfRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"拦截自己撤回的消息", @"Revoke Self")
                                                                    action:@selector(onPreventSelfRevoke:)
                                                                    target:self
                                                             keyEquivalent:@""
                                                                     state:[[TKWeChatPluginConfig sharedConfig] preventSelfRevokeEnable]];
         
-        NSMenuItem *preventAsyncRevokeItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.revokeSelfToPhone")
+        NSMenuItem *preventAsyncRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"防撤回同步到手机", @"Revoke Sync To Phone")
                                                                    action:@selector(onPreventAsyncRevokeToPhone:)
                                                                    target:self
                                                             keyEquivalent:@""
                                                                     state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeToPhone]];
         
         if ([[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeToPhone]) {
-            NSMenuItem *asyncRevokeSignalItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.revokeSyncSingleChat")
+            NSMenuItem *asyncRevokeSignalItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"同步单聊", @"Sync Single Chat")
                                                                        action:@selector(onAsyncRevokeSignal:)
                                                                        target:self
                                                                 keyEquivalent:@""
                                                                         state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeSignal]];
-            NSMenuItem *asyncRevokeChatRoomItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.revokeSyncGroupChat")
+            NSMenuItem *asyncRevokeChatRoomItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"同步群聊", @"Sync Single Chat")
                                                                          action:@selector(onAsyncRevokeChatRoom:)
                                                                          target:self
                                                                   keyEquivalent:@""
@@ -84,14 +84,14 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
                                                 keyEquivalent:@"k"
                                                         state:[[TKWeChatPluginConfig sharedConfig] autoReplyEnable]];
     //        自动回复
-       NSMenuItem *autoAIReplyItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.autoAIReply")
+       NSMenuItem *autoAIReplyItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"AI自动回复设置", @"AI-ReplySetting")
                                                           action:@selector(onAutoAIReply:)
                                                           target:self
                                                    keyEquivalent:@"k"
                                                            state:NO];
     
     //        退群监控
-        NSMenuItem *quitMonitorItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.quitMonitorItem")
+        NSMenuItem *quitMonitorItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"退群监控", @"Quit Monitor")
                                                              action:@selector(onQuitMonitorItem:)
                                                              target:self
                                                       keyEquivalent:@""
@@ -162,7 +162,7 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
                                                    keyEquivalent:@""
                                                            state:0];
     
-    NSString *versionStr = YMLocalizedString(@"assistant.menu.version");
+    NSString *versionStr = YMLanguage(@"当前版本", @"Version");
     NSMenuItem *currentVersionItem = [NSMenuItem menuItemWithTitle:[NSString stringWithFormat:@"%@%@",versionStr,[TKVersionManager shareManager].currentVersion]
                                                     action:@selector(onCurrentVersion:)
                                                     target:self

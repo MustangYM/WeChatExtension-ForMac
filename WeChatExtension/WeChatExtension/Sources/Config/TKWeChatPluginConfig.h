@@ -52,5 +52,6 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 
 - (void)saveMonitorQuitMembers:(NSMutableArray *)members;
 - (NSMutableArray *)getMonitorQuitMembers;
+- (NSString *)languageSetting:(NSString *)chinese english:(NSString *)english;
 @end
 
