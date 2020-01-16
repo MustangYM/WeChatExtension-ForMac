@@ -465,6 +465,11 @@
     AccountService *accountService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("AccountService")];
     BOOL autoAuthEnable = [[TKWeChatPluginConfig sharedConfig] autoAuthEnable];
     if (autoAuthEnable && [accountService canAutoAuth]) {
+        if ([TKWeChatPluginConfig sharedConfig].launchFromNew) {
+            [TKWeChatPluginConfig sharedConfig].launchFromNew = NO;
+            return;
+        }
+
         [accountService AutoAuth];
         
         WeChat *wechat = [objc_getClass("WeChat") sharedInstance];

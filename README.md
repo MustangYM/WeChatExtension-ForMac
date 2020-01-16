@@ -1,3 +1,10 @@
+## 更新
+
+解决登录新的微信会退出之前微信账号的问题
+
+
+--------------------------------
+
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/face.png" width="1000px"/>
 </p>
