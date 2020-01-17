@@ -96,7 +96,7 @@ curl -o- -L https://raw.githubusercontent.com/lmk123/oh-my-wechat/master/install
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190619-112238.png" width="800px"/>
 </p>
 
-##### 3.3. 依次打开文件夹
+#### 3.3. 依次打开文件夹
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190619-113413%402x.png" width="800px"/>
 </p>
