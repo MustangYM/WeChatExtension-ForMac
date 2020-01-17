@@ -64,12 +64,13 @@
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190726-183915%402x.png" width="800px"/>
 </p>
 
-## 普通安装(clone最新版本并安装)
+## 怎么安装?
+### 普通安装(clone最新版本并安装)
 ```
 sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/MustangYM/WeChatExtension-ForMac && cd WeChatExtension-ForMac/WeChatExtension/Rely && ./Install.sh
 ```
 
-## 懒癌版安装
+### 懒癌版安装
 
 <p align="left">
 <img src="https://avatars1.githubusercontent.com/u/5035625?s=400&v=4" width="100px"/>
@@ -86,7 +87,7 @@ curl -o- -L https://raw.githubusercontent.com/lmk123/oh-my-wechat/master/install
 安装完成后会自动安装微信插件，可以访问 [Oh My WeChat 的项目主页](https://github.com/lmk123/oh-my-wechat#oh-my-wechat)查看更多用法。
 
 
-## 手动安装
+### 手动安装
 
 #### 1. 确保你的Mac上已经安装了微信App.
 
