@@ -366,6 +366,7 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
  @param item 登录新微信的item
  */
 - (void)onNewWechatInstance:(NSMenuItem *)item {
+    [TKWeChatPluginConfig sharedConfig].launchFromNew = YES;
     [TKRemoteControlManager executeShellCommand:@"open -n /Applications/WeChat.app"];
 }
 
