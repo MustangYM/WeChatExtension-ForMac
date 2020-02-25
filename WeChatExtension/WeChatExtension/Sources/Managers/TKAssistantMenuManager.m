@@ -371,9 +371,9 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
         [TKWeChatPluginConfig sharedConfig].launchFromNew = YES;
         [TKRemoteControlManager executeShellCommand:@"open -n /Applications/WeChat.app"];
     } else {
-        NSAlert *alert = [NSAlert alertWithMessageText:@"警告"
-                                         defaultButton:@"取消"                       alternateButton:@"确定重启"
-                                           otherButton:nil                              informativeTextWithFormat:@"多开需要重启微信一次"];
+        NSAlert *alert = [NSAlert alertWithMessageText:YMLanguage(@"警告", @"WARNING")
+                                         defaultButton:YMLanguage(@"取消", @"cancel")                       alternateButton:YMLanguage(@"确定重启",@"restart")
+                                           otherButton:nil                              informativeTextWithFormat:@"%@", YMLanguage(@"多开需要重启微信一次",@"You need to restart wechat for multiple opening")];
         NSUInteger action = [alert runModal];
         if (action == NSAlertAlternateReturn ) {
             __weak __typeof (self) wself = self;
