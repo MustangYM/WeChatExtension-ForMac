@@ -44,6 +44,8 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @property (nonatomic, copy, readonly) NSDictionary *romoteInfoPlist;
 @property (nonatomic, strong) YMAIAutoModel *AIReplyModel;
 @property (nonatomic, assign) PluginLanguageType languageType;
+@property (nonatomic, assign) BOOL isAllowMoreOpenBaby;
+
 - (void)saveAutoReplyModels;
 - (void)saveRemoteControlModels;
 - (void)saveIgnoreSessionModels;

@@ -29,6 +29,7 @@ static NSString * const kTKCheckUpdateWechatEnableKey = @"kTKCheckUpdateWechatEn
 static NSString * const kTKSystemBrowserEnableKey = @"kTKSystemBrowserEnableKey";
 static NSString * const kTKWeChatResourcesPath = @"/Applications/WeChat.app/Contents/MacOS/WeChatExtension.framework/Resources/";
 static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubusercontent.com/MustangYM/WeChatExtension-ForMac/master/WeChatExtension/WeChatExtension/Base.lproj/Info.plist";
+static NSString * const kisAllowMoreOpenBaby = @"kisAllowMoreOpenBaby";
 
 @interface TKWeChatPluginConfig ()
 
@@ -70,8 +71,16 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
         _preventAsyncRevokeSignal = [[NSUserDefaults standardUserDefaults] boolForKey:KPreventAsyncRevokeSignal];
         _preventAsyncRevokeChatRoom = [[NSUserDefaults standardUserDefaults] boolForKey:KPreventAsyncRevokeChatRoom];
         _quitMonitorEnable = [[NSUserDefaults standardUserDefaults] boolForKey:KQuitMonitorChatRoom];
+        _isAllowMoreOpenBaby = [[NSUserDefaults standardUserDefaults] boolForKey:kisAllowMoreOpenBaby];
     }
     return self;
+}
+
+- (void)setIsAllowMoreOpenBaby:(BOOL)isAllowMoreOpenBaby
+{
+    _isAllowMoreOpenBaby = isAllowMoreOpenBaby;
+    [[NSUserDefaults standardUserDefaults] setBool:isAllowMoreOpenBaby forKey:kisAllowMoreOpenBaby];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)setPreventRevokeEnable:(BOOL)preventRevokeEnable {

@@ -26,6 +26,7 @@
 #import "YMNetWorkHelper.h"
 #import<CommonCrypto/CommonDigest.h>
 #import "YMIMContactsManager.h"
+
 @implementation NSObject (WeChatHook)
 
 + (void)hookWeChat {
@@ -47,7 +48,9 @@
     hookClassMethod(objc_getClass("CUtility"), hasWechatInstanceMethod, [self class], @selector(hook_HasWechatInstance));
     
     //多开
-    hookClassMethod(objc_getClass("NSRunningApplication"), @selector(runningApplicationsWithBundleIdentifier:), [self class], @selector(hook_runningApplicationsWithBundleIdentifier:));
+    if ([TKWeChatPluginConfig sharedConfig].isAllowMoreOpenBaby) {
+        hookClassMethod(objc_getClass("NSRunningApplication"), @selector(runningApplicationsWithBundleIdentifier:), [self class], @selector(hook_runningApplicationsWithBundleIdentifier:));
+    }
     
     //      免认证登录
     hookMethod(objc_getClass("MMLoginOneClickViewController"), @selector(onLoginButtonClicked:), [self class], @selector(hook_onLoginButtonClicked:));
@@ -110,6 +113,7 @@
 //
 //    hookMethod(objc_getClass("MMChatsTableCellView"), @selector(initWithFrame:), [self class], @selector(cellhook_initWithFrame:));
 //    hookMethod(objc_getClass("MMTextField"), @selector(setTextColor:), [self class], @selector(hook_setTextColor:));
+    
 }
 
 - (void)hook_setTextColor:(NSColor *)arg1

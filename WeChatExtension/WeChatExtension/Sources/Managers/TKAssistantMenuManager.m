@@ -366,8 +366,26 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
  @param item 登录新微信的item
  */
 - (void)onNewWechatInstance:(NSMenuItem *)item {
-    [TKWeChatPluginConfig sharedConfig].launchFromNew = YES;
-    [TKRemoteControlManager executeShellCommand:@"open -n /Applications/WeChat.app"];
+    
+    if ([TKWeChatPluginConfig sharedConfig].isAllowMoreOpenBaby) {
+        [TKWeChatPluginConfig sharedConfig].launchFromNew = YES;
+        [TKRemoteControlManager executeShellCommand:@"open -n /Applications/WeChat.app"];
+    } else {
+        NSAlert *alert = [NSAlert alertWithMessageText:@"警告"
+                                         defaultButton:@"取消"                       alternateButton:@"确定重启"
+                                           otherButton:nil                              informativeTextWithFormat:@"多开需要重启微信一次"];
+        NSUInteger action = [alert runModal];
+        if (action == NSAlertAlternateReturn ) {
+            __weak __typeof (self) wself = self;
+            [[TKWeChatPluginConfig sharedConfig] setIsAllowMoreOpenBaby:YES];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    [[NSApplication sharedApplication] terminate:wself];
+                });
+            });
+        }  else if(action == NSAlertOtherReturn){
+        }
+    }
 }
 
 /**
