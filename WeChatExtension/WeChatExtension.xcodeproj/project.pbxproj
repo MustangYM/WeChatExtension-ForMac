@@ -139,6 +139,7 @@
 		18D8B18E227EFEC3007AE9EC /* TKRemoteControlScript.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 18D8B18D227EFDFF007AE9EC /* TKRemoteControlScript.scpt */; };
 		18ECDCF22404E7F100090014 /* NSUserDefaults+Hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 18ECDCF02404E7F100090014 /* NSUserDefaults+Hook.h */; };
 		18ECDCF32404E7F100090014 /* NSUserDefaults+Hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECDCF12404E7F100090014 /* NSUserDefaults+Hook.m */; };
+		18ECDCF52405194800090014 /* aliPayCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 18ECDCF42405194800090014 /* aliPayCode.png */; };
 		3632293F22A6ADB300F62EAB /* LockPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3632293E22A6ADB300F62EAB /* LockPlist.plist */; };
 		3632294222AFD9CF00F62EAB /* YMThemeMgr.h in Headers */ = {isa = PBXBuildFile; fileRef = 3632294022AFD9CF00F62EAB /* YMThemeMgr.h */; };
 		3632294322AFD9CF00F62EAB /* YMThemeMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 3632294122AFD9CF00F62EAB /* YMThemeMgr.m */; };
@@ -306,6 +307,7 @@
 		18D8B18D227EFDFF007AE9EC /* TKRemoteControlScript.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = TKRemoteControlScript.scpt; sourceTree = "<group>"; };
 		18ECDCF02404E7F100090014 /* NSUserDefaults+Hook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Hook.h"; sourceTree = "<group>"; };
 		18ECDCF12404E7F100090014 /* NSUserDefaults+Hook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Hook.m"; sourceTree = "<group>"; };
+		18ECDCF42405194800090014 /* aliPayCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aliPayCode.png; sourceTree = "<group>"; };
 		1ECC036067C0A58DC4D5A272 /* libPods-WeChatExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3632293E22A6ADB300F62EAB /* LockPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LockPlist.plist; sourceTree = "<group>"; };
 		3632294022AFD9CF00F62EAB /* YMThemeMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMThemeMgr.h; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 		188A655022718C400096663E /* WeChatExtension */ = {
 			isa = PBXGroup;
 			children = (
+				18ECDCF42405194800090014 /* aliPayCode.png */,
 				18B606DD23979FC6000A41DC /* order_avatar.png */,
 				96B578B62360A92500F3F66C /* Info.plist */,
 				18A7A12D2272ACE300361A98 /* main.mm */,
@@ -912,6 +915,7 @@
 				188A660F2272ACBA0096663E /* TKRemoteControlCommands.plist in Resources */,
 				18D298EF23960C18009EE6B0 /* YMAIReplyWindowController.xib in Resources */,
 				1828B9AA23BA319E008EC8E9 /* TKAboutWindowController.xib in Resources */,
+				18ECDCF52405194800090014 /* aliPayCode.png in Resources */,
 				188A65FB2272ACBA0096663E /* TKAutoReplyWindowController.xib in Resources */,
 				3632293F22A6ADB300F62EAB /* LockPlist.plist in Resources */,
 				18B606DE23979FC6000A41DC /* order_avatar.png in Resources */,

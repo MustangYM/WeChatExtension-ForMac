@@ -23,7 +23,7 @@
 "assistant.menu.other" = "小助手🌚";
 "assistant.menu.enableAlfred" = "开启 Alfred 功能";
 "assistant.menu.updateAssistant" = "更新小助手…";
-"assistant.menu.aboutAssistant" = "关于小助手";
+"assistant.menu.aboutAssistant" = "关于与捐赠";
 "assistant.menu.version" = "当前版本 ";
 "assistant.menu.revokeSelfToPhone" = "防撤回同步到手机";
 "assistant.menu.revokeSyncSingleChat" = "同步单聊";

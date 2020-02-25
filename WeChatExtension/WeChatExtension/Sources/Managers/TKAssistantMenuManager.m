@@ -171,8 +171,7 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
     
     NSMenu *subPluginMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.other")];
     [subPluginMenu addItems:@[enableAlfredItem,
-                             updatePluginItem,
-                             aboutPluginItem]];
+                             updatePluginItem]];
     
     NSMenu *subMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.title")];
 
@@ -186,7 +185,8 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
                         autoAuthItem,
                         enableSystemBrowserItem,
                         pluginItem,
-                        currentVersionItem
+                        currentVersionItem,
+                        aboutPluginItem
                         ]];
 
     id wechat = LargerOrEqualVersion(@"2.3.24") ? [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMUpdateMgr")] : [objc_getClass("WeChat") sharedInstance];

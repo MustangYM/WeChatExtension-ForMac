@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TKAboutWindowController">
             <connections>
+                <outlet property="aliPay" destination="NBx-hp-UM9" id="aQI-nr-Fnb"/>
                 <outlet property="homePageTitleLabel" destination="rOg-r0-aZC" id="Yud-lZ-27u"/>
                 <outlet property="projectHomepageLabel" destination="rOg-r0-aZC" id="G6y-Pe-VLs"/>
                 <outlet property="titleLabel" destination="sr5-5O-c5V" id="mMb-7x-xY0"/>
@@ -20,25 +21,25 @@
         <window title="About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="480" height="158"/>
+            <rect key="contentRect" x="196" y="240" width="480" height="400"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="158"/>
+                <rect key="frame" x="0.0" y="0.0" width="480" height="400"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sr5-5O-c5V">
-                        <rect key="frame" x="170" y="111" width="141" height="27"/>
+                        <rect key="frame" x="170" y="353" width="141" height="27"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="27" id="N01-9z-FKb"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Wechat Assistant" id="ncS-Rs-PYo">
-                            <font key="font" metaFont="system" size="17"/>
+                            <font key="font" metaFont="label" size="17"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="otL-9x-BRK">
-                        <rect key="frame" x="214" y="87" width="52" height="16"/>
+                        <rect key="frame" x="214" y="329" width="52" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="version" id="f80-97-PVy">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="scrollBarColor" catalog="System" colorSpace="catalog"/>
@@ -54,7 +55,7 @@
                         </textFieldCell>
                     </textField>
                     <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eVa-As-gXF">
-                        <rect key="frame" x="95" y="63" width="290" height="16"/>
+                        <rect key="frame" x="95" y="305" width="290" height="16"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rOg-r0-aZC">
                                 <rect key="frame" x="-2" y="0.0" width="121" height="16"/>
@@ -85,10 +86,20 @@
                             <real value="3.4028234663852886e+38"/>
                         </customSpacing>
                     </stackView>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NBx-hp-UM9">
+                        <rect key="frame" x="115" y="50" width="250" height="240"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="240" id="07f-a6-TRB"/>
+                            <constraint firstAttribute="width" constant="250" id="L0u-AB-KbG"/>
+                        </constraints>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="DWb-lu-csg"/>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="NBx-hp-UM9" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="8TU-qe-jMa"/>
                     <constraint firstItem="otL-9x-BRK" firstAttribute="top" secondItem="sr5-5O-c5V" secondAttribute="bottom" constant="8" id="Akw-ea-JPC"/>
                     <constraint firstItem="eVa-As-gXF" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="HRi-oh-1kL"/>
+                    <constraint firstItem="NBx-hp-UM9" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="110" id="TvO-wE-3UA"/>
                     <constraint firstAttribute="bottom" secondItem="RuL-6m-EZU" secondAttribute="bottom" constant="20" id="Vw2-lH-3AN"/>
                     <constraint firstItem="eVa-As-gXF" firstAttribute="top" secondItem="otL-9x-BRK" secondAttribute="bottom" constant="8" id="ZvN-Sb-aXv"/>
                     <constraint firstItem="otL-9x-BRK" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="aTF-zw-psI"/>
@@ -103,7 +114,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="139" y="106"/>
+            <point key="canvasLocation" x="14" y="83"/>
         </window>
     </objects>
 </document>

@@ -10,7 +10,7 @@
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		CGQG7BJrWCjG95jKRpX9v8nDtvQ=
+		5NCvNV7rYrekV1XVX+AiCnRNFE8=
 		</data>
 		<key>Resources/LockPlist.plist</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>Resources/TKAboutWindowController.nib</key>
 		<data>
-		OegRsyk3JCYTVAUtGj2lkMJhh1o=
+		fgDj7u3fwXMYT9ogidCZaVh/gpY=
 		</data>
 		<key>Resources/TKAutoReplyWindowController.nib</key>
 		<data>
@@ -39,6 +39,10 @@
 		<key>Resources/YMAIReplyWindowController.nib</key>
 		<data>
 		rVy/Y494rHaE/QJDJBZPgYUKhw4=
+		</data>
+		<key>Resources/aliPayCode.png</key>
+		<data>
+		jTp+UtcdkZMmp+OyTRPJbvaR9JM=
 		</data>
 		<key>Resources/en-GB.lproj/Localizable.strings</key>
 		<dict>
@@ -62,7 +66,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			0vHAflLGFaKqxJoiWabTpVXAqb8=
+			yDPru9NTtFYmSbTmKxjUPnQFU4c=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -84,7 +88,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Eqcj8VKspB1Bh8XaHoucl+iyKa8=
+			cJVVkvu1sVGrZtkrQcQuOgGmlSk=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -102,7 +106,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			CVaJ0D6jivW+sypzp5SvoeFPIvk=
+			yHteBA28BGBQpchqveHtf/Sj7nM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -134,11 +138,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			CGQG7BJrWCjG95jKRpX9v8nDtvQ=
+			5NCvNV7rYrekV1XVX+AiCnRNFE8=
 			</data>
 			<key>hash2</key>
 			<data>
-			RyXE1len7ToFkd0GtC4wdOQd/pvShFUmj/0gA12r2r0=
+			L9Opq3a7a4iXR0Y2+S7utVX6SDuaMhaWpDVAd5RimLU=
 			</data>
 		</dict>
 		<key>Resources/LockPlist.plist</key>
@@ -156,11 +160,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			OegRsyk3JCYTVAUtGj2lkMJhh1o=
+			fgDj7u3fwXMYT9ogidCZaVh/gpY=
 			</data>
 			<key>hash2</key>
 			<data>
-			BpMErpzxBKSbE0VMzoRmpS/KrgKWkPCKaZht15xvLsw=
+			2fJmcCDrjFnX52cp7TRpola6Ws+faQsopEJX6BC0Ox0=
 			</data>
 		</dict>
 		<key>Resources/TKAutoReplyWindowController.nib</key>
@@ -218,6 +222,17 @@
 			hy+TOL4YLna1CuQ8diDAWD/KD10cGZaxhIBszLlSuMQ=
 			</data>
 		</dict>
+		<key>Resources/aliPayCode.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			jTp+UtcdkZMmp+OyTRPJbvaR9JM=
+			</data>
+			<key>hash2</key>
+			<data>
+			vBBIHQeCQF5T26wQ7l0PKRwW/iT4TSnFovjUopsRFYM=
+			</data>
+		</dict>
 		<key>Resources/en-GB.lproj/Localizable.strings</key>
 		<dict>
 			<key>hash</key>
@@ -248,11 +263,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			0vHAflLGFaKqxJoiWabTpVXAqb8=
+			yDPru9NTtFYmSbTmKxjUPnQFU4c=
 			</data>
 			<key>hash2</key>
 			<data>
-			SPB5fpZMlP5AyZMEUWJxHujZtR9fXEUjZFI7fSf42sE=
+			F3UBxle9hzSDwDoDcnJxkMEutmkvur4PhhIjiHGB/E0=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -285,11 +300,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Eqcj8VKspB1Bh8XaHoucl+iyKa8=
+			cJVVkvu1sVGrZtkrQcQuOgGmlSk=
 			</data>
 			<key>hash2</key>
 			<data>
-			xjOgKIVadG7OHQ5d9XN5PvkyI8gYNbF0YhezL5saNFo=
+			IYBWhJfdMSIusxJoFtZNG4lCXwYOStZfwjLF7ggHM4c=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -311,11 +326,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			CVaJ0D6jivW+sypzp5SvoeFPIvk=
+			yHteBA28BGBQpchqveHtf/Sj7nM=
 			</data>
 			<key>hash2</key>
 			<data>
-			0XdQRPTvFeaojw7Kie0z2au+T+afqeIVdPYpdnkJphg=
+			dT09sZMRer2PFczDlQ1C8OLqGecb2wYVkkeaKteK9Io=
 			</data>
 			<key>optional</key>
 			<true/>

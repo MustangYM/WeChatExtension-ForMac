@@ -14,6 +14,7 @@
 @property (weak) IBOutlet NSTextField *projectHomepageLabel;
 @property (weak) IBOutlet NSTextField *titleLabel;
 @property (weak) IBOutlet NSTextField *homePageTitleLabel;
+@property (weak) IBOutlet NSImageView *aliPay;
 
 @end
 
@@ -30,6 +31,11 @@
     }
     NSString *localBundle = localInfo[@"CFBundleShortVersionString"];
     self.versionLabel.stringValue = localBundle;
+    
+    NSBundle *bundle = [NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"];
+    NSString *imgPath= [bundle pathForImageResource:@"aliPayCode.png"];
+    NSImage *placeholder = [[NSImage alloc] initWithContentsOfFile:imgPath];
+    self.aliPay.image = placeholder;
 }
 
 - (IBAction)didClickHomepageURL:(NSButton *)sender {
