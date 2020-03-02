@@ -91,29 +91,29 @@ curl -o- -L https://raw.githubusercontent.com/lmk123/oh-my-wechat/master/install
 
 ### 3.手动安装
 
-#### 3.1. 确保你的Mac上已经安装了微信App.
+- 3.1. 确保你的Mac上已经安装了微信App.
 
-#### 3.2. 下载本项目到你的电脑里, 并双击打开.
+- 3.2. 下载本项目到你的电脑里, 并双击打开.
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190619-112238.png" width="800px"/>
 </p>
 
-#### 3.3. 依次打开文件夹
+- 3.3. 依次打开文件夹
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190619-113413%402x.png" width="800px"/>
 </p>
 
-#### 3.4. 打开你电脑中的终端工具
+- 3.4. 打开你电脑中的终端工具
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190619-113911%402x.png" width="800px"/>
 </p>
  
-#### 3.5. 在Rely/Install.sh执行这个安装脚本
+- 3.5. 在Rely/Install.sh执行这个安装脚本
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/QQ20190425-155120%402x.png" width="800px"/>
 </p>
 
-#### 3.6. 重启微信, 安装完成.
+- 3.6. 重启微信, 安装完成.
 
 ## 怎么卸载?
 - 自动卸载
