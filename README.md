@@ -48,13 +48,13 @@
 </p>
 
 ## Alfred
-确保你电脑中有安装Alfred, 双击此文件进行安装.
+- 确保你电脑中有安装Alfred, 双击此文件进行安装.
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191217-1036331%402x.png" width="800px"/>
 </p>
 
 ## 退群监控
-退群提醒, 同一人在同一群里的退出提醒7天内不再重复提示.
+- 退群提醒, 同一人在同一群里的退出提醒7天内不再重复提示.
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191227-200134%402x.png" width="800px"/>
 </p>
