@@ -22,12 +22,12 @@
 </p>
 
 ## 手机端也能收到被撤回的消息
-1. > 如果Mac拦截到A发送来的消息, 手机也会同步收到的这条已经拦截的消息(自己发送给自己). 目前只支持同步文字消息与图片消息, 其他类型也可以做, 但意义不大.
+- 如果Mac拦截到A发送来的消息, 手机也会同步收到的这条已经拦截的消息(自己发送给自己). 目前只支持同步文字消息与图片消息, 其他类型也可以做, 但意义不大.
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/revokeAsync.jpg" width="800px"/>
 </p>
 
-2. > 可以对同步的消息进行筛选, 以免群消息打扰
+- 可以对同步的消息进行筛选, 以免群消息打扰
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190625-111206%402x.png" width="600px"/>
 </p>
