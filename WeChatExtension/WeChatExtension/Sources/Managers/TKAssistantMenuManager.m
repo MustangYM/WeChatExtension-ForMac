@@ -61,7 +61,7 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
                                                                        target:self
                                                                 keyEquivalent:@""
                                                                         state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeSignal]];
-            NSMenuItem *asyncRevokeChatRoomItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"同步群聊", @"Sync Single Chat")
+            NSMenuItem *asyncRevokeChatRoomItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"同步群聊", @"Sync Group Chat")
                                                                          action:@selector(onAsyncRevokeChatRoom:)
                                                                          target:self
                                                                   keyEquivalent:@""
