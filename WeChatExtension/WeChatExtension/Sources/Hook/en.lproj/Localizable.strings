@@ -11,7 +11,7 @@
 "assistant.menu.title" = "Wechat Assistant";
 "assistant.menu.revoke" = "Revoke";
 "assistant.menu.revokeSelf" = "Revoke Self";
-"assistant.menu.quitMonitorItem" = "Quit Monitor";
+"assistant.menu.quitMonitorItem" = "Group-Quitting Monitor";
 "assistant.menu.autoReply" = "Auto-Reply";
 "assistant.menu.autoAIReply" = "AI-ReplySetting";
 "assistant.menu.newWeChat" = "New WeChat";
