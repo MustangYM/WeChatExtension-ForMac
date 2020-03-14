@@ -176,6 +176,10 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
   <a href="https://github.com/Yaidea"><img src="https://avatars2.githubusercontent.com/u/61902523?s=400&v=4" width="100px;" alt="Yaidea"/>
   <br></br><sub><b>Yaidea</b></sub> 
  
+   <td align="center">
+  <a href="https://github.com/zybook"><img src="https://avatars2.githubusercontent.com/u/5904979?s=400&v=4" width="100px;" alt="zybook"/>
+  <br></br><sub><b>zybook</b></sub>
+ 
 </td></tr></table>
 
 ## 更新日志
