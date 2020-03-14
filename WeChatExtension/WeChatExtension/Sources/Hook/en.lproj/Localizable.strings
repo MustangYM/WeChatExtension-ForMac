@@ -11,7 +11,9 @@
 "assistant.menu.title" = "Wechat Assistant";
 "assistant.menu.revoke" = "Revoke";
 "assistant.menu.revokeSelf" = "Revoke Self";
+"assistant.menu.quitMonitorItem" = "Group-Quitting Monitor";
 "assistant.menu.autoReply" = "Auto-Reply";
+"assistant.menu.autoAIReply" = "AI-ReplySetting";
 "assistant.menu.newWeChat" = "New WeChat";
 "assistant.menu.remoteControl" = "Remote Control Mac";
 "assistant.menu.windowSticky" = "Window Sticky";
@@ -21,11 +23,14 @@
 "assistant.menu.other" = "Wechat Assistant🌚";
 "assistant.menu.enableAlfred" = "Enable Alfred";
 "assistant.menu.updateAssistant" = "Update Wechat Assistant…";
-"assistant.menu.aboutAssistant" = "About Wechat Assistant";
-"assistant.menu.version%@" = "Version %@";
+"assistant.menu.aboutAssistant" = "About And ContribuCte";
+"assistant.menu.version" = "Version ";
 "assistant.menu.revokeSelfToPhone" = "Revoke Sync To Phone";
 "assistant.menu.revokeSyncSingleChat" = "Sync Single Chat";
 "assistant.menu.revokeSyncGroupChat" = "Sync Group Chat";
+
+// 关于窗口
+"about.projectHomepageLabel" = "Project Homepage:";
 
 //  撤回相关
 "assistant.revokeType.emoji" = "[Emoji]";
@@ -106,6 +111,8 @@
 "assistant.autoReply.keyword" = "Key Words";
 "assistant.autoReply.content" = "Reply Content";
 "assistant.autoReply.list" = "Reply List";
+"assistant.autoReply.aiTitle" = "AI auto reply";
+"assistant.autoReply.aiDes" = "AI robot automatically chat";
 "assistant.autoReply.alert.confirm" = "Confirm";
 "assistant.autoReply.alert.title" = "You have an auto-reply setting not completed";
 "assistant.autoReply.alert.content" = "Please refine your outstanding auto-reply settings";
@@ -137,3 +144,14 @@
 "assistant.search.chatlog" = "The following is the chat history👇🏻";
 "assistant.search.message.unread" = "Unread";
 "assistant.search.yesterday" = "Yesterday";
+
+//  信息扩展
+"assistant.msgInfo.miniprogram" = "Receive mini program messages";
+"assistant.msgInfo.miniprogram.name" = "Name:";
+"assistant.msgInfo.miniprogram.title" = "Title:";
+"assistant.msgInfo.miniprogram.path" = "Path:";
+"assistant.msgInfo.miniprogram.share" = "Value:";
+"assistant.msgInfo.wcpay.redPacket" = "Receive red packet";
+"assistant.msgInfo.wcpay.redPacket.title" = "Title:";
+"assistant.msgInfo.wcpay.transfer" = "Receive transfer";
+"assistant.msgInfo.wcpay.transfer.desc" = "desc:";

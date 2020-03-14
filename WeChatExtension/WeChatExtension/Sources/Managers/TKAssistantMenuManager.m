@@ -16,10 +16,12 @@
 #import "TKAboutWindowController.h"
 #import "TKWebServerManager.h"
 #import "YMMessageManager.h"
+#import "YMAIReplyWindowController.h"
 
-static char tkAutoReplyWindowControllerKey;         //  自动回复窗口的关联 key
-static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关联 key
-static char tkAboutWindowControllerKey;             //  关于窗口的关联 key
+static char kAutoReplyWindowControllerKey;         //  自动回复窗口的关联 key
+static char kAIAutoReplyWindowControllerKey;         //  AI回复窗口的关联 key
+static char kRemoteControlWindowControllerKey;     //  远程控制窗口的关联 key
+static char kAboutWindowControllerKey;             //  关于窗口的关联 key
 
 @implementation TKAssistantMenuManager
 
@@ -34,32 +36,32 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
 
 - (void)initAssistantMenuItems {
     //        消息防撤回
-    NSMenuItem *preventRevokeItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.revoke")
+    NSMenuItem *preventRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"开启消息防撤回", @"Revoke")
                                                            action:@selector(onPreventRevoke:)
                                                            target:self
                                                     keyEquivalent:@"t"
                                                             state:[[TKWeChatPluginConfig sharedConfig] preventRevokeEnable]];
     if ([[TKWeChatPluginConfig sharedConfig] preventRevokeEnable]) {
         //        防撤回自己
-        NSMenuItem *preventSelfRevokeItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.revokeSelf")
+        NSMenuItem *preventSelfRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"拦截自己撤回的消息", @"Revoke Self")
                                                                    action:@selector(onPreventSelfRevoke:)
                                                                    target:self
                                                             keyEquivalent:@""
                                                                     state:[[TKWeChatPluginConfig sharedConfig] preventSelfRevokeEnable]];
         
-        NSMenuItem *preventAsyncRevokeItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.revokeSelfToPhone")
+        NSMenuItem *preventAsyncRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"防撤回同步到手机", @"Revoke Sync To Phone")
                                                                    action:@selector(onPreventAsyncRevokeToPhone:)
                                                                    target:self
                                                             keyEquivalent:@""
                                                                     state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeToPhone]];
         
         if ([[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeToPhone]) {
-            NSMenuItem *asyncRevokeSignalItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.revokeSyncSingleChat")
+            NSMenuItem *asyncRevokeSignalItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"同步单聊", @"Sync Single Chat")
                                                                        action:@selector(onAsyncRevokeSignal:)
                                                                        target:self
                                                                 keyEquivalent:@""
                                                                         state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeSignal]];
-            NSMenuItem *asyncRevokeChatRoomItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.revokeSyncGroupChat")
+            NSMenuItem *asyncRevokeChatRoomItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"同步群聊", @"Sync Group Chat")
                                                                          action:@selector(onAsyncRevokeChatRoom:)
                                                                          target:self
                                                                   keyEquivalent:@""
@@ -70,112 +72,135 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
         }
         
         
-        NSMenu *subPreventMenu = [[NSMenu alloc] initWithTitle:TKLocalizedString(@"assistant.menu.revoke")];
+        NSMenu *subPreventMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.revoke")];
         [subPreventMenu addItems:@[preventSelfRevokeItem, preventAsyncRevokeItem]];
         preventRevokeItem.submenu = subPreventMenu;
     }
     
     //        自动回复
-    NSMenuItem *autoReplyItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.autoReply")
+    NSMenuItem *autoReplyItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.autoReply")
                                                        action:@selector(onAutoReply:)
                                                        target:self
                                                 keyEquivalent:@"k"
                                                         state:[[TKWeChatPluginConfig sharedConfig] autoReplyEnable]];
+    //        自动回复
+       NSMenuItem *autoAIReplyItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"AI自动回复设置", @"AI-ReplySetting")
+                                                          action:@selector(onAutoAIReply:)
+                                                          target:self
+                                                   keyEquivalent:@"k"
+                                                           state:NO];
+    
+    //        退群监控
+        NSMenuItem *quitMonitorItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"退群监控", @"Group-Quitting Monitor")
+                                                             action:@selector(onQuitMonitorItem:)
+                                                             target:self
+                                                      keyEquivalent:@""
+                                                              state:NO];
+    
     //        登录新微信
-    NSMenuItem *newWeChatItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.newWeChat")
+    NSMenuItem *newWeChatItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.newWeChat")
                                                        action:@selector(onNewWechatInstance:)
                                                        target:self
                                                 keyEquivalent:@"N"
-                                                        state:0];
+                                                        state:[TKWeChatPluginConfig sharedConfig].isAllowMoreOpenBaby];
+    NSMenuItem *miniProgramItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"允许打开小程序", @"Allow MiniProgram to open")
+                                                        action:@selector(onMiniProgramItem:)
+                                                        target:self
+                                                 keyEquivalent:@"N"
+                                                         state:![TKWeChatPluginConfig sharedConfig].isAllowMoreOpenBaby];
+    
     //        远程控制
-    NSMenuItem *commandItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.remoteControl")
+    NSMenuItem *commandItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.remoteControl")
                                                      action:@selector(onRemoteControl:)
                                                      target:self
                                               keyEquivalent:@"C"
                                                       state:0];
     //        微信窗口置顶
-    NSMenuItem *onTopItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.windowSticky")
+    NSMenuItem *onTopItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.windowSticky")
                                                    action:@selector(onWechatOnTopControl:)
                                                    target:self
                                             keyEquivalent:@"D"
                                                     state:[[TKWeChatPluginConfig sharedConfig] onTop]];
     //        免认证登录
-    NSMenuItem *autoAuthItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.freeLogin")
+    NSMenuItem *autoAuthItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.freeLogin")
                                                       action:@selector(onAutoAuthControl:)
                                                       target:self
                                                keyEquivalent:@""
                                                        state:[[TKWeChatPluginConfig sharedConfig] autoAuthEnable]];
     
     //        使用自带浏览器
-    NSMenuItem *enableSystemBrowserItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.systemBrowser")
+    NSMenuItem *enableSystemBrowserItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.systemBrowser")
                                                                 action:@selector(onEnableSystemBrowser:)
                                                                 target:self
                                                          keyEquivalent:@"B"
                                                                  state:[[TKWeChatPluginConfig sharedConfig] systemBrowserEnable]];
     //        是否禁止微信开启时检测新版本
-    NSMenuItem *forbidCheckUpdateItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.forbidCheck")
+    NSMenuItem *forbidCheckUpdateItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.forbidCheck")
                                                                  action:@selector(onForbidWeChatCheckUpdate:)
                                                                  target:self
                                                           keyEquivalent:@""
                                                                   state:![[TKWeChatPluginConfig sharedConfig] checkUpdateWechatEnable]];
     
     //        开启 Alfred
-    NSMenuItem *enableAlfredItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.enableAlfred")
+    NSMenuItem *enableAlfredItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.enableAlfred")
                                                           action:@selector(onEnableaAlfred:)
                                                           target:self
                                                    keyEquivalent:@""
                                                            state:[[TKWeChatPluginConfig sharedConfig] alfredEnable]];
 
     //        更新小助手
-    NSMenuItem *updatePluginItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.updateAssistant")
+    NSMenuItem *updatePluginItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.updateAssistant")
                                                           action:@selector(onUpdatePluginControl:)
                                                           target:self
                                                    keyEquivalent:@""
                                                            state:0];
     //        关于小助手
-    NSMenuItem *abountPluginItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.aboutAssistant")
+    NSMenuItem *aboutPluginItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.aboutAssistant")
                                                           action:@selector(onAboutPluginControl:)
                                                           target:self
                                                    keyEquivalent:@""
                                                            state:0];
     
     //        关于小助手
-    NSMenuItem *pluginItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.other")
+    NSMenuItem *pluginItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.other")
                                                           action:@selector(onAboutPluginControl:)
                                                           target:self
                                                    keyEquivalent:@""
                                                            state:0];
     
-    //测试发送消息
-    NSMenuItem *currentVersionItem = [NSMenuItem menuItemWithTitle:[NSString stringWithFormat:TKLocalizedString(@"assistant.menu.version%@"),[TKVersionManager shareManager].currentVersion]
+    NSString *versionStr = YMLanguage(@"当前版本", @"Version");
+    NSMenuItem *currentVersionItem = [NSMenuItem menuItemWithTitle:[NSString stringWithFormat:@"%@%@",versionStr,[TKVersionManager shareManager].currentVersion]
                                                     action:@selector(onCurrentVersion:)
                                                     target:self
                                              keyEquivalent:@""
                                                      state:0];
     
-    NSMenu *subPluginMenu = [[NSMenu alloc] initWithTitle:TKLocalizedString(@"assistant.menu.other")];
+    NSMenu *subPluginMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.other")];
     [subPluginMenu addItems:@[enableAlfredItem,
-                             updatePluginItem,
-                             abountPluginItem]];
+                             updatePluginItem]];
     
-    NSMenu *subMenu = [[NSMenu alloc] initWithTitle:TKLocalizedString(@"assistant.menu.title")];
+    NSMenu *subMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.title")];
 
     [subMenu addItems:@[preventRevokeItem,
                         autoReplyItem,
+                        autoAIReplyItem,
+                        quitMonitorItem,
                         commandItem,
+                        miniProgramItem,
                         newWeChatItem,
                         onTopItem,
                         autoAuthItem,
                         enableSystemBrowserItem,
                         pluginItem,
-                        currentVersionItem
+                        currentVersionItem,
+                        aboutPluginItem
                         ]];
 
     id wechat = LargerOrEqualVersion(@"2.3.24") ? [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMUpdateMgr")] : [objc_getClass("WeChat") sharedInstance];
-    [subMenu insertItem:forbidCheckUpdateItem atIndex:6];
+    [subMenu insertItem:forbidCheckUpdateItem atIndex:7];
     [subMenu setSubmenu:subPluginMenu forItem:pluginItem];
     NSMenuItem *menuItem = [[NSMenuItem alloc] init];
-    [menuItem setTitle:TKLocalizedString(@"assistant.menu.title")];
+    [menuItem setTitle:YMLocalizedString(@"assistant.menu.title")];
     [menuItem setSubmenu:subMenu];
     menuItem.target = self;
     [[[NSApplication sharedApplication] mainMenu] addItem:menuItem];
@@ -227,25 +252,25 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
     [[TKWeChatPluginConfig sharedConfig] setPreventRevokeEnable:item.state];
     if (item.state) {
         //        防撤回自己
-        NSMenuItem *preventSelfRevokeItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.revokeSelf")
+        NSMenuItem *preventSelfRevokeItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.revokeSelf")
                                                                    action:@selector(onPreventSelfRevoke:)
                                                                    target:self
                                                             keyEquivalent:@""
                                                                     state:[[TKWeChatPluginConfig sharedConfig] preventSelfRevokeEnable]];
         
-        NSMenuItem *preventAsyncRevokeItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.revokeSelfToPhone")
+        NSMenuItem *preventAsyncRevokeItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.revokeSelfToPhone")
                                                                     action:@selector(onPreventAsyncRevokeToPhone:)
                                                                     target:self
                                                              keyEquivalent:@""
                                                                      state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeToPhone]];
         
         if (preventAsyncRevokeItem.state) {
-            NSMenuItem *asyncRevokeSignalItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.revokeSyncSingleChat")
+            NSMenuItem *asyncRevokeSignalItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.revokeSyncSingleChat")
                                                                        action:@selector(onAsyncRevokeSignal:)
                                                                        target:self
                                                                 keyEquivalent:@""
                                                                         state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeSignal]];
-            NSMenuItem *asyncRevokeChatRoomItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.revokeSyncGroupChat")
+            NSMenuItem *asyncRevokeChatRoomItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.revokeSyncGroupChat")
                                                                          action:@selector(onAsyncRevokeChatRoom:)
                                                                          target:self
                                                                   keyEquivalent:@""
@@ -257,7 +282,7 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
             preventAsyncRevokeItem.submenu = nil;
         }
         
-        NSMenu *subPreventMenu = [[NSMenu alloc] initWithTitle:TKLocalizedString(@"assistant.menu.revoke")];
+        NSMenu *subPreventMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.revoke")];
         [subPreventMenu addItems:@[preventSelfRevokeItem, preventAsyncRevokeItem]];
         item.submenu = subPreventMenu;
     } else {
@@ -282,12 +307,12 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
     [[TKWeChatPluginConfig sharedConfig] setPreventAsyncRevokeSignal:item.state];
     [[TKWeChatPluginConfig sharedConfig] setPreventAsyncRevokeChatRoom:item.state];
     if (item.state) {
-        NSMenuItem *asyncRevokeSignalItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.revokeSyncSingleChat")
+        NSMenuItem *asyncRevokeSignalItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.revokeSyncSingleChat")
                                                                    action:@selector(onAsyncRevokeSignal:)
                                                                    target:self
                                                             keyEquivalent:@""
                                                                     state:[[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeSignal]];
-        NSMenuItem *asyncRevokeChatRoomItem = [NSMenuItem menuItemWithTitle:TKLocalizedString(@"assistant.menu.revokeSyncGroupChat")
+        NSMenuItem *asyncRevokeChatRoomItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.revokeSyncGroupChat")
                                                                      action:@selector(onAsyncRevokeChatRoom:)
                                                                      target:self
                                                               keyEquivalent:@""
@@ -317,22 +342,74 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
  */
 - (void)onAutoReply:(NSMenuItem *)item {
     WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
-    TKAutoReplyWindowController *autoReplyWC = objc_getAssociatedObject(wechat, &tkAutoReplyWindowControllerKey);
+    TKAutoReplyWindowController *autoReplyWC = objc_getAssociatedObject(wechat, &kAutoReplyWindowControllerKey);
 
     if (!autoReplyWC) {
         autoReplyWC = [[TKAutoReplyWindowController alloc] initWithWindowNibName:@"TKAutoReplyWindowController"];
-        objc_setAssociatedObject(wechat, &tkAutoReplyWindowControllerKey, autoReplyWC, OBJC_ASSOCIATION_RETAIN);
+        objc_setAssociatedObject(wechat, &kAutoReplyWindowControllerKey, autoReplyWC, OBJC_ASSOCIATION_RETAIN);
     }
     [autoReplyWC show];
 }
 
-/**
- 打开新的微信
+- (void)onAutoAIReply:(NSMenuItem *)item {
+    WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
+      YMAIReplyWindowController *autoReplyWC = objc_getAssociatedObject(wechat, &kAIAutoReplyWindowControllerKey);
+
+      if (!autoReplyWC) {
+          autoReplyWC = [[YMAIReplyWindowController alloc] initWithWindowNibName:@"YMAIReplyWindowController"];
+          objc_setAssociatedObject(wechat, &kAIAutoReplyWindowControllerKey, autoReplyWC, OBJC_ASSOCIATION_RETAIN);
+      }
+      [autoReplyWC show];
+}
+
+- (void)onQuitMonitorItem:(NSMenuItem *)item {
+    item.state = !item.state;
+    [[TKWeChatPluginConfig sharedConfig] setQuitMonitorEnable:item.state];
+}
+
+
+- (void)onMiniProgramItem:(NSMenuItem *)item {
+    if ([TKWeChatPluginConfig sharedConfig].isAllowMoreOpenBaby) {
+        NSAlert *alert = [NSAlert alertWithMessageText:YMLanguage(@"警告", @"WARNING")
+                                         defaultButton:YMLanguage(@"取消", @"cancel")                       alternateButton:YMLanguage(@"确定重启",@"restart")
+                                           otherButton:nil                              informativeTextWithFormat:@"%@", YMLanguage(@"重启生效, 允许小程序打开, 会导致多开不可用!",@"Restart and take effect. Allowing MiniProgram to open will result in multiple open and unavailable!")];
+        NSUInteger action = [alert runModal];
+        if (action == NSAlertAlternateReturn) {
+            __weak __typeof (self) wself = self;
+            [[TKWeChatPluginConfig sharedConfig] setIsAllowMoreOpenBaby:NO];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    [[NSApplication sharedApplication] terminate:wself];
+                });
+            });
+        }  else if(action == NSAlertOtherReturn){
+        }
+    } else {
  
- @param item 登录新微信的item
- */
+    }
+}
+
 - (void)onNewWechatInstance:(NSMenuItem *)item {
-    [TKRemoteControlManager executeShellCommand:@"open -n /Applications/WeChat.app"];
+    
+    if ([TKWeChatPluginConfig sharedConfig].isAllowMoreOpenBaby) {
+        [TKWeChatPluginConfig sharedConfig].launchFromNew = YES;
+        [TKRemoteControlManager executeShellCommand:@"open -n /Applications/WeChat.app"];
+    } else {
+        NSAlert *alert = [NSAlert alertWithMessageText:YMLanguage(@"警告", @"WARNING")
+                                         defaultButton:YMLanguage(@"取消", @"cancel")                       alternateButton:YMLanguage(@"确定重启",@"restart")
+                                           otherButton:nil                              informativeTextWithFormat:@"%@", YMLanguage(@"多开需要重启微信一次, 且在某些Mac上会导致小程序不可用!",@"You need to restart wechat for multiple opening, And on some Macs, MiniProgram are not available!")];
+        NSUInteger action = [alert runModal];
+        if (action == NSAlertAlternateReturn ) {
+            __weak __typeof (self) wself = self;
+            [[TKWeChatPluginConfig sharedConfig] setIsAllowMoreOpenBaby:YES];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    [[NSApplication sharedApplication] terminate:wself];
+                });
+            });
+        }  else if(action == NSAlertOtherReturn){
+        }
+    }
 }
 
 /**
@@ -342,11 +419,11 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
  */
 - (void)onRemoteControl:(NSMenuItem *)item {
     WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
-    TKRemoteControlWindowController *remoteControlWC = objc_getAssociatedObject(wechat, &tkRemoteControlWindowControllerKey);
+    TKRemoteControlWindowController *remoteControlWC = objc_getAssociatedObject(wechat, &kRemoteControlWindowControllerKey);
     
     if (!remoteControlWC) {
         remoteControlWC = [[TKRemoteControlWindowController alloc] initWithWindowNibName:@"TKRemoteControlWindowController"];
-        objc_setAssociatedObject(wechat, &tkRemoteControlWindowControllerKey, remoteControlWC, OBJC_ASSOCIATION_RETAIN);
+        objc_setAssociatedObject(wechat, &kRemoteControlWindowControllerKey, remoteControlWC, OBJC_ASSOCIATION_RETAIN);
     }
     
     [remoteControlWC show];
@@ -389,9 +466,9 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
     [[TKVersionManager shareManager] checkVersionFinish:^(TKVersionStatus status, NSString *message) {
         if (status == TKVersionStatusNew) {
             NSAlert *alert = [[NSAlert alloc] init];
-            [alert addButtonWithTitle:TKLocalizedString(@"assistant.update.alret.confirm")];
-            [alert addButtonWithTitle:TKLocalizedString(@"assistant.update.alret.cancle")];
-            [alert setMessageText:TKLocalizedString(@"assistant.update.alret.title")];
+            [alert addButtonWithTitle:YMLocalizedString(@"assistant.update.alret.confirm")];
+            [alert addButtonWithTitle:YMLocalizedString(@"assistant.update.alret.cancle")];
+            [alert setMessageText:YMLocalizedString(@"assistant.update.alret.title")];
             [alert setInformativeText:message];
             NSModalResponse respose = [alert runModal];
             if (respose == NSAlertFirstButtonReturn) {
@@ -399,7 +476,7 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
             }
         } else {
             NSAlert *alert = [[NSAlert alloc] init];
-            [alert setMessageText:TKLocalizedString(@"assistant.update.alret.latest")];
+            [alert setMessageText:YMLocalizedString(@"assistant.update.alret.latest")];
             [alert setInformativeText:message];
             [alert runModal];
         }
@@ -428,11 +505,11 @@ static char tkAboutWindowControllerKey;             //  关于窗口的关联 ke
 
 - (void)onAboutPluginControl:(NSMenuItem *)item {
     WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
-    TKAboutWindowController *remoteControlWC = objc_getAssociatedObject(wechat, &tkAboutWindowControllerKey);
+    TKAboutWindowController *remoteControlWC = objc_getAssociatedObject(wechat, &kAboutWindowControllerKey);
     
     if (!remoteControlWC) {
         remoteControlWC = [[TKAboutWindowController alloc] initWithWindowNibName:@"TKAboutWindowController"];
-        objc_setAssociatedObject(wechat, &tkAboutWindowControllerKey, remoteControlWC, OBJC_ASSOCIATION_RETAIN);
+        objc_setAssociatedObject(wechat, &kAboutWindowControllerKey, remoteControlWC, OBJC_ASSOCIATION_RETAIN);
     }
     
     [remoteControlWC show];

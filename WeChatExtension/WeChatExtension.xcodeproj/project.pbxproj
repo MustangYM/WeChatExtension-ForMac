@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1828B9AA23BA319E008EC8E9 /* TKAboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1828B9A923BA319E008EC8E9 /* TKAboutWindowController.xib */; };
 		1853B3BF22C6105900A5C4FA /* ANYMethodLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853B3BB22C6105900A5C4FA /* ANYMethodLog.m */; };
 		1853B3C122C6105900A5C4FA /* ANYMethodLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 1853B3BD22C6105900A5C4FA /* ANYMethodLog.h */; };
 		1853B3C422C6133C00A5C4FA /* YMIMContactsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1853B3C222C6133C00A5C4FA /* YMIMContactsManager.h */; };
 		1853B3C522C6133C00A5C4FA /* YMIMContactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853B3C322C6133C00A5C4FA /* YMIMContactsManager.m */; };
+		185DE0E023ACE208007651B5 /* NSDictionary+Safe.h in Headers */ = {isa = PBXBuildFile; fileRef = 185DE0DE23ACE207007651B5 /* NSDictionary+Safe.h */; };
+		185DE0E123ACE208007651B5 /* NSDictionary+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 185DE0DF23ACE208007651B5 /* NSDictionary+Safe.m */; };
 		188A655822718C400096663E /* WeChatExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188A654E22718C400096663E /* WeChatExtension.framework */; };
 		188A655D22718C400096663E /* WeChatExtensionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A655C22718C400096663E /* WeChatExtensionTests.m */; };
-		188A65F42272ACBA0096663E /* TKAboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188A658E2272ACBA0096663E /* TKAboutWindowController.xib */; };
 		188A65F52272ACBA0096663E /* TKAboutWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65902272ACBA0096663E /* TKAboutWindowController.h */; };
 		188A65F62272ACBA0096663E /* TKAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65932272ACBA0096663E /* TKAboutWindowController.m */; };
 		188A65F72272ACBA0096663E /* TKDownloadWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65952272ACBA0096663E /* TKDownloadWindowController.m */; };
@@ -42,18 +44,18 @@
 		188A660E2272ACBA0096663E /* TKHTTPManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65B32272ACBA0096663E /* TKHTTPManager.h */; };
 		188A660F2272ACBA0096663E /* TKRemoteControlCommands.plist in Resources */ = {isa = PBXBuildFile; fileRef = 188A65B42272ACBA0096663E /* TKRemoteControlCommands.plist */; };
 		188A66102272ACBA0096663E /* TKWebServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65B52272ACBA0096663E /* TKWebServerManager.m */; };
-		188A66112272ACBA0096663E /* TKHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65B72272ACBA0096663E /* TKHelper.h */; };
-		188A66122272ACBA0096663E /* TKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65B82272ACBA0096663E /* TKUtility.m */; };
-		188A66132272ACBA0096663E /* TKHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65B92272ACBA0096663E /* TKHelper.m */; };
-		188A66142272ACBA0096663E /* TKUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65BA2272ACBA0096663E /* TKUtility.h */; };
+		188A66112272ACBA0096663E /* YMHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65B72272ACBA0096663E /* YMHelper.h */; };
+		188A66122272ACBA0096663E /* YMUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65B82272ACBA0096663E /* YMUtility.m */; };
+		188A66132272ACBA0096663E /* YMHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65B92272ACBA0096663E /* YMHelper.m */; };
+		188A66142272ACBA0096663E /* YMUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65BA2272ACBA0096663E /* YMUtility.h */; };
 		188A66152272ACBA0096663E /* TKIgnoreSessonModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65BC2272ACBA0096663E /* TKIgnoreSessonModel.h */; };
 		188A66162272ACBA0096663E /* TKRemoteControlModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65BD2272ACBA0096663E /* TKRemoteControlModel.h */; };
-		188A66172272ACBA0096663E /* TKAutoReplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65BE2272ACBA0096663E /* TKAutoReplyModel.m */; };
-		188A66182272ACBA0096663E /* TKBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65BF2272ACBA0096663E /* TKBaseModel.m */; };
+		188A66172272ACBA0096663E /* YMAutoReplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65BE2272ACBA0096663E /* YMAutoReplyModel.m */; };
+		188A66182272ACBA0096663E /* YMBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65BF2272ACBA0096663E /* YMBaseModel.m */; };
 		188A66192272ACBA0096663E /* TKIgnoreSessonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65C02272ACBA0096663E /* TKIgnoreSessonModel.m */; };
 		188A661A2272ACBA0096663E /* TKRemoteControlModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65C12272ACBA0096663E /* TKRemoteControlModel.m */; };
-		188A661B2272ACBA0096663E /* TKAutoReplyModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65C22272ACBA0096663E /* TKAutoReplyModel.h */; };
-		188A661C2272ACBA0096663E /* TKBaseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65C32272ACBA0096663E /* TKBaseModel.h */; };
+		188A661B2272ACBA0096663E /* YMAutoReplyModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65C22272ACBA0096663E /* YMAutoReplyModel.h */; };
+		188A661C2272ACBA0096663E /* YMBaseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65C32272ACBA0096663E /* YMBaseModel.h */; };
 		188A661D2272ACBA0096663E /* NSButton+Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65C62272ACBA0096663E /* NSButton+Action.m */; };
 		188A661E2272ACBA0096663E /* NSMenu+Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65C72272ACBA0096663E /* NSMenu+Action.h */; };
 		188A661F2272ACBA0096663E /* NSTextField+Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65C82272ACBA0096663E /* NSTextField+Action.h */; };
@@ -82,14 +84,12 @@
 		188A66362272ACBA0096663E /* TKRemoteControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65E32272ACBA0096663E /* TKRemoteControlCell.m */; };
 		188A66372272ACBA0096663E /* MMChatsTableCellView+hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65E52272ACBA0096663E /* MMChatsTableCellView+hook.h */; };
 		188A66382272ACBA0096663E /* WeChat+hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65E62272ACBA0096663E /* WeChat+hook.h */; };
-		188A66392272ACBA0096663E /* NSDictionary+Safe.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65E72272ACBA0096663E /* NSDictionary+Safe.h */; };
 		188A663A2272ACBA0096663E /* YMMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65E82272ACBA0096663E /* YMMessageModel.m */; };
 		188A663B2272ACBA0096663E /* MMStickerMessageCellView+hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65E92272ACBA0096663E /* MMStickerMessageCellView+hook.h */; };
 		188A663C2272ACBA0096663E /* YMMessageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65EA2272ACBA0096663E /* YMMessageTool.m */; };
 		188A663D2272ACBA0096663E /* YMMessageTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65EB2272ACBA0096663E /* YMMessageTool.h */; };
 		188A663E2272ACBA0096663E /* MMStickerMessageCellView+hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65EC2272ACBA0096663E /* MMStickerMessageCellView+hook.m */; };
 		188A663F2272ACBA0096663E /* YMMessageModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65ED2272ACBA0096663E /* YMMessageModel.h */; };
-		188A66402272ACBA0096663E /* NSDictionary+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65EE2272ACBA0096663E /* NSDictionary+Safe.m */; };
 		188A66412272ACBA0096663E /* WeChat+hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65EF2272ACBA0096663E /* WeChat+hook.m */; };
 		188A66422272ACBA0096663E /* MMChatsTableCellView+hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65F02272ACBA0096663E /* MMChatsTableCellView+hook.m */; };
 		188A66432272ACBA0096663E /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 188A65F22272ACBA0096663E /* fishhook.c */; };
@@ -128,7 +128,18 @@
 		18B5D4A022FAC7AD008206F5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B5D49F22FAC7AD008206F5 /* Security.framework */; };
 		18B5D4A222FAC7B9008206F5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B5D4A122FAC7B9008206F5 /* libz.tbd */; };
 		18B5D4A422FAC7C1008206F5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B5D4A322FAC7C1008206F5 /* libc++.tbd */; };
+		18B606DE23979FC6000A41DC /* order_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B606DD23979FC6000A41DC /* order_avatar.png */; };
+		18D298522394EE60009EE6B0 /* YMNetWorkHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D298502394EE60009EE6B0 /* YMNetWorkHelper.h */; };
+		18D298532394EE60009EE6B0 /* YMNetWorkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D298512394EE60009EE6B0 /* YMNetWorkHelper.m */; };
+		18D298ED23960C18009EE6B0 /* YMAIReplyWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D298EA23960C18009EE6B0 /* YMAIReplyWindowController.h */; };
+		18D298EE23960C18009EE6B0 /* YMAIReplyWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D298EB23960C18009EE6B0 /* YMAIReplyWindowController.m */; };
+		18D298EF23960C18009EE6B0 /* YMAIReplyWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D298EC23960C18009EE6B0 /* YMAIReplyWindowController.xib */; };
+		18D298F2239610F8009EE6B0 /* YMAIReplyCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D298F0239610F8009EE6B0 /* YMAIReplyCell.h */; };
+		18D298F3239610F8009EE6B0 /* YMAIReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D298F1239610F8009EE6B0 /* YMAIReplyCell.m */; };
 		18D8B18E227EFEC3007AE9EC /* TKRemoteControlScript.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 18D8B18D227EFDFF007AE9EC /* TKRemoteControlScript.scpt */; };
+		18ECDCF22404E7F100090014 /* NSUserDefaults+Hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 18ECDCF02404E7F100090014 /* NSUserDefaults+Hook.h */; };
+		18ECDCF32404E7F100090014 /* NSUserDefaults+Hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECDCF12404E7F100090014 /* NSUserDefaults+Hook.m */; };
+		18ECDCF52405194800090014 /* aliPayCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 18ECDCF42405194800090014 /* aliPayCode.png */; };
 		3632293F22A6ADB300F62EAB /* LockPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3632293E22A6ADB300F62EAB /* LockPlist.plist */; };
 		3632294222AFD9CF00F62EAB /* YMThemeMgr.h in Headers */ = {isa = PBXBuildFile; fileRef = 3632294022AFD9CF00F62EAB /* YMThemeMgr.h */; };
 		3632294322AFD9CF00F62EAB /* YMThemeMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 3632294122AFD9CF00F62EAB /* YMThemeMgr.m */; };
@@ -145,7 +156,6 @@
 		36AC9D8B228A81C200EA9F97 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AC9D89228A81C200EA9F97 /* XMLReader.m */; };
 		8EB413EE2E0AB9424DB91B42 /* libPods-WeChatExtensionTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B176B73969A171B6926048F /* libPods-WeChatExtensionTests.a */; };
 		96B578BF2360AA8A00F3F66C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B578C12360AA8A00F3F66C /* Localizable.strings */; };
-		B66566CE7CFB01C09E18EDC5 /* libPods-WeChatExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ECC036067C0A58DC4D5A272 /* libPods-WeChatExtension.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,10 +169,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1802C087239826CB0061823C /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/TKRemoteControlWindowController.strings"; sourceTree = "<group>"; };
+		1802C088239826CB0061823C /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "en-GB"; path = "en-GB.lproj/Info.plist"; sourceTree = "<group>"; };
+		1802C089239826CB0061823C /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		1828B9A923BA319E008EC8E9 /* TKAboutWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKAboutWindowController.xib; sourceTree = "<group>"; };
 		1853B3BB22C6105900A5C4FA /* ANYMethodLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANYMethodLog.m; sourceTree = "<group>"; };
 		1853B3BD22C6105900A5C4FA /* ANYMethodLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANYMethodLog.h; sourceTree = "<group>"; };
 		1853B3C222C6133C00A5C4FA /* YMIMContactsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMIMContactsManager.h; sourceTree = "<group>"; };
 		1853B3C322C6133C00A5C4FA /* YMIMContactsManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMIMContactsManager.m; sourceTree = "<group>"; };
+		185DE0DE23ACE207007651B5 /* NSDictionary+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Safe.h"; sourceTree = "<group>"; };
+		185DE0DF23ACE208007651B5 /* NSDictionary+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Safe.m"; sourceTree = "<group>"; };
 		188A654E22718C400096663E /* WeChatExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeChatExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		188A655722718C400096663E /* WeChatExtensionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeChatExtensionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		188A655C22718C400096663E /* WeChatExtensionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeChatExtensionTests.m; sourceTree = "<group>"; };
@@ -195,18 +211,18 @@
 		188A65B32272ACBA0096663E /* TKHTTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKHTTPManager.h; sourceTree = "<group>"; };
 		188A65B42272ACBA0096663E /* TKRemoteControlCommands.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TKRemoteControlCommands.plist; sourceTree = "<group>"; };
 		188A65B52272ACBA0096663E /* TKWebServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKWebServerManager.m; sourceTree = "<group>"; };
-		188A65B72272ACBA0096663E /* TKHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKHelper.h; sourceTree = "<group>"; };
-		188A65B82272ACBA0096663E /* TKUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKUtility.m; sourceTree = "<group>"; };
-		188A65B92272ACBA0096663E /* TKHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKHelper.m; sourceTree = "<group>"; };
-		188A65BA2272ACBA0096663E /* TKUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKUtility.h; sourceTree = "<group>"; };
+		188A65B72272ACBA0096663E /* YMHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMHelper.h; sourceTree = "<group>"; };
+		188A65B82272ACBA0096663E /* YMUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMUtility.m; sourceTree = "<group>"; };
+		188A65B92272ACBA0096663E /* YMHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMHelper.m; sourceTree = "<group>"; };
+		188A65BA2272ACBA0096663E /* YMUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMUtility.h; sourceTree = "<group>"; };
 		188A65BC2272ACBA0096663E /* TKIgnoreSessonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKIgnoreSessonModel.h; sourceTree = "<group>"; };
 		188A65BD2272ACBA0096663E /* TKRemoteControlModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKRemoteControlModel.h; sourceTree = "<group>"; };
-		188A65BE2272ACBA0096663E /* TKAutoReplyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAutoReplyModel.m; sourceTree = "<group>"; };
-		188A65BF2272ACBA0096663E /* TKBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKBaseModel.m; sourceTree = "<group>"; };
+		188A65BE2272ACBA0096663E /* YMAutoReplyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMAutoReplyModel.m; sourceTree = "<group>"; };
+		188A65BF2272ACBA0096663E /* YMBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMBaseModel.m; sourceTree = "<group>"; };
 		188A65C02272ACBA0096663E /* TKIgnoreSessonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKIgnoreSessonModel.m; sourceTree = "<group>"; };
 		188A65C12272ACBA0096663E /* TKRemoteControlModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKRemoteControlModel.m; sourceTree = "<group>"; };
-		188A65C22272ACBA0096663E /* TKAutoReplyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAutoReplyModel.h; sourceTree = "<group>"; };
-		188A65C32272ACBA0096663E /* TKBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKBaseModel.h; sourceTree = "<group>"; };
+		188A65C22272ACBA0096663E /* YMAutoReplyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMAutoReplyModel.h; sourceTree = "<group>"; };
+		188A65C32272ACBA0096663E /* YMBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMBaseModel.h; sourceTree = "<group>"; };
 		188A65C62272ACBA0096663E /* NSButton+Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSButton+Action.m"; sourceTree = "<group>"; };
 		188A65C72272ACBA0096663E /* NSMenu+Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMenu+Action.h"; sourceTree = "<group>"; };
 		188A65C82272ACBA0096663E /* NSTextField+Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextField+Action.h"; sourceTree = "<group>"; };
@@ -235,14 +251,12 @@
 		188A65E32272ACBA0096663E /* TKRemoteControlCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKRemoteControlCell.m; sourceTree = "<group>"; };
 		188A65E52272ACBA0096663E /* MMChatsTableCellView+hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMChatsTableCellView+hook.h"; sourceTree = "<group>"; };
 		188A65E62272ACBA0096663E /* WeChat+hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WeChat+hook.h"; sourceTree = "<group>"; };
-		188A65E72272ACBA0096663E /* NSDictionary+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Safe.h"; sourceTree = "<group>"; };
 		188A65E82272ACBA0096663E /* YMMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMMessageModel.m; sourceTree = "<group>"; };
 		188A65E92272ACBA0096663E /* MMStickerMessageCellView+hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMStickerMessageCellView+hook.h"; sourceTree = "<group>"; };
 		188A65EA2272ACBA0096663E /* YMMessageTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMMessageTool.m; sourceTree = "<group>"; };
 		188A65EB2272ACBA0096663E /* YMMessageTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMMessageTool.h; sourceTree = "<group>"; };
 		188A65EC2272ACBA0096663E /* MMStickerMessageCellView+hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MMStickerMessageCellView+hook.m"; sourceTree = "<group>"; };
 		188A65ED2272ACBA0096663E /* YMMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMMessageModel.h; sourceTree = "<group>"; };
-		188A65EE2272ACBA0096663E /* NSDictionary+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Safe.m"; sourceTree = "<group>"; };
 		188A65EF2272ACBA0096663E /* WeChat+hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WeChat+hook.m"; sourceTree = "<group>"; };
 		188A65F02272ACBA0096663E /* MMChatsTableCellView+hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MMChatsTableCellView+hook.m"; sourceTree = "<group>"; };
 		188A65F22272ACBA0096663E /* fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
@@ -282,7 +296,18 @@
 		18B5D49F22FAC7AD008206F5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		18B5D4A122FAC7B9008206F5 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		18B5D4A322FAC7C1008206F5 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		18B606DD23979FC6000A41DC /* order_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = order_avatar.png; sourceTree = "<group>"; };
+		18D298502394EE60009EE6B0 /* YMNetWorkHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMNetWorkHelper.h; sourceTree = "<group>"; };
+		18D298512394EE60009EE6B0 /* YMNetWorkHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMNetWorkHelper.m; sourceTree = "<group>"; };
+		18D298EA23960C18009EE6B0 /* YMAIReplyWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMAIReplyWindowController.h; sourceTree = "<group>"; };
+		18D298EB23960C18009EE6B0 /* YMAIReplyWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMAIReplyWindowController.m; sourceTree = "<group>"; };
+		18D298EC23960C18009EE6B0 /* YMAIReplyWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YMAIReplyWindowController.xib; sourceTree = "<group>"; };
+		18D298F0239610F8009EE6B0 /* YMAIReplyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMAIReplyCell.h; sourceTree = "<group>"; };
+		18D298F1239610F8009EE6B0 /* YMAIReplyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMAIReplyCell.m; sourceTree = "<group>"; };
 		18D8B18D227EFDFF007AE9EC /* TKRemoteControlScript.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = TKRemoteControlScript.scpt; sourceTree = "<group>"; };
+		18ECDCF02404E7F100090014 /* NSUserDefaults+Hook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Hook.h"; sourceTree = "<group>"; };
+		18ECDCF12404E7F100090014 /* NSUserDefaults+Hook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Hook.m"; sourceTree = "<group>"; };
+		18ECDCF42405194800090014 /* aliPayCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aliPayCode.png; sourceTree = "<group>"; };
 		1ECC036067C0A58DC4D5A272 /* libPods-WeChatExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3632293E22A6ADB300F62EAB /* LockPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LockPlist.plist; sourceTree = "<group>"; };
 		3632294022AFD9CF00F62EAB /* YMThemeMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMThemeMgr.h; sourceTree = "<group>"; };
@@ -299,10 +324,6 @@
 		36AC9D88228A81C200EA9F97 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
 		36AC9D89228A81C200EA9F97 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		8B176B73969A171B6926048F /* libPods-WeChatExtensionTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatExtensionTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		96B578AD2360A20200F3F66C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TKAboutWindowController.xib; sourceTree = "<group>"; };
-		96B578AE2360A20E00F3F66C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TKAboutWindowController.strings"; sourceTree = "<group>"; };
-		96B578AF2360A21100F3F66C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/TKAboutWindowController.strings"; sourceTree = "<group>"; };
-		96B578B02360A21400F3F66C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TKAboutWindowController.strings; sourceTree = "<group>"; };
 		96B578B52360A92500F3F66C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
 		96B578BC2360A9D100F3F66C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Info.plist; sourceTree = "<group>"; };
 		96B578BD2360A9D200F3F66C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/Info.plist"; sourceTree = "<group>"; };
@@ -313,10 +334,6 @@
 		96D8D0952360BC6A0025BAD6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TKRemoteControlWindowController.strings; sourceTree = "<group>"; };
 		96D8D0972360BC6C0025BAD6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TKRemoteControlWindowController.strings"; sourceTree = "<group>"; };
 		96D8D0992360BC6E0025BAD6 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/TKRemoteControlWindowController.strings"; sourceTree = "<group>"; };
-		97F2E3244C2E5DD8CF65AB97 /* Pods-WeChatExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatExtension/Pods-WeChatExtension.release.xcconfig"; sourceTree = "<group>"; };
-		C341AF31F4497191220003D6 /* Pods-WeChatExtensionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatExtensionTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatExtensionTests/Pods-WeChatExtensionTests.release.xcconfig"; sourceTree = "<group>"; };
-		C528D93AD05C43BF7DE46757 /* Pods-WeChatExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatExtension/Pods-WeChatExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		D58A7B70D43142014A02CCF8 /* Pods-WeChatExtensionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatExtensionTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeChatExtensionTests/Pods-WeChatExtensionTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,7 +345,6 @@
 				18B5D4A222FAC7B9008206F5 /* libz.tbd in Frameworks */,
 				18B5D4A022FAC7AD008206F5 /* Security.framework in Frameworks */,
 				18A7A1342272AF5300361A98 /* SystemConfiguration.framework in Frameworks */,
-				B66566CE7CFB01C09E18EDC5 /* libPods-WeChatExtension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +375,6 @@
 				188A655022718C400096663E /* WeChatExtension */,
 				188A655B22718C400096663E /* WeChatExtensionTests */,
 				188A654F22718C400096663E /* Products */,
-				3BE15FE6D0885057511EB199 /* Pods */,
 				600807371BAE90444753E469 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -376,6 +391,8 @@
 		188A655022718C400096663E /* WeChatExtension */ = {
 			isa = PBXGroup;
 			children = (
+				18ECDCF42405194800090014 /* aliPayCode.png */,
+				18B606DD23979FC6000A41DC /* order_avatar.png */,
 				96B578B62360A92500F3F66C /* Info.plist */,
 				18A7A12D2272ACE300361A98 /* main.mm */,
 				188A658B2272ACBA0096663E /* Sources */,
@@ -427,7 +444,7 @@
 		188A658D2272ACBA0096663E /* About */ = {
 			isa = PBXGroup;
 			children = (
-				188A658E2272ACBA0096663E /* TKAboutWindowController.xib */,
+				1828B9A923BA319E008EC8E9 /* TKAboutWindowController.xib */,
 				188A65902272ACBA0096663E /* TKAboutWindowController.h */,
 				188A65932272ACBA0096663E /* TKAboutWindowController.m */,
 			);
@@ -437,8 +454,8 @@
 		188A65942272ACBA0096663E /* Download */ = {
 			isa = PBXGroup;
 			children = (
-				188A65952272ACBA0096663E /* TKDownloadWindowController.m */,
 				188A65962272ACBA0096663E /* TKDownloadWindowController.h */,
+				188A65952272ACBA0096663E /* TKDownloadWindowController.m */,
 				188A65972272ACBA0096663E /* TKDownloadWindowController.xib */,
 			);
 			path = Download;
@@ -448,8 +465,13 @@
 			isa = PBXGroup;
 			children = (
 				188A65992272ACBA0096663E /* TKAutoReplyWindowController.h */,
-				188A659A2272ACBA0096663E /* TKAutoReplyWindowController.xib */,
 				188A659B2272ACBA0096663E /* TKAutoReplyWindowController.m */,
+				188A659A2272ACBA0096663E /* TKAutoReplyWindowController.xib */,
+				18D298EA23960C18009EE6B0 /* YMAIReplyWindowController.h */,
+				18D298EB23960C18009EE6B0 /* YMAIReplyWindowController.m */,
+				18D298EC23960C18009EE6B0 /* YMAIReplyWindowController.xib */,
+				18D298F0239610F8009EE6B0 /* YMAIReplyCell.h */,
+				18D298F1239610F8009EE6B0 /* YMAIReplyCell.m */,
 			);
 			path = AutoReply;
 			sourceTree = "<group>";
@@ -506,12 +528,14 @@
 		188A65B62272ACBA0096663E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				188A65B72272ACBA0096663E /* TKHelper.h */,
-				188A65B92272ACBA0096663E /* TKHelper.m */,
-				188A65BA2272ACBA0096663E /* TKUtility.h */,
-				188A65B82272ACBA0096663E /* TKUtility.m */,
+				188A65B72272ACBA0096663E /* YMHelper.h */,
+				188A65B92272ACBA0096663E /* YMHelper.m */,
+				188A65BA2272ACBA0096663E /* YMUtility.h */,
+				188A65B82272ACBA0096663E /* YMUtility.m */,
 				36AC9D88228A81C200EA9F97 /* XMLReader.h */,
 				36AC9D89228A81C200EA9F97 /* XMLReader.m */,
+				18D298502394EE60009EE6B0 /* YMNetWorkHelper.h */,
+				18D298512394EE60009EE6B0 /* YMNetWorkHelper.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -519,10 +543,10 @@
 		188A65BB2272ACBA0096663E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				188A65C22272ACBA0096663E /* TKAutoReplyModel.h */,
-				188A65BE2272ACBA0096663E /* TKAutoReplyModel.m */,
-				188A65C32272ACBA0096663E /* TKBaseModel.h */,
-				188A65BF2272ACBA0096663E /* TKBaseModel.m */,
+				188A65C22272ACBA0096663E /* YMAutoReplyModel.h */,
+				188A65BE2272ACBA0096663E /* YMAutoReplyModel.m */,
+				188A65C32272ACBA0096663E /* YMBaseModel.h */,
+				188A65BF2272ACBA0096663E /* YMBaseModel.m */,
 				188A65BC2272ACBA0096663E /* TKIgnoreSessonModel.h */,
 				188A65C02272ACBA0096663E /* TKIgnoreSessonModel.m */,
 				188A65BD2272ACBA0096663E /* TKRemoteControlModel.h */,
@@ -586,10 +610,10 @@
 		188A65DC2272ACBA0096663E /* AutoReply */ = {
 			isa = PBXGroup;
 			children = (
-				188A65DD2272ACBA0096663E /* TKAutoReplyContentView.m */,
 				188A65DE2272ACBA0096663E /* TKAutoReplyCell.h */,
-				188A65DF2272ACBA0096663E /* TKAutoReplyContentView.h */,
 				188A65E02272ACBA0096663E /* TKAutoReplyCell.m */,
+				188A65DF2272ACBA0096663E /* TKAutoReplyContentView.h */,
+				188A65DD2272ACBA0096663E /* TKAutoReplyContentView.m */,
 			);
 			path = AutoReply;
 			sourceTree = "<group>";
@@ -606,19 +630,21 @@
 		188A65E42272ACBA0096663E /* Hook */ = {
 			isa = PBXGroup;
 			children = (
-				188A65E62272ACBA0096663E /* WeChat+hook.h */,
-				188A65EF2272ACBA0096663E /* WeChat+hook.m */,
+				96B578C12360AA8A00F3F66C /* Localizable.strings */,
 				188A65E52272ACBA0096663E /* MMChatsTableCellView+hook.h */,
 				188A65F02272ACBA0096663E /* MMChatsTableCellView+hook.m */,
-				188A65ED2272ACBA0096663E /* YMMessageModel.h */,
-				188A65E82272ACBA0096663E /* YMMessageModel.m */,
 				188A65E92272ACBA0096663E /* MMStickerMessageCellView+hook.h */,
 				188A65EC2272ACBA0096663E /* MMStickerMessageCellView+hook.m */,
-				188A65EA2272ACBA0096663E /* YMMessageTool.m */,
+				185DE0DE23ACE207007651B5 /* NSDictionary+Safe.h */,
+				185DE0DF23ACE208007651B5 /* NSDictionary+Safe.m */,
+				188A65E62272ACBA0096663E /* WeChat+hook.h */,
+				188A65EF2272ACBA0096663E /* WeChat+hook.m */,
+				18ECDCF02404E7F100090014 /* NSUserDefaults+Hook.h */,
+				18ECDCF12404E7F100090014 /* NSUserDefaults+Hook.m */,
+				188A65ED2272ACBA0096663E /* YMMessageModel.h */,
+				188A65E82272ACBA0096663E /* YMMessageModel.m */,
 				188A65EB2272ACBA0096663E /* YMMessageTool.h */,
-				188A65E72272ACBA0096663E /* NSDictionary+Safe.h */,
-				188A65EE2272ACBA0096663E /* NSDictionary+Safe.m */,
-				96B578C12360AA8A00F3F66C /* Localizable.strings */,
+				188A65EA2272ACBA0096663E /* YMMessageTool.m */,
 			);
 			path = Hook;
 			sourceTree = "<group>";
@@ -704,17 +730,6 @@
 			path = TCB;
 			sourceTree = "<group>";
 		};
-		3BE15FE6D0885057511EB199 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C528D93AD05C43BF7DE46757 /* Pods-WeChatExtension.debug.xcconfig */,
-				97F2E3244C2E5DD8CF65AB97 /* Pods-WeChatExtension.release.xcconfig */,
-				D58A7B70D43142014A02CCF8 /* Pods-WeChatExtensionTests.debug.xcconfig */,
-				C341AF31F4497191220003D6 /* Pods-WeChatExtensionTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		600807371BAE90444753E469 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -757,34 +772,37 @@
 				18A7A16A2272AFE600361A98 /* GCDWebServerMultiPartFormRequest.h in Headers */,
 				188A660E2272ACBA0096663E /* TKHTTPManager.h in Headers */,
 				188A66332272ACBA0096663E /* TKAutoReplyContentView.h in Headers */,
-				188A66112272ACBA0096663E /* TKHelper.h in Headers */,
+				188A66112272ACBA0096663E /* YMHelper.h in Headers */,
 				188A66442272ACBA0096663E /* fishhook.h in Headers */,
+				18D298522394EE60009EE6B0 /* YMNetWorkHelper.h in Headers */,
 				188A66232272ACBA0096663E /* NSMenuItem+Action.h in Headers */,
 				18A7A1582272AFE600361A98 /* GCDWebServerConnection.h in Headers */,
 				188A66322272ACBA0096663E /* TKAutoReplyCell.h in Headers */,
-				188A661C2272ACBA0096663E /* TKBaseModel.h in Headers */,
+				188A661C2272ACBA0096663E /* YMBaseModel.h in Headers */,
 				188A66272272ACBA0096663E /* NSView+Action.h in Headers */,
 				188A663B2272ACBA0096663E /* MMStickerMessageCellView+hook.h in Headers */,
 				188A66082272ACBA0096663E /* TKWebServerManager.h in Headers */,
 				3644BE002285549100EDE358 /* YMUpdateManager.h in Headers */,
 				188A660D2272ACBA0096663E /* YMMessageManager.h in Headers */,
 				188A662D2272ACBA0096663E /* ColorConstant.h in Headers */,
+				185DE0E023ACE208007651B5 /* NSDictionary+Safe.h in Headers */,
+				18D298ED23960C18009EE6B0 /* YMAIReplyWindowController.h in Headers */,
 				18A7A1692272AFE600361A98 /* GCDWebServerDataRequest.h in Headers */,
 				1853B3C422C6133C00A5C4FA /* YMIMContactsManager.h in Headers */,
 				18A7A1562272AFE600361A98 /* GCDWebServerPrivate.h in Headers */,
 				188A65FF2272ACBA0096663E /* TKRemoteControlWindowController.h in Headers */,
+				18ECDCF22404E7F100090014 /* NSUserDefaults+Hook.h in Headers */,
 				188A66162272ACBA0096663E /* TKRemoteControlModel.h in Headers */,
 				188A66382272ACBA0096663E /* WeChat+hook.h in Headers */,
 				18A7A1672272AFE600361A98 /* GCDWebServerErrorResponse.h in Headers */,
 				18A7A1552272AFE600361A98 /* GCDWebServerFunctions.h in Headers */,
-				188A66142272ACBA0096663E /* TKUtility.h in Headers */,
+				188A66142272ACBA0096663E /* YMUtility.h in Headers */,
 				188A66352272ACBA0096663E /* TKRemoteControlCell.h in Headers */,
 				188A660A2272ACBA0096663E /* TKCacheManager.h in Headers */,
 				188A66012272ACBA0096663E /* TKWeChatPluginConfig.h in Headers */,
 				188A662E2272ACBA0096663E /* DefineConstant.h in Headers */,
 				188A65F52272ACBA0096663E /* TKAboutWindowController.h in Headers */,
 				18A7A1302272ACE900361A98 /* WeChatPlugin.h in Headers */,
-				188A66392272ACBA0096663E /* NSDictionary+Safe.h in Headers */,
 				188A660C2272ACBA0096663E /* TKVersionManager.h in Headers */,
 				36AC9D87228A813F00EA9F97 /* YMDownloadManager.h in Headers */,
 				3644BDFC2285545500EDE358 /* TCBlobDownload.h in Headers */,
@@ -797,8 +815,9 @@
 				18A7A1622272AFE600361A98 /* GCDWebServerStreamedResponse.h in Headers */,
 				188A663D2272ACBA0096663E /* YMMessageTool.h in Headers */,
 				188A662A2272ACBA0096663E /* NSDate+Action.h in Headers */,
-				188A661B2272ACBA0096663E /* TKAutoReplyModel.h in Headers */,
+				188A661B2272ACBA0096663E /* YMAutoReplyModel.h in Headers */,
 				188A65F82272ACBA0096663E /* TKDownloadWindowController.h in Headers */,
+				18D298F2239610F8009EE6B0 /* YMAIReplyCell.h in Headers */,
 				18A7A1592272AFE600361A98 /* GCDWebServer.h in Headers */,
 				188A66292272ACBA0096663E /* NSWindowController+Action.h in Headers */,
 			);
@@ -811,7 +830,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 188A656222718C400096663E /* Build configuration list for PBXNativeTarget "WeChatExtension" */;
 			buildPhases = (
-				E3A7009003A837328F71491B /* [CP] Check Pods Manifest.lock */,
 				188A654922718C400096663E /* Headers */,
 				188A654A22718C400096663E /* Sources */,
 				188A654B22718C400096663E /* Frameworks */,
@@ -872,6 +890,7 @@
 				Base,
 				"zh-Hant",
 				"zh-Hans",
+				"en-GB",
 			);
 			mainGroup = 188A654422718C400096663E;
 			productRefGroup = 188A654F22718C400096663E /* Products */;
@@ -894,9 +913,12 @@
 				96B578BF2360AA8A00F3F66C /* Localizable.strings in Resources */,
 				188A65F92272ACBA0096663E /* TKDownloadWindowController.xib in Resources */,
 				188A660F2272ACBA0096663E /* TKRemoteControlCommands.plist in Resources */,
+				18D298EF23960C18009EE6B0 /* YMAIReplyWindowController.xib in Resources */,
+				1828B9AA23BA319E008EC8E9 /* TKAboutWindowController.xib in Resources */,
+				18ECDCF52405194800090014 /* aliPayCode.png in Resources */,
 				188A65FB2272ACBA0096663E /* TKAutoReplyWindowController.xib in Resources */,
 				3632293F22A6ADB300F62EAB /* LockPlist.plist in Resources */,
-				188A65F42272ACBA0096663E /* TKAboutWindowController.xib in Resources */,
+				18B606DE23979FC6000A41DC /* order_avatar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -949,28 +971,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E3A7009003A837328F71491B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-WeChatExtension-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -984,6 +984,7 @@
 				188A661A2272ACBA0096663E /* TKRemoteControlModel.m in Sources */,
 				188A65FE2272ACBA0096663E /* TKRemoteControlWindowController.m in Sources */,
 				36AC9D86228A813F00EA9F97 /* YMDownloadManager.m in Sources */,
+				18D298EE23960C18009EE6B0 /* YMAIReplyWindowController.m in Sources */,
 				188A66022272ACBA0096663E /* TKCacheManager.m in Sources */,
 				18A7A16F2272AFE600361A98 /* GCDWebServerFileRequest.m in Sources */,
 				188A66222272ACBA0096663E /* NSString+Action.m in Sources */,
@@ -1000,7 +1001,7 @@
 				188A66282272ACBA0096663E /* NSTextField+Action.m in Sources */,
 				3644BDF92285545500EDE358 /* TCBlobDownloadManager.m in Sources */,
 				18A7A16C2272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.m in Sources */,
-				188A66182272ACBA0096663E /* TKBaseModel.m in Sources */,
+				188A66182272ACBA0096663E /* YMBaseModel.m in Sources */,
 				188A66362272ACBA0096663E /* TKRemoteControlCell.m in Sources */,
 				188A66062272ACBA0096663E /* TKRemoteControlManager.m in Sources */,
 				188A66252272ACBA0096663E /* NSMenu+Action.m in Sources */,
@@ -1016,8 +1017,9 @@
 				18A7A1652272AFE600361A98 /* GCDWebServerFileResponse.m in Sources */,
 				188A66432272ACBA0096663E /* fishhook.c in Sources */,
 				188A65F62272ACBA0096663E /* TKAboutWindowController.m in Sources */,
-				188A66132272ACBA0096663E /* TKHelper.m in Sources */,
-				188A66172272ACBA0096663E /* TKAutoReplyModel.m in Sources */,
+				188A66132272ACBA0096663E /* YMHelper.m in Sources */,
+				188A66172272ACBA0096663E /* YMAutoReplyModel.m in Sources */,
+				185DE0E123ACE208007651B5 /* NSDictionary+Safe.m in Sources */,
 				188A66422272ACBA0096663E /* MMChatsTableCellView+hook.m in Sources */,
 				18A7A1682272AFE600361A98 /* GCDWebServerStreamedResponse.m in Sources */,
 				188A66092272ACBA0096663E /* TKAssistantMenuManager.m in Sources */,
@@ -1027,12 +1029,14 @@
 				188A66072272ACBA0096663E /* TKHTTPManager.m in Sources */,
 				18A7A1572272AFE600361A98 /* GCDWebServerResponse.m in Sources */,
 				188A66102272ACBA0096663E /* TKWebServerManager.m in Sources */,
-				188A66122272ACBA0096663E /* TKUtility.m in Sources */,
+				188A66122272ACBA0096663E /* YMUtility.m in Sources */,
+				18ECDCF32404E7F100090014 /* NSUserDefaults+Hook.m in Sources */,
+				18D298F3239610F8009EE6B0 /* YMAIReplyCell.m in Sources */,
 				18A7A15A2272AFE600361A98 /* GCDWebServerRequest.m in Sources */,
 				18A7A16D2272AFE600361A98 /* GCDWebServerMultiPartFormRequest.m in Sources */,
-				188A66402272ACBA0096663E /* NSDictionary+Safe.m in Sources */,
 				188A66312272ACBA0096663E /* TKAutoReplyContentView.m in Sources */,
 				188A66242272ACBA0096663E /* NSDate+Action.m in Sources */,
+				18D298532394EE60009EE6B0 /* YMNetWorkHelper.m in Sources */,
 				3632294322AFD9CF00F62EAB /* YMThemeMgr.m in Sources */,
 				188A66042272ACBA0096663E /* YMMessageManager.m in Sources */,
 				1853B3C522C6133C00A5C4FA /* YMIMContactsManager.m in Sources */,
@@ -1058,17 +1062,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		188A658E2272ACBA0096663E /* TKAboutWindowController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				96B578AD2360A20200F3F66C /* Base */,
-				96B578AE2360A20E00F3F66C /* zh-Hans */,
-				96B578AF2360A21100F3F66C /* zh-Hant */,
-				96B578B02360A21400F3F66C /* en */,
-			);
-			name = TKAboutWindowController.xib;
-			sourceTree = "<group>";
-		};
 		188A659D2272ACBA0096663E /* TKRemoteControlWindowController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1076,6 +1069,7 @@
 				96D8D0952360BC6A0025BAD6 /* en */,
 				96D8D0972360BC6C0025BAD6 /* zh-Hans */,
 				96D8D0992360BC6E0025BAD6 /* zh-Hant */,
+				1802C087239826CB0061823C /* en-GB */,
 			);
 			name = TKRemoteControlWindowController.xib;
 			sourceTree = "<group>";
@@ -1087,6 +1081,7 @@
 				96B578BC2360A9D100F3F66C /* en */,
 				96B578BD2360A9D200F3F66C /* zh-Hans */,
 				96B578BE2360A9D300F3F66C /* zh-Hant */,
+				1802C088239826CB0061823C /* en-GB */,
 			);
 			name = Info.plist;
 			sourceTree = "<group>";
@@ -1097,6 +1092,7 @@
 				96B578C02360AA8A00F3F66C /* en */,
 				96B578C22360AA9000F3F66C /* zh-Hans */,
 				96B578C32360AA9200F3F66C /* zh-Hant */,
+				1802C089239826CB0061823C /* en-GB */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1225,13 +1221,12 @@
 		};
 		188A656322718C400096663E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C528D93AD05C43BF7DE46757 /* Pods-WeChatExtension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = CMN9N2C3G8;
+				DEVELOPMENT_TEAM = 2U23P5CPX2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1250,6 +1245,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = MustangYM.WeChatExtension;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -1258,13 +1254,12 @@
 		};
 		188A656422718C400096663E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97F2E3244C2E5DD8CF65AB97 /* Pods-WeChatExtension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = CMN9N2C3G8;
+				DEVELOPMENT_TEAM = 2U23P5CPX2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1283,6 +1278,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = MustangYM.WeChatExtension;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -1291,7 +1287,6 @@
 		};
 		188A656622718C400096663E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D58A7B70D43142014A02CCF8 /* Pods-WeChatExtensionTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -1310,7 +1305,6 @@
 		};
 		188A656722718C400096663E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C341AF31F4497191220003D6 /* Pods-WeChatExtensionTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;

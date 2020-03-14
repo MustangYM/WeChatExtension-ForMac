@@ -10,6 +10,7 @@
 #import "TKWeChatPluginConfig.h"
 #import "TKHTTPManager.h"
 #import "TKRemoteControlManager.h"
+#import "TKCacheManager.h"
 
 @implementation TKVersionManager
 
@@ -50,8 +51,7 @@
 }
 
 - (void)downloadPluginProgress:(void (^)(NSProgress *downloadProgress))downloadProgressBlock completionHandler:(void (^)(NSString *filePath, NSError * _Nullable error))completionHandler {
-    NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-    
+    NSString *cachesPath = [[TKCacheManager shareManager] getUpdateSandboxFilePathWithName:@""];
     NSString *pluginName = @"WeChatExtension";
     NSString *pluginPath = [NSString stringWithFormat:@"%@/%@",cachesPath,pluginName];
     NSString *pluginZipPath = [NSString stringWithFormat:@"%@.zip",pluginPath];

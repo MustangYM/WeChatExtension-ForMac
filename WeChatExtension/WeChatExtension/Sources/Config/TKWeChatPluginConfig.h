@@ -9,6 +9,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, PluginLanguageType) {
+    PluginLanguageTypeZH,
+    PluginLanguageTypeEN
+};
+
+@class YMAIAutoModel;
 @interface TKWeChatPluginConfig : NSObject
 
 @property (nonatomic, assign) BOOL preventRevokeEnable;                 /**<    是否开启防撤回    */
@@ -18,6 +24,8 @@
 @property (nonatomic, assign) BOOL preventAsyncRevokeChatRoom;           /**<    只同步群聊    */
 @property (nonatomic, assign) BOOL autoReplyEnable;                     /**<    是否开启自动回复  */
 @property (nonatomic, assign) BOOL autoAuthEnable;                      /**<    是否免认证登录    */
+@property (nonatomic, assign) BOOL launchFromNew;                       /**<    是否是从 -> 登录新微信 -> 启动      */
+@property (nonatomic, assign) BOOL quitMonitorEnable;
 @property (nonatomic, assign) BOOL autoLoginEnable;                     /**<    是否自动登录      */
 @property (nonatomic, assign) BOOL onTop;                               /**<    是否要置顶微信    */
 @property (nonatomic, assign) BOOL multipleSelectionEnable;             /**<    是否要进行多选    */
@@ -34,12 +42,19 @@
 @property (nonatomic, copy) NSString *currentUserName;                   /**<    当前用户的id     */
 @property (nonatomic, copy, readonly) NSDictionary *localInfoPlist;
 @property (nonatomic, copy, readonly) NSDictionary *romoteInfoPlist;
+@property (nonatomic, strong) YMAIAutoModel *AIReplyModel;
+@property (nonatomic, assign) PluginLanguageType languageType;
+@property (nonatomic, assign) BOOL isAllowMoreOpenBaby;
 
 - (void)saveAutoReplyModels;
 - (void)saveRemoteControlModels;
 - (void)saveIgnoreSessionModels;
-
+- (void)saveAIAutoReplyModel:(YMAIAutoModel *)model;
 + (instancetype)sharedConfig;
+- (NSString *)getSandboxFilePathWithPlistName:(NSString *)plistName;
 
+- (void)saveMonitorQuitMembers:(NSMutableArray *)members;
+- (NSMutableArray *)getMonitorQuitMembers;
+- (NSString *)languageSetting:(NSString *)chinese english:(NSString *)english;
 @end
 

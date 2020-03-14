@@ -62,7 +62,7 @@
         tableView.delegate = self;
         tableView.dataSource = self;
         NSTableColumn *column = [[NSTableColumn alloc] init];
-        column.title = TKLocalizedString(@"assistant.autoReply.list");
+        column.title = YMLocalizedString(@"assistant.autoReply.list");
         column.width = 200;
         [tableView addTableColumn:column];
         
@@ -95,7 +95,7 @@
     });
     
     self.enableButton = ({
-        NSButton *btn = [NSButton tk_checkboxWithTitle:TKLocalizedString(@"assistant.autoReply.enable") target:self action:@selector(clickEnableBtn:)];
+        NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoReply.enable") target:self action:@selector(clickEnableBtn:)];
         btn.frame = NSMakeRect(130, 20, 130, 20);
         btn.state = [[TKWeChatPluginConfig sharedConfig] autoReplyEnable];
         
@@ -104,9 +104,9 @@
     
     self.alert = ({
         NSAlert *alert = [[NSAlert alloc] init];
-        [alert addButtonWithTitle:TKLocalizedString(@"assistant.autoReply.alert.confirm")];
-        [alert setMessageText:TKLocalizedString(@"assistant.autoReply.alert.title")];
-        [alert setInformativeText:TKLocalizedString(@"assistant.autoReply.alert.content")];
+        [alert addButtonWithTitle:YMLocalizedString(@"assistant.autoReply.alert.confirm")];
+        [alert setMessageText:YMLocalizedString(@"assistant.autoReply.alert.title")];
+        [alert setInformativeText:YMLocalizedString(@"assistant.autoReply.alert.content")];
         
         alert;
     });
@@ -121,7 +121,7 @@
 }
 
 - (void)setup {
-    self.window.title = TKLocalizedString(@"assistant.autoReply.title");
+    self.window.title = YMLocalizedString(@"assistant.autoReply.title");
     self.window.contentView.layer.backgroundColor = [kBG1 CGColor];
     [self.window.contentView.layer setNeedsDisplay];
     
@@ -161,7 +161,7 @@
         self.contentView.hidden = NO;
     }
     __block NSInteger emptyModelIndex = -1;
-    [self.autoReplyModels enumerateObjectsUsingBlock:^(TKAutoReplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.autoReplyModels enumerateObjectsUsingBlock:^(YMAutoReplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
         if (model.hasEmptyKeywordOrReplyContent) {
             emptyModelIndex = idx;
             *stop = YES;
@@ -180,7 +180,7 @@
         return;
     };
     
-    TKAutoReplyModel *model = [[TKAutoReplyModel alloc] init];
+    YMAutoReplyModel *model = [[YMAutoReplyModel alloc] init];
     [self.autoReplyModels addObject:model];
     [self.tableView reloadData];
     self.contentView.model = model;
@@ -232,11 +232,11 @@
     self.reduceButton.enabled = tableView.selectedRow != -1;
     
     if (tableView.selectedRow != -1) {
-        TKAutoReplyModel *model = self.autoReplyModels[tableView.selectedRow];
+        YMAutoReplyModel *model = self.autoReplyModels[tableView.selectedRow];
         self.contentView.model = model;
         self.lastSelectIndex = tableView.selectedRow;
         __block NSInteger emptyModelIndex = -1;
-        [self.autoReplyModels enumerateObjectsUsingBlock:^(TKAutoReplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self.autoReplyModels enumerateObjectsUsingBlock:^(YMAutoReplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
             if (model.hasEmptyKeywordOrReplyContent) {
                 emptyModelIndex = idx;
                 *stop = YES;

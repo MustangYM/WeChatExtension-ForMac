@@ -14,11 +14,11 @@
 @implementation NSObject (MMChatsTableCellViewHook)
 
 + (void)hookMMChatsTableCellView {
-    tk_hookMethod(objc_getClass("MMChatsTableCellView"), @selector(menuWillOpen:), [self class], @selector(hook_menuWillOpen:));
-    tk_hookMethod(objc_getClass("MMChatsTableCellView"), @selector(setSessionInfo:), [self class], @selector(hook_setSessionInfo:));
-    tk_hookMethod(objc_getClass("MMChatsTableCellView"), @selector(contextMenuSticky:), [self class], @selector(hook_contextMenuSticky:));
-    tk_hookMethod(objc_getClass("MMChatsTableCellView"), @selector(contextMenuDelete:), [self class], @selector(hook_contextMenuDelete:));
-    tk_hookMethod(objc_getClass("MMChatsViewController"), @selector(tableView:rowGotMouseDown:), [self class], @selector(hooktableView:rowGotMouseDown:));
+    hookMethod(objc_getClass("MMChatsTableCellView"), @selector(menuWillOpen:), [self class], @selector(hook_menuWillOpen:));
+    hookMethod(objc_getClass("MMChatsTableCellView"), @selector(setSessionInfo:), [self class], @selector(hook_setSessionInfo:));
+    hookMethod(objc_getClass("MMChatsTableCellView"), @selector(contextMenuSticky:), [self class], @selector(hook_contextMenuSticky:));
+    hookMethod(objc_getClass("MMChatsTableCellView"), @selector(contextMenuDelete:), [self class], @selector(hook_contextMenuDelete:));
+    hookMethod(objc_getClass("MMChatsViewController"), @selector(tableView:rowGotMouseDown:), [self class], @selector(hooktableView:rowGotMouseDown:));
 }
 
 - (void)hooktableView:(NSTableView *)arg1 rowGotMouseDown:(long long)arg2 {
@@ -89,20 +89,20 @@
         }
     }];
 
-    NSString *itemString = isIgnore ? TKLocalizedString(@"assistant.chat.unStickyBottom") : TKLocalizedString(@"assistant.chat.stickyBottom");
+    NSString *itemString = isIgnore ? YMLocalizedString(@"assistant.chat.unStickyBottom") : YMLocalizedString(@"assistant.chat.stickyBottom");
     NSMenuItem *preventRevokeItem = [[NSMenuItem alloc] initWithTitle:itemString action:@selector(contextMenuStickyBottom) keyEquivalent:@""];
     
     BOOL multipleSelectionEnable = [[TKWeChatPluginConfig sharedConfig] multipleSelectionEnable];
-    NSString *multipleSelectionString = multipleSelectionEnable ? TKLocalizedString(@"assistant.chat.unMultiSelect") : TKLocalizedString(@"assistant.chat.multiSelect");
+    NSString *multipleSelectionString = multipleSelectionEnable ? YMLocalizedString(@"assistant.chat.unMultiSelect") : YMLocalizedString(@"assistant.chat.multiSelect");
     NSMenuItem *multipleSelectionItem = [[NSMenuItem alloc] initWithTitle:multipleSelectionString action:@selector(contextMenuMutipleSelection) keyEquivalent:@""];
     
-    NSMenuItem *clearUnReadItem = [[NSMenuItem alloc] initWithTitle:TKLocalizedString(@"assistant.chat.readAll") action:@selector(contextMenuClearUnRead) keyEquivalent:@""];
+    NSMenuItem *clearUnReadItem = [[NSMenuItem alloc] initWithTitle:YMLocalizedString(@"assistant.chat.readAll") action:@selector(contextMenuClearUnRead) keyEquivalent:@""];
     
-    NSMenuItem *clearEmptySessionItem = [[NSMenuItem alloc] initWithTitle:TKLocalizedString(@"assistant.chat.clearEmpty") action:@selector(contextMenuClearEmptySession) keyEquivalent:@""];
+    NSMenuItem *clearEmptySessionItem = [[NSMenuItem alloc] initWithTitle:YMLocalizedString(@"assistant.chat.clearEmpty") action:@selector(contextMenuClearEmptySession) keyEquivalent:@""];
     
-    NSMenuItem *removeSessionItem = [[NSMenuItem alloc] initWithTitle:TKLocalizedString(@"assistant.chat.remove") action:@selector(contextMenuRemoveSession) keyEquivalent:@""];
+    NSMenuItem *removeSessionItem = [[NSMenuItem alloc] initWithTitle:YMLocalizedString(@"assistant.chat.remove") action:@selector(contextMenuRemoveSession) keyEquivalent:@""];
 
-    NSMenuItem *unreadSessionItem = [[NSMenuItem alloc] initWithTitle:TKLocalizedString(@"assistant.chat.unread") action:@selector(contextMenuUnreadSession) keyEquivalent:@""];
+    NSMenuItem *unreadSessionItem = [[NSMenuItem alloc] initWithTitle:YMLocalizedString(@"assistant.chat.unread") action:@selector(contextMenuUnreadSession) keyEquivalent:@""];
 
     [arg1 addItems:@[[NSMenuItem separatorItem],
                      preventRevokeItem,
@@ -283,7 +283,11 @@
         [selectSessions  enumerateObjectsUsingBlock:^(MMSessionInfo *sessionInfo, NSUInteger idx, BOOL * _Nonnull stop) {
             NSString *sessionUserName = sessionInfo.m_nsUserName;
             if (sessionUserName.length != 0) {
-                [sessionMgr deleteSessionWithoutSyncToServerWithUserName:sessionUserName];
+                if (LargerOrEqualVersion(@"2.3.25")) {
+                    [sessionMgr removeSessionOfUser:sessionUserName isDelMsg:NO];
+                } else {
+                    [sessionMgr deleteSessionWithoutSyncToServerWithUserName:sessionUserName];
+                }
             }
         }];
         [[TKWeChatPluginConfig sharedConfig] setMultipleSelectionEnable:NO];
