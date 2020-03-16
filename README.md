@@ -8,7 +8,7 @@
 支持[企业微信](https://github.com/MustangYM/WeChatICU-ForMac),由此进.
 
 ## 声明
-- 适用于Mac版的WeChat拓展功能. 1.7.5代码来自于WeChatPlugin, 对[tk](https://github.com/TKkk-iOSer)在此表示感谢!
+- 适用于Mac版的WeChat拓展功能. 1.7.5代码来自于WeChatPlugin, 对[TK](https://github.com/TKkk-iOSer)在此表示感谢!
 
 ## 最新支持版本
 -  mac版微信2.4.0
