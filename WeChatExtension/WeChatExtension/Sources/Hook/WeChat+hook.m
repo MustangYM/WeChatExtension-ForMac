@@ -29,6 +29,7 @@
 
 #import <mach-o/dyld.h>
 #import <dlfcn.h>
+#import <QuartzCore/QuartzCore.h>
 
 @implementation NSObject (WeChatHook)
 
@@ -106,18 +107,104 @@
     
     
     if ([TKWeChatPluginConfig sharedConfig].darkMode) {
+        hookMethod(objc_getClass("MMTextField"), @selector(setTextColor:), [self class], @selector(hook_setTextColor:));
         hookMethod(objc_getClass("NSView"), @selector(addSubview:), [self class], @selector(hook_initWithFrame:));
         hookMethod(objc_getClass("MMComposeInputViewController"), @selector(viewDidLoad), [self class], @selector(hook_ComposeInputViewControllerViewDidLoad));
         hookMethod(objc_getClass("MMChatMessageViewController"), @selector(viewDidLoad), [self class], @selector(hook_ChatMessageViewControllerViewDidLoad));
         hookMethod(objc_getClass("NSScrollView"), @selector(initWithFrame:), [self class], @selector(hook_scrollViewInitWithFrame:));
-        hookMethod(objc_getClass("MMChatsTableCellView"), @selector(initWithFrame:), [self class], @selector(cellhook_initWithFrame:));
-        hookMethod(objc_getClass("MMTextField"), @selector(setTextColor:), [self class], @selector(hook_setTextColor:));
         hookMethod(objc_getClass("MMSidebarRowView"), @selector(initWithFrame:), [self class], @selector(hook_sideBarViewInitWithFrame:));
          hookMethod(objc_getClass("MMLoginWaitingConfirmViewController"), @selector(viewDidLoad:), [self class], @selector(hook_loginWaitingViewDidLoad));
         hookMethod(objc_getClass("MMLoginQRCodeViewController"), @selector(viewDidLoad), [self class], @selector(hook_QRCodeViewDidLoad));
         //    hookMethod(objc_getClass("MMTextField"), @selector(setAttributedStringValue:), [self class], @selector(hook_setAttributedStringValue:));
         hookMethod(objc_getClass("MMChatsTableCellView"), @selector(updateNickname), [self class], @selector(hook_updateNickName));
+        hookMethod(objc_getClass("NSWindowController"), @selector(windowDidLoad), [self class], @selector(hook_windowDidLoad));
+        hookMethod(objc_getClass("MMFileListViewController"), @selector(viewDidLoad), [self class], @selector(hook_fileListViewDidLoad));
+        hookMethod(objc_getClass("MMPreferencesWindowController"), @selector(windowDidLoad), [self class], @selector(hook_preferencesWindowDidLoad));
+        hookMethod(objc_getClass("MMPreferencesShortcutController"), @selector(viewDidLoad), [self class], @selector(hook_preferencesShortcuViewDidLoad));
+        hookMethod(objc_getClass("MMPreferencesNotificationController"), @selector(viewDidLoad), [self class], @selector(hook_preferencesNotificationViewDidLoad));
+        hookMethod(objc_getClass("MMChatMemberListViewController"), @selector(viewDidLoad), [self class], @selector(hook_memberListViewDidLoad));
+        hookMethod(objc_getClass("MMContactProfileController"), @selector(viewDidLoad), [self class], @selector(hook_profileViewDidLoad));
+        hookMethod(objc_getClass("MMChatsTableCellView"), @selector(mouseDown:), [self class], @selector(hook_mouseDown:));
     }
+}
+
+- (void)hook_mouseDown:(id)arg1
+{
+    [self hook_mouseDown:arg1];
+    MMChatsTableCellView *cell = (MMChatsTableCellView *)self;
+    
+    NSColor *highColor = nil;
+    if (cell.selected) {
+        highColor = kRGBColor(147, 148, 248, 0.5);
+    } else {
+        highColor = [NSColor clearColor];
+    }
+    cell.layer.backgroundColor = highColor.CGColor;
+    [cell setNeedsDisplay:YES];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        cell.layer.backgroundColor = [NSColor clearColor].CGColor;
+        [cell setNeedsDisplay:YES];
+    });
+}
+
+- (void)hook_profileViewDidLoad
+{
+    [self hook_profileViewDidLoad];
+    MMContactProfileController *profileVC = (MMContactProfileController *)self;
+    [[YMThemeMgr shareInstance] changeTheme:profileVC.view];
+}
+
+- (void)hook_memberListViewDidLoad
+{
+    [self hook_memberListViewDidLoad];
+    MMChatMemberListViewController *memberListVC = (MMChatMemberListViewController *)self;
+    for (NSView *sub in memberListVC.view.subviews) {
+        for (NSView *effect in sub.subviews) {
+            if ([effect isKindOfClass:NSVisualEffectView.class]) {
+                for (NSView *effectSub in effect.subviews) {
+                    [[YMThemeMgr shareInstance] changeTheme:effectSub];
+                }
+                break;
+            }
+        }
+    }
+}
+
+- (void)hook_preferencesShortcuViewDidLoad
+{
+    [self hook_preferencesShortcuViewDidLoad];
+    MMPreferencesShortcutController *fileListVC = (MMPreferencesShortcutController *)self;
+       [[YMThemeMgr shareInstance] changeTheme:fileListVC.view];
+}
+
+- (void)hook_preferencesNotificationViewDidLoad
+{
+    [self hook_preferencesNotificationViewDidLoad];
+    MMPreferencesNotificationController *fileListVC = (MMPreferencesNotificationController *)self;
+       [[YMThemeMgr shareInstance] changeTheme:fileListVC.view];
+}
+
+- (void)hook_preferencesWindowDidLoad
+{
+    [self hook_preferencesWindowDidLoad];
+    MMPreferencesWindowController *window = (MMPreferencesWindowController *)self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+       [[YMThemeMgr shareInstance] changeTheme:window.window.contentView];
+    });
+}
+
+- (void)hook_fileListViewDidLoad
+{
+    [self hook_fileListViewDidLoad];
+    MMFileListViewController *fileListVC = (MMFileListViewController *)self;
+    [[YMThemeMgr shareInstance] changeTheme:fileListVC.view];
+}
+
+- (void)hook_windowDidLoad
+{
+    [self hook_windowDidLoad];
+    NSWindowController *window = (NSWindowController *)self;
+    [[YMThemeMgr shareInstance] changeTheme:window.window.contentView];
 }
 
 - (void)hook_updateNickName
@@ -191,12 +278,8 @@
 {
     arg1 = kRGBColor(162, 182, 203, 1.0);
     [self hook_setTextColor:arg1];
-}
-
-- (id)cellhook_initWithFrame:(struct CGRect)arg1
-{
-    
-    return [self cellhook_initWithFrame:arg1];
+    MMTextField *textField = (MMTextField *)self;
+    textField.backgroundColor = kRGBColor(61, 62, 60, 1);
 }
 
 - (instancetype)hook_sideBarViewInitWithFrame:(NSRect)frameRect {
@@ -296,7 +379,14 @@
         
       [[YMThemeMgr shareInstance] changeTheme:view];
     }
-    
+
+    if ([view isKindOfClass:[objc_getClass("NewNoteContentView") class]]) {
+         [[YMThemeMgr shareInstance] changeTheme:view];
+     }
+
+//    if ([view isKindOfClass:[objc_getClass("MMView") class]]) {
+//        [[YMThemeMgr shareInstance] changeTheme:view];
+//    }
 }
 
 //主控制器的生命周期

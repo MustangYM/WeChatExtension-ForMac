@@ -710,6 +710,9 @@ forHTTPHeaderField:(NSString *)field;
 - (void)tableView:(NSTableView *)arg1 rowGotMouseDown:(long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)nicknameAttributedStringWithString:(id)arg1;
+
+- (void)drawSelectionBackground;
+- (void)updateSelectionBackground;
 @end
 
 @interface CmdItem : NSObject
@@ -730,5 +733,34 @@ forHTTPHeaderField:(NSString *)field;
 @end
 
 @interface MMLoginWaitingConfirmViewController : NSViewController
+
+@end
+
+@interface MMFileListViewController : NSViewController
+
+@end
+
+@interface MMPreferencesWindowController : NSWindowController
+
+@end
+
+
+@interface MMChatBackupBaseWindowController : NSWindowController
+@property (nonatomic, strong) NSTitlebarAccessoryViewController * titlebarController;
+@end
+
+@interface MMPreferencesShortcutController : NSViewController
+
+@end
+
+@interface MMPreferencesNotificationController : NSViewController
+
+@end
+
+@interface MMChatMemberListViewController : NSViewController
+
+@end
+
+@interface MMContactProfileController : NSViewController
 
 @end
