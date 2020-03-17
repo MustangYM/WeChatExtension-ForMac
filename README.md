@@ -14,7 +14,7 @@
 -  mac版微信2.4.0
 
 ## 黑夜模式
-- 众多软件都适配了黑夜模式, 等了这么久Mac微信官方还是没做适配(希望赶紧出, 来自底层的呐喊). 所以做了这个玩票功能, 部分页面有显示BUG, 不影响正常使用, 如果你是强迫症加完美主义, 可能不太适合.
+- 众多软件都适配了黑夜模式, 等了这么久Mac微信官方还是没做适配(希望赶紧出, 来自底层的呐喊). 所以做了这个玩票功能, 弹窗页面没有做适配, 不影响正常使用, 如果你是强迫症加完美主义, 可能不太适合.
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/darkMode.png" width="800px"/>
 </p>
