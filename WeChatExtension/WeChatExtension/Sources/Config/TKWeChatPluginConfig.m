@@ -30,6 +30,7 @@ static NSString * const kTKSystemBrowserEnableKey = @"kTKSystemBrowserEnableKey"
 static NSString * const kTKWeChatResourcesPath = @"/Applications/WeChat.app/Contents/MacOS/WeChatExtension.framework/Resources/";
 static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubusercontent.com/MustangYM/WeChatExtension-ForMac/master/WeChatExtension/WeChatExtension/Base.lproj/Info.plist";
 static NSString * const kisAllowMoreOpenBaby = @"kisAllowMoreOpenBaby";
+static NSString * const kDarkMode = @"kDarkMode";
 
 @interface TKWeChatPluginConfig ()
 
@@ -72,8 +73,16 @@ static NSString * const kisAllowMoreOpenBaby = @"kisAllowMoreOpenBaby";
         _preventAsyncRevokeChatRoom = [[NSUserDefaults standardUserDefaults] boolForKey:KPreventAsyncRevokeChatRoom];
         _quitMonitorEnable = [[NSUserDefaults standardUserDefaults] boolForKey:KQuitMonitorChatRoom];
         _isAllowMoreOpenBaby = [[NSUserDefaults standardUserDefaults] boolForKey:kisAllowMoreOpenBaby];
+        _darkMode = [[NSUserDefaults standardUserDefaults] boolForKey:kDarkMode];
     }
     return self;
+}
+
+- (void)setDarkMode:(BOOL)darkMode
+{
+    _darkMode = darkMode;
+    [[NSUserDefaults standardUserDefaults] setBool:darkMode forKey:kDarkMode];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)setIsAllowMoreOpenBaby:(BOOL)isAllowMoreOpenBaby

@@ -102,18 +102,39 @@
     [self setup];
     
     
-    //暂不执行以下代码, 关于黑夜模式的修改, 但还存在一定的问题, 想尝鲜的小伙伴可以把以下代码注释打开, 编译后自己放到微信里面玩.
-//    hookMethod(objc_getClass("NSView"), @selector(addSubview:), [self class], @selector(hook_initWithFrame:));
-//
-//     hookMethod(objc_getClass("MMComposeInputViewController"), @selector(viewDidLoad), [self class], @selector(hook_ComposeInputViewControllerViewDidLoad));
-//
-//     hookMethod(objc_getClass("MMChatMessageViewController"), @selector(viewDidLoad), [self class], @selector(hook_ChatMessageViewControllerViewDidLoad));
-//
-//    hookMethod(objc_getClass("NSScrollView"), @selector(initWithFrame:), [self class], @selector(hook_scrollViewInitWithFrame:));
-//
-//    hookMethod(objc_getClass("MMChatsTableCellView"), @selector(initWithFrame:), [self class], @selector(cellhook_initWithFrame:));
-//    hookMethod(objc_getClass("MMTextField"), @selector(setTextColor:), [self class], @selector(hook_setTextColor:));
+    if ([TKWeChatPluginConfig sharedConfig].darkMode) {
+        hookMethod(objc_getClass("NSView"), @selector(addSubview:), [self class], @selector(hook_initWithFrame:));
+        hookMethod(objc_getClass("MMComposeInputViewController"), @selector(viewDidLoad), [self class], @selector(hook_ComposeInputViewControllerViewDidLoad));
+        hookMethod(objc_getClass("MMChatMessageViewController"), @selector(viewDidLoad), [self class], @selector(hook_ChatMessageViewControllerViewDidLoad));
+        hookMethod(objc_getClass("NSScrollView"), @selector(initWithFrame:), [self class], @selector(hook_scrollViewInitWithFrame:));
+        hookMethod(objc_getClass("MMChatsTableCellView"), @selector(initWithFrame:), [self class], @selector(cellhook_initWithFrame:));
+        hookMethod(objc_getClass("MMTextField"), @selector(setTextColor:), [self class], @selector(hook_setTextColor:));
+        hookMethod(objc_getClass("MMSidebarRowView"), @selector(initWithFrame:), [self class], @selector(hook_sideBarViewInitWithFrame:));
+         hookMethod(objc_getClass("MMLoginWaitingConfirmViewController"), @selector(viewDidLoad:), [self class], @selector(hook_loginWaitingViewDidLoad));
+        hookMethod(objc_getClass("MMLoginQRCodeViewController"), @selector(viewDidLoad), [self class], @selector(hook_QRCodeViewDidLoad));
+    }
+}
+
+- (void)hook_QRCodeViewDidLoad {
+    [self hook_QRCodeViewDidLoad];
+    if ([self.className isEqualToString:@"MMLoginQRCodeViewController"]) {
+        MMLoginQRCodeViewController *qrLoginVC = (MMLoginQRCodeViewController *)self;
+        for (NSView *sub in qrLoginVC.view.subviews) {
+            if (![sub isKindOfClass:NSImageView.class]) {
+                [[YMThemeMgr shareInstance] changeTheme:sub color:kRGBColor(172, 172, 172, 1)];
+            }
+        }
+    }
+}
+
+- (void)hook_loginWaitingViewDidLoad
+{
+    [self hook_loginWaitingViewDidLoad];
     
+    if ([self.className isEqualToString:@"MMLoginWaitingConfirmViewController"]) {
+        MMLoginWaitingConfirmViewController *loginWaitVC = (MMLoginWaitingConfirmViewController *)self;
+        [[YMThemeMgr shareInstance] changeTheme:loginWaitVC.view];
+    }
 }
 
 - (void)hook_setTextColor:(NSColor *)arg1
@@ -125,6 +146,12 @@
 - (id)cellhook_initWithFrame:(struct CGRect)arg1
 {
     return [self cellhook_initWithFrame:arg1];
+}
+
+- (instancetype)hook_sideBarViewInitWithFrame:(NSRect)frameRect {
+    MMSidebarRowView *view = (MMSidebarRowView *)self;
+    [[YMThemeMgr shareInstance] changeTheme:view.containerView];
+    return [self hook_sideBarViewInitWithFrame:frameRect];
 }
 
 - (instancetype)hook_scrollViewInitWithFrame:(NSRect)frameRect {
@@ -149,6 +176,18 @@
         return;
     }
     
+    if ([view isKindOfClass:[objc_getClass("NSButton") class]]) {
+        return;
+    }
+    
+    if ([view isKindOfClass:[objc_getClass("MMAvatarImageView") class]]) {
+        return;
+    }
+    
+    if ([view isKindOfClass:[objc_getClass("_NSScrollViewFloatingSubviewsContainerView") class]]) {
+        return;
+    }
+    
     NSResponder *responder = view;
     NSViewController *controller = nil;
     while ((responder = [responder nextResponder])){
@@ -170,7 +209,9 @@
     
     
     if ([view isKindOfClass:[objc_getClass("MMFavoritesListMediaCell") class]]) {
-        [[YMThemeMgr shareInstance] changeTheme:view];
+        for (NSView *sub in view.subviews) {
+            [[YMThemeMgr shareInstance] changeTheme:sub];
+        }
     }
     
     if ([controller isKindOfClass:[objc_getClass("MMChatMessageViewController") class]]) {
@@ -514,7 +555,21 @@
     [self hook_viewWillAppear];
     
     BOOL autoAuthEnable = [[TKWeChatPluginConfig sharedConfig] autoAuthEnable];
-    if (![self.className isEqualToString:@"MMLoginOneClickViewController"] || !autoAuthEnable) return;
+    WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
+     MMLoginOneClickViewController *loginVC = wechat.mainWindowController.loginViewController.oneClickViewController;
+    
+    if (![self.className isEqualToString:@"MMLoginOneClickViewController"]) {
+        return;
+    } else {
+        if ([TKWeChatPluginConfig sharedConfig].darkMode) {
+            [[YMThemeMgr shareInstance] changeTheme:loginVC.view];
+        }
+    }
+    
+    if (!autoAuthEnable) {
+        return;
+    }
+    
 
     NSButton *autoLoginButton = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:@"" target:self action:@selector(selectAutoLogin:)];
@@ -527,8 +582,6 @@
         btn;
     });
     
-    WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
-    MMLoginOneClickViewController *loginVC = wechat.mainWindowController.loginViewController.oneClickViewController;
     [loginVC.view addSubview:autoLoginButton];
     
     BOOL autoLogin = [[TKWeChatPluginConfig sharedConfig] autoLoginEnable];

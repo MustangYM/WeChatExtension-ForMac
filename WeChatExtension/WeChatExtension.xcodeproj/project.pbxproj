@@ -498,12 +498,12 @@
 		188A65A62272ACBA0096663E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				188A65A82272ACBA0096663E /* TKAssistantMenuManager.h */,
+				188A65AE2272ACBA0096663E /* TKAssistantMenuManager.m */,
 				36AC9D85228A813F00EA9F97 /* YMDownloadManager.h */,
 				36AC9D84228A813F00EA9F97 /* YMDownloadManager.m */,
 				188A65AF2272ACBA0096663E /* TKCacheManager.h */,
 				188A65A72272ACBA0096663E /* TKCacheManager.m */,
-				188A65A82272ACBA0096663E /* TKAssistantMenuManager.h */,
-				188A65AE2272ACBA0096663E /* TKAssistantMenuManager.m */,
 				188A65B02272ACBA0096663E /* TKRemoteControlManager.h */,
 				188A65AB2272ACBA0096663E /* TKRemoteControlManager.m */,
 				188A65B22272ACBA0096663E /* YMMessageManager.h */,

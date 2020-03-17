@@ -175,6 +175,13 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
                                              keyEquivalent:@""
                                                      state:0];
     
+    NSMenuItem *darkModeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"黑夜模式", @"Dark Mode")
+                                                        action:@selector(onChangeDarkMode:)
+                                                        target:self
+                                                 keyEquivalent:@"N"
+                                                         state:[TKWeChatPluginConfig sharedConfig].darkMode];
+    
+    
     NSMenu *subPluginMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.other")];
     [subPluginMenu addItems:@[enableAlfredItem,
                              updatePluginItem]];
@@ -193,6 +200,7 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
                         enableSystemBrowserItem,
                         pluginItem,
                         currentVersionItem,
+                        darkModeItem,
                         aboutPluginItem
                         ]];
 
@@ -517,5 +525,32 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
 
 - (void)onCurrentVersion:(NSMenuItem *)item {
     
+}
+
+- (void)onChangeDarkMode:(NSMenuItem *)item {
+    item.state = !item.state;
+    [[TKWeChatPluginConfig sharedConfig] setDarkMode:item.state];
+    
+    NSString *msg = nil;
+    if (item.state) {
+        msg = YMLanguage(@"打开黑夜模式, 重启生效!",@"Turn on dark mode and restart to take effect!");
+    } else {
+        msg = YMLanguage(@"关闭黑夜模式, 重启生效!",@"Turn off dark mode and restart to take effect!");
+    }
+    NSAlert *alert = [NSAlert alertWithMessageText:YMLanguage(@"警告", @"WARNING")
+                                     defaultButton:YMLanguage(@"取消", @"cancel")                       alternateButton:YMLanguage(@"确定重启",@"restart")
+                                       otherButton:nil                              informativeTextWithFormat:@"%@", msg];
+    NSUInteger action = [alert runModal];
+    if (action == NSAlertAlternateReturn) {
+        __weak __typeof (self) wself = self;
+        [[TKWeChatPluginConfig sharedConfig] setIsAllowMoreOpenBaby:NO];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                [[NSApplication sharedApplication] terminate:wself];
+            });
+        });
+    }  else if(action == NSAlertOtherReturn){
+    }
+   
 }
 @end
