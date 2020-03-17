@@ -13,12 +13,15 @@
 ## 最新支持版本
 -  mac版微信2.4.0
 
-## 同时支持自定义回复和AI自动撩妹
-- 腾讯AI人工智能(ZZ)自动回复, 能理解上下文语义. 经过大量临床试验和大家反馈, 腾讯这个AI接口回复十分智障, 慎用.
-- 自定义自动回复
-
+## 消息防撤回
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/Snipaste_2019-12-23_11-41-20.png" width="800px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/revoke.gif" width="800px"/>
+</p>
+
+## 黑夜模式
+- 我不明白Mac微信官方为什么还不出黑夜模式, 所以做了这个玩票功能, 部分页面有显示BUG, 不影响正常使用, 如果你是强迫症加完美主义, 可能不太适合.
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/darkMode.png" width="800px"/>
 </p>
 
 ## 手机端也能收到被撤回的消息
@@ -37,9 +40,12 @@
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/launch.gif" width="800px"/>
 </p>
 
-## 消息防撤回
+## 同时支持自定义回复和AI自动撩妹
+- 腾讯AI人工智能(ZZ)自动回复, 能理解上下文语义. 经过大量临床试验和大家反馈, 腾讯这个AI接口回复十分智障, 慎用.
+- 自定义自动回复
+
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/revoke.gif" width="800px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/Snipaste_2019-12-23_11-41-20.png" width="800px"/>
 </p>
 
 ## 显示小程序详情
