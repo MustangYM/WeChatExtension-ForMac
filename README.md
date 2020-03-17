@@ -19,7 +19,7 @@
 </p>
 
 ## 黑夜模式
-- 我不明白Mac微信官方为什么还不出黑夜模式, 所以做了这个玩票功能, 没有实际意义. 部分页面有显示BUG, 不影响正常使用, 如果你是强迫症加完美主义, 可能不太适合.
+- 众多软件都适配了黑夜模式, 等了这么久Mac微信官方还是啥风声, 建议开除产品经理. 所以做了这个玩票功能, 没有实际意义. 部分页面有显示BUG, 不影响正常使用, 如果你是强迫症加完美主义, 可能不太适合.
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/darkMode.png" width="800px"/>
 </p>
