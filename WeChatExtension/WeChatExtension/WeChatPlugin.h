@@ -709,6 +709,7 @@ forHTTPHeaderField:(NSString *)field;
 - (void)contextMenuDelete:(id)arg1;
 - (void)tableView:(NSTableView *)arg1 rowGotMouseDown:(long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)nicknameAttributedStringWithString:(id)arg1;
 @end
 
 @interface CmdItem : NSObject

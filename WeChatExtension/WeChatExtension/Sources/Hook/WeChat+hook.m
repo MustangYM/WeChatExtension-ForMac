@@ -27,6 +27,9 @@
 #import<CommonCrypto/CommonDigest.h>
 #import "YMIMContactsManager.h"
 
+#import <mach-o/dyld.h>
+#import <dlfcn.h>
+
 @implementation NSObject (WeChatHook)
 
 + (void)hookWeChat {
@@ -112,7 +115,54 @@
         hookMethod(objc_getClass("MMSidebarRowView"), @selector(initWithFrame:), [self class], @selector(hook_sideBarViewInitWithFrame:));
          hookMethod(objc_getClass("MMLoginWaitingConfirmViewController"), @selector(viewDidLoad:), [self class], @selector(hook_loginWaitingViewDidLoad));
         hookMethod(objc_getClass("MMLoginQRCodeViewController"), @selector(viewDidLoad), [self class], @selector(hook_QRCodeViewDidLoad));
+        //    hookMethod(objc_getClass("MMTextField"), @selector(setAttributedStringValue:), [self class], @selector(hook_setAttributedStringValue:));
+        hookMethod(objc_getClass("MMChatsTableCellView"), @selector(updateNickname), [self class], @selector(hook_updateNickName));
     }
+}
+
+- (void)hook_updateNickName
+{
+    [self hook_updateNickName];
+    MMChatsTableCellView *cell = (MMChatsTableCellView *)self;
+    NSAttributedString *str = cell.nickName.attributedStringValue;
+    NSMutableAttributedString *returnValue = [[NSMutableAttributedString alloc] initWithString:str.string attributes:@{NSForegroundColorAttributeName :kRGBColor(255, 255, 255, 1.0), NSFontAttributeName : [NSFont systemFontOfSize:14]}];
+    cell.nickName.attributedStringValue = returnValue;
+}
+
+- (void)hook_setAttributedStringValue:(NSAttributedString *)arg1
+{
+    struct mach_header *mh_addr = _dyld_get_image_header(0);
+    NSString *mh_addrStr = [NSString stringWithFormat:@"%p",mh_addr];
+    NSString *call = [NSThread callStackSymbols][1];
+    NSArray *sepList = [call componentsSeparatedByString:@"0x"];
+    NSString *offset_addrStr = nil;
+    if (sepList.count > 1) {
+        NSArray *sepWList = [sepList[1] componentsSeparatedByString:@" W"];
+        if (sepWList.count > 1) {
+            NSString *final = sepWList[0];
+            offset_addrStr = [NSString stringWithFormat:@"0x%@",final];
+        }
+    }
+    
+    if (offset_addrStr) {
+        unsigned long mh_ten = strtoul(mh_addrStr.UTF8String, 0, 16);
+        unsigned long offset_ten = strtoul(offset_addrStr.UTF8String, 0, 16);
+        unsigned long slide = offset_ten - mh_ten;
+        NSMutableAttributedString *returnValue = nil;
+        if (slide == 11212944) {
+            returnValue = [[NSMutableAttributedString alloc] initWithString:arg1.string attributes:@{NSForegroundColorAttributeName :kRGBColor(255, 255, 255, 1.0), NSFontAttributeName : [NSFont systemFontOfSize:14]}];
+            
+        } else if (slide == 11218107) {
+            returnValue = [[NSMutableAttributedString alloc] initWithString:arg1.string attributes:@{NSForegroundColorAttributeName :kRGBColor(162, 182, 203, 1.0), NSFontAttributeName : [NSFont systemFontOfSize:12]}];
+        } else {
+            returnValue = arg1;
+        }
+        
+        [self hook_setAttributedStringValue:returnValue];
+    } else {
+        [self hook_setAttributedStringValue:arg1];
+    }
+    
 }
 
 - (void)hook_QRCodeViewDidLoad {
@@ -139,12 +189,13 @@
 
 - (void)hook_setTextColor:(NSColor *)arg1
 {
-    arg1 = kRGBColor(49, 110, 105, 1);
+    arg1 = kRGBColor(162, 182, 203, 1.0);
     [self hook_setTextColor:arg1];
 }
 
 - (id)cellhook_initWithFrame:(struct CGRect)arg1
 {
+    
     return [self cellhook_initWithFrame:arg1];
 }
 
@@ -212,6 +263,19 @@
         for (NSView *sub in view.subviews) {
             [[YMThemeMgr shareInstance] changeTheme:sub];
         }
+    }
+    
+    
+    if ([view isKindOfClass:[objc_getClass("MMFavoritesListTextCell") class]]) {
+        for (NSView *sub in view.subviews) {
+            [[YMThemeMgr shareInstance] changeTheme:sub];
+        }
+    }
+    
+    if ([view isKindOfClass:[objc_getClass("MMDragEventView") class]]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+           [[YMThemeMgr shareInstance] changeTheme:view];
+        });
     }
     
     if ([controller isKindOfClass:[objc_getClass("MMChatMessageViewController") class]]) {
