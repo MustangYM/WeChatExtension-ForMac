@@ -14,6 +14,10 @@
 #import "YMThemeMgr.h"
 #import "ANYMethodLog.h"
 
+@interface NSCellAuxiliary : NSObject
+
+@end
+
 @implementation NSObject (ThemeHook)
 + (void)hookTheme
 {
@@ -42,9 +46,32 @@
         hookMethod(objc_getClass("MMTableView"), @selector(setBackgroundColor:), [self class], @selector(hook_tableViewsetBackgroundColor:));
         hookMethod(objc_getClass("MMChatsTableCellView"), @selector(setSeperator:), [self class], @selector(hook_setSeperator:));
         hookMethod(objc_getClass("NSAlert"), @selector(setMessageText:), [self class], @selector(hook_setMessageText:));
+        hookMethod(objc_getClass("NSTextFieldCell"), @selector(setTextColor:), [self class], @selector(hook_setTextFieldCellColor:));
+        hookMethod(objc_getClass("MMChatInfoView"), @selector(updateChatName), [self class], @selector(hook_updateChatName));
     }
 }
 
+
+
+- (void)hook_updateChatName
+{
+    [self hook_updateChatName];
+    MMChatInfoView *infoView = (MMChatInfoView *)self;
+    
+    @try {
+        NSTextFieldCell *cell = [infoView.chatNameLabel valueForKey:@"cell"];
+        NSAttributedString *originalText = [cell valueForKey:@"contents"];
+        NSMutableAttributedString *attributedString1 = [[NSMutableAttributedString alloc] initWithString:originalText.string attributes:@{NSForegroundColorAttributeName : [NSColor whiteColor], NSFontAttributeName : [NSFont systemFontOfSize:18]}];
+        [infoView.chatNameLabel setAttributedStringValue:attributedString1];
+    } @catch (NSException *exception) {
+        
+    };
+}
+
+- (void)hook_setTextFieldCellColor:(NSColor *)color
+{
+    [self hook_setTextFieldCellColor:kRGBColor(179, 154, 241, 0.7)];
+}
 
 - (void)hook_setMessageText:(id)arg1
 {
@@ -332,7 +359,9 @@
         MMChatMessageViewController *msgViewController = (MMChatMessageViewController *)controller;
         [msgViewController.messageTableView setBackgroundColor:kRGBColor(61, 62, 60, 1)];
         [[msgViewController.messageTableView enclosingScrollView] setDrawsBackground:NO];
-        [[YMThemeMgr shareInstance] changeTheme:view];
+        if (![view isKindOfClass:objc_getClass("NSTextField")]) {
+            [[YMThemeMgr shareInstance] changeTheme:view];
+        }
     }
     
     if ( [controller isKindOfClass:[objc_getClass("MMComposeInputViewController") class]]

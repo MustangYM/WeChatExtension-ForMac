@@ -773,3 +773,7 @@ forHTTPHeaderField:(NSString *)field;
 @interface MMSearchChatLogTableCellView : NSTableCellView
 @property (nonatomic, strong) NSColor *backgroundColor;
 @end
+
+@interface MMChatInfoView : NSView
+@property(retain, nonatomic) MMTextField *chatNameLabel; // @synthesize chatNameLabel=_chatNameLabel;
+@end
