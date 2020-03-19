@@ -106,7 +106,7 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
     NSMenuItem *miniProgramItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"允许打开小程序", @"Allow MiniProgram to open")
                                                         action:@selector(onMiniProgramItem:)
                                                         target:self
-                                                 keyEquivalent:@"N"
+                                                 keyEquivalent:@""
                                                          state:![TKWeChatPluginConfig sharedConfig].isAllowMoreOpenBaby];
     
     //        远程控制
@@ -198,10 +198,10 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
                         onTopItem,
                         autoAuthItem,
                         enableSystemBrowserItem,
-                        pluginItem,
-                        currentVersionItem,
                         darkModeItem,
-                        aboutPluginItem
+                        pluginItem,
+                        aboutPluginItem,
+                        currentVersionItem,
                         ]];
 
     id wechat = LargerOrEqualVersion(@"2.3.24") ? [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMUpdateMgr")] : [objc_getClass("WeChat") sharedInstance];

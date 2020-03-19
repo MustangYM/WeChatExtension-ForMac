@@ -136,6 +136,8 @@
 		18D298EF23960C18009EE6B0 /* YMAIReplyWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D298EC23960C18009EE6B0 /* YMAIReplyWindowController.xib */; };
 		18D298F2239610F8009EE6B0 /* YMAIReplyCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D298F0239610F8009EE6B0 /* YMAIReplyCell.h */; };
 		18D298F3239610F8009EE6B0 /* YMAIReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D298F1239610F8009EE6B0 /* YMAIReplyCell.m */; };
+		18D4C34B24236180006A20E2 /* NSObject+ThemeHook.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D4C34924236180006A20E2 /* NSObject+ThemeHook.h */; };
+		18D4C34C24236180006A20E2 /* NSObject+ThemeHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D4C34A24236180006A20E2 /* NSObject+ThemeHook.m */; };
 		18D8B18E227EFEC3007AE9EC /* TKRemoteControlScript.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 18D8B18D227EFDFF007AE9EC /* TKRemoteControlScript.scpt */; };
 		18ECDCF22404E7F100090014 /* NSUserDefaults+Hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 18ECDCF02404E7F100090014 /* NSUserDefaults+Hook.h */; };
 		18ECDCF32404E7F100090014 /* NSUserDefaults+Hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 18ECDCF12404E7F100090014 /* NSUserDefaults+Hook.m */; };
@@ -304,6 +306,8 @@
 		18D298EC23960C18009EE6B0 /* YMAIReplyWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YMAIReplyWindowController.xib; sourceTree = "<group>"; };
 		18D298F0239610F8009EE6B0 /* YMAIReplyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMAIReplyCell.h; sourceTree = "<group>"; };
 		18D298F1239610F8009EE6B0 /* YMAIReplyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMAIReplyCell.m; sourceTree = "<group>"; };
+		18D4C34924236180006A20E2 /* NSObject+ThemeHook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ThemeHook.h"; sourceTree = "<group>"; };
+		18D4C34A24236180006A20E2 /* NSObject+ThemeHook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ThemeHook.m"; sourceTree = "<group>"; };
 		18D8B18D227EFDFF007AE9EC /* TKRemoteControlScript.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = TKRemoteControlScript.scpt; sourceTree = "<group>"; };
 		18ECDCF02404E7F100090014 /* NSUserDefaults+Hook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Hook.h"; sourceTree = "<group>"; };
 		18ECDCF12404E7F100090014 /* NSUserDefaults+Hook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Hook.m"; sourceTree = "<group>"; };
@@ -639,6 +643,8 @@
 				185DE0DF23ACE208007651B5 /* NSDictionary+Safe.m */,
 				188A65E62272ACBA0096663E /* WeChat+hook.h */,
 				188A65EF2272ACBA0096663E /* WeChat+hook.m */,
+				18D4C34924236180006A20E2 /* NSObject+ThemeHook.h */,
+				18D4C34A24236180006A20E2 /* NSObject+ThemeHook.m */,
 				18ECDCF02404E7F100090014 /* NSUserDefaults+Hook.h */,
 				18ECDCF12404E7F100090014 /* NSUserDefaults+Hook.m */,
 				188A65ED2272ACBA0096663E /* YMMessageModel.h */,
@@ -768,6 +774,7 @@
 				1853B3C122C6105900A5C4FA /* ANYMethodLog.h in Headers */,
 				188A660B2272ACBA0096663E /* TKRemoteControlManager.h in Headers */,
 				36AC9D8A228A81C200EA9F97 /* XMLReader.h in Headers */,
+				18D4C34B24236180006A20E2 /* NSObject+ThemeHook.h in Headers */,
 				3632294222AFD9CF00F62EAB /* YMThemeMgr.h in Headers */,
 				18A7A16A2272AFE600361A98 /* GCDWebServerMultiPartFormRequest.h in Headers */,
 				188A660E2272ACBA0096663E /* TKHTTPManager.h in Headers */,
@@ -978,6 +985,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D4C34C24236180006A20E2 /* NSObject+ThemeHook.m in Sources */,
 				18A7A15E2272AFE600361A98 /* GCDWebServer.m in Sources */,
 				188A663A2272ACBA0096663E /* YMMessageModel.m in Sources */,
 				18A7A1632272AFE600361A98 /* GCDWebServerErrorResponse.m in Sources */,

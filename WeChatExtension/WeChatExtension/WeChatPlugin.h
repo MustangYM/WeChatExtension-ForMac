@@ -84,8 +84,13 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)onLogOut;
 @end
 
-@interface MMLoginQRCodeViewController : NSViewController
+@interface MMImageView : NSImageView
 
+@end
+
+@interface MMLoginQRCodeViewController : NSViewController
+@property(nonatomic) __weak MMImageView *qrCodeImgView;
+- (void)updateQRCodeImage:(id)arg1;
 @end
 
 @interface MessageService : NSObject
@@ -671,10 +676,6 @@ forHTTPHeaderField:(NSString *)field;
 @property(retain, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 @end
 
-@interface MMImageView : NSImageView
-
-@end
-
 @interface MMTextField : NSTextField
 
 @end
@@ -763,4 +764,12 @@ forHTTPHeaderField:(NSString *)field;
 
 @interface MMContactProfileController : NSViewController
 
+@end
+
+@interface MMWebSearchTableCellView : NSTableCellView
+@property (nonatomic, strong) NSColor *backgroundColor;
+@end
+
+@interface MMSearchChatLogTableCellView : NSTableCellView
+@property (nonatomic, strong) NSColor *backgroundColor;
 @end
