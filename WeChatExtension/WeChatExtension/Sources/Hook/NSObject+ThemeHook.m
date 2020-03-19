@@ -28,13 +28,12 @@
         hookMethod(objc_getClass("MMChatMessageViewController"), @selector(viewDidLoad), [self class], @selector(hook_ChatMessageViewControllerViewDidLoad));
         hookMethod(objc_getClass("NSScrollView"), @selector(initWithFrame:), [self class], @selector(hook_scrollViewInitWithFrame:));
         hookMethod(objc_getClass("MMSidebarRowView"), @selector(initWithFrame:), [self class], @selector(hook_sideBarViewInitWithFrame:));
-         hookMethod(objc_getClass("MMLoginWaitingConfirmViewController"), @selector(viewDidAppear), [self class], @selector(hook_loginWaitingViewDidLoad));
+        hookMethod(objc_getClass("MMLoginWaitingConfirmViewController"), @selector(viewDidAppear), [self class], @selector(hook_loginWaitingViewDidLoad));
         hookMethod(objc_getClass("MMLoginQRCodeViewController"), @selector(viewDidLoad), [self class], @selector(hook_QRCodeViewDidLoad));
         //    hookMethod(objc_getClass("MMTextField"), @selector(setAttributedStringValue:), [self class], @selector(hook_setAttributedStringValue:));
         hookMethod(objc_getClass("MMChatsTableCellView"), @selector(updateNickname), [self class], @selector(hook_updateNickName));
         hookMethod(objc_getClass("NSWindowController"), @selector(windowDidLoad), [self class], @selector(hook_windowDidLoad));
         hookMethod(objc_getClass("NSWindowController"), @selector(showWindow:), [self class], @selector(hook_showWindow:));
-        
         hookMethod(objc_getClass("MMFileListViewController"), @selector(viewDidLoad), [self class], @selector(hook_fileListViewDidLoad));
         hookMethod(objc_getClass("MMPreferencesWindowController"), @selector(windowDidLoad), [self class], @selector(hook_preferencesWindowDidLoad));
         hookMethod(objc_getClass("MMChatMemberListViewController"), @selector(viewDidLoad), [self class], @selector(hook_memberListViewDidLoad));
@@ -50,8 +49,6 @@
         hookMethod(objc_getClass("MMChatInfoView"), @selector(updateChatName), [self class], @selector(hook_updateChatName));
     }
 }
-
-
 
 - (void)hook_updateChatName
 {
@@ -94,8 +91,8 @@
 - (void)hook_globalChatManagerWindowDidLoad
 {
     [self hook_globalChatManagerWindowDidLoad];
-      NSViewController *viewController = (NSViewController *)self;
-      [[YMThemeMgr shareInstance] changeTheme:viewController.view];
+    NSViewController *viewController = (NSViewController *)self;
+    [[YMThemeMgr shareInstance] changeTheme:viewController.view];
 }
 
 - (void)hook_themeViewDidLoad
@@ -124,7 +121,7 @@
     [self hook_sessionPickerWindowDidLoad];
     MMSessionPickerWindow *window = (MMSessionPickerWindow *)self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-       [[YMThemeMgr shareInstance] changeTheme:window.window.contentView];
+        [[YMThemeMgr shareInstance] changeTheme:window.window.contentView];
     });
 }
 
@@ -178,7 +175,7 @@
     [self hook_preferencesWindowDidLoad];
     MMPreferencesWindowController *window = (MMPreferencesWindowController *)self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-       [[YMThemeMgr shareInstance] changeTheme:window.window.contentView];
+        [[YMThemeMgr shareInstance] changeTheme:window.window.contentView];
     });
 }
 
@@ -319,7 +316,7 @@
     NSViewController *controller = nil;
     while ((responder = [responder nextResponder])){
         if ([responder isKindOfClass: [NSViewController class]]){
-           controller = (NSViewController *)responder;
+            controller = (NSViewController *)responder;
         }
     }
     
@@ -351,7 +348,7 @@
     
     if ([view isKindOfClass:[objc_getClass("MMDragEventView") class]]) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-           [[YMThemeMgr shareInstance] changeTheme:view];
+            [[YMThemeMgr shareInstance] changeTheme:view];
         });
     }
     
@@ -373,13 +370,13 @@
         [controller isKindOfClass:[objc_getClass("MMFavoriteDetailViewContoller") class]]
         ) {
         
-      [[YMThemeMgr shareInstance] changeTheme:view];
+        [[YMThemeMgr shareInstance] changeTheme:view];
     }
-
+    
     if ([view isKindOfClass:[objc_getClass("NewNoteContentView") class]]) {
-         [[YMThemeMgr shareInstance] changeTheme:view];
-     }
-
+        [[YMThemeMgr shareInstance] changeTheme:view];
+    }
+    
     
     if ([view isKindOfClass:[objc_getClass("MMSessionPickerListGroupRowView") class]]) {
         for (NSView *sub in view.subviews) {
@@ -389,23 +386,21 @@
         }
     }
     
-    //MMSearchTableSectionHeaderView
     if ([view isKindOfClass:[objc_getClass("MMSearchTableSectionHeaderView") class]]) {
-           for (NSView *sub in view.subviews) {
-               if (![sub isKindOfClass:[NSTextField class]]) {
-                   [[YMThemeMgr shareInstance] changeTheme:sub];
-               }
-           }
-       }
-
+        for (NSView *sub in view.subviews) {
+            if (![sub isKindOfClass:[NSTextField class]]) {
+                [[YMThemeMgr shareInstance] changeTheme:sub];
+            }
+        }
+    }
+    
     if ([view isKindOfClass:[objc_getClass("MMOutlineButton") class]]) {
         [[YMThemeMgr shareInstance] changeTheme:view];
     }
     
-    //JNWClipView
     if ([view isKindOfClass:[objc_getClass("JNWClipView") class]]) {
-           [[YMThemeMgr shareInstance] changeTheme:view];
-       }
+        [[YMThemeMgr shareInstance] changeTheme:view];
+    }
 }
 
 @end
