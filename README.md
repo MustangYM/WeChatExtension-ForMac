@@ -135,15 +135,15 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
 
 ## 感谢捐赠者
 <table><tr>
-  <td align="center">
+   <td align="center">
   <a href="https://github.com/EGOISTK21"><img src="https://avatars0.githubusercontent.com/u/17921692?s=400&v=4" width="100px;" alt="EGOISTK21"/>
    <br></br><sub><b>EGOISTK21</b></sub>
     
-  <td align="center">
+   <td align="center">
   <a href="https://github.com/CoderLineChan"><img src="https://avatars1.githubusercontent.com/u/21659158?s=400&v=4" width="100px;" alt="CoderLineChan"/>
   <br></br><sub><b>CoderLineChan</b></sub>
 
- <td align="center">
+   <td align="center">
   <a href="https://github.com/RyanLiGod"><img src="https://avatars2.githubusercontent.com/u/10303946?s=400&v=4" width="100px;" alt="RyanLiGod"/>
   <br></br><sub><b>RyanLiGod</b></sub>
   
@@ -151,11 +151,11 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
   <a href="https://github.com/JpacheGitHub"><img src="https://avatars2.githubusercontent.com/u/15686977?s=400&v=4" width="100px;" alt="JpacheGitHub"/>
   <br></br><sub><b>JpacheGitHub</b></sub>
   
-  <td align="center">
+   <td align="center">
   <a href="https://github.com/y451687300"><img src="https://avatars1.githubusercontent.com/u/35559412?s=400&v=4" width="100px;" alt="y451687300"/>
   <br></br><sub><b>y451687300</b></sub>
   
-  <td align="center">
+   <td align="center">
   <a href="https://github.com/imjonat"><img src="https://avatars0.githubusercontent.com/u/42567368?s=400&v=4" width="100px;" alt="imjonat"/>
   <br></br><sub><b>imjonat</b></sub>
   
