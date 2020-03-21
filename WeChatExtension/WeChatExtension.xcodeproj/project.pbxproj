@@ -75,7 +75,7 @@
 		188A662D2272ACBA0096663E /* ColorConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65D72272ACBA0096663E /* ColorConstant.h */; };
 		188A662E2272ACBA0096663E /* DefineConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65D82272ACBA0096663E /* DefineConstant.h */; };
 		188A662F2272ACBA0096663E /* NotifyConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65D92272ACBA0096663E /* NotifyConstant.h */; };
-		188A66302272ACBA0096663E /* TKPrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = 188A65DA2272ACBA0096663E /* TKPrefixHeader.pch */; };
+		188A66302272ACBA0096663E /* YMPrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = 188A65DA2272ACBA0096663E /* YMPrefixHeader.pch */; };
 		188A66312272ACBA0096663E /* TKAutoReplyContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65DD2272ACBA0096663E /* TKAutoReplyContentView.m */; };
 		188A66322272ACBA0096663E /* TKAutoReplyCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65DE2272ACBA0096663E /* TKAutoReplyCell.h */; };
 		188A66332272ACBA0096663E /* TKAutoReplyContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65DF2272ACBA0096663E /* TKAutoReplyContentView.h */; };
@@ -244,7 +244,7 @@
 		188A65D72272ACBA0096663E /* ColorConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorConstant.h; sourceTree = "<group>"; };
 		188A65D82272ACBA0096663E /* DefineConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefineConstant.h; sourceTree = "<group>"; };
 		188A65D92272ACBA0096663E /* NotifyConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifyConstant.h; sourceTree = "<group>"; };
-		188A65DA2272ACBA0096663E /* TKPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKPrefixHeader.pch; sourceTree = "<group>"; };
+		188A65DA2272ACBA0096663E /* YMPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMPrefixHeader.pch; sourceTree = "<group>"; };
 		188A65DD2272ACBA0096663E /* TKAutoReplyContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAutoReplyContentView.m; sourceTree = "<group>"; };
 		188A65DE2272ACBA0096663E /* TKAutoReplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAutoReplyCell.h; sourceTree = "<group>"; };
 		188A65DF2272ACBA0096663E /* TKAutoReplyContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAutoReplyContentView.h; sourceTree = "<group>"; };
@@ -564,7 +564,7 @@
 			children = (
 				188A65C52272ACBA0096663E /* Category */,
 				188A65D62272ACBA0096663E /* Macro */,
-				188A65DA2272ACBA0096663E /* TKPrefixHeader.pch */,
+				188A65DA2272ACBA0096663E /* YMPrefixHeader.pch */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -813,7 +813,7 @@
 				188A660C2272ACBA0096663E /* TKVersionManager.h in Headers */,
 				36AC9D87228A813F00EA9F97 /* YMDownloadManager.h in Headers */,
 				3644BDFC2285545500EDE358 /* TCBlobDownload.h in Headers */,
-				188A66302272ACBA0096663E /* TKPrefixHeader.pch in Headers */,
+				188A66302272ACBA0096663E /* YMPrefixHeader.pch in Headers */,
 				188A661F2272ACBA0096663E /* NSTextField+Action.h in Headers */,
 				188A66262272ACBA0096663E /* NSButton+Action.h in Headers */,
 				18A7A1702272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.h in Headers */,
@@ -1244,7 +1244,7 @@
 					"$(PROJECT_DIR)/WeChatExtension/Sources",
 				);
 				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = WeChatExtension/Sources/Common/TKPrefixHeader.pch;
+				GCC_PREFIX_HEADER = WeChatExtension/Sources/Common/YMPrefixHeader.pch;
 				INFOPLIST_FILE = WeChatExtension/Base.lproj/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1277,7 +1277,7 @@
 					"$(PROJECT_DIR)/WeChatExtension/Sources",
 				);
 				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = WeChatExtension/Sources/Common/TKPrefixHeader.pch;
+				GCC_PREFIX_HEADER = WeChatExtension/Sources/Common/YMPrefixHeader.pch;
 				INFOPLIST_FILE = WeChatExtension/Base.lproj/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (

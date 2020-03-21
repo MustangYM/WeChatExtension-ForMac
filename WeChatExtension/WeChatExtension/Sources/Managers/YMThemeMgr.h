@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)shareInstance;
 - (void)changeTheme:(NSView *)view;
 - (void)changeTheme:(NSView *)view color:(NSColor *)color;
+- (NSColor *)randomColor:(NSString *)string;
 @end
 
 NS_ASSUME_NONNULL_END

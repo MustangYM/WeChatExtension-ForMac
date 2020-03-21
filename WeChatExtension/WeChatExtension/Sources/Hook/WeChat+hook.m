@@ -431,7 +431,7 @@
     if (![self.className isEqualToString:@"MMLoginOneClickViewController"]) {
         return;
     } else {
-        if ([TKWeChatPluginConfig sharedConfig].darkMode) {
+        if ([TKWeChatPluginConfig sharedConfig].darkMode || [TKWeChatPluginConfig sharedConfig].pinkMode) {
             [[YMThemeMgr shareInstance] changeTheme:loginVC.view];
         }
     }

@@ -21,7 +21,13 @@
 @implementation NSObject (ThemeHook)
 + (void)hookTheme
 {
-    if ([TKWeChatPluginConfig sharedConfig].darkMode) {
+    if (![TKWeChatPluginConfig sharedConfig].isThemeLoaded) {
+        [[TKWeChatPluginConfig sharedConfig] setIsThemeLoaded:YES];
+        [[TKWeChatPluginConfig sharedConfig] setDarkMode:YES];
+        [[TKWeChatPluginConfig sharedConfig] setGroupMultiColorMode:YES];
+    }
+    
+    if ([TKWeChatPluginConfig sharedConfig].darkMode || [TKWeChatPluginConfig sharedConfig].pinkMode) {
         hookMethod(objc_getClass("MMTextField"), @selector(setTextColor:), [self class], @selector(hook_setTextColor:));
         hookMethod(objc_getClass("NSView"), @selector(addSubview:), [self class], @selector(hook_initWithFrame:));
         hookMethod(objc_getClass("MMComposeInputViewController"), @selector(viewDidLoad), [self class], @selector(hook_ComposeInputViewControllerViewDidLoad));
@@ -47,7 +53,34 @@
         hookMethod(objc_getClass("NSAlert"), @selector(setMessageText:), [self class], @selector(hook_setMessageText:));
         hookMethod(objc_getClass("NSTextFieldCell"), @selector(setTextColor:), [self class], @selector(hook_setTextFieldCellColor:));
         hookMethod(objc_getClass("MMChatInfoView"), @selector(updateChatName), [self class], @selector(hook_updateChatName));
+        hookClassMethod(objc_getClass("MMComposeTextView"), @selector(preprocessTextAttributes:), [self class], @selector(hook_preprocessTextAttributes:));
+        hookMethod(objc_getClass("MMMessageCellView"), @selector(updateGroupChatNickName), [self class], @selector(hook_updateGroupChatNickName));
     }
+}
+
+- (void)hook_updateGroupChatNickName
+{
+    [self hook_updateGroupChatNickName];
+    MMMessageCellView *cellView = (MMMessageCellView *)self;
+    NSTextFieldCell *cell = [cellView.groupChatNickNameLabel valueForKey:@"cell"];
+    NSAttributedString *originalText = [cell valueForKey:@"contents"];
+    NSColor *radomColor = nil;
+    if ([TKWeChatPluginConfig sharedConfig].darkMode && [TKWeChatPluginConfig sharedConfig].groupMultiColorMode) {
+        radomColor = [[YMThemeMgr shareInstance] randomColor:originalText.string.md5String];
+    } else {
+        radomColor = kMainTextColor;
+    }
+    
+    NSMutableAttributedString *darkModelChatName = [[NSMutableAttributedString alloc] initWithString:originalText.string attributes:@{NSForegroundColorAttributeName : radomColor, NSFontAttributeName : [NSFont systemFontOfSize:12]}];
+    [cellView.groupChatNickNameLabel setAttributedStringValue:darkModelChatName];
+}
+
++ (id)hook_preprocessTextAttributes:(id)arg1
+{
+    NSDictionary *styleDict = (NSDictionary *)arg1;
+    NSMutableDictionary *changeDict = [NSMutableDictionary dictionaryWithDictionary:styleDict];
+    [changeDict setValue:kMainTextColor forKey:@"NSColor"];
+    return changeDict;
 }
 
 - (void)hook_updateChatName
@@ -58,7 +91,7 @@
     @try {
         NSTextFieldCell *cell = [infoView.chatNameLabel valueForKey:@"cell"];
         NSAttributedString *originalText = [cell valueForKey:@"contents"];
-        NSMutableAttributedString *darkModelChatName = [[NSMutableAttributedString alloc] initWithString:originalText.string attributes:@{NSForegroundColorAttributeName : [NSColor whiteColor], NSFontAttributeName : [NSFont systemFontOfSize:18]}];
+        NSMutableAttributedString *darkModelChatName = [[NSMutableAttributedString alloc] initWithString:originalText.string attributes:@{NSForegroundColorAttributeName : [NSColor whiteColor], NSFontAttributeName : [NSFont systemFontOfSize:16]}];
         [infoView.chatNameLabel setAttributedStringValue:darkModelChatName];
     } @catch (NSException *exception) {
         
@@ -67,7 +100,7 @@
 
 - (void)hook_setTextFieldCellColor:(NSColor *)color
 {
-    [self hook_setTextFieldCellColor:kRGBColor(179, 154, 241, 0.7)];
+    [self hook_setTextFieldCellColor:kMainTextColor];
 }
 
 - (void)hook_setMessageText:(id)arg1
@@ -85,7 +118,7 @@
 
 - (void)hook_tableViewsetBackgroundColor:(NSColor *)arg1
 {
-    [self hook_tableViewsetBackgroundColor:kRGBColor(61, 62, 60, 1)];
+    [self hook_tableViewsetBackgroundColor:kMainBackgroundColor];
 }
 
 - (void)hook_globalChatManagerWindowDidLoad
@@ -264,7 +297,7 @@
     arg1 = kRGBColor(162, 182, 203, 1.0);
     [self hook_setTextColor:arg1];
     MMTextField *textField = (MMTextField *)self;
-    textField.backgroundColor = kRGBColor(61, 62, 60, 1);
+    textField.backgroundColor = kMainBackgroundColor;
 }
 
 - (instancetype)hook_sideBarViewInitWithFrame:(NSRect)frameRect {
@@ -312,6 +345,10 @@
         return;
     }
     
+    if ([view isKindOfClass:[objc_getClass("MMMessageCellView") class]]) {
+        return;
+    }
+    
     NSResponder *responder = view;
     NSViewController *controller = nil;
     while ((responder = [responder nextResponder])){
@@ -325,7 +362,7 @@
         MMComposeTextView *textView = (MMComposeTextView *)view;
         textView.insertionPointColor = [NSColor whiteColor];
         textView.textColor = [NSColor whiteColor];
-        textView.backgroundColor = kRGBColor(61, 62, 60, 1);
+        textView.backgroundColor = kMainBackgroundColor;
     }
     
     if ([view isKindOfClass:[objc_getClass("SwipeDeleteView") class]]) {
@@ -354,7 +391,7 @@
     
     if ([controller isKindOfClass:[objc_getClass("MMChatMessageViewController") class]]) {
         MMChatMessageViewController *msgViewController = (MMChatMessageViewController *)controller;
-        [msgViewController.messageTableView setBackgroundColor:kRGBColor(61, 62, 60, 1)];
+        [msgViewController.messageTableView setBackgroundColor:kMainBackgroundColor];
         [[msgViewController.messageTableView enclosingScrollView] setDrawsBackground:NO];
         if (![view isKindOfClass:objc_getClass("NSTextField")]) {
             [[YMThemeMgr shareInstance] changeTheme:view];

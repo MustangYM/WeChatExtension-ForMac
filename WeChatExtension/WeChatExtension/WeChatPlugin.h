@@ -11,10 +11,6 @@
 FOUNDATION_EXPORT double WeChatPluginVersionNumber;
 FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 
-#define kRGBColor(r,g,b,a) [NSColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
-#define kArc4random_Double_inSpace(a,b) a<b ? rand() / (float)RAND_MAX * (b-a) * 1 + (a) : rand() / (float)RAND_MAX * (a-b) * 1 + (b)
-#pragma mark - 微信原始的部分类与方法
-
 @interface MMFileTypeHelper : NSObject
 + (id)firstFrameImageOfVideoWithFilePath:(id)arg1;
 @end
@@ -776,4 +772,8 @@ forHTTPHeaderField:(NSString *)field;
 
 @interface MMChatInfoView : NSView
 @property(retain, nonatomic) MMTextField *chatNameLabel; // @synthesize chatNameLabel=_chatNameLabel;
+@end
+
+@interface MMMessageCellView : NSView
+@property(retain, nonatomic) NSTextField *groupChatNickNameLabel;
 @end

@@ -45,7 +45,11 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @property (nonatomic, strong) YMAIAutoModel *AIReplyModel;
 @property (nonatomic, assign) PluginLanguageType languageType;
 @property (nonatomic, assign) BOOL isAllowMoreOpenBaby;
+
 @property (nonatomic, assign) BOOL darkMode;
+@property (nonatomic, assign) BOOL pinkMode;
+@property (nonatomic, assign) BOOL groupMultiColorMode;
+@property (nonatomic, assign) BOOL isThemeLoaded;
 
 - (void)saveAutoReplyModels;
 - (void)saveRemoteControlModels;

@@ -1,0 +1,38 @@
+//
+//  YMPrefixHeader.pch
+//  WeChatExtension
+//
+//  Created by WeChatExtension on 2017/8/20.
+//  Copyright © 2017年 WeChatExtension. All rights reserved.
+//
+
+#ifndef YMPrefixHeader_pch
+#define YMPrefixHeader_pch
+
+#ifdef __OBJC__
+#import "ColorConstant.h"
+#import "DefineConstant.h"
+#import "NotifyConstant.h"
+#import "NSView+Action.h"
+#import "NSButton+Action.h"
+#import "NSTextField+Action.h"
+#import "NSMenu+Action.h"
+#import "NSString+Action.h"
+#import "NSDate+Action.h"
+#import "NSWindowController+Action.h"
+#import "WeChatPlugin.h"
+#import "YMUtility.h"
+
+#import "TKWeChatPluginConfig.h"
+#import "YMHelper.h"
+#endif
+
+#define kRGBColor(r,g,b,a) [NSColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+#define kArc4random_Double_inSpace(a,b) a<b ? rand() / (float)RAND_MAX * (b-a) * 1 + (a) : rand() / (float)RAND_MAX * (a-b) * 1 + (b)
+
+#define kDarkBacgroundColor kRGBColor(24, 34, 45, 1)
+#define kPinkBacgroundColor kRGBColor(226,139,156,1.0)
+
+#define kMainBackgroundColor [TKWeChatPluginConfig sharedConfig].darkMode ? kDarkBacgroundColor : kPinkBacgroundColor
+#define kMainTextColor [TKWeChatPluginConfig sharedConfig].darkMode ? kRGBColor(177, 195, 213, 1.0) : kRGBColor(47, 47, 50, 0.7)
+#endif /* YMPrefixHeader_pch */
