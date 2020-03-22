@@ -223,7 +223,7 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
   <br></br><sub><b>snakejordan</b></sub>
  
    <td align="center">
-  <a href="https://github.com/lzf971107"><img src="https://avatars2.githubusercontent.com/u/37407114?s=400&u=6c9f6eeb4a8b90814ff6ef1a28cdaa20b47d80ec&v=4" alt="lzf971107"/>
+  <a href="https://github.com/lzf971107"><img src="https://avatars2.githubusercontent.com/u/37407114?s=400&u=6c9f6eeb4a8b90814ff6ef1a28cdaa20b47d80ec&v=4" width="100px" alt="lzf971107"/>
   <br></br><sub><b>lzf971107</b></sub>
  
  </td></tr></table>
