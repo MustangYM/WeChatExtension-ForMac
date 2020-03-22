@@ -15,7 +15,7 @@
 
 ## 黑夜/少女 模式
 - 众多软件都适配了黑夜模式, 等了这么久Mac微信官方还是没做适配. 所以做了这个玩票功能
-- 警告: 少量细节没有做适配, 不影响正常使用, 如果你是强迫症加完美主义, 可能不太适合
+- 少量细节没有做适配, 不影响正常使用, 如果你是强迫症加完美主义, 可以`主题模式-黑夜模式-再次点击`关掉这个功能
 - 黑夜模式, 群聊中每个发言人的昵称颜色都会有所区别
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/darkMode.png" width="800px"/>
