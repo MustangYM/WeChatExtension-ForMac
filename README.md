@@ -216,6 +216,18 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
  
 </td></tr></table>
 
+ <table><tr>
+ 
+   <td align="center">
+  <a href="https://github.com/snakejordan"><img src="https://avatars0.githubusercontent.com/u/3376284?s=400&v=4" width="100px" alt="snakejordan"/>
+  <br></br><sub><b>snakejordan</b></sub>
+ 
+   <td align="center">
+  <a href="https://github.com/lzf971107"><img src="https://avatars2.githubusercontent.com/u/37407114?s=400&u=6c9f6eeb4a8b90814ff6ef1a28cdaa20b47d80ec&v=4" alt="lzf971107"/>
+  <br></br><sub><b>lzf971107</b></sub>
+ 
+ </td></tr></table>
+
 ## 更新日志
 ```
 2020-03-19 表情,聊天记录,群聊创建输入框,登录页,弹窗等等页面适配黑暗模式
