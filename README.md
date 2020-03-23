@@ -234,6 +234,14 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
   <a href="https://github.com/watership"><img src="https://avatars0.githubusercontent.com/u/2470422?s=400&u=b682f8bbbe6931a9e109bbe3f63c6f87fbed7d60&v=4" width="100px" alt="watership"/>
   <br></br><sub><b>watership</b></sub>
  
+   <td align="center">
+  <a href="https://github.com/Artemis-13"><img src="https://avatars2.githubusercontent.com/u/61645537?s=400&u=cbbb168e60b1d1ace572cd4bcf9712f054a1497c&v=4" width="100px" alt="Artemis-13"/>
+  <br></br><sub><b>Artemis-13</b></sub>
+ 
+   <td align="center">
+  <a href="https://github.com/yuanaichi"><img src="https://avatars2.githubusercontent.com/u/7549002?s=400&u=6771f9fbd349486f6aaff4a34da057fb426034d8&v=4" width="100px" alt="yuanaichi"/>
+  <br></br><sub><b>yuanaichi</b></sub>
+  
  </td></tr></table>
 
 ## 更新日志
