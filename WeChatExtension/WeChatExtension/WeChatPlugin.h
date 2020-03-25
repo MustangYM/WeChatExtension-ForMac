@@ -684,6 +684,12 @@ forHTTPHeaderField:(NSString *)field;
 
 @end
 
+@interface MMSidebarColorIconView : MMView
+@property(retain, nonatomic) NSImage *image; // @synthesize image=_image;
+@property(retain, nonatomic) NSColor *selectedColor; // @synthesize selectedColor=_selectedColor;
+@property(retain, nonatomic) NSColor *normalColor; // @synthesize normalColor=_normalColor;
+@end
+
 @interface MMChatsTableCellView : NSTableCellView
 @property(nonatomic) __weak id <MMChatsTableCellViewDelegate> delegate;
 @property(retain, nonatomic) MMSessionInfo *sessionInfo;
@@ -699,6 +705,7 @@ forHTTPHeaderField:(NSString *)field;
 @property(retain, nonatomic) NSView *stickyBackgroundView; // @synthesize stickyBackgroundView=_stickyBackgroundView;
 @property(nonatomic) BOOL shouldRemoveHighlight; // @synthesize shouldRemoveHighlight=_shouldRemoveHighlight;
 @property(retain, nonatomic) NSView *containerView; // @synthesize containerView=_containerView;
+@property(retain, nonatomic) MMSidebarColorIconView *muteIndicator; // @synthesize muteIndicator=_muteIndicator;
 
 @property(nonatomic) BOOL selected; // @synthesize selected=_selected;
 - (void)menuWillOpen:(id)arg1;
@@ -778,8 +785,3 @@ forHTTPHeaderField:(NSString *)field;
 @property(retain, nonatomic) NSTextField *groupChatNickNameLabel;
 @end
 
-@interface MMSidebarColorIconView : MMView
-@property(retain, nonatomic) NSImage *image; // @synthesize image=_image;
-@property(retain, nonatomic) NSColor *selectedColor; // @synthesize selectedColor=_selectedColor;
-@property(retain, nonatomic) NSColor *normalColor; // @synthesize normalColor=_normalColor;
-@end

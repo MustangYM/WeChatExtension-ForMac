@@ -233,6 +233,7 @@
     
     if ([TKWeChatPluginConfig sharedConfig].darkMode) {
         [[YMThemeMgr shareInstance] changeTheme:cell color:kRGBColor(33, 48, 64, 1.0)];
+        cell.muteIndicator.normalColor = [NSColor redColor];
     }
 }
 
@@ -391,14 +392,7 @@
     if ([view isKindOfClass:[objc_getClass("NewNoteContentView") class]]) {
         [[YMThemeMgr shareInstance] changeTheme:view];
     }
-    
-    //消息屏蔽提示
-    if ([view isKindOfClass:[objc_getClass("MMSidebarColorIconView") class]]) {
-        if ([TKWeChatPluginConfig sharedConfig].darkMode) {
-            MMSidebarColorIconView *sidebar = (MMSidebarColorIconView *)view;
-            sidebar.normalColor = [NSColor redColor];
-        }
-    }
+
     #pragma mark - view
     if ([view isKindOfClass:[objc_getClass("MMSessionPickerListGroupRowView") class]]) {
         for (NSView *sub in view.subviews) {
