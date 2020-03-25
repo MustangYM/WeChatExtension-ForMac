@@ -392,10 +392,12 @@
         [[YMThemeMgr shareInstance] changeTheme:view];
     }
     
-    //MMSidebarColorIconView
+    //消息屏蔽提示
     if ([view isKindOfClass:[objc_getClass("MMSidebarColorIconView") class]]) {
-        MMSidebarColorIconView *sidebar = (MMSidebarColorIconView *)view;
-        sidebar.normalColor = [NSColor whiteColor];
+        if ([TKWeChatPluginConfig sharedConfig].darkMode) {
+            MMSidebarColorIconView *sidebar = (MMSidebarColorIconView *)view;
+            sidebar.normalColor = [NSColor redColor];
+        }
     }
     #pragma mark - view
     if ([view isKindOfClass:[objc_getClass("MMSessionPickerListGroupRowView") class]]) {
