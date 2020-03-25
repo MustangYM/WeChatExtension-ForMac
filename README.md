@@ -176,6 +176,11 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
 
 ```
 
+## Contributors
+
+This project exists thanks to all the people who contribute. 
+<a href="https://github.com/MustangYM/WeChatExtension-ForMac/graphs/contributors"><img src="https://opencollective.com/mustangym666/contributors.svg?width=890&button=false" /></a>
+
 ## 感谢捐赠者
 <table><tr>
    <td align="center">
@@ -290,12 +295,6 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
   <br></br><sub><b>AhQi7</b></sub>
  
   </td></tr></table>
-
-## Contributors
-
-This project exists thanks to all the people who contribute. 
-<a href="https://github.com/MustangYM/WeChatExtension-ForMac/graphs/contributors"><img src="https://opencollective.com/mustangym666/contributors.svg?width=890&button=false" /></a>
-
 
 ## Backers
 
