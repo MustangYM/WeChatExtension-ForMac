@@ -66,13 +66,19 @@
     }];
     
     NSMutableArray *selectSessions = [[TKWeChatPluginConfig sharedConfig] selectSessions];
+    NSColor *changeColor = [TKWeChatPluginConfig sharedConfig].darkMode ? kRGBColor(255, 255, 255, 1.0) : [NSColor blackColor];
     if (isIgnore) {
-        cellView.layer.backgroundColor = kBG3.CGColor;
+        changeColor = kRGBColor(25, 185, 77, 1.0);
     } else if ([selectSessions containsObject:sessionInfo]){
-        cellView.layer.backgroundColor = kBG4.CGColor;
-    } else {
-        cellView.layer.backgroundColor = [NSColor clearColor].CGColor;
+        changeColor = [NSColor redColor];
     }
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSAttributedString *str = cellView.nickName.attributedStringValue;
+        NSMutableAttributedString *returnValue = [[NSMutableAttributedString alloc] initWithString:str.string attributes:@{NSForegroundColorAttributeName :changeColor, NSFontAttributeName : [NSFont systemFontOfSize:14]}];
+        cellView.nickName.attributedStringValue = returnValue;
+    });
+    
     [cellView.layer setNeedsDisplay];
 }
 

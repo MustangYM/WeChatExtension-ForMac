@@ -777,3 +777,9 @@ forHTTPHeaderField:(NSString *)field;
 @interface MMMessageCellView : NSView
 @property(retain, nonatomic) NSTextField *groupChatNickNameLabel;
 @end
+
+@interface MMSidebarColorIconView : MMView
+@property(retain, nonatomic) NSImage *image; // @synthesize image=_image;
+@property(retain, nonatomic) NSColor *selectedColor; // @synthesize selectedColor=_selectedColor;
+@property(retain, nonatomic) NSColor *normalColor; // @synthesize normalColor=_normalColor;
+@end

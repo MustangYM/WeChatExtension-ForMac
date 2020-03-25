@@ -59,7 +59,6 @@
     }
 }
 
-
 - (void)hook_textFieldSetTextColor:(NSAttributedString *)arg1
 {
     if ([TKWeChatPluginConfig sharedConfig].darkMode) {
@@ -241,7 +240,7 @@
 {
     [self hook_mouseDown:arg1];
     MMChatsTableCellView *cell = (MMChatsTableCellView *)self;
-    
+
     NSColor *highColor = nil;
     if (cell.selected) {
         highColor = kRGBColor(147, 148, 248, 0.5);
@@ -339,7 +338,9 @@
         for (NSView *sub in controller.view.subviews) {
             if ([sub isKindOfClass:objc_getClass("SVGButton")]) {
                 NSButton *button = (NSButton *)sub;
+                NSImage *tempImage = button.image;
                 button.image = button.alternateImage;
+                button.alternateImage = tempImage;
                 button.alphaValue = 0.5;
             }
         }
@@ -348,6 +349,10 @@
 
 - (void)hook_initWithFrame:(NSView *)view {
     [self hook_initWithFrame:view];
+    
+    if ([view isKindOfClass:[objc_getClass("NSTouchBarView") class]]) {
+        return;
+    }
     
     if ([view isKindOfClass:[objc_getClass("NSButtonImageView") class]]) {
         return;
@@ -387,6 +392,11 @@
         [[YMThemeMgr shareInstance] changeTheme:view];
     }
     
+    //MMSidebarColorIconView
+    if ([view isKindOfClass:[objc_getClass("MMSidebarColorIconView") class]]) {
+        MMSidebarColorIconView *sidebar = (MMSidebarColorIconView *)view;
+        sidebar.normalColor = [NSColor whiteColor];
+    }
     #pragma mark - view
     if ([view isKindOfClass:[objc_getClass("MMSessionPickerListGroupRowView") class]]) {
         for (NSView *sub in view.subviews) {
@@ -501,6 +511,15 @@
     
     if ([self isKindOfClass:objc_getClass("AVControlsContainerViewController")]) {
          return;
+    }
+    
+    //Fix: TouchBar在粉色模式下会变色
+    if ([self isKindOfClass:objc_getClass("NSCandidateListViewController")]) {
+        return;
+    }
+    
+    if ([self isKindOfClass:objc_getClass("NSTouchBarViewController")]) {
+        return;
     }
     
     NSViewController *viewController = (NSViewController *)self;
