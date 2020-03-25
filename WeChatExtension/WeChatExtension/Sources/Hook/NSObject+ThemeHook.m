@@ -418,6 +418,14 @@
         [[YMThemeMgr shareInstance] changeTheme:view];
     }
     
+    if ([view isKindOfClass:[objc_getClass("_NSBrowserFlippedClipView") class]]) {
+        [[YMThemeMgr shareInstance] changeTheme:view];
+    }
+    
+    if ([view isKindOfClass:[objc_getClass("NSClipView") class]]) {
+        [[YMThemeMgr shareInstance] changeTheme:view];
+    }
+    
     
     #pragma mark - controller
     NSResponder *responder = view;
@@ -515,6 +523,11 @@
     }
     
     if ([self isKindOfClass:objc_getClass("NSTouchBarViewController")]) {
+        return;
+    }
+    
+    //Fix
+    if ([NSStringFromClass(self.class) containsString:@"FI_"]) {
         return;
     }
     
