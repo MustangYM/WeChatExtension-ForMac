@@ -251,6 +251,14 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
   <br></br><sub><b>coolmilkTea</b></sub>
   
  </td></tr></table>
+ 
+  <table><tr>
+ 
+   <td align="center">
+  <a href="https://github.com/AhQi7"><img src="https://avatars0.githubusercontent.com/u/46393078?s=400&v=4" width="100px;" alt="AhQi7"/>
+  <br></br><sub><b>AhQi7</b></sub>
+ 
+  </td></tr></table>
 
 ## 更新日志
 ```
