@@ -145,6 +145,42 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190625-102808%402x.png" width="800px"/>
 </p>
 
+## 更新日志
+```
+2020-03-19 表情,聊天记录,群聊创建输入框,登录页,弹窗等等页面适配黑暗模式
+2020-03-17 黑夜模式
+2020-02-25 兼容微信2.4.0, 修复小程序不能打开BUG, 并兼容微信多开
+2019-12-27 退群提醒
+2019-12-23 发布2.3.0版本, 新增显示小程序信息, 转账金额
+2019-12-22 还原老版自动回复, 优化AI自动回复界面
+2019-12-20 显示小程序消息详情
+2019-12-17 修复Alfred聊天记录为空问题
+2019-12-10 适配2.3.29微信客户端, 消息撤回逻辑问题得以修复
+2019-12-04 适配OSX10.14.6, 修复翻译问题, 增加AI自动聊天
+2019-11-16 将安装包从17.7MB瘦身到2.6MB, 没有"科学上网"的同学大大加快安装更新速度, 提升人民幸福感
+2019-11-14 修复多选会话后批量删除闪退
+2019-11-1  修复Alfred头像不显示问题
+2019-10-28 优化英文系统下的文案
+2019-8-07 修复联系人信息获取接口改变导致自动回复和Alfred的大面积闪退, sorry. 新增自动下载聊天高清图功能.
+2019-7-26 适配2.3.26版本, 修复闪退, 屏蔽更新.
+2019-7-10 修复清除空会话闪退
+2019-6-28 修复消息筛选Bug, 群聊撤回同步到手机显示真实联系人昵称
+2019-6-25 适配OSX 10.9
+2019-6-25 消息防撤回同步到手机, 增加筛选功能, 可以只同步群聊或单聊
+2019-6-19 详细安装方法
+2019-6-5  修复会话多选闪退, 点击公众号类型消息闪退
+2019-5-28 支持系统浏览器打开网页
+2019-5-14 如果Mac拦截到A发送来的消息, 手机也会同步收到的这条已经拦截的消息, 小助手一键更新.
+2019-5-10 目前更新还很不方便, 稍后会加入更加方便的一键更新.
+2019-5-10 现在在最新版的微信中的多开和消息撤回是可以用的, 如果不能用, 请检查小助手的版本. 
+
+```
+
+## Contributors
+
+This project exists thanks to all the people who contribute. 
+<a href="https://github.com/MustangYM/WeChatExtension-ForMac/graphs/contributors"><img src="https://opencollective.com/mustangym666/contributors.svg?width=890&button=false" /></a>
+
 ## 感谢捐赠者
 <table><tr>
    <td align="center">
@@ -242,44 +278,23 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
   <a href="https://github.com/yuanaichi"><img src="https://avatars2.githubusercontent.com/u/7549002?s=400&u=6771f9fbd349486f6aaff4a34da057fb426034d8&v=4" width="100px" alt="yuanaichi"/>
   <br></br><sub><b>yuanaichi</b></sub>
   
+   <td align="center">
+  <a href="https://github.com/JJ7539"><img src="https://avatars0.githubusercontent.com/u/11268054?s=400&u=c0c2c99164982cefb00b9677dd17848420bec734&v=4" width="100px" alt="JJ7539"/>
+  <br></br><sub><b>JJ7539</b></sub>
+ 
+   <td align="center">
+  <a href="https://github.com/coolmilkTea"><img src="https://avatars2.githubusercontent.com/u/48348904?s=400&u=4fd777edf333f39a6a3fe7917a159aad6c98b200&v=4" width="100px;" alt="coolmilkTea"/>
+  <br></br><sub><b>coolmilkTea</b></sub>
+  
  </td></tr></table>
-
-## 更新日志
-```
-2020-03-19 表情,聊天记录,群聊创建输入框,登录页,弹窗等等页面适配黑暗模式
-2020-03-17 黑夜模式
-2020-02-25 兼容微信2.4.0, 修复小程序不能打开BUG, 并兼容微信多开
-2019-12-27 退群提醒
-2019-12-23 发布2.3.0版本, 新增显示小程序信息, 转账金额
-2019-12-22 还原老版自动回复, 优化AI自动回复界面
-2019-12-20 显示小程序消息详情
-2019-12-17 修复Alfred聊天记录为空问题
-2019-12-10 适配2.3.29微信客户端, 消息撤回逻辑问题得以修复
-2019-12-04 适配OSX10.14.6, 修复翻译问题, 增加AI自动聊天
-2019-11-16 将安装包从17.7MB瘦身到2.6MB, 没有"科学上网"的同学大大加快安装更新速度, 提升人民幸福感
-2019-11-14 修复多选会话后批量删除闪退
-2019-11-1  修复Alfred头像不显示问题
-2019-10-28 优化英文系统下的文案
-2019-8-07 修复联系人信息获取接口改变导致自动回复和Alfred的大面积闪退, sorry. 新增自动下载聊天高清图功能.
-2019-7-26 适配2.3.26版本, 修复闪退, 屏蔽更新.
-2019-7-10 修复清除空会话闪退
-2019-6-28 修复消息筛选Bug, 群聊撤回同步到手机显示真实联系人昵称
-2019-6-25 适配OSX 10.9
-2019-6-25 消息防撤回同步到手机, 增加筛选功能, 可以只同步群聊或单聊
-2019-6-19 详细安装方法
-2019-6-5  修复会话多选闪退, 点击公众号类型消息闪退
-2019-5-28 支持系统浏览器打开网页
-2019-5-14 如果Mac拦截到A发送来的消息, 手机也会同步收到的这条已经拦截的消息, 小助手一键更新.
-2019-5-10 目前更新还很不方便, 稍后会加入更加方便的一键更新.
-2019-5-10 现在在最新版的微信中的多开和消息撤回是可以用的, 如果不能用, 请检查小助手的版本. 
-
-```
-
-## Contributors
-
-This project exists thanks to all the people who contribute. 
-<a href="https://github.com/MustangYM/WeChatExtension-ForMac/graphs/contributors"><img src="https://opencollective.com/mustangym666/contributors.svg?width=890&button=false" /></a>
-
+ 
+  <table><tr>
+ 
+   <td align="center">
+  <a href="https://github.com/AhQi7"><img src="https://avatars0.githubusercontent.com/u/46393078?s=400&v=4" width="100px;" alt="AhQi7"/>
+  <br></br><sub><b>AhQi7</b></sub>
+ 
+  </td></tr></table>
 
 ## Backers
 
