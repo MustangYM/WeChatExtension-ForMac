@@ -56,7 +56,45 @@
         hookClassMethod(objc_getClass("MMComposeTextView"), @selector(preprocessTextAttributes:), [self class], @selector(hook_preprocessTextAttributes:));
         hookMethod(objc_getClass("MMMessageCellView"), @selector(updateGroupChatNickName), [self class], @selector(hook_updateGroupChatNickName));
         hookMethod(objc_getClass("MMCTTextView"), @selector(setAttributedString:), [self class], @selector(hook_textFieldSetTextColor:));
+        hookMethod(objc_getClass("MMSessionPickerListRowView"), @selector(drawRect:), [self class], @selector(hook_pickerListDrawRect:));
+        hookMethod(objc_getClass("MMChatDetailMemberRowView"), @selector(avatarImageView), [self class], @selector(hook_chatDetailAvatarImageView));
     }
+
+}
+
+- (NSImageView *)hook_chatDetailAvatarImageView
+{
+    if ([TKWeChatPluginConfig sharedConfig].darkMode) {
+        @try {
+            MMChatDetailMemberRowView *row = (MMChatDetailMemberRowView *)self;
+            NSTextFieldCell *cell = [row.nameField valueForKey:@"cell"];
+            NSAttributedString *originalText = [cell valueForKey:@"contents"];
+            NSMutableAttributedString *darkModelChatName = [[NSMutableAttributedString alloc] initWithString:originalText.string attributes:@{NSForegroundColorAttributeName : kMainTextColor, NSFontAttributeName : [NSFont systemFontOfSize:14]}];
+            [row.nameField setAttributedStringValue:darkModelChatName];
+        } @catch (NSException *exception) {
+            
+        }
+    }
+
+    return [self hook_chatDetailAvatarImageView];
+}
+
+- (void)hook_pickerListDrawRect:(CGRect)arg1
+{
+    [self hook_pickerListDrawRect:arg1];
+    
+    if ([TKWeChatPluginConfig sharedConfig].darkMode) {
+        @try {
+            MMSessionPickerListRowView *row = (MMSessionPickerListRowView *)self;
+            NSTextFieldCell *cell = [row.sessionNameField valueForKey:@"cell"];
+            NSAttributedString *originalText = [cell valueForKey:@"contents"];
+            NSMutableAttributedString *darkModelChatName = [[NSMutableAttributedString alloc] initWithString:originalText.string attributes:@{NSForegroundColorAttributeName : kMainTextColor, NSFontAttributeName : [NSFont systemFontOfSize:14]}];
+            [row.sessionNameField setAttributedStringValue:darkModelChatName];
+        } @catch (NSException *exception) {
+            
+        }
+    }
+
 }
 
 - (void)hook_textFieldSetTextColor:(NSAttributedString *)arg1
@@ -351,6 +389,10 @@
 - (void)hook_initWithFrame:(NSView *)view {
     [self hook_initWithFrame:view];
     
+    if ([view isKindOfClass:[objc_getClass("MMSystemMessageCellView") class]]) {
+        return;
+    }
+    
     if ([view isKindOfClass:[objc_getClass("NSTouchBarView") class]]) {
         return;
     }
@@ -402,13 +444,13 @@
         }
     }
     
-    if ([view isKindOfClass:[objc_getClass("MMSearchTableSectionHeaderView") class]]) {
-        for (NSView *sub in view.subviews) {
-            if (![sub isKindOfClass:[NSTextField class]]) {
-                [[YMThemeMgr shareInstance] changeTheme:sub];
-            }
-        }
-    }
+//    if ([view isKindOfClass:[objc_getClass("MMSearchTableSectionHeaderView") class]]) {
+//        for (NSView *sub in view.subviews) {
+//            if (![sub isKindOfClass:[NSTextField class]]) {
+//                [[YMThemeMgr shareInstance] changeTheme:sub];
+//            }
+//        }
+//    }
     
     if ([view isKindOfClass:[objc_getClass("MMOutlineButton") class]]) {
         [[YMThemeMgr shareInstance] changeTheme:view];
@@ -464,7 +506,8 @@
     
     //公众号
     if ([view isKindOfClass:[objc_getClass("MMDragEventView") class]]) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[YMThemeMgr shareInstance] changeTheme:view];
             for (NSView *effect in view.subviews) {
                 if ([effect isKindOfClass:NSVisualEffectView.class]) {
                     for (NSView *effectSub in effect.subviews) {
@@ -533,14 +576,5 @@
     
     NSViewController *viewController = (NSViewController *)self;
     [[YMThemeMgr shareInstance] changeTheme:viewController.view];
-    
-    if ([viewController isKindOfClass:objc_getClass("MMSearchViewController")]) {
-        for (NSView *sub in viewController.view.subviews) {
-            if ([sub isKindOfClass:objc_getClass("RFOverlayScrollView")]) {
-                [[YMThemeMgr shareInstance] changeTheme:sub];
-                break;
-            }
-        }
-    }
 }
 @end

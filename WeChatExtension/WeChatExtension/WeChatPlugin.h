@@ -785,3 +785,29 @@ forHTTPHeaderField:(NSString *)field;
 @property(retain, nonatomic) NSTextField *groupChatNickNameLabel;
 @end
 
+@interface MMSessionPickerListRowView : NSObject
+@property(retain, nonatomic) NSTextField *sessionNameField; // @synthesize sessionNameField=_sessionNameField;
+@end
+
+
+@interface MMChatDetailMemberRowView : NSObject
+@property(retain, nonatomic) NSTextField *nameField;
+@end
+
+@interface MMSearchTableCellView : NSObject
+@property(retain, nonatomic) NSString *queryText; // @synthesize queryText=_queryText;
+@property(nonatomic) unsigned long long subRanking; // @synthesize subRanking=_subRanking;
+@property(nonatomic) unsigned long long ranking; // @synthesize ranking=_ranking;
+@property(retain, nonatomic) NSString *keyword; // @synthesize keyword=_keyword;
+@property(retain, nonatomic) MMSearchResultItem *dataItem; // @synthesize dataItem=_dataItem;
+@property(retain, nonatomic) NSColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+
+@end
+
+@interface MMViewController : NSViewController
+
+@end
+
+@interface MMChatDetailSplitViewController : NSViewController
+@property(nonatomic) __weak MMViewController *placeHolderViewController;
+@end
