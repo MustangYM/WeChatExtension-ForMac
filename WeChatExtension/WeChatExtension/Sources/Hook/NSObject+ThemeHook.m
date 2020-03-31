@@ -513,13 +513,15 @@
     //公众号
     if ([view isKindOfClass:[objc_getClass("MMDragEventView") class]]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[YMThemeMgr shareInstance] changeTheme:view];
-            for (NSView *effect in view.subviews) {
-                if ([effect isKindOfClass:NSVisualEffectView.class]) {
-                    for (NSView *effectSub in effect.subviews) {
-                        if (![effectSub isKindOfClass:NSTextField.class]) {
-                            [[YMThemeMgr shareInstance] changeTheme:effectSub];
-                            break;
+            if (![view.superview isKindOfClass:objc_getClass("MMQLPreviewView")]) {
+                [[YMThemeMgr shareInstance] changeTheme:view];
+                for (NSView *effect in view.subviews) {
+                    if ([effect isKindOfClass:NSVisualEffectView.class]) {
+                        for (NSView *effectSub in effect.subviews) {
+                            if (![effectSub isKindOfClass:NSTextField.class]) {
+                                [[YMThemeMgr shareInstance] changeTheme:effectSub];
+                                break;
+                            }
                         }
                     }
                 }
