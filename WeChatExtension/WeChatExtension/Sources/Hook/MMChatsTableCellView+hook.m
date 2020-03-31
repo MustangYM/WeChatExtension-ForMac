@@ -73,9 +73,12 @@
         changeColor = [NSColor redColor];
     }
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSAttributedString *str = cellView.nickName.attributedStringValue;
-        NSMutableAttributedString *returnValue = [[NSMutableAttributedString alloc] initWithString:str.string attributes:@{NSForegroundColorAttributeName :changeColor, NSFontAttributeName : [NSFont systemFontOfSize:14]}];
+    dispatch_async(dispatch_get_main_queue(), ^{
+       NSAttributedString *str = cellView.nickName.attributedStringValue;
+        NSRange range = NSMakeRange(0, str.length);
+        NSDictionary *attributes = [str attributesAtIndex:0 effectiveRange:&range];
+        NSFont *attributesFont = [attributes valueForKey:@"NSFont"];
+        NSMutableAttributedString *returnValue = [[NSMutableAttributedString alloc] initWithString:str.string attributes:@{NSForegroundColorAttributeName :changeColor, NSFontAttributeName : attributesFont}];
         cellView.nickName.attributedStringValue = returnValue;
     });
     

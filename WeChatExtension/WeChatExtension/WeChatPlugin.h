@@ -732,7 +732,7 @@ forHTTPHeaderField:(NSString *)field;
 @end
 
 
-@interface MMSidebarRowView : NSView
+@interface MMSidebarRowView : NSTableRowView
 @property (nonatomic, strong) MMView *containerView;
 @end
 
@@ -810,4 +810,17 @@ forHTTPHeaderField:(NSString *)field;
 
 @interface MMChatDetailSplitViewController : NSViewController
 @property(nonatomic) __weak MMViewController *placeHolderViewController;
+@end
+
+@interface MMSidebarContactRowView : MMSidebarRowView
+- (void)dealloc;
+- (void)prepareForReuse;
+- (void)mouseDown:(id)arg1;
+- (void)resizeSubviewsWithOldSize:(struct CGSize)arg1;
+- (void)relayoutSubView;
+- (id)initWithFrame:(struct CGRect)arg1;
+@end
+
+@interface MMGlobalChatManagerWindowController : NSWindowController
+
 @end
