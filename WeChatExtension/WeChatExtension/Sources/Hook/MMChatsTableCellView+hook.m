@@ -66,21 +66,32 @@
     }];
     
     NSMutableArray *selectSessions = [[TKWeChatPluginConfig sharedConfig] selectSessions];
-    NSColor *changeColor = [TKWeChatPluginConfig sharedConfig].darkMode ? kRGBColor(255, 255, 255, 1.0) : [NSColor blackColor];
-    if (isIgnore) {
-        changeColor = kRGBColor(25, 185, 77, 1.0);
-    } else if ([selectSessions containsObject:sessionInfo]){
-        changeColor = [NSColor redColor];
-    }
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-       NSAttributedString *str = cellView.nickName.attributedStringValue;
-        NSRange range = NSMakeRange(0, str.length);
-        NSDictionary *attributes = [str attributesAtIndex:0 effectiveRange:&range];
-        NSFont *attributesFont = [attributes valueForKey:@"NSFont"];
-        NSMutableAttributedString *returnValue = [[NSMutableAttributedString alloc] initWithString:str.string attributes:@{NSForegroundColorAttributeName :changeColor, NSFontAttributeName : attributesFont}];
-        cellView.nickName.attributedStringValue = returnValue;
-    });
+    if ([TKWeChatPluginConfig sharedConfig].darkMode || [TKWeChatPluginConfig sharedConfig].pinkMode) {
+        NSColor *changeColor = [TKWeChatPluginConfig sharedConfig].darkMode ? kRGBColor(255, 255, 255, 1.0) : [NSColor blackColor];
+        if (isIgnore) {
+            changeColor = kRGBColor(25, 185, 77, 1.0);
+        } else if ([selectSessions containsObject:sessionInfo]){
+            changeColor = [NSColor redColor];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSAttributedString *str = cellView.nickName.attributedStringValue;
+            NSRange range = NSMakeRange(0, str.length);
+            NSDictionary *attributes = [str attributesAtIndex:0 effectiveRange:&range];
+            NSFont *attributesFont = [attributes valueForKey:@"NSFont"];
+            NSMutableAttributedString *returnValue = [[NSMutableAttributedString alloc] initWithString:str.string attributes:@{NSForegroundColorAttributeName :changeColor, NSFontAttributeName : attributesFont}];
+            cellView.nickName.attributedStringValue = returnValue;
+        });
+    } else {
+        if (isIgnore) {
+            cellView.layer.backgroundColor = kBG3.CGColor;
+        } else if ([selectSessions containsObject:sessionInfo]){
+            cellView.layer.backgroundColor = kBG4.CGColor;
+        } else {
+            cellView.layer.backgroundColor = [NSColor clearColor].CGColor;
+        }
+    }
     
     [cellView.layer setNeedsDisplay];
 }

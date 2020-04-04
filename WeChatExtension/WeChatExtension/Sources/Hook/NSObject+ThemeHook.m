@@ -395,6 +395,11 @@
 - (void)hook_initWithFrame:(NSView *)view {
     [self hook_initWithFrame:view];
     
+    
+    if ([view isKindOfClass:[objc_getClass("MMStickerMessageCellView") class]]) {
+        return;
+    }
+    
     if ([view isKindOfClass:[objc_getClass("MMSystemMessageCellView") class]]) {
         return;
     }
