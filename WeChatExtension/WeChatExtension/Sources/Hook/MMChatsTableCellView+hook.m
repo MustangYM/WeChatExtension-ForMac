@@ -67,7 +67,7 @@
     
     NSMutableArray *selectSessions = [[TKWeChatPluginConfig sharedConfig] selectSessions];
     
-    if ([TKWeChatPluginConfig sharedConfig].darkMode || [TKWeChatPluginConfig sharedConfig].pinkMode) {
+    if ([TKWeChatPluginConfig sharedConfig].darkMode) {
         NSColor *changeColor = [TKWeChatPluginConfig sharedConfig].darkMode ? kRGBColor(255, 255, 255, 1.0) : [NSColor blackColor];
         if (isIgnore) {
             changeColor = kRGBColor(25, 185, 77, 1.0);
