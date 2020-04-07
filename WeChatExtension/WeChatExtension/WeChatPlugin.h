@@ -196,6 +196,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)onAuthOK:(BOOL)arg1;
 - (void)checkForUpdatesInBackground;
 - (void)setupCheckUpdateIfNeeded;
+- (BOOL)isTaskProgress;
 @end
 
 @interface ContactStorage : NSObject
@@ -823,4 +824,8 @@ forHTTPHeaderField:(NSString *)field;
 
 @interface MMGlobalChatManagerWindowController : NSWindowController
 
+@end
+
+@interface WeChatApplication : NSApplication
+- (BOOL)isMiniProgramProcess;
 @end

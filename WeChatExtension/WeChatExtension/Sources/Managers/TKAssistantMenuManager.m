@@ -613,9 +613,8 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
     item.state = !item.state;
     
     NSString *msg = nil;
-    
     if ([[TKWeChatPluginConfig sharedConfig] pinkMode]) {
-        msg = msg = YMLanguage(@"只在黑暗模式有效",@"GroupMultiColor mode only in dark mode has effect!");
+        msg = YMLanguage(@"只在黑暗模式有效",@"GroupMultiColor mode only in dark mode has effect!");
     } else {
         if (item.state) {
             msg = YMLanguage(@"打开群成员昵称彩色, 只在黑暗模式有效, 重启生效!",@"Turn on GroupMultiColor mode only in dark mode and restart to take effect!");
