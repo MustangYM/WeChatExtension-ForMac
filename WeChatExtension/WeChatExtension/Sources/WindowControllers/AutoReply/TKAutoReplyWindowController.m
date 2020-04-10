@@ -9,6 +9,7 @@
 #import "TKAutoReplyWindowController.h"
 #import "TKAutoReplyContentView.h"
 #import "TKAutoReplyCell.h"
+#import "YMThemeMgr.h"
 
 @interface TKAutoReplyWindowController () <NSWindowDelegate, NSTableViewDelegate, NSTableViewDataSource>
 
@@ -98,7 +99,7 @@
         NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoReply.enable") target:self action:@selector(clickEnableBtn:)];
         btn.frame = NSMakeRect(130, 20, 130, 20);
         btn.state = [[TKWeChatPluginConfig sharedConfig] autoReplyEnable];
-        
+        [YMThemeMgr changeButtonTheme:btn];
         btn;
     });
     

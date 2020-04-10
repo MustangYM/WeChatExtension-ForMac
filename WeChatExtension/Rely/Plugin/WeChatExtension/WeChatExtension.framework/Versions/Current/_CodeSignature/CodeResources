@@ -6,11 +6,11 @@
 	<dict>
 		<key>Resources/Base.lproj/TKRemoteControlWindowController.nib</key>
 		<data>
-		rdhi3VuGJoOcZYFzrjQyqGX5LIE=
+		SAicrZkqTWLES+GuRjzjnvD8W5o=
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		6lKPwIj1ivCxPy2qO7RUocIreOU=
+		jL5wvA16Z6pjhVcy8AlPgV6mWkw=
 		</data>
 		<key>Resources/LockPlist.plist</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>Resources/TKAboutWindowController.nib</key>
 		<data>
-		LmfcrMtb2nOn/Vo/RkKMgJx3pK0=
+		ksDHWeRVTMFQVLdf82XhZ5VyNk0=
 		</data>
 		<key>Resources/TKAutoReplyWindowController.nib</key>
 		<data>
@@ -163,22 +163,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rdhi3VuGJoOcZYFzrjQyqGX5LIE=
+			SAicrZkqTWLES+GuRjzjnvD8W5o=
 			</data>
 			<key>hash2</key>
 			<data>
-			kXBnXkyYIJOD7pwzNHvkRqXBQSgwThhraaV+Y9guWfE=
+			wq5ciOLE5YHhZe461K+mMSdTSnAXb/RTLTl/eIyTQBo=
 			</data>
 		</dict>
 		<key>Resources/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			6lKPwIj1ivCxPy2qO7RUocIreOU=
+			jL5wvA16Z6pjhVcy8AlPgV6mWkw=
 			</data>
 			<key>hash2</key>
 			<data>
-			0ncRcDHMkowvpPqsQnBUPhxhexP0l4bj4I33xnK5i2U=
+			xpOWJp6yBSpPze6Ek05OwfoJQk8SCn//74o5ZD73hHM=
 			</data>
 		</dict>
 		<key>Resources/LockPlist.plist</key>
@@ -196,11 +196,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			LmfcrMtb2nOn/Vo/RkKMgJx3pK0=
+			ksDHWeRVTMFQVLdf82XhZ5VyNk0=
 			</data>
 			<key>hash2</key>
 			<data>
-			hIRh0XmB25eL3Pktl/6hkQ+yAXpke4bPiPoCDdZuhQY=
+			yML6dpIEtKxXPlcYx9hJa9wqiGfNe4ZTBEM/9Lrfqhw=
 			</data>
 		</dict>
 		<key>Resources/TKAutoReplyWindowController.nib</key>

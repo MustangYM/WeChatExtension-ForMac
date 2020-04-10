@@ -8,6 +8,7 @@
 
 #import "TKRemoteControlCell.h"
 #import "TKRemoteControlModel.h"
+#import "YMThemeMgr.h"
 
 @interface TKRemoteControlCell () <NSTextFieldDelegate>
 
@@ -31,7 +32,7 @@
     self.selectBtn = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:@"" target:self action:@selector(clickSelectBtn:)];
         btn.frame = NSMakeRect(50, 10, 150, 30);
-        
+
         btn;
     });
     
@@ -61,6 +62,8 @@
     self.selectBtn.title = YMLocalizedString(model.function);
     self.selectBtn.state = model.enable;
     self.textField.stringValue = model.keyword;
+    
+    [YMThemeMgr changeButtonTheme:self.selectBtn];
 }
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {

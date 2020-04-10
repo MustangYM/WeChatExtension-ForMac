@@ -85,4 +85,13 @@
         kRGBColor(248, 193, 155, 1.0),
     ];
 }
+
++ (void)changeButtonTheme:(NSButton *)button {
+    if (![TKWeChatPluginConfig sharedConfig].darkMode) {
+        return;
+    }
+    
+    NSMutableAttributedString *returnValue = [[NSMutableAttributedString alloc] initWithString:button.title attributes:@{NSForegroundColorAttributeName :[NSColor whiteColor]}];
+    button.attributedTitle = returnValue;
+}
 @end

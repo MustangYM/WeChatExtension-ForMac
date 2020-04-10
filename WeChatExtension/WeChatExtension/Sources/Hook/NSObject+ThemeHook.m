@@ -396,6 +396,10 @@
     [self hook_initWithFrame:view];
     
     
+    if ([view isKindOfClass:[objc_getClass("SVGImageView") class]]) {
+           return;
+       }
+    
     if ([view isKindOfClass:[objc_getClass("MMStickerMessageCellView") class]]) {
         return;
     }
@@ -552,7 +556,9 @@
     }
     
     if ([controller isKindOfClass:[objc_getClass("MMMainViewController") class]]) {
-        [[YMThemeMgr shareInstance] changeTheme:view];
+        if (![view isKindOfClass:objc_getClass("_NSImageViewSimpleImageView")]) {
+            [[YMThemeMgr shareInstance] changeTheme:view];
+        }
     }
     
     if ([controller isKindOfClass:[objc_getClass("MMContactsDetailViewController") class]]) {

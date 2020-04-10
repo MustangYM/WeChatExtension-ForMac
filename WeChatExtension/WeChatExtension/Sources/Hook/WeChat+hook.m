@@ -94,6 +94,11 @@
 
     hookMethod(objc_getClass("GroupStorage"), @selector(UpdateGroupMemberDetailIfNeeded:withCompletion:), [self class], @selector(hook_UpdateGroupMemberDetailIfNeeded:withCompletion:));
     
+    //左下角小手机
+    hookMethod(objc_getClass("MMMainViewController"), @selector(viewDidLoad), [self class], @selector(hook_MainViewDidLoad));
+
+     hookMethod(objc_getClass("MMMainViewController"), @selector(onUpdateHandoffExpt:), [self class], @selector(hook_onUpdateHandoffExpt:));
+    
     //      替换沙盒路径
     rebind_symbols((struct rebinding[2]) {
         { "NSSearchPathForDirectoriesInDomains", swizzled_NSSearchPathForDirectoriesInDomains, (void *)&original_NSSearchPathForDirectoriesInDomains },
@@ -849,5 +854,17 @@ NSString *swizzled_NSHomeDirectory(void) {
         [[YMIMContactsManager shareInstance] monitorQuitGroup:arg1];
     }
     [self hook_UpdateGroupMemberDetailIfNeeded:arg1 withCompletion:arg2];
+}
+
+- (void)hook_onUpdateHandoffExpt:(BOOL)arg1
+{
+    [self hook_onUpdateHandoffExpt:YES];
+}
+
+- (void)hook_MainViewDidLoad
+{
+    [self hook_MainViewDidLoad];
+    MMMainViewController *mainVC = (MMMainViewController *)self;
+    [mainVC onUpdateHandoffExpt:YES];
 }
 @end
