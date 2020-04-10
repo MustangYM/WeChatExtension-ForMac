@@ -314,9 +314,7 @@ Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com
 <a href="https://opencollective.com/mustangym666#backers" target="_blank"><img src="https://opencollective.com/mustangym666/backers.svg?width=890"></a>
 
 ## 交流与支持
-<p align="left">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/aliPay.png" width="200px"/>
-</p>
+[一个很棒的项目](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md)
 
 
 QQ群 741941325
