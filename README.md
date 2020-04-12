@@ -12,6 +12,7 @@
 
 ## 最新支持版本
 -  mac版微信2.4.0
+-  微信2.4版本以上才支持小程序 [去下载](https://developers.weixin.qq.com/community/develop/doc/0000a0544fcfc013c8b9d164a5b801)
 
 ## 黑夜/少女 模式
 - 众多软件都适配了黑夜模式, 等了这么久Mac微信官方还是没做适配. 所以做了这个玩票功能
