@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1828B9AA23BA319E008EC8E9 /* TKAboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1828B9A923BA319E008EC8E9 /* TKAboutWindowController.xib */; };
-		1853B3BF22C6105900A5C4FA /* ANYMethodLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853B3BB22C6105900A5C4FA /* ANYMethodLog.m */; };
-		1853B3C122C6105900A5C4FA /* ANYMethodLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 1853B3BD22C6105900A5C4FA /* ANYMethodLog.h */; };
 		1853B3C422C6133C00A5C4FA /* YMIMContactsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1853B3C222C6133C00A5C4FA /* YMIMContactsManager.h */; };
 		1853B3C522C6133C00A5C4FA /* YMIMContactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853B3C322C6133C00A5C4FA /* YMIMContactsManager.m */; };
 		185DE0E023ACE208007651B5 /* NSDictionary+Safe.h in Headers */ = {isa = PBXBuildFile; fileRef = 185DE0DE23ACE207007651B5 /* NSDictionary+Safe.h */; };
@@ -175,8 +173,6 @@
 		1802C088239826CB0061823C /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "en-GB"; path = "en-GB.lproj/Info.plist"; sourceTree = "<group>"; };
 		1802C089239826CB0061823C /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1828B9A923BA319E008EC8E9 /* TKAboutWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKAboutWindowController.xib; sourceTree = "<group>"; };
-		1853B3BB22C6105900A5C4FA /* ANYMethodLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANYMethodLog.m; sourceTree = "<group>"; };
-		1853B3BD22C6105900A5C4FA /* ANYMethodLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANYMethodLog.h; sourceTree = "<group>"; };
 		1853B3C222C6133C00A5C4FA /* YMIMContactsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMIMContactsManager.h; sourceTree = "<group>"; };
 		1853B3C322C6133C00A5C4FA /* YMIMContactsManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMIMContactsManager.m; sourceTree = "<group>"; };
 		185DE0DE23ACE207007651B5 /* NSDictionary+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Safe.h"; sourceTree = "<group>"; };
@@ -364,15 +360,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1853B3B922C6105900A5C4FA /* ANYMethodLog */ = {
-			isa = PBXGroup;
-			children = (
-				1853B3BB22C6105900A5C4FA /* ANYMethodLog.m */,
-				1853B3BD22C6105900A5C4FA /* ANYMethodLog.h */,
-			);
-			path = ANYMethodLog;
-			sourceTree = "<group>";
-		};
 		188A654422718C400096663E = {
 			isa = PBXGroup;
 			children = (
@@ -418,7 +405,6 @@
 		188A658B2272ACBA0096663E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				1853B3B922C6105900A5C4FA /* ANYMethodLog */,
 				3644BDF32285545500EDE358 /* TCB */,
 				18A7A1352272AFE600361A98 /* GCDWebServer */,
 				188A658C2272ACBA0096663E /* WindowControllers */,
@@ -771,7 +757,6 @@
 				18A7A1642272AFE600361A98 /* GCDWebServerDataResponse.h in Headers */,
 				18A7A15C2272AFE600361A98 /* GCDWebServerResponse.h in Headers */,
 				188A662B2272ACBA0096663E /* NSString+Action.h in Headers */,
-				1853B3C122C6105900A5C4FA /* ANYMethodLog.h in Headers */,
 				188A660B2272ACBA0096663E /* TKRemoteControlManager.h in Headers */,
 				36AC9D8A228A81C200EA9F97 /* XMLReader.h in Headers */,
 				18D4C34B24236180006A20E2 /* NSObject+ThemeHook.h in Headers */,
@@ -1032,7 +1017,6 @@
 				18A7A1682272AFE600361A98 /* GCDWebServerStreamedResponse.m in Sources */,
 				188A66092272ACBA0096663E /* TKAssistantMenuManager.m in Sources */,
 				3644BE012285549100EDE358 /* YMUpdateManager.m in Sources */,
-				1853B3BF22C6105900A5C4FA /* ANYMethodLog.m in Sources */,
 				188A663C2272ACBA0096663E /* YMMessageTool.m in Sources */,
 				188A66072272ACBA0096663E /* TKHTTPManager.m in Sources */,
 				18A7A1572272AFE600361A98 /* GCDWebServerResponse.m in Sources */,

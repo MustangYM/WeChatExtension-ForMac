@@ -12,7 +12,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import <AppKit/AppKit.h>
 #import "YMThemeMgr.h"
-#import "ANYMethodLog.h"
 
 @interface NSCellAuxiliary : NSObject
 

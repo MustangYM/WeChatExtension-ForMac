@@ -21,7 +21,6 @@
 #import "YMMessageModel.h"
 #import "YMUpdateManager.h"
 #import "YMThemeMgr.h"
-#import "ANYMethodLog.h"
 #import "YMDownloadManager.h"
 #import "YMNetWorkHelper.h"
 #import<CommonCrypto/CommonDigest.h>
@@ -864,7 +863,9 @@ NSString *swizzled_NSHomeDirectory(void) {
 - (void)hook_MainViewDidLoad
 {
     [self hook_MainViewDidLoad];
-    MMMainViewController *mainVC = (MMMainViewController *)self;
-    [mainVC onUpdateHandoffExpt:YES];
+    if (LargerOrEqualVersion(@"2.4.0")) {
+        MMMainViewController *mainVC = (MMMainViewController *)self;
+        [mainVC onUpdateHandoffExpt:YES];
+    }
 }
 @end
