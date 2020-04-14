@@ -436,6 +436,11 @@
 - (void)hook_addSubView:(NSView *)view {
     [self hook_addSubView:view];
     
+    //不适配小程序
+    NSArray *runApps = [NSRunningApplication runningApplicationsWithBundleIdentifier:@"com.tencent.xinWeChat"];
+    if (runApps.count > 1) {
+        return;
+    }
     
     if ([view isKindOfClass:[objc_getClass("SVGImageView") class]]) {
         return;
