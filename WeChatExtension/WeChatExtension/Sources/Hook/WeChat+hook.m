@@ -236,7 +236,8 @@
     [self _doParseRevokeMsg:msg msgData:msgData arg1:nil arg2:arg2 arg3:nil];
 }
 
-- (void)hook_onRevokeMsg:(id)msgData {
+- (void)hook_onRevokeMsg:(id)msgData
+{
     if (![[TKWeChatPluginConfig sharedConfig] preventRevokeEnable]) {
         [self hook_onRevokeMsg:msgData];
         return;
