@@ -438,8 +438,8 @@
     
     
     if ([view isKindOfClass:[objc_getClass("SVGImageView") class]]) {
-           return;
-       }
+        return;
+    }
     
     if ([view isKindOfClass:[objc_getClass("MMStickerMessageCellView") class]]) {
         return;
