@@ -135,9 +135,9 @@
                     if ([wself queryQuitMsgFromPool:key group:groupData.m_nsUsrName]) {
                         NSString *message = nil;
                         if ([TKWeChatPluginConfig sharedConfig].languageType == PluginLanguageTypeZH) {
-                            message = [NSString stringWithFormat:@"⚠️退群监控⚠️\n@%@已退群\n(此消息仅本人可见,7天内不再提示此人退群信息)",nick];
+                            message = [NSString stringWithFormat:@"⚠️退群监控⚠️\n@%@ 已退群\n(此消息仅本人可见,7天内不再提示此人退群信息)",nick];
                         } else {
-                            message = [NSString stringWithFormat:@"⚠️Group-Quitting Monitor⚠️\n@%@has quit group chat\n(This message is only visible to me, Don't prompt this person to quit within 7 days)",nick];
+                            message = [NSString stringWithFormat:@"⚠️Group-Quitting Monitor⚠️\n@%@ has quit group chat\n(This message is only visible to me, Don't prompt this person to quit within 7 days)",nick];
                         }
                         
                         [YMMessageTool addLocalWarningMsg:message fromUsr:groupData.m_nsUsrName];
