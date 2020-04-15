@@ -1,5 +1,5 @@
 ---
-name: '提示 : 提Issue注意'
+name: '提Issue注意'
 about: 请先阅读Wiki, 并遵循相关Issue规则
 title: ''
 labels: ''
