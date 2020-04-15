@@ -1,6 +1,6 @@
 ---
 name: '提示 : 提Issue注意'
-about: 请先阅读Wiki, 并遵循相关Issue规则
+about: 请先阅读Wiki, 并遵循相关Issue[规则](https://github.com/MustangYM/WeChatExtension-ForMac/wiki/Issues%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)
 title: ''
 labels: ''
 assignees: ''
