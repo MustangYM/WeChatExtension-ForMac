@@ -56,7 +56,7 @@
 </p>
 
 ## 同时支持自定义回复和AI自动撩妹
-- 腾讯AI人工智能(ZZ)自动回复， 能理解上下文语义。经过大量临床试验和大家反馈， 腾讯这个AI接口回复十分智障， 慎用。
+- 腾讯AI人工智能自动回复，能理解上下文语义。经过大量临床试验和大家反馈，腾讯这个AI接口回复不够完善，慎用。
 - 自定义自动回复。
 
 <p align="center">
@@ -134,7 +134,7 @@ curl -o- -L https://raw.githubusercontent.com/lmk123/oh-my-wechat/master/install
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/QQ20190425-155120%402x.png" width="800px"/>
 </p>
 
-- 3.6.重启微信， 安装完成.
+- 3.6.重启微信， 安装完成。
 
 ## 怎么卸载?
 - 自动卸载
