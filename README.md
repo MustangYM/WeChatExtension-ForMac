@@ -9,6 +9,7 @@
 
 ## 声明
 - 适用于Mac版的WeChat拓展功能. 1.7.5代码来自于WeChatPlugin, 对[TK](https://github.com/TKkk-iOSer)在此表示感谢!
+- [Issue注意事项](https://github.com/MustangYM/WeChatExtension-ForMac/wiki/Issues%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)
 
 ## 最新支持版本
 -  mac版微信2.4.0
@@ -145,6 +146,8 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190625-102808%402x.png" width="800px"/>
 </p>
+
+
 
 ## 更新日志
 ```
