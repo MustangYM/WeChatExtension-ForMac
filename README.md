@@ -5,7 +5,7 @@
 
 ![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.5.4-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.4.0-blue.svg)
 
-支持[企业微信](https://github.com/MustangYM/WeChatICU-ForMac)，由此进.
+支持[企业微信](https://github.com/MustangYM/WeChatICU-ForMac)，由此进。
 
 ## 声明
 
@@ -17,9 +17,9 @@
 -  微信2.4.0版本以上才支持小程序 [去下载](https://developers.weixin.qq.com/community/develop/doc/0000a0544fcfc013c8b9d164a5b801)
 
 ## 黑夜/少女 模式
-- 众多软件都适配了黑夜模式， 等了这么久Mac微信官方还是没做适配。所以做了这个玩票功能
-- 少量细节没有做适配， 不影响正常使用， 如果你是强迫症加完美主义， `主题模式-黑夜模式-再次点击`可以`关掉`这个功能
-- 在黑夜模式中你可以打开`群成员彩色`， 群聊中每个发言人的昵称颜色都会有所区别
+- 众多软件都适配了黑夜模式， 等了这么久Mac微信官方还是没做适配。所以做了这个玩票功能。
+- 少量细节没有做适配， 不影响正常使用， 如果你是强迫症加完美主义， `主题模式-黑夜模式-再次点击`可以`关掉`这个功能。
+- 在黑夜模式中你可以打开`群成员彩色`， 群聊中每个发言人的昵称颜色都会有所区别。
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/darkMode.png" width="800px"/>
 </p>
@@ -40,12 +40,12 @@
 </p>
 
 ## 手机端也能收到被撤回的消息
-- 如果Mac拦截到A发送来的消息， 手机也会同步收到的这条已经拦截的消息(自己发送给自己)。目前只支持同步文字消息与图片消息， 其他类型也可以做， 但意义不大.
+- 如果Mac拦截到A发送来的消息， 手机也会同步收到的这条已经拦截的消息(自己发送给自己)。目前只支持同步文字消息与图片消息， 其他类型也可以做， 但意义不大。
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/revokeAsync.jpg" width="800px"/>
 </p>
 
-- 可以对同步的消息进行筛选， 以免群消息打扰
+- 可以对同步的消息进行筛选， 以免群消息打扰。
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190625-111206%402x.png" width="600px"/>
 </p>
@@ -56,8 +56,8 @@
 </p>
 
 ## 同时支持自定义回复和AI自动撩妹
-- 腾讯AI人工智能(ZZ)自动回复， 能理解上下文语义。经过大量临床试验和大家反馈， 腾讯这个AI接口回复十分智障， 慎用.
-- 自定义自动回复
+- 腾讯AI人工智能(ZZ)自动回复， 能理解上下文语义。经过大量临床试验和大家反馈， 腾讯这个AI接口回复十分智障， 慎用。
+- 自定义自动回复。
 
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/Snipaste_2019-12-23_11-41-20.png" width="800px"/>
@@ -69,13 +69,13 @@
 </p>
 
 ## Alfred
-- 确保你电脑中有安装Alfred， 双击此文件进行安装.
+- 确保你电脑中有安装Alfred， 双击此文件进行安装。
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191217-1036331%402x.png" width="800px"/>
 </p>
 
 ## 退群监控
-- 退群提醒， 同一人在同一群里的退出提醒7天内不再重复提示.
+- 退群提醒， 同一人在同一群里的退出提醒7天内不再重复提示。
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191227-200134%402x.png" width="800px"/>
 </p>
@@ -112,29 +112,29 @@ curl -o- -L https://raw.githubusercontent.com/lmk123/oh-my-wechat/master/install
 
 ### 3.手动安装
 
-- 3.1。确保你的Mac上已经安装了微信App.
+- 3.1.确保你的Mac上已经安装了微信App。
 
-- 3.2。下载本项目到你的电脑里， 并双击打开.
+- 3.2.下载本项目到你的电脑里， 并双击打开。
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190619-112238.png" width="800px"/>
 </p>
 
-- 3.3。依次打开文件夹
+- 3.3.依次打开文件夹
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190619-113413%402x.png" width="800px"/>
 </p>
 
-- 3.4。打开你电脑中的终端工具
+- 3.4.打开你电脑中的终端工具
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190619-113911%402x.png" width="800px"/>
 </p>
  
-- 3.5。在Rely/Install.sh执行这个安装脚本
+- 3.5.在Rely/Install.sh执行这个安装脚本
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/QQ20190425-155120%402x.png" width="800px"/>
 </p>
 
-- 3.6。重启微信， 安装完成.
+- 3.6.重启微信， 安装完成.
 
 ## 怎么卸载?
 - 自动卸载
@@ -143,7 +143,7 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
 ```
 
 - 手动卸载
-  -  将Uninstall.sh拖到终端工具中， 回车执行即可
+  -  将Uninstall.sh拖到终端工具中， 回车执行即可。
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190625-102808%402x.png" width="800px"/>
 </p>
