@@ -10,7 +10,6 @@
 ## 声明
 
 - 适用于Mac版的WeChat拓展功能。 1.7.5代码来自于WeChatPlugin， 对[TK](https://github.com/TKkk-iOSer)在此表示感谢！
-- 本项目遵循MIT协议，方便交流与学习。如果您发现本项目有侵犯您的知识产权，请与我取得联系，我会及时修改或删除。
 - Issues注意事项[Wiki](https://github.com/MustangYM/WeChatExtension-ForMac/wiki/Issues%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)
 
 ## 最新支持版本
@@ -331,7 +330,7 @@ Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com
 
 ## License
 
-MIT license.
+MIT license. 本项目遵循MIT协议，方便交流与学习。如果您发现本项目有侵犯您的知识产权，请与我取得联系，我会及时修改或删除。
 
 ## 交流与支持
 
