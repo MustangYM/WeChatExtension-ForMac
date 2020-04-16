@@ -109,7 +109,8 @@
 }
 
 #pragma mark - 防止 dark mode 黑底黑色
-- (void) hook_textFieldSetAttributedStringValue: (NSAttributedString *) attributedString {
+- (void)hook_textFieldSetAttributedStringValue:(NSAttributedString *) attributedString
+{
     NSTextField *field = (NSTextField *)self;
     NSMutableAttributedString *a = [attributedString mutableCopy];
     
@@ -439,6 +440,11 @@
     //不适配小程序
     NSArray *runApps = [NSRunningApplication runningApplicationsWithBundleIdentifier:@"com.tencent.xinWeChat"];
     if (runApps.count > 1) {
+        return;
+    }
+    
+    //Excel与Word文档黑色适配
+    if ([self isKindOfClass:[objc_getClass("MMQLPreviewFileView") class]]) {
         return;
     }
     

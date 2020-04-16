@@ -6,11 +6,11 @@
 	<dict>
 		<key>Resources/Base.lproj/TKRemoteControlWindowController.nib</key>
 		<data>
-		ItZix5N0WG6luFWQUTeEuCeKI4o=
+		SAicrZkqTWLES+GuRjzjnvD8W5o=
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		GH1BDCyct/I/iulBJKJx6qxngLg=
+		kkJrRMM7I9sfJFNhS+sx9S6SOl8=
 		</data>
 		<key>Resources/LockPlist.plist</key>
 		<data>
@@ -18,15 +18,15 @@
 		</data>
 		<key>Resources/TKAboutWindowController.nib</key>
 		<data>
-		uG2dQ4WXcPMrQSrZAVWCB01/uvc=
+		ksDHWeRVTMFQVLdf82XhZ5VyNk0=
 		</data>
 		<key>Resources/TKAutoReplyWindowController.nib</key>
 		<data>
-		i96XsAbpQ3eqmy1Oz+PvLEr6hYY=
+		qT5ekQukoj1yfsf4vGIi5jCcYlE=
 		</data>
 		<key>Resources/TKDownloadWindowController.nib</key>
 		<data>
-		oo0lpIAN8WaeC4a00EmvYgfy/N8=
+		s1htUP/ay1JDihZTnrhO3zRvO0U=
 		</data>
 		<key>Resources/TKRemoteControlCommands.plist</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Resources/YMAIReplyWindowController.nib</key>
 		<data>
-		rVy/Y494rHaE/QJDJBZPgYUKhw4=
+		2joTv6aYLuYHaiLwz1Z5IbecD/E=
 		</data>
 		<key>Resources/aliPayCode.png</key>
 		<data>
@@ -49,6 +49,15 @@
 			<key>hash</key>
 			<data>
 			SrwfBhqN75FgXTAsnYVh+Fql5VE=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/en-GB.lproj/TKAboutWindowController.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			En5kI5Kwuj0ECtiYhxSiHWJ1qnc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -67,6 +76,15 @@
 			<key>hash</key>
 			<data>
 			dGE1jIlb81iF9cxnHt4vVV7eCZo=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/en.lproj/TKAboutWindowController.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			En5kI5Kwuj0ECtiYhxSiHWJ1qnc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -93,6 +111,15 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>Resources/zh-Hans.lproj/TKAboutWindowController.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			IMUqcFi8mFK9fnIiaLOGc8AMv5k=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 		<key>Resources/zh-Hans.lproj/TKRemoteControlWindowController.strings</key>
 		<dict>
 			<key>hash</key>
@@ -107,6 +134,15 @@
 			<key>hash</key>
 			<data>
 			yHteBA28BGBQpchqveHtf/Sj7nM=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/zh-Hant.lproj/TKAboutWindowController.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			IMUqcFi8mFK9fnIiaLOGc8AMv5k=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -127,22 +163,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ItZix5N0WG6luFWQUTeEuCeKI4o=
+			SAicrZkqTWLES+GuRjzjnvD8W5o=
 			</data>
 			<key>hash2</key>
 			<data>
-			qcI5gcuyyOPzeiSVrEApquK4nGCztwpxQKyw7IBOvTY=
+			wq5ciOLE5YHhZe461K+mMSdTSnAXb/RTLTl/eIyTQBo=
 			</data>
 		</dict>
 		<key>Resources/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			GH1BDCyct/I/iulBJKJx6qxngLg=
+			kkJrRMM7I9sfJFNhS+sx9S6SOl8=
 			</data>
 			<key>hash2</key>
 			<data>
-			GltveKAhLf95icXssz0uJzK1sJBD9HionUnIYf7jNRI=
+			F0Y0/fWIjsNLoflm/ISHv1KsBWSnw/aXGmrM2/Z0qyU=
 			</data>
 		</dict>
 		<key>Resources/LockPlist.plist</key>
@@ -160,33 +196,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			uG2dQ4WXcPMrQSrZAVWCB01/uvc=
+			ksDHWeRVTMFQVLdf82XhZ5VyNk0=
 			</data>
 			<key>hash2</key>
 			<data>
-			DoU0NXGAmA7N+O5vo7epSWFhUqiw44785CKgG9dSzwA=
+			yML6dpIEtKxXPlcYx9hJa9wqiGfNe4ZTBEM/9Lrfqhw=
 			</data>
 		</dict>
 		<key>Resources/TKAutoReplyWindowController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			i96XsAbpQ3eqmy1Oz+PvLEr6hYY=
+			qT5ekQukoj1yfsf4vGIi5jCcYlE=
 			</data>
 			<key>hash2</key>
 			<data>
-			kzcBQpqAcwsLmYEHYaQQ1NcZtD66z4a5l+u6oEfLwp8=
+			iFvxXJyq98E3/eJId6XjR17ms7UjDrQjV75FFiESzIE=
 			</data>
 		</dict>
 		<key>Resources/TKDownloadWindowController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			oo0lpIAN8WaeC4a00EmvYgfy/N8=
+			s1htUP/ay1JDihZTnrhO3zRvO0U=
 			</data>
 			<key>hash2</key>
 			<data>
-			OKvrN0u2hRwJ1R4g5hc70Ksu5t8pUVRvN37lXG88myM=
+			83y/mgVcYCZlGnDZSU+MIw+3bUG2Xzqj1RQN/qgiUJ4=
 			</data>
 		</dict>
 		<key>Resources/TKRemoteControlCommands.plist</key>
@@ -215,11 +251,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rVy/Y494rHaE/QJDJBZPgYUKhw4=
+			2joTv6aYLuYHaiLwz1Z5IbecD/E=
 			</data>
 			<key>hash2</key>
 			<data>
-			hy+TOL4YLna1CuQ8diDAWD/KD10cGZaxhIBszLlSuMQ=
+			Kak+V0nnUxeMCt5m9BK0WgVo2zJ5yQMD55TtpMmuOM0=
 			</data>
 		</dict>
 		<key>Resources/aliPayCode.png</key>
@@ -246,6 +282,19 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>Resources/en-GB.lproj/TKAboutWindowController.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			En5kI5Kwuj0ECtiYhxSiHWJ1qnc=
+			</data>
+			<key>hash2</key>
+			<data>
+			A/l7xX41GpZ1U7PRPvb+MvAJGksaE7Ol/4q/zClRZ6I=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 		<key>Resources/en-GB.lproj/TKRemoteControlWindowController.strings</key>
 		<dict>
 			<key>hash</key>
@@ -268,6 +317,19 @@
 			<key>hash2</key>
 			<data>
 			UYlR2vhdY7gmcbYbE0q6sv2bElCMwZkeZ2PlBkMnG4s=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/en.lproj/TKAboutWindowController.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			En5kI5Kwuj0ECtiYhxSiHWJ1qnc=
+			</data>
+			<key>hash2</key>
+			<data>
+			A/l7xX41GpZ1U7PRPvb+MvAJGksaE7Ol/4q/zClRZ6I=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -309,6 +371,19 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>Resources/zh-Hans.lproj/TKAboutWindowController.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			IMUqcFi8mFK9fnIiaLOGc8AMv5k=
+			</data>
+			<key>hash2</key>
+			<data>
+			5BWii4xd5oucPRR3kmDLRV0TzeqLkJwbpPvQFOD2Qag=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 		<key>Resources/zh-Hans.lproj/TKRemoteControlWindowController.strings</key>
 		<dict>
 			<key>hash</key>
@@ -331,6 +406,19 @@
 			<key>hash2</key>
 			<data>
 			dT09sZMRer2PFczDlQ1C8OLqGecb2wYVkkeaKteK9Io=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Resources/zh-Hant.lproj/TKAboutWindowController.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			IMUqcFi8mFK9fnIiaLOGc8AMv5k=
+			</data>
+			<key>hash2</key>
+			<data>
+			5BWii4xd5oucPRR3kmDLRV0TzeqLkJwbpPvQFOD2Qag=
 			</data>
 			<key>optional</key>
 			<true/>
