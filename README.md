@@ -330,10 +330,13 @@ Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com
 
 ## License
 
-MIT license. 本项目遵循MIT协议，方便交流与学习。如果您发现本项目有侵犯您的知识产权，请与我取得联系，我会及时修改或删除。
+MIT license. 
 
 ## 交流与支持
 
-
 QQ群 741941325
+
+## 免责声明
+
+本项目遵循MIT协议，方便交流与学习，包括但不限于本项目的衍生品都禁止在损害WeChat官方利益情况下使用。如果您发现本项目有侵犯您的知识产权，请与我取得联系，我会及时修改或删除。
 
