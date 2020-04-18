@@ -405,6 +405,7 @@
 		188A658B2272ACBA0096663E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				96B578C12360AA8A00F3F66C /* Localizable.strings */,
 				3644BDF32285545500EDE358 /* TCB */,
 				18A7A1352272AFE600361A98 /* GCDWebServer */,
 				188A658C2272ACBA0096663E /* WindowControllers */,
@@ -622,7 +623,6 @@
 		188A65E42272ACBA0096663E /* Hook */ = {
 			isa = PBXGroup;
 			children = (
-				96B578C12360AA8A00F3F66C /* Localizable.strings */,
 				188A65E52272ACBA0096663E /* MMChatsTableCellView+hook.h */,
 				188A65F02272ACBA0096663E /* MMChatsTableCellView+hook.m */,
 				188A65E92272ACBA0096663E /* MMStickerMessageCellView+hook.h */,
@@ -822,6 +822,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 188A656222718C400096663E /* Build configuration list for PBXNativeTarget "WeChatExtension" */;
 			buildPhases = (
+				D73D6FD6244AD65600EB35C5 /* Simplified Chinese to Traditional Chinese */,
 				188A654922718C400096663E /* Headers */,
 				188A654A22718C400096663E /* Sources */,
 				188A654B22718C400096663E /* Frameworks */,
@@ -961,6 +962,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D73D6FD6244AD65600EB35C5 /* Simplified Chinese to Traditional Chinese */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Simplified Chinese to Traditional Chinese";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which opencc >/dev/null; then\nopencc -c s2hk -i \"$PROJECT_DIR/WeChatExtension/Sources/zh-Hans.lproj/Localizable.strings\" -o \"$PROJECT_DIR/WeChatExtension/Sources/zh-Hant.lproj/Localizable.strings\"\nelse\necho \"warning: opencc not installed, please run brew install opencc\"\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
