@@ -320,6 +320,10 @@ This project exists thanks to all the people who contribute。
   <a href="https://github.com/yorfir"><img src="https://avatars1.githubusercontent.com/u/7101507?s=400&u=11080c0830a870dcab91948149445565bc187da9&v=4" width="100px;" alt="yorfir"/>
   <br></br><sub><b>yorfir</b></sub>
  
+   <td align="center">
+  <a href="https://github.com/isyntop"><img src="https://avatars1.githubusercontent.com/u/20900723?s=400&u=a1e6d392f55a5d5b180535277b1020bf17f7e217&v=4" width="100px;" alt="isyntop"/>
+  <br></br><sub><b>isyntop</b></sub>
+ 
   </td></tr></table>
 
 ## Backers
