@@ -12,29 +12,9 @@
 #import "TKIgnoreSessonModel.h"
 #import "WeChatPlugin.h"
 #import "YMIMContactsManager.h"
-static NSString * const kTKPreventRevokeEnableKey = @"kTKPreventRevokeEnableKey";
-static NSString * const kTKPreventSelfRevokeEnableKey = @"kTKPreventSelfRevokeEnableKey";
-static NSString * const kTKPreventAsyncRevokeKey = @"kTKPreventAsyncRevokeKey";
-static NSString * const KPreventAsyncRevokeSignal = @"KPreventAsyncRevokeSignal";
-static NSString * const KPreventAsyncRevokeChatRoom = @"KPreventAsyncRevokeChatRoom";
-static NSString * const KQuitMonitorChatRoom = @"KQuitMonitorChatRoom";
-static NSString * const kTKAutoReplyEnableKey = @"kTKAutoReplyEnableKey";
-static NSString * const kTKAutoAuthEnableKey = @"kTKAutoAuthEnableKey";
-static NSString * const kTKLaunchFromNew = @"kTKLaunchFromNew";
-static NSString * const kTKAutoLoginEnableKey = @"kTKAutoLoginEnableKey";
-static NSString * const kTKOnTopKey = @"kTKOnTopKey";
-static NSString * const kTKForbidCheckVersionKey = @"kTKForbidCheckVersionKey";
-static NSString * const kTKAlfredEnableKey = @"kTKAlfredEnableKey";
-static NSString * const kTKCheckUpdateWechatEnableKey = @"kTKCheckUpdateWechatEnableKey";
-static NSString * const kTKSystemBrowserEnableKey = @"kTKSystemBrowserEnableKey";
+
 static NSString * const kTKWeChatResourcesPath = @"/Applications/WeChat.app/Contents/MacOS/WeChatExtension.framework/Resources/";
 static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubusercontent.com/MustangYM/WeChatExtension-ForMac/master/WeChatExtension/WeChatExtension/Base.lproj/Info.plist";
-static NSString * const kisAllowMoreOpenBaby = @"kisAllowMoreOpenBaby";
-
-static NSString * const kDarkMode = @"kDarkMode";
-static NSString * const kPinkMode = @"kPinkMode";
-static NSString * const kGroupMultiColorMode = @"kGroupMultiColorMode";
-static NSString * const kFirstLoadMode = @"kThemeLoadMode.";
 
 @interface TKWeChatPluginConfig ()
 
@@ -49,167 +29,36 @@ static NSString * const kFirstLoadMode = @"kThemeLoadMode.";
 
 @implementation TKWeChatPluginConfig
 
+@dynamic preventRevokeEnable;
+@dynamic preventSelfRevokeEnable;
+@dynamic preventAsyncRevokeToPhone;
+@dynamic preventAsyncRevokeSignal;
+@dynamic preventAsyncRevokeChatRoom;
+@dynamic autoReplyEnable;
+@dynamic autoAuthEnable;
+@dynamic launchFromNew;
+@dynamic quitMonitorEnable;
+@dynamic autoLoginEnable;
+@dynamic onTop;
+@dynamic multipleSelectionEnable;
+@dynamic forbidCheckVersion;
+@dynamic alfredEnable;
+@dynamic checkUpdateWechatEnable;
+@dynamic systemBrowserEnable;
+@dynamic currentUserName;
+@dynamic isAllowMoreOpenBaby;
+@dynamic darkMode;
+@dynamic pinkMode;
+@dynamic groupMultiColorMode;
+@dynamic isThemeLoaded;
+
 + (instancetype)sharedConfig {
     static TKWeChatPluginConfig *config = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        config = [[TKWeChatPluginConfig alloc] init];
+        config = [TKWeChatPluginConfig standardUserDefaults];
     });
     return config;
-}
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        _preventRevokeEnable = [[NSUserDefaults standardUserDefaults] boolForKey:kTKPreventRevokeEnableKey];
-        _preventSelfRevokeEnable = [[NSUserDefaults standardUserDefaults] boolForKey:kTKPreventSelfRevokeEnableKey];
-        _autoReplyEnable = [[NSUserDefaults standardUserDefaults] boolForKey:kTKAutoReplyEnableKey];
-        _autoAuthEnable = [[NSUserDefaults standardUserDefaults] boolForKey:kTKAutoAuthEnableKey];
-        _launchFromNew = [[NSUserDefaults standardUserDefaults] boolForKey:kTKLaunchFromNew];
-        _autoLoginEnable = [[NSUserDefaults standardUserDefaults] boolForKey:kTKAutoLoginEnableKey];
-        _onTop = [[NSUserDefaults standardUserDefaults] boolForKey:kTKOnTopKey];
-        _forbidCheckVersion = [[NSUserDefaults standardUserDefaults] boolForKey:kTKForbidCheckVersionKey];
-        _alfredEnable = [[NSUserDefaults standardUserDefaults] boolForKey:kTKAlfredEnableKey];
-        _checkUpdateWechatEnable = [[NSUserDefaults standardUserDefaults] boolForKey:kTKCheckUpdateWechatEnableKey];
-        _systemBrowserEnable = [[NSUserDefaults standardUserDefaults] boolForKey:kTKSystemBrowserEnableKey];
-        _preventAsyncRevokeToPhone = [[NSUserDefaults standardUserDefaults] boolForKey:kTKPreventAsyncRevokeKey];
-        _preventAsyncRevokeSignal = [[NSUserDefaults standardUserDefaults] boolForKey:KPreventAsyncRevokeSignal];
-        _preventAsyncRevokeChatRoom = [[NSUserDefaults standardUserDefaults] boolForKey:KPreventAsyncRevokeChatRoom];
-        _quitMonitorEnable = [[NSUserDefaults standardUserDefaults] boolForKey:KQuitMonitorChatRoom];
-        _isAllowMoreOpenBaby = [[NSUserDefaults standardUserDefaults] boolForKey:kisAllowMoreOpenBaby];
-        _darkMode = [[NSUserDefaults standardUserDefaults] boolForKey:kDarkMode];
-        _pinkMode = [[NSUserDefaults standardUserDefaults] boolForKey:kPinkMode];
-        _groupMultiColorMode = [[NSUserDefaults standardUserDefaults] boolForKey:kGroupMultiColorMode];
-        _isThemeLoaded = [[NSUserDefaults standardUserDefaults] boolForKey:kFirstLoadMode];
-    }
-    return self;
-}
-
-- (void)setPinkMode:(BOOL)pinkMode
-{
-    _pinkMode = pinkMode;
-    [[NSUserDefaults standardUserDefaults] setBool:pinkMode forKey:kPinkMode];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)setGroupMultiColorMode:(BOOL)groupMultiColorMode
-{
-    _groupMultiColorMode = groupMultiColorMode;
-    [[NSUserDefaults standardUserDefaults] setBool:groupMultiColorMode forKey:kGroupMultiColorMode];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)setIsThemeLoaded:(BOOL)isThemeLoaded
-{
-    _isThemeLoaded = isThemeLoaded;
-    [[NSUserDefaults standardUserDefaults] setBool:isThemeLoaded forKey:kFirstLoadMode];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)setDarkMode:(BOOL)darkMode
-{
-    _darkMode = darkMode;
-    [[NSUserDefaults standardUserDefaults] setBool:darkMode forKey:kDarkMode];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)setIsAllowMoreOpenBaby:(BOOL)isAllowMoreOpenBaby
-{
-    _isAllowMoreOpenBaby = isAllowMoreOpenBaby;
-    [[NSUserDefaults standardUserDefaults] setBool:isAllowMoreOpenBaby forKey:kisAllowMoreOpenBaby];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)setPreventRevokeEnable:(BOOL)preventRevokeEnable {
-    _preventRevokeEnable = preventRevokeEnable;
-    [[NSUserDefaults standardUserDefaults] setBool:preventRevokeEnable forKey:kTKPreventRevokeEnableKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)setPreventSelfRevokeEnable:(BOOL)preventSelfRevokeEnable {
-    _preventSelfRevokeEnable = preventSelfRevokeEnable;
-    [[NSUserDefaults standardUserDefaults] setBool:preventSelfRevokeEnable forKey:kTKPreventSelfRevokeEnableKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)setAutoReplyEnable:(BOOL)autoReplyEnable {
-    _autoReplyEnable = autoReplyEnable;
-    [[NSUserDefaults standardUserDefaults] setBool:autoReplyEnable forKey:kTKAutoReplyEnableKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)setAutoAuthEnable:(BOOL)autoAuthEnable {
-    _autoAuthEnable = autoAuthEnable;
-    [[NSUserDefaults standardUserDefaults] setBool:autoAuthEnable forKey:kTKAutoAuthEnableKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)setLaunchFromNew:(BOOL)launchFromNew
-{
-    _launchFromNew = launchFromNew;
-    [[NSUserDefaults standardUserDefaults] setBool:_launchFromNew forKey:kTKLaunchFromNew];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)setAutoLoginEnable:(BOOL)autoLoginEnable {
-    _autoLoginEnable = autoLoginEnable;
-    [[NSUserDefaults standardUserDefaults] setBool:autoLoginEnable forKey:kTKAutoLoginEnableKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)setOnTop:(BOOL)onTop {
-    _onTop = onTop;
-    [[NSUserDefaults standardUserDefaults] setBool:_onTop forKey:kTKOnTopKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)setForbidCheckVersion:(BOOL)forbidCheckVersion {
-    _forbidCheckVersion = forbidCheckVersion;
-    [[NSUserDefaults standardUserDefaults] setBool:_forbidCheckVersion forKey:kTKForbidCheckVersionKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)setAlfredEnable:(BOOL)alfredEnable {
-    _alfredEnable = alfredEnable;
-    [[NSUserDefaults standardUserDefaults] setBool:_alfredEnable forKey:kTKAlfredEnableKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)setCheckUpdateWechatEnable:(BOOL)checkUpdateWechatEnable {
-    _checkUpdateWechatEnable = checkUpdateWechatEnable;
-    [[NSUserDefaults standardUserDefaults] setBool:_checkUpdateWechatEnable forKey:kTKCheckUpdateWechatEnableKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)setSystemBrowserEnable:(BOOL)systemBrowserEnable {
-    _systemBrowserEnable = systemBrowserEnable;
-    [[NSUserDefaults standardUserDefaults] setBool:_systemBrowserEnable forKey:kTKSystemBrowserEnableKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)setPreventAsyncRevokeToPhone:(BOOL)preventAsyncRevokeToPhone {
-    _preventAsyncRevokeToPhone = preventAsyncRevokeToPhone;
-    [[NSUserDefaults standardUserDefaults] setBool:_preventAsyncRevokeToPhone forKey:kTKPreventAsyncRevokeKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)setPreventAsyncRevokeSignal:(BOOL)preventAsyncRevokeSignal {
-    _preventAsyncRevokeSignal = preventAsyncRevokeSignal;
-    [[NSUserDefaults standardUserDefaults] setBool:_preventAsyncRevokeSignal forKey:KPreventAsyncRevokeSignal];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)setPreventAsyncRevokeChatRoom:(BOOL)preventAsyncRevokeChatRoom {
-    _preventAsyncRevokeChatRoom = preventAsyncRevokeChatRoom;
-    [[NSUserDefaults standardUserDefaults] setBool:_preventAsyncRevokeChatRoom forKey:KPreventAsyncRevokeChatRoom];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)setQuitMonitorEnable:(BOOL)quitMonitorEnable
-{
-    _quitMonitorEnable = quitMonitorEnable;
-    [[NSUserDefaults standardUserDefaults] setBool:_quitMonitorEnable forKey:KQuitMonitorChatRoom];
-       [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - 自动回复
@@ -231,8 +80,8 @@ static NSString * const kFirstLoadMode = @"kThemeLoadMode.";
         return;
     }
     NSString *temp = NSTemporaryDirectory();
-     NSString *filePath = [temp stringByAppendingPathComponent:@"AIAutoReply.data"];
-     [NSKeyedArchiver archiveRootObject:model toFile:filePath];
+    NSString *filePath = [temp stringByAppendingPathComponent:@"AIAutoReply.data"];
+    [NSKeyedArchiver archiveRootObject:model toFile:filePath];
 }
 
 - (void)saveAutoReplyModels {
@@ -470,5 +319,5 @@ static NSString * const kFirstLoadMode = @"kThemeLoadMode.";
     }
     return english;
 }
-@end
 
+@end

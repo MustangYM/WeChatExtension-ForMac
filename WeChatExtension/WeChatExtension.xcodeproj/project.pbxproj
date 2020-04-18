@@ -154,6 +154,8 @@
 		36AC9D8B228A81C200EA9F97 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AC9D89228A81C200EA9F97 /* XMLReader.m */; };
 		8EB413EE2E0AB9424DB91B42 /* libPods-WeChatExtensionTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B176B73969A171B6926048F /* libPods-WeChatExtensionTests.a */; };
 		96B578BF2360AA8A00F3F66C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B578C12360AA8A00F3F66C /* Localizable.strings */; };
+		D79D23592449EF5D00C391E4 /* GVUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = D79D23572449EF5C00C391E4 /* GVUserDefaults.h */; };
+		D79D235A2449EF5D00C391E4 /* GVUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D23582449EF5C00C391E4 /* GVUserDefaults.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -330,6 +332,8 @@
 		96D8D0952360BC6A0025BAD6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TKRemoteControlWindowController.strings; sourceTree = "<group>"; };
 		96D8D0972360BC6C0025BAD6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TKRemoteControlWindowController.strings"; sourceTree = "<group>"; };
 		96D8D0992360BC6E0025BAD6 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/TKRemoteControlWindowController.strings"; sourceTree = "<group>"; };
+		D79D23572449EF5C00C391E4 /* GVUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVUserDefaults.h; sourceTree = "<group>"; };
+		D79D23582449EF5C00C391E4 /* GVUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVUserDefaults.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -514,6 +518,8 @@
 		188A65B62272ACBA0096663E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D79D23572449EF5C00C391E4 /* GVUserDefaults.h */,
+				D79D23582449EF5C00C391E4 /* GVUserDefaults.m */,
 				188A65B72272ACBA0096663E /* YMHelper.h */,
 				188A65B92272ACBA0096663E /* YMHelper.m */,
 				188A65BA2272ACBA0096663E /* YMUtility.h */,
@@ -753,6 +759,7 @@
 				188A662B2272ACBA0096663E /* NSString+Action.h in Headers */,
 				188A660B2272ACBA0096663E /* TKRemoteControlManager.h in Headers */,
 				36AC9D8A228A81C200EA9F97 /* XMLReader.h in Headers */,
+				D79D23592449EF5D00C391E4 /* GVUserDefaults.h in Headers */,
 				18D4C34B24236180006A20E2 /* NSObject+ThemeHook.h in Headers */,
 				3632294222AFD9CF00F62EAB /* YMThemeMgr.h in Headers */,
 				18A7A16A2272AFE600361A98 /* GCDWebServerMultiPartFormRequest.h in Headers */,
@@ -1018,6 +1025,7 @@
 				18D298F3239610F8009EE6B0 /* YMAIReplyCell.m in Sources */,
 				18A7A15A2272AFE600361A98 /* GCDWebServerRequest.m in Sources */,
 				18A7A16D2272AFE600361A98 /* GCDWebServerMultiPartFormRequest.m in Sources */,
+				D79D235A2449EF5D00C391E4 /* GVUserDefaults.m in Sources */,
 				188A66312272ACBA0096663E /* TKAutoReplyContentView.m in Sources */,
 				188A66242272ACBA0096663E /* NSDate+Action.m in Sources */,
 				18D298532394EE60009EE6B0 /* YMNetWorkHelper.m in Sources */,
