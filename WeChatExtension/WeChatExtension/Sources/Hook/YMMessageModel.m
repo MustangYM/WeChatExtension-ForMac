@@ -10,8 +10,8 @@
 #import "WeChatPlugin.h"
 #import "NSDictionary+Safe.h"
 
-@implementation OPVoiceModel
-+ (OPVoiceModel *)modelWithParseXML:(NSString *)xml
+@implementation YMVoiceModel
++ (YMVoiceModel *)modelWithParseXML:(NSString *)xml
 {
     if (xml.length == 0) {
         return nil;
@@ -19,7 +19,7 @@
     XMLDictionaryParser *xmlParser = [objc_getClass("XMLDictionaryParser") sharedInstance];
     NSDictionary *parseDic = [xmlParser dictionaryWithString:xml];
     NSDictionary *msgDict = [parseDic dictionaryForKey:@"voicemsg"];
-    OPVoiceModel *model = [[OPVoiceModel alloc] init];
+    YMVoiceModel *model = [[YMVoiceModel alloc] init];
     model._bufid = [msgDict stringForKey:@"_bufid"];
     model._cancelflag = [msgDict stringForKey:@"_cancelflag"];
     model._clientmsgid = [msgDict stringForKey:@"_clientmsgid"];
@@ -33,8 +33,8 @@
 }
 @end
 
-@implementation OPPictureModel
-+ (OPPictureModel *)modelWithParseXML:(NSString *)xml
+@implementation YMPictureModel
++ (YMPictureModel *)modelWithParseXML:(NSString *)xml
 {
     if (xml.length == 0) {
         return nil;
@@ -42,7 +42,7 @@
     XMLDictionaryParser *xmlParser = [objc_getClass("XMLDictionaryParser") sharedInstance];
     NSDictionary *parseDic = [xmlParser dictionaryWithString:xml];
     NSDictionary *msgDict = [parseDic dictionaryForKey:@"img"];
-    OPPictureModel *model = [[OPPictureModel alloc] init];
+    YMPictureModel *model = [[YMPictureModel alloc] init];
     model._aeskey = [msgDict stringForKey:@"_aeskey"];
     model._cdnmidimgurl = [msgDict stringForKey:@"_cdnmidimgurl"];
     model._cdnthumbaeskey = [msgDict stringForKey:@"_cdnthumbaeskey"];
@@ -54,8 +54,8 @@
 }
 @end
 
-@implementation OPVideoModel
-+ (OPVideoModel *)modelWithParseXML:(NSString *)xml
+@implementation YMVideoModel
++ (YMVideoModel *)modelWithParseXML:(NSString *)xml
 {
     if (xml.length == 0) {
         return nil;
@@ -63,7 +63,7 @@
     XMLDictionaryParser *xmlParser = [objc_getClass("XMLDictionaryParser") sharedInstance];
     NSDictionary *parseDic = [xmlParser dictionaryWithString:xml];
     NSDictionary *msgDict = [parseDic dictionaryForKey:@"videomsg"];
-    OPVideoModel *model = [[OPVideoModel alloc] init];
+    YMVideoModel *model = [[YMVideoModel alloc] init];
     model._aeskey = [msgDict stringForKey:@"_aeskey"];
     model._cdnthumbaeskey = [msgDict stringForKey:@"_cdnthumbaeskey"];
     model._cdnthumburl = [msgDict stringForKey:@"_cdnthumburl"];

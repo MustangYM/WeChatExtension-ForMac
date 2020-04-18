@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @property (nonatomic, copy) NSString *currentUserName;          /**<    当前用户的id     */
 @property (nonatomic) BOOL isAllowMoreOpenBaby;                 /**<    子WeChat多开     */
 @property (nonatomic) BOOL darkMode;                            /**<    黑暗模式     */
-@property (nonatomic) BOOL pinkMode;                            /**<    少女弄死     */
+@property (nonatomic) BOOL pinkMode;                            /**<    少女模式     */
 @property (nonatomic) BOOL groupMultiColorMode;                 /**<    群成员彩色     */
 @property (nonatomic) BOOL isThemeLoaded;                       /**<    是否有使用过皮肤    */
 
