@@ -36,11 +36,11 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @property (nonatomic) BOOL checkUpdateWechatEnable;             /**<    是否允许微信启动检测更新  */
 @property (nonatomic) BOOL systemBrowserEnable;                 /**<    是否使用自身浏览器打开连接   */
 @property (nonatomic, copy) NSString *currentUserName;          /**<    当前用户的id     */
-@property (nonatomic) BOOL isAllowMoreOpenBaby;
-@property (nonatomic) BOOL darkMode;
-@property (nonatomic) BOOL pinkMode;
-@property (nonatomic) BOOL groupMultiColorMode;
-@property (nonatomic) BOOL isThemeLoaded;
+@property (nonatomic) BOOL isAllowMoreOpenBaby;                 /**<    子WeChat多开     */
+@property (nonatomic) BOOL darkMode;                            /**<    黑暗模式     */
+@property (nonatomic) BOOL pinkMode;                            /**<    少女弄死     */
+@property (nonatomic) BOOL groupMultiColorMode;                 /**<    群成员彩色     */
+@property (nonatomic) BOOL isThemeLoaded;                       /**<    是否有使用过皮肤    */
 
 @property (nonatomic, strong) NSMutableArray *autoReplyModels;           /**<    自动回复的数组    */
 @property (nonatomic, strong) NSMutableArray *remoteControlModels;       /**<    远程控制的数组    */

@@ -17,7 +17,8 @@ static NSString * const kWeChatResourcesPath = @"/Applications/WeChat.app/Conten
 
 @implementation TKCacheManager
 
-+ (instancetype)shareManager {
++ (instancetype)shareManager
+{
     static TKCacheManager *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -48,7 +49,8 @@ static NSString * const kWeChatResourcesPath = @"/Applications/WeChat.app/Conten
     return self;
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     MMExtensionCenter *extensionCenter = [[objc_getClass("MMServiceCenter") defaultCenter] getService:[objc_getClass("MMExtensionCenter") class]];
     MMExtension *extension = [extensionCenter getExtension:@protocol(EmoticonDownloadMgrExt)];
     if (extension) {
@@ -56,28 +58,34 @@ static NSString * const kWeChatResourcesPath = @"/Applications/WeChat.app/Conten
     }
 }
 
-- (BOOL)fileExistsWithName:(NSString *)fileName {
+- (BOOL)fileExistsWithName:(NSString *)fileName
+{
     fileName = [fileName stringByAppendingString:@".gif"];
     NSString *filePath = [self.cacheDirectory stringByAppendingString:fileName];
     NSFileManager *manager = [NSFileManager defaultManager];
     return [manager fileExistsAtPath:filePath];
 }
 
-- (NSString *)gifFilePathWithName:(NSString *)fileName {
-    if (![self fileExistsWithName:fileName]) return nil;
+- (NSString *)gifFilePathWithName:(NSString *)fileName
+{
+    if (![self fileExistsWithName:fileName]) {
+         return nil;
+    }
     
     fileName = [fileName stringByAppendingString:@".gif"];
     return [self.cacheDirectory stringByAppendingString:fileName];
 }
 
-- (NSString *)filePathWithName:(NSString *)fileName {
+- (NSString *)filePathWithName:(NSString *)fileName
+{
     if (fileName.length == 0) {
         return nil;
     }
     return [self.cacheDirectory stringByAppendingString:fileName];
 }
 
-- (NSString *)cacheImageData:(NSData *)imageData withFileName:(NSString *)fileName completion:(void (^)(BOOL))completion {
+- (NSString *)cacheImageData:(NSData *)imageData withFileName:(NSString *)fileName completion:(void (^)(BOOL))completion
+{
     BOOL result = NO;
     if (!imageData) {
         if (completion) {
@@ -97,7 +105,8 @@ static NSString * const kWeChatResourcesPath = @"/Applications/WeChat.app/Conten
     return tempImageFilePath;
 }
 
-- (NSString *)cacheEmotionMessage:(MessageData *)emotionMsg {
+- (NSString *)cacheEmotionMessage:(MessageData *)emotionMsg
+{
     EmoticonMgr *emoticonMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("EmoticonMgr")];
     NSData *imageData = [emoticonMgr getEmotionDataWithMD5:emotionMsg.m_nsEmoticonMD5];
     if (!imageData && ![self.emotionSet containsObject:emotionMsg.m_nsEmoticonMD5]) {
@@ -110,21 +119,27 @@ static NSString * const kWeChatResourcesPath = @"/Applications/WeChat.app/Conten
     return tempImageFilePath;
 }
 
-- (void)emoticonDownloadFinished:(EmoticonMsgInfo *)msgInfo {
-    if (![self.emotionSet containsObject:msgInfo.m_nsMD5]) return;
+- (void)emoticonDownloadFinished:(EmoticonMsgInfo *)msgInfo
+{
+    if (![self.emotionSet containsObject:msgInfo.m_nsMD5]) {
+         return;
+    }
     
     EmoticonMgr *emoticonMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("EmoticonMgr")];
     NSData *imageData = [emoticonMgr getEmotionDataWithMD5:msgInfo.m_nsMD5];
     [self cacheImageData:imageData withFileName:msgInfo.m_nsMD5 completion:^(BOOL result) {
-        if(result) {
+        if (result) {
             [self.emotionSet removeObject:msgInfo.m_nsMD5];
         }
     }];
 }
 
-- (NSString *)cacheAvatarWithContact:(WCContactData *)contact {
+- (NSString *)cacheAvatarWithContact:(WCContactData *)contact
+{
     NSString *headImgUrl = contact.m_nsHeadImgUrl;
-    if (headImgUrl.length == 0) return @"";
+    if (headImgUrl.length == 0) {
+         return @"";
+    }
     
     NSString *imgPath = @"";
     if ([headImgUrl respondsToSelector:@selector(md5String)]) {
@@ -156,11 +171,13 @@ static NSString * const kWeChatResourcesPath = @"/Applications/WeChat.app/Conten
 
 }
 
-- (NSString *) getUpdateSandboxFilePathWithName:(NSString *)Name {
+- (NSString *)getUpdateSandboxFilePathWithName:(NSString *)Name
+{
     return [self _getSandBoxPath:@"/WeChatExtension/Update/" name:Name];
 }
 
-- (NSString *)_getSandBoxPath:(NSString *)path name:(NSString *)name{
+- (NSString *)_getSandBoxPath:(NSString *)path name:(NSString *)name
+{
     NSFileManager *manager = [NSFileManager defaultManager];
     
     NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];

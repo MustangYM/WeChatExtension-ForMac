@@ -21,7 +21,8 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
 
 @implementation TKRemoteControlManager
 
-+ (void)executeRemoteControlCommandWithVoiceMsg:(NSString *)msg {
++ (void)executeRemoteControlCommandWithVoiceMsg:(NSString *)msg
+{
     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
     NSString *callBack = [NSString stringWithFormat:@"%@\n\n\n%@", YMLocalizedString(@"assistant.remoteControl.voiceRecall"), msg];
     MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
@@ -30,11 +31,13 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
     [self executeRemoteControlCommandWithMsg:msg msgType:MessageDataTypeVoice];
 }
 
-+ (void)executeRemoteControlCommandWithMsg:(NSString *)msg {
++ (void)executeRemoteControlCommandWithMsg:(NSString *)msg
+{
     [self executeRemoteControlCommandWithMsg:msg msgType:MessageDataTypeText];
 }
 
-+ (void)executeRemoteControlCommandWithMsg:(NSString *)msg msgType:(MessageDataType)type {
++ (void)executeRemoteControlCommandWithMsg:(NSString *)msg msgType:(MessageDataType)type
+{
     NSArray *remoteControlModels = [TKWeChatPluginConfig sharedConfig].remoteControlModels;
     [remoteControlModels enumerateObjectsUsingBlock:^(NSArray *subModels, NSUInteger index, BOOL * _Nonnull stop) {
         [subModels enumerateObjectsUsingBlock:^(TKRemoteControlModel *model, NSUInteger idx, BOOL * _Nonnull subStop) {
@@ -79,7 +82,8 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
     }];
 }
 
-+ (BOOL)shouldExecuteRemoteControlWithModel:(TKRemoteControlModel *)model msg:(NSString *)msg msgType:(MessageDataType)type {
++ (BOOL)shouldExecuteRemoteControlWithModel:(TKRemoteControlModel *)model msg:(NSString *)msg msgType:(MessageDataType)type
+{
     if (model.enable && ![model.keyword isEqualToString:@""]) {
         if ((type == MessageDataTypeText && [msg isEqualToString:model.keyword]) || (type == MessageDataTypeVoice && ([msg containsString:model.keyword] || [msg containsString:YMLocalizedString(model.function)]))) {
             return YES;
@@ -91,7 +95,8 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
     }
 }
 
-+ (NSString *)executeAppleScriptCommand:(NSString *)cmd {
++ (NSString *)executeAppleScriptCommand:(NSString *)cmd
+{
     NSString *command = [NSString stringWithFormat:@"%@ %@",kRemoteControlAppleScript, cmd];
     return [self executeShellCommand:command];
 }
@@ -101,7 +106,8 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
  
  @param cmd Terminal命令
  */
-+ (NSString *)executeShellCommand:(NSString *)cmd {
++ (NSString *)executeShellCommand:(NSString *)cmd
+{
     NSTask *task = [[NSTask alloc] init];
     [task setLaunchPath:@"/bin/bash"];
     [task setArguments:@[@"-c", cmd]];
@@ -116,7 +122,8 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
-+ (void)executePluginCommand:(NSString *)cmd {
++ (void)executePluginCommand:(NSString *)cmd
+{
     NSString *callBack = @"";
     TKWeChatPluginConfig *config = [TKWeChatPluginConfig sharedConfig];
     if ([cmd isEqualToString:@"getDirectiveList"]) {
@@ -138,7 +145,8 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
     [[YMMessageManager shareManager] sendTextMessageToSelf:callBack];
 }
 
-+ (NSString *)remoteControlCommandsString {
++ (NSString *)remoteControlCommandsString
+{
     NSMutableString *replyContent = [NSMutableString stringWithString:YMLocalizedString(@"assistant.remoteControl.listTip")];
     
     NSArray *remoteControlModels = [TKWeChatPluginConfig sharedConfig].remoteControlModels;

@@ -14,12 +14,13 @@ static NSString const *APPKEY = @"sXkw8rUS1mwpbE4w";
 static NSString const *AI_API = @"https://api.ai.qq.com/fcgi-bin/nlp/nlp_textchat";
 
 @interface YMNetWorkHelper ()
-@property(nonatomic, strong)AFHTTPSessionManager *manager;
+@property (nonatomic, strong) AFHTTPSessionManager *manager;
 
 @end
 
 @implementation YMNetWorkHelper
-+ (YMNetWorkHelper *)share{
++ (YMNetWorkHelper *)share
+{
     
     static YMNetWorkHelper *network = nil;
     static dispatch_once_t predicate;
@@ -82,7 +83,8 @@ static NSString const *AI_API = @"https://api.ai.qq.com/fcgi-bin/nlp/nlp_textcha
 - (void)POST:(NSString *)url
   parameters:(NSDictionary *)parame
      success:(void (^) (id responsobject))success
-     failure:(void (^) (NSError *error , NSString *failureMsg))failure {
+     failure:(void (^) (NSError *error , NSString *failureMsg))failure
+{
     
     [self.manager POST:url parameters:parame progress:^(NSProgress *uploadProgress) {
         
@@ -93,7 +95,7 @@ static NSString const *AI_API = @"https://api.ai.qq.com/fcgi-bin/nlp/nlp_textcha
     }];
 }
 
-- (NSDictionary *)returnDictionaryWithDataPath:(NSData*)data
+- (NSDictionary *)returnDictionaryWithDataPath:(NSData *)data
 {
     NSString *receiveStr = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     NSData * datas = [receiveStr dataUsingEncoding:NSUTF8StringEncoding];
@@ -113,7 +115,8 @@ static NSString const *AI_API = @"https://api.ai.qq.com/fcgi-bin/nlp/nlp_textcha
     return _manager;
 }
 
--(NSString *)randomStringWithLength:(NSInteger)len {
+- (NSString *)randomStringWithLength:(NSInteger)len
+{
     NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
     
@@ -124,7 +127,8 @@ static NSString const *AI_API = @"https://api.ai.qq.com/fcgi-bin/nlp/nlp_textcha
     return randomString;
 }
 
-- (NSString *)getNowTime{
+- (NSString *)getNowTime
+{
     NSDate* date = [NSDate dateWithTimeIntervalSinceNow:0];
     NSTimeInterval time=[date timeIntervalSince1970];
     NSString *timeSp = [NSString stringWithFormat:@"%.0f", time];
@@ -132,7 +136,8 @@ static NSString const *AI_API = @"https://api.ai.qq.com/fcgi-bin/nlp/nlp_textcha
     return timeSp;
 }
 
-- (NSString *)sortedDictionary:(NSDictionary *)dict withAPPKEY:(NSString *)APPKEY{
+- (NSString *)sortedDictionary:(NSDictionary *)dict withAPPKEY:(NSString *)APPKEY
+{
     NSArray *sortArray = [[dict allKeys] sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         return [obj1 compare:obj2 options:NSNumericSearch];
     }];
@@ -158,12 +163,13 @@ static NSString const *AI_API = @"https://api.ai.qq.com/fcgi-bin/nlp/nlp_textcha
     return sign;
 }
 
-- (NSString *)md5:(NSString *)input {
+- (NSString *)md5:(NSString *)input
+{
         const char *cStr = [input UTF8String];
         unsigned char digest[CC_MD5_DIGEST_LENGTH];
         CC_MD5( cStr, strlen(cStr), digest );
         NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
-    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
         [output appendFormat:@"%02x", digest[i]];
     }
         return  output;

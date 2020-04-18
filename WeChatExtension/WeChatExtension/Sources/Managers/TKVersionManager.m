@@ -14,7 +14,8 @@
 
 @implementation TKVersionManager
 
-+ (instancetype)shareManager {
++ (instancetype)shareManager
+{
     static TKVersionManager *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -23,14 +24,16 @@
     return manager;
 }
 
-- (NSString *)currentVersion {
+- (NSString *)currentVersion
+{
     NSDictionary *infoDictionary = [[NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"] infoDictionary];
     CFShow((__bridge CFTypeRef)(infoDictionary));
     // app版本
     return [infoDictionary objectForKey:@"CFBundleShortVersionString"];
 }
 
-- (void)checkVersionFinish:(void (^)(TKVersionStatus, NSString *))finish {
+- (void)checkVersionFinish:(void (^)(TKVersionStatus, NSString *))finish
+{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSDictionary *localInfo = [[TKWeChatPluginConfig sharedConfig] localInfoPlist];
         NSDictionary *romoteInfo = [[TKWeChatPluginConfig sharedConfig] romoteInfoPlist];
@@ -42,7 +45,9 @@
                 NSString *versionMsg = [localInfo[@"versionInfo"] stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
                 finish(TKVersionStatusOld, versionMsg);
             } else if (romoteInfo[@"versionInfo"]) {
-                if (![romoteInfo[@"showUpdateWindow"] boolValue]) return;
+                if (![romoteInfo[@"showUpdateWindow"] boolValue]) {
+                     return;
+                }
                 NSString *versionMsg = [romoteInfo[@"versionInfo"] stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
                 finish(TKVersionStatusNew, versionMsg);
             }
@@ -50,7 +55,8 @@
     });
 }
 
-- (void)downloadPluginProgress:(void (^)(NSProgress *downloadProgress))downloadProgressBlock completionHandler:(void (^)(NSString *filePath, NSError * _Nullable error))completionHandler {
+- (void)downloadPluginProgress:(void (^)(NSProgress *downloadProgress))downloadProgressBlock completionHandler:(void (^)(NSString *filePath, NSError * _Nullable error))completionHandler
+{
     NSString *cachesPath = [[TKCacheManager shareManager] getUpdateSandboxFilePathWithName:@""];
     NSString *pluginName = @"WeChatExtension";
     NSString *pluginPath = [NSString stringWithFormat:@"%@/%@",cachesPath,pluginName];
@@ -62,13 +68,18 @@
     
     NSString *urlString = @"https://github.com/MustangYM/WeChatExtension-ForMac/raw/master/WeChatExtension/Rely/Plugin/WeChatExtension.zip";
     [[TKHTTPManager shareManager] downloadWithUrlString:urlString toDirectoryPah:cachesPath progress:^(NSProgress *downloadProgress) {
-        if (downloadProgressBlock) downloadProgressBlock(downloadProgress);
+        if (downloadProgressBlock) {
+             downloadProgressBlock(downloadProgress);
+        }
     } completionHandler:^(NSString *filePath, NSError * _Nullable error) {
-        if (completionHandler) completionHandler(filePath,error);
+        if (completionHandler) {
+             completionHandler(filePath,error);
+        }
     }];
 }
 
-- (void)cancelDownload {
+- (void)cancelDownload
+{
     [[TKHTTPManager shareManager] cancelDownload];
 }
 @end

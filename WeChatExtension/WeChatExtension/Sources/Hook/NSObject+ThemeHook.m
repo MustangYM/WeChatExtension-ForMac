@@ -109,7 +109,7 @@
 }
 
 #pragma mark - 防止 dark mode 黑底黑色
-- (void)hook_textFieldSetAttributedStringValue:(NSAttributedString *) attributedString
+- (void)hook_textFieldSetAttributedStringValue:(NSAttributedString *)attributedString
 {
     NSTextField *field = (NSTextField *)self;
     NSMutableAttributedString *a = [attributedString mutableCopy];
@@ -121,7 +121,9 @@
         Class dvClass = NSClassFromString(@"MMDragEventView");
         
         for (int i = 0; i < 5; i++) {
-            if (sv == nil) break;
+            if (sv == nil) {
+                 break;
+            }
             if ([sv isKindOfClass:tcClass] || [sv isKindOfClass:dvClass]) {
                 [a addAttributes:@{
                     NSForegroundColorAttributeName: kMainTextColor
@@ -135,7 +137,8 @@
     [self hook_textFieldSetAttributedStringValue: a];
 }
 
-- (BOOL)hook_shouldDisableSetFrameOrigin {
+- (BOOL)hook_shouldDisableSetFrameOrigin
+{
     NSTextView *view = (NSTextView *)self;
     
     if (view.superview != nil && [view.superview isKindOfClass:NSClassFromString(@"MMChatLogEventView")]) {
@@ -384,7 +387,8 @@
     
 }
 
-- (void)hook_QRCodeViewDidLoad {
+- (void)hook_QRCodeViewDidLoad
+{
     [self hook_QRCodeViewDidLoad];
 }
 
@@ -406,17 +410,20 @@
     textField.backgroundColor = kMainBackgroundColor;
 }
 
-- (instancetype)hook_scrollViewInitWithFrame:(NSRect)frameRect {
+- (instancetype)hook_scrollViewInitWithFrame:(NSRect)frameRect
+{
     NSScrollView *view = (NSScrollView *)self;
     [[YMThemeMgr shareInstance] changeTheme:view.contentView];
     return [self hook_scrollViewInitWithFrame:frameRect];
 }
 
-- (void)hook_ChatMessageViewControllerViewDidLoad {
+- (void)hook_ChatMessageViewControllerViewDidLoad
+{
     [self hook_ChatMessageViewControllerViewDidLoad];
 }
 
-- (void)hook_ComposeInputViewControllerViewDidLoad {
+- (void)hook_ComposeInputViewControllerViewDidLoad
+{
     [self hook_ComposeInputViewControllerViewDidLoad];
     MMComposeInputViewController *controller = (MMComposeInputViewController *)self;
     [[YMThemeMgr shareInstance] changeTheme:controller.view];
@@ -434,7 +441,8 @@
     }
 }
 
-- (void)hook_addSubView:(NSView *)view {
+- (void)hook_addSubView:(NSView *)view
+{
     [self hook_addSubView:view];
     
     //不适配小程序
@@ -531,8 +539,8 @@
     #pragma mark - controller
     NSResponder *responder = view;
     NSViewController *controller = nil;
-    while ((responder = [responder nextResponder])){
-        if ([responder isKindOfClass: [NSViewController class]]){
+    while ((responder = [responder nextResponder])) {
+        if ([responder isKindOfClass: [NSViewController class]]) {
             controller = (NSViewController *)responder;
         }
     }

@@ -25,7 +25,8 @@
 
 static int port=52700;
 
-+ (instancetype)shareManager {
++ (instancetype)shareManager
+{
     static TKWebServerManager *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -34,7 +35,8 @@ static int port=52700;
     return manager;
 }
 
-- (instancetype)init {
+- (instancetype)init
+{
     self = [super init];
     if (self) {
         self.searchLogic = [[objc_getClass("MMContactSearchLogic") alloc] init];
@@ -42,7 +44,8 @@ static int port=52700;
     return self;
 }
 
-- (void)startServer {
+- (void)startServer
+{
     if (self.webServer) {
         return;
     }
@@ -59,15 +62,17 @@ static int port=52700;
     [self.webServer startWithOptions:options error:nil];
 }
 
-- (void)endServer {
-    if( [self.webServer isRunning] ) {
+- (void)endServer
+{
+    if ( [self.webServer isRunning] ) {
         [self.webServer stop];
         [self.webServer removeAllHandlers];
         self.webServer = nil;
     }
 }
 
-- (void)addHandleForSearchUser {
+- (void)addHandleForSearchUser
+{
     __weak typeof(self) weakSelf = self;
     
     [self.webServer addHandlerForMethod:@"GET" path:@"/wechat-plugin/user" requestClass:[GCDWebServerRequest class] processBlock:^GCDWebServerResponse * _Nullable(__kindof GCDWebServerRequest * _Nonnull request) {
@@ -127,7 +132,7 @@ static int port=52700;
         [reportMgr.contactSearchResults enumerateObjectsUsingBlock:^(id contact, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([contact isKindOfClass:objc_getClass("MMComplexContactSearchResult")]) {
                 [sessionList addObject:[weakSelf dictFromContactSearchResult:(MMComplexContactSearchResult *)contact]];
-            } else if([contact isKindOfClass:objc_getClass("MMComplexGroupContactSearchResult")]) {
+            } else if ([contact isKindOfClass:objc_getClass("MMComplexGroupContactSearchResult")]) {
                 [sessionList addObject:[weakSelf dictFromGroupSearchResult:(MMComplexGroupContactSearchResult *)contact]];
             }
         }];
@@ -149,7 +154,8 @@ static int port=52700;
     }];
 }
 
-- (void)addHandleForSearchUserChatLog {
+- (void)addHandleForSearchUserChatLog
+{
     __weak typeof(self) weakSelf = self;
     [self.webServer addHandlerForMethod:@"GET" path:@"/wechat-plugin/chatlog" requestClass:[GCDWebServerRequest class] processBlock:^GCDWebServerResponse * _Nullable(__kindof GCDWebServerRequest * _Nonnull request) {
 
@@ -197,7 +203,8 @@ static int port=52700;
     }];
 }
 
-- (void)addHandleForOpenSession {
+- (void)addHandleForOpenSession
+{
     __weak typeof(self) weakSelf = self;
     
     [self.webServer addHandlerForMethod:@"POST" path:@"/wechat-plugin/open-session" requestClass:[GCDWebServerURLEncodedFormRequest class] processBlock:^GCDWebServerResponse * _Nullable(__kindof GCDWebServerURLEncodedFormRequest * _Nonnull request) {
@@ -248,7 +255,8 @@ static int port=52700;
     }];
 }
 
-- (void)addHandleForSendMsg {
+- (void)addHandleForSendMsg
+{
     __weak typeof(self) weakSelf = self;
     
     [self.webServer addHandlerForMethod:@"POST" path:@"/wechat-plugin/send-message" requestClass:[GCDWebServerURLEncodedFormRequest class] processBlock:^GCDWebServerResponse * _Nullable(__kindof GCDWebServerURLEncodedFormRequest * _Nonnull request) {
@@ -291,7 +299,8 @@ static int port=52700;
     }];
 }
 
-- (NSDictionary *)dictFromGroupSearchResult:(MMComplexGroupContactSearchResult *)result {
+- (NSDictionary *)dictFromGroupSearchResult:(MMComplexGroupContactSearchResult *)result
+{
     if (![result isKindOfClass:objc_getClass("MMComplexGroupContactSearchResult")]) {
         return [self dictWithErrorMsg:result.className];
     }
@@ -304,7 +313,7 @@ static int port=52700;
         [result.groupMembersResult.membersSearchReults enumerateObjectsUsingBlock:^(MMComplexContactSearchResult * _Nonnull contact, NSUInteger idx, BOOL * _Nonnull stop) {
             NSString *matchStr =[self matchWithContactResult:contact];
             NSString *contactName;
-            if(contact.contact.m_nsRemark && ![contact.contact.m_nsRemark isEqualToString:@""]) {
+            if (contact.contact.m_nsRemark && ![contact.contact.m_nsRemark isEqualToString:@""]) {
                 contactName = contact.contact.m_nsRemark;
                 if (contact.fieldType != 1) {
                     contactName = [NSString stringWithFormat:@"%@(%@)", contactName, matchStr];
@@ -334,7 +343,8 @@ static int port=52700;
              };
 }
 
-- (NSString *)matchWithContactResult:(MMComplexContactSearchResult *)result {
+- (NSString *)matchWithContactResult:(MMComplexContactSearchResult *)result
+{
     NSString *matchStr = @"";
     NSInteger type = result.fieldType;
     
@@ -365,7 +375,8 @@ static int port=52700;
     return matchStr;
 }
 
-- (NSDictionary *)dictFromContactSearchResult:(MMComplexContactSearchResult *)result {
+- (NSDictionary *)dictFromContactSearchResult:(MMComplexContactSearchResult *)result
+{
     if (![result isKindOfClass:objc_getClass("MMComplexContactSearchResult")]) {
         return [self dictWithErrorMsg:result.className];
     }
@@ -377,7 +388,7 @@ static int port=52700;
         return [self dictWithErrorMsg:@"用户：找不到 m_nsNickName"];
     }
     NSString *title = [contact isBrandContact] ? [NSString stringWithFormat:@"%@%@",YMLocalizedString(@"assistant.search.official"), contact.m_nsNickName] : contact.m_nsNickName;
-    if(contact.m_nsRemark && ![contact.m_nsRemark isEqualToString:@""]) {
+    if (contact.m_nsRemark && ![contact.m_nsRemark isEqualToString:@""]) {
         title = [NSString stringWithFormat:@"%@(%@)",contact.m_nsRemark, contact.m_nsNickName];
     }
     
@@ -394,8 +405,11 @@ static int port=52700;
              };
 }
 
-- (NSDictionary *)dictFromSessionInfo:(MMSessionInfo *)sessionInfo {
-    if (!sessionInfo) return [self dictWithErrorMsg:@"最近聊天列表有误"];
+- (NSDictionary *)dictFromSessionInfo:(MMSessionInfo *)sessionInfo
+{
+    if (!sessionInfo) {
+         return [self dictWithErrorMsg:@"最近聊天列表有误"];
+    }
     
     WCContactData *contact = sessionInfo.m_packedInfo.m_contact;
     MessageData *msgData = sessionInfo.m_packedInfo.m_msgData;
@@ -415,7 +429,8 @@ static int port=52700;
 }
 
 
-- (NSDictionary *)dictWithErrorMsg:(NSString *)msg {
+- (NSDictionary *)dictWithErrorMsg:(NSString *)msg
+{
     return @{@"title": msg,
              @"subTitle": @"",
              @"icon": @"",
@@ -425,7 +440,8 @@ static int port=52700;
              };
 }
 
-- (NSDictionary *)dictFromMessageData:(MessageData *)msgData {
+- (NSDictionary *)dictFromMessageData:(MessageData *)msgData
+{
     if (!msgData) {
         return [self dictWithErrorMsg:@"消息不存在"];
     }
@@ -447,7 +463,7 @@ static int port=52700;
         NSRange range = [objc_getClass("MMLinkInfo") rangeOfUrlInString:title withRange:NSMakeRange(0, title.length)];
         if (range.length > 0) {
             url = [title substringWithRange:range];
-            if(![objc_getClass("MMURLHandler") containsHTTPString:url]) {
+            if (![objc_getClass("MMURLHandler") containsHTTPString:url]) {
                 url = [NSString stringWithFormat:@"http://%@",url];
             }
         }
@@ -473,7 +489,7 @@ static int port=52700;
         }
         //        }
         
-    } else if(msgData.isVoiceMsg) {
+    } else if (msgData.isVoiceMsg) {
         voiceMessSvrId = msgData.mesSvrID;
         if (msgData.msgVoiceText.length > 0) {
             title = [title stringByAppendingString:msgData.msgVoiceText];
@@ -515,7 +531,8 @@ static int port=52700;
              };
 }
 
-- (NSString *)getDateStringWithTimeStr:(NSTimeInterval)time {
+- (NSString *)getDateStringWithTimeStr:(NSTimeInterval)time
+{
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:time];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     if ([date isToday]) {
@@ -534,15 +551,18 @@ static int port=52700;
     return @"";
 }
 
-- (NSString *)getUserNameWithContactData:(WCContactData *)contact showOriginName:(BOOL)showOriginName {
-    if (!contact) return @"";
+- (NSString *)getUserNameWithContactData:(WCContactData *)contact showOriginName:(BOOL)showOriginName
+{
+    if (!contact) {
+         return @"";
+    }
     
     NSString *userName;
     if (contact.isGroupChat) {
         userName = [NSString stringWithFormat:@"%@%@", YMLocalizedString(@"assistant.search.group"), contact.getGroupDisplayName];
-    } else if ([contact respondsToSelector:@selector(isBrandContact)]){
+    } else if ([contact respondsToSelector:@selector(isBrandContact)]) {
         userName = contact.isBrandContact ? [NSString stringWithFormat:@"%@%@",YMLocalizedString(@"assistant.search.official"), contact.m_nsNickName] : contact.m_nsNickName;
-        if(contact.m_nsRemark && ![contact.m_nsRemark isEqualToString:@""]) {
+        if (contact.m_nsRemark && ![contact.m_nsRemark isEqualToString:@""]) {
             if (showOriginName) {
                 userName = [NSString stringWithFormat:@"%@(%@)",contact.m_nsRemark, contact.m_nsNickName];
             } else {
@@ -554,7 +574,8 @@ static int port=52700;
     return userName ?: @"";
 }
 
-- (BOOL)isLocalhost:(NSString *)host {
+- (BOOL)isLocalhost:(NSString *)host
+{
     NSArray *localhostUrls = @[[NSString stringWithFormat:@"127.0.0.1:%d", port],
                                [NSString stringWithFormat:@"localhost:%d", port]
                                ];

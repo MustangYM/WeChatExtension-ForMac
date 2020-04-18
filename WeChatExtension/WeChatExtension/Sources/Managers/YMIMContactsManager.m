@@ -11,7 +11,8 @@
 #import "TKWeChatPluginConfig.h"
 
 @implementation YMMonitorChildInfo
-- (instancetype)initWithDict:(NSDictionary *)dict {
+- (instancetype)initWithDict:(NSDictionary *)dict
+{
     self = [super init];
     if (self) {
         self.usrName = dict[@"usrName"];
@@ -21,7 +22,8 @@
     return self;
 }
 
-- (NSDictionary *)dictionary {
+- (NSDictionary *)dictionary
+{
     return @{@"usrName": self.usrName?:@"",
              @"group": self.group?:@"",
              @"quitTimestamp": @(self.quitTimestamp)};
@@ -35,7 +37,8 @@
 
 @implementation YMIMContactsManager
 
-+ (instancetype)shareInstance {
++ (instancetype)shareInstance
+{
     static id share = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -52,7 +55,8 @@
     return _cachePool;
 }
 
-+ (NSString *)getGroupMemberNickNameFromCache:(NSString *)username {
++ (NSString *)getGroupMemberNickNameFromCache:(NSString *)username
+{
     if (!username) {
         return nil;
     }
@@ -72,7 +76,8 @@
     return data.m_nsNickName;
 }
 
-+ (NSString *)getWeChatNickName:(NSString *)username {
++ (NSString *)getWeChatNickName:(NSString *)username
+{
     NSArray *arr = [self getAllFriendContacts];
     __block NSString *temp = nil;
     [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -85,12 +90,14 @@
     return temp;
 }
 
-+ (NSArray <WCContactData *> *)getAllFriendContacts {
++ (NSArray<WCContactData *> *)getAllFriendContacts
+{
     ContactStorage *contactStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("ContactStorage")];
     return [contactStorage GetAllFriendContacts];
 }
 
-+ (NSString *)getWeChatAvatar:(NSString *)userName {
++ (NSString *)getWeChatAvatar:(NSString *)userName
+{
     NSArray *arr = [self getAllFriendContacts];
     __block NSString *temp = nil;
     [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

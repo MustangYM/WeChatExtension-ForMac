@@ -10,14 +10,17 @@
 #import <CommonCrypto/CommonDigest.h>
 
 @interface YMDownloadManager ()
-@property (nonatomic,strong)NSURLSession *session;
-@property (nonatomic,strong)NSData *resumeData;
-@property (nonatomic,strong)NSMutableDictionary *taskDict;
+@property (nonatomic, strong) NSURLSession *session;
+@property (nonatomic, strong) NSData *resumeData;
+@property (nonatomic, strong) NSMutableDictionary *taskDict;
 @end
 
 @implementation YMDownloadManager
-- (void)downloadImageWithMsg:(MessageData *)msg{
-    if(msg.messageType != 3)return;
+- (void)downloadImageWithMsg:(MessageData *)msg
+{
+    if(msg.messageType != 3) {
+        return;
+    }
     MMCDNDownloadMgr *cdnDownloadService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMCDNDownloadMgr")];
     NSError *error;
     NSString *xmlString = nil;
@@ -30,12 +33,14 @@
     [cdnDownloadService downloadImageWithMessage:msg];
 }
 
-- (void)downloadVideoWithMsg:(MessageData *)msg {
+- (void)downloadVideoWithMsg:(MessageData *)msg
+{
     MMMessageVideoService *videoMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMMessageVideoService")];
     [videoMgr downloadVideoWithMessage:msg];
 }
 
-- (CExtendInfoOfImg *)getCExtendInfoOfImgWithDic:(NSDictionary *)dic msg:(MessageData *)msg{
+- (CExtendInfoOfImg *)getCExtendInfoOfImgWithDic:(NSDictionary *)dic msg:(MessageData *)msg
+{
     CExtendInfoOfImg *extendInfoOfImg = [[objc_getClass("CExtendInfoOfImg") alloc] init];
     extendInfoOfImg.m_nsAesKey = [dic valueForKeyPath:@"msg.img.aeskey"];
     extendInfoOfImg.m_nsMsgThumbAesKey = [dic valueForKeyPath:@"msg.img.cdnthumbaeskey"];

@@ -27,14 +27,16 @@
 
 @implementation TKAutoReplyWindowController
 
-- (void)windowDidLoad {
+- (void)windowDidLoad
+{
     [super windowDidLoad];
     
     [self initSubviews];
     [self setup];
 }
 
-- (void)showWindow:(id)sender {
+- (void)showWindow:(id)sender
+{
     [super showWindow:sender];
     [self.tableView reloadData];
     [self.contentView setHidden:YES];
@@ -46,7 +48,8 @@
     }
 }
 
-- (void)initSubviews {
+- (void)initSubviews
+{
     NSScrollView *scrollView = ({
         NSScrollView *scrollView = [[NSScrollView alloc] init];
         scrollView.hasVerticalScroller = YES;
@@ -121,7 +124,8 @@
                                            self.enableButton]];
 }
 
-- (void)setup {
+- (void)setup
+{
     self.window.title = YMLocalizedString(@"assistant.autoReply.title");
     self.window.contentView.layer.backgroundColor = [kBG1 CGColor];
     [self.window.contentView.layer setNeedsDisplay];
@@ -144,7 +148,8 @@
  关闭窗口事件
  
  */
-- (void)windowShouldClosed:(NSNotification *)notification {
+- (void)windowShouldClosed:(NSNotification *)notification
+{
     if (notification.object != self.window) {
         return;
     }
@@ -152,12 +157,14 @@
 
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - addButton & reduceButton ClickAction
-- (void)addModel {
+- (void)addModel
+{
     if (self.contentView.hidden) {
         self.contentView.hidden = NO;
     }
@@ -171,7 +178,7 @@
     
     if (self.autoReplyModels.count > 0 && emptyModelIndex != -1) {
         [self.alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
-            if(returnCode == NSAlertFirstButtonReturn){
+            if (returnCode == NSAlertFirstButtonReturn) {
                 if (self.tableView.selectedRow != -1) {
                     [self.tableView deselectRow:self.tableView.selectedRow];
                 }
@@ -189,7 +196,8 @@
     [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:self.autoReplyModels.count - 1] byExtendingSelection:YES];
 }
 
-- (void)reduceModel {
+- (void)reduceModel
+{
     NSInteger index = self.tableView.selectedRow;
     if (index > -1) {
         [self.autoReplyModels removeObjectAtIndex:index];
@@ -203,16 +211,19 @@
     }
 }
 
-- (void)clickEnableBtn:(NSButton *)btn {
+- (void)clickEnableBtn:(NSButton *)btn
+{
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_AUTO_REPLY_CHANGE object:nil];
 }
 
 #pragma mark - NSTableViewDataSource && NSTableViewDelegate
-- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
+{
     return self.autoReplyModels.count;
 }
 
-- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
     TKAutoReplyCell *cell = [[TKAutoReplyCell alloc] init];
     cell.frame = NSMakeRect(0, 0, self.tableView.frame.size.width, 40);
     cell.model = self.autoReplyModels[row];
@@ -223,11 +234,13 @@
     return cell;
 }
 
-- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
+{
     return 50;
 }
 
-- (void)tableViewSelectionDidChange:(NSNotification *)notification {
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
     NSTableView *tableView = notification.object;
     self.contentView.hidden = tableView.selectedRow == -1;
     self.reduceButton.enabled = tableView.selectedRow != -1;
@@ -246,7 +259,7 @@
         
         if (emptyModelIndex != -1 && tableView.selectedRow != emptyModelIndex) {
             [self.alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
-                if(returnCode == NSAlertFirstButtonReturn){
+                if (returnCode == NSAlertFirstButtonReturn) {
                     if (self.tableView.selectedRow != -1) {
                         [self.tableView deselectRow:self.tableView.selectedRow];
                     }

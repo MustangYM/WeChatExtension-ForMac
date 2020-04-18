@@ -13,7 +13,8 @@
 
 @implementation NSObject (MMChatsTableCellViewHook)
 
-+ (void)hookMMChatsTableCellView {
++ (void)hookMMChatsTableCellView
+{
     hookMethod(objc_getClass("MMChatsTableCellView"), @selector(menuWillOpen:), [self class], @selector(hook_menuWillOpen:));
     hookMethod(objc_getClass("MMChatsTableCellView"), @selector(setSessionInfo:), [self class], @selector(hook_setSessionInfo:));
     hookMethod(objc_getClass("MMChatsTableCellView"), @selector(contextMenuSticky:), [self class], @selector(hook_contextMenuSticky:));
@@ -21,7 +22,8 @@
     hookMethod(objc_getClass("MMChatsViewController"), @selector(tableView:rowGotMouseDown:), [self class], @selector(hooktableView:rowGotMouseDown:));
 }
 
-- (void)hooktableView:(NSTableView *)arg1 rowGotMouseDown:(long long)arg2 {
+- (void)hooktableView:(NSTableView *)arg1 rowGotMouseDown:(long long)arg2
+{
     
     @try {
          [self hooktableView:arg1 rowGotMouseDown:arg2];
@@ -51,7 +53,8 @@
     }
 }
 
-- (void)hook_setSessionInfo:(MMSessionInfo *)sessionInfo {
+- (void)hook_setSessionInfo:(MMSessionInfo *)sessionInfo
+{
     [self hook_setSessionInfo:sessionInfo];
     
     MMChatsTableCellView *cellView = (MMChatsTableCellView *)self;
@@ -71,7 +74,7 @@
         NSColor *changeColor = [TKWeChatPluginConfig sharedConfig].darkMode ? kRGBColor(255, 255, 255, 1.0) : [NSColor blackColor];
         if (isIgnore) {
             changeColor = kRGBColor(25, 185, 77, 1.0);
-        } else if ([selectSessions containsObject:sessionInfo]){
+        } else if ([selectSessions containsObject:sessionInfo]) {
             changeColor = [NSColor redColor];
         }
         
@@ -86,7 +89,7 @@
     } else {
         if (isIgnore) {
             cellView.layer.backgroundColor = kBG3.CGColor;
-        } else if ([selectSessions containsObject:sessionInfo]){
+        } else if ([selectSessions containsObject:sessionInfo]) {
             cellView.layer.backgroundColor = kBG4.CGColor;
         } else {
             cellView.layer.backgroundColor = [NSColor clearColor].CGColor;
@@ -96,7 +99,8 @@
     [cellView.layer setNeedsDisplay];
 }
 
-- (void)hook_menuWillOpen:(NSMenu *)arg1 {
+- (void)hook_menuWillOpen:(NSMenu *)arg1
+{
     MMSessionInfo *sessionInfo = [(MMChatsTableCellView *)self sessionInfo];
     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
     
@@ -135,7 +139,8 @@
     [self hook_menuWillOpen:arg1];
 }
 
-- (void)contextMenuStickyBottom {
+- (void)contextMenuStickyBottom
+{
     MMSessionInfo *sessionInfo = [(MMChatsTableCellView *)self sessionInfo];
     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
     
@@ -170,13 +175,14 @@
     }
     if ([sessionMgr respondsToSelector:@selector(FFDataSvrMgrSvrFavZZ)]) {
         [sessionMgr FFDataSvrMgrSvrFavZZ];
-    } else if ([sessionMgr respondsToSelector:@selector(sortSessions)]){
+    } else if ([sessionMgr respondsToSelector:@selector(sortSessions)]) {
         [sessionMgr sortSessions];
     }
     [[TKWeChatPluginConfig sharedConfig] saveIgnoreSessionModels];
 }
 
-- (void)contextMenuMutipleSelection {
+- (void)contextMenuMutipleSelection
+{
     BOOL multipleSelectionEnable = [[TKWeChatPluginConfig sharedConfig] multipleSelectionEnable];
     if (multipleSelectionEnable) {
         [[[TKWeChatPluginConfig sharedConfig] selectSessions] removeAllObjects];
@@ -187,7 +193,8 @@
     [[TKWeChatPluginConfig sharedConfig] setMultipleSelectionEnable:!multipleSelectionEnable];
 }
 
-- (void)contextMenuClearUnRead {
+- (void)contextMenuClearUnRead
+{
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
     NSMutableArray *arrSession = sessionMgr.m_arrSession;
 
@@ -198,7 +205,8 @@
     }];
 }
 
-- (void)contextMenuClearEmptySession {
+- (void)contextMenuClearEmptySession
+{
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
     
     MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
@@ -228,7 +236,8 @@
     }
 }
 
-- (void)contextMenuRemoveSession {
+- (void)contextMenuRemoveSession
+{
     MMSessionInfo *sessionInfo = [(MMChatsTableCellView *)self sessionInfo];
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
     
@@ -249,23 +258,31 @@
     }
 }
 
-- (void)contextMenuUnreadSession {
+- (void)contextMenuUnreadSession
+{
     MMSessionInfo *sessionInfo = [(MMChatsTableCellView *)self sessionInfo];
-    if (sessionInfo.m_uUnReadCount > 0) return;
+    if (sessionInfo.m_uUnReadCount > 0) {
+         return;
+    }
     
     NSMutableSet *unreadSessionSet = [[TKWeChatPluginConfig sharedConfig] unreadSessionSet];
-    if ([unreadSessionSet containsObject:sessionInfo.m_nsUserName]) return;
+    if ([unreadSessionSet containsObject:sessionInfo.m_nsUserName]) {
+         return;
+    }
     
     [unreadSessionSet addObject:sessionInfo.m_nsUserName];
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
     [sessionMgr changeSessionUnreadCountWithUserName:sessionInfo.m_nsUserName to:sessionInfo.m_uUnReadCount + 1];
 }
 
-- (void)hook_contextMenuSticky:(id)arg1 {
+- (void)hook_contextMenuSticky:(id)arg1
+{
     [self hook_contextMenuSticky:arg1];
     
     MMSessionInfo *sessionInfo = [(MMChatsTableCellView *)self sessionInfo];
-    if (!sessionInfo.m_bIsTop) return;
+    if (!sessionInfo.m_bIsTop) {
+         return;
+    }
     
     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
     NSMutableArray *ignoreSessions = [[TKWeChatPluginConfig sharedConfig] ignoreSessionModels];
@@ -286,14 +303,15 @@
         }
         if ([sessionMgr respondsToSelector:@selector(FFDataSvrMgrSvrFavZZ)]) {
             [sessionMgr FFDataSvrMgrSvrFavZZ];
-        } else if ([sessionMgr respondsToSelector:@selector(sortSessions)]){
+        } else if ([sessionMgr respondsToSelector:@selector(sortSessions)]) {
             [sessionMgr sortSessions];
         }
         [[TKWeChatPluginConfig sharedConfig] saveIgnoreSessionModels];
     }
 }
 
-- (void)hook_contextMenuDelete:(id)arg1 {
+- (void)hook_contextMenuDelete:(id)arg1
+{
     BOOL multipleSelection = [[TKWeChatPluginConfig sharedConfig] multipleSelectionEnable];
     
     if (multipleSelection) {

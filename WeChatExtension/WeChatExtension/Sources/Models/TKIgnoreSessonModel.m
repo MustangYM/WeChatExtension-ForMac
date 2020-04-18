@@ -10,7 +10,8 @@
 
 @implementation TKIgnoreSessonModel
 
-- (instancetype)initWithDict:(NSDictionary *)dict {
+- (instancetype)initWithDict:(NSDictionary *)dict
+{
     self = [super init];
     if (self) {
         self.selfContact = dict[@"selfContact"];
@@ -20,7 +21,8 @@
     return self;
 }
 
-- (NSDictionary *)dictionary {
+- (NSDictionary *)dictionary
+{
     return @{@"selfContact": self.selfContact,
              @"userName": self.userName,
              @"ignore": @(self.ignore)};

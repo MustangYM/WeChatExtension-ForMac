@@ -52,7 +52,8 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 @dynamic groupMultiColorMode;
 @dynamic isThemeLoaded;
 
-+ (instancetype)sharedConfig {
++ (instancetype)sharedConfig
+{
     static TKWeChatPluginConfig *config = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -62,14 +63,16 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 }
 
 #pragma mark - 自动回复
-- (NSArray *)autoReplyModels {
+- (NSArray *)autoReplyModels
+{
     if (!_autoReplyModels) {
         _autoReplyModels = [self getModelsWithClass:[YMAutoReplyModel class] filePath:self.autoReplyPlistFilePath];
     }
     return _autoReplyModels;
 }
 
-- (YMAIAutoModel *)AIReplyModel {
+- (YMAIAutoModel *)AIReplyModel
+{
     NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"AIAutoReply.data"];
     return [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
 }
@@ -84,7 +87,8 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
     [NSKeyedArchiver archiveRootObject:model toFile:filePath];
 }
 
-- (void)saveAutoReplyModels {
+- (void)saveAutoReplyModels
+{
     NSMutableArray *needSaveModels = [NSMutableArray array];
     [_autoReplyModels enumerateObjectsUsingBlock:^(YMAutoReplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
         if (model.hasEmptyKeywordOrReplyContent) {
@@ -99,7 +103,8 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 }
 
 #pragma mark - 远程控制
-- (NSArray *)remoteControlModels {
+- (NSArray *)remoteControlModels
+{
     if (!_remoteControlModels) {
         __block BOOL needSaveRemoteControlModels = NO;
         _remoteControlModels = ({
@@ -126,7 +131,8 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
     return _remoteControlModels;
 }
 
-- (void)saveRemoteControlModels {
+- (void)saveRemoteControlModels
+{
     NSMutableArray *needSaveModels = [NSMutableArray array];
     [_remoteControlModels enumerateObjectsUsingBlock:^(NSArray *subModels, NSUInteger idx, BOOL * _Nonnull stop) {
         NSMutableArray *newSubModels = [NSMutableArray array];
@@ -139,14 +145,16 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 }
 
 #pragma mark - 置底
-- (NSArray *)ignoreSessionModels {
+- (NSArray *)ignoreSessionModels
+{
     if (!_ignoreSessionModels) {
         _ignoreSessionModels = [self getModelsWithClass:[TKIgnoreSessonModel class] filePath:self.ignoreSessionPlistFilePath];
     }
     return _ignoreSessionModels;
 }
 
-- (void)saveIgnoreSessionModels {
+- (void)saveIgnoreSessionModels
+{
     NSMutableArray *needSaveArray = [NSMutableArray array];
     [self.ignoreSessionModels enumerateObjectsUsingBlock:^(YMBaseModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [needSaveArray addObject:obj.dictionary];
@@ -157,7 +165,8 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 }
 
 #pragma mark - 选中的会话
-- (NSMutableArray *)selectSessions {
+- (NSMutableArray *)selectSessions
+{
     if (!_selectSessions) {
         _selectSessions = [NSMutableArray array];
     }
@@ -165,14 +174,16 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 }
 
 #pragma mark - 撤回的消息集合
-- (NSMutableSet *)revokeMsgSet {
+- (NSMutableSet *)revokeMsgSet
+{
     if (!_revokeMsgSet) {
         _revokeMsgSet = [NSMutableSet set];
     }
     return _revokeMsgSet;
 }
 
-- (NSMutableSet *)unreadSessionSet {
+- (NSMutableSet *)unreadSessionSet
+{
     if (!_unreadSessionSet) {
         _unreadSessionSet = [NSMutableSet set];
     }
@@ -180,21 +191,24 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 }
 
 #pragma mark - 获取沙盒上的 plist 文件，包括：远程控制，自动回复，置底列表。
-- (NSString *)remoteControlPlistFilePath {
+- (NSString *)remoteControlPlistFilePath
+{
     if (!_remoteControlPlistFilePath) {
         _remoteControlPlistFilePath = [self getSandboxFilePathWithPlistName:@"TKRemoteControlCommands.plist"];
     }
     return _remoteControlPlistFilePath;
 }
 
-- (NSString *)ignoreSessionPlistFilePath {
+- (NSString *)ignoreSessionPlistFilePath
+{
     if (!_ignoreSessionPlistFilePath) {
         _ignoreSessionPlistFilePath = [self getSandboxFilePathWithPlistName:@"TKIgnoreSessons.plist"];
     }
     return _ignoreSessionPlistFilePath;
 }
 
-- (NSString *)autoReplyPlistFilePath {
+- (NSString *)autoReplyPlistFilePath
+{
     if (!_autoReplyPlistFilePath) {
         _autoReplyPlistFilePath = [self getSandboxFilePathWithPlistName:@"YMAutoReplyModels.plist"];
     }
@@ -231,7 +245,8 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 }
 
 #pragma mark - 获取本地 & github 上的小助手 info 信息
-- (NSDictionary *)localInfoPlist {
+- (NSDictionary *)localInfoPlist
+{
     if (!_localInfoPlist) {
         NSString *localInfoPath = [kTKWeChatResourcesPath stringByAppendingString:@"info.plist"];
         _localInfoPlist = [NSDictionary dictionaryWithContentsOfFile:localInfoPath];
@@ -239,7 +254,8 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
     return _localInfoPlist;
 }
 
-- (NSDictionary *)romoteInfoPlist {
+- (NSDictionary *)romoteInfoPlist
+{
     if (!_romoteInfoPlist) {
         NSURL *url = [NSURL URLWithString:kTKWeChatRemotePlistPath];
         _romoteInfoPlist = [NSDictionary dictionaryWithContentsOfURL:url];
@@ -249,7 +265,8 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 
 #pragma mark - common
 
-- (NSMutableArray *)getMonitorQuitModelsWithClass:(Class)class filePath:(NSString *)filePath {
+- (NSMutableArray *)getMonitorQuitModelsWithClass:(Class)class filePath:(NSString *)filePath
+{
     NSArray *originModels = [NSArray arrayWithContentsOfFile:filePath];
     NSMutableArray *newModels = [NSMutableArray array];
     
@@ -261,7 +278,8 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
     return newModels;
 }
 
-- (NSMutableArray *)getModelsWithClass:(Class)class filePath:(NSString *)filePath {
+- (NSMutableArray *)getModelsWithClass:(Class)class filePath:(NSString *)filePath
+{
     NSArray *originModels = [NSArray arrayWithContentsOfFile:filePath];
     NSMutableArray *newModels = [NSMutableArray array];
     
@@ -273,7 +291,8 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
     return newModels;
 }
 
-- (NSString *)getSandboxFilePathWithPlistName:(NSString *)plistName {
+- (NSString *)getSandboxFilePathWithPlistName:(NSString *)plistName
+{
     NSFileManager *manager = [NSFileManager defaultManager];
     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
     
@@ -299,7 +318,7 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 }
 
 
--(PluginLanguageType)languageType
+- (PluginLanguageType)languageType
 {
     NSArray *languages = [NSLocale preferredLanguages];
     PluginLanguageType type = PluginLanguageTypeEN;;

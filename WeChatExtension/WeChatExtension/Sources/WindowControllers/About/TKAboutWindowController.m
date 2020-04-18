@@ -20,7 +20,8 @@
 
 @implementation TKAboutWindowController
 
-- (void)windowDidLoad {
+- (void)windowDidLoad
+{
     [super windowDidLoad];
     self.titleLabel.stringValue = YMLanguage(@"微信小助手", @"WeChat Assistant");
     self.homePageTitleLabel.stringValue = YMLanguage(@"项目主页:", @"Project Homepage:");
@@ -38,7 +39,8 @@
     self.aliPay.image = placeholder;
 }
 
-- (IBAction)didClickHomepageURL:(NSButton *)sender {
+- (IBAction)didClickHomepageURL:(NSButton *)sender
+{
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/MustangYM/WeChatExtension-ForMac"]];
 }
 

@@ -13,7 +13,7 @@
 typedef NS_ENUM(NSUInteger, TKDownloadState) {
     TKDownloadStateProgress,
     TKDownloadStateFinish,
-    TKDownloadStateError,
+    TKDownloadStateError
 };
 
 @interface TKDownloadWindowController ()
@@ -29,7 +29,8 @@ typedef NS_ENUM(NSUInteger, TKDownloadState) {
 
 @implementation TKDownloadWindowController
 
-+ (instancetype)downloadWindowController {
++ (instancetype)downloadWindowController
+{
     static TKDownloadWindowController *windowController = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -38,17 +39,20 @@ typedef NS_ENUM(NSUInteger, TKDownloadState) {
     return windowController;
 }
 
-- (void)windowDidLoad {
+- (void)windowDidLoad
+{
     [super windowDidLoad];
     
     [self setup];
 }
 
-- (void)setup {
+- (void)setup
+{
     [self downloadPlugin];
 }
 
-- (void)setupInstallBtnTitle:(NSString *)text {
+- (void)setupInstallBtnTitle:(NSString *)text
+{
     self.installButton.title = text;
     
     CGFloat stringWidth = [text widthWithFont:self.installButton.font];
@@ -56,7 +60,8 @@ typedef NS_ENUM(NSUInteger, TKDownloadState) {
     self.installButton.x = 430 - stringWidth - 40;
 }
 
-- (void)downloadPlugin {
+- (void)downloadPlugin
+{
     self.downloadState = TKDownloadStateProgress;
     self.window.title = YMLocalizedString(@"assistant.download.title");
     self.titleLabel.stringValue = YMLocalizedString(@"assistant.download.update");
@@ -94,7 +99,8 @@ typedef NS_ENUM(NSUInteger, TKDownloadState) {
     }];
 }
 
-- (IBAction)clickInstallButton:(NSButton *)sender {
+- (IBAction)clickInstallButton:(NSButton *)sender
+{
     switch (self.downloadState) {
         case TKDownloadStateProgress: {
             [[TKVersionManager shareManager] cancelDownload];

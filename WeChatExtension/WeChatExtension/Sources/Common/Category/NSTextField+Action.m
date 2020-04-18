@@ -10,7 +10,8 @@
 
 @implementation NSTextField (Action)
 
-+ (instancetype)tk_labelWithString:(NSString *)stringValue {
++ (instancetype)tk_labelWithString:(NSString *)stringValue
+{
     NSTextField *textField = ({
         NSTextField *textField = [[self alloc] initWithFrame:NSMakeRect(10, 10, 200, 17)];
         [textField setStringValue:stringValue];

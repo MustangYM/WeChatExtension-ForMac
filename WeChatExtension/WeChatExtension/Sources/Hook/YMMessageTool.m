@@ -11,7 +11,8 @@
 #import "XMLReader.h"
 
 @implementation YMMessageTool
-+ (MessageData *)getMessageData:(AddMsg *)addMsg {
++ (MessageData *)getMessageData:(AddMsg *)addMsg
+{
     if (!addMsg) {
         return nil;
     }
@@ -19,7 +20,8 @@
     return [msgService GetMsgData:addMsg.fromUserName.string svrId:addMsg.newMsgId];
 }
 
-+ (WCContactData *)getContactData:(AddMsg *)addMsg {
++ (WCContactData *)getContactData:(AddMsg *)addMsg
+{
     if (!addMsg) {
         return nil;
     }
@@ -35,7 +37,7 @@
 + (void)parseMiniProgramMsg:(AddMsg *)addMsg
 {
     // 显示49信息
-    if(addMsg.msgType == 49){
+    if (addMsg.msgType == 49) {
         //      xml 转 dict
         NSString *msgContentStr = nil;
         if ([addMsg.fromUserName.string containsString:@"@chatroom"]) {
@@ -125,7 +127,7 @@
             
             [msgService AddLocalMsg:session msgData:newMsgData];
                    
-        } else if(type.intValue == 2001) {// 显示红包信息
+        } else if (type.intValue == 2001) {// 显示红包信息
             NSDictionary *wcpayInfoDict = [appMsgDict valueForKey:@"wcpayinfo"];
             NSString *title = @"";
             NSDictionary *titleDict = [wcpayInfoDict valueForKey:@"sendertitle"];
@@ -149,7 +151,7 @@
             
             [msgService AddLocalMsg:session msgData:newMsgData];
             
-        }else if(type.intValue == 2000){// 显示转账信息
+        }else if (type.intValue == 2000) {// 显示转账信息
             NSDictionary *wcpayInfoDict = [appMsgDict valueForKey:@"wcpayinfo"];
             NSString *feedesc = @"";
             NSString *payMemo = @"";

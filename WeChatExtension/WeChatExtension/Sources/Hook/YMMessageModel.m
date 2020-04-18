@@ -11,7 +11,8 @@
 #import "NSDictionary+Safe.h"
 
 @implementation OPVoiceModel
-+ (OPVoiceModel *)modelWithParseXML:(NSString *)xml {
++ (OPVoiceModel *)modelWithParseXML:(NSString *)xml
+{
     if (xml.length == 0) {
         return nil;
     }
@@ -33,7 +34,8 @@
 @end
 
 @implementation OPPictureModel
-+ (OPPictureModel *)modelWithParseXML:(NSString *)xml {
++ (OPPictureModel *)modelWithParseXML:(NSString *)xml
+{
     if (xml.length == 0) {
         return nil;
     }
@@ -53,7 +55,8 @@
 @end
 
 @implementation OPVideoModel
-+ (OPVideoModel *)modelWithParseXML:(NSString *)xml {
++ (OPVideoModel *)modelWithParseXML:(NSString *)xml
+{
     if (xml.length == 0) {
         return nil;
     }

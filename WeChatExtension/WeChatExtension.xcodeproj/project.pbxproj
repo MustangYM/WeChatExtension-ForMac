@@ -560,22 +560,22 @@
 		188A65C52272ACBA0096663E /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				188A65C62272ACBA0096663E /* NSButton+Action.m */,
-				188A65C72272ACBA0096663E /* NSMenu+Action.h */,
-				188A65C82272ACBA0096663E /* NSTextField+Action.h */,
-				188A65C92272ACBA0096663E /* NSView+Action.m */,
-				188A65CA2272ACBA0096663E /* NSWindowController+Action.m */,
-				188A65CB2272ACBA0096663E /* NSString+Action.m */,
-				188A65CC2272ACBA0096663E /* NSMenuItem+Action.h */,
-				188A65CD2272ACBA0096663E /* NSDate+Action.m */,
-				188A65CE2272ACBA0096663E /* NSMenu+Action.m */,
 				188A65CF2272ACBA0096663E /* NSButton+Action.h */,
-				188A65D02272ACBA0096663E /* NSView+Action.h */,
-				188A65D12272ACBA0096663E /* NSTextField+Action.m */,
-				188A65D22272ACBA0096663E /* NSWindowController+Action.h */,
+				188A65C62272ACBA0096663E /* NSButton+Action.m */,
 				188A65D32272ACBA0096663E /* NSDate+Action.h */,
-				188A65D42272ACBA0096663E /* NSString+Action.h */,
+				188A65CD2272ACBA0096663E /* NSDate+Action.m */,
+				188A65C72272ACBA0096663E /* NSMenu+Action.h */,
+				188A65CE2272ACBA0096663E /* NSMenu+Action.m */,
+				188A65CC2272ACBA0096663E /* NSMenuItem+Action.h */,
 				188A65D52272ACBA0096663E /* NSMenuItem+Action.m */,
+				188A65D42272ACBA0096663E /* NSString+Action.h */,
+				188A65CB2272ACBA0096663E /* NSString+Action.m */,
+				188A65C82272ACBA0096663E /* NSTextField+Action.h */,
+				188A65D12272ACBA0096663E /* NSTextField+Action.m */,
+				188A65D02272ACBA0096663E /* NSView+Action.h */,
+				188A65C92272ACBA0096663E /* NSView+Action.m */,
+				188A65D22272ACBA0096663E /* NSWindowController+Action.h */,
+				188A65CA2272ACBA0096663E /* NSWindowController+Action.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";

@@ -20,7 +20,8 @@
 
 @implementation TKRemoteControlCell
 
-- (instancetype)init {
+- (instancetype)init
+{
     self = [super init];
     if (self) {
         [self initSubviews];
@@ -28,7 +29,8 @@
     return self;
 }
 
-- (void)initSubviews {
+- (void)initSubviews
+{
     self.selectBtn = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:@"" target:self action:@selector(clickSelectBtn:)];
         btn.frame = NSMakeRect(50, 10, 150, 30);
@@ -52,11 +54,13 @@
     [self addSubviews:@[self.selectBtn, self.textField]];
 }
 
-- (void)clickSelectBtn:(NSButton *)btn {
+- (void)clickSelectBtn:(NSButton *)btn
+{
     self.model.enable = btn.state;
 }
 
-- (void)setupWithData:(id)data {
+- (void)setupWithData:(id)data
+{
     TKRemoteControlModel *model = data;
     self.model = model;
     self.selectBtn.title = YMLocalizedString(model.function);
@@ -66,7 +70,8 @@
     [YMThemeMgr changeButtonTheme:self.selectBtn];
 }
 
-- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
+- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor
+{
     NSString *string = control.stringValue;
     self.model.keyword = string;
     return YES;

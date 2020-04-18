@@ -28,7 +28,8 @@
 
 @implementation TKAutoReplyContentView
 
-- (instancetype)init {
+- (instancetype)init
+{
     self = [super init];
     if (self) {
         [self initSubviews];
@@ -36,7 +37,8 @@
     return self;
 }
 
-- (void)initSubviews {
+- (void)initSubviews
+{
     
     
     self.enableSpecificReplyBtn = ({
@@ -145,7 +147,8 @@
                         self.selectSessionButton]];
 }
 
-- (void)clickEnableSpecificReplyBtn:(NSButton *)btn {
+- (void)clickEnableSpecificReplyBtn:(NSButton *)btn
+{
     self.selectSessionButton.hidden = !btn.state;
     self.enableGroupReplyBtn.hidden = btn.state;
     self.enableSingleReplyBtn.hidden = btn.state;
@@ -155,40 +158,50 @@
     self.model.enableSpecificReply = btn.state;
 }
 
-- (void)clickSelectSessionButton:(NSButton *)btn {
+- (void)clickSelectSessionButton:(NSButton *)btn
+{
     [self selectSessionAction];
 }
 
-- (void)clickEnableRegexBtn:(NSButton *)btn {
+- (void)clickEnableRegexBtn:(NSButton *)btn
+{
     self.model.enableRegex = btn.state;
 }
 
-- (void)clickEnableGroupBtn:(NSButton *)btn {
+- (void)clickEnableGroupBtn:(NSButton *)btn
+{
     self.model.enableGroupReply = btn.state;
     if (btn.state) {
         self.model.enable = YES;
-    } else if(!self.model.enableSingleReply) {
+    } else if (!self.model.enableSingleReply) {
         self.model.enable = NO;
     }
     
-    if (self.endEdit) self.endEdit();
+    if (self.endEdit) {
+         self.endEdit();
+    }
 }
 
-- (void)clickEnableSingleBtn:(NSButton *)btn {
+- (void)clickEnableSingleBtn:(NSButton *)btn
+{
     self.model.enableSingleReply = btn.state;
     if (btn.state) {
         self.model.enable = YES;
-    } else if(!self.model.enableGroupReply) {
+    } else if (!self.model.enableGroupReply) {
         self.model.enable = NO;
     }
-    if (self.endEdit) self.endEdit();
+    if (self.endEdit) {
+         self.endEdit();
+    }
 }
 
-- (void)clickEnableDelayBtn:(NSButton *)btn {
+- (void)clickEnableDelayBtn:(NSButton *)btn
+{
     self.model.enableDelay = btn.state;
 }
 
-- (void)viewDidMoveToSuperview {
+- (void)viewDidMoveToSuperview
+{
     [super viewDidMoveToSuperview];
     self.layer.backgroundColor = [kBG2 CGColor];
     self.layer.borderWidth = 1;
@@ -198,7 +211,8 @@
     [self.layer setNeedsDisplay];
 }
 
-- (void)setModel:(YMAutoReplyModel *)model {
+- (void)setModel:(YMAutoReplyModel *)model
+{
     _model = model;
     self.keywordTextField.stringValue = model.keyword != nil ? model.keyword : @"";
     self.autoReplyContentField.stringValue = model.replyContent != nil ? model.replyContent : @"";
@@ -214,7 +228,8 @@
     self.enableSingleReplyBtn.hidden = model.enableSpecificReply;
 }
 
-- (void)selectSessionAction {
+- (void)selectSessionAction
+{
     MMSessionPickerWindow *picker = [objc_getClass("MMSessionPickerWindow") shareInstance];
     [picker setType:1];
     [picker setShowsGroupChats:0x1];
@@ -234,11 +249,15 @@
     }];
 }
 
-- (void)controlTextDidEndEditing:(NSNotification *)notification {
-    if (self.endEdit) self.endEdit();
+- (void)controlTextDidEndEditing:(NSNotification *)notification
+{
+    if (self.endEdit) {
+         self.endEdit();
+    }
 }
 
-- (void)controlTextDidChange:(NSNotification *)notification {
+- (void)controlTextDidChange:(NSNotification *)notification
+{
     NSControl *control = notification.object;
     if (control == self.keywordTextField) {
         self.model.keyword = self.keywordTextField.stringValue;
@@ -249,7 +268,8 @@
     }
 }
 
-- (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
+- (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector
+{
     BOOL result = NO;
     
     if (commandSelector == @selector(insertNewline:)) {
