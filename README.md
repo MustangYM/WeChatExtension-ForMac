@@ -328,6 +328,10 @@ This project exists thanks to all the people who contribute。
   <a href="https://github.com/baymax-c"><img src="https://avatars2.githubusercontent.com/u/62831888?s=400&v=4" width="100px;" alt="baymax-c"/>
   <br></br><sub><b>baymax-c</b></sub>
  
+   <td align="center">
+  <a href="https://github.com/cnlinjie"><img src="https://avatars1.githubusercontent.com/u/3601638?s=400&u=fa07b0ab31f248e87687ad587ba7af0f23f8ffc7&v=4" width="100px;" alt="cnlinjie"/>
+  <br></br><sub><b>cnlinjie</b></sub>
+ 
   </td></tr></table>
 
 ## Backers
