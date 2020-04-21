@@ -324,6 +324,10 @@ This project exists thanks to all the people who contribute。
   <a href="https://github.com/isyntop"><img src="https://avatars1.githubusercontent.com/u/20900723?s=400&u=a1e6d392f55a5d5b180535277b1020bf17f7e217&v=4" width="100px;" alt="isyntop"/>
   <br></br><sub><b>isyntop</b></sub>
  
+   <td align="center">
+  <a href="https://github.com/baymax-c"><img src="https://avatars2.githubusercontent.com/u/62831888?s=400&v=4" width="100px;" alt="baymax-c"/>
+  <br></br><sub><b>baymax-c</b></sub>
+ 
   </td></tr></table>
 
 ## Backers
