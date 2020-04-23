@@ -324,6 +324,31 @@ This project exists thanks to all the people who contribute。
   <a href="https://github.com/isyntop"><img src="https://avatars1.githubusercontent.com/u/20900723?s=400&u=a1e6d392f55a5d5b180535277b1020bf17f7e217&v=4" width="100px;" alt="isyntop"/>
   <br></br><sub><b>isyntop</b></sub>
  
+   <td align="center">
+  <a href="https://github.com/baymax-c"><img src="https://avatars2.githubusercontent.com/u/62831888?s=400&v=4" width="100px;" alt="baymax-c"/>
+  <br></br><sub><b>baymax-c</b></sub>
+ 
+   <td align="center">
+  <a href="https://github.com/cnlinjie"><img src="https://avatars1.githubusercontent.com/u/3601638?s=400&u=fa07b0ab31f248e87687ad587ba7af0f23f8ffc7&v=4" width="100px;" alt="cnlinjie"/>
+  <br></br><sub><b>cnlinjie</b></sub>
+ 
+  </td></tr></table>
+  
+  
+  <table><tr>
+ 
+   <td align="center">
+  <a href="https://github.com/befuture"><img src="https://avatars2.githubusercontent.com/u/2246922?s=400&v=4" width="100px;" alt="befuture"/>
+  <br></br><sub><b>befuture</b></sub>
+ 
+   <td align="center">
+  <a href="https://github.com/crbee"><img src="https://avatars2.githubusercontent.com/u/18109072?s=400&v=4" width="100px;" alt="crbee"/>
+  <br></br><sub><b>crbee</b></sub>
+ 
+   <td align="center">
+  <a href="https://github.com/elrond-g"><img src="https://avatars2.githubusercontent.com/u/6926269?s=400&v=4" width="100px;" alt="elrond-g"/>
+  <br></br><sub><b>elrond-g</b></sub>
+ 
   </td></tr></table>
 
 ## Backers
