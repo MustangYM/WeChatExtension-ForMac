@@ -631,7 +631,7 @@
          return;
     }
     
-    //Fix: TouchBar在粉色模式下会变色
+    //Fix: TouchBar在少女模式下会变色
     if ([self isKindOfClass:objc_getClass("NSCandidateListViewController")]) {
         return;
     }

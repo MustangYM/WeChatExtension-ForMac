@@ -97,7 +97,7 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
                                                              action:@selector(onQuitMonitorItem:)
                                                              target:self
                                                       keyEquivalent:@""
-                                                              state:NO];
+                                                              state:[TKWeChatPluginConfig sharedConfig].quitMonitorEnable];
     
     //        登录新微信
     NSMenuItem *newWeChatItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.newWeChat")
@@ -189,7 +189,7 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
                                                keyEquivalent:@"N"
                                                        state:[TKWeChatPluginConfig sharedConfig].darkMode];
     
-    NSMenuItem *pinkColorItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"粉色模式", @"Pink Mode")
+    NSMenuItem *pinkColorItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"少女模式", @"Pink Mode")
                                                        action:@selector(onChangePinkModel:)
                                                        target:self
                                                 keyEquivalent:@""
@@ -612,9 +612,9 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
     item.state = !item.state;
     NSString *msg = nil;
     if (item.state) {
-        msg = YMLanguage(@"打开粉色模式, 重启生效!",@"Turn on Pink mode and restart to take effect!");
+        msg = YMLanguage(@"打开少女模式, 重启生效!",@"Turn on Pink mode and restart to take effect!");
     } else {
-        msg = YMLanguage(@"关闭粉色模式, 重启生效!",@"Turn off Pink mode and restart to take effect!");
+        msg = YMLanguage(@"关闭少女模式, 重启生效!",@"Turn off Pink mode and restart to take effect!");
     }
     NSAlert *alert = [NSAlert alertWithMessageText:YMLanguage(@"警告", @"WARNING")
                                      defaultButton:YMLanguage(@"取消", @"cancel")                       alternateButton:YMLanguage(@"确定重启",@"restart")

@@ -32,7 +32,7 @@
 
 #define kDarkBacgroundColor kRGBColor(24, 34, 45, 1.0)
 #define kLightDarkBacgroundColor kRGBColor(54, 54, 54, 1.0)
-#define kPinkBacgroundColor kRGBColor(226,139,156,1.0)
+#define kPinkBacgroundColor kRGBColor(229,173,177,1.0)
 
 #define kMainBackgroundColor [TKWeChatPluginConfig sharedConfig].darkMode ? kDarkBacgroundColor : kPinkBacgroundColor
 #define kMainTextColor [TKWeChatPluginConfig sharedConfig].darkMode ? kRGBColor(177, 195, 213, 1.0) : kRGBColor(47, 47, 50, 0.7)
