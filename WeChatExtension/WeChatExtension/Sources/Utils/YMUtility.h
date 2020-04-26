@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 
 #define LargerOrEqualVersion(version) [YMUtility isLargerOrEqualVersion:version]
+#define LargerOrEqualLongVersion(version) [YMUtility isLargeOrEqualLongVersion:version]
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YMUtility : NSObject
-
 + (BOOL)isLargerOrEqualVersion:(NSString *)version;
-
++ (BOOL)isLargeOrEqualLongVersion:(NSString *)version;
 @end
 
 NS_ASSUME_NONNULL_END

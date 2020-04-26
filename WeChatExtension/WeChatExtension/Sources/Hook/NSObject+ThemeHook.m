@@ -114,20 +114,23 @@
     NSTextField *field = (NSTextField *)self;
     NSMutableAttributedString *a = [attributedString mutableCopy];
     
-    if ([TKWeChatPluginConfig sharedConfig].darkMode) {
+    if ([TKWeChatPluginConfig sharedConfig].darkMode || [TKWeChatPluginConfig sharedConfig].pinkMode) {
         NSView *sv = field.superview;
         
         Class tcClass = NSClassFromString(@"MMFavoritesListTextCell");
+        Class mdClass = NSClassFromString(@"MMFavoritesListMediaCell");
         Class dvClass = NSClassFromString(@"MMDragEventView");
+        Class ntClass = NSClassFromString(@"MMFavoritesListNoteCell");
         
         for (int i = 0; i < 5; i++) {
             if (sv == nil) {
                  break;
             }
-            if ([sv isKindOfClass:tcClass] || [sv isKindOfClass:dvClass]) {
+            if ([sv isKindOfClass:tcClass] || [sv isKindOfClass:dvClass] || [sv isKindOfClass:mdClass] || [sv isKindOfClass:ntClass]) {
                 [a addAttributes:@{
                     NSForegroundColorAttributeName: kMainTextColor
                 } range:NSMakeRange(0, a.length)];
+                field.backgroundColor = kMainBackgroundColor;
                 break;
             }
             sv = sv.superview;
@@ -294,6 +297,11 @@
 - (void)hook_windowDidLoad
 {
     [self hook_windowDidLoad];
+    
+    if ([self isKindOfClass:objc_getClass("MMMultiTalkWindowController")]) {
+        return;
+    }
+    
     NSWindowController *window = (NSWindowController *)self;
     [[YMThemeMgr shareInstance] changeTheme:window.window.contentView];
     
@@ -406,8 +414,9 @@
 {
     arg1 = kMainTextColor;
     [self hook_setTextColor:arg1];
+    
     MMTextField *textField = (MMTextField *)self;
-    textField.backgroundColor = kMainBackgroundColor;
+//    textField.backgroundColor = kMainBackgroundColor;
 }
 
 - (instancetype)hook_scrollViewInitWithFrame:(NSRect)frameRect
@@ -566,6 +575,12 @@
     
     
     if ([view isKindOfClass:[objc_getClass("MMFavoritesListTextCell") class]]) {
+        for (NSView *sub in view.subviews) {
+            [[YMThemeMgr shareInstance] changeTheme:sub];
+        }
+    }
+    
+    if ([view isKindOfClass:[objc_getClass("MMFavoritesListNoteCell") class]]) {
         for (NSView *sub in view.subviews) {
             [[YMThemeMgr shareInstance] changeTheme:sub];
         }

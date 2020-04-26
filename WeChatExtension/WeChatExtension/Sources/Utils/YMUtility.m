@@ -19,4 +19,14 @@
         return YES;
     }
 }
+
++ (BOOL)isLargeOrEqualLongVersion:(NSString *)version
+{
+    NSDictionary *dict = [NSBundle mainBundle].infoDictionary;
+    if ([dict[@"MMBundleVersion"] compare:version options:NSNumericSearch] == NSOrderedAscending) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
 @end
