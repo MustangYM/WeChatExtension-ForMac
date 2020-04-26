@@ -101,41 +101,48 @@
 
 - (void)hook_menuWillOpen:(NSMenu *)arg1
 {
-    MMSessionInfo *sessionInfo = [(MMChatsTableCellView *)self sessionInfo];
+    
+    MMChatsTableCellView *cell = (MMChatsTableCellView *)self;
+    MMSessionInfo *sessionInfo = [cell sessionInfo];
     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
-    
-    __block BOOL isIgnore = false;
-    NSMutableArray *ignoreSessions = [[TKWeChatPluginConfig sharedConfig] ignoreSessionModels];
-    [ignoreSessions enumerateObjectsUsingBlock:^(TKIgnoreSessonModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([model.userName isEqualToString:sessionInfo.m_nsUserName] && [model.selfContact isEqualToString:currentUserName]) {
-            isIgnore = true;
-            *stop = YES;
-        }
-    }];
+    NSString *delegate = NSStringFromClass(cell.delegate.class);
 
-    NSString *itemString = isIgnore ? YMLocalizedString(@"assistant.chat.unStickyBottom") : YMLocalizedString(@"assistant.chat.stickyBottom");
-    NSMenuItem *preventRevokeItem = [[NSMenuItem alloc] initWithTitle:itemString action:@selector(contextMenuStickyBottom) keyEquivalent:@""];
+    if ([delegate isEqualToString:@"MMChatsViewController"]) {
+        __block BOOL isIgnore = false;
+        NSMutableArray *ignoreSessions = [[TKWeChatPluginConfig sharedConfig] ignoreSessionModels];
+        [ignoreSessions enumerateObjectsUsingBlock:^(TKIgnoreSessonModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([model.userName isEqualToString:sessionInfo.m_nsUserName] && [model.selfContact isEqualToString:currentUserName]) {
+                isIgnore = true;
+                *stop = YES;
+            }
+        }];
+        
+        NSString *itemString = isIgnore ? YMLocalizedString(@"assistant.chat.unStickyBottom") : YMLocalizedString(@"assistant.chat.stickyBottom");
+        NSMenuItem *preventRevokeItem = [[NSMenuItem alloc] initWithTitle:itemString action:@selector(contextMenuStickyBottom) keyEquivalent:@""];
+        
+        BOOL multipleSelectionEnable = [[TKWeChatPluginConfig sharedConfig] multipleSelectionEnable];
+        NSString *multipleSelectionString = multipleSelectionEnable ? YMLocalizedString(@"assistant.chat.unMultiSelect") : YMLocalizedString(@"assistant.chat.multiSelect");
+        NSMenuItem *multipleSelectionItem = [[NSMenuItem alloc] initWithTitle:multipleSelectionString action:@selector(contextMenuMutipleSelection) keyEquivalent:@""];
+        
+        NSMenuItem *clearUnReadItem = [[NSMenuItem alloc] initWithTitle:YMLocalizedString(@"assistant.chat.readAll") action:@selector(contextMenuClearUnRead) keyEquivalent:@""];
+        
+        NSMenuItem *clearEmptySessionItem = [[NSMenuItem alloc] initWithTitle:YMLocalizedString(@"assistant.chat.clearEmpty") action:@selector(contextMenuClearEmptySession) keyEquivalent:@""];
+        
+        NSMenuItem *removeSessionItem = [[NSMenuItem alloc] initWithTitle:YMLocalizedString(@"assistant.chat.remove") action:@selector(contextMenuRemoveSession) keyEquivalent:@""];
+        
+        NSMenuItem *unreadSessionItem = [[NSMenuItem alloc] initWithTitle:YMLocalizedString(@"assistant.chat.unread") action:@selector(contextMenuUnreadSession) keyEquivalent:@""];
+        
+        [arg1 addItems:@[[NSMenuItem separatorItem],
+                         preventRevokeItem,
+                         multipleSelectionItem,
+                         clearUnReadItem,
+                         clearEmptySessionItem,
+                         removeSessionItem,
+                         unreadSessionItem
+        ]];
+    }
     
-    BOOL multipleSelectionEnable = [[TKWeChatPluginConfig sharedConfig] multipleSelectionEnable];
-    NSString *multipleSelectionString = multipleSelectionEnable ? YMLocalizedString(@"assistant.chat.unMultiSelect") : YMLocalizedString(@"assistant.chat.multiSelect");
-    NSMenuItem *multipleSelectionItem = [[NSMenuItem alloc] initWithTitle:multipleSelectionString action:@selector(contextMenuMutipleSelection) keyEquivalent:@""];
-    
-    NSMenuItem *clearUnReadItem = [[NSMenuItem alloc] initWithTitle:YMLocalizedString(@"assistant.chat.readAll") action:@selector(contextMenuClearUnRead) keyEquivalent:@""];
-    
-    NSMenuItem *clearEmptySessionItem = [[NSMenuItem alloc] initWithTitle:YMLocalizedString(@"assistant.chat.clearEmpty") action:@selector(contextMenuClearEmptySession) keyEquivalent:@""];
-    
-    NSMenuItem *removeSessionItem = [[NSMenuItem alloc] initWithTitle:YMLocalizedString(@"assistant.chat.remove") action:@selector(contextMenuRemoveSession) keyEquivalent:@""];
-
-    NSMenuItem *unreadSessionItem = [[NSMenuItem alloc] initWithTitle:YMLocalizedString(@"assistant.chat.unread") action:@selector(contextMenuUnreadSession) keyEquivalent:@""];
-
-    [arg1 addItems:@[[NSMenuItem separatorItem],
-                     preventRevokeItem,
-                     multipleSelectionItem,
-                     clearUnReadItem,
-                     clearEmptySessionItem,
-                     removeSessionItem,
-                     unreadSessionItem
-                     ]];
+   
     [self hook_menuWillOpen:arg1];
 }
 
