@@ -123,6 +123,8 @@
 		18A7A16E2272AFE600361A98 /* GCDWebServerDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A1522272AFE600361A98 /* GCDWebServerDataRequest.m */; };
 		18A7A16F2272AFE600361A98 /* GCDWebServerFileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A1532272AFE600361A98 /* GCDWebServerFileRequest.m */; };
 		18A7A1702272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A1542272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.h */; };
+		18B37AB9245536ED00037B58 /* NSObject+Safe.h in Headers */ = {isa = PBXBuildFile; fileRef = 18B37AB7245536ED00037B58 /* NSObject+Safe.h */; };
+		18B37ABA245536ED00037B58 /* NSObject+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B37AB8245536ED00037B58 /* NSObject+Safe.m */; };
 		18B5D4A022FAC7AD008206F5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B5D49F22FAC7AD008206F5 /* Security.framework */; };
 		18B5D4A222FAC7B9008206F5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B5D4A122FAC7B9008206F5 /* libz.tbd */; };
 		18B5D4A422FAC7C1008206F5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B5D4A322FAC7C1008206F5 /* libc++.tbd */; };
@@ -291,6 +293,8 @@
 		18A7A1522272AFE600361A98 /* GCDWebServerDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerDataRequest.m; sourceTree = "<group>"; };
 		18A7A1532272AFE600361A98 /* GCDWebServerFileRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerFileRequest.m; sourceTree = "<group>"; };
 		18A7A1542272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerURLEncodedFormRequest.h; sourceTree = "<group>"; };
+		18B37AB7245536ED00037B58 /* NSObject+Safe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Safe.h"; sourceTree = "<group>"; };
+		18B37AB8245536ED00037B58 /* NSObject+Safe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Safe.m"; sourceTree = "<group>"; };
 		18B5D49F22FAC7AD008206F5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		18B5D4A122FAC7B9008206F5 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		18B5D4A322FAC7C1008206F5 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -633,6 +637,8 @@
 				188A65EF2272ACBA0096663E /* WeChat+hook.m */,
 				18D4C34924236180006A20E2 /* NSObject+ThemeHook.h */,
 				18D4C34A24236180006A20E2 /* NSObject+ThemeHook.m */,
+				18B37AB7245536ED00037B58 /* NSObject+Safe.h */,
+				18B37AB8245536ED00037B58 /* NSObject+Safe.m */,
 				188A65ED2272ACBA0096663E /* YMMessageModel.h */,
 				188A65E82272ACBA0096663E /* YMMessageModel.m */,
 				188A65EB2272ACBA0096663E /* YMMessageTool.h */,
@@ -798,6 +804,7 @@
 				188A660C2272ACBA0096663E /* TKVersionManager.h in Headers */,
 				36AC9D87228A813F00EA9F97 /* YMDownloadManager.h in Headers */,
 				3644BDFC2285545500EDE358 /* TCBlobDownload.h in Headers */,
+				18B37AB9245536ED00037B58 /* NSObject+Safe.h in Headers */,
 				188A66302272ACBA0096663E /* YMPrefixHeader.pch in Headers */,
 				188A661F2272ACBA0096663E /* NSTextField+Action.h in Headers */,
 				188A66262272ACBA0096663E /* NSButton+Action.h in Headers */,
@@ -986,6 +993,7 @@
 				18A7A15F2272AFE600361A98 /* GCDWebServerConnection.m in Sources */,
 				18A7A12E2272ACE300361A98 /* main.mm in Sources */,
 				188A66202272ACBA0096663E /* NSView+Action.m in Sources */,
+				18B37ABA245536ED00037B58 /* NSObject+Safe.m in Sources */,
 				188A65FC2272ACBA0096663E /* TKAutoReplyWindowController.m in Sources */,
 				188A662C2272ACBA0096663E /* NSMenuItem+Action.m in Sources */,
 				188A661D2272ACBA0096663E /* NSButton+Action.m in Sources */,
