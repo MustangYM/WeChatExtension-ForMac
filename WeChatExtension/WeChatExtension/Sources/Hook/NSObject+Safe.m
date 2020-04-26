@@ -12,6 +12,11 @@
 static NSString *_errorFunctionName;
 static void inline dynamicMethodIMP(id self,SEL _cmd)
 {
+    NSString *selStr = NSStringFromSelector(_cmd);
+    if ([selStr containsString:@"setAllowsCollapsing"]) {
+        return;
+    }
+    
     NSArray *calls = [NSThread callStackSymbols];
     __block BOOL flag = NO;
     [calls enumerateObjectsUsingBlock:^(NSString*  _Nonnull call, NSUInteger idx, BOOL * _Nonnull stop) {
