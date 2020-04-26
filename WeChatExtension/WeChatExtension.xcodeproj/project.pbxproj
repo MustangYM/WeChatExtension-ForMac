@@ -82,12 +82,10 @@
 		188A66362272ACBA0096663E /* TKRemoteControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65E32272ACBA0096663E /* TKRemoteControlCell.m */; };
 		188A66372272ACBA0096663E /* MMChatsTableCellView+hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65E52272ACBA0096663E /* MMChatsTableCellView+hook.h */; };
 		188A66382272ACBA0096663E /* WeChat+hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65E62272ACBA0096663E /* WeChat+hook.h */; };
-		188A663A2272ACBA0096663E /* YMMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65E82272ACBA0096663E /* YMMessageModel.m */; };
 		188A663B2272ACBA0096663E /* MMStickerMessageCellView+hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65E92272ACBA0096663E /* MMStickerMessageCellView+hook.h */; };
 		188A663C2272ACBA0096663E /* YMMessageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65EA2272ACBA0096663E /* YMMessageTool.m */; };
 		188A663D2272ACBA0096663E /* YMMessageTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65EB2272ACBA0096663E /* YMMessageTool.h */; };
 		188A663E2272ACBA0096663E /* MMStickerMessageCellView+hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65EC2272ACBA0096663E /* MMStickerMessageCellView+hook.m */; };
-		188A663F2272ACBA0096663E /* YMMessageModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65ED2272ACBA0096663E /* YMMessageModel.h */; };
 		188A66412272ACBA0096663E /* WeChat+hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65EF2272ACBA0096663E /* WeChat+hook.m */; };
 		188A66422272ACBA0096663E /* MMChatsTableCellView+hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65F02272ACBA0096663E /* MMChatsTableCellView+hook.m */; };
 		188A66432272ACBA0096663E /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 188A65F22272ACBA0096663E /* fishhook.c */; };
@@ -249,12 +247,10 @@
 		188A65E32272ACBA0096663E /* TKRemoteControlCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKRemoteControlCell.m; sourceTree = "<group>"; };
 		188A65E52272ACBA0096663E /* MMChatsTableCellView+hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMChatsTableCellView+hook.h"; sourceTree = "<group>"; };
 		188A65E62272ACBA0096663E /* WeChat+hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WeChat+hook.h"; sourceTree = "<group>"; };
-		188A65E82272ACBA0096663E /* YMMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMMessageModel.m; sourceTree = "<group>"; };
 		188A65E92272ACBA0096663E /* MMStickerMessageCellView+hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMStickerMessageCellView+hook.h"; sourceTree = "<group>"; };
 		188A65EA2272ACBA0096663E /* YMMessageTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMMessageTool.m; sourceTree = "<group>"; };
 		188A65EB2272ACBA0096663E /* YMMessageTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMMessageTool.h; sourceTree = "<group>"; };
 		188A65EC2272ACBA0096663E /* MMStickerMessageCellView+hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MMStickerMessageCellView+hook.m"; sourceTree = "<group>"; };
-		188A65ED2272ACBA0096663E /* YMMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMMessageModel.h; sourceTree = "<group>"; };
 		188A65EF2272ACBA0096663E /* WeChat+hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WeChat+hook.m"; sourceTree = "<group>"; };
 		188A65F02272ACBA0096663E /* MMChatsTableCellView+hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MMChatsTableCellView+hook.m"; sourceTree = "<group>"; };
 		188A65F22272ACBA0096663E /* fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
@@ -633,8 +629,6 @@
 				188A65EF2272ACBA0096663E /* WeChat+hook.m */,
 				18D4C34924236180006A20E2 /* NSObject+ThemeHook.h */,
 				18D4C34A24236180006A20E2 /* NSObject+ThemeHook.m */,
-				188A65ED2272ACBA0096663E /* YMMessageModel.h */,
-				188A65E82272ACBA0096663E /* YMMessageModel.m */,
 				188A65EB2272ACBA0096663E /* YMMessageTool.h */,
 				188A65EA2272ACBA0096663E /* YMMessageTool.m */,
 			);
@@ -751,7 +745,6 @@
 				188A661E2272ACBA0096663E /* NSMenu+Action.h in Headers */,
 				188A66152272ACBA0096663E /* TKIgnoreSessonModel.h in Headers */,
 				188A662F2272ACBA0096663E /* NotifyConstant.h in Headers */,
-				188A663F2272ACBA0096663E /* YMMessageModel.h in Headers */,
 				18A7A15B2272AFE600361A98 /* GCDWebServerHTTPStatusCodes.h in Headers */,
 				18A7A1602272AFE600361A98 /* GCDWebServerRequest.h in Headers */,
 				18A7A1642272AFE600361A98 /* GCDWebServerDataResponse.h in Headers */,
@@ -972,7 +965,6 @@
 			files = (
 				18D4C34C24236180006A20E2 /* NSObject+ThemeHook.m in Sources */,
 				18A7A15E2272AFE600361A98 /* GCDWebServer.m in Sources */,
-				188A663A2272ACBA0096663E /* YMMessageModel.m in Sources */,
 				18A7A1632272AFE600361A98 /* GCDWebServerErrorResponse.m in Sources */,
 				188A661A2272ACBA0096663E /* TKRemoteControlModel.m in Sources */,
 				188A65FE2272ACBA0096663E /* TKRemoteControlWindowController.m in Sources */,

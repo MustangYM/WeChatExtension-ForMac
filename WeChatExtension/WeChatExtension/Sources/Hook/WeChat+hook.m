@@ -18,7 +18,6 @@
 #import "TKRemoteControlManager.h"
 #import "TKDownloadWindowController.h"
 #import "YMMessageTool.h"
-#import "YMMessageModel.h"
 #import "YMUpdateManager.h"
 #import "YMThemeMgr.h"
 #import "YMDownloadManager.h"
