@@ -577,7 +577,7 @@
     WebViewDataItem *item = (WebViewDataItem *)arg1;
     if ([[TKWeChatPluginConfig sharedConfig] systemBrowserEnable]) {
         MMURLHandler *urlHander = [objc_getClass("MMURLHandler") defaultHandler];
-        if (LargerOrEqualVersion(@"2.4.0")) {
+        if (LargerOrEqualLongVersion(@"2.4.0.149")) {
             [urlHander openURLWithDefault:item.urlString];
         } else if (LargerOrEqualVersion(@"2.3.26")) {
             [urlHander openURLWithDefault:item.urlString useA8Key:NO];
