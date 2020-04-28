@@ -41,7 +41,7 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
     NSMenuItem *preventRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"开启消息防撤回", @"Revoke")
                                                            action:@selector(onPreventRevoke:)
                                                            target:self
-                                                    keyEquivalent:@"t"
+                                                    keyEquivalent:@"T"
                                                             state:[[TKWeChatPluginConfig sharedConfig] preventRevokeEnable]];
     if ([[TKWeChatPluginConfig sharedConfig] preventRevokeEnable]) {
         //        防撤回自己
