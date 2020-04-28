@@ -58,6 +58,10 @@
         hookMethod(objc_getClass("MMCTTextView"), @selector(setAttributedString:), [self class], @selector(hook_textFieldSetTextColor:));
         hookMethod(objc_getClass("MMSessionPickerListRowView"), @selector(drawRect:), [self class], @selector(hook_pickerListDrawRect:));
         hookMethod(objc_getClass("MMChatDetailMemberRowView"), @selector(avatarImageView), [self class], @selector(hook_chatDetailAvatarImageView));
+        hookMethod(objc_getClass("MMAppReferContainerView"), NSSelectorFromString(@"normalColor"), [self class], @selector(hook_referNormalColor));
+        hookMethod(objc_getClass("MMAppReferContainerView"), NSSelectorFromString(@"highlightColor"), [self class], @selector(hook_referHighlightColor));
+        hookMethod(objc_getClass("MMReferTextAttachmentView"), NSSelectorFromString(@"setBgView:"), [self class], @selector(hook_referSetBgView:));
+        
     }
         
 }
@@ -260,6 +264,23 @@
 - (void)hook_composeSetTextColor:(NSColor *)color
 {
     [self hook_composeSetTextColor:[NSColor whiteColor]];
+}
+
+- (NSColor *)hook_referNormalColor
+{
+    return kRGBColor(160, 180, 200, 1);
+}
+
+- (NSColor *)hook_referHighlightColor
+{
+    return NSColor.lightGrayColor;
+}
+
+- (void) hook_referSetBgView: (NSView *) view
+{
+    [self hook_referSetBgView:view];
+    
+    view.layer.backgroundColor = kRGBColor(160, 180, 200, 1).CGColor;
 }
 
 - (void)hook_memberListViewDidLoad
