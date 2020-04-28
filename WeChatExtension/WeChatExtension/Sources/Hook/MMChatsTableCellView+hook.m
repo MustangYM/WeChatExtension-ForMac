@@ -70,10 +70,10 @@
     
     NSMutableArray *selectSessions = [[TKWeChatPluginConfig sharedConfig] selectSessions];
     
-    if ([TKWeChatPluginConfig sharedConfig].darkMode) {
-        NSColor *changeColor = [TKWeChatPluginConfig sharedConfig].darkMode ? kRGBColor(255, 255, 255, 1.0) : [NSColor blackColor];
+    if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
+        NSColor *changeColor = kRGBColor(255, 255, 255, 1.0);
         if (isIgnore) {
-            changeColor = kRGBColor(25, 185, 77, 1.0);
+            changeColor = kMainIgnoredTextColor;//kRGBColor(25, 185, 77, 1.0);
         } else if ([selectSessions containsObject:sessionInfo]) {
             changeColor = [NSColor redColor];
         }

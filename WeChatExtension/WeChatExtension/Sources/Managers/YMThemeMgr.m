@@ -94,7 +94,7 @@
 
 + (void)changeButtonTheme:(NSButton *)button
 {
-    if (![TKWeChatPluginConfig sharedConfig].darkMode) {
+    if (![TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
         return;
     }
     

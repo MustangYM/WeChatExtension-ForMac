@@ -65,5 +65,15 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 - (NSMutableArray *)getMonitorQuitMembers;
 - (NSString *)languageSetting:(NSString *)chinese english:(NSString *)english;
 
+- (BOOL)usingTheme;
+- (BOOL)usingDarkTheme;
+
+- (id)mainBackgroundColor;
+- (id)mainTextColor;
+- (id)mainIgnoredBackgroundColor;
+- (id)mainIgnoredTextColor;
+- (id)mainSeperatorColor;
+- (id)mainScrollerColor;
+- (id)mainDividerColor;
 @end
 

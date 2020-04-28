@@ -340,4 +340,51 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
     return english;
 }
 
+- (BOOL)usingTheme {
+    return self.darkMode || self.blackMode || self.pinkMode;
+}
+
+- (BOOL)usingDarkTheme {
+    return self.darkMode || self.blackMode;
+}
+
+- (id)mainTextColor {
+    if (![self usingTheme]) {
+        return kDefaultTextColor;
+    }
+    return self.darkMode ? kDarkModeTextColor : (self.blackMode ? kBlackModeTextColor : kPinkModeTextColor);
+}
+
+- (id)mainBackgroundColor {
+    if (![self usingTheme]) {
+        return NSColor.clearColor;
+    }
+    return self.darkMode ? kDarkBacgroundColor : (self.blackMode ? kBlackBackgroundColor : kPinkBacgroundColor);
+}
+
+- (id)mainIgnoredTextColor {
+    if (![self usingTheme]) {
+        return kDefaultIgnoredTextColor;
+    }
+    return self.darkMode ? kDarkModeIgnoredTextColor : (self.blackMode ? kBlackModeIgnoredTextColor : kPinkModeIgnoredTextColor);
+}
+
+- (id)mainIgnoredBackgroundColor {
+    if (![self usingTheme]) {
+        return kDefaultIgnoredBackgroundColor;
+    }
+    return self.darkMode ? kDarkModeIgnoredBackgroundColor : (self.blackMode ? kBlackModeIgnoredBackgroundColor : kPinkModeIgnoredBackgroundColor);
+}
+
+- (id)mainSeperatorColor {
+    return self.darkMode ? kRGBColor(147, 148, 248, 0.2) : (self.blackMode ? kRGBColor(128,128,128, 0.5) : kRGBColor(147, 148, 248, 0.2));
+}
+
+- (id)mainScrollerColor {
+    return self.darkMode ? kRGBColor(33, 48, 64, 1.0) : (self.blackMode ? kRGBColor(128,128,128, 0.5) : NSColor.clearColor);
+}
+
+- (id)mainDividerColor {
+    return self.darkMode ? kRGBColor(71, 69, 112, 0.5) : (self.blackMode ? kRGBColor(128,128,128, 0.7) : kRGBColor(71, 69, 112, 0.5));
+}
 @end
