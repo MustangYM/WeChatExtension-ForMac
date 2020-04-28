@@ -85,6 +85,10 @@
             NSFont *attributesFont = [attributes valueForKey:@"NSFont"];
             NSMutableAttributedString *returnValue = [[NSMutableAttributedString alloc] initWithString:str.string attributes:@{NSForegroundColorAttributeName :changeColor, NSFontAttributeName : attributesFont}];
             cellView.nickName.attributedStringValue = returnValue;
+            if (isIgnore) {
+                cellView.containerView.layer.backgroundColor = kMainIgnoredBackgroundColor.CGColor;
+            }
+            
             // MARK: - Add pined image in dark mode
             NSBundle *bundle = [NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"];
             NSString *imgPath= [bundle pathForImageResource:@"pin.png"];
