@@ -30,6 +30,10 @@
 
 - (void)changeTheme:(NSView *)view color:(NSColor *)color
 {
+    // ignore pined image
+    if (view.tag == 9999999) {
+        return;
+    }
     CALayer *viewLayer = [CALayer layer];
     [viewLayer setBackgroundColor:color.CGColor];
     [view setWantsLayer:YES];
