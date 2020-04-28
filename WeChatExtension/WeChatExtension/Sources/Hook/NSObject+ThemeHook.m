@@ -337,8 +337,9 @@
     NSMutableAttributedString *returnValue = [[NSMutableAttributedString alloc] initWithString:str.string attributes:@{NSForegroundColorAttributeName :kRGBColor(255, 255, 255, 1.0), NSFontAttributeName : attributesFont}];
     cell.nickName.attributedStringValue = returnValue;
     
-    if ([TKWeChatPluginConfig sharedConfig].darkMode) {
-        [[YMThemeMgr shareInstance] changeTheme:cell color:kRGBColor(33, 48, 64, 1.0)];
+    if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
+        // MARK: - 点击对框列表之后，无法显示该对话框处于选择状态，故注释掉
+//        [[YMThemeMgr shareInstance] changeTheme:cell.containerView color:kRGBColor(56, 70, 92, 1.0)];
         cell.muteIndicator.normalColor = [NSColor redColor];
     }
 }
