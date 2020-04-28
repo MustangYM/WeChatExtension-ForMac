@@ -145,7 +145,8 @@
 {
     NSTextView *view = (NSTextView *)self;
     
-    if (view.superview != nil && [view.superview isKindOfClass:NSClassFromString(@"MMChatLogEventView")]) {
+    // Search chat history window
+    if (view.superview != nil && ([view.superview isKindOfClass:NSClassFromString(@"MMChatLogEventView")] || [view.superview isKindOfClass:NSClassFromString(@"MMView")])) {
         NSRange area = NSMakeRange(0, [view.textStorage length]);
         [view.textStorage removeAttribute:NSForegroundColorAttributeName range:area];
         [view.textStorage addAttributes:@{
