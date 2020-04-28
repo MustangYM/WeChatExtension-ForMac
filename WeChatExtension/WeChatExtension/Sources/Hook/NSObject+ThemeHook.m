@@ -347,20 +347,22 @@
 - (void)hook_mouseDown:(id)arg1
 {
     [self hook_mouseDown:arg1];
-    MMChatsTableCellView *cell = (MMChatsTableCellView *)self;
+    
+    if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
 
-    NSColor *highColor = nil;
-    if (cell.selected) {
-        highColor = kRGBColor(147, 148, 248, 0.5);
-    } else {
-        [TKWeChatPluginConfig sharedConfig].darkMode ? highColor = kRGBColor(33, 48, 64, 1.0) : [NSColor clearColor];
-    }
-    cell.layer.backgroundColor = highColor.CGColor;
-    [cell setNeedsDisplay:YES];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        cell.layer.backgroundColor = [TKWeChatPluginConfig sharedConfig].darkMode ? kRGBColor(33, 48, 64, 1.0).CGColor : [NSColor clearColor].CGColor;
+        MMChatsTableCellView *cell = (MMChatsTableCellView *)self;
+
+        NSColor *original = [NSColor colorWithCGColor:cell.layer.backgroundColor];
+        cell.layer.backgroundColor = (TKWeChatPluginConfig.sharedConfig.blackMode ? kRGBColor(128,128,128, 0.5) : kRGBColor(147, 148, 248, 0.5)).CGColor;
         [cell setNeedsDisplay:YES];
-    });
+        // MARK: - 点击对框列表之后，恢复之前状态
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            cell.layer.backgroundColor = original.CGColor;
+            [cell setNeedsDisplay:YES];
+        });
+    }
+    
+    
 }
 
 - (void)hook_setAttributedStringValue:(NSAttributedString *)arg1
