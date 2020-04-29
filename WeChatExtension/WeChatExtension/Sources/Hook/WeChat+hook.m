@@ -435,7 +435,7 @@
         return;
     } else {
         if (TKWeChatPluginConfig.sharedConfig.usingTheme) {
-            [[YMThemeMgr shareInstance] changeTheme:loginVC.view];
+            [[YMThemeManager shareInstance] changeTheme:loginVC.view];
         }
     }
     

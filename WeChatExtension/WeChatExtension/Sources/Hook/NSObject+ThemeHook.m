@@ -171,7 +171,7 @@
     if (originalText.length > 0) {
         NSColor *radomColor = nil;
         if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme && [TKWeChatPluginConfig sharedConfig].groupMultiColorMode) {
-            radomColor = [[YMThemeMgr shareInstance] randomColor:originalText.string.md5String];
+            radomColor = [[YMThemeManager shareInstance] randomColor:originalText.string.md5String];
         } else {
             radomColor = kMainTextColor;
         }
@@ -233,7 +233,7 @@
 
 - (void)hook_setSeperator:(NSView *)arg1
 {
-    [[YMThemeMgr shareInstance] changeTheme:arg1 color:kMainSeperatorColor];
+    [[YMThemeManager shareInstance] changeTheme:arg1 color:kMainSeperatorColor];
     [self hook_setSeperator:arg1];
 }
 
@@ -359,8 +359,7 @@
     cell.nickName.attributedStringValue = returnValue;
     
     if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
-        // MARK: - 点击对框列表之后，无法显示该对话框处于选择状态，故注释掉
-//        [[YMThemeMgr shareInstance] changeTheme:cell.containerView color:kRGBColor(56, 70, 92, 1.0)];
+        [[YMThemeManager shareInstance] changeTheme:cell color:[TKWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
         cell.muteIndicator.normalColor = [NSColor redColor];
     }
 }
@@ -376,14 +375,11 @@
         NSColor *original = [NSColor colorWithCGColor:cell.layer.backgroundColor];
         cell.layer.backgroundColor = (TKWeChatPluginConfig.sharedConfig.blackMode ? kRGBColor(128,128,128, 0.5) : kRGBColor(147, 148, 248, 0.5)).CGColor;
         [cell setNeedsDisplay:YES];
-        // MARK: - 点击对框列表之后，恢复之前状态
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             cell.layer.backgroundColor = original.CGColor;
             [cell setNeedsDisplay:YES];
         });
     }
-    
-    
 }
 
 - (void)hook_setAttributedStringValue:(NSAttributedString *)arg1
@@ -441,9 +437,6 @@
 {
     arg1 = kMainTextColor;
     [self hook_setTextColor:arg1];
-    
-    MMTextField *textField = (MMTextField *)self;
-//    textField.backgroundColor = kMainBackgroundColor;
 }
 
 - (instancetype)hook_scrollViewInitWithFrame:(NSRect)frameRect

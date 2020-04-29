@@ -9,6 +9,7 @@
 
 #import <Foundation/Foundation.h>
 #import "GVUserDefaults.h"
+#import <AppKit/AppKit.h>
 
 typedef NS_ENUM(NSInteger, PluginLanguageType) {
     PluginLanguageTypeZH,
@@ -38,7 +39,7 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @property (nonatomic, copy) NSString *currentUserName;          /**<    当前用户的id     */
 @property (nonatomic) BOOL isAllowMoreOpenBaby;                 /**<    子WeChat多开     */
 @property (nonatomic) BOOL darkMode;                            /**<    黑暗模式     */
-@property (nonatomic) BOOL blackMode;                            /**<    深邃模式     */
+@property (nonatomic) BOOL blackMode;                           /**<    深邃模式     */
 @property (nonatomic) BOOL pinkMode;                            /**<    少女模式     */
 @property (nonatomic) BOOL groupMultiColorMode;                 /**<    群成员彩色     */
 @property (nonatomic) BOOL isThemeLoaded;                       /**<    是否有使用过皮肤    */
@@ -68,12 +69,13 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 - (BOOL)usingTheme;
 - (BOOL)usingDarkTheme;
 
-- (id)mainBackgroundColor;
-- (id)mainTextColor;
-- (id)mainIgnoredBackgroundColor;
-- (id)mainIgnoredTextColor;
-- (id)mainSeperatorColor;
-- (id)mainScrollerColor;
-- (id)mainDividerColor;
+- (NSColor *)mainBackgroundColor;
+- (NSColor *)mainTextColor;
+- (NSColor *)mainIgnoredBackgroundColor;
+- (NSColor *)mainIgnoredTextColor;
+- (NSColor *)mainSeperatorColor;
+- (NSColor *)mainScrollerColor;
+- (NSColor *)mainDividerColor;
+- (NSColor *)mainChatCellBackgroundColor;
 @end
 
