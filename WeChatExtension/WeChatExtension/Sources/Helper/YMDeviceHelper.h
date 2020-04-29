@@ -1,5 +1,5 @@
 //
-//  YMUtility.h
+//  YMDeviceHelper.h
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2019/1/12.
@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-#define LargerOrEqualVersion(version) [YMUtility isLargerOrEqualVersion:version]
-#define LargerOrEqualLongVersion(version) [YMUtility isLargeOrEqualLongVersion:version]
+#define LargerOrEqualVersion(version) [YMDeviceHelper isLargerOrEqualVersion:version]
+#define LargerOrEqualLongVersion(version) [YMDeviceHelper isLargeOrEqualLongVersion:version]
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YMUtility : NSObject
+@interface YMDeviceHelper : NSObject
 + (BOOL)isLargerOrEqualVersion:(NSString *)version;
 + (BOOL)isLargeOrEqualLongVersion:(NSString *)version;
 @end

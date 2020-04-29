@@ -8,7 +8,7 @@
 
 #import "TKVersionManager.h"
 #import "TKWeChatPluginConfig.h"
-#import "TKHTTPManager.h"
+#import "YMHTTPManager.h"
 #import "TKRemoteControlManager.h"
 #import "TKCacheManager.h"
 
@@ -67,7 +67,7 @@
     [fileManager removeItemAtPath:pluginZipPath error:nil];
     
     NSString *urlString = @"https://github.com/MustangYM/WeChatExtension-ForMac/raw/master/WeChatExtension/Rely/Plugin/WeChatExtension.zip";
-    [[TKHTTPManager shareManager] downloadWithUrlString:urlString toDirectoryPah:cachesPath progress:^(NSProgress *downloadProgress) {
+    [[YMHTTPManager shareManager] downloadWithUrlString:urlString toDirectoryPah:cachesPath progress:^(NSProgress *downloadProgress) {
         if (downloadProgressBlock) {
              downloadProgressBlock(downloadProgress);
         }
@@ -80,6 +80,6 @@
 
 - (void)cancelDownload
 {
-    [[TKHTTPManager shareManager] cancelDownload];
+    [[YMHTTPManager shareManager] cancelDownload];
 }
 @end

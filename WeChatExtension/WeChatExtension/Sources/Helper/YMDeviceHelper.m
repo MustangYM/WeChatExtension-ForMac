@@ -1,14 +1,14 @@
 //
-//  YMUtility.m
+//  YMDeviceHelper.m
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2019/1/12.
 //  Copyright © 2019 WeChatExtension. All rights reserved.
 //
 
-#import "YMUtility.h"
+#import "YMDeviceHelper.h"
 
-@implementation YMUtility
+@implementation YMDeviceHelper
 
 + (BOOL)isLargerOrEqualVersion:(NSString *)version
 {

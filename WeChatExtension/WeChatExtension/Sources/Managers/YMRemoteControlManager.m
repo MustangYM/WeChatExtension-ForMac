@@ -1,12 +1,12 @@
 //
-//  TKRemoteControlManager.m
+//  YMRemoteControlManager.m
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2018/4/24.
 //  Copyright © 2018年 WeChatExtension. All rights reserved.
 //
 
-#import "TKRemoteControlManager.h"
+#import "YMRemoteControlManager.h"
 #import "TKWeChatPluginConfig.h"
 #import "TKRemoteControlModel.h"
 #import "YMMessageManager.h"
@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger, MessageDataType) {
 //      执行 AppleScript
 static NSString * const kRemoteControlAppleScript = @"osascript /Applications/WeChat.app/Contents/MacOS/WeChatExtension.framework/Resources/TKRemoteControlScript.scpt";
 
-@implementation TKRemoteControlManager
+@implementation YMRemoteControlManager
 
 + (void)executeRemoteControlCommandWithVoiceMsg:(NSString *)msg
 {
@@ -127,7 +127,7 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
     NSString *callBack = @"";
     TKWeChatPluginConfig *config = [TKWeChatPluginConfig sharedConfig];
     if ([cmd isEqualToString:@"getDirectiveList"]) {
-        callBack = [TKRemoteControlManager remoteControlCommandsString];
+        callBack = [YMRemoteControlManager remoteControlCommandsString];
     } else if ([cmd isEqualToString:@"AutoReplySwitch"]) {
         NSString *status = config.autoReplyEnable ? YMLocalizedString(@"Assistant.Directive.SwitchOff") : YMLocalizedString(@"Assistant.Directive.SwitchOn");
         callBack = [NSString stringWithFormat:@"%@-%@",YMLocalizedString(@"Assistant.Directive.AutoReplySwitch"),status];

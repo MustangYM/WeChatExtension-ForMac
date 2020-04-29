@@ -1,5 +1,5 @@
 //
-//  TKWebServerManager.h
+//  YMWebServerManager.h
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2018/3/18.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TKWebServerManager : NSObject
+@interface YMWebServerManager : NSObject
 
 + (instancetype)shareManager;
 

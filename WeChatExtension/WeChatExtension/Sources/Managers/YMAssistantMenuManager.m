@@ -7,10 +7,10 @@
 //
 
 #import "TKAssistantMenuManager.h"
-#import "TKRemoteControlManager.h"
+#import "YMRemoteControlManager.h"
 #import "TKAutoReplyWindowController.h"
 #import "TKRemoteControlWindowController.h"
-#import "TKVersionManager.h"
+#import "YMVersionManager.h"
 #import "NSMenuItem+Action.h"
 #import "TKDownloadWindowController.h"
 #import "TKAboutWindowController.h"
@@ -171,7 +171,7 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
                                                            state:0];
     
     NSString *versionStr = YMLanguage(@"当前版本", @"Version");
-    NSMenuItem *currentVersionItem = [NSMenuItem menuItemWithTitle:[NSString stringWithFormat:@"%@%@",versionStr,[TKVersionManager shareManager].currentVersion]
+    NSMenuItem *currentVersionItem = [NSMenuItem menuItemWithTitle:[NSString stringWithFormat:@"%@%@",versionStr,[YMVersionManager shareManager].currentVersion]
                                                     action:@selector(onCurrentVersion:)
                                                     target:self
                                              keyEquivalent:@""
@@ -442,7 +442,7 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
     
     if ([TKWeChatPluginConfig sharedConfig].isAllowMoreOpenBaby) {
         [TKWeChatPluginConfig sharedConfig].launchFromNew = YES;
-        [TKRemoteControlManager executeShellCommand:@"open -n /Applications/WeChat.app"];
+        [YMRemoteControlManager executeShellCommand:@"open -n /Applications/WeChat.app"];
     } else {
         NSAlert *alert = [NSAlert alertWithMessageText:YMLanguage(@"警告", @"WARNING")
                                          defaultButton:YMLanguage(@"取消", @"cancel")                       alternateButton:YMLanguage(@"确定重启",@"restart")
@@ -516,7 +516,7 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
 - (void)onUpdatePluginControl:(NSMenuItem *)item
 {
     [[TKWeChatPluginConfig sharedConfig] setForbidCheckVersion:NO];
-    [[TKVersionManager shareManager] checkVersionFinish:^(TKVersionStatus status, NSString *message) {
+    [[YMVersionManager shareManager] checkVersionFinish:^(TKVersionStatus status, NSString *message) {
         if (status == TKVersionStatusNew) {
             NSAlert *alert = [[NSAlert alloc] init];
             [alert addButtonWithTitle:YMLocalizedString(@"assistant.update.alret.confirm")];

@@ -1,36 +1,36 @@
 //
-//  TKWebServerManager.m
+//  YMWebServerManager.m
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2018/3/18.
 //  Copyright © 2018年 WeChatExtension. All rights reserved.
 //
 
-#import "TKWebServerManager.h"
+#import "YMWebServerManager.h"
 #import "WeChatPlugin.h"
 #import <GCDWebServer.h>
 #import <GCDWebServerDataResponse.h>
 #import <GCDWebServerURLEncodedFormRequest.h>
 #import "YMMessageManager.h"
-#import "TKCacheManager.h"
+#import "YMCacheManager.h"
 
-@interface TKWebServerManager ()
+@interface YMWebServerManager ()
 
 @property (nonatomic, strong) GCDWebServer *webServer;
 @property (nonatomic, strong) MMContactSearchLogic *searchLogic;
 
 @end
 
-@implementation TKWebServerManager
+@implementation YMWebServerManager
 
 static int port=52700;
 
 + (instancetype)shareManager
 {
-    static TKWebServerManager *manager = nil;
+    static YMWebServerManager *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        manager = [[TKWebServerManager alloc] init];
+        manager = [[YMWebServerManager alloc] init];
     });
     return manager;
 }
@@ -185,7 +185,7 @@ static int port=52700;
             
             NSString *wechatId = [toUserContact getContactDisplayUsrName];
             NSString *title = [weakSelf getUserNameWithContactData:toUserContact showOriginName:YES];
-            NSString *imgPath = [[TKCacheManager shareManager] cacheAvatarWithContact:toUserContact];
+            NSString *imgPath = [[YMCacheManager shareManager] cacheAvatarWithContact:toUserContact];
             NSDictionary *toUserContactDict = @{@"title": [NSString stringWithFormat:@"To: %@", title],
                                                 @"subTitle": chatLogList.count > 0 ? YMLocalizedString(@"assistant.search.chatlog") : @"",
                                                 @"icon": imgPath ?: @"",
@@ -331,7 +331,7 @@ static int port=52700;
     if (subTitleArray.count > 0) {
         subTitle = [NSString stringWithFormat:@"%@%@",YMLocalizedString(@"assistant.search.member"),[subTitleArray componentsJoinedByString:@", "]];
     }
-    NSString *imgPath = [[TKCacheManager shareManager] cacheAvatarWithContact:groupContact];
+    NSString *imgPath = [[YMCacheManager shareManager] cacheAvatarWithContact:groupContact];
     NSString *wechatId = [groupContact getContactDisplayUsrName];
     
     return @{@"title": [NSString stringWithFormat:@"%@%@", YMLocalizedString(@"assistant.search.group"), groupContact.getGroupDisplayName],
@@ -393,7 +393,7 @@ static int port=52700;
     }
     
     NSString *subTitle =[self matchWithContactResult:result];
-    NSString *imgPath = [[TKCacheManager shareManager] cacheAvatarWithContact:contact];
+    NSString *imgPath = [[YMCacheManager shareManager] cacheAvatarWithContact:contact];
     
     NSString *wechatId = [contact getContactDisplayUsrName];
     return @{@"title": title,
@@ -416,7 +416,7 @@ static int port=52700;
     
     NSString *title = [self getUserNameWithContactData:contact showOriginName:YES];
     NSString *msgContent = [[YMMessageManager shareManager] getMessageContentWithData:msgData];
-    NSString *imgPath = [[TKCacheManager shareManager] cacheAvatarWithContact:contact];
+    NSString *imgPath = [[YMCacheManager shareManager] cacheAvatarWithContact:contact];
     
     NSString *wechatId = [contact getContactDisplayUsrName];
     return @{@"title": title,
@@ -482,10 +482,10 @@ static int port=52700;
             [imgMgr downloadImageWithMessage:msgData];
         }
     } else if (msgData.isCustomEmojiMsg || msgData.isEmojiAppMsg) {
-        if ([[TKCacheManager shareManager] fileExistsWithName:msgData.m_nsEmoticonMD5]) {
-            url = [[TKCacheManager shareManager] filePathWithName:msgData.m_nsEmoticonMD5];
+        if ([[YMCacheManager shareManager] fileExistsWithName:msgData.m_nsEmoticonMD5]) {
+            url = [[YMCacheManager shareManager] filePathWithName:msgData.m_nsEmoticonMD5];
         } else {
-            url = [[TKCacheManager shareManager] cacheEmotionMessage:msgData];
+            url = [[YMCacheManager shareManager] cacheEmotionMessage:msgData];
         }
         //        }
         
@@ -513,9 +513,9 @@ static int port=52700;
     if ([msgContact isGroupChat]) {
         GroupStorage *contactStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
         WCContactData *fromContact = [contactStorage GetGroupMemberContact:[msgData getChatRoomUsrName]];
-        imgPath = [[TKCacheManager shareManager] cacheAvatarWithContact:fromContact];
+        imgPath = [[YMCacheManager shareManager] cacheAvatarWithContact:fromContact];
     } else {
-        imgPath = [[TKCacheManager shareManager] cacheAvatarWithContact:msgContact];
+        imgPath = [[YMCacheManager shareManager] cacheAvatarWithContact:msgContact];
     }
 
     if (!msgContact.isGroupChat) {

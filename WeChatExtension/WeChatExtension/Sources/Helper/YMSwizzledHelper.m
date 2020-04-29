@@ -1,14 +1,14 @@
 //
-//  YMHelper.m
+//  YMSwizzledHelper.m
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2017/4/19.
 //  Copyright © 2017年 WeChatExtension. All rights reserved.
 //
 
-#import "YMHelper.h"
+#import "YMSwizzledHelper.h"
 
-@implementation YMHelper
+@implementation YMSwizzledHelper
 
 /**
  替换对象方法

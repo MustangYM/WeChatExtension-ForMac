@@ -1,5 +1,5 @@
 //
-//  YMHelper.h
+//  YMSwizzledHelper.h
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2017/4/19.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 
-@interface YMHelper : NSObject
+@interface YMSwizzledHelper : NSObject
 
 /**
  替换对象方法

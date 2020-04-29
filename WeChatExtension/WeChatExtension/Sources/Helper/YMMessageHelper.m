@@ -1,16 +1,16 @@
 //
-//  YMMessageTool.m
+//  YMMessageHelper.m
 //  WeChatExtension
 //
 //  Created by MustangYM on 2019/1/22.
 //  Copyright © 2019 MustangYM. All rights reserved.
 //
 
-#import "YMMessageTool.h"
+#import "YMMessageHelper.h"
 #import <objc/runtime.h>
 #import "XMLReader.h"
 
-@implementation YMMessageTool
+@implementation YMMessageHelper
 + (MessageData *)getMessageData:(AddMsg *)addMsg
 {
     if (!addMsg) {

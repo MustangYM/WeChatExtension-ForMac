@@ -1,5 +1,5 @@
 //
-//  TKRemoteControlManager.h
+//  YMRemoteControlManager.h
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2018/4/24.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TKRemoteControlManager : NSObject
+@interface YMRemoteControlManager : NSObject
 
 + (void)executeRemoteControlCommandWithVoiceMsg:(NSString *)msg;
 + (void)executeRemoteControlCommandWithMsg:(NSString *)msg;
