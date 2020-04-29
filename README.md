@@ -73,6 +73,7 @@
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191217-1036331%402x.png" width="800px"/>
 </p>
+
 - 依次点击 `小助手` -> `开启Alfred功能`
 - 打开你的Alfred搜索框， 输入 `wx `(wx后面接一个空格)，即可开启Alfred控制微信之旅
 ## 退群监控
