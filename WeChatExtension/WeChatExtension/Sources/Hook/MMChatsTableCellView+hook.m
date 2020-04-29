@@ -70,10 +70,10 @@
     
     NSMutableArray *selectSessions = [[TKWeChatPluginConfig sharedConfig] selectSessions];
     
-    if ([TKWeChatPluginConfig sharedConfig].darkMode) {
-        NSColor *changeColor = [TKWeChatPluginConfig sharedConfig].darkMode ? kRGBColor(255, 255, 255, 1.0) : [NSColor blackColor];
+    if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
+        NSColor *changeColor = kRGBColor(255, 255, 255, 1.0);
         if (isIgnore) {
-            changeColor = kRGBColor(25, 185, 77, 1.0);
+            changeColor = kMainIgnoredTextColor;//kRGBColor(25, 185, 77, 1.0);
         } else if ([selectSessions containsObject:sessionInfo]) {
             changeColor = [NSColor redColor];
         }
@@ -85,6 +85,32 @@
             NSFont *attributesFont = [attributes valueForKey:@"NSFont"];
             NSMutableAttributedString *returnValue = [[NSMutableAttributedString alloc] initWithString:str.string attributes:@{NSForegroundColorAttributeName :changeColor, NSFontAttributeName : attributesFont}];
             cellView.nickName.attributedStringValue = returnValue;
+            
+            // MARK: - Add pined image in dark mode
+            NSBundle *bundle = [NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"];
+            NSString *imgPath= [bundle pathForImageResource:@"pin.png"];
+
+            NSImage *pined = [[NSImage alloc] initWithContentsOfFile:imgPath];
+            NSImageView *pinedView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 20, 20)];
+            [pinedView setImage:pined];
+
+            pinedView.tag = 9999999;
+            [cellView.stickyBackgroundView addSubview:pinedView];
+            pinedView.translatesAutoresizingMaskIntoConstraints = NO;
+            NSMutableArray<NSLayoutConstraint*> *contraints = [NSMutableArray array];
+            if (@available(macOS 10.11, *)) {
+                [contraints addObject:[pinedView.topAnchor constraintEqualToAnchor:cellView.stickyBackgroundView.topAnchor constant:0]];
+                
+                [contraints addObject:[pinedView.widthAnchor constraintEqualToConstant:10]];
+                
+                [contraints addObject:[pinedView.heightAnchor constraintEqualToConstant:10]];
+                
+                [contraints addObject:[pinedView.leadingAnchor constraintEqualToAnchor:cellView.stickyBackgroundView.leadingAnchor constant:0]];
+                [cellView.stickyBackgroundView addConstraints:contraints];
+            } else {
+                // Fallback on earlier versions
+            }
+            
         });
     } else {
         if (isIgnore) {

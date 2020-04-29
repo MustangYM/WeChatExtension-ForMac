@@ -26,7 +26,7 @@
         [[TKWeChatPluginConfig sharedConfig] setGroupMultiColorMode:YES];
     }
     
-    if ([TKWeChatPluginConfig sharedConfig].darkMode || [TKWeChatPluginConfig sharedConfig].pinkMode) {
+    if (TKWeChatPluginConfig.sharedConfig.usingTheme) {
         hookMethod(objc_getClass("MMTextField"), @selector(setTextColor:), [self class], @selector(hook_setTextColor:));
         hookMethod([NSTextField class], @selector(setAttributedStringValue:), [self class], @selector(hook_textFieldSetAttributedStringValue:));
         hookMethod(objc_getClass("MMTextView"), NSSelectorFromString(@"shouldDisableSetFrameOrigin"), [self class], @selector(hook_shouldDisableSetFrameOrigin));
@@ -68,7 +68,7 @@
 
 - (NSImageView *)hook_chatDetailAvatarImageView
 {
-    if ([TKWeChatPluginConfig sharedConfig].darkMode) {
+    if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
         @try {
             MMChatDetailMemberRowView *row = (MMChatDetailMemberRowView *)self;
             NSTextFieldCell *cell = [row.nameField valueForKey:@"cell"];
@@ -87,7 +87,7 @@
 {
     [self hook_pickerListDrawRect:arg1];
     
-    if ([TKWeChatPluginConfig sharedConfig].darkMode) {
+    if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
         @try {
             MMSessionPickerListRowView *row = (MMSessionPickerListRowView *)self;
             NSTextFieldCell *cell = [row.sessionNameField valueForKey:@"cell"];
@@ -103,7 +103,8 @@
 
 - (void)hook_textFieldSetTextColor:(NSAttributedString *)arg1
 {
-    if ([TKWeChatPluginConfig sharedConfig].darkMode) {
+    // history trigger by button in chat dialog
+    if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
         NSView *view = (NSView *)self;
         if ([view.superview isKindOfClass:objc_getClass("MMChatTextMessageCellView")] && arg1.string.length > 0) {
             arg1 = [[NSMutableAttributedString alloc] initWithString:arg1.string attributes:@{NSForegroundColorAttributeName : kMainTextColor, NSFontAttributeName : [NSFont systemFontOfSize:14]}];
@@ -118,7 +119,7 @@
     NSTextField *field = (NSTextField *)self;
     NSMutableAttributedString *a = [attributedString mutableCopy];
     
-    if ([TKWeChatPluginConfig sharedConfig].darkMode || [TKWeChatPluginConfig sharedConfig].pinkMode) {
+    if (TKWeChatPluginConfig.sharedConfig.usingTheme) {
         NSView *sv = field.superview;
         
         Class tcClass = NSClassFromString(@"MMFavoritesListTextCell");
@@ -148,7 +149,8 @@
 {
     NSTextView *view = (NSTextView *)self;
     
-    if (view.superview != nil && [view.superview isKindOfClass:NSClassFromString(@"MMChatLogEventView")]) {
+    // Search chat history window
+    if (view.superview != nil && ([view.superview isKindOfClass:NSClassFromString(@"MMChatLogEventView")] || [view.superview isKindOfClass:NSClassFromString(@"MMView")])) {
         NSRange area = NSMakeRange(0, [view.textStorage length]);
         [view.textStorage removeAttribute:NSForegroundColorAttributeName range:area];
         [view.textStorage addAttributes:@{
@@ -168,7 +170,7 @@
     
     if (originalText.length > 0) {
         NSColor *radomColor = nil;
-        if ([TKWeChatPluginConfig sharedConfig].darkMode && [TKWeChatPluginConfig sharedConfig].groupMultiColorMode) {
+        if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme && [TKWeChatPluginConfig sharedConfig].groupMultiColorMode) {
             radomColor = [[YMThemeMgr shareInstance] randomColor:originalText.string.md5String];
         } else {
             radomColor = kMainTextColor;
@@ -213,7 +215,7 @@
     NSAlert *alert = (NSAlert *)self;
     [[YMThemeMgr shareInstance] changeTheme:alert.window.contentView];
     
-    if ([TKWeChatPluginConfig sharedConfig].darkMode) {
+    if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
         for (NSView *sub in alert.window.contentView.subviews) {
             if ([sub isKindOfClass:NSTextField.class]) {
                 NSTextFieldCell *cell = [sub valueForKey:@"cell"];
@@ -231,7 +233,7 @@
 
 - (void)hook_setSeperator:(NSView *)arg1
 {
-    [[YMThemeMgr shareInstance] changeTheme:arg1 color:kRGBColor(147, 148, 248, 0.2)];
+    [[YMThemeMgr shareInstance] changeTheme:arg1 color:kMainSeperatorColor];
     [self hook_setSeperator:arg1];
 }
 
@@ -258,12 +260,13 @@
 
 - (void)hook_setPreferredDividerColor:(NSColor *)arg1
 {
-    [self hook_setPreferredDividerColor:kRGBColor(71, 69, 112, 0.5)];
+    [self hook_setPreferredDividerColor:kMainDividerColor];
 }
 
 - (void)hook_composeSetTextColor:(NSColor *)color
 {
-    [self hook_composeSetTextColor:[NSColor whiteColor]];
+    // 联系人介绍 What's up
+    [self hook_composeSetTextColor:kMainTextColor];
 }
 
 - (NSColor *)hook_referNormalColor
@@ -355,8 +358,9 @@
     NSMutableAttributedString *returnValue = [[NSMutableAttributedString alloc] initWithString:str.string attributes:@{NSForegroundColorAttributeName :kRGBColor(255, 255, 255, 1.0), NSFontAttributeName : attributesFont}];
     cell.nickName.attributedStringValue = returnValue;
     
-    if ([TKWeChatPluginConfig sharedConfig].darkMode) {
-        [[YMThemeMgr shareInstance] changeTheme:cell color:kRGBColor(33, 48, 64, 1.0)];
+    if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
+        // MARK: - 点击对框列表之后，无法显示该对话框处于选择状态，故注释掉
+//        [[YMThemeMgr shareInstance] changeTheme:cell.containerView color:kRGBColor(56, 70, 92, 1.0)];
         cell.muteIndicator.normalColor = [NSColor redColor];
     }
 }
@@ -364,20 +368,22 @@
 - (void)hook_mouseDown:(id)arg1
 {
     [self hook_mouseDown:arg1];
-    MMChatsTableCellView *cell = (MMChatsTableCellView *)self;
+    
+    if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
 
-    NSColor *highColor = nil;
-    if (cell.selected) {
-        highColor = kRGBColor(147, 148, 248, 0.5);
-    } else {
-        [TKWeChatPluginConfig sharedConfig].darkMode ? highColor = kRGBColor(33, 48, 64, 1.0) : [NSColor clearColor];
-    }
-    cell.layer.backgroundColor = highColor.CGColor;
-    [cell setNeedsDisplay:YES];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        cell.layer.backgroundColor = [TKWeChatPluginConfig sharedConfig].darkMode ? kRGBColor(33, 48, 64, 1.0).CGColor : [NSColor clearColor].CGColor;
+        MMChatsTableCellView *cell = (MMChatsTableCellView *)self;
+
+        NSColor *original = [NSColor colorWithCGColor:cell.layer.backgroundColor];
+        cell.layer.backgroundColor = (TKWeChatPluginConfig.sharedConfig.blackMode ? kRGBColor(128,128,128, 0.5) : kRGBColor(147, 148, 248, 0.5)).CGColor;
         [cell setNeedsDisplay:YES];
-    });
+        // MARK: - 点击对框列表之后，恢复之前状态
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            cell.layer.backgroundColor = original.CGColor;
+            [cell setNeedsDisplay:YES];
+        });
+    }
+    
+    
 }
 
 - (void)hook_setAttributedStringValue:(NSAttributedString *)arg1
@@ -458,14 +464,14 @@
     MMComposeInputViewController *controller = (MMComposeInputViewController *)self;
     [[YMThemeMgr shareInstance] changeTheme:controller.view];
     
-    if ([TKWeChatPluginConfig sharedConfig].darkMode) {
+    if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
         for (NSView *sub in controller.view.subviews) {
             if ([sub isKindOfClass:objc_getClass("SVGButton")]) {
                 NSButton *button = (NSButton *)sub;
                 NSImage *tempImage = button.image;
                 button.image = button.alternateImage;
                 button.alternateImage = tempImage;
-                button.alphaValue = 0.5;
+                button.alphaValue = TKWeChatPluginConfig.sharedConfig.darkMode ? 0.5 : 0.7;
             }
         }
     }
