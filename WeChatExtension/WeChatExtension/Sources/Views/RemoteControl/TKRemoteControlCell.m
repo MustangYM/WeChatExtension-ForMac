@@ -8,7 +8,7 @@
 
 #import "TKRemoteControlCell.h"
 #import "TKRemoteControlModel.h"
-#import "YMThemeMgr.h"
+#import "YMThemeManager.h"
 
 @interface TKRemoteControlCell () <NSTextFieldDelegate>
 
@@ -67,7 +67,7 @@
     self.selectBtn.state = model.enable;
     self.textField.stringValue = model.keyword;
     
-    [YMThemeMgr changeButtonTheme:self.selectBtn];
+    [YMThemeManager changeButtonTheme:self.selectBtn];
 }
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor

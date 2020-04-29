@@ -1,5 +1,5 @@
 //
-//  TKAssistantMenuManager.h
+//  YMAssistantMenuManager.h
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2018/4/24.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TKAssistantMenuManager : NSObject
+@interface YMAssistantMenuManager : NSObject
 
 + (instancetype)shareManager;
 - (void)initAssistantMenuItems;

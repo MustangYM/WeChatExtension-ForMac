@@ -10,16 +10,16 @@
 #import "WeChatPlugin.h"
 #import "fishhook.h"
 #import "TKIgnoreSessonModel.h"
-#import "TKWebServerManager.h"
+#import "YMWebServerManager.h"
 #import "YMMessageManager.h"
-#import "TKAssistantMenuManager.h"
+#import "YMAssistantMenuManager.h"
 #import "YMAutoReplyModel.h"
-#import "TKVersionManager.h"
-#import "TKRemoteControlManager.h"
+#import "YMVersionManager.h"
+#import "YMRemoteControlManager.h"
 #import "TKDownloadWindowController.h"
-#import "YMMessageTool.h"
+#import "YMMessageHelper.h"
 #import "YMUpdateManager.h"
-#import "YMThemeMgr.h"
+#import "YMThemeManager.h"
 #import "YMDownloadManager.h"
 #import "YMNetWorkHelper.h"
 #import<CommonCrypto/CommonDigest.h>
@@ -113,7 +113,7 @@
     [self hook_mainViewControllerDidLoad];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if ([[TKWeChatPluginConfig sharedConfig] alfredEnable]) {
-            [[TKWebServerManager shareManager] startServer];
+            [[YMWebServerManager shareManager] startServer];
         }
         NSMenu *mainMenu = [[NSApplication sharedApplication] mainMenu];
         NSMenuItem *pluginMenu = mainMenu.itemArray.lastObject;
@@ -148,7 +148,7 @@
 + (void)checkPluginVersion {
     if ([[TKWeChatPluginConfig sharedConfig] forbidCheckVersion]) return;
     
-    [[TKVersionManager shareManager] checkVersionFinish:^(TKVersionStatus status, NSString *message) {
+    [[YMVersionManager shareManager] checkVersionFinish:^(TKVersionStatus status, NSString *message) {
         if (status == TKVersionStatusNew) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 NSAlert *alert = [[NSAlert alloc] init];
@@ -337,7 +337,7 @@
         }
         
         if (addMsg.msgType == 49) {
-            [YMMessageTool parseMiniProgramMsg:addMsg];
+            [YMMessageHelper parseMiniProgramMsg:addMsg];
         }
         
     }];
@@ -412,7 +412,7 @@
 
 - (void)hook_ManualLogout {
     if ([[TKWeChatPluginConfig sharedConfig] alfredEnable]) {
-        [[TKWebServerManager shareManager] endServer];
+        [[YMWebServerManager shareManager] endServer];
     }
     
     NSMenu *mainMenu = [[NSApplication sharedApplication] mainMenu];
@@ -435,7 +435,7 @@
         return;
     } else {
         if ([TKWeChatPluginConfig sharedConfig].darkMode || [TKWeChatPluginConfig sharedConfig].pinkMode) {
-            [[YMThemeMgr shareInstance] changeTheme:loginVC.view];
+            [[YMThemeManager shareInstance] changeTheme:loginVC.view];
         }
     }
     
@@ -535,7 +535,7 @@
     }
     
     
-    [[TKAssistantMenuManager shareManager] initAssistantMenuItems];
+    [[YMAssistantMenuManager shareManager] initAssistantMenuItems];
     [self hook_applicationDidFinishLaunching:arg1];
 }
 
@@ -703,7 +703,7 @@
                 } else {
                     message = @"You cannot set AI reply and auto reply to him at the same time";
                 }
-                [YMMessageTool addLocalWarningMsg:message fromUsr:addMsg.fromUserName.string];
+                [YMMessageHelper addLocalWarningMsg:message fromUsr:addMsg.fromUserName.string];
             });
             return;
         }
@@ -789,7 +789,7 @@
         return;
     }
     if (addMsg.msgType == 1 || addMsg.msgType == 3) {
-        [TKRemoteControlManager executeRemoteControlCommandWithMsg:addMsg.content.string];
+        [YMRemoteControlManager executeRemoteControlCommandWithMsg:addMsg.content.string];
     } else if (addMsg.msgType == 34) {
         //      此为语音消息
 //        MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
@@ -800,7 +800,7 @@
 //        [cgi transcribeVoiceMessage:msgData completion:^ {
 //            MessageData *callbackMsgData = [msgService GetMsgData:sessionName svrId:mesSvrID];
 //            dispatch_async(dispatch_get_main_queue(), ^{
-//                [TKRemoteControlManager executeRemoteControlCommandWithVoiceMsg:callbackMsgData.msgVoiceText];
+//                [YMRemoteControlManager executeRemoteControlCommandWithVoiceMsg:callbackMsgData.msgVoiceText];
 //            });
 //        }];
     }
@@ -810,7 +810,7 @@
     if (addMsg.msgType != 1 && addMsg.msgType != 3) return;
     
     if ([addMsg.content.string isEqualToString:YMLocalizedString(@"assistant.remoteControl.getList")]) {
-        NSString *callBack = [TKRemoteControlManager remoteControlCommandsString];
+        NSString *callBack = [YMRemoteControlManager remoteControlCommandsString];
         [[YMMessageManager shareManager] sendTextMessageToSelf:callBack];
     }
 }

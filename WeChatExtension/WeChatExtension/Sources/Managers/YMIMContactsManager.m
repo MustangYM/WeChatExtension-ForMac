@@ -7,7 +7,7 @@
 //
 
 #import "YMIMContactsManager.h"
-#import "YMMessageTool.h"
+#import "YMMessageHelper.h"
 #import "TKWeChatPluginConfig.h"
 
 @implementation YMMonitorChildInfo
@@ -147,7 +147,7 @@
                             message = [NSString stringWithFormat:@"⚠️Group-Quitting Monitor⚠️\n@%@ has quit group chat\n(This message is only visible to me, Don't prompt this person to quit within 7 days)",nick];
                         }
                         
-                        [YMMessageTool addLocalWarningMsg:message fromUsr:groupData.m_nsUsrName];
+                        [YMMessageHelper addLocalWarningMsg:message fromUsr:groupData.m_nsUsrName];
                         [self addQuitMsgToPool:key group:groupData.m_nsUsrName];
                     }
                 }

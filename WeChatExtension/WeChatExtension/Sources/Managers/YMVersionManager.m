@@ -1,25 +1,25 @@
 //
-//  TKVersionManager.m
+//  YMVersionManager.m
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2018/2/24.
 //  Copyright © 2018年 WeChatExtension. All rights reserved.
 //
 
-#import "TKVersionManager.h"
+#import "YMVersionManager.h"
 #import "TKWeChatPluginConfig.h"
 #import "YMHTTPManager.h"
-#import "TKRemoteControlManager.h"
-#import "TKCacheManager.h"
+#import "YMRemoteControlManager.h"
+#import "YMCacheManager.h"
 
-@implementation TKVersionManager
+@implementation YMVersionManager
 
 + (instancetype)shareManager
 {
-    static TKVersionManager *manager = nil;
+    static YMVersionManager *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        manager = [[TKVersionManager alloc] init];
+        manager = [[YMVersionManager alloc] init];
     });
     return manager;
 }
@@ -57,7 +57,7 @@
 
 - (void)downloadPluginProgress:(void (^)(NSProgress *downloadProgress))downloadProgressBlock completionHandler:(void (^)(NSString *filePath, NSError * _Nullable error))completionHandler
 {
-    NSString *cachesPath = [[TKCacheManager shareManager] getUpdateSandboxFilePathWithName:@""];
+    NSString *cachesPath = [[YMCacheManager shareManager] getUpdateSandboxFilePathWithName:@""];
     NSString *pluginName = @"WeChatExtension";
     NSString *pluginPath = [NSString stringWithFormat:@"%@/%@",cachesPath,pluginName];
     NSString *pluginZipPath = [NSString stringWithFormat:@"%@.zip",pluginPath];

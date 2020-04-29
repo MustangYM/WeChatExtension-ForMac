@@ -1,5 +1,5 @@
 //
-//  TKHTTPManager.h
+//  YMHTTPManager.h
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2018/4/17.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TKHTTPManager : NSObject
+@interface YMHTTPManager : NSObject
 
 + (instancetype)shareManager;
 

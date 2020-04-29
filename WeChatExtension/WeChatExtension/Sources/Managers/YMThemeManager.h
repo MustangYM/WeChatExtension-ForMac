@@ -1,5 +1,5 @@
 //
-//  YMThemeMgr.h
+//  YMThemeManager.h
 //  WeChatExtension
 //
 //  Created by MustangYM on 2019/6/11.
@@ -10,8 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YMThemeMgr : NSObject
+@interface YMThemeManager : NSObject
+@property (nonatomic, assign, readonly) BOOL isTempDark;
+@property (nonatomic, assign, readonly) BOOL isTempPink;
 + (instancetype)shareInstance;
+- (void)initializeModelConfig;
 - (void)changeTheme:(NSView *)view;
 - (void)changeTheme:(NSView *)view color:(NSColor *)color;
 - (NSColor *)randomColor:(NSString *)string;

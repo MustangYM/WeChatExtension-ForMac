@@ -1,28 +1,28 @@
 //
-//  TKCacheManager.m
+//  YMCacheManager.m
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2018/8/3.
 //  Copyright © 2018年 WeChatExtension. All rights reserved.
 //
 
-#import "TKCacheManager.h"
+#import "YMCacheManager.h"
 static NSString * const kWeChatResourcesPath = @"/Applications/WeChat.app/Contents/MacOS/WeChatExtension.framework/Resources/";
-@interface TKCacheManager () <EmoticonDownloadMgrExt>
+@interface YMCacheManager () <EmoticonDownloadMgrExt>
 
 @property (nonatomic, copy) NSString *cacheDirectory;
 @property (nonatomic, strong) NSMutableSet *emotionSet;
 @property (nonatomic, strong) NSMutableSet *avatarSet;
 @end
 
-@implementation TKCacheManager
+@implementation YMCacheManager
 
 + (instancetype)shareManager
 {
-    static TKCacheManager *manager = nil;
+    static YMCacheManager *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        manager = [[TKCacheManager alloc] init];
+        manager = [[YMCacheManager alloc] init];
     });
     return manager;
 }

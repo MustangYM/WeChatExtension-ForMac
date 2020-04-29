@@ -8,7 +8,7 @@
 
 #import "TKAutoReplyContentView.h"
 #import "WeChatPlugin.h"
-#import "YMThemeMgr.h"
+#import "YMThemeManager.h"
 
 @interface TKAutoReplyContentView () <NSTextFieldDelegate>
 
@@ -44,7 +44,7 @@
     self.enableSpecificReplyBtn = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoReply.enableSpecific") target:self action:@selector(clickEnableSpecificReplyBtn:)];
         btn.frame = NSMakeRect(20, 0, 400, 20);
-        [YMThemeMgr changeButtonTheme:btn];
+        [YMThemeManager changeButtonTheme:btn];
         btn;
     });
 
@@ -60,28 +60,28 @@
     self.enableRegexBtn = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoReply.enableRegEx") target:self action:@selector(clickEnableRegexBtn:)];
         btn.frame = NSMakeRect(20, 25, 400, 20);
-        [YMThemeMgr changeButtonTheme:btn];
+        [YMThemeManager changeButtonTheme:btn];
         btn;
     });
     
     self.enableGroupReplyBtn = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoReply.enableGroup") target:self action:@selector(clickEnableGroupBtn:)];
         btn.frame = NSMakeRect(20, 50, 400, 20);
-        [YMThemeMgr changeButtonTheme:btn];
+        [YMThemeManager changeButtonTheme:btn];
         btn;
     });
     
     self.enableSingleReplyBtn = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoReply.enableSingle") target:self action:@selector(clickEnableSingleBtn:)];
         btn.frame = NSMakeRect(200, 50, 400, 20);
-        [YMThemeMgr changeButtonTheme:btn];
+        [YMThemeManager changeButtonTheme:btn];
         btn;
     });
     
     self.enableDelayBtn = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoReply.delay") target:self action:@selector(clickEnableDelayBtn:)];
         btn.frame = NSMakeRect(200, 25, 85, 20);
-        [YMThemeMgr changeButtonTheme:btn];
+        [YMThemeManager changeButtonTheme:btn];
         btn;
     });
     

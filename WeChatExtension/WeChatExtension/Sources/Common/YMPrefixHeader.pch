@@ -21,10 +21,10 @@
 #import "NSDate+Action.h"
 #import "NSWindowController+Action.h"
 #import "WeChatPlugin.h"
-#import "YMUtility.h"
+#import "YMDeviceHelper.h"
 
 #import "TKWeChatPluginConfig.h"
-#import "YMHelper.h"
+#import "YMSwizzledHelper.h"
 #endif
 
 #define kRGBColor(r,g,b,a) [NSColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]

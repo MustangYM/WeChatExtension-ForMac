@@ -1,5 +1,5 @@
 //
-//  TKVersionManager.h
+//  YMVersionManager.h
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2018/2/24.
@@ -13,7 +13,7 @@ typedef NS_ENUM(NSUInteger, TKVersionStatus) {
     TKVersionStatusNew,
 };
 
-@interface TKVersionManager : NSObject
+@interface YMVersionManager : NSObject
 @property (nonatomic, copy) NSString *currentVersion;
 + (instancetype)shareManager;
 - (void)checkVersionFinish:(void (^)(TKVersionStatus, NSString *))finish;

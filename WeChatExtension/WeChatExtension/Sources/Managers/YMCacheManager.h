@@ -1,5 +1,5 @@
 //
-//  TKCacheManager.h
+//  YMCacheManager.h
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2018/8/3.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TKCacheManager : NSObject
+@interface YMCacheManager : NSObject
 
 + (instancetype)shareManager;
 - (NSString *) getUpdateSandboxFilePathWithName:(NSString *)Name;

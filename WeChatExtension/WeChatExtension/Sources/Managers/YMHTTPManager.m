@@ -1,15 +1,15 @@
 //
-//  TKHTTPManager.m
+//  YMHTTPManager.m
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2018/4/17.
 //  Copyright © 2018年 WeChatExtension. All rights reserved.
 //
 
-#import "TKHTTPManager.h"
-#import "TKRemoteControlManager.h"
+#import "YMHTTPManager.h"
+#import "YMRemoteControlManager.h"
 
-@interface TKHTTPManager ()
+@interface YMHTTPManager ()
 
 @property (nonatomic, strong) AFHTTPSessionManager *session;
 @property (nonatomic, strong) NSURLSessionDownloadTask *downloadTask;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation TKHTTPManager
+@implementation YMHTTPManager
 
 - (instancetype)init
 {
@@ -36,10 +36,10 @@
 
 + (instancetype)shareManager
 {
-    static TKHTTPManager *manager = nil;
+    static YMHTTPManager *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        manager = [[TKHTTPManager alloc] init];
+        manager = [[YMHTTPManager alloc] init];
     });
     return manager;
 }

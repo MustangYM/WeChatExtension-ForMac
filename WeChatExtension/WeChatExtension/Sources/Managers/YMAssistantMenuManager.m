@@ -1,12 +1,12 @@
 //
-//  TKAssistantMenuManager.m
+//  YMAssistantMenuManager.m
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2018/4/24.
 //  Copyright © 2018年 WeChatExtension. All rights reserved.
 //
 
-#import "TKAssistantMenuManager.h"
+#import "YMAssistantMenuManager.h"
 #import "YMRemoteControlManager.h"
 #import "TKAutoReplyWindowController.h"
 #import "TKRemoteControlWindowController.h"
@@ -14,7 +14,7 @@
 #import "NSMenuItem+Action.h"
 #import "TKDownloadWindowController.h"
 #import "TKAboutWindowController.h"
-#import "TKWebServerManager.h"
+#import "YMWebServerManager.h"
 #import "YMMessageManager.h"
 #import "YMAIReplyWindowController.h"
 
@@ -23,7 +23,7 @@ static char kAIAutoReplyWindowControllerKey;         //  AI回复窗口的关联
 static char kRemoteControlWindowControllerKey;     //  远程控制窗口的关联 key
 static char kAboutWindowControllerKey;             //  关于窗口的关联 key
 
-@implementation TKAssistantMenuManager
+@implementation YMAssistantMenuManager
 
 + (instancetype)shareManager
 {
@@ -540,9 +540,9 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
 {
     item.state = !item.state;
     if (item.state) {
-        [[TKWebServerManager shareManager] startServer];
+        [[YMWebServerManager shareManager] startServer];
     } else {
-        [[TKWebServerManager shareManager] endServer];
+        [[YMWebServerManager shareManager] endServer];
     }
     [[TKWeChatPluginConfig sharedConfig] setAlfredEnable:item.state];
 }

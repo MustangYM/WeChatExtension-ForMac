@@ -9,7 +9,7 @@
 #import "YMMessageManager.h"
 #import "WeChatPlugin.h"
 #import <MediaPlayer/MediaPlayer.h>
-#import "TKCacheManager.h"
+#import "YMCacheManager.h"
 #import "YMDownloadManager.h"
 #import "YMIMContactsManager.h"
 

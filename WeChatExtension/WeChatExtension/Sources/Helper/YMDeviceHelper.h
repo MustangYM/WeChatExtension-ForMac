@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface YMDeviceHelper : NSObject
 + (BOOL)isLargerOrEqualVersion:(NSString *)version;
 + (BOOL)isLargeOrEqualLongVersion:(NSString *)version;
++ (NSString *)deviceFingerprint;
 @end
 
 NS_ASSUME_NONNULL_END

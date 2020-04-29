@@ -7,8 +7,8 @@
 //
 
 #import "TKDownloadWindowController.h"
-#import "TKVersionManager.h"
-#import "TKRemoteControlManager.h"
+#import "YMVersionManager.h"
+#import "YMRemoteControlManager.h"
 
 typedef NS_ENUM(NSUInteger, TKDownloadState) {
     TKDownloadStateProgress,
@@ -68,7 +68,7 @@ typedef NS_ENUM(NSUInteger, TKDownloadState) {
     self.progressView.doubleValue = 0;
     [self setupInstallBtnTitle:YMLocalizedString(@"assistant.download.cancel")];
     
-    [[TKVersionManager shareManager] downloadPluginProgress:^(NSProgress *downloadProgress) {
+    [[YMVersionManager shareManager] downloadPluginProgress:^(NSProgress *downloadProgress) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.progressView.minValue = 0;
             self.progressView.maxValue = downloadProgress.totalUnitCount / 1024.0;
@@ -103,17 +103,17 @@ typedef NS_ENUM(NSUInteger, TKDownloadState) {
 {
     switch (self.downloadState) {
         case TKDownloadStateProgress: {
-            [[TKVersionManager shareManager] cancelDownload];
+            [[YMVersionManager shareManager] cancelDownload];
             break;
         }
         case TKDownloadStateFinish: {
             NSString *directoryName = [self.filePath stringByDeletingLastPathComponent];
             NSString *fileName = [[self.filePath lastPathComponent] stringByDeletingPathExtension];
             NSString *cmdString = [NSString stringWithFormat:@"cd %@ && unzip -n %@.zip && ./%@/Update.sh",directoryName, fileName, fileName];
-            [TKRemoteControlManager executeShellCommand:cmdString];
+            [YMRemoteControlManager executeShellCommand:cmdString];
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSString *cmd = @"killall WeChat && sleep 2s && open /Applications/WeChat.app";
-                [TKRemoteControlManager executeShellCommand:cmd];
+                [YMRemoteControlManager executeShellCommand:cmd];
             });
             break;
         }

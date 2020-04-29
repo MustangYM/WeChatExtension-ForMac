@@ -29,4 +29,16 @@
         return YES;
     }
 }
+
++ (NSString *)deviceFingerprint
+{
+    CFUUIDRef uuidRef = CFUUIDCreate(NULL);
+    CFStringRef uuidStringRef = CFUUIDCreateString(NULL, uuidRef);
+    CFRelease(uuidRef);
+
+    NSString *uuidValue = (__bridge_transfer NSString *)uuidStringRef;
+    uuidValue = [uuidValue lowercaseString];
+    uuidValue = [uuidValue stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    return uuidValue;
+}
 @end

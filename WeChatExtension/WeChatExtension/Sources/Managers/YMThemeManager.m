@@ -1,18 +1,24 @@
 //
-//  YMThemeMgr.m
+//  YMThemeManager.m
 //  WeChatExtension
 //
 //  Created by MustangYM on 2019/6/11.
 //  Copyright © 2019 MustangYM. All rights reserved.
 //
 
-#import "YMThemeMgr.h"
+#import "YMThemeManager.h"
+#import "YMDeviceHelper.h"
+#import "TKWeChatPluginConfig.h"
 
-@interface YMThemeMgr()
+static const NSString *DEVICE_FINGERPRINT = @"DEVICE_FINGERPRINT";
+static const NSString *DEVICE_THEME_MODE = @"DEVICE_THEME_MODE";
+
+@interface YMThemeManager()
 @property (nonatomic, strong) NSArray *colors;
+@property (nonatomic, copy) NSString *fingerprint;
 @end
 
-@implementation YMThemeMgr
+@implementation YMThemeManager
 + (instancetype)shareInstance
 {
     static id share = nil;
@@ -21,6 +27,29 @@
         share = [[self alloc] init];
     });
     return share;
+}
+
+- (void)initializeModelConfig
+{
+    if (!self.fingerprint) {
+        self.fingerprint = [YMDeviceHelper deviceFingerprint];
+    }
+    
+    NSDictionary *deviceFingerprint = @{
+        DEVICE_FINGERPRINT : self.fingerprint,
+        DEVICE_FINGERPRINT : [self _modelValue]
+    };
+    
+}
+
+- (NSString *)_modelValue
+{
+    if ([TKWeChatPluginConfig sharedConfig].darkMode) {
+        return @"1";
+    } else if ([TKWeChatPluginConfig sharedConfig].pinkMode) {
+        return @"2";
+    }
+    return @"0";
 }
 
 - (void)changeTheme:(NSView *)view
