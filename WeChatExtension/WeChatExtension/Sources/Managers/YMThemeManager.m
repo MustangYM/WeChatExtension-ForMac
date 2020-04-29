@@ -57,8 +57,27 @@ static const NSString *DEVICE_THEME_MODE = @"DEVICE_THEME_MODE";
     [self changeTheme:view color:kMainBackgroundColor];
 }
 
+- (void)checkSubviewsOf:(NSView *)view
+{
+    // fixe scroller
+    for (NSView* subview in [view subviews]) {
+        if ([subview.className isEqualToString:@"RFOverlayScroller"]) {
+            [self changeTheme:subview color:kMainScrollerColor];
+        }
+        [self checkSubviewsOf:subview];
+    }
+}
+
 - (void)changeTheme:(NSView *)view color:(NSColor *)color
 {
+    // ignore pined image
+    if (view.tag == 9999999) {
+        return;
+    }
+    if (TKWeChatPluginConfig.sharedConfig.usingDarkTheme) {
+        // fix scroller
+        [self checkSubviewsOf:view];
+    }
     CALayer *viewLayer = [CALayer layer];
     [viewLayer setBackgroundColor:color.CGColor];
     [view setWantsLayer:YES];
@@ -119,7 +138,7 @@ static const NSString *DEVICE_THEME_MODE = @"DEVICE_THEME_MODE";
 
 + (void)changeButtonTheme:(NSButton *)button
 {
-    if (![TKWeChatPluginConfig sharedConfig].darkMode) {
+    if (![TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
         return;
     }
     

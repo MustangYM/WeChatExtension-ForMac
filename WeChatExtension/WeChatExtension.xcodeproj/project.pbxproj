@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08294044245812FB0056E0C6 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 08294043245812FA0056E0C6 /* pin.png */; };
 		1828B9AA23BA319E008EC8E9 /* TKAboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1828B9A923BA319E008EC8E9 /* TKAboutWindowController.xib */; };
 		1853B3C422C6133C00A5C4FA /* YMIMContactsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1853B3C222C6133C00A5C4FA /* YMIMContactsManager.h */; };
 		1853B3C522C6133C00A5C4FA /* YMIMContactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853B3C322C6133C00A5C4FA /* YMIMContactsManager.m */; };
@@ -169,6 +170,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08294043245812FA0056E0C6 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 		1802C087239826CB0061823C /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/TKRemoteControlWindowController.strings"; sourceTree = "<group>"; };
 		1802C088239826CB0061823C /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "en-GB"; path = "en-GB.lproj/Info.plist"; sourceTree = "<group>"; };
 		1802C089239826CB0061823C /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				18ECDCF42405194800090014 /* aliPayCode.png */,
+				08294043245812FA0056E0C6 /* pin.png */,
 				18B606DD23979FC6000A41DC /* order_avatar.png */,
 				96B578B62360A92500F3F66C /* Info.plist */,
 				18A7A12D2272ACE300361A98 /* main.mm */,
@@ -637,6 +640,9 @@
 				18D4C34A24236180006A20E2 /* NSObject+ThemeHook.m */,
 				18B37AB7245536ED00037B58 /* NSObject+Safe.h */,
 				18B37AB8245536ED00037B58 /* NSObject+Safe.m */,
+				188A65EB2272ACBA0096663E /* YMMessageTool.h */,
+				188A65EA2272ACBA0096663E /* YMMessageTool.m */,
+
 			);
 			path = Hook;
 			sourceTree = "<group>";
@@ -909,6 +915,7 @@
 				1828B9AA23BA319E008EC8E9 /* TKAboutWindowController.xib in Resources */,
 				18ECDCF52405194800090014 /* aliPayCode.png in Resources */,
 				188A65FB2272ACBA0096663E /* TKAutoReplyWindowController.xib in Resources */,
+				08294044245812FB0056E0C6 /* pin.png in Resources */,
 				3632293F22A6ADB300F62EAB /* LockPlist.plist in Resources */,
 				18B606DE23979FC6000A41DC /* order_avatar.png in Resources */,
 			);
