@@ -128,32 +128,32 @@
         return;
     }
     
-    NSArray *memListArray = [groupData.m_nsChatRoomMemList componentsSeparatedByString:@";"];
-    NSDictionary *allDictionary = [(NSMutableDictionary *)groupData.m_chatRoomData valueForKey:@"m_dicData"];
-    NSLog(@"ymdebug-list-%lu, all-%lu \n -%@,\n -%@ ",(unsigned long)memListArray.count, (unsigned long)allDictionary.allKeys.count, memListArray, allDictionary);
-    
-    if (memListArray.count < allDictionary.allKeys.count) {
-        __weak __typeof (self) wself = self;
-        [allDictionary enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSDictionary * _Nonnull obj, BOOL * _Nonnull stop) {
-            if (![memListArray containsObject:key]) {
-                NSString *nick = [YMIMContactsManager getGroupMemberNickName:key];
-                
-                if (nick) {
-                    if ([wself queryQuitMsgFromPool:key group:groupData.m_nsUsrName]) {
-                        NSString *message = nil;
-                        if ([TKWeChatPluginConfig sharedConfig].languageType == PluginLanguageTypeZH) {
-                            message = [NSString stringWithFormat:@"⚠️退群监控⚠️\n@%@ 已退群\n(此消息仅本人可见,7天内不再提示此人退群信息)",nick];
-                        } else {
-                            message = [NSString stringWithFormat:@"⚠️Group-Quitting Monitor⚠️\n@%@ has quit group chat\n(This message is only visible to me, Don't prompt this person to quit within 7 days)",nick];
-                        }
-                        
-                        [YMMessageHelper addLocalWarningMsg:message fromUsr:groupData.m_nsUsrName];
-                        [self addQuitMsgToPool:key group:groupData.m_nsUsrName];
-                    }
-                }
-            }
-        }];
-    }
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSArray *memListArray = [groupData.m_nsChatRoomMemList componentsSeparatedByString:@";"];
+          NSDictionary *allDictionary = [(NSMutableDictionary *)groupData.m_chatRoomData valueForKey:@"m_dicData"];
+          if (memListArray.count < allDictionary.allKeys.count) {
+              __weak __typeof (self) wself = self;
+              [allDictionary enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSDictionary * _Nonnull obj, BOOL * _Nonnull stop) {
+                  if (![memListArray containsObject:key]) {
+                      NSString *nick = [YMIMContactsManager getGroupMemberNickName:key];
+                      
+                      if (nick) {
+                          if ([wself queryQuitMsgFromPool:key group:groupData.m_nsUsrName]) {
+                              NSString *message = nil;
+                              if ([TKWeChatPluginConfig sharedConfig].languageType == PluginLanguageTypeZH) {
+                                  message = [NSString stringWithFormat:@"⚠️退群监控⚠️\n@%@ 已退群\n(此消息仅本人可见,7天内不再提示此人退群信息)",nick];
+                              } else {
+                                  message = [NSString stringWithFormat:@"⚠️Group-Quitting Monitor⚠️\n@%@ has quit group chat\n(This message is only visible to me, Don't prompt this person to quit within 7 days)",nick];
+                              }
+                              
+                              [YMMessageHelper addLocalWarningMsg:message fromUsr:groupData.m_nsUsrName];
+                              [self addQuitMsgToPool:key group:groupData.m_nsUsrName];
+                          }
+                      }
+                  }
+              }];
+          }
+    });
 }
 
 
