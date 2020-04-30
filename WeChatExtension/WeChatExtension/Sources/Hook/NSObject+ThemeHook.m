@@ -464,7 +464,7 @@
                 NSImage *tempImage = button.image;
                 button.image = button.alternateImage;
                 button.alternateImage = tempImage;
-                button.alphaValue = TKWeChatPluginConfig.sharedConfig.darkMode ? 0.5 : 0.7;
+                button.alphaValue = 1.0;
             }
         }
     }
@@ -477,6 +477,10 @@
     //不适配小程序
     NSArray *runApps = [NSRunningApplication runningApplicationsWithBundleIdentifier:@"com.tencent.xinWeChat"];
     if (runApps.count > 1) {
+        return;
+    }
+    
+    if ([self isKindOfClass:[objc_getClass("MMAppReferContainerView") class]]) {
         return;
     }
     
