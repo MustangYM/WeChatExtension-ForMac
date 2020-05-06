@@ -10,22 +10,21 @@
 #import "WeChatPlugin.h"
 #import "fishhook.h"
 #import "TKIgnoreSessonModel.h"
-#import "TKWebServerManager.h"
+#import "YMWebServerManager.h"
 #import "YMMessageManager.h"
-#import "TKAssistantMenuManager.h"
+#import "YMAssistantMenuManager.h"
 #import "YMAutoReplyModel.h"
-#import "TKVersionManager.h"
-#import "TKRemoteControlManager.h"
+#import "YMVersionManager.h"
+#import "YMRemoteControlManager.h"
 #import "TKDownloadWindowController.h"
-#import "YMMessageTool.h"
-#import "YMMessageModel.h"
+#import "YMMessageHelper.h"
 #import "YMUpdateManager.h"
-#import "YMThemeMgr.h"
-#import "ANYMethodLog.h"
+#import "YMThemeManager.h"
 #import "YMDownloadManager.h"
 #import "YMNetWorkHelper.h"
 #import<CommonCrypto/CommonDigest.h>
 #import "YMIMContactsManager.h"
+
 
 @implementation NSObject (WeChatHook)
 
@@ -93,6 +92,11 @@
 
     hookMethod(objc_getClass("GroupStorage"), @selector(UpdateGroupMemberDetailIfNeeded:withCompletion:), [self class], @selector(hook_UpdateGroupMemberDetailIfNeeded:withCompletion:));
     
+    //左下角小手机
+    hookMethod(objc_getClass("MMMainViewController"), @selector(viewDidLoad), [self class], @selector(hook_MainViewDidLoad));
+
+     hookMethod(objc_getClass("MMMainViewController"), @selector(onUpdateHandoffExpt:), [self class], @selector(hook_onUpdateHandoffExpt:));
+    
     //      替换沙盒路径
     rebind_symbols((struct rebinding[2]) {
         { "NSSearchPathForDirectoriesInDomains", swizzled_NSSearchPathForDirectoriesInDomains, (void *)&original_NSSearchPathForDirectoriesInDomains },
@@ -101,105 +105,15 @@
     
     [self setup];
     
-    
-    //暂不执行以下代码, 关于黑夜模式的修改, 但还存在一定的问题, 想尝鲜的小伙伴可以把以下代码注释打开, 编译后自己放到微信里面玩.
-//    hookMethod(objc_getClass("NSView"), @selector(addSubview:), [self class], @selector(hook_initWithFrame:));
-//
-//     hookMethod(objc_getClass("MMComposeInputViewController"), @selector(viewDidLoad), [self class], @selector(hook_ComposeInputViewControllerViewDidLoad));
-//
-//     hookMethod(objc_getClass("MMChatMessageViewController"), @selector(viewDidLoad), [self class], @selector(hook_ChatMessageViewControllerViewDidLoad));
-//
-//    hookMethod(objc_getClass("NSScrollView"), @selector(initWithFrame:), [self class], @selector(hook_scrollViewInitWithFrame:));
-//
-//    hookMethod(objc_getClass("MMChatsTableCellView"), @selector(initWithFrame:), [self class], @selector(cellhook_initWithFrame:));
-//    hookMethod(objc_getClass("MMTextField"), @selector(setTextColor:), [self class], @selector(hook_setTextColor:));
-    
 }
 
-- (void)hook_setTextColor:(NSColor *)arg1
-{
-    arg1 = kRGBColor(49, 110, 105, 1);
-    [self hook_setTextColor:arg1];
-}
-
-- (id)cellhook_initWithFrame:(struct CGRect)arg1
-{
-    return [self cellhook_initWithFrame:arg1];
-}
-
-- (instancetype)hook_scrollViewInitWithFrame:(NSRect)frameRect {
-    NSScrollView *view = (NSScrollView *)self;
-    [[YMThemeMgr shareInstance] changeTheme:view.contentView];
-    return [self hook_scrollViewInitWithFrame:frameRect];
-}
-
-- (void)hook_ChatMessageViewControllerViewDidLoad {
-    [self hook_ChatMessageViewControllerViewDidLoad];
-}
-- (void)hook_ComposeInputViewControllerViewDidLoad {
-    [self hook_ComposeInputViewControllerViewDidLoad];
-    MMComposeInputViewController *controller = (MMComposeInputViewController *)self;
-    [[YMThemeMgr shareInstance] changeTheme:controller.view];
-}
-
-- (void)hook_initWithFrame:(NSView *)view {
-    [self hook_initWithFrame:view];
-    
-    if ([view isKindOfClass:[objc_getClass("NSButtonImageView") class]]) {
-        return;
-    }
-    
-    NSResponder *responder = view;
-    NSViewController *controller = nil;
-    while ((responder = [responder nextResponder])){
-        if ([responder isKindOfClass: [NSViewController class]]){
-           controller = (NSViewController *)responder;
-        }
-    }
-    
-    
-    if ([view isKindOfClass:[objc_getClass("MMComposeTextView") class]]) {
-        MMComposeTextView *textView = (MMComposeTextView *)view;
-        textView.insertionPointColor = [NSColor whiteColor];
-        textView.backgroundColor = kRGBColor(113, 113, 117, 1.0);
-    }
-    
-    if ([view isKindOfClass:[objc_getClass("SwipeDeleteView") class]]) {
-        [[YMThemeMgr shareInstance] changeTheme:view];
-    }
-    
-    
-    if ([view isKindOfClass:[objc_getClass("MMFavoritesListMediaCell") class]]) {
-        [[YMThemeMgr shareInstance] changeTheme:view];
-    }
-    
-    if ([controller isKindOfClass:[objc_getClass("MMChatMessageViewController") class]]) {
-        MMChatMessageViewController *msgViewController = (MMChatMessageViewController *)controller;
-        [msgViewController.messageTableView setBackgroundColor:kRGBColor(61, 62, 60, 1)];
-        [[msgViewController.messageTableView enclosingScrollView] setDrawsBackground:NO];
-        [[YMThemeMgr shareInstance] changeTheme:view];
-    }
-    
-    if ( [controller isKindOfClass:[objc_getClass("MMComposeInputViewController") class]]
-        ||
-        [controller isKindOfClass:[objc_getClass("MMMainViewController") class]]
-        ||
-        [controller isKindOfClass:[objc_getClass("MMContactsDetailViewController") class]]
-        ||
-        [controller isKindOfClass:[objc_getClass("MMFavoriteDetailViewContoller") class]]
-        ) {
-        
-      [[YMThemeMgr shareInstance] changeTheme:view];
-    }
-    
-}
 
 //主控制器的生命周期
 - (void)hook_mainViewControllerDidLoad {
     [self hook_mainViewControllerDidLoad];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if ([[TKWeChatPluginConfig sharedConfig] alfredEnable]) {
-            [[TKWebServerManager shareManager] startServer];
+            [[YMWebServerManager shareManager] startServer];
         }
         NSMenu *mainMenu = [[NSApplication sharedApplication] mainMenu];
         NSMenuItem *pluginMenu = mainMenu.itemArray.lastObject;
@@ -234,7 +148,7 @@
 + (void)checkPluginVersion {
     if ([[TKWeChatPluginConfig sharedConfig] forbidCheckVersion]) return;
     
-    [[TKVersionManager shareManager] checkVersionFinish:^(TKVersionStatus status, NSString *message) {
+    [[YMVersionManager shareManager] checkVersionFinish:^(TKVersionStatus status, NSString *message) {
         if (status == TKVersionStatusNew) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 NSAlert *alert = [[NSAlert alloc] init];
@@ -423,7 +337,7 @@
         }
         
         if (addMsg.msgType == 49) {
-            [YMMessageTool parseMiniProgramMsg:addMsg];
+            [YMMessageHelper parseMiniProgramMsg:addMsg];
         }
         
     }];
@@ -498,7 +412,7 @@
 
 - (void)hook_ManualLogout {
     if ([[TKWeChatPluginConfig sharedConfig] alfredEnable]) {
-        [[TKWebServerManager shareManager] endServer];
+        [[YMWebServerManager shareManager] endServer];
     }
     
     NSMenu *mainMenu = [[NSApplication sharedApplication] mainMenu];
@@ -514,7 +428,21 @@
     [self hook_viewWillAppear];
     
     BOOL autoAuthEnable = [[TKWeChatPluginConfig sharedConfig] autoAuthEnable];
-    if (![self.className isEqualToString:@"MMLoginOneClickViewController"] || !autoAuthEnable) return;
+    WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
+     MMLoginOneClickViewController *loginVC = wechat.mainWindowController.loginViewController.oneClickViewController;
+    
+    if (![self.className isEqualToString:@"MMLoginOneClickViewController"]) {
+        return;
+    } else {
+        if (TKWeChatPluginConfig.sharedConfig.usingTheme) {
+            [[YMThemeManager shareInstance] changeTheme:loginVC.view];
+        }
+    }
+    
+    if (!autoAuthEnable) {
+        return;
+    }
+    
 
     NSButton *autoLoginButton = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:@"" target:self action:@selector(selectAutoLogin:)];
@@ -527,8 +455,6 @@
         btn;
     });
     
-    WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
-    MMLoginOneClickViewController *loginVC = wechat.mainWindowController.loginViewController.oneClickViewController;
     [loginVC.view addSubview:autoLoginButton];
     
     BOOL autoLogin = [[TKWeChatPluginConfig sharedConfig] autoLoginEnable];
@@ -609,7 +535,7 @@
     }
     
     
-    [[TKAssistantMenuManager shareManager] initAssistantMenuItems];
+    [[YMAssistantMenuManager shareManager] initAssistantMenuItems];
     [self hook_applicationDidFinishLaunching:arg1];
 }
 
@@ -650,8 +576,9 @@
     WebViewDataItem *item = (WebViewDataItem *)arg1;
     if ([[TKWeChatPluginConfig sharedConfig] systemBrowserEnable]) {
         MMURLHandler *urlHander = [objc_getClass("MMURLHandler") defaultHandler];
-
-        if (LargerOrEqualVersion(@"2.3.26")) {
+        if (LargerOrEqualLongVersion(@"2.4.0.149")) {
+            [urlHander openURLWithDefault:item.urlString];
+        } else if (LargerOrEqualVersion(@"2.3.26")) {
             [urlHander openURLWithDefault:item.urlString useA8Key:NO];
         } else {
             [urlHander openURLWithDefault:item.urlString];
@@ -776,7 +703,7 @@
                 } else {
                     message = @"You cannot set AI reply and auto reply to him at the same time";
                 }
-                [YMMessageTool addLocalWarningMsg:message fromUsr:addMsg.fromUserName.string];
+                [YMMessageHelper addLocalWarningMsg:message fromUsr:addMsg.fromUserName.string];
             });
             return;
         }
@@ -862,7 +789,7 @@
         return;
     }
     if (addMsg.msgType == 1 || addMsg.msgType == 3) {
-        [TKRemoteControlManager executeRemoteControlCommandWithMsg:addMsg.content.string];
+        [YMRemoteControlManager executeRemoteControlCommandWithMsg:addMsg.content.string];
     } else if (addMsg.msgType == 34) {
         //      此为语音消息
 //        MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
@@ -873,7 +800,7 @@
 //        [cgi transcribeVoiceMessage:msgData completion:^ {
 //            MessageData *callbackMsgData = [msgService GetMsgData:sessionName svrId:mesSvrID];
 //            dispatch_async(dispatch_get_main_queue(), ^{
-//                [TKRemoteControlManager executeRemoteControlCommandWithVoiceMsg:callbackMsgData.msgVoiceText];
+//                [YMRemoteControlManager executeRemoteControlCommandWithVoiceMsg:callbackMsgData.msgVoiceText];
 //            });
 //        }];
     }
@@ -883,7 +810,7 @@
     if (addMsg.msgType != 1 && addMsg.msgType != 3) return;
     
     if ([addMsg.content.string isEqualToString:YMLocalizedString(@"assistant.remoteControl.getList")]) {
-        NSString *callBack = [TKRemoteControlManager remoteControlCommandsString];
+        NSString *callBack = [YMRemoteControlManager remoteControlCommandsString];
         [[YMMessageManager shareManager] sendTextMessageToSelf:callBack];
     }
 }
@@ -926,5 +853,19 @@ NSString *swizzled_NSHomeDirectory(void) {
         [[YMIMContactsManager shareInstance] monitorQuitGroup:arg1];
     }
     [self hook_UpdateGroupMemberDetailIfNeeded:arg1 withCompletion:arg2];
+}
+
+- (void)hook_onUpdateHandoffExpt:(BOOL)arg1
+{
+    [self hook_onUpdateHandoffExpt:YES];
+}
+
+- (void)hook_MainViewDidLoad
+{
+    [self hook_MainViewDidLoad];
+    if (LargerOrEqualVersion(@"2.4.0")) {
+        MMMainViewController *mainVC = (MMMainViewController *)self;
+        [mainVC onUpdateHandoffExpt:YES];
+    }
 }
 @end

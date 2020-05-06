@@ -10,12 +10,14 @@
 
 @implementation YMBaseModel
 
-- (instancetype)initWithDict:(NSDictionary *)dict {
+- (instancetype)initWithDict:(NSDictionary *)dict
+{
     NSAssert(NO, @"the mothed initWithDict: must be override by subclass");
     return nil;
 }
 
-- (NSDictionary *)dictionary {
+- (NSDictionary *)dictionary
+{
     NSAssert(NO, @"the mothed dictionary must be override by subclass");
     return nil;
 }

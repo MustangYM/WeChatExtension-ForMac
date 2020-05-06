@@ -8,6 +8,7 @@
 
 #import "TKAutoReplyContentView.h"
 #import "WeChatPlugin.h"
+#import "YMThemeManager.h"
 
 @interface TKAutoReplyContentView () <NSTextFieldDelegate>
 
@@ -27,7 +28,8 @@
 
 @implementation TKAutoReplyContentView
 
-- (instancetype)init {
+- (instancetype)init
+{
     self = [super init];
     if (self) {
         [self initSubviews];
@@ -35,14 +37,18 @@
     return self;
 }
 
-- (void)initSubviews {
+- (void)initSubviews
+{
+    
+    
     self.enableSpecificReplyBtn = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoReply.enableSpecific") target:self action:@selector(clickEnableSpecificReplyBtn:)];
         btn.frame = NSMakeRect(20, 0, 400, 20);
-        
+        [YMThemeManager changeButtonTheme:btn];
         btn;
     });
 
+    
     self.selectSessionButton = ({
         NSButton *btn = [NSButton tk_buttonWithTitle:YMLocalizedString(@"assistant.autoReply.selectSpecific") target:self action:@selector(clickSelectSessionButton:)];
         btn.frame = NSMakeRect(200, 0, 150, 20);
@@ -54,28 +60,28 @@
     self.enableRegexBtn = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoReply.enableRegEx") target:self action:@selector(clickEnableRegexBtn:)];
         btn.frame = NSMakeRect(20, 25, 400, 20);
-        
+        [YMThemeManager changeButtonTheme:btn];
         btn;
     });
     
     self.enableGroupReplyBtn = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoReply.enableGroup") target:self action:@selector(clickEnableGroupBtn:)];
         btn.frame = NSMakeRect(20, 50, 400, 20);
-        
+        [YMThemeManager changeButtonTheme:btn];
         btn;
     });
     
     self.enableSingleReplyBtn = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoReply.enableSingle") target:self action:@selector(clickEnableSingleBtn:)];
         btn.frame = NSMakeRect(200, 50, 400, 20);
-        
+        [YMThemeManager changeButtonTheme:btn];
         btn;
     });
     
     self.enableDelayBtn = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoReply.delay") target:self action:@selector(clickEnableDelayBtn:)];
         btn.frame = NSMakeRect(200, 25, 85, 20);
-        
+        [YMThemeManager changeButtonTheme:btn];
         btn;
     });
     
@@ -141,7 +147,8 @@
                         self.selectSessionButton]];
 }
 
-- (void)clickEnableSpecificReplyBtn:(NSButton *)btn {
+- (void)clickEnableSpecificReplyBtn:(NSButton *)btn
+{
     self.selectSessionButton.hidden = !btn.state;
     self.enableGroupReplyBtn.hidden = btn.state;
     self.enableSingleReplyBtn.hidden = btn.state;
@@ -151,40 +158,50 @@
     self.model.enableSpecificReply = btn.state;
 }
 
-- (void)clickSelectSessionButton:(NSButton *)btn {
+- (void)clickSelectSessionButton:(NSButton *)btn
+{
     [self selectSessionAction];
 }
 
-- (void)clickEnableRegexBtn:(NSButton *)btn {
+- (void)clickEnableRegexBtn:(NSButton *)btn
+{
     self.model.enableRegex = btn.state;
 }
 
-- (void)clickEnableGroupBtn:(NSButton *)btn {
+- (void)clickEnableGroupBtn:(NSButton *)btn
+{
     self.model.enableGroupReply = btn.state;
     if (btn.state) {
         self.model.enable = YES;
-    } else if(!self.model.enableSingleReply) {
+    } else if (!self.model.enableSingleReply) {
         self.model.enable = NO;
     }
     
-    if (self.endEdit) self.endEdit();
+    if (self.endEdit) {
+         self.endEdit();
+    }
 }
 
-- (void)clickEnableSingleBtn:(NSButton *)btn {
+- (void)clickEnableSingleBtn:(NSButton *)btn
+{
     self.model.enableSingleReply = btn.state;
     if (btn.state) {
         self.model.enable = YES;
-    } else if(!self.model.enableGroupReply) {
+    } else if (!self.model.enableGroupReply) {
         self.model.enable = NO;
     }
-    if (self.endEdit) self.endEdit();
+    if (self.endEdit) {
+         self.endEdit();
+    }
 }
 
-- (void)clickEnableDelayBtn:(NSButton *)btn {
+- (void)clickEnableDelayBtn:(NSButton *)btn
+{
     self.model.enableDelay = btn.state;
 }
 
-- (void)viewDidMoveToSuperview {
+- (void)viewDidMoveToSuperview
+{
     [super viewDidMoveToSuperview];
     self.layer.backgroundColor = [kBG2 CGColor];
     self.layer.borderWidth = 1;
@@ -194,7 +211,8 @@
     [self.layer setNeedsDisplay];
 }
 
-- (void)setModel:(YMAutoReplyModel *)model {
+- (void)setModel:(YMAutoReplyModel *)model
+{
     _model = model;
     self.keywordTextField.stringValue = model.keyword != nil ? model.keyword : @"";
     self.autoReplyContentField.stringValue = model.replyContent != nil ? model.replyContent : @"";
@@ -210,7 +228,8 @@
     self.enableSingleReplyBtn.hidden = model.enableSpecificReply;
 }
 
-- (void)selectSessionAction {
+- (void)selectSessionAction
+{
     MMSessionPickerWindow *picker = [objc_getClass("MMSessionPickerWindow") shareInstance];
     [picker setType:1];
     [picker setShowsGroupChats:0x1];
@@ -230,11 +249,15 @@
     }];
 }
 
-- (void)controlTextDidEndEditing:(NSNotification *)notification {
-    if (self.endEdit) self.endEdit();
+- (void)controlTextDidEndEditing:(NSNotification *)notification
+{
+    if (self.endEdit) {
+         self.endEdit();
+    }
 }
 
-- (void)controlTextDidChange:(NSNotification *)notification {
+- (void)controlTextDidChange:(NSNotification *)notification
+{
     NSControl *control = notification.object;
     if (control == self.keywordTextField) {
         self.model.keyword = self.keywordTextField.stringValue;
@@ -245,7 +268,8 @@
     }
 }
 
-- (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
+- (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector
+{
     BOOL result = NO;
     
     if (commandSelector == @selector(insertNewline:)) {

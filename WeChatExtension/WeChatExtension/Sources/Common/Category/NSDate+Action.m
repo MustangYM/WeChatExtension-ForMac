@@ -10,7 +10,8 @@
 
 @implementation NSDate (Action)
 
-- (BOOL)isToday {
+- (BOOL)isToday
+{
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSInteger unit = NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear ;
     
@@ -20,7 +21,8 @@
     return (selfComponents.year == nowComponents.year) && (selfComponents.month == nowComponents.month) && (selfComponents.day == nowComponents.day);
 }
 
-- (BOOL)isYesterday {
+- (BOOL)isYesterday
+{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"yyyy-MM-dd";
     
