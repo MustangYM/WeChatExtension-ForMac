@@ -279,7 +279,7 @@
     return NSColor.lightGrayColor;
 }
 
-- (void) hook_referSetBgView: (NSView *) view
+- (void)hook_referSetBgView:(NSView *)view
 {
     [self hook_referSetBgView:view];
     
