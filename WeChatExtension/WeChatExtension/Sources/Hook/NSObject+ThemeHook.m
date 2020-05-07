@@ -62,8 +62,55 @@
         hookMethod(objc_getClass("MMAppReferContainerView"), NSSelectorFromString(@"highlightColor"), [self class], @selector(hook_referHighlightColor));
         hookMethod(objc_getClass("MMReferTextAttachmentView"), NSSelectorFromString(@"setBgView:"), [self class], @selector(hook_referSetBgView:));
         
+        hookMethod(objc_getClass("MMSearchTableCellView"), NSSelectorFromString(@"setBackgroundColor:"), [self class], @selector(hook_searchCellSetBackgroundColor:));
+        hookMethod(objc_getClass("MMSearchTableSectionHeaderView"), NSSelectorFromString(@"setBackgroundView:"), [self class], @selector(hook_searchHeaderSetBackgroundView:));
+        hookMethod(objc_getClass("MMSearchTableCellView"), NSSelectorFromString(@"initWithFrame:"), [self class], @selector(hook_chatLogInitWithFrame:));
+         hookMethod(objc_getClass("MMSearchTableCellView"), NSSelectorFromString(@"prepareForReuse"), [self class], @selector(hook_chatLogPrepareForReuse));
     }
-        
+}
+
+#pragma mark - 搜索界面
+- (id)hook_chatLogInitWithFrame:(CGRect)arg1
+{
+    MMSearchChatLogTableCellView *cell = [self hook_chatLogInitWithFrame:arg1];
+    cell.hidden = YES;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [cell setSelected:YES];
+        cell.hidden = NO;
+    });
+    return cell;
+}
+
+- (void)hook_chatLogPrepareForReuse
+{
+    MMSearchChatLogTableCellView *cell = (MMSearchChatLogTableCellView *)self;
+    cell.hidden = YES;
+    dispatch_async(dispatch_get_main_queue(), ^{
+       [cell setSelected:YES];
+        cell.hidden = NO;
+    });
+    [self hook_chatLogPrepareForReuse];
+}
+
+- (void)hook_chatLogCellSetTitleLabel:(MMTextField *)arg1
+{
+    [self hook_chatLogCellSetTitleLabel:arg1];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        arg1.backgroundColor = [TKWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor;
+    });
+}
+
+- (void)hook_searchHeaderSetBackgroundView:(NSView *)arg1
+{
+    [self hook_searchHeaderSetBackgroundView:arg1];
+    dispatch_async(dispatch_get_main_queue(), ^{
+       [[YMThemeManager shareInstance] changeTheme:arg1];
+    });
+}
+
+- (void)hook_searchCellSetBackgroundColor:(NSColor *)arg1
+{
+    [self hook_searchCellSetBackgroundColor:[TKWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
 }
 
 - (NSImageView *)hook_chatDetailAvatarImageView

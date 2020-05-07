@@ -784,6 +784,7 @@ forHTTPHeaderField:(NSString *)field;
 
 @interface MMSearchChatLogTableCellView : NSTableCellView
 @property (nonatomic, strong) NSColor *backgroundColor;
+- (void)setSelected:(BOOL)arg1;
 @end
 
 @interface MMChatInfoView : NSView
@@ -837,3 +838,4 @@ forHTTPHeaderField:(NSString *)field;
 @interface WeChatApplication : NSApplication
 - (BOOL)isMiniProgramProcess;
 @end
+
