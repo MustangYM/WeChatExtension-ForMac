@@ -3,7 +3,7 @@
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/face.png" width="1000px"/>
 </p>
 
-![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.5.6-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.4.0-blue.svg)
+![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.5.7-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.4.0-blue.svg)
 
 支持[企业微信](https://github.com/MustangYM/WeChatICU-ForMac)，由此进。
 
@@ -156,8 +156,9 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
 
 ## 更新日志
 ```
-2020-04-26 崩溃拦截， 修复收藏中笔记显示BUG，适配2.4.0.149群语音或视频显示，修复公众列表右键点击BUG，茱萸粉皮肤
-2020-04-16 修复小程序、Word、Excel不显示
+2020-05-07 新增深邃模式，退群监控性能优化，修复搜索界面BUG，修复消息引用BUG。
+2020-04-26 崩溃拦截， 修复收藏中笔记显示BUG，适配2.4.0.149群语音或视频显示，修复公众列表右键点击BUG，茱萸粉皮肤。
+2020-04-16 修复小程序、Word、Excel不显示。
 2020-04-13 2.5.4版本在2.3.26微信上启动会闪退， 已经修复。
 2020-04-10 修复免认证登录后左下角"小手机"不显示， 远程控制/自动回复/关于界面适配黑暗模式。
 2020-03-31 会话列表抖动， 联系人列表优化， 群成员列表优化。
@@ -182,7 +183,7 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
 2019-6-28 修复消息筛选Bug， 群聊撤回同步到手机显示真实联系人昵称。
 2019-6-25 适配OSX 10.9。
 2019-6-25 消息防撤回同步到手机， 增加筛选功能， 可以只同步群聊或单聊。
-2019-6-19 详细安装方法
+2019-6-19 详细安装方法。
 2019-6-5  修复会话多选闪退， 点击公众号类型消息闪退。
 2019-5-28 支持系统浏览器打开网页。
 2019-5-14 如果Mac拦截到A发送来的消息， 手机也会同步收到的这条已经拦截的消息， 小助手一键更新。
