@@ -363,6 +363,18 @@ This project exists thanks to all the people who contribute。
   <a href="https://github.com/linvaux"><img src="https://avatars2.githubusercontent.com/u/33976489?s=400&u=27f32d8834a2f087c045115a30a9a7561e06fbac&v=4" width="100px;" alt="linvaux"/>
   <br></br><sub><b>linvaux</b></sub>
  
+   <td align="center">
+  <a href="https://github.com/blackux"><img src="https://avatars0.githubusercontent.com/u/29528771?s=400&u=c84394df6e33d6238d4222425ff32da093e4b44b&v=4" width="100px;" alt="blackux"/>
+  <br></br><sub><b>blackux</b></sub>
+ 
+   <td align="center">
+  <a href="https://github.com/Qwenjin"><img src="https://avatars1.githubusercontent.com/u/15087970?s=400&u=2007a686733e6620b5dc93c8bb9153060be1cb9e&v=4" width="100px;" alt="Qwenjin"/>
+  <br></br><sub><b>Qwenjin</b></sub>
+ 
+   <td align="center">
+  <a href="https://github.com/mritd"><img src="https://avatars1.githubusercontent.com/u/13043245?s=400&u=d8a792673e23bb2fad29cdde25a45a60dda2db96&v=4" width="100px;" alt="mritd"/>
+  <br></br><sub><b>mritd</b></sub>
+ 
   </td></tr></table>
 
 ## Backers
