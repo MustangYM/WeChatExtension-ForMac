@@ -25,6 +25,11 @@
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/darkMode.png" width="800px"/>
 </p>
 
+- 深邃模式
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/blackMode.png" width="800px"/>
+</p>
+
 - 少女粉模式
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/pinkMode.png" width="800px"/>
@@ -35,15 +40,10 @@
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/changeMode.png" width="300px"/>
 </p>
 
-## 消息防撤回
-<p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/revoke.gif" width="800px"/>
-</p>
-
 ## 手机端也能收到被撤回的消息
 - 如果Mac拦截到A发送来的消息， 手机也会同步收到的这条已经拦截的消息(自己发送给自己)。目前只支持同步文字消息与图片消息， 其他类型也可以做， 但意义不大。
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/revokeAsync.jpg" width="800px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/revokeAsync.png" width="800px"/>
 </p>
 
 - 可以对同步的消息进行筛选， 以免群消息打扰。
@@ -53,7 +53,7 @@
 
 ## 免认证登录与多开
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/launch.gif" width="800px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/launch.png" width="800px"/>
 </p>
 
 ## 同时支持自定义回复和AI自动撩妹
