@@ -384,6 +384,10 @@ This project exists thanks to all the people who contribute。
   <a href="https://github.com/hsing0527"><img src="https://avatars0.githubusercontent.com/u/57891696?s=400&u=994b194f51551cfa5f4cd4282462ec8d6c258455&v=4" width="100px;" alt="hsing0527"/>
   <br></br><sub><b>hsing0527</b></sub>
  
+   <td align="center">
+  <a href="https://github.com/rodren-lion"><img src="https://avatars0.githubusercontent.com/u/60810175?s=400&v=4" width="100px;" alt="rodren-lion"/>
+  <br></br><sub><b>rodren-lion</b></sub>
+ 
   </td></tr></table>
 
 ## Backers
