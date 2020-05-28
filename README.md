@@ -392,6 +392,10 @@ This project exists thanks to all the people who contribute。
   <a href="https://github.com/rodren-lion"><img src="https://avatars0.githubusercontent.com/u/60810175?s=400&v=4" width="100px;" alt="rodren-lion"/>
   <br></br><sub><b>rodren-lion</b></sub>
  
+   <td align="center">
+  <a href="https://github.com/aleecy"><img src="https://avatars0.githubusercontent.com/u/15871392?s=400&u=14ae820927d89cc2158501f8e37ec8b6c11abbd6&v=4" width="100px;" alt="aleecy"/>
+  <br></br><sub><b>aleecy</b></sub>
+ 
   </td></tr></table>
 
 ## Backers
