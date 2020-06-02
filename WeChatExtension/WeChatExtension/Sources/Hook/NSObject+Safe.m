@@ -38,36 +38,36 @@ static void inline dynamicMethodIMP(id self,SEL _cmd)
 }
 
 @implementation NSObject (Safe)
-+ (void)load
-{
-    hookMethod(objc_getClass("NSObject"), @selector(methodSignatureForSelector:), [self class], @selector(safe_methodSignatureForSEL:));
-    hookMethod(objc_getClass("NSObject"), @selector(forwardInvocation:), [self class], @selector(safe_forwardInvocation:));
-}
-
-- (NSMethodSignature *)safe_methodSignatureForSEL:(SEL)arg1
-{
-    if (![self respondsToSelector:arg1]) {
-        _errorFunctionName = NSStringFromSelector(arg1);
-        NSMethodSignature *methodSignature = [self safe_methodSignatureForSEL:arg1];
-        if (class_addMethod([self class], arg1, (IMP)dynamicMethodIMP, "v@:")) {
-            NSLog(@"临时方法添加成功！");
-        }
-        if (!methodSignature) {
-            methodSignature = [self safe_methodSignatureForSEL:arg1];
-        }
-        return methodSignature;
-    }else{
-        return [self safe_methodSignatureForSEL:arg1];
-    }
-}
-
-- (void)safe_forwardInvocation:(NSInvocation *)arg1
-{
-    SEL sel = [arg1 selector];
-    if ([self respondsToSelector:sel]) {
-        [arg1 invokeWithTarget:self];
-    } else {
-        [self safe_forwardInvocation:arg1];
-    }
-}
+//+ (void)load
+//{
+//    hookMethod(objc_getClass("NSObject"), @selector(methodSignatureForSelector:), [self class], @selector(safe_methodSignatureForSEL:));
+//    hookMethod(objc_getClass("NSObject"), @selector(forwardInvocation:), [self class], @selector(safe_forwardInvocation:));
+//}
+//
+//- (NSMethodSignature *)safe_methodSignatureForSEL:(SEL)arg1
+//{
+//    if (![self respondsToSelector:arg1]) {
+//        _errorFunctionName = NSStringFromSelector(arg1);
+//        NSMethodSignature *methodSignature = [self safe_methodSignatureForSEL:arg1];
+//        if (class_addMethod([self class], arg1, (IMP)dynamicMethodIMP, "v@:")) {
+//            NSLog(@"临时方法添加成功！");
+//        }
+//        if (!methodSignature) {
+//            methodSignature = [self safe_methodSignatureForSEL:arg1];
+//        }
+//        return methodSignature;
+//    }else{
+//        return [self safe_methodSignatureForSEL:arg1];
+//    }
+//}
+//
+//- (void)safe_forwardInvocation:(NSInvocation *)arg1
+//{
+//    SEL sel = [arg1 selector];
+//    if ([self respondsToSelector:sel]) {
+//        [arg1 invokeWithTarget:self];
+//    } else {
+//        [self safe_forwardInvocation:arg1];
+//    }
+//}
 @end

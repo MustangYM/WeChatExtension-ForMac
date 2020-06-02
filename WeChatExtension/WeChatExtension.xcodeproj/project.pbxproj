@@ -138,7 +138,16 @@
 		18D4C34B24236180006A20E2 /* NSObject+ThemeHook.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D4C34924236180006A20E2 /* NSObject+ThemeHook.h */; };
 		18D4C34C24236180006A20E2 /* NSObject+ThemeHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D4C34A24236180006A20E2 /* NSObject+ThemeHook.m */; };
 		18D8B18E227EFEC3007AE9EC /* TKRemoteControlScript.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 18D8B18D227EFDFF007AE9EC /* TKRemoteControlScript.scpt */; };
+		18DB625D2480E6530094EEDD /* ANYMethodLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 18DB625B2480E6530094EEDD /* ANYMethodLog.h */; };
+		18DB625E2480E6530094EEDD /* ANYMethodLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DB625C2480E6530094EEDD /* ANYMethodLog.m */; };
+		18DB626C248502770094EEDD /* ZLJPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DB626A248502770094EEDD /* ZLJPrinter.m */; };
+		18DB626D248502770094EEDD /* ZLJPrinter.h in Headers */ = {isa = PBXBuildFile; fileRef = 18DB626B248502770094EEDD /* ZLJPrinter.h */; };
 		18ECDCF52405194800090014 /* aliPayCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 18ECDCF42405194800090014 /* aliPayCode.png */; };
+		18EF56B5248668CD00D7BC26 /* YMStrangerCheckCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 18EF56B0248668CD00D7BC26 /* YMStrangerCheckCell.h */; };
+		18EF56B6248668CD00D7BC26 /* YMStrangerCheckWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 18EF56B1248668CD00D7BC26 /* YMStrangerCheckWindowController.h */; };
+		18EF56B7248668CD00D7BC26 /* YMStrangerCheckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EF56B2248668CD00D7BC26 /* YMStrangerCheckCell.m */; };
+		18EF56B8248668CD00D7BC26 /* YMStrangerCheckWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EF56B3248668CD00D7BC26 /* YMStrangerCheckWindowController.m */; };
+		18EF56B9248668CD00D7BC26 /* YMStrangerCheckWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EF56B4248668CD00D7BC26 /* YMStrangerCheckWindowController.xib */; };
 		3632293F22A6ADB300F62EAB /* LockPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3632293E22A6ADB300F62EAB /* LockPlist.plist */; };
 		3632294222AFD9CF00F62EAB /* YMThemeManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3632294022AFD9CF00F62EAB /* YMThemeManager.h */; };
 		3632294322AFD9CF00F62EAB /* YMThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3632294122AFD9CF00F62EAB /* YMThemeManager.m */; };
@@ -307,7 +316,16 @@
 		18D4C34924236180006A20E2 /* NSObject+ThemeHook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ThemeHook.h"; sourceTree = "<group>"; };
 		18D4C34A24236180006A20E2 /* NSObject+ThemeHook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ThemeHook.m"; sourceTree = "<group>"; };
 		18D8B18D227EFDFF007AE9EC /* TKRemoteControlScript.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = TKRemoteControlScript.scpt; sourceTree = "<group>"; };
+		18DB625B2480E6530094EEDD /* ANYMethodLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANYMethodLog.h; sourceTree = "<group>"; };
+		18DB625C2480E6530094EEDD /* ANYMethodLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANYMethodLog.m; sourceTree = "<group>"; };
+		18DB626A248502770094EEDD /* ZLJPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLJPrinter.m; sourceTree = "<group>"; };
+		18DB626B248502770094EEDD /* ZLJPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLJPrinter.h; sourceTree = "<group>"; };
 		18ECDCF42405194800090014 /* aliPayCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aliPayCode.png; sourceTree = "<group>"; };
+		18EF56B0248668CD00D7BC26 /* YMStrangerCheckCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMStrangerCheckCell.h; sourceTree = "<group>"; };
+		18EF56B1248668CD00D7BC26 /* YMStrangerCheckWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMStrangerCheckWindowController.h; sourceTree = "<group>"; };
+		18EF56B2248668CD00D7BC26 /* YMStrangerCheckCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMStrangerCheckCell.m; sourceTree = "<group>"; };
+		18EF56B3248668CD00D7BC26 /* YMStrangerCheckWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMStrangerCheckWindowController.m; sourceTree = "<group>"; };
+		18EF56B4248668CD00D7BC26 /* YMStrangerCheckWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMStrangerCheckWindowController.xib; sourceTree = "<group>"; };
 		1ECC036067C0A58DC4D5A272 /* libPods-WeChatExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3632293E22A6ADB300F62EAB /* LockPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LockPlist.plist; sourceTree = "<group>"; };
 		3632294022AFD9CF00F62EAB /* YMThemeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMThemeManager.h; sourceTree = "<group>"; };
@@ -408,6 +426,10 @@
 		188A658B2272ACBA0096663E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				18DB626B248502770094EEDD /* ZLJPrinter.h */,
+				18DB626A248502770094EEDD /* ZLJPrinter.m */,
+				18DB625B2480E6530094EEDD /* ANYMethodLog.h */,
+				18DB625C2480E6530094EEDD /* ANYMethodLog.m */,
 				3644BDF32285545500EDE358 /* TCB */,
 				18A7A1352272AFE600361A98 /* GCDWebServer */,
 				188A658C2272ACBA0096663E /* WindowControllers */,
@@ -426,6 +448,7 @@
 		188A658C2272ACBA0096663E /* WindowControllers */ = {
 			isa = PBXGroup;
 			children = (
+				18EF56AF2486650400D7BC26 /* Stranger */,
 				188A658D2272ACBA0096663E /* About */,
 				188A65942272ACBA0096663E /* Download */,
 				188A65982272ACBA0096663E /* AutoReply */,
@@ -712,6 +735,18 @@
 			path = Requests;
 			sourceTree = "<group>";
 		};
+		18EF56AF2486650400D7BC26 /* Stranger */ = {
+			isa = PBXGroup;
+			children = (
+				18EF56B0248668CD00D7BC26 /* YMStrangerCheckCell.h */,
+				18EF56B2248668CD00D7BC26 /* YMStrangerCheckCell.m */,
+				18EF56B1248668CD00D7BC26 /* YMStrangerCheckWindowController.h */,
+				18EF56B3248668CD00D7BC26 /* YMStrangerCheckWindowController.m */,
+				18EF56B4248668CD00D7BC26 /* YMStrangerCheckWindowController.xib */,
+			);
+			path = Stranger;
+			sourceTree = "<group>";
+		};
 		3644BDF32285545500EDE358 /* TCB */ = {
 			isa = PBXGroup;
 			children = (
@@ -759,6 +794,7 @@
 				1898CF4B2459231100B557E9 /* YMMessageHelper.h in Headers */,
 				18A7A1642272AFE600361A98 /* GCDWebServerDataResponse.h in Headers */,
 				18A7A15C2272AFE600361A98 /* GCDWebServerResponse.h in Headers */,
+				18EF56B5248668CD00D7BC26 /* YMStrangerCheckCell.h in Headers */,
 				188A662B2272ACBA0096663E /* NSString+Action.h in Headers */,
 				188A660B2272ACBA0096663E /* YMRemoteControlManager.h in Headers */,
 				36AC9D8A228A81C200EA9F97 /* XMLReader.h in Headers */,
@@ -777,6 +813,7 @@
 				188A661C2272ACBA0096663E /* YMBaseModel.h in Headers */,
 				188A66272272ACBA0096663E /* NSView+Action.h in Headers */,
 				188A663B2272ACBA0096663E /* MMStickerMessageCellView+hook.h in Headers */,
+				18EF56B6248668CD00D7BC26 /* YMStrangerCheckWindowController.h in Headers */,
 				188A66082272ACBA0096663E /* YMWebServerManager.h in Headers */,
 				3644BE002285549100EDE358 /* YMUpdateManager.h in Headers */,
 				188A660D2272ACBA0096663E /* YMMessageManager.h in Headers */,
@@ -797,6 +834,7 @@
 				188A66012272ACBA0096663E /* TKWeChatPluginConfig.h in Headers */,
 				188A662E2272ACBA0096663E /* DefineConstant.h in Headers */,
 				188A65F52272ACBA0096663E /* TKAboutWindowController.h in Headers */,
+				18DB626D248502770094EEDD /* ZLJPrinter.h in Headers */,
 				18A7A1302272ACE900361A98 /* WeChatPlugin.h in Headers */,
 				188A660C2272ACBA0096663E /* YMVersionManager.h in Headers */,
 				36AC9D87228A813F00EA9F97 /* YMDownloadManager.h in Headers */,
@@ -807,6 +845,7 @@
 				188A66262272ACBA0096663E /* NSButton+Action.h in Headers */,
 				18A7A1702272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.h in Headers */,
 				18A7A1612272AFE600361A98 /* GCDWebServerFileResponse.h in Headers */,
+				18DB625D2480E6530094EEDD /* ANYMethodLog.h in Headers */,
 				188A66372272ACBA0096663E /* MMChatsTableCellView+hook.h in Headers */,
 				18A7A1622272AFE600361A98 /* GCDWebServerStreamedResponse.h in Headers */,
 				188A662A2272ACBA0096663E /* NSDate+Action.h in Headers */,
@@ -909,6 +948,7 @@
 				188A65F92272ACBA0096663E /* TKDownloadWindowController.xib in Resources */,
 				188A660F2272ACBA0096663E /* TKRemoteControlCommands.plist in Resources */,
 				18D298EF23960C18009EE6B0 /* YMAIReplyWindowController.xib in Resources */,
+				18EF56B9248668CD00D7BC26 /* YMStrangerCheckWindowController.xib in Resources */,
 				1828B9AA23BA319E008EC8E9 /* TKAboutWindowController.xib in Resources */,
 				18ECDCF52405194800090014 /* aliPayCode.png in Resources */,
 				188A65FB2272ACBA0096663E /* TKAutoReplyWindowController.xib in Resources */,
@@ -986,6 +1026,7 @@
 				188A66222272ACBA0096663E /* NSString+Action.m in Sources */,
 				188A663E2272ACBA0096663E /* MMStickerMessageCellView+hook.m in Sources */,
 				18A7A15D2272AFE600361A98 /* GCDWebServerFunctions.m in Sources */,
+				18EF56B8248668CD00D7BC26 /* YMStrangerCheckWindowController.m in Sources */,
 				18A7A15F2272AFE600361A98 /* GCDWebServerConnection.m in Sources */,
 				18A7A12E2272ACE300361A98 /* main.mm in Sources */,
 				188A66202272ACBA0096663E /* NSView+Action.m in Sources */,
@@ -1000,6 +1041,7 @@
 				3644BDF92285545500EDE358 /* TCBlobDownloadManager.m in Sources */,
 				18A7A16C2272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.m in Sources */,
 				188A66182272ACBA0096663E /* YMBaseModel.m in Sources */,
+				18EF56B7248668CD00D7BC26 /* YMStrangerCheckCell.m in Sources */,
 				188A66362272ACBA0096663E /* TKRemoteControlCell.m in Sources */,
 				188A66062272ACBA0096663E /* YMRemoteControlManager.m in Sources */,
 				188A66252272ACBA0096663E /* NSMenu+Action.m in Sources */,
@@ -1011,6 +1053,7 @@
 				188A66342272ACBA0096663E /* TKAutoReplyCell.m in Sources */,
 				188A66052272ACBA0096663E /* YMVersionManager.m in Sources */,
 				18A7A16E2272AFE600361A98 /* GCDWebServerDataRequest.m in Sources */,
+				18DB625E2480E6530094EEDD /* ANYMethodLog.m in Sources */,
 				18A7A1662272AFE600361A98 /* GCDWebServerDataResponse.m in Sources */,
 				18A7A1652272AFE600361A98 /* GCDWebServerFileResponse.m in Sources */,
 				188A66432272ACBA0096663E /* fishhook.c in Sources */,
@@ -1032,6 +1075,7 @@
 				D79D235A2449EF5D00C391E4 /* GVUserDefaults.m in Sources */,
 				188A66312272ACBA0096663E /* TKAutoReplyContentView.m in Sources */,
 				188A66242272ACBA0096663E /* NSDate+Action.m in Sources */,
+				18DB626C248502770094EEDD /* ZLJPrinter.m in Sources */,
 				18D298532394EE60009EE6B0 /* YMNetWorkHelper.m in Sources */,
 				3632294322AFD9CF00F62EAB /* YMThemeManager.m in Sources */,
 				188A66042272ACBA0096663E /* YMMessageManager.m in Sources */,

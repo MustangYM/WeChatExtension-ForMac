@@ -17,11 +17,14 @@
 #import "YMWebServerManager.h"
 #import "YMMessageManager.h"
 #import "YMAIReplyWindowController.h"
+#import "YMIMContactsManager.h"
+#import "YMStrangerCheckWindowController.h"
 
 static char kAutoReplyWindowControllerKey;         //  自动回复窗口的关联 key
 static char kAIAutoReplyWindowControllerKey;         //  AI回复窗口的关联 key
 static char kRemoteControlWindowControllerKey;     //  远程控制窗口的关联 key
 static char kAboutWindowControllerKey;             //  关于窗口的关联 key
+static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
 
 @implementation YMAssistantMenuManager
 
@@ -212,7 +215,11 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
     backGroundItem.submenu = subBackgroundMenu;
     
     
-    
+    NSMenuItem *checkZombieItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"检测僵尸粉", @"Check Stranger")
+           action:@selector(onCheckZombie:)
+           target:self
+    keyEquivalent:@""
+            state:0];
     
     NSMenu *subPluginMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.other")];
     [subPluginMenu addItems:@[enableAlfredItem,
@@ -231,6 +238,7 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
                         autoAuthItem,
                         enableSystemBrowserItem,
                         backGroundItem,
+                        checkZombieItem,
                         pluginItem,
                         aboutPluginItem,
                         currentVersionItem,
@@ -249,8 +257,48 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
     [self addObserverWeChatConfig];
 }
 
-#pragma mark - 监听 WeChatPluginConfig
+#pragma mark - 僵尸粉
+- (void)onCheckZombie:(NSMenuItem *)item
+{
+    
+    WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
+    YMStrangerCheckWindowController *autoReplyWC = objc_getAssociatedObject(wechat, &kStrangerCheckWindowControllerKey);
 
+    if (!autoReplyWC) {
+        autoReplyWC = [[YMStrangerCheckWindowController alloc] initWithWindowNibName:@"YMStrangerCheckWindowController"];
+        objc_setAssociatedObject(wechat, &kStrangerCheckWindowControllerKey, autoReplyWC, OBJC_ASSOCIATION_RETAIN);
+    }
+    [autoReplyWC show];
+    
+    
+    //
+
+    
+    //
+    
+//    NSArray *contacts = [YMIMContactsManager getAllFriendContactsWithOutChatroom];
+//
+//    GroupStorage *groupStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
+//
+//    NSMutableArray *groupMembers = [NSMutableArray array];
+//    [contacts enumerateObjectsUsingBlock:^(WCContactData *_Nonnull contactData, NSUInteger idx, BOOL * _Nonnull stop) {
+//        GroupMember *member = [[objc_getClass("GroupMember") alloc] init];
+//        member.m_nsMemberName = contactData.m_nsUsrName;
+//        [groupMembers addObject:member];
+//        if (idx == 2) {
+//            *stop = YES;
+//        }
+//    }];
+//
+//    if (groupMembers.count == 0) {
+//        return;
+//    }
+//
+//    [groupStorage CreateGroupChatWithTopic:nil groupMembers:[NSArray arrayWithArray:groupMembers] completion:^(NSString *chatroom) {
+//    }];
+}
+
+#pragma mark - 监听 WeChatPluginConfig
 - (void)addObserverWeChatConfig
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigAutoReplyChange) name:NOTIFY_AUTO_REPLY_CHANGE object:nil];
