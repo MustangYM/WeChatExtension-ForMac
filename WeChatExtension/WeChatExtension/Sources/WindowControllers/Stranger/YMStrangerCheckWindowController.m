@@ -22,6 +22,8 @@
 @property (nonatomic, strong) YMIMContactsManager *contactMgr;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) NSProgressIndicator *progress;
+@property (nonatomic, strong) NSTextField *indicatorLabel;
 @end
 
 @implementation YMStrangerCheckWindowController
@@ -69,27 +71,49 @@
     
     self.addButton = ({
         NSButton *btn = [NSButton tk_buttonWithTitle:@"开始检测" target:self action:@selector(onCheckStranger)];
-        btn.frame = NSMakeRect(130, 10, 100, 40);
+        btn.frame = NSMakeRect(240, 10, 100, 40);
         btn.bezelStyle = NSBezelStyleTexturedRounded;
-        
         btn;
     });
     
+    
+    
     self.desLabel = ({
-        NSTextField *label = [NSTextField tk_labelWithString:YMLanguage(@"通过静默拉群检测，切勿在在群里发消息！！！检测完删除群聊即可。", @"Through the silent group pulling detection, delete the group chat after detection, and do not send messages in the group!!!")];
-        label.textColor = kRGBColor(39, 162, 20, 1.0);
+        NSTextField *label = [NSTextField tk_labelWithString:YMLanguage(@"通过静默拉群检测，对方无感知。\n切勿在群里发消息!!!\n检测完手动删除群聊即可。", @"Through the silent group pulling detection, delete the group chat after detection, and do not send messages in the group!!!")];
+        label.textColor = [NSColor grayColor];
         [[label cell] setLineBreakMode:NSLineBreakByCharWrapping];
         [[label cell] setTruncatesLastVisibleLine:YES];
         label.font = [NSFont systemFontOfSize:12];
-        label.frame = NSMakeRect(10, 400, 300, 50);
+        label.frame = NSMakeRect(30, 400, 300, 50);
         label;
     });
 
     
+    self.progress = ({
+        NSProgressIndicator *progress = [[NSProgressIndicator alloc] initWithFrame:CGRectMake(30, 20, 20, 20)];
+        progress.style = NSProgressIndicatorStyleSpinning;
+        progress.hidden = YES;
+        progress;
+    });
+    
+    self.indicatorLabel = ({
+        NSTextField *label = [NSTextField tk_labelWithString:YMLanguage(@"1/998 检测还需大约20分钟", @"")];
+        label.textColor = kRGBColor(39, 162, 20, 1.0);
+        [[label cell] setLineBreakMode:NSLineBreakByCharWrapping];
+        [[label cell] setTruncatesLastVisibleLine:YES];
+        label.font = [NSFont systemFontOfSize:12];
+        label.frame = NSMakeRect(60, 0, 180, 40);
+        label.hidden = YES;
+        label;
+    });
+    
     scrollView.contentView.documentView = self.tableView;
     [self.window.contentView addSubviews:@[scrollView,
+                                           self.progress,
+                                           self.indicatorLabel,
                                            self.addButton,
                                            self.desLabel]];
+    [self.progress startAnimation:nil];
 }
 
 - (void)onCheckStranger
@@ -109,12 +133,13 @@
     NSArray *sessions = sessionMgr.m_arrSession;
 
     NSMutableArray *successArray = [NSMutableArray array];
+    NSString *currentUsrName = [objc_getClass("CUtility") GetCurrentUserName];
     [sessions enumerateObjectsUsingBlock:^(MMSessionInfo *_Nonnull sessionInfo, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (sessionInfo.m_packedInfo.m_contact.m_uiSex != 0 && ![sessionInfo.m_nsUserName containsString:@"@chatroom"]) {
+        if (sessionInfo.m_packedInfo.m_contact.m_uiSex != 0 && ![sessionInfo.m_nsUserName containsString:@"@chatroom"] && ![currentUsrName isEqualToString:sessionInfo.m_nsUserName]) {
             GroupMember *member = [[objc_getClass("GroupMember") alloc] init];
             member.m_nsMemberName = sessionInfo.m_nsUserName;
             [successArray addObject:member];
-            if (idx == 1) {
+            if (successArray.count == 2) {
                 *stop = YES;
             }
         }
@@ -125,17 +150,29 @@
         
         if (chatroom.length < 1) {
              NSLog(@"验证-创群失败%@",chatroom);
+            NSAlert *alert = [NSAlert alertWithMessageText:YMLanguage(@"警告", @"WARNING")
+                                             defaultButton:YMLanguage(@"取消", @"cancel")                       alternateButton:YMLanguage(@"确定",@"sure")
+                                               otherButton:nil                              informativeTextWithFormat:@"%@", YMLanguage(@"检测失败, 微信系统繁忙, 过一个小时后再试!", @"Detection failed, system busy!")];
+            NSUInteger action = [alert runModal];
             return ;
         }
         
         NSArray *contacts = [YMIMContactsManager getAllFriendContactsWithOutChatroom];
+        int64_t min = contacts.count * 5 / 60;
+        __block int64_t i = 0;
         NSMutableArray *tempArray = [NSMutableArray arrayWithArray:contacts];
-        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:3.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:5.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
             if (tempArray.count == 0) {
                 [wself.timer invalidate];
                 wself.timer = nil;
+                wself.progress.hidden = YES;
+                wself.indicatorLabel.hidden = YES;
             }
-
+            i++;
+            [wself.indicatorLabel setStringValue:[NSString stringWithFormat:@"%lld/%ld 检测还需约%lld分钟", i, contacts.count, min]];
+            wself.progress.hidden = NO;
+            wself.indicatorLabel.hidden = NO;
+            
             WCContactData *contactData = [tempArray firstObject];
             GroupMember *member = [[objc_getClass("GroupMember") alloc] init];
             member.m_nsMemberName = contactData.m_nsUsrName;
