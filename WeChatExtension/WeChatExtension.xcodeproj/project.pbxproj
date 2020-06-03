@@ -121,6 +121,7 @@
 		18A7A16E2272AFE600361A98 /* GCDWebServerDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A1522272AFE600361A98 /* GCDWebServerDataRequest.m */; };
 		18A7A16F2272AFE600361A98 /* GCDWebServerFileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A1532272AFE600361A98 /* GCDWebServerFileRequest.m */; };
 		18A7A1702272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A1542272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.h */; };
+		18AF743024879D65002361FF /* WeChat+hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AF742F24879D65002361FF /* WeChat+hook.m */; };
 		18B37AB9245536ED00037B58 /* NSObject+Safe.h in Headers */ = {isa = PBXBuildFile; fileRef = 18B37AB7245536ED00037B58 /* NSObject+Safe.h */; };
 		18B37ABA245536ED00037B58 /* NSObject+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B37AB8245536ED00037B58 /* NSObject+Safe.m */; };
 		18B5D4A022FAC7AD008206F5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B5D49F22FAC7AD008206F5 /* Security.framework */; };
@@ -294,6 +295,7 @@
 		18A7A1522272AFE600361A98 /* GCDWebServerDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerDataRequest.m; sourceTree = "<group>"; };
 		18A7A1532272AFE600361A98 /* GCDWebServerFileRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerFileRequest.m; sourceTree = "<group>"; };
 		18A7A1542272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerURLEncodedFormRequest.h; sourceTree = "<group>"; };
+		18AF742F24879D65002361FF /* WeChat+hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WeChat+hook.m"; sourceTree = "<group>"; };
 		18B37AB7245536ED00037B58 /* NSObject+Safe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Safe.h"; sourceTree = "<group>"; };
 		18B37AB8245536ED00037B58 /* NSObject+Safe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Safe.m"; sourceTree = "<group>"; };
 		18B5D49F22FAC7AD008206F5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -644,6 +646,7 @@
 				188A65E92272ACBA0096663E /* MMStickerMessageCellView+hook.h */,
 				188A65EC2272ACBA0096663E /* MMStickerMessageCellView+hook.m */,
 				188A65E62272ACBA0096663E /* WeChat+hook.h */,
+				18AF742F24879D65002361FF /* WeChat+hook.m */,
 				18D4C34924236180006A20E2 /* NSObject+ThemeHook.h */,
 				18D4C34A24236180006A20E2 /* NSObject+ThemeHook.m */,
 				18B37AB7245536ED00037B58 /* NSObject+Safe.h */,
@@ -997,6 +1000,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18AF743024879D65002361FF /* WeChat+hook.m in Sources */,
 				18D4C34C24236180006A20E2 /* NSObject+ThemeHook.m in Sources */,
 				18A7A15E2272AFE600361A98 /* GCDWebServer.m in Sources */,
 				18A7A1632272AFE600361A98 /* GCDWebServerErrorResponse.m in Sources */,
