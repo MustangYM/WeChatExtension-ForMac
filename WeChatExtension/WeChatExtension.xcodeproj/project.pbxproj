@@ -85,7 +85,6 @@
 		188A66382272ACBA0096663E /* WeChat+hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65E62272ACBA0096663E /* WeChat+hook.h */; };
 		188A663B2272ACBA0096663E /* MMStickerMessageCellView+hook.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65E92272ACBA0096663E /* MMStickerMessageCellView+hook.h */; };
 		188A663E2272ACBA0096663E /* MMStickerMessageCellView+hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65EC2272ACBA0096663E /* MMStickerMessageCellView+hook.m */; };
-		188A66412272ACBA0096663E /* WeChat+hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65EF2272ACBA0096663E /* WeChat+hook.m */; };
 		188A66422272ACBA0096663E /* MMChatsTableCellView+hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65F02272ACBA0096663E /* MMChatsTableCellView+hook.m */; };
 		188A66432272ACBA0096663E /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 188A65F22272ACBA0096663E /* fishhook.c */; };
 		188A66442272ACBA0096663E /* fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65F32272ACBA0096663E /* fishhook.h */; };
@@ -138,10 +137,6 @@
 		18D4C34B24236180006A20E2 /* NSObject+ThemeHook.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D4C34924236180006A20E2 /* NSObject+ThemeHook.h */; };
 		18D4C34C24236180006A20E2 /* NSObject+ThemeHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D4C34A24236180006A20E2 /* NSObject+ThemeHook.m */; };
 		18D8B18E227EFEC3007AE9EC /* TKRemoteControlScript.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 18D8B18D227EFDFF007AE9EC /* TKRemoteControlScript.scpt */; };
-		18DB625D2480E6530094EEDD /* ANYMethodLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 18DB625B2480E6530094EEDD /* ANYMethodLog.h */; };
-		18DB625E2480E6530094EEDD /* ANYMethodLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DB625C2480E6530094EEDD /* ANYMethodLog.m */; };
-		18DB626C248502770094EEDD /* ZLJPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DB626A248502770094EEDD /* ZLJPrinter.m */; };
-		18DB626D248502770094EEDD /* ZLJPrinter.h in Headers */ = {isa = PBXBuildFile; fileRef = 18DB626B248502770094EEDD /* ZLJPrinter.h */; };
 		18ECDCF52405194800090014 /* aliPayCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 18ECDCF42405194800090014 /* aliPayCode.png */; };
 		18EF56B5248668CD00D7BC26 /* YMStrangerCheckCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 18EF56B0248668CD00D7BC26 /* YMStrangerCheckCell.h */; };
 		18EF56B6248668CD00D7BC26 /* YMStrangerCheckWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 18EF56B1248668CD00D7BC26 /* YMStrangerCheckWindowController.h */; };
@@ -262,7 +257,6 @@
 		188A65E62272ACBA0096663E /* WeChat+hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WeChat+hook.h"; sourceTree = "<group>"; };
 		188A65E92272ACBA0096663E /* MMStickerMessageCellView+hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMStickerMessageCellView+hook.h"; sourceTree = "<group>"; };
 		188A65EC2272ACBA0096663E /* MMStickerMessageCellView+hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MMStickerMessageCellView+hook.m"; sourceTree = "<group>"; };
-		188A65EF2272ACBA0096663E /* WeChat+hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WeChat+hook.m"; sourceTree = "<group>"; };
 		188A65F02272ACBA0096663E /* MMChatsTableCellView+hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MMChatsTableCellView+hook.m"; sourceTree = "<group>"; };
 		188A65F22272ACBA0096663E /* fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
 		188A65F32272ACBA0096663E /* fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
@@ -316,10 +310,6 @@
 		18D4C34924236180006A20E2 /* NSObject+ThemeHook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ThemeHook.h"; sourceTree = "<group>"; };
 		18D4C34A24236180006A20E2 /* NSObject+ThemeHook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ThemeHook.m"; sourceTree = "<group>"; };
 		18D8B18D227EFDFF007AE9EC /* TKRemoteControlScript.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = TKRemoteControlScript.scpt; sourceTree = "<group>"; };
-		18DB625B2480E6530094EEDD /* ANYMethodLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANYMethodLog.h; sourceTree = "<group>"; };
-		18DB625C2480E6530094EEDD /* ANYMethodLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANYMethodLog.m; sourceTree = "<group>"; };
-		18DB626A248502770094EEDD /* ZLJPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLJPrinter.m; sourceTree = "<group>"; };
-		18DB626B248502770094EEDD /* ZLJPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLJPrinter.h; sourceTree = "<group>"; };
 		18ECDCF42405194800090014 /* aliPayCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aliPayCode.png; sourceTree = "<group>"; };
 		18EF56B0248668CD00D7BC26 /* YMStrangerCheckCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMStrangerCheckCell.h; sourceTree = "<group>"; };
 		18EF56B1248668CD00D7BC26 /* YMStrangerCheckWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMStrangerCheckWindowController.h; sourceTree = "<group>"; };
@@ -426,10 +416,6 @@
 		188A658B2272ACBA0096663E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				18DB626B248502770094EEDD /* ZLJPrinter.h */,
-				18DB626A248502770094EEDD /* ZLJPrinter.m */,
-				18DB625B2480E6530094EEDD /* ANYMethodLog.h */,
-				18DB625C2480E6530094EEDD /* ANYMethodLog.m */,
 				3644BDF32285545500EDE358 /* TCB */,
 				18A7A1352272AFE600361A98 /* GCDWebServer */,
 				188A658C2272ACBA0096663E /* WindowControllers */,
@@ -658,7 +644,6 @@
 				188A65E92272ACBA0096663E /* MMStickerMessageCellView+hook.h */,
 				188A65EC2272ACBA0096663E /* MMStickerMessageCellView+hook.m */,
 				188A65E62272ACBA0096663E /* WeChat+hook.h */,
-				188A65EF2272ACBA0096663E /* WeChat+hook.m */,
 				18D4C34924236180006A20E2 /* NSObject+ThemeHook.h */,
 				18D4C34A24236180006A20E2 /* NSObject+ThemeHook.m */,
 				18B37AB7245536ED00037B58 /* NSObject+Safe.h */,
@@ -834,7 +819,6 @@
 				188A66012272ACBA0096663E /* TKWeChatPluginConfig.h in Headers */,
 				188A662E2272ACBA0096663E /* DefineConstant.h in Headers */,
 				188A65F52272ACBA0096663E /* TKAboutWindowController.h in Headers */,
-				18DB626D248502770094EEDD /* ZLJPrinter.h in Headers */,
 				18A7A1302272ACE900361A98 /* WeChatPlugin.h in Headers */,
 				188A660C2272ACBA0096663E /* YMVersionManager.h in Headers */,
 				36AC9D87228A813F00EA9F97 /* YMDownloadManager.h in Headers */,
@@ -845,7 +829,6 @@
 				188A66262272ACBA0096663E /* NSButton+Action.h in Headers */,
 				18A7A1702272AFE600361A98 /* GCDWebServerURLEncodedFormRequest.h in Headers */,
 				18A7A1612272AFE600361A98 /* GCDWebServerFileResponse.h in Headers */,
-				18DB625D2480E6530094EEDD /* ANYMethodLog.h in Headers */,
 				188A66372272ACBA0096663E /* MMChatsTableCellView+hook.h in Headers */,
 				18A7A1622272AFE600361A98 /* GCDWebServerStreamedResponse.h in Headers */,
 				188A662A2272ACBA0096663E /* NSDate+Action.h in Headers */,
@@ -1035,7 +1018,6 @@
 				188A662C2272ACBA0096663E /* NSMenuItem+Action.m in Sources */,
 				188A661D2272ACBA0096663E /* NSButton+Action.m in Sources */,
 				36AC9D8B228A81C200EA9F97 /* XMLReader.m in Sources */,
-				188A66412272ACBA0096663E /* WeChat+hook.m in Sources */,
 				1898CF4A2459231100B557E9 /* YMMessageHelper.m in Sources */,
 				188A66282272ACBA0096663E /* NSTextField+Action.m in Sources */,
 				3644BDF92285545500EDE358 /* TCBlobDownloadManager.m in Sources */,
@@ -1053,7 +1035,6 @@
 				188A66342272ACBA0096663E /* TKAutoReplyCell.m in Sources */,
 				188A66052272ACBA0096663E /* YMVersionManager.m in Sources */,
 				18A7A16E2272AFE600361A98 /* GCDWebServerDataRequest.m in Sources */,
-				18DB625E2480E6530094EEDD /* ANYMethodLog.m in Sources */,
 				18A7A1662272AFE600361A98 /* GCDWebServerDataResponse.m in Sources */,
 				18A7A1652272AFE600361A98 /* GCDWebServerFileResponse.m in Sources */,
 				188A66432272ACBA0096663E /* fishhook.c in Sources */,
@@ -1075,7 +1056,6 @@
 				D79D235A2449EF5D00C391E4 /* GVUserDefaults.m in Sources */,
 				188A66312272ACBA0096663E /* TKAutoReplyContentView.m in Sources */,
 				188A66242272ACBA0096663E /* NSDate+Action.m in Sources */,
-				18DB626C248502770094EEDD /* ZLJPrinter.m in Sources */,
 				18D298532394EE60009EE6B0 /* YMNetWorkHelper.m in Sources */,
 				3632294322AFD9CF00F62EAB /* YMThemeManager.m in Sources */,
 				188A66042272ACBA0096663E /* YMMessageManager.m in Sources */,
