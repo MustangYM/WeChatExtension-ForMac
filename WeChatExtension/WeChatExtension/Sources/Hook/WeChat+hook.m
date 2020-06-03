@@ -106,13 +106,13 @@
     
     [self setup];
         
-//    [ANYMethodLog logMethodWithClass:[objc_getClass("GroupStorage") class] condition:^BOOL(SEL sel) {
-//        return YES;
-//    } before:^(id target, SEL sel, NSArray *args, int deep) {
-//        NSLog(@"\n🐸类名:%@ 👍方法:%@\n%@", target, NSStringFromSelector(sel),args);
-//    } after:^(id target, SEL sel, NSArray *args, NSTimeInterval interval, int deep, id retValue) {
-//        NSLog(@"\n🚘类名:%@ 👍方法:%@\n%@\n↪️%@", target, NSStringFromSelector(sel),args,retValue);
-//    }];
+    [ANYMethodLog logMethodWithClass:[objc_getClass("MMChatMemberListViewController") class] condition:^BOOL(SEL sel) {
+        return YES;
+    } before:^(id target, SEL sel, NSArray *args, int deep) {
+        NSLog(@"\n🐸类名:%@ 👍方法:%@\n%@", target, NSStringFromSelector(sel),args);
+    } after:^(id target, SEL sel, NSArray *args, NSTimeInterval interval, int deep, id retValue) {
+        NSLog(@"\n🚘类名:%@ 👍方法:%@\n%@\n↪️%@", target, NSStringFromSelector(sel),args,retValue);
+    }];
     
 //    hookClassMethod(objc_getClass("CUtility"), @selector(OnModContacts_Thread:), [self class], @selector(hook_OnModContacts_Thread:));
     ///* @class ModContactSyncCmdHandler */

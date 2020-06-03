@@ -24,6 +24,7 @@
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) NSProgressIndicator *progress;
 @property (nonatomic, strong) NSTextField *indicatorLabel;
+@property (nonatomic, strong) NSString *currentChatroom;
 @end
 
 @implementation YMStrangerCheckWindowController
@@ -40,7 +41,12 @@
     if (notification.object != self.window) {
         return;
     }
-    
+    [self.timer invalidate];
+    self.timer = nil;
+    self.progress.hidden = YES;
+    self.indicatorLabel.hidden = YES;
+    GroupStorage *groupStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
+    [groupStorage UIQuitGroup:self.currentChatroom];
 }
 
 - (void)initSubviews
@@ -70,7 +76,7 @@
     });
     
     self.addButton = ({
-        NSButton *btn = [NSButton tk_buttonWithTitle:@"开始检测" target:self action:@selector(onCheckStranger)];
+        NSButton *btn = [NSButton tk_buttonWithTitle:YMLanguage(@"开始检测", @"Start") target:self action:@selector(onCheckStranger)];
         btn.frame = NSMakeRect(240, 10, 100, 40);
         btn.bezelStyle = NSBezelStyleTexturedRounded;
         btn;
@@ -79,12 +85,12 @@
     
     
     self.desLabel = ({
-        NSTextField *label = [NSTextField tk_labelWithString:YMLanguage(@"通过静默拉群检测，对方无感知。\n切勿在群里发消息!!!\n检测完手动删除群聊即可。", @"Through the silent group pulling detection, delete the group chat after detection, and do not send messages in the group!!!")];
+        NSTextField *label = [NSTextField tk_labelWithString:YMLanguage(@"· 检测时对方无任何感知。\n· 只提供扫描功能，删ta与否，且行且珍惜。\n· 切勿在检测群里发消息，否则会露馅!", @"Through the silent group pulling detection, delete the group chat after detection, and do not send messages in the group!!!")];
         label.textColor = [NSColor grayColor];
         [[label cell] setLineBreakMode:NSLineBreakByCharWrapping];
         [[label cell] setTruncatesLastVisibleLine:YES];
         label.font = [NSFont systemFontOfSize:12];
-        label.frame = NSMakeRect(30, 400, 300, 50);
+        label.frame = NSMakeRect(30, 385, 300, 70);
         label;
     });
 
@@ -157,8 +163,9 @@
             return ;
         }
         
+        wself.currentChatroom = chatroom;
+        
         NSArray *contacts = [YMIMContactsManager getAllFriendContactsWithOutChatroom];
-        int64_t min = contacts.count * 5 / 60;
         __block int64_t i = 0;
         NSMutableArray *tempArray = [NSMutableArray arrayWithArray:contacts];
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:5.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
@@ -167,9 +174,14 @@
                 wself.timer = nil;
                 wself.progress.hidden = YES;
                 wself.indicatorLabel.hidden = YES;
+                 [groupStorage UIQuitGroup:chatroom];
             }
             i++;
-            [wself.indicatorLabel setStringValue:[NSString stringWithFormat:@"%lld/%ld 检测还需约%lld分钟", i, contacts.count, min]];
+            int64_t min = tempArray.count * 5 / 60;
+
+            NSString *enMsg = [NSString stringWithFormat:@"%lld/%ld %lld minutes to scan", i, contacts.count, min];
+            NSString *zhMsg = [NSString stringWithFormat:@"%lld/%ld 检测还需约%lld分钟", i, contacts.count, min];
+            [wself.indicatorLabel setStringValue:YMLanguage(zhMsg, enMsg)];
             wself.progress.hidden = NO;
             wself.indicatorLabel.hidden = NO;
             
