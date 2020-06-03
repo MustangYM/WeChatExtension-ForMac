@@ -47,6 +47,7 @@
     self.indicatorLabel.hidden = YES;
     GroupStorage *groupStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
     [groupStorage UIQuitGroup:self.currentChatroom];
+    self.addButton.enabled = YES;
 }
 
 - (void)initSubviews
@@ -168,13 +169,16 @@
         NSArray *contacts = [YMIMContactsManager getAllFriendContactsWithOutChatroom];
         __block int64_t i = 0;
         NSMutableArray *tempArray = [NSMutableArray arrayWithArray:contacts];
+        wself.addButton.enabled = NO;
+        
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:5.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
-            if (tempArray.count == 0) {
+            if (tempArray.count < 1) {
                 [wself.timer invalidate];
                 wself.timer = nil;
                 wself.progress.hidden = YES;
                 wself.indicatorLabel.hidden = YES;
                  [groupStorage UIQuitGroup:chatroom];
+                wself.addButton.enabled = YES;
             }
             i++;
             int64_t min = tempArray.count * 5 / 60;

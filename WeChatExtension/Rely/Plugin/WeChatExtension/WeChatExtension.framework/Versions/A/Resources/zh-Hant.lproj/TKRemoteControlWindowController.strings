@@ -1,0 +1,27 @@
+
+/* Class = "NSTabViewItem"; label = "Assistant"; ObjectID = "5Vc-7I-XmY"; */
+"5Vc-7I-XmY.label" = "小助手";
+
+/* Class = "NSTextFieldCell"; title = "Remote Control is available only when send it to yourself "; ObjectID = "EiN-zX-6I8"; */
+"EiN-zX-6I8.title" = "為避免誤觸，遠程控制僅在向自己發送指令有效，他人發送或者發送給他人均無效。";
+
+/* Class = "NSWindow"; title = "Remote Control Setting"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "遠程控制設置";
+
+/* Class = "NSTextFieldCell"; title = "Now remote control support voice recognition"; ObjectID = "JDf-Rp-jEj"; */
+"JDf-Rp-jEj.title" = "小助手已支持語音遠程控制";
+
+/* Class = "NSTabViewItem"; label = "APP"; ObjectID = "kWv-JR-wGj"; */
+"kWv-JR-wGj.label" = "APP";
+
+/* Class = "NSTabViewItem"; label = "NeteaseMusic"; ObjectID = "pJO-yQ-9vs"; */
+"pJO-yQ-9vs.label" = "網易雲音樂";
+
+/* Class = "NSTextFieldCell"; title = "⚠️ Attention: "; ObjectID = "pyh-Mz-b2h"; */
+"pyh-Mz-b2h.title" = "⚠️ 註意: ";
+
+/* Class = "NSTextFieldCell"; title = "Allow WeChat Control in \"System Preferences -> Security & Privacy -> Privacy -> Accessibility\""; ObjectID = "qpH-CW-UVl"; */
+"qpH-CW-UVl.title" = "若想使用該功能，請於“系統偏好設置 -> 安全性與隱私 -> 隱私 -> 輔助功能”中添加微信";
+
+/* Class = "NSTabViewItem"; label = "MacBook"; ObjectID = "sNP-nR-n56"; */
+"sNP-nR-n56.label" = "MacBook";
