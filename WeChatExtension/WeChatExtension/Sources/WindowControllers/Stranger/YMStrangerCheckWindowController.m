@@ -170,7 +170,7 @@
         NSArray *contacts = [YMIMContactsManager getAllFriendContactsWithOutChatroom];
         NSMutableArray *tempArray = [NSMutableArray arrayWithArray:contacts];
         
-        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.01 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:5.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
             if (tempArray.count <= 1) {
                 [wself onRelease:groupStorage];
                 return;
