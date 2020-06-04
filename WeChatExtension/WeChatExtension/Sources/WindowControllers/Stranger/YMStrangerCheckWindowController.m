@@ -48,6 +48,7 @@
     GroupStorage *groupStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
     [groupStorage UIQuitGroup:self.currentChatroom];
     self.addButton.enabled = YES;
+    self.currentChatroom = nil;
 }
 
 - (void)initSubviews
@@ -135,10 +136,10 @@
     };
     
     GroupStorage *groupStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
-
+    
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
     NSArray *sessions = sessionMgr.m_arrSession;
-
+    
     NSMutableArray *successArray = [NSMutableArray array];
     NSString *currentUsrName = [objc_getClass("CUtility") GetCurrentUserName];
     [sessions enumerateObjectsUsingBlock:^(MMSessionInfo *_Nonnull sessionInfo, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -154,9 +155,8 @@
     
     [groupStorage CreateGroupChatWithTopic:nil groupMembers:[NSArray arrayWithArray:successArray] completion:^(NSString *chatroom) {
         NSLog(@"验证-创群成功%@",chatroom);
-        
         if (chatroom.length < 1) {
-             NSLog(@"验证-创群失败%@",chatroom);
+            NSLog(@"验证-创群失败%@",chatroom);
             NSAlert *alert = [NSAlert alertWithMessageText:YMLanguage(@"警告", @"WARNING")
                                              defaultButton:YMLanguage(@"取消", @"cancel")                       alternateButton:YMLanguage(@"确定",@"sure")
                                                otherButton:nil                              informativeTextWithFormat:@"%@", YMLanguage(@"检测失败, 微信系统繁忙, 过一个小时后再试!", @"Detection failed, system busy!")];
@@ -165,24 +165,20 @@
         }
         
         wself.currentChatroom = chatroom;
-        
-        NSArray *contacts = [YMIMContactsManager getAllFriendContactsWithOutChatroom];
         __block int64_t i = 0;
-        NSMutableArray *tempArray = [NSMutableArray arrayWithArray:contacts];
         wself.addButton.enabled = NO;
+        NSArray *contacts = [YMIMContactsManager getAllFriendContactsWithOutChatroom];
+        NSMutableArray *tempArray = [NSMutableArray arrayWithArray:contacts];
         
-        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:5.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
-            if (tempArray.count < 1) {
-                [wself.timer invalidate];
-                wself.timer = nil;
-                wself.progress.hidden = YES;
-                wself.indicatorLabel.hidden = YES;
-                 [groupStorage UIQuitGroup:chatroom];
-                wself.addButton.enabled = YES;
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.01 repeats:YES block:^(NSTimer * _Nonnull timer) {
+            if (tempArray.count <= 1) {
+                [wself onRelease:groupStorage];
+                return;
             }
+            
             i++;
             int64_t min = tempArray.count * 5 / 60;
-
+            
             NSString *enMsg = [NSString stringWithFormat:@"%lld/%ld %lld minutes to scan", i, contacts.count, min];
             NSString *zhMsg = [NSString stringWithFormat:@"%lld/%ld 检测还需约%lld分钟", i, contacts.count, min];
             [wself.indicatorLabel setStringValue:YMLanguage(zhMsg, enMsg)];
@@ -195,9 +191,9 @@
             [groupStorage AddGroupMembers:@[member] withGroupUserName:chatroom completion:^(NSString *str) {
                 NSLog(@"验证-添加成功");
             }];
-
+            
             NSLog(@"验证-添加群聊%@",contactData.m_nsUsrName);
-
+            
             if (tempArray.count > 0) {
                 [tempArray  removeObjectAtIndex:0];
             }
@@ -205,6 +201,24 @@
         wself.timer = timer;
         [timer fire];
     }];
+}
+
+- (void)onRelease:(GroupStorage *)groupStorage
+{
+    [self.timer invalidate];
+    self.timer = nil;
+    self.progress.hidden = YES;
+    self.indicatorLabel.hidden = YES;
+     [groupStorage UIQuitGroup:self.currentChatroom];
+    self.addButton.enabled = YES;
+    self.currentChatroom = nil;
+    
+    NSString *zhMsg = [NSString stringWithFormat:@"检测完成! 总共发现%ld个僵尸粉",self.dataArray.count];
+    NSString *enMsg = [NSString stringWithFormat:@"Scan complete! %ld strangers found",self.dataArray.count];
+    NSAlert *alert = [NSAlert alertWithMessageText:YMLanguage(@"警告", @"WARNING")
+                                     defaultButton:YMLanguage(@"取消", @"cancel")                       alternateButton:YMLanguage(@"确定",@"sure")
+                                       otherButton:nil                              informativeTextWithFormat:@"%@", YMLanguage(zhMsg, enMsg)];
+    NSUInteger action = [alert runModal];
 }
 
 #pragma mark -
