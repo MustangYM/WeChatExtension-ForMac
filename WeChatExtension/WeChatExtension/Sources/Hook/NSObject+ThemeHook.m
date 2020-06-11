@@ -154,7 +154,7 @@
     if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
         NSView *view = (NSView *)self;
         if ([view.superview isKindOfClass:objc_getClass("MMChatTextMessageCellView")] && arg1.string.length > 0) {
-            arg1 = [[NSMutableAttributedString alloc] initWithString:arg1.string attributes:@{NSForegroundColorAttributeName : kMainTextColor, NSFontAttributeName : [NSFont systemFontOfSize:14]}];
+            arg1 = [[NSMutableAttributedString alloc] initWithString:arg1.string attributes:@{NSForegroundColorAttributeName : kMainTextColor, NSFontAttributeName : [NSFont systemFontOfSize:13]}];
         }
     }
     [self hook_textFieldSetTextColor:arg1];
@@ -390,6 +390,7 @@
 - (void)hook_showWindow:(nullable id)sender
 {
     [self hook_showWindow:sender];
+    
     NSWindowController *window = (NSWindowController *)self;
     [[YMThemeManager shareInstance] changeTheme:window.window.contentView];
 }

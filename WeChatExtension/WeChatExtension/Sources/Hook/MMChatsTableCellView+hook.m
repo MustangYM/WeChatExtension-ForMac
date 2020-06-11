@@ -94,7 +94,7 @@
             NSImageView *pinedView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 20, 20)];
             [pinedView setImage:pined];
 
-            pinedView.tag = 9999999;
+            pinedView.tag = 999;
             [cellView.stickyBackgroundView addSubview:pinedView];
             pinedView.translatesAutoresizingMaskIntoConstraints = NO;
             NSMutableArray<NSLayoutConstraint*> *contraints = [NSMutableArray array];
