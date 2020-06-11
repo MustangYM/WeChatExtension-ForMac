@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.5.8</string>
+	<string>2.5.9</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>NSHumanReadableCopyright</key>
@@ -25,6 +25,6 @@
 	<key>showUpdateWindow</key>
 	<true/>
 	<key>versionInfo</key>
-	<string>v2.5.8(2020-06-03):\n👉🏻  僵尸粉检测，检测谁把你删了（对方无感知）. \n</string>
+	<string>v2.5.9(2020-06-11):\n👉🏻  1. 下架僵尸粉检测功能  2. 修复聊天记录字符串显示不完整 \n</string>
 </dict>
 </plist>
