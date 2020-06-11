@@ -238,7 +238,7 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
                         autoAuthItem,
                         enableSystemBrowserItem,
                         backGroundItem,
-                        checkZombieItem,
+//                        checkZombieItem,
                         pluginItem,
                         aboutPluginItem,
                         currentVersionItem,
