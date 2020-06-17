@@ -120,12 +120,9 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
 curl -o- -L https://omw.limingkai.cn/install.sh | bash -s
 ```
 - Oh My WeChat一键命令
-```
-omw -n    //跳过检查更新的步骤，优先使用下载过的安装包安装小助手
-```
-```
-omw -g    //默认情况下，omw 会从国内的镜像仓库检查更新及下载安装包
-```
+
+- `omw -n`：跳过检查更新的步骤，优先使用下载过的安装包安装小助手。
+- `omw -g`：默认情况下，omw 会从[国内的镜像仓库](https://gitee.com/mirrors/wechatextension-formac)检查更新及下载安装包，镜像仓库每天同步一次 [GitHub 仓库](https://github.com/MustangYM/WeChatExtension-ForMac)，检查更新时可能不会及时发现最新版本，如果要确保安装最新版本，可以添加 `-g` 参数从 GitHub 仓库检查更新及下载安装包，但由于网络不稳定，可能会失败。**注意：目前国内镜像仓库无法正常下载小助手，请使用 `omw -g` 或者 `omw load` 命令安装小助手。**
 
 安装完成后会自动安装微信插件，可以访问 [Oh My WeChat 的项目主页](https://github.com/lmk123/oh-my-wechat#oh-my-wechat)查看更多用法。
 
