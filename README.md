@@ -411,6 +411,14 @@ This project exists thanks to all the people who contribute。
   <a href="https://github.com/eyaeya"><img src="https://avatars2.githubusercontent.com/u/5821137?s=400&u=800fceb32aa9e06c3c5a9ab4ae03c8134fe17ce9&v=4" width="100px;" alt="eyaeya"/>
   <br></br><sub><b>eyaeya</b></sub>
  
+   <td align="center">
+  <a href="https://github.com/qierkang"><img src="https://avatars1.githubusercontent.com/u/17940151?s=400&u=ccdfdd11ec900348811f8eefed8f16d80a801daa&v=4" width="100px;" alt="qierkang"/>
+  <br></br><sub><b>qierkang</b></sub>
+ 
+   <td align="center">
+  <a href="https://github.com/MrPlusZhao"><img src="https://avatars0.githubusercontent.com/u/12454104?s=400&u=5ee35a4f3fdc25ada91a0921220171cb40fe458a&v=4" width="100px;" alt="MrPlusZhao"/>
+  <br></br><sub><b>MrPlusZhao</b></sub>
+ 
   </td></tr></table>
 
 ## Backers
