@@ -11,21 +11,6 @@
 #import "TKIgnoreSessonModel.h"
 #import "YMMessageManager.h"
 
-//Fix 内存泄露导致的卡顿
-static NSImageView* creatPinedView()
-{
-    static NSImageView *pinedView;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        NSBundle *bundle = [NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"];
-        NSString *imgPath= [bundle pathForImageResource:@"pin.png"];
-        NSImage *pined = [[NSImage alloc] initWithContentsOfFile:imgPath];
-        pinedView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 20, 20)];
-        [pinedView setImage:pined];
-    });
-    return pinedView;
-}
-
 @implementation NSObject (MMChatsTableCellViewHook)
 
 + (void)hookMMChatsTableCellView
@@ -73,6 +58,14 @@ static NSImageView* creatPinedView()
     [self hook_setSessionInfo:sessionInfo];
     
     MMChatsTableCellView *cellView = (MMChatsTableCellView *)self;
+    
+    for (NSImageView *sub in cellView.subviews) {
+        if (sub.tag == 999) {
+            [sub removeFromSuperview];
+            break;
+        }
+    }
+    
     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
     __block BOOL isIgnore = false;
     NSMutableArray *ignoreSessions = [[TKWeChatPluginConfig sharedConfig] ignoreSessionModels];
@@ -93,35 +86,44 @@ static NSImageView* creatPinedView()
             changeColor = [NSColor redColor];
         }
         
-        __weak __typeof (cellView) weakCellView = cellView;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSAttributedString *str = weakCellView.nickName.attributedStringValue;
-            NSRange range = NSMakeRange(0, str.length);
-            NSDictionary *attributes = [str attributesAtIndex:0 effectiveRange:&range];
-            NSFont *attributesFont = [attributes valueForKey:@"NSFont"];
-            NSMutableAttributedString *returnValue = [[NSMutableAttributedString alloc] initWithString:str.string attributes:@{NSForegroundColorAttributeName :changeColor, NSFontAttributeName : attributesFont}];
-            weakCellView.nickName.attributedStringValue = returnValue;
-            
-            // MARK: - Add pined image in dark mode
-            NSImageView *pinedView = creatPinedView();
-            pinedView.tag = 999;
-            [weakCellView.stickyBackgroundView addSubview:pinedView];
-            pinedView.translatesAutoresizingMaskIntoConstraints = NO;
-            NSMutableArray<NSLayoutConstraint*> *contraints = [NSMutableArray array];
-            if (@available(macOS 10.11, *)) {
-                [contraints addObject:[pinedView.topAnchor constraintEqualToAnchor:weakCellView.stickyBackgroundView.topAnchor constant:0]];
+        if (sessionInfo.m_bIsTop) {
+            __weak __typeof (cellView) weakCellView = cellView;
+                   dispatch_async(dispatch_get_main_queue(), ^{
+                       NSAttributedString *str = weakCellView.nickName.attributedStringValue;
+                       NSRange range = NSMakeRange(0, str.length);
+                       NSDictionary *attributes = [str attributesAtIndex:0 effectiveRange:&range];
+                       NSFont *attributesFont = [attributes valueForKey:@"NSFont"];
+                       NSMutableAttributedString *returnValue = [[NSMutableAttributedString alloc] initWithString:str.string attributes:@{NSForegroundColorAttributeName :changeColor, NSFontAttributeName : attributesFont}];
+                       weakCellView.nickName.attributedStringValue = returnValue;
+                       
+                       // MARK: - Add pined image in dark mode
+                       NSBundle *bundle = [NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"];
+                       NSString *imgPath= [bundle pathForImageResource:@"pin.png"];
 
-                [contraints addObject:[pinedView.widthAnchor constraintEqualToConstant:10]];
+                       NSImage *pined = [[NSImage alloc] initWithContentsOfFile:imgPath];
+                       NSImageView *pinedView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 20, 20)];
+                       [pinedView setImage:pined];
 
-                [contraints addObject:[pinedView.heightAnchor constraintEqualToConstant:10]];
-
-                [contraints addObject:[pinedView.leadingAnchor constraintEqualToAnchor:weakCellView.stickyBackgroundView.leadingAnchor constant:0]];
-                [weakCellView.stickyBackgroundView addConstraints:contraints];
-            } else {
-                // Fallback on earlier versions
-            }
-            
-        });
+                       pinedView.tag = 999;
+                       [weakCellView.stickyBackgroundView addSubview:pinedView];
+                       pinedView.translatesAutoresizingMaskIntoConstraints = NO;
+                       NSMutableArray<NSLayoutConstraint*> *contraints = [NSMutableArray array];
+                       if (@available(macOS 10.11, *)) {
+                           [contraints addObject:[pinedView.topAnchor constraintEqualToAnchor:weakCellView.stickyBackgroundView.topAnchor constant:0]];
+                           
+                           [contraints addObject:[pinedView.widthAnchor constraintEqualToConstant:10]];
+                           
+                           [contraints addObject:[pinedView.heightAnchor constraintEqualToConstant:10]];
+                           
+                           [contraints addObject:[pinedView.leadingAnchor constraintEqualToAnchor:cellView.stickyBackgroundView.leadingAnchor constant:0]];
+                           [weakCellView.stickyBackgroundView addConstraints:contraints];
+                       } else {
+                           // Fallback on earlier versions
+                       }
+                       
+                   });
+        }
+       
     } else {
         if (isIgnore) {
             cellView.layer.backgroundColor = kBG3.CGColor;

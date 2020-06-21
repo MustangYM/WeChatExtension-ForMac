@@ -134,4 +134,5 @@ static const NSString *DEVICE_THEME_MODE = @"DEVICE_THEME_MODE";
     NSMutableAttributedString *returnValue = [[NSMutableAttributedString alloc] initWithString:button.title attributes:@{NSForegroundColorAttributeName :[NSColor whiteColor]}];
     button.attributedTitle = returnValue;
 }
+
 @end
