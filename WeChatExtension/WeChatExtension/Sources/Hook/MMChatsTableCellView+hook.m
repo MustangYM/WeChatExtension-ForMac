@@ -59,6 +59,7 @@
     
     MMChatsTableCellView *cellView = (MMChatsTableCellView *)self;
     
+    //remove置顶箭头
     for (NSImageView *sub in cellView.subviews) {
         if (sub.tag == 999) {
             [sub removeFromSuperview];
@@ -86,42 +87,43 @@
             changeColor = [NSColor redColor];
         }
         
+        //修复内存泄露导致的卡顿
         if (sessionInfo.m_bIsTop) {
             __weak __typeof (cellView) weakCellView = cellView;
-                   dispatch_async(dispatch_get_main_queue(), ^{
-                       NSAttributedString *str = weakCellView.nickName.attributedStringValue;
-                       NSRange range = NSMakeRange(0, str.length);
-                       NSDictionary *attributes = [str attributesAtIndex:0 effectiveRange:&range];
-                       NSFont *attributesFont = [attributes valueForKey:@"NSFont"];
-                       NSMutableAttributedString *returnValue = [[NSMutableAttributedString alloc] initWithString:str.string attributes:@{NSForegroundColorAttributeName :changeColor, NSFontAttributeName : attributesFont}];
-                       weakCellView.nickName.attributedStringValue = returnValue;
-                       
-                       // MARK: - Add pined image in dark mode
-                       NSBundle *bundle = [NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"];
-                       NSString *imgPath= [bundle pathForImageResource:@"pin.png"];
-
-                       NSImage *pined = [[NSImage alloc] initWithContentsOfFile:imgPath];
-                       NSImageView *pinedView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 20, 20)];
-                       [pinedView setImage:pined];
-
-                       pinedView.tag = 999;
-                       [weakCellView.stickyBackgroundView addSubview:pinedView];
-                       pinedView.translatesAutoresizingMaskIntoConstraints = NO;
-                       NSMutableArray<NSLayoutConstraint*> *contraints = [NSMutableArray array];
-                       if (@available(macOS 10.11, *)) {
-                           [contraints addObject:[pinedView.topAnchor constraintEqualToAnchor:weakCellView.stickyBackgroundView.topAnchor constant:0]];
-                           
-                           [contraints addObject:[pinedView.widthAnchor constraintEqualToConstant:10]];
-                           
-                           [contraints addObject:[pinedView.heightAnchor constraintEqualToConstant:10]];
-                           
-                           [contraints addObject:[pinedView.leadingAnchor constraintEqualToAnchor:cellView.stickyBackgroundView.leadingAnchor constant:0]];
-                           [weakCellView.stickyBackgroundView addConstraints:contraints];
-                       } else {
-                           // Fallback on earlier versions
-                       }
-                       
-                   });
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSAttributedString *str = weakCellView.nickName.attributedStringValue;
+                NSRange range = NSMakeRange(0, str.length);
+                NSDictionary *attributes = [str attributesAtIndex:0 effectiveRange:&range];
+                NSFont *attributesFont = [attributes valueForKey:@"NSFont"];
+                NSMutableAttributedString *returnValue = [[NSMutableAttributedString alloc] initWithString:str.string attributes:@{NSForegroundColorAttributeName :changeColor, NSFontAttributeName : attributesFont}];
+                weakCellView.nickName.attributedStringValue = returnValue;
+                
+                // MARK: - Add pined image in dark mode
+                NSBundle *bundle = [NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"];
+                NSString *imgPath= [bundle pathForImageResource:@"pin.png"];
+                
+                NSImage *pined = [[NSImage alloc] initWithContentsOfFile:imgPath];
+                NSImageView *pinedView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 20, 20)];
+                [pinedView setImage:pined];
+                
+                pinedView.tag = 999;
+                [weakCellView.stickyBackgroundView addSubview:pinedView];
+                pinedView.translatesAutoresizingMaskIntoConstraints = NO;
+                NSMutableArray<NSLayoutConstraint*> *contraints = [NSMutableArray array];
+                if (@available(macOS 10.11, *)) {
+                    [contraints addObject:[pinedView.topAnchor constraintEqualToAnchor:weakCellView.stickyBackgroundView.topAnchor constant:0]];
+                    
+                    [contraints addObject:[pinedView.widthAnchor constraintEqualToConstant:10]];
+                    
+                    [contraints addObject:[pinedView.heightAnchor constraintEqualToConstant:10]];
+                    
+                    [contraints addObject:[pinedView.leadingAnchor constraintEqualToAnchor:cellView.stickyBackgroundView.leadingAnchor constant:0]];
+                    [weakCellView.stickyBackgroundView addConstraints:contraints];
+                } else {
+                    // Fallback on earlier versions
+                }
+                
+            });
         }
        
     } else {
