@@ -44,7 +44,7 @@
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/changeMode.png" width="300px"/>
 </p>
 
-<del>## 僵尸粉检测</del>
+## 僵尸粉检测
 <del>- 通过建立一个微信群，将被检测对象拉入群中，拉失败的就是非好友。</del>
 <del>- 只要你自己不在群里发消息，这个群理论上是不算存在的，别人也就无从发现。</del>
 <del>- 检测完，一旦你自己退出群聊或者删除群，此群就算解散了，所以不会留下痕迹。</del>
