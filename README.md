@@ -49,7 +49,7 @@
 <del>- 只要你自己不在群里发消息，这个群理论上是不算存在的，别人也就无从发现。</del>
 <del>- 检测完，一旦你自己退出群聊或者删除群，此群就算解散了，所以不会留下痕迹。</del>
 
-## 手机端也能收到被撤回的消
+## 手机端也能收到被撤回的消息
 - 如果Mac拦截到A发送来的消息，手机也会同步收到的这条已经拦截的消息(自己发送给自己)。目前只支持同步文字消息与图片消息，其他类型也可以做，但意义不大。
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/revokeAsync.png" width="800px"/>
