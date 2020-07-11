@@ -26,6 +26,7 @@
 @property (nonatomic, assign) NSInteger forwardingToCurrentIdx;
 
 @property (nonatomic, strong) NSButton *enableButton;
+@property (nonatomic, strong) NSButton *enableAllFirendButton;
 
 @end
 
@@ -142,6 +143,14 @@
         btn;
     });
 
+    self.enableAllFirendButton = ({
+        NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoForwarding.enableAllFriend") target:self action:@selector(clickEnableAllFriendBtn:)];
+        btn.frame = NSMakeRect(360, 20, 130, 20);
+        btn.state = [[TKWeChatPluginConfig sharedConfig] autoForwardingAllFriend];
+        [YMThemeManager changeButtonTheme:btn];
+        btn;
+    });
+
     scrollView.contentView.documentView = self.forwardingFromTableView;
     forwardingToScrollView.contentView.documentView = self.forwardingToTableView;
     
@@ -151,6 +160,7 @@
                                            self.enableButton,
                                            self.forwardingToAddButton,
                                            self.forwardingToReduceButton,
+                                           self.enableAllFirendButton,
                                            self.reduceButton]];
 }
 
@@ -177,6 +187,11 @@
 - (void)clickEnableBtn:(NSButton *)btn
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_AUTO_FORWARDING_CHANGE object:nil];
+}
+
+- (void)clickEnableAllFriendBtn:(NSButton *)btn
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_AUTO_FORWARDING_ALL_FRIEND_CHANGE object:nil];
 }
 
 # pragma mark - Forwarding from

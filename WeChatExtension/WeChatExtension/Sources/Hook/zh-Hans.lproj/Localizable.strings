@@ -124,6 +124,7 @@
 "assistant.autoForwarding.forwardingFromList" = "需要转发的聊天列表";
 "assistant.autoForwarding.forwardingToList" = "接收转发的聊天列表";
 "assistant.autoForwarding.enable" = "开启自动转发";
+"assistant.autoForwarding.enableAllFriend" = "转发所有好友消息";
 
 //  版本更新
 "assistant.update.alret.cancle" = "取消";

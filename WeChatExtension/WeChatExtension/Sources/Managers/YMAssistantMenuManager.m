@@ -313,6 +313,7 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigAutoReplyChange) name:NOTIFY_AUTO_REPLY_CHANGE object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigAutoForwardingChange) name:NOTIFY_AUTO_FORWARDING_CHANGE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigAutoForwardingAllChange) name:NOTIFY_AUTO_FORWARDING_ALL_FRIEND_CHANGE object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigPreventRevokeChange) name:NOTIFY_PREVENT_REVOKE_CHANGE object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigAutoAuthChange) name:NOTIFY_AUTO_AUTH_CHANGE object:nil];
 }
@@ -329,6 +330,13 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
     TKWeChatPluginConfig *shareConfig = [TKWeChatPluginConfig sharedConfig];
     shareConfig.autoForwardingEnable = !shareConfig.autoForwardingEnable;
     [self changePluginMenuItemWithIndex:2 state:shareConfig.autoForwardingEnable];
+}
+
+- (void)weChatPluginConfigAutoForwardingAllChange
+{
+    TKWeChatPluginConfig *shareConfig = [TKWeChatPluginConfig sharedConfig];
+    shareConfig.autoForwardingAllFriend = !shareConfig.autoForwardingAllFriend;
+    [self changePluginMenuItemWithIndex:2 state:shareConfig.autoForwardingAllFriend];
 }
 
 - (void)weChatPluginConfigPreventRevokeChange

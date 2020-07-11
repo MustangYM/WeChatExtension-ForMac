@@ -123,6 +123,7 @@
 "assistant.autoForwarding.forwardingFromList" = "Forwarding From List";
 "assistant.autoForwarding.forwardingToList" = "Forwarding To List";
 "assistant.autoForwarding.enable" = "Enable Auto-Forwarding"
+"assistant.autoForwarding.enableAllFriend" = "Forwarding All friend"
 
 //  版本更新
 "assistant.update.alret.cancle" = "Cancel";
