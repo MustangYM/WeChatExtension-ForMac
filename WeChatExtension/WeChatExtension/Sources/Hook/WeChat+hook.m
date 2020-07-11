@@ -14,6 +14,7 @@
 #import "YMMessageManager.h"
 #import "YMAssistantMenuManager.h"
 #import "YMAutoReplyModel.h"
+#import "VAutoForwardingModel.h"
 #import "YMVersionManager.h"
 #import "YMRemoteControlManager.h"
 #import "TKDownloadWindowController.h"

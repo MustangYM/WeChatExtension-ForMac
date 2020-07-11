@@ -9,6 +9,7 @@
 #import "YMAssistantMenuManager.h"
 #import "YMRemoteControlManager.h"
 #import "TKAutoReplyWindowController.h"
+#import "VAutoForwardingWindowController.h"
 #import "TKRemoteControlWindowController.h"
 #import "YMVersionManager.h"
 #import "NSMenuItem+Action.h"
@@ -21,6 +22,7 @@
 #import "YMStrangerCheckWindowController.h"
 
 static char kAutoReplyWindowControllerKey;         //  自动回复窗口的关联 key
+static char kAutoForwardingWindowControllerKey;         //  自动转发窗口的关联 key
 static char kAIAutoReplyWindowControllerKey;         //  AI回复窗口的关联 key
 static char kRemoteControlWindowControllerKey;     //  远程控制窗口的关联 key
 static char kAboutWindowControllerKey;             //  关于窗口的关联 key
@@ -88,6 +90,13 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
                                                        target:self
                                                 keyEquivalent:@"k"
                                                         state:[[TKWeChatPluginConfig sharedConfig] autoReplyEnable]];
+    //        自动转发
+    NSMenuItem *autoForwardingItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.autoForwarding")
+                                                            action:@selector(onAutoForwarding:)
+                                                            target:self
+                                                     keyEquivalent:@"K"
+                                                             state:[[TKWeChatPluginConfig sharedConfig] autoForwardingEnable]];
+    
     //        自动回复
        NSMenuItem *autoAIReplyItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"AI自动回复设置", @"AI-ReplySetting")
                                                           action:@selector(onAutoAIReply:)
@@ -229,6 +238,7 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
 
     [subMenu addItems:@[preventRevokeItem,
                         autoReplyItem,
+                        autoForwardingItem,
                         autoAIReplyItem,
                         quitMonitorItem,
                         commandItem,
@@ -302,6 +312,7 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
 - (void)addObserverWeChatConfig
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigAutoReplyChange) name:NOTIFY_AUTO_REPLY_CHANGE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigAutoForwardingChange) name:NOTIFY_AUTO_FORWARDING_CHANGE object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigPreventRevokeChange) name:NOTIFY_PREVENT_REVOKE_CHANGE object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigAutoAuthChange) name:NOTIFY_AUTO_AUTH_CHANGE object:nil];
 }
@@ -311,6 +322,13 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
     TKWeChatPluginConfig *shareConfig = [TKWeChatPluginConfig sharedConfig];
     shareConfig.autoReplyEnable = !shareConfig.autoReplyEnable;
     [self changePluginMenuItemWithIndex:1 state:shareConfig.autoReplyEnable];
+}
+
+- (void)weChatPluginConfigAutoForwardingChange
+{
+    TKWeChatPluginConfig *shareConfig = [TKWeChatPluginConfig sharedConfig];
+    shareConfig.autoForwardingEnable = !shareConfig.autoForwardingEnable;
+    [self changePluginMenuItemWithIndex:2 state:shareConfig.autoForwardingEnable];
 }
 
 - (void)weChatPluginConfigPreventRevokeChange
@@ -448,6 +466,24 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
         objc_setAssociatedObject(wechat, &kAutoReplyWindowControllerKey, autoReplyWC, OBJC_ASSOCIATION_RETAIN);
     }
     [autoReplyWC show];
+}
+
+/**
+菜单栏-微信小助手-自动转发 设置
+
+@param item 自动转发设置的item
+*/
+- (void)onAutoForwarding:(NSMenuItem *)item
+{
+    NSLog(@"Item clicked");
+    WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
+    VAutoForwardingWindowController *autoForwardingWC = objc_getAssociatedObject(wechat, &kAutoForwardingWindowControllerKey);
+
+    if (!autoForwardingWC) {
+        autoForwardingWC = [[VAutoForwardingWindowController alloc] initWithWindowNibName:@"VAutoForwardingWindowController"];
+        objc_setAssociatedObject(wechat, &kAutoForwardingWindowControllerKey, autoForwardingWC, OBJC_ASSOCIATION_RETAIN);
+    }
+    [autoForwardingWC show];
 }
 
 - (void)onAutoAIReply:(NSMenuItem *)item
