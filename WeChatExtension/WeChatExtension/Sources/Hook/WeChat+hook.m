@@ -717,9 +717,6 @@
     }
     VAutoForwardingModel *model = [[TKWeChatPluginConfig sharedConfig] VAutoForwardingModel];
 
-    if (model.forwardingFromContacts.count < 1 || model.forwardingFromContacts.count < 1) {
-        return;
-    }
     if ([[TKWeChatPluginConfig sharedConfig] autoForwardingAllFriend]) {
         if (![msgContact isGroupChat]) {
             [self forwardingWithMsg:msg];
