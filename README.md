@@ -24,7 +24,6 @@
 - 在黑夜模式中你可以打开`群成员彩色`，群聊中每个发言人的昵称颜色都会有所区别。
 
 - 黑夜模式
-
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/darkMode.png" width="800px"/>
 </p>
@@ -58,6 +57,14 @@
 - 可以对同步的消息进行筛选， 以免群消息打扰。
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190625-111206%402x.png" width="600px"/>
+</p>
+
+## 消息转发
+- Mac可实现多开，出门在外手机却不能，怎样在同一台手机上实现多个微信号消息的监听？
+- iPhone上可安装自签的微信包，实现多开，但是Bundle Id的改变导致APNS消息推送异常，无法收到消息推送？
+- 消息转发可解决此痛点
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/msgForwarding.png" width="800px"/>
 </p>
 
 ## 免认证登录与多开
