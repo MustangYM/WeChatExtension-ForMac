@@ -87,7 +87,7 @@
 - 依次点击 `小助手` -> `开启Alfred功能`
 - 打开你的Alfred搜索框，输入 `wx `(wx后面接一个空格)，即可开启Alfred控制微信之旅
 ## 退群监控
-- 退群提醒，同一人在同一群里的退出提醒7天内不再重复提示。
+<del>- 退群提醒，同一人在同一群里的退出提醒7天内不再重复提示。<del>
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191227-200134%402x.png" width="800px"/>
 </p>
