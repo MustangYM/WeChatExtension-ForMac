@@ -164,6 +164,11 @@
 		96B578BF2360AA8A00F3F66C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B578C12360AA8A00F3F66C /* Localizable.strings */; };
 		D79D23592449EF5D00C391E4 /* GVUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = D79D23572449EF5C00C391E4 /* GVUserDefaults.h */; };
 		D79D235A2449EF5D00C391E4 /* GVUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = D79D23582449EF5C00C391E4 /* GVUserDefaults.m */; };
+		DC069F4124B5D23A00256A03 /* VAutoForwardingWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = DC069F3E24B5D23900256A03 /* VAutoForwardingWindowController.h */; };
+		DC069F4224B5D23A00256A03 /* VAutoForwardingWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC069F3F24B5D23A00256A03 /* VAutoForwardingWindowController.m */; };
+		DC069F4324B5D23A00256A03 /* VAutoForwardingWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC069F4024B5D23A00256A03 /* VAutoForwardingWindowController.xib */; };
+		DC069F4824B6026C00256A03 /* VAutoForwardingModel.h in Headers */ = {isa = PBXBuildFile; fileRef = DC069F4624B6026C00256A03 /* VAutoForwardingModel.h */; };
+		DC069F4924B6026C00256A03 /* VAutoForwardingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC069F4724B6026C00256A03 /* VAutoForwardingModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -350,6 +355,11 @@
 		96D8D0992360BC6E0025BAD6 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/TKRemoteControlWindowController.strings"; sourceTree = "<group>"; };
 		D79D23572449EF5C00C391E4 /* GVUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVUserDefaults.h; sourceTree = "<group>"; };
 		D79D23582449EF5C00C391E4 /* GVUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVUserDefaults.m; sourceTree = "<group>"; };
+		DC069F3E24B5D23900256A03 /* VAutoForwardingWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VAutoForwardingWindowController.h; sourceTree = "<group>"; };
+		DC069F3F24B5D23A00256A03 /* VAutoForwardingWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VAutoForwardingWindowController.m; sourceTree = "<group>"; };
+		DC069F4024B5D23A00256A03 /* VAutoForwardingWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VAutoForwardingWindowController.xib; sourceTree = "<group>"; };
+		DC069F4624B6026C00256A03 /* VAutoForwardingModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VAutoForwardingModel.h; sourceTree = "<group>"; };
+		DC069F4724B6026C00256A03 /* VAutoForwardingModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VAutoForwardingModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -450,6 +460,7 @@
 		188A658C2272ACBA0096663E /* WindowControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DCB46D3D24B5CE2D007611E0 /* AutoForwarding */,
 				18EF56AF2486650400D7BC26 /* Stranger */,
 				188A658D2272ACBA0096663E /* About */,
 				188A65942272ACBA0096663E /* Download */,
@@ -573,6 +584,8 @@
 				188A65C02272ACBA0096663E /* TKIgnoreSessonModel.m */,
 				188A65BD2272ACBA0096663E /* TKRemoteControlModel.h */,
 				188A65C12272ACBA0096663E /* TKRemoteControlModel.m */,
+				DC069F4624B6026C00256A03 /* VAutoForwardingModel.h */,
+				DC069F4724B6026C00256A03 /* VAutoForwardingModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -776,6 +789,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DCB46D3D24B5CE2D007611E0 /* AutoForwarding */ = {
+			isa = PBXGroup;
+			children = (
+				DC069F3E24B5D23900256A03 /* VAutoForwardingWindowController.h */,
+				DC069F3F24B5D23A00256A03 /* VAutoForwardingWindowController.m */,
+				DC069F4024B5D23A00256A03 /* VAutoForwardingWindowController.xib */,
+			);
+			path = AutoForwarding;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -788,6 +811,7 @@
 				188A65FA2272ACBA0096663E /* TKAutoReplyWindowController.h in Headers */,
 				18A7A16B2272AFE600361A98 /* GCDWebServerFileRequest.h in Headers */,
 				188A66032272ACBA0096663E /* YMAssistantMenuManager.h in Headers */,
+				DC069F4824B6026C00256A03 /* VAutoForwardingModel.h in Headers */,
 				188A661E2272ACBA0096663E /* NSMenu+Action.h in Headers */,
 				188A66152272ACBA0096663E /* TKIgnoreSessonModel.h in Headers */,
 				188A662F2272ACBA0096663E /* NotifyConstant.h in Headers */,
@@ -814,6 +838,7 @@
 				188A66322272ACBA0096663E /* TKAutoReplyCell.h in Headers */,
 				188A661C2272ACBA0096663E /* YMBaseModel.h in Headers */,
 				188A66272272ACBA0096663E /* NSView+Action.h in Headers */,
+				DC069F4124B5D23A00256A03 /* VAutoForwardingWindowController.h in Headers */,
 				188A663B2272ACBA0096663E /* MMStickerMessageCellView+hook.h in Headers */,
 				18EF56B6248668CD00D7BC26 /* YMStrangerCheckWindowController.h in Headers */,
 				188A66082272ACBA0096663E /* YMWebServerManager.h in Headers */,
@@ -949,6 +974,7 @@
 				188A65F92272ACBA0096663E /* TKDownloadWindowController.xib in Resources */,
 				188A660F2272ACBA0096663E /* TKRemoteControlCommands.plist in Resources */,
 				18D298EF23960C18009EE6B0 /* YMAIReplyWindowController.xib in Resources */,
+				DC069F4324B5D23A00256A03 /* VAutoForwardingWindowController.xib in Resources */,
 				18EF56B9248668CD00D7BC26 /* YMStrangerCheckWindowController.xib in Resources */,
 				1828B9AA23BA319E008EC8E9 /* TKAboutWindowController.xib in Resources */,
 				18ECDCF52405194800090014 /* aliPayCode.png in Resources */,
@@ -1021,6 +1047,7 @@
 				18A7A1632272AFE600361A98 /* GCDWebServerErrorResponse.m in Sources */,
 				188A661A2272ACBA0096663E /* TKRemoteControlModel.m in Sources */,
 				188A65FE2272ACBA0096663E /* TKRemoteControlWindowController.m in Sources */,
+				DC069F4224B5D23A00256A03 /* VAutoForwardingWindowController.m in Sources */,
 				36AC9D86228A813F00EA9F97 /* YMDownloadManager.m in Sources */,
 				18D298EE23960C18009EE6B0 /* YMAIReplyWindowController.m in Sources */,
 				188A66022272ACBA0096663E /* YMCacheManager.m in Sources */,
@@ -1059,6 +1086,7 @@
 				188A66432272ACBA0096663E /* fishhook.c in Sources */,
 				188A65F62272ACBA0096663E /* TKAboutWindowController.m in Sources */,
 				188A66132272ACBA0096663E /* YMSwizzledHelper.m in Sources */,
+				DC069F4924B6026C00256A03 /* VAutoForwardingModel.m in Sources */,
 				188A66172272ACBA0096663E /* YMAutoReplyModel.m in Sources */,
 				185DE0E123ACE208007651B5 /* NSDictionary+Safe.m in Sources */,
 				188A66422272ACBA0096663E /* MMChatsTableCellView+hook.m in Sources */,
