@@ -456,8 +456,13 @@ Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com
 MIT license. 
 
 ## 交流与支持
+如果小助手使你的生活更美好，可以请我喝杯咖啡。
 
-QQ群 741941325
+
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/aliPayCode.png" height="250" hspace="50"/>&nbsp;&nbsp;&nbsp;<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WeChatPayCode.png" height="250" hspace="50"  />
+
+
+- QQ群 741941325
 
 ## 免责声明
 
