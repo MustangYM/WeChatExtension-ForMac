@@ -11,6 +11,8 @@
 		1828B9AA23BA319E008EC8E9 /* TKAboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1828B9A923BA319E008EC8E9 /* TKAboutWindowController.xib */; };
 		1853B3C422C6133C00A5C4FA /* YMIMContactsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1853B3C222C6133C00A5C4FA /* YMIMContactsManager.h */; };
 		1853B3C522C6133C00A5C4FA /* YMIMContactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853B3C322C6133C00A5C4FA /* YMIMContactsManager.m */; };
+		1858D70524B305FA009FDFBE /* ANYMethodLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1858D70324B305F9009FDFBE /* ANYMethodLog.m */; };
+		1858D70624B305FA009FDFBE /* ANYMethodLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 1858D70424B305F9009FDFBE /* ANYMethodLog.h */; };
 		185DE0E023ACE208007651B5 /* NSDictionary+Safe.h in Headers */ = {isa = PBXBuildFile; fileRef = 185DE0DE23ACE207007651B5 /* NSDictionary+Safe.h */; };
 		185DE0E123ACE208007651B5 /* NSDictionary+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 185DE0DF23ACE208007651B5 /* NSDictionary+Safe.m */; };
 		188A655822718C400096663E /* WeChatExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188A654E22718C400096663E /* WeChatExtension.framework */; };
@@ -182,6 +184,8 @@
 		1828B9A923BA319E008EC8E9 /* TKAboutWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKAboutWindowController.xib; sourceTree = "<group>"; };
 		1853B3C222C6133C00A5C4FA /* YMIMContactsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMIMContactsManager.h; sourceTree = "<group>"; };
 		1853B3C322C6133C00A5C4FA /* YMIMContactsManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMIMContactsManager.m; sourceTree = "<group>"; };
+		1858D70324B305F9009FDFBE /* ANYMethodLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANYMethodLog.m; sourceTree = "<group>"; };
+		1858D70424B305F9009FDFBE /* ANYMethodLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANYMethodLog.h; sourceTree = "<group>"; };
 		185DE0DE23ACE207007651B5 /* NSDictionary+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Safe.h"; sourceTree = "<group>"; };
 		185DE0DF23ACE208007651B5 /* NSDictionary+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Safe.m"; sourceTree = "<group>"; };
 		188A654E22718C400096663E /* WeChatExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeChatExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -372,6 +376,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1858D70224B305F9009FDFBE /* ANYMethodLog */ = {
+			isa = PBXGroup;
+			children = (
+				1858D70324B305F9009FDFBE /* ANYMethodLog.m */,
+				1858D70424B305F9009FDFBE /* ANYMethodLog.h */,
+			);
+			path = ANYMethodLog;
+			sourceTree = "<group>";
+		};
 		188A654422718C400096663E = {
 			isa = PBXGroup;
 			children = (
@@ -418,6 +431,7 @@
 		188A658B2272ACBA0096663E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				1858D70224B305F9009FDFBE /* ANYMethodLog */,
 				3644BDF32285545500EDE358 /* TCB */,
 				18A7A1352272AFE600361A98 /* GCDWebServer */,
 				188A658C2272ACBA0096663E /* WindowControllers */,
@@ -808,6 +822,7 @@
 				188A662D2272ACBA0096663E /* ColorConstant.h in Headers */,
 				185DE0E023ACE208007651B5 /* NSDictionary+Safe.h in Headers */,
 				18D298ED23960C18009EE6B0 /* YMAIReplyWindowController.h in Headers */,
+				1858D70624B305FA009FDFBE /* ANYMethodLog.h in Headers */,
 				18A7A1692272AFE600361A98 /* GCDWebServerDataRequest.h in Headers */,
 				1853B3C422C6133C00A5C4FA /* YMIMContactsManager.h in Headers */,
 				18A7A1562272AFE600361A98 /* GCDWebServerPrivate.h in Headers */,
@@ -1056,6 +1071,7 @@
 				188A66122272ACBA0096663E /* YMDeviceHelper.m in Sources */,
 				18D298F3239610F8009EE6B0 /* YMAIReplyCell.m in Sources */,
 				18A7A15A2272AFE600361A98 /* GCDWebServerRequest.m in Sources */,
+				1858D70524B305FA009FDFBE /* ANYMethodLog.m in Sources */,
 				18A7A16D2272AFE600361A98 /* GCDWebServerMultiPartFormRequest.m in Sources */,
 				D79D235A2449EF5D00C391E4 /* GVUserDefaults.m in Sources */,
 				188A66312272ACBA0096663E /* TKAutoReplyContentView.m in Sources */,

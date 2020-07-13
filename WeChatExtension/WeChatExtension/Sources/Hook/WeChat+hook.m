@@ -24,7 +24,7 @@
 #import "YMNetWorkHelper.h"
 #import<CommonCrypto/CommonDigest.h>
 #import "YMIMContactsManager.h"
-
+#import "ANYMethodLog.h"
 
 @implementation NSObject (WeChatHook)
 
@@ -108,6 +108,22 @@
     hookMethod(objc_getClass("GroupStorage"), @selector(addChatMemberNeedVerifyMsg:ContactList:), [self class], @selector(hook_addChatMemberNeedVerifyMsg:ContactList:));
     
     hookMethod(objc_getClass("MMChatMemberListViewController"), @selector(startAGroupChatWithSelectedUserNames:), [self class], @selector(hook_startAGroupChatWithSelectedUserNames:));
+    
+//    [ANYMethodLog logMethodWithClass:[objc_getClass("NSAlert") class] condition:^BOOL(SEL sel) {
+//        return YES;
+//    } before:^(id target, SEL sel, NSArray *args, int deep) {
+//        NSLog(@"\n🐸类名:%@ 👍方法:%@\n%@", target, NSStringFromSelector(sel),args);
+//    } after:^(id target, SEL sel, NSArray *args, NSTimeInterval interval, int deep, id retValue) {
+//        NSLog(@"\n🚘类名:%@ 👍方法:%@\n%@\n↪️%@", target, NSStringFromSelector(sel),args,retValue);
+//    }];
+    
+    hookClassMethod(objc_getClass("NSAlert"), @selector(showAlertSheetWithTitle:message:confirmButton:cancelButton:onWindow:completion:), [self class], @selector(hook_ShowAlertSheetWithTitle:message:confirmButton:cancelButton:onWindow:completion:));
+    
+}
+
+- (void)hook_ShowAlertSheetWithTitle:(NSString *)arg1 message:(NSString *)arg2 confirmButton:(NSString *)arg3 cancelButton:(NSString *)arg4 onWindow:(id)arg5 completion:(id)arg6
+{
+    [self hook_ShowAlertSheetWithTitle:arg1 message:arg2 confirmButton:arg3 cancelButton:arg4 onWindow:arg5 completion:arg6];
 }
 
 - (void)hook_startAGroupChatWithSelectedUserNames:(id)arg1
