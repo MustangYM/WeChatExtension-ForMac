@@ -62,7 +62,7 @@
 ## 消息转发
 - Mac可实现多开，出门在外手机却不能，怎样在同一台手机上实现多个微信号消息的监听？
 - iPhone上可安装自签的微信包，实现多开，但是Bundle Id的改变导致APNS消息推送异常，无法收到消息推送？
-- 消息转发可解决此痛点
+- 目前只能转发文字消息。选择`转发所有好友消息`时，只转发单聊消息，不转发群聊消息。
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/msgForwarding.png" width="800px"/>
 </p>
