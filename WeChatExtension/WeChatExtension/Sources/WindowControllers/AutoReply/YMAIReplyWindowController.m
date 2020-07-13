@@ -10,6 +10,7 @@
 #import "YMAIReplyCell.h"
 #import "YMAutoReplyModel.h"
 #import "TKWeChatPluginConfig.h"
+#import "YMThemeManager.h"
 
 @interface YMAIReplyWindowController ()<NSTabViewDelegate, NSTableViewDataSource>
 @property (nonatomic, strong) NSTableView *tableView;
@@ -68,6 +69,10 @@
         column.title = YMLocalizedString(@"assistant.autoReply.list");
         column.width = 300;
         [tableView addTableColumn:column];
+        if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
+            [[YMThemeManager shareInstance] changeTheme:tableView color:[TKWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
+        }
+
         tableView;
     });
     

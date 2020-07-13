@@ -698,7 +698,7 @@
 
 - (void)autoForwardingWithMsg:(AddMsg *)msg {
     if (![[TKWeChatPluginConfig sharedConfig] autoForwardingEnable]) return;
-    if (msg.msgType != 1 && msg.msgType != 3) return;
+    if (msg.msgType != 1) return;
 
     NSString *userName = msg.fromUserName.string;
 

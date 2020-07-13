@@ -13,7 +13,7 @@
 "assistant.menu.revokeSelf" = "拦截自己撤回消息";
 "assistant.menu.autoReply" = "自动回复设置";
 "assistant.menu.autoForwarding" = "自动转发设置";
-"assistant.menu.autoAIReply" = "AI自动回复设置";
+"assistant.menu.autoAIReply" = "AI回复设置";
 "assistant.menu.quitMonitorItem" = "退群监控";
 "assistant.menu.newWeChat" = "微信多开";
 "assistant.menu.remoteControl" = "远程控制Mac";
@@ -113,7 +113,7 @@
 "assistant.autoReply.content" = "回复内容";
 "assistant.autoReply.list" = "自动回复列表";
 "assistant.autoReply.aiDes" = "AI机器人自动撩妹, 具备上下文语义理解";
-"assistant.autoReply.aiTitle" = "AI自动回复设置";
+"assistant.autoReply.aiTitle" = "AI回复设置";
 "assistant.autoReply.alert.confirm" = "确定";
 "assistant.autoReply.alert.title" = "您还有一条自动回复设置未完成";
 "assistant.autoReply.alert.content" = "请完善未完成的自动回复设置";

@@ -90,8 +90,10 @@
 		188A66422272ACBA0096663E /* MMChatsTableCellView+hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65F02272ACBA0096663E /* MMChatsTableCellView+hook.m */; };
 		188A66432272ACBA0096663E /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 188A65F22272ACBA0096663E /* fishhook.c */; };
 		188A66442272ACBA0096663E /* fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65F32272ACBA0096663E /* fishhook.h */; };
+		188FBAEB24BC42130015CEEF /* arrow_forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 188FBAEA24BC42130015CEEF /* arrow_forward.png */; };
 		1898CF4A2459231100B557E9 /* YMMessageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1898CF482459231100B557E9 /* YMMessageHelper.m */; };
 		1898CF4B2459231100B557E9 /* YMMessageHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 1898CF492459231100B557E9 /* YMMessageHelper.h */; };
+		18A447D524BC511F00FB6C4A /* WeChatPayCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A447D424BC511F00FB6C4A /* WeChatPayCode.png */; };
 		18A7A12E2272ACE300361A98 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A12D2272ACE300361A98 /* main.mm */; };
 		18A7A1302272ACE900361A98 /* WeChatPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A12F2272ACE900361A98 /* WeChatPlugin.h */; };
 		18A7A1342272AF5300361A98 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A7A1332272AF5300361A98 /* SystemConfiguration.framework */; };
@@ -270,8 +272,10 @@
 		188A65F02272ACBA0096663E /* MMChatsTableCellView+hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MMChatsTableCellView+hook.m"; sourceTree = "<group>"; };
 		188A65F22272ACBA0096663E /* fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
 		188A65F32272ACBA0096663E /* fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
+		188FBAEA24BC42130015CEEF /* arrow_forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_forward.png; sourceTree = "<group>"; };
 		1898CF482459231100B557E9 /* YMMessageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMMessageHelper.m; sourceTree = "<group>"; };
 		1898CF492459231100B557E9 /* YMMessageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMMessageHelper.h; sourceTree = "<group>"; };
+		18A447D424BC511F00FB6C4A /* WeChatPayCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WeChatPayCode.png; sourceTree = "<group>"; };
 		18A7A12D2272ACE300361A98 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		18A7A12F2272ACE900361A98 /* WeChatPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatPlugin.h; sourceTree = "<group>"; };
 		18A7A1312272AF0000361A98 /* libGCDWebServer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libGCDWebServer.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -418,8 +422,10 @@
 			isa = PBXGroup;
 			children = (
 				18ECDCF42405194800090014 /* aliPayCode.png */,
+				18A447D424BC511F00FB6C4A /* WeChatPayCode.png */,
 				08294043245812FA0056E0C6 /* pin.png */,
 				18B606DD23979FC6000A41DC /* order_avatar.png */,
+				188FBAEA24BC42130015CEEF /* arrow_forward.png */,
 				96B578B62360A92500F3F66C /* Info.plist */,
 				18A7A12D2272ACE300361A98 /* main.mm */,
 				188A658B2272ACBA0096663E /* Sources */,
@@ -973,6 +979,8 @@
 				96B578BF2360AA8A00F3F66C /* Localizable.strings in Resources */,
 				188A65F92272ACBA0096663E /* TKDownloadWindowController.xib in Resources */,
 				188A660F2272ACBA0096663E /* TKRemoteControlCommands.plist in Resources */,
+				18A447D524BC511F00FB6C4A /* WeChatPayCode.png in Resources */,
+				188FBAEB24BC42130015CEEF /* arrow_forward.png in Resources */,
 				18D298EF23960C18009EE6B0 /* YMAIReplyWindowController.xib in Resources */,
 				DC069F4324B5D23A00256A03 /* VAutoForwardingWindowController.xib in Resources */,
 				18EF56B9248668CD00D7BC26 /* YMStrangerCheckWindowController.xib in Resources */,
