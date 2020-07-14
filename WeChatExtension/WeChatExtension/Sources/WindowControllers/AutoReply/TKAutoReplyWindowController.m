@@ -69,7 +69,9 @@
         column.title = YMLocalizedString(@"assistant.autoReply.list");
         column.width = 200;
         [tableView addTableColumn:column];
-        
+        if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
+            [[YMThemeManager shareInstance] changeTheme:tableView color:[TKWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
+        }
         tableView;
     });
     

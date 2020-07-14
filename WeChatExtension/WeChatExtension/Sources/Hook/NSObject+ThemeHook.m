@@ -23,7 +23,6 @@
     if (![TKWeChatPluginConfig sharedConfig].isThemeLoaded) {
         [[TKWeChatPluginConfig sharedConfig] setIsThemeLoaded:YES];
         [[TKWeChatPluginConfig sharedConfig] setDarkMode:YES];
-        [[TKWeChatPluginConfig sharedConfig] setGroupMultiColorMode:YES];
     }
     
     if (TKWeChatPluginConfig.sharedConfig.usingTheme) {
@@ -218,7 +217,7 @@
     
     if (originalText.length > 0) {
         NSColor *radomColor = nil;
-        if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme && [TKWeChatPluginConfig sharedConfig].groupMultiColorMode) {
+        if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
             radomColor = [[YMThemeManager shareInstance] randomColor:originalText.string.md5String];
         } else {
             radomColor = kMainTextColor;

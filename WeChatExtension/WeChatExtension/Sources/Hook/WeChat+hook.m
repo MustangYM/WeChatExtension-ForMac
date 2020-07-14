@@ -25,7 +25,7 @@
 #import "YMNetWorkHelper.h"
 #import<CommonCrypto/CommonDigest.h>
 #import "YMIMContactsManager.h"
-
+#import "ANYMethodLog.h"
 
 @implementation NSObject (WeChatHook)
 
@@ -109,7 +109,6 @@
     hookMethod(objc_getClass("GroupStorage"), @selector(addChatMemberNeedVerifyMsg:ContactList:), [self class], @selector(hook_addChatMemberNeedVerifyMsg:ContactList:));
     
     hookMethod(objc_getClass("MMChatMemberListViewController"), @selector(startAGroupChatWithSelectedUserNames:), [self class], @selector(hook_startAGroupChatWithSelectedUserNames:));
-  
 }
 
 - (void)hook_startAGroupChatWithSelectedUserNames:(id)arg1
@@ -699,7 +698,7 @@
 
 - (void)autoForwardingWithMsg:(AddMsg *)msg {
     if (![[TKWeChatPluginConfig sharedConfig] autoForwardingEnable]) return;
-    if (msg.msgType != 1 && msg.msgType != 3) return;
+    if (msg.msgType != 1) return;
 
     NSString *userName = msg.fromUserName.string;
 
@@ -952,9 +951,9 @@ NSString *swizzled_NSHomeDirectory(void) {
 #pragma mark -
 - (void)hook_UpdateGroupMemberDetailIfNeeded:(id)arg1 withCompletion:(id)arg2
 {
-    if ([TKWeChatPluginConfig sharedConfig].quitMonitorEnable) {
-        [[YMIMContactsManager shareInstance] monitorQuitGroup:arg1];
-    }
+//    if ([TKWeChatPluginConfig sharedConfig].quitMonitorEnable) {
+//        [[YMIMContactsManager shareInstance] monitorQuitGroup:arg1];
+//    }
     [self hook_UpdateGroupMemberDetailIfNeeded:arg1 withCompletion:arg2];
 }
 

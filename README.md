@@ -3,7 +3,7 @@
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/face.png" width="1000px"/>
 </p>
 
-![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.6.0-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.4.0-blue.svg)
+![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.6.1-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.4.0-blue.svg)
 
 - 支持[企业微信](https://github.com/MustangYM/WeChatICU-ForMac)，由此进。
 - 如果你希望更简约，这里提供了[简版小助手](https://github.com/MustangYM/WeChatSeptet-ForMac)，安装方式与WeChatExtension的手动安装方式一样。
@@ -24,7 +24,6 @@
 - 在黑夜模式中你可以打开`群成员彩色`，群聊中每个发言人的昵称颜色都会有所区别。
 
 - 黑夜模式
-
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/darkMode.png" width="800px"/>
 </p>
@@ -49,7 +48,7 @@
 <del>- 只要你自己不在群里发消息，这个群理论上是不算存在的，别人也就无从发现。</del>
 <del>- 检测完，一旦你自己退出群聊或者删除群，此群就算解散了，所以不会留下痕迹。</del>
 
-## 手机端也能收到被撤回的消
+## 手机端也能收到被撤回的消息
 - 如果Mac拦截到A发送来的消息，手机也会同步收到的这条已经拦截的消息(自己发送给自己)。目前只支持同步文字消息与图片消息，其他类型也可以做，但意义不大。
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/revokeAsync.png" width="800px"/>
@@ -58,6 +57,14 @@
 - 可以对同步的消息进行筛选， 以免群消息打扰。
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190625-111206%402x.png" width="600px"/>
+</p>
+
+## 消息转发
+- Mac可实现多开，出门在外手机却不能，怎样在同一台手机上实现多个微信号消息的监听？
+- iPhone上可安装自签的微信包，实现多开，但是Bundle Id的改变导致APNS消息推送异常，无法收到消息推送？
+- 目前只能转发文字消息。选择`转发所有好友消息`时，只转发单聊消息，不转发群聊消息。
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/msgForwarding.png" width="800px"/>
 </p>
 
 ## 免认证登录与多开
@@ -87,7 +94,7 @@
 - 依次点击 `小助手` -> `开启Alfred功能`
 - 打开你的Alfred搜索框，输入 `wx `(wx后面接一个空格)，即可开启Alfred控制微信之旅
 ## 退群监控
-- 退群提醒，同一人在同一群里的退出提醒7天内不再重复提示。
+<del>- 退群提醒，同一人在同一群里的退出提醒7天内不再重复提示。<del>
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191227-200134%402x.png" width="800px"/>
 </p>
@@ -169,6 +176,7 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
 
 ## 更新日志
 ```
+2020-07-13 消息自动转发，移除退群监控，界面优化。
 2020-06-30 修复内存泄露导致的越用越卡顿，修复打字卡顿。
 2020-06-11 下架僵尸粉检测功能，修复聊天记录不完整BUG。
 2020-06-03 检测僵尸粉。
@@ -442,6 +450,10 @@ This project exists thanks to all the people who contribute。
   <a href="https://github.com/MrPlusZhao"><img src="https://avatars0.githubusercontent.com/u/12454104?s=400&u=5ee35a4f3fdc25ada91a0921220171cb40fe458a&v=4" width="100px;" alt="MrPlusZhao"/>
   <br></br><sub><b>MrPlusZhao</b></sub>
  
+   <td align="center">
+  <a href="https://github.com/onekb"><img src="https://avatars2.githubusercontent.com/u/16450084?s=400&u=0c1b4e4a48e29316be699adb10c2a5c294dccd76&v=4" width="100px;" alt="onekb"/>
+  <br></br><sub><b>onekb</b></sub>
+ 
    </td></tr></table>
 
 ## Backers
@@ -455,8 +467,13 @@ Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com
 MIT license. 
 
 ## 交流与支持
+如果小助手使你的生活更美好，可以请我喝杯咖啡。
 
-QQ群 741941325
+
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/aliPayCode.png" height="250" hspace="50"/>&nbsp;&nbsp;&nbsp;<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WeChatPayCode.png" height="250" hspace="50"  />
+
+
+- QQ群 741941325
 
 ## 免责声明
 

@@ -27,12 +27,13 @@
 
 @property (nonatomic, strong) NSButton *enableButton;
 @property (nonatomic, strong) NSButton *enableAllFirendButton;
-
+@property (nonatomic, strong) NSImageView *arrowImageView;
 @end
 
 @implementation VAutoForwardingWindowController
 
-- (void)windowDidLoad {
+- (void)windowDidLoad
+{
     [super windowDidLoad];
     if ([[TKWeChatPluginConfig sharedConfig] VAutoForwardingModel]) {
         self.vmodel = [[TKWeChatPluginConfig sharedConfig] VAutoForwardingModel];
@@ -57,7 +58,7 @@
     NSScrollView *scrollView = ({
         NSScrollView *scrollView = [[NSScrollView alloc] init];
         scrollView.hasVerticalScroller = YES;
-        scrollView.frame = NSMakeRect(30, 50, 200, 375);
+        scrollView.frame = NSMakeRect(30, 80, 200, 375);
         scrollView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
         
         scrollView;
@@ -73,13 +74,15 @@
         column.title = YMLocalizedString(@"assistant.autoForwarding.forwardingFromList");
         column.width = 200;
         [tableView addTableColumn:column];
-        
+        if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
+            [[YMThemeManager shareInstance] changeTheme:tableView color:[TKWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
+        }
         tableView;
     });
     
     self.addButton = ({
         NSButton *btn = [NSButton tk_buttonWithTitle:@"＋" target:self action:@selector(addModel)];
-        btn.frame = NSMakeRect(30, 10, 40, 40);
+        btn.frame = NSMakeRect(30, 40, 40, 40);
         btn.bezelStyle = NSBezelStyleTexturedRounded;
         
         btn;
@@ -87,7 +90,7 @@
 
     self.reduceButton = ({
         NSButton *btn = [NSButton tk_buttonWithTitle:@"－" target:self action:@selector(reduceModel)];
-        btn.frame = NSMakeRect(80, 10, 40, 40);
+        btn.frame = NSMakeRect(80, 40, 40, 40);
         btn.bezelStyle = NSBezelStyleTexturedRounded;
         btn.enabled = NO;
         
@@ -97,7 +100,7 @@
     NSScrollView *forwardingToScrollView = ({
            NSScrollView *forwardingToScrollView = [[NSScrollView alloc] init];
            forwardingToScrollView.hasVerticalScroller = YES;
-           forwardingToScrollView.frame = NSMakeRect(260, 50, 200, 375);
+           forwardingToScrollView.frame = NSMakeRect(360, 80, 200, 375);
            forwardingToScrollView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
            
            forwardingToScrollView;
@@ -113,13 +116,15 @@
         column.title = YMLocalizedString(@"assistant.autoForwarding.forwardingToList");
         column.width = 200;
         [forwardingToTableView addTableColumn:column];
-        
+        if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
+            [[YMThemeManager shareInstance] changeTheme:forwardingToTableView color:[TKWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
+        }
         forwardingToTableView;
     });
     
     self.forwardingToAddButton = ({
         NSButton *btn = [NSButton tk_buttonWithTitle:@"＋" target:self action:@selector(forwardingToAdd)];
-        btn.frame = NSMakeRect(260, 10, 40, 40);
+        btn.frame = NSMakeRect(360, 40, 40, 40);
         btn.bezelStyle = NSBezelStyleTexturedRounded;
         
         btn;
@@ -127,7 +132,7 @@
 
     self.forwardingToReduceButton = ({
         NSButton *btn = [NSButton tk_buttonWithTitle:@"－" target:self action:@selector(forwardingToReduce)];
-        btn.frame = NSMakeRect(310, 10, 40, 40);
+        btn.frame = NSMakeRect(410, 40, 40, 40);
         btn.bezelStyle = NSBezelStyleTexturedRounded;
         btn.enabled = NO;
         
@@ -137,7 +142,7 @@
 
     self.enableButton = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoForwarding.enable") target:self action:@selector(clickEnableBtn:)];
-        btn.frame = NSMakeRect(130, 20, 130, 20);
+        btn.frame = NSMakeRect(30, 20, 230, 20);
         btn.state = [[TKWeChatPluginConfig sharedConfig] autoForwardingEnable];
         [YMThemeManager changeButtonTheme:btn];
         btn;
@@ -145,7 +150,7 @@
 
     self.enableAllFirendButton = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoForwarding.enableAllFriend") target:self action:@selector(clickEnableAllFriendBtn:)];
-        btn.frame = NSMakeRect(360, 20, 130, 20);
+        btn.frame = NSMakeRect(360, 20, 230, 20);
         btn.state = [[TKWeChatPluginConfig sharedConfig] autoForwardingAllFriend];
         [YMThemeManager changeButtonTheme:btn];
         btn;
@@ -154,6 +159,23 @@
     scrollView.contentView.documentView = self.forwardingFromTableView;
     forwardingToScrollView.contentView.documentView = self.forwardingToTableView;
     
+    
+    self.arrowImageView = ({
+        NSBundle *bundle = [NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"];
+           NSString *imgPath= [bundle pathForImageResource:@"arrow_forward.png"];
+           NSImage *arrowImage = [[NSImage alloc] initWithContentsOfFile:imgPath];
+        NSImageView *imageView = nil;
+        if (@available(macOS 10.12, *)) {
+            imageView = [NSImageView imageViewWithImage:arrowImage];
+            imageView.frame = NSMakeRect(240, 260, 100, 40);
+        } else {
+            imageView = [[NSImageView alloc] init];
+            imageView.image = arrowImage;
+        }
+        imageView;
+    });
+    
+    
     [self.window.contentView addSubviews:@[scrollView,
                                            forwardingToScrollView,
                                            self.addButton,
@@ -161,7 +183,8 @@
                                            self.forwardingToAddButton,
                                            self.forwardingToReduceButton,
                                            self.enableAllFirendButton,
-                                           self.reduceButton]];
+                                           self.reduceButton,
+                                           self.arrowImageView]];
 }
 
 - (void)setup

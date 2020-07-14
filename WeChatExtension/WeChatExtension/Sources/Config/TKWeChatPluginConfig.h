@@ -44,7 +44,6 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @property (nonatomic) BOOL darkMode;                            /**<    黑暗模式     */
 @property (nonatomic) BOOL blackMode;                           /**<    深邃模式     */
 @property (nonatomic) BOOL pinkMode;                            /**<    少女模式     */
-@property (nonatomic) BOOL groupMultiColorMode;                 /**<    群成员彩色     */
 @property (nonatomic) BOOL isThemeLoaded;                       /**<    是否有使用过皮肤    */
 
 @property (nonatomic, strong) NSMutableArray *autoReplyModels;           /**<    自动回复的数组    */

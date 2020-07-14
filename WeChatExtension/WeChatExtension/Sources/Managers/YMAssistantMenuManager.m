@@ -84,6 +84,13 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
         preventRevokeItem.submenu = subPreventMenu;
     }
     
+    
+    NSMenuItem *forwardAndReplyItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"转发与回复", @"Auto Chat")
+           action:nil
+           target:self
+    keyEquivalent:@""
+            state:NO];
+    
     //        自动回复
     NSMenuItem *autoReplyItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.autoReply")
                                                        action:@selector(onAutoReply:)
@@ -98,11 +105,15 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
                                                              state:[[TKWeChatPluginConfig sharedConfig] autoForwardingEnable]];
     
     //        自动回复
-       NSMenuItem *autoAIReplyItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"AI自动回复设置", @"AI-ReplySetting")
+       NSMenuItem *autoAIReplyItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"AI回复设置", @"AI-ReplySetting")
                                                           action:@selector(onAutoAIReply:)
                                                           target:self
                                                    keyEquivalent:@"k"
                                                            state:NO];
+    NSMenu *autoChatMenu = [[NSMenu alloc] initWithTitle:YMLanguage(@"转发与回复", @"Auto Chat")];
+    [autoChatMenu addItems:@[autoReplyItem, autoForwardingItem, autoAIReplyItem]];
+    forwardAndReplyItem.submenu = autoChatMenu;
+    
     
     //        退群监控
         NSMenuItem *quitMonitorItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"退群监控", @"Group-Quitting Monitor")
@@ -198,13 +209,13 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
     NSMenuItem *darkModeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"黑夜模式", @"Dark Mode")
                                                       action:@selector(onChangeDarkMode:)
                                                       target:self
-                                               keyEquivalent:@"N"
+                                               keyEquivalent:@""
                                                        state:[TKWeChatPluginConfig sharedConfig].darkMode];
     
     NSMenuItem *blackModeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"深邃模式", @"Black Mode")
                                                        action:@selector(onChangeBlackMode:)
                                                        target:self
-                                                keyEquivalent:@"N"
+                                                keyEquivalent:@""
                                                         state:TKWeChatPluginConfig.sharedConfig.blackMode];
     
     NSMenuItem *pinkColorItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"少女模式", @"Pink Mode")
@@ -213,14 +224,8 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
                                                 keyEquivalent:@""
                                                         state:[TKWeChatPluginConfig sharedConfig].pinkMode];
     
-    NSMenuItem *groupMulticolorItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"群成员彩色", @"Group Member Multicolor")
-                                                             action:@selector(onGroupMultiColorModel:)
-                                                             target:self
-                                                      keyEquivalent:@""
-                                                              state:[TKWeChatPluginConfig sharedConfig].groupMultiColorMode];
-    
     NSMenu *subBackgroundMenu = [[NSMenu alloc] initWithTitle:@""];
-    [subBackgroundMenu addItems:@[darkModeItem, blackModeItem, pinkColorItem, groupMulticolorItem]];
+    [subBackgroundMenu addItems:@[darkModeItem, blackModeItem, pinkColorItem]];
     backGroundItem.submenu = subBackgroundMenu;
     
     
@@ -232,31 +237,30 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
     
     NSMenu *subPluginMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.other")];
     [subPluginMenu addItems:@[enableAlfredItem,
-                             updatePluginItem]];
+                             updatePluginItem,
+                             currentVersionItem]];
     
     NSMenu *subMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.title")];
 
     [subMenu addItems:@[preventRevokeItem,
-                        autoReplyItem,
-                        autoForwardingItem,
-                        autoAIReplyItem,
-                        quitMonitorItem,
-                        commandItem,
+                        autoAuthItem,
+                        backGroundItem,
                         miniProgramItem,
                         newWeChatItem,
-                        onTopItem,
-                        autoAuthItem,
+                        forwardAndReplyItem,
                         enableSystemBrowserItem,
-                        backGroundItem,
-//                        checkZombieItem,
+//                        quitMonitorItem, 退群监控
+                        commandItem,
+                        onTopItem,
+//                        checkZombieItem, 僵尸粉检测
+                        forbidCheckUpdateItem,
                         pluginItem,
-                        aboutPluginItem,
-                        currentVersionItem,
+                        aboutPluginItem
                         ]];
 
     id wechat = LargerOrEqualVersion(@"2.3.24") ? [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMUpdateMgr")] : [objc_getClass("WeChat") sharedInstance];
-    [subMenu insertItem:forbidCheckUpdateItem atIndex:7];
     [subMenu setSubmenu:subPluginMenu forItem:pluginItem];
+    
     NSMenuItem *menuItem = [[NSMenuItem alloc] init];
     [menuItem setTitle:YMLocalizedString(@"assistant.menu.title")];
     [menuItem setSubmenu:subMenu];
@@ -694,7 +698,6 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
         [[TKWeChatPluginConfig sharedConfig] setBlackMode:item.state];
         item.state ? [[TKWeChatPluginConfig sharedConfig] setDarkMode:NO] : nil;
         item.state ? [[TKWeChatPluginConfig sharedConfig] setPinkMode:NO] : nil;
-        !item.state ? [[TKWeChatPluginConfig sharedConfig] setGroupMultiColorMode:NO] : nil;
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -724,7 +727,6 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
         [[TKWeChatPluginConfig sharedConfig] setDarkMode:item.state];
         item.state ? [[TKWeChatPluginConfig sharedConfig] setBlackMode:NO]: nil;
         item.state ? [[TKWeChatPluginConfig sharedConfig] setPinkMode:NO] : nil;
-        !item.state ? [[TKWeChatPluginConfig sharedConfig] setGroupMultiColorMode:NO] : nil;
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -755,7 +757,6 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
         [[TKWeChatPluginConfig sharedConfig] setPinkMode:item.state];
         item.state ? [[TKWeChatPluginConfig sharedConfig] setDarkMode:NO] : nil;
         item.state ? [[TKWeChatPluginConfig sharedConfig] setBlackMode:NO]: nil;
-        item.state ? [[TKWeChatPluginConfig sharedConfig] setGroupMultiColorMode:NO] : nil;
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -768,36 +769,4 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
     
 }
 
-- (void)onGroupMultiColorModel:(NSMenuItem *)item
-{
-    item.state = !item.state;
-    
-    NSString *msg = nil;
-    if ([[TKWeChatPluginConfig sharedConfig] pinkMode]) {
-        msg = YMLanguage(@"只在黑暗和深邃模式有效",@"roupMultiColor mode only in dark mode and black mode has effect!");
-    } else {
-        if (item.state) {
-            msg = YMLanguage(@"打开群成员昵称彩色, 只在黑暗/深邃有效, 重启生效!",@"Turn on GroupMultiColor mode only in dark mode and black mode and restart to take effect!");
-        } else {
-            msg = YMLanguage(@"关闭群成员昵称彩色, 重启生效!",@"Turn off GroupMultiColor mode and restart to take effect!");
-        }
-    }
-    
-    NSAlert *alert = [NSAlert alertWithMessageText:YMLanguage(@"警告", @"WARNING")
-                                     defaultButton:YMLanguage(@"取消", @"cancel")
-                                   alternateButton: TKWeChatPluginConfig.sharedConfig.usingDarkTheme ? YMLanguage(@"确定重启",@"restart") : nil
-                                       otherButton:nil                              informativeTextWithFormat:@"%@", msg];
-    NSUInteger action = [alert runModal];
-    if (action == NSAlertAlternateReturn) {
-        __weak __typeof (self) wself = self;
-         [[TKWeChatPluginConfig sharedConfig] setGroupMultiColorMode:item.state];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                [[NSApplication sharedApplication] terminate:wself];
-            });
-        });
-    }  else if (action == NSAlertDefaultReturn) {
-        item.state = !item.state;
-    }
-}
 @end
