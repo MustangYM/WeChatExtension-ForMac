@@ -76,7 +76,10 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 
 - (YMAIAutoModel *)AIReplyModel
 {
-    NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"AIAutoReply.data"];
+    NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
+    NSString *targetPath = @"";
+    targetPath = [targetPath stringByAppendingFormat:@"AIAutoReply_%@.data", currentUserName];
+    NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:targetPath];
     return [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
 }
 
@@ -86,7 +89,10 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
         return;
     }
     NSString *temp = NSTemporaryDirectory();
-    NSString *filePath = [temp stringByAppendingPathComponent:@"AIAutoReply.data"];
+    NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
+    NSString *targetPath = @"";
+    targetPath = [targetPath stringByAppendingFormat:@"AIAutoReply_%@.data", currentUserName];
+    NSString *filePath = [temp stringByAppendingPathComponent:targetPath];
     [NSKeyedArchiver archiveRootObject:model toFile:filePath];
 }
 
@@ -108,7 +114,10 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 #pragma mark - 自动转发
 - (NSArray *)VAutoForwardingModel
 {
-    NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"AutoForwarding.data"];
+    NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
+    NSString *targetPath = @"";
+    targetPath = [targetPath stringByAppendingFormat:@"AutoForwarding_%@.data", currentUserName];
+    NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:targetPath];
     return [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
 }
 
@@ -118,7 +127,10 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
         return;
     }
     NSString *temp = NSTemporaryDirectory();
-    NSString *filePath = [temp stringByAppendingPathComponent:@"AutoForwarding.data"];
+    NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
+    NSString *targetPath = @"";
+    targetPath = [targetPath stringByAppendingFormat:@"AutoForwarding_%@.data", currentUserName];
+    NSString *filePath = [temp stringByAppendingPathComponent:targetPath];
     [NSKeyedArchiver archiveRootObject:model toFile:filePath];
 }
 
