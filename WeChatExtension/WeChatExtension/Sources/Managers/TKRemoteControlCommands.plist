@@ -285,6 +285,30 @@
 			<key>type</key>
 			<integer>3</integer>
 		</dict>
+		<dict>
+			<key>executeCommand</key>
+			<string>AutoForwardingSwitch</string>
+			<key>keyword</key>
+			<string>AutoForwardingSwitch</string>
+			<key>function</key>
+			<string>Assistant.Directive.AutoForwardingSwitch</string>
+			<key>enable</key>
+			<true/>
+			<key>type</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>executeCommand</key>
+			<string>EnableAllFriendSwitch</string>
+			<key>keyword</key>
+			<string>EnableAllFriendSwitch</string>
+			<key>function</key>
+			<string>Assistant.Directive.EnableAllFriendSwitch</string>
+			<key>enable</key>
+			<true/>
+			<key>type</key>
+			<integer>3</integer>
+		</dict>
 	</array>
 </array>
 </plist>

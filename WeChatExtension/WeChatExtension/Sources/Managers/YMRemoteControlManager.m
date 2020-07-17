@@ -140,10 +140,14 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
         NSString *status = config.autoAuthEnable ? YMLocalizedString(@"Assistant.Directive.SwitchOff") : YMLocalizedString(@"Assistant.Directive.SwitchOn");
         callBack = [NSString stringWithFormat:@"%@-%@",YMLocalizedString(@"Assistant.Directive.AutoAuthSwitch"),status];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_AUTO_AUTH_CHANGE object:nil];
-    // } else if ([cmd isEqualToString:@"AutoForwardingSwitch"]) {
-    //     NSString *status = config.autoForwardingEnable ? YMLocalizedString(@"Assistant.Directive.SwitchOff") : YMLocalizedString(@"Assistant.Directive.SwitchOn");
-    //     callBack = [NSString stringWithFormat:@"%@-%@",YMLocalizedString(@"Assistant.Directive.AutoForwardingSwitch"),status];
-    //     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_AUTO_FORWARDING_CHANGE object:nil];
+     } else if ([cmd isEqualToString:@"AutoForwardingSwitch"]) {
+         NSString *status = config.autoForwardingEnable ? YMLocalizedString(@"Assistant.Directive.SwitchOff") : YMLocalizedString(@"Assistant.Directive.SwitchOn");
+         callBack = [NSString stringWithFormat:@"%@-%@",YMLocalizedString(@"Assistant.Directive.AutoForwardingSwitch"),status];
+         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_AUTO_FORWARDING_CHANGE object:nil];
+    } else if ([cmd isEqualToString:@"EnableAllFriendSwitch"]) {
+        NSString *status = config.autoForwardingAllFriend ? YMLocalizedString(@"Assistant.Directive.SwitchOff") : YMLocalizedString(@"Assistant.Directive.SwitchOn");
+        callBack = [NSString stringWithFormat:@"%@-%@",YMLocalizedString(@"Assistant.Directive.EnableAllFriendSwitch"),status];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_AUTO_FORWARDING_ALL_FRIEND_CHANGE object:nil];
     }
     
     [[YMMessageManager shareManager] sendTextMessageToSelf:callBack];

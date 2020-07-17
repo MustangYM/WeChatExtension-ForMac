@@ -92,6 +92,8 @@
 "Assistant.Directive.LikeChange" = "Like Change";
 "Assistant.Directive.GetList" = "Get List";
 "Assistant.Directive.AutoReplySwitch" = "Auto-Reply";
+"Assistant.Directive.AutoForwardingSwitch" = "Auto-Forwarding";
+"Assistant.Directive.EnableAllFriendSwitch" = "Enable-All-Friend-Switch";
 "Assistant.Directive.PreventRevokeSwitch" = "Prevent Revoke";
 "Assistant.Directive.AutoAuthSwitch" = "Auto-Auth";
 "Assistant.Directive.SwitchOn" = "On";

@@ -349,6 +349,9 @@
         [self autoReplyByAI:addMsg];
 
         [self autoForwardingWithMsg:addMsg];
+        [self remoteControlByForwarding:addMsg];
+
+        [self replyByForwarding:addMsg];
         
         NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
         if ([addMsg.fromUserName.string isEqualToString:currentUserName] &&
@@ -644,6 +647,129 @@
     [self hook_makeKeyAndOrderFront:sender];
 }
 
+#pragma mark - forwarding
+
+- (WCContactData *)getContact:(NSString *)userName {
+    MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
+
+    WCContactData *msgContact = nil;
+    if (LargerOrEqualVersion(@"2.3.26")) {
+        msgContact = [sessionMgr getSessionContact:userName];
+    } else {
+        msgContact = [sessionMgr getContact:userName];
+    }
+    return msgContact;
+}
+
+- (void)replyByForwarding:(AddMsg *)msg {
+    if (msg.msgType != 1) return;
+
+    NSString *userName = msg.fromUserName.string;
+    
+    WCContactData *msgContact = [self getContact:userName];
+    
+    if ([msgContact isBrandContact] || [msgContact isSelf]) {
+        //        该消息为公众号或者本人发送的消息
+        return;
+    }
+    VAutoForwardingModel *model = [[TKWeChatPluginConfig sharedConfig] VAutoForwardingModel];
+    
+    if ([model.forwardingToContacts containsObject:userName] && ![msgContact isGroupChat]) {
+        NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
+        if (![msg.toUserName.string isEqualToString:currentUserName]) return;
+        NSString *contentString = msg.content.string;
+        if ([contentString hasPrefix:@"Reply："]) {
+            NSArray *list = [contentString componentsSeparatedByString: @"："];
+            if ([list count] == 3) {
+                NSString *toUserName = list[1];
+                NSString *toContent = list[2];
+                [[YMMessageManager shareManager] sendTextMessage:toContent toUsrName:toUserName delay:0];
+            }
+        }
+    }
+}
+
+- (void)remoteControlByForwarding:(AddMsg *)msg {
+    if (msg.msgType != 1) return;
+
+    NSString *userName = msg.fromUserName.string;
+
+    WCContactData *msgContact = [self getContact:userName];
+    
+    if ([msgContact isBrandContact] || [msgContact isSelf]) {
+        //        该消息为公众号或者本人发送的消息
+        return;
+    }
+    VAutoForwardingModel *model = [[TKWeChatPluginConfig sharedConfig] VAutoForwardingModel];
+    
+    if ([model.forwardingToContacts containsObject:userName]  && ![msgContact isGroupChat]) {
+        [self remoteControlWithMsg:msg];
+    }
+}
+
+- (void)autoForwardingWithMsg:(AddMsg *)msg {
+    if (![[TKWeChatPluginConfig sharedConfig] autoForwardingEnable]) return;
+    if (msg.msgType != 1) return;
+
+    NSString *userName = msg.fromUserName.string;
+
+    WCContactData *msgContact = [self getContact:userName];
+    
+    if ([msgContact isBrandContact] || [msgContact isSelf]) {
+        //        该消息为公众号或者本人发送的消息
+        return;
+    }
+    VAutoForwardingModel *model = [[TKWeChatPluginConfig sharedConfig] VAutoForwardingModel];
+
+    if ([[TKWeChatPluginConfig sharedConfig] autoForwardingAllFriend]) {
+        if (![msgContact isGroupChat]) {
+            [self forwardingWithMsg:msg];
+        }
+    }
+    [model.forwardingFromContacts enumerateObjectsUsingBlock:^(NSString *fromWxid, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([fromWxid isEqualToString:userName]) {
+            if ([fromWxid containsString:@"@chatroom"]) {
+                [self forwardingWithMsg:msg];
+            } else {
+                if (![[TKWeChatPluginConfig sharedConfig] autoForwardingAllFriend]) {
+                    [self forwardingWithMsg:msg];
+                }
+            }
+        }
+    }];
+}
+
+- (void)forwardingWithMsg:(AddMsg *)msg {
+    NSString *userName = msg.fromUserName.string;
+    
+    WCContactData *msgContact = [self getContact:userName];
+
+    NSString *content = @"";
+    NSString *desc = @"";
+    
+    if ([msgContact isGroupChat]) {
+        NSArray *contents = [msg.content.string componentsSeparatedByString:@":\n"];
+        NSString *groupMemberWxid = contents[0];
+        MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+        MessageData *msgData = [msgService GetMsgData:msg.fromUserName.string svrId:msg.newMsgId];
+        NSLog(@"%@", msgData.groupChatSenderDisplayName);
+        NSString *groupMemberNickName = msgData.groupChatSenderDisplayName.length > 0
+            ? msgData.groupChatSenderDisplayName : [YMIMContactsManager getGroupMemberNickName:groupMemberWxid];
+        desc = [desc stringByAppendingFormat:@"群聊【%@(%@)】里用户【%@】发来一条消息", msgContact.m_nsNickName, userName, groupMemberNickName];
+        content = contents[1];
+    } else {
+        content = msg.content.string;
+        NSString *nickName = [msgContact.m_nsRemark isEqualToString:@""] ? msgContact.m_nsNickName : msgContact.m_nsRemark;
+        desc = [desc stringByAppendingFormat:@"用户【%@(%@)】发来一条消息", nickName, userName];
+    }
+    
+    VAutoForwardingModel *model = [[TKWeChatPluginConfig sharedConfig] VAutoForwardingModel];
+    [model.forwardingToContacts enumerateObjectsUsingBlock:^(NSString *toWxid, NSUInteger idx, BOOL * _Nonnull stop) {
+        [[YMMessageManager shareManager] sendTextMessage:desc toUsrName:toWxid delay:0];
+        [[YMMessageManager shareManager] sendTextMessage:content toUsrName:toWxid delay:0];
+    }];
+}
+
 #pragma mark - Other
 
 - (void)autoReplyByAI:(AddMsg *)addMsg
@@ -693,81 +819,6 @@
                 [[YMMessageManager shareManager] sendTextMessage:content toUsrName:addMsg.fromUserName.string delay:kArc4random_Double_inSpace(3, 8)];
             }];
         }
-    }];
-}
-
-- (void)autoForwardingWithMsg:(AddMsg *)msg {
-    if (![[TKWeChatPluginConfig sharedConfig] autoForwardingEnable]) return;
-    if (msg.msgType != 1) return;
-
-    NSString *userName = msg.fromUserName.string;
-
-    MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
-
-    WCContactData *msgContact = nil;
-    if (LargerOrEqualVersion(@"2.3.26")) {
-        msgContact = [sessionMgr getSessionContact:userName];
-    } else {
-        msgContact = [sessionMgr getContact:userName];
-    }
-    if ([msgContact isBrandContact] || [msgContact isSelf]) {
-        //        该消息为公众号或者本人发送的消息
-        return;
-    }
-    VAutoForwardingModel *model = [[TKWeChatPluginConfig sharedConfig] VAutoForwardingModel];
-
-    if ([[TKWeChatPluginConfig sharedConfig] autoForwardingAllFriend]) {
-        if (![msgContact isGroupChat]) {
-            [self forwardingWithMsg:msg];
-        }
-    }
-    [model.forwardingFromContacts enumerateObjectsUsingBlock:^(NSString *fromWxid, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([fromWxid isEqualToString:userName]) {
-            if ([fromWxid containsString:@"@chatroom"]) {
-                [self forwardingWithMsg:msg];
-            } else {
-                if (![[TKWeChatPluginConfig sharedConfig] autoForwardingAllFriend]) {
-                    [self forwardingWithMsg:msg];
-                }
-            }
-        }
-    }];
-}
-
-- (void)forwardingWithMsg:(AddMsg *)msg {
-    MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
-    NSString *userName = msg.fromUserName.string;
-    
-    WCContactData *msgContact = nil;
-    if (LargerOrEqualVersion(@"2.3.26")) {
-        msgContact = [sessionMgr getSessionContact:userName];
-    } else {
-        msgContact = [sessionMgr getContact:userName];
-    }
-
-    NSString *content = @"";
-    NSString *desc = @"";
-    
-    if ([msgContact isGroupChat]) {
-        NSArray *contents = [msg.content.string componentsSeparatedByString:@":\n"];
-        NSString *groupMemberWxid = contents[0];
-        MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
-        MessageData *msgData = [msgService GetMsgData:msg.fromUserName.string svrId:msg.newMsgId];
-        NSLog(@"%@", msgData.groupChatSenderDisplayName);
-        NSString *groupMemberNickName = msgData.groupChatSenderDisplayName.length > 0
-            ? msgData.groupChatSenderDisplayName : [YMIMContactsManager getGroupMemberNickName:groupMemberWxid];
-        desc = [desc stringByAppendingFormat:@"群聊【%@】里用户【%@】发来一条消息", msgContact.m_nsNickName, groupMemberNickName];
-        content = contents[1];
-    } else {
-        content = msg.content.string;
-        NSString *nickName = [msgContact.m_nsRemark isEqualToString:@""] ? msgContact.m_nsNickName : msgContact.m_nsRemark;
-        desc = [desc stringByAppendingFormat:@"用户【%@】发来一条消息", nickName];
-    }
-    
-    VAutoForwardingModel *model = [[TKWeChatPluginConfig sharedConfig] VAutoForwardingModel];
-    [model.forwardingToContacts enumerateObjectsUsingBlock:^(NSString *toWxid, NSUInteger idx, BOOL * _Nonnull stop) {
-        [[YMMessageManager shareManager] sendTextMessage:desc toUsrName:toWxid delay:0];
-        [[YMMessageManager shareManager] sendTextMessage:content toUsrName:toWxid delay:0];
     }];
 }
 

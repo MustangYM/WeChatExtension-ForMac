@@ -92,6 +92,8 @@
 "Assistant.Directive.LikeChange" = "喜欢/取消喜欢";
 "Assistant.Directive.GetList" = "获取指令";
 "Assistant.Directive.AutoReplySwitch" = "自动回复开关";
+"Assistant.Directive.AutoForwardingSwitch" = "自动转发开关";
+"Assistant.Directive.EnableAllFriendSwitch" = "转发所有好友消息开关";
 "Assistant.Directive.PreventRevokeSwitch" = "防撤回开关";
 "Assistant.Directive.AutoAuthSwitch" = "免认证登录开关";
 "Assistant.Directive.SwitchOn" = "开启";
