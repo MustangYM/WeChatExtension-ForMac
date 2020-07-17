@@ -649,18 +649,6 @@
 
 #pragma mark - forwarding
 
-- (WCContactData *)getContact:(NSString *)userName {
-    MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
-
-    WCContactData *msgContact = nil;
-    if (LargerOrEqualVersion(@"2.3.26")) {
-        msgContact = [sessionMgr getSessionContact:userName];
-    } else {
-        msgContact = [sessionMgr getContact:userName];
-    }
-    return msgContact;
-}
-
 - (void)replyByForwarding:(AddMsg *)msg {
     if (msg.msgType != 1) return;
 
@@ -668,17 +656,13 @@
     
     WCContactData *msgContact = [self getContact:userName];
     
-    if ([msgContact isBrandContact] || [msgContact isSelf]) {
-        //        该消息为公众号或者本人发送的消息
-        return;
-    }
     VAutoForwardingModel *model = [[TKWeChatPluginConfig sharedConfig] VAutoForwardingModel];
     
     if ([model.forwardingToContacts containsObject:userName] && ![msgContact isGroupChat]) {
         NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
         if (![msg.toUserName.string isEqualToString:currentUserName]) return;
         NSString *contentString = msg.content.string;
-        if ([contentString hasPrefix:@"Reply："]) {
+        if ([contentString hasPrefix:@"Reply："] || [contentString hasPrefix:@"回复："]) {
             NSArray *list = [contentString componentsSeparatedByString: @"："];
             if ([list count] == 3) {
                 NSString *toUserName = list[1];
@@ -696,10 +680,6 @@
 
     WCContactData *msgContact = [self getContact:userName];
     
-    if ([msgContact isBrandContact] || [msgContact isSelf]) {
-        //        该消息为公众号或者本人发送的消息
-        return;
-    }
     VAutoForwardingModel *model = [[TKWeChatPluginConfig sharedConfig] VAutoForwardingModel];
     
     if ([model.forwardingToContacts containsObject:userName]  && ![msgContact isGroupChat]) {
@@ -755,17 +735,14 @@
         NSLog(@"%@", msgData.groupChatSenderDisplayName);
         NSString *groupMemberNickName = msgData.groupChatSenderDisplayName.length > 0
             ? msgData.groupChatSenderDisplayName : [YMIMContactsManager getGroupMemberNickName:groupMemberWxid];
-        desc = [desc stringByAppendingFormat:@"群聊【%@(%@)】里用户【%@】发来一条消息", msgContact.m_nsNickName, userName, groupMemberNickName];
-        content = contents[1];
+        content = [desc stringByAppendingFormat:@"群聊【%@】里用户【%@】发来一条消息\nID：%@\n内容：\n%@", msgContact.m_nsNickName, groupMemberNickName, userName, contents[1]];
     } else {
-        content = msg.content.string;
         NSString *nickName = [msgContact.m_nsRemark isEqualToString:@""] ? msgContact.m_nsNickName : msgContact.m_nsRemark;
-        desc = [desc stringByAppendingFormat:@"用户【%@(%@)】发来一条消息", nickName, userName];
+        content = [desc stringByAppendingFormat:@"用户【%@】发来一条消息\nID：%@\n内容：\n%@", nickName, userName, msg.content.string];
     }
     
     VAutoForwardingModel *model = [[TKWeChatPluginConfig sharedConfig] VAutoForwardingModel];
     [model.forwardingToContacts enumerateObjectsUsingBlock:^(NSString *toWxid, NSUInteger idx, BOOL * _Nonnull stop) {
-        [[YMMessageManager shareManager] sendTextMessage:desc toUsrName:toWxid delay:0];
         [[YMMessageManager shareManager] sendTextMessage:content toUsrName:toWxid delay:0];
     }];
 }
@@ -971,6 +948,18 @@
 - (void)windowsWillMiniaturize:(NSNotification *)notification {
     NSObject *window = notification.object;
     ((NSWindow *)window).level =NSNormalWindowLevel;
+}
+
+- (WCContactData *)getContact:(NSString *)userName {
+    MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
+
+    WCContactData *msgContact = nil;
+    if (LargerOrEqualVersion(@"2.3.26")) {
+        msgContact = [sessionMgr getSessionContact:userName];
+    } else {
+        msgContact = [sessionMgr getContact:userName];
+    }
+    return msgContact;
 }
 
 #pragma mark - 替换 NSSearchPathForDirectoriesInDomains & NSHomeDirectory
