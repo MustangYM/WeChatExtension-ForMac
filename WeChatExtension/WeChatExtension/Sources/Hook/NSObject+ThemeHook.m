@@ -534,11 +534,21 @@
     if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
         for (NSView *sub in controller.view.subviews) {
             if ([sub isKindOfClass:objc_getClass("SVGButton")]) {
-                NSButton *button = (NSButton *)sub;
-                NSImage *tempImage = button.image;
-                button.image = button.alternateImage;
-                button.alternateImage = tempImage;
-                button.alphaValue = 1.0;
+                if (@available(macOS 10.15, *)) {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        NSButton *button = (NSButton *)sub;
+                        NSImage *tempImage = button.image;
+                        button.image = button.alternateImage;
+                        button.alternateImage = tempImage;
+                        button.alphaValue = 1.0;
+                    });
+                } else {
+                    NSButton *button = (NSButton *)sub;
+                    NSImage *tempImage = button.image;
+                    button.image = button.alternateImage;
+                    button.alternateImage = tempImage;
+                    button.alphaValue = 1.0;
+                }
             }
         }
     }

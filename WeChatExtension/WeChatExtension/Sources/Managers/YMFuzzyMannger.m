@@ -23,14 +23,16 @@
         return;
     }
     
-    [window.window setOpaque:YES];
-    [window.window setBackgroundColor:[NSColor clearColor]];
-    NSVisualEffectView *effView = [YMThemeManager creatFuzzyEffectView:window.window];
-    
     //除了MMMainWindowController， 其余均做特殊处理
     if ([window isKindOfClass:objc_getClass("MMMainWindowController")]) {
+        [window.window setOpaque:YES];
+        [window.window setBackgroundColor:[NSColor clearColor]];
+        NSVisualEffectView *effView = [YMThemeManager creatFuzzyEffectView:window.window];
         [window.window.contentView addSubview:effView];
     } else {
+        [window.window setOpaque:YES];
+        [window.window setBackgroundColor:[NSColor clearColor]];
+        NSVisualEffectView *effView = [YMThemeManager creatFuzzyEffectView:window.window];
         if (window.window.contentView.subviews.count > 0) {
             NSView *firstSubView = window.window.contentView.subviews[0];
             [window.window.contentView addSubview:effView positioned:NSWindowBelow relativeTo:firstSubView];
@@ -48,8 +50,8 @@
         return;
     }
     
-    NSVisualEffectView *effView = [YMThemeManager creatFuzzyEffectView:viewController.view];
     if ([viewController isKindOfClass:objc_getClass("MMChatCollectionViewController")]) {
+        NSVisualEffectView *effView = [YMThemeManager creatFuzzyEffectView:viewController.view];
         if (viewController.view.subviews.count > 0) {
             NSView *firstSubView = viewController.view.subviews[0];
             [[YMThemeManager shareInstance] changeTheme:firstSubView color:[NSColor clearColor]];

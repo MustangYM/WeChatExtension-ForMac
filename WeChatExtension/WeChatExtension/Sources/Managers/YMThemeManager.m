@@ -9,6 +9,7 @@
 #import "YMThemeManager.h"
 #import "YMDeviceHelper.h"
 #import "TKWeChatPluginConfig.h"
+#import "NSWindow+fuzzy.h"
 
 static const NSString *DEVICE_FINGERPRINT = @"DEVICE_FINGERPRINT";
 static const NSString *DEVICE_THEME_MODE = @"DEVICE_THEME_MODE";
@@ -157,11 +158,11 @@ static const NSString *DEVICE_THEME_MODE = @"DEVICE_THEME_MODE";
     
     if ([superView isKindOfClass:NSWindow.class]) {
         NSWindow *window = (NSWindow *)superView;
-        effectView.frame = CGRectMake(0, 0, window.frame.size.width + 9999, window.frame.size.height + 9999);
+        effectView.frame = CGRectMake(0, 0, window.frame.size.width + 5000, window.frame.size.height + 5000);
         return effectView;
     } else {
         NSView *view = (NSView *)superView;
-        effectView.frame = CGRectMake(0, 0, view.frame.size.width + 9999, view.frame.size.height + 9999);
+        effectView.frame = CGRectMake(0, 0, view.frame.size.width + 5000, view.frame.size.height + 5000);
         return effectView;
     }
 }

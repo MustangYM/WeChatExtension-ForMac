@@ -910,3 +910,7 @@ forHTTPHeaderField:(NSString *)field;
 @property(retain, nonatomic) id mouseDraggedEvent; // @synthesize mouseDraggedEvent=_mouseDraggedEvent; draggingOverlayView=_draggingOverlayView;
 @property(retain, nonatomic) NSTextField *titleTextField; // @synthesize titleTextField=_titleTextField; delegate=_delegate;
 @end
+
+@interface MMLoginStateMachine : NSObject
+
+@end
