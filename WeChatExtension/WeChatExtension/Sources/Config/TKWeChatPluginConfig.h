@@ -41,6 +41,7 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @property (nonatomic) BOOL systemBrowserEnable;                 /**<    是否使用自身浏览器打开连接   */
 @property (nonatomic, copy) NSString *currentUserName;          /**<    当前用户的id     */
 @property (nonatomic) BOOL isAllowMoreOpenBaby;                 /**<    子WeChat多开     */
+@property (nonatomic) BOOL fuzzyMode;                            /**<    模糊模式     */
 @property (nonatomic) BOOL darkMode;                            /**<    黑暗模式     */
 @property (nonatomic) BOOL blackMode;                           /**<    深邃模式     */
 @property (nonatomic) BOOL pinkMode;                            /**<    少女模式     */

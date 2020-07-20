@@ -12,6 +12,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import <AppKit/AppKit.h>
 #import "YMThemeManager.h"
+#import "ANYMethodLog.h"
+#import "YMFuzzyMannger.h"
 
 @interface NSCellAuxiliary : NSObject
 
@@ -65,8 +67,45 @@
         hookMethod(objc_getClass("MMSearchTableSectionHeaderView"), NSSelectorFromString(@"setBackgroundView:"), [self class], @selector(hook_searchHeaderSetBackgroundView:));
         hookMethod(objc_getClass("MMSearchTableCellView"), NSSelectorFromString(@"initWithFrame:"), [self class], @selector(hook_chatLogInitWithFrame:));
          hookMethod(objc_getClass("MMSearchTableCellView"), NSSelectorFromString(@"prepareForReuse"), [self class], @selector(hook_chatLogPrepareForReuse));
+        //fuzzy
+        hookMethod(objc_getClass("MMContactsDetailViewController"), NSSelectorFromString(@"viewWillAppear"), [self class], @selector(hook_contactsDetailViewWillAppear));
+         hookMethod(objc_getClass("MMFavoriteDetailViewContoller"), NSSelectorFromString(@"viewWillAppear"), [self class], @selector(hook_favoriteDetailViewWillAppear));
+    }
+   
+}
+
+#pragma mark - 收藏
+- (void)hook_favoriteDetailViewWillAppear
+{
+    [self hook_favoriteDetailViewWillAppear];
+    
+    if (!TKWeChatPluginConfig.sharedConfig.fuzzyMode) {
+        return;
     }
     
+    MMFavoriteDetailViewContoller *favoriteDetailVC = (MMFavoriteDetailViewContoller *)self;
+    for (NSView *sub in favoriteDetailVC.view.subviews) {
+        if ([sub isKindOfClass:objc_getClass("MMFavoriteCollectionView")]) {
+            [[YMThemeManager shareInstance] changeTheme:sub color:[NSColor clearColor]];
+        }
+    }
+}
+
+#pragma mark - 联系人详情
+- (void)hook_contactsDetailViewWillAppear
+{
+    [self hook_contactsDetailViewWillAppear];
+    
+    if (!TKWeChatPluginConfig.sharedConfig.fuzzyMode) {
+        return;
+    }
+    
+    MMContactsDetailViewController *contactsDetailVC = (MMContactsDetailViewController *)self;
+    for (NSView *sub in contactsDetailVC.scrollViewContainer.subviews) {
+        if ([sub isKindOfClass:NSClipView.class]) {
+            [[YMThemeManager shareInstance] changeTheme:sub color:[NSColor clearColor]];
+        }
+    }
 }
 
 #pragma mark - 搜索界面
@@ -232,7 +271,15 @@
 {
     NSDictionary *styleDict = (NSDictionary *)arg1;
     NSMutableDictionary *changeDict = [NSMutableDictionary dictionaryWithDictionary:styleDict];
-    [changeDict setValue:kMainTextColor forKey:@"NSColor"];
+    
+    NSColor *color = nil;
+    if (TKWeChatPluginConfig.sharedConfig.fuzzyMode) {
+        color = [NSColor whiteColor];
+    } else {
+        color = kMainTextColor;
+    }
+    
+    [changeDict setValue:color forKey:@"NSColor"];
     return changeDict;
 }
 
@@ -262,7 +309,7 @@
     NSAlert *alert = (NSAlert *)self;
     [[YMThemeManager shareInstance] changeTheme:alert.window.contentView];
     
-    if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
+    if ([TKWeChatPluginConfig sharedConfig].darkMode || [TKWeChatPluginConfig sharedConfig].blackMode) {
         for (NSView *sub in alert.window.contentView.subviews) {
             if ([sub isKindOfClass:NSTextField.class]) {
                 NSTextFieldCell *cell = [sub valueForKey:@"cell"];
@@ -340,6 +387,7 @@
     for (NSView *sub in memberListVC.view.subviews) {
         for (NSView *effect in sub.subviews) {
             if ([effect isKindOfClass:NSVisualEffectView.class]) {
+                [YMThemeManager changeEffectViewMode:(NSVisualEffectView *)effect];
                 for (NSView *effectSub in effect.subviews) {
                     [[YMThemeManager shareInstance] changeTheme:effectSub];
                 }
@@ -363,28 +411,6 @@
     [self hook_fileListViewDidLoad];
     MMFileListViewController *fileListVC = (MMFileListViewController *)self;
     [[YMThemeManager shareInstance] changeTheme:fileListVC.view];
-}
-
-- (void)hook_windowDidLoad
-{
-    [self hook_windowDidLoad];
-    
-    if ([self isKindOfClass:objc_getClass("MMMultiTalkWindowController")]) {
-        return;
-    }
-    
-    NSWindowController *window = (NSWindowController *)self;
-    [[YMThemeManager shareInstance] changeTheme:window.window.contentView];
-    
-    if ([self isKindOfClass:objc_getClass("MMGlobalChatManagerWindowController")]) {
-        MMGlobalChatManagerWindowController *window = (MMGlobalChatManagerWindowController *)self;
-        for (NSView *sub in window.window.contentView.subviews) {
-            if (![sub isKindOfClass:objc_getClass("MMCustomSearchField")]) {
-               [[YMThemeManager shareInstance] changeTheme:sub];
-            }
-        }
-    }
-    
 }
 
 - (void)hook_showWindow:(nullable id)sender
@@ -546,6 +572,9 @@
     }
     
     if ([view isKindOfClass:[objc_getClass("MMSystemMessageCellView") class]]) {
+        if (TKWeChatPluginConfig.sharedConfig.fuzzyMode) {
+           [[YMThemeManager shareInstance] changeTheme:view color:[NSColor clearColor]];
+        }
         return;
     }
     
@@ -616,7 +645,6 @@
         [[YMThemeManager shareInstance] changeTheme:view];
     }
     
-    
     #pragma mark - controller
     NSResponder *responder = view;
     NSViewController *controller = nil;
@@ -631,7 +659,7 @@
         MMComposeTextView *textView = (MMComposeTextView *)view;
         textView.insertionPointColor = [NSColor whiteColor];
         textView.textColor = [NSColor whiteColor];
-        textView.backgroundColor = kMainBackgroundColor;
+        textView.backgroundColor = [TKWeChatPluginConfig sharedConfig].mainBackgroundColor;
     }
     
     if ([view isKindOfClass:[objc_getClass("SwipeDeleteView") class]]) {
@@ -665,6 +693,7 @@
                 [[YMThemeManager shareInstance] changeTheme:view];
                 for (NSView *effect in view.subviews) {
                     if ([effect isKindOfClass:NSVisualEffectView.class]) {
+                        [YMThemeManager changeEffectViewMode:(NSVisualEffectView *)effect];
                         for (NSView *effectSub in effect.subviews) {
                             if (![effectSub isKindOfClass:NSTextField.class]) {
                                 [[YMThemeManager shareInstance] changeTheme:effectSub];
@@ -683,6 +712,10 @@
         [[msgViewController.messageTableView enclosingScrollView] setDrawsBackground:NO];
         if (![view isKindOfClass:objc_getClass("NSTextField")]) {
             [[YMThemeManager shareInstance] changeTheme:view];
+            //会话标题高斯模糊
+            if ([view isKindOfClass:NSVisualEffectView.class]) {
+                [YMThemeManager changeEffectViewMode:(NSVisualEffectView *)view];
+            }
         }
     }
     
@@ -737,6 +770,27 @@
     
     NSViewController *viewController = (NSViewController *)self;
     [[YMThemeManager shareInstance] changeTheme:viewController.view];
+    [YMFuzzyMannger fuzzyViewController:viewController];
+}
+
+- (void)hook_windowDidLoad
+{
+    [self hook_windowDidLoad];
+    
+    if ([self isKindOfClass:objc_getClass("MMMultiTalkWindowController")]) {
+        return;
+    }
+    
+    if ([self isKindOfClass:objc_getClass("MMGlobalChatManagerWindowController")]) {
+        MMGlobalChatManagerWindowController *window = (MMGlobalChatManagerWindowController *)self;
+        for (NSView *sub in window.window.contentView.subviews) {
+            if (![sub isKindOfClass:objc_getClass("MMCustomSearchField")]) {
+               [[YMThemeManager shareInstance] changeTheme:sub];
+            }
+        }
+    }
+    
+    [YMFuzzyMannger fuzzyWindowViewController:(NSWindowController *)self];
 }
 
 @end
