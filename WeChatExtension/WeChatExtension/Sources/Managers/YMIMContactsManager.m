@@ -96,6 +96,20 @@
     return [contactStorage GetAllFriendContacts];
 }
 
++ (NSArray<WCContactData *> *)getAllFriendContactsWithOutChatroom
+{
+    NSArray *arr = [self getAllFriendContacts];
+    NSMutableArray *temp = [NSMutableArray array];
+    [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        WCContactData *contactData = (WCContactData *)obj;
+        if (![contactData.m_nsUsrName containsString:@"@chatroom"] && contactData.m_uiSex != 0) {
+            [temp addObject:contactData];
+        }
+    }];
+    
+    return temp;
+}
+
 + (NSString *)getWeChatAvatar:(NSString *)userName
 {
     NSArray *arr = [self getAllFriendContacts];
@@ -199,5 +213,20 @@
     return flag;
 }
 
+#pragma mark - 僵尸粉
+- (void)checkStranger:(NSDictionary *)verifyDict chatroom:(NSString *)chatroom
+{
+    if (!verifyDict || !chatroom) {
+        return;
+    }
+    
+    NSArray *verifys = [verifyDict allKeys];
+    __weak __typeof (self) wself = self;
+    [verifys enumerateObjectsUsingBlock:^(NSString *_Nonnull usrName, NSUInteger idx, BOOL * _Nonnull stop) {
+        wself.onVerifyMsgBlock ? wself.onVerifyMsgBlock(usrName) : nil;
+        NSString *nickName = [YMIMContactsManager getWeChatNickName:usrName];
+        NSLog(@"验证-%@",nickName);
+    }];
+}
 
 @end

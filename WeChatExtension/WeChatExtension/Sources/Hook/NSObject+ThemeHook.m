@@ -23,7 +23,6 @@
     if (![TKWeChatPluginConfig sharedConfig].isThemeLoaded) {
         [[TKWeChatPluginConfig sharedConfig] setIsThemeLoaded:YES];
         [[TKWeChatPluginConfig sharedConfig] setDarkMode:YES];
-        [[TKWeChatPluginConfig sharedConfig] setGroupMultiColorMode:YES];
     }
     
     if (TKWeChatPluginConfig.sharedConfig.usingTheme) {
@@ -62,8 +61,56 @@
         hookMethod(objc_getClass("MMAppReferContainerView"), NSSelectorFromString(@"highlightColor"), [self class], @selector(hook_referHighlightColor));
         hookMethod(objc_getClass("MMReferTextAttachmentView"), NSSelectorFromString(@"setBgView:"), [self class], @selector(hook_referSetBgView:));
         
+        hookMethod(objc_getClass("MMSearchTableCellView"), NSSelectorFromString(@"setBackgroundColor:"), [self class], @selector(hook_searchCellSetBackgroundColor:));
+        hookMethod(objc_getClass("MMSearchTableSectionHeaderView"), NSSelectorFromString(@"setBackgroundView:"), [self class], @selector(hook_searchHeaderSetBackgroundView:));
+        hookMethod(objc_getClass("MMSearchTableCellView"), NSSelectorFromString(@"initWithFrame:"), [self class], @selector(hook_chatLogInitWithFrame:));
+         hookMethod(objc_getClass("MMSearchTableCellView"), NSSelectorFromString(@"prepareForReuse"), [self class], @selector(hook_chatLogPrepareForReuse));
     }
-        
+    
+}
+
+#pragma mark - 搜索界面
+- (id)hook_chatLogInitWithFrame:(CGRect)arg1
+{
+    MMSearchChatLogTableCellView *cell = [self hook_chatLogInitWithFrame:arg1];
+    cell.hidden = YES;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [cell setSelected:YES];
+        cell.hidden = NO;
+    });
+    return cell;
+}
+
+- (void)hook_chatLogPrepareForReuse
+{
+    MMSearchChatLogTableCellView *cell = (MMSearchChatLogTableCellView *)self;
+    cell.hidden = YES;
+    dispatch_async(dispatch_get_main_queue(), ^{
+       [cell setSelected:YES];
+        cell.hidden = NO;
+    });
+    [self hook_chatLogPrepareForReuse];
+}
+
+- (void)hook_chatLogCellSetTitleLabel:(MMTextField *)arg1
+{
+    [self hook_chatLogCellSetTitleLabel:arg1];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        arg1.backgroundColor = [TKWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor;
+    });
+}
+
+- (void)hook_searchHeaderSetBackgroundView:(NSView *)arg1
+{
+    [self hook_searchHeaderSetBackgroundView:arg1];
+    dispatch_async(dispatch_get_main_queue(), ^{
+       [[YMThemeManager shareInstance] changeTheme:arg1];
+    });
+}
+
+- (void)hook_searchCellSetBackgroundColor:(NSColor *)arg1
+{
+    [self hook_searchCellSetBackgroundColor:[TKWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
 }
 
 - (NSImageView *)hook_chatDetailAvatarImageView
@@ -107,7 +154,7 @@
     if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
         NSView *view = (NSView *)self;
         if ([view.superview isKindOfClass:objc_getClass("MMChatTextMessageCellView")] && arg1.string.length > 0) {
-            arg1 = [[NSMutableAttributedString alloc] initWithString:arg1.string attributes:@{NSForegroundColorAttributeName : kMainTextColor, NSFontAttributeName : [NSFont systemFontOfSize:14]}];
+            arg1 = [[NSMutableAttributedString alloc] initWithString:arg1.string attributes:@{NSForegroundColorAttributeName : kMainTextColor, NSFontAttributeName : [NSFont systemFontOfSize:13]}];
         }
     }
     [self hook_textFieldSetTextColor:arg1];
@@ -170,7 +217,7 @@
     
     if (originalText.length > 0) {
         NSColor *radomColor = nil;
-        if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme && [TKWeChatPluginConfig sharedConfig].groupMultiColorMode) {
+        if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
             radomColor = [[YMThemeManager shareInstance] randomColor:originalText.string.md5String];
         } else {
             radomColor = kMainTextColor;
@@ -279,7 +326,7 @@
     return NSColor.lightGrayColor;
 }
 
-- (void) hook_referSetBgView: (NSView *) view
+- (void)hook_referSetBgView:(NSView *)view
 {
     [self hook_referSetBgView:view];
     
@@ -343,6 +390,7 @@
 - (void)hook_showWindow:(nullable id)sender
 {
     [self hook_showWindow:sender];
+    
     NSWindowController *window = (NSWindowController *)self;
     [[YMThemeManager shareInstance] changeTheme:window.window.contentView];
 }
@@ -661,6 +709,10 @@
 - (void)hook_themeViewDidLoad
 {
     [self hook_themeViewDidLoad];
+    
+    if ([self isKindOfClass:objc_getClass("QLPreviewPasswordViewController")]) {
+        return;
+    }
     
     if ([self isKindOfClass:objc_getClass("MMChatMemberListViewController")]) {
         return;

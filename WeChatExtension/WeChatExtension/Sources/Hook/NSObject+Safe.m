@@ -13,6 +13,7 @@ static NSString *_errorFunctionName;
 static void inline dynamicMethodIMP(id self,SEL _cmd)
 {
     NSString *selStr = NSStringFromSelector(_cmd);
+    //微信本身的一个crash, 在某些机器上会高频触发, 很奇怪
     if ([selStr containsString:@"setAllowsCollapsing"]) {
         return;
     }

@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 };
 
 @class YMAIAutoModel;
+@class VAutoForwardingModel;
 
 @interface TKWeChatPluginConfig : GVUserDefaults
 
@@ -26,6 +27,8 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @property (nonatomic) BOOL preventAsyncRevokeSignal;            /**<    只同步单聊    */
 @property (nonatomic) BOOL preventAsyncRevokeChatRoom;          /**<    只同步群聊    */
 @property (nonatomic) BOOL autoReplyEnable;                     /**<    是否开启自动回复  */
+@property (nonatomic) BOOL autoForwardingEnable;                /**<    是否开启自动转发  */
+@property (nonatomic) BOOL autoForwardingAllFriend;             /**<    开启自动转发所有好友消息  */
 @property (nonatomic) BOOL autoAuthEnable;                      /**<    是否免认证登录    */
 @property (nonatomic) BOOL launchFromNew;                       /**<    是否是从 -> 登录新微信 -> 启动      */
 @property (nonatomic) BOOL quitMonitorEnable;
@@ -41,7 +44,6 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @property (nonatomic) BOOL darkMode;                            /**<    黑暗模式     */
 @property (nonatomic) BOOL blackMode;                           /**<    深邃模式     */
 @property (nonatomic) BOOL pinkMode;                            /**<    少女模式     */
-@property (nonatomic) BOOL groupMultiColorMode;                 /**<    群成员彩色     */
 @property (nonatomic) BOOL isThemeLoaded;                       /**<    是否有使用过皮肤    */
 
 @property (nonatomic, strong) NSMutableArray *autoReplyModels;           /**<    自动回复的数组    */
@@ -52,12 +54,14 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @property (nonatomic, strong) NSMutableSet *unreadSessionSet;            /**<    标记未读消息集合    */
 @property (nonatomic, copy, readonly) NSDictionary *localInfoPlist;
 @property (nonatomic, copy, readonly) NSDictionary *romoteInfoPlist;
+@property (nonatomic, strong) VAutoForwardingModel *VAutoForwardingModel;      /**<    自动转发的数组    */
 @property (nonatomic, strong) YMAIAutoModel *AIReplyModel;
 @property (nonatomic) PluginLanguageType languageType;
 
 - (void)saveAutoReplyModels;
 - (void)saveRemoteControlModels;
 - (void)saveIgnoreSessionModels;
+- (void)saveAutoForwardingModel:(VAutoForwardingModel *)model;
 - (void)saveAIAutoReplyModel:(YMAIAutoModel *)model;
 + (instancetype)sharedConfig;
 - (NSString *)getSandboxFilePathWithPlistName:(NSString *)plistName;

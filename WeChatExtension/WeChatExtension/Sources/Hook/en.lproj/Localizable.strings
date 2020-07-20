@@ -13,6 +13,7 @@
 "assistant.menu.revokeSelf" = "Revoke Self";
 "assistant.menu.quitMonitorItem" = "Group-Quitting Monitor";
 "assistant.menu.autoReply" = "Auto-Reply";
+"assistant.menu.autoForwarding" = "Auto-Forwarding";
 "assistant.menu.autoAIReply" = "AI-ReplySetting";
 "assistant.menu.newWeChat" = "New WeChat";
 "assistant.menu.remoteControl" = "Remote Control Mac";
@@ -116,6 +117,13 @@
 "assistant.autoReply.alert.confirm" = "Confirm";
 "assistant.autoReply.alert.title" = "You have an auto-reply setting not completed";
 "assistant.autoReply.alert.content" = "Please refine your outstanding auto-reply settings";
+
+// 自动转发
+"assistant.autoForwarding.title" = "Auto-Forwarding";
+"assistant.autoForwarding.forwardingFromList" = "Forwarding From List";
+"assistant.autoForwarding.forwardingToList" = "Forwarding To List";
+"assistant.autoForwarding.enable" = "Enable Auto-Forwarding";
+"assistant.autoForwarding.enableAllFriend" = "Forwarding All friends";
 
 //  版本更新
 "assistant.update.alret.cancle" = "Cancel";
