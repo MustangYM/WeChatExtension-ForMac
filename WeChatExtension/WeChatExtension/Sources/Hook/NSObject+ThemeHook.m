@@ -710,6 +710,10 @@
 {
     [self hook_themeViewDidLoad];
     
+    if ([self isKindOfClass:objc_getClass("QLPreviewPasswordViewController")]) {
+        return;
+    }
+    
     if ([self isKindOfClass:objc_getClass("MMChatMemberListViewController")]) {
         return;
     }
