@@ -1,5 +1,5 @@
 //
-//  YMFuzzyMannger.h
+//  YMFuzzyManager.h
 //  WeChatExtension
 //
 //  Created by MustangYM on 2020/7/20.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YMFuzzyMannger : NSObject
+@interface YMFuzzyManager : NSObject
 + (void)fuzzyWindowViewController:(NSWindowController *)window;
 + (void)fuzzyViewController:(NSViewController *)viewController;
 @end

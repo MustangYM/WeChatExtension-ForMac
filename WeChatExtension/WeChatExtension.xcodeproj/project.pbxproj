@@ -96,8 +96,8 @@
 		188FBAEB24BC42130015CEEF /* arrow_forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 188FBAEA24BC42130015CEEF /* arrow_forward.png */; };
 		1898CF4A2459231100B557E9 /* YMMessageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1898CF482459231100B557E9 /* YMMessageHelper.m */; };
 		1898CF4B2459231100B557E9 /* YMMessageHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 1898CF492459231100B557E9 /* YMMessageHelper.h */; };
-		18A4148B24C5C5B80069E6FD /* YMFuzzyMannger.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A4148924C5C5B80069E6FD /* YMFuzzyMannger.h */; };
-		18A4148C24C5C5B80069E6FD /* YMFuzzyMannger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4148A24C5C5B80069E6FD /* YMFuzzyMannger.m */; };
+		18A4148B24C5C5B80069E6FD /* YMFuzzyManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A4148924C5C5B80069E6FD /* YMFuzzyManager.h */; };
+		18A4148C24C5C5B80069E6FD /* YMFuzzyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4148A24C5C5B80069E6FD /* YMFuzzyManager.m */; };
 		18A447D524BC511F00FB6C4A /* WeChatPayCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A447D424BC511F00FB6C4A /* WeChatPayCode.png */; };
 		18A7A12E2272ACE300361A98 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A12D2272ACE300361A98 /* main.mm */; };
 		18A7A1302272ACE900361A98 /* WeChatPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A12F2272ACE900361A98 /* WeChatPlugin.h */; };
@@ -283,8 +283,8 @@
 		188FBAEA24BC42130015CEEF /* arrow_forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_forward.png; sourceTree = "<group>"; };
 		1898CF482459231100B557E9 /* YMMessageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMMessageHelper.m; sourceTree = "<group>"; };
 		1898CF492459231100B557E9 /* YMMessageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMMessageHelper.h; sourceTree = "<group>"; };
-		18A4148924C5C5B80069E6FD /* YMFuzzyMannger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMFuzzyMannger.h; sourceTree = "<group>"; };
-		18A4148A24C5C5B80069E6FD /* YMFuzzyMannger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMFuzzyMannger.m; sourceTree = "<group>"; };
+		18A4148924C5C5B80069E6FD /* YMFuzzyManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMFuzzyManager.h; sourceTree = "<group>"; };
+		18A4148A24C5C5B80069E6FD /* YMFuzzyManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMFuzzyManager.m; sourceTree = "<group>"; };
 		18A447D424BC511F00FB6C4A /* WeChatPayCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WeChatPayCode.png; sourceTree = "<group>"; };
 		18A7A12D2272ACE300361A98 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		18A7A12F2272ACE900361A98 /* WeChatPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatPlugin.h; sourceTree = "<group>"; };
@@ -565,8 +565,8 @@
 				3632294122AFD9CF00F62EAB /* YMThemeManager.m */,
 				1853B3C222C6133C00A5C4FA /* YMIMContactsManager.h */,
 				1853B3C322C6133C00A5C4FA /* YMIMContactsManager.m */,
-				18A4148924C5C5B80069E6FD /* YMFuzzyMannger.h */,
-				18A4148A24C5C5B80069E6FD /* YMFuzzyMannger.m */,
+				18A4148924C5C5B80069E6FD /* YMFuzzyManager.h */,
+				18A4148A24C5C5B80069E6FD /* YMFuzzyManager.m */,
 				188A65B42272ACBA0096663E /* TKRemoteControlCommands.plist */,
 			);
 			path = Managers;
@@ -856,7 +856,7 @@
 				18D298522394EE60009EE6B0 /* YMNetWorkHelper.h in Headers */,
 				188A66232272ACBA0096663E /* NSMenuItem+Action.h in Headers */,
 				1850F21424C5F32400748FB7 /* YMPrivate.h in Headers */,
-				18A4148B24C5C5B80069E6FD /* YMFuzzyMannger.h in Headers */,
+				18A4148B24C5C5B80069E6FD /* YMFuzzyManager.h in Headers */,
 				18A7A1582272AFE600361A98 /* GCDWebServerConnection.h in Headers */,
 				188A66322272ACBA0096663E /* TKAutoReplyCell.h in Headers */,
 				188A661C2272ACBA0096663E /* YMBaseModel.h in Headers */,
@@ -1116,7 +1116,7 @@
 				188A66172272ACBA0096663E /* YMAutoReplyModel.m in Sources */,
 				185DE0E123ACE208007651B5 /* NSDictionary+Safe.m in Sources */,
 				188A66422272ACBA0096663E /* MMChatsTableCellView+hook.m in Sources */,
-				18A4148C24C5C5B80069E6FD /* YMFuzzyMannger.m in Sources */,
+				18A4148C24C5C5B80069E6FD /* YMFuzzyManager.m in Sources */,
 				18A7A1682272AFE600361A98 /* GCDWebServerStreamedResponse.m in Sources */,
 				188A66092272ACBA0096663E /* YMAssistantMenuManager.m in Sources */,
 				3644BE012285549100EDE358 /* YMUpdateManager.m in Sources */,

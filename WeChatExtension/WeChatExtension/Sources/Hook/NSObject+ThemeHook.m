@@ -13,7 +13,7 @@
 #import <AppKit/AppKit.h>
 #import "YMThemeManager.h"
 #import "ANYMethodLog.h"
-#import "YMFuzzyMannger.h"
+#import "YMFuzzyManager.h"
 
 @interface NSCellAuxiliary : NSObject
 
@@ -787,7 +787,7 @@
     
     NSViewController *viewController = (NSViewController *)self;
     [[YMThemeManager shareInstance] changeTheme:viewController.view];
-    [YMFuzzyMannger fuzzyViewController:viewController];
+    [YMFuzzyManager fuzzyViewController:viewController];
 }
 
 - (void)hook_windowDidLoad
@@ -807,7 +807,7 @@
         }
     }
     
-    [YMFuzzyMannger fuzzyWindowViewController:(NSWindowController *)self];
+    [YMFuzzyManager fuzzyWindowViewController:(NSWindowController *)self];
 }
 
 @end

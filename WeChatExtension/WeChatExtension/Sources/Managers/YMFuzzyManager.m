@@ -1,16 +1,16 @@
 //
-//  YMFuzzyMannger.m
+//  YMFuzzyManager.m
 //  WeChatExtension
 //
 //  Created by MustangYM on 2020/7/20.
 //  Copyright © 2020 MustangYM. All rights reserved.
 //
 
-#import "YMFuzzyMannger.h"
+#import "YMFuzzyManager.h"
 #import "YMThemeManager.h"
 #import "TKWeChatPluginConfig.h"
 
-@implementation YMFuzzyMannger
+@implementation YMFuzzyManager
 + (void)fuzzyWindowViewController:(NSWindowController *)window
 {
     if (!TKWeChatPluginConfig.sharedConfig.fuzzyMode) {
