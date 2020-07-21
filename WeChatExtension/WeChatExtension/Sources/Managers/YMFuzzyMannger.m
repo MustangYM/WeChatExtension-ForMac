@@ -23,6 +23,10 @@
         return;
     }
     
+    if ([window isKindOfClass:objc_getClass("MMVoipReceiverWindowController")]) {
+        return;
+    }
+    
     [window.window setOpaque:YES];
     [window.window setBackgroundColor:[NSColor clearColor]];
     NSVisualEffectView *effView = [YMThemeManager creatFuzzyEffectView:window.window];
