@@ -25,22 +25,22 @@
 
 - 迷离模式👇
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/FuzzMode.png" width="800px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/FuzzMode.png" width="1500px"/>
 </p>
 
 - 黑夜模式👇
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/darkMode.png" width="800px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/darkMode.png" width="1500px"/>
 </p>
 
 - 深邃模式👇
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/blackMode.png" width="800px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/blackMode.png" width="1500px"/>
 </p>
 
 - 少女粉模式👇
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/pinkMode.png" width="800px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/pinkMode.png" width="1500px"/>
 </p>
 
 - 模式切换
