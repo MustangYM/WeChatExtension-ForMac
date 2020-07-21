@@ -23,7 +23,7 @@
 - 少量细节没有做适配，不影响正常使用，如果你是强迫症加完美主义，`主题模式-黑夜模式-再次点击`可以`关掉`这个功能。
 - 在黑夜模式中你可以打开`群成员彩色`，群聊中每个发言人的昵称颜色都会有所区别。
 
-- 迷离模式👇
+- 迷离模式👇 `It‘s perfect！ I love it！`
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/FuzzMode.png" width="1500px"/>
 </p>
