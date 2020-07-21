@@ -109,6 +109,7 @@
     hookMethod(objc_getClass("GroupStorage"), @selector(addChatMemberNeedVerifyMsg:ContactList:), [self class], @selector(hook_addChatMemberNeedVerifyMsg:ContactList:));
     
     hookMethod(objc_getClass("MMChatMemberListViewController"), @selector(startAGroupChatWithSelectedUserNames:), [self class], @selector(hook_startAGroupChatWithSelectedUserNames:));
+
 }
 
 - (void)hook_startAGroupChatWithSelectedUserNames:(id)arg1

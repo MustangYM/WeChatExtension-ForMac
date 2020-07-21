@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.6.1</string>
+	<string>2.6.2</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>NSHumanReadableCopyright</key>
@@ -25,6 +25,6 @@
 	<key>showUpdateWindow</key>
 	<true/>
 	<key>versionInfo</key>
-	<string>v2.6.1(2020-07-13):\n👉🏻  新增文字消息自动转发 \n👉🏻  新增微信支付要饭二维码\n👉🏻  部分Window中的列表适配黑夜模式\n👉🏻  移除退群监控\n👉🏻  小助手界面优化\n</string>
+	<string>v2.6.2(2020-07-21):\n👉🏻  新增“迷离模式”主题\n</string>
 </dict>
 </plist>

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		08294044245812FB0056E0C6 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 08294043245812FA0056E0C6 /* pin.png */; };
 		1828B9AA23BA319E008EC8E9 /* TKAboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1828B9A923BA319E008EC8E9 /* TKAboutWindowController.xib */; };
+		1850F21024C5F2C100748FB7 /* NSWindow+fuzzy.h in Headers */ = {isa = PBXBuildFile; fileRef = 1850F20E24C5F2C100748FB7 /* NSWindow+fuzzy.h */; };
+		1850F21124C5F2C100748FB7 /* NSWindow+fuzzy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1850F20F24C5F2C100748FB7 /* NSWindow+fuzzy.m */; };
+		1850F21424C5F32400748FB7 /* YMPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 1850F21324C5F32400748FB7 /* YMPrivate.h */; };
 		1853B3C422C6133C00A5C4FA /* YMIMContactsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1853B3C222C6133C00A5C4FA /* YMIMContactsManager.h */; };
 		1853B3C522C6133C00A5C4FA /* YMIMContactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853B3C322C6133C00A5C4FA /* YMIMContactsManager.m */; };
 		1858D70524B305FA009FDFBE /* ANYMethodLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1858D70324B305F9009FDFBE /* ANYMethodLog.m */; };
@@ -93,6 +96,8 @@
 		188FBAEB24BC42130015CEEF /* arrow_forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 188FBAEA24BC42130015CEEF /* arrow_forward.png */; };
 		1898CF4A2459231100B557E9 /* YMMessageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1898CF482459231100B557E9 /* YMMessageHelper.m */; };
 		1898CF4B2459231100B557E9 /* YMMessageHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 1898CF492459231100B557E9 /* YMMessageHelper.h */; };
+		18A4148B24C5C5B80069E6FD /* YMFuzzyMannger.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A4148924C5C5B80069E6FD /* YMFuzzyMannger.h */; };
+		18A4148C24C5C5B80069E6FD /* YMFuzzyMannger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4148A24C5C5B80069E6FD /* YMFuzzyMannger.m */; };
 		18A447D524BC511F00FB6C4A /* WeChatPayCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A447D424BC511F00FB6C4A /* WeChatPayCode.png */; };
 		18A7A12E2272ACE300361A98 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18A7A12D2272ACE300361A98 /* main.mm */; };
 		18A7A1302272ACE900361A98 /* WeChatPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A7A12F2272ACE900361A98 /* WeChatPlugin.h */; };
@@ -189,6 +194,9 @@
 		1802C088239826CB0061823C /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "en-GB"; path = "en-GB.lproj/Info.plist"; sourceTree = "<group>"; };
 		1802C089239826CB0061823C /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1828B9A923BA319E008EC8E9 /* TKAboutWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKAboutWindowController.xib; sourceTree = "<group>"; };
+		1850F20E24C5F2C100748FB7 /* NSWindow+fuzzy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSWindow+fuzzy.h"; sourceTree = "<group>"; };
+		1850F20F24C5F2C100748FB7 /* NSWindow+fuzzy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+fuzzy.m"; sourceTree = "<group>"; };
+		1850F21324C5F32400748FB7 /* YMPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMPrivate.h; sourceTree = "<group>"; };
 		1853B3C222C6133C00A5C4FA /* YMIMContactsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMIMContactsManager.h; sourceTree = "<group>"; };
 		1853B3C322C6133C00A5C4FA /* YMIMContactsManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMIMContactsManager.m; sourceTree = "<group>"; };
 		1858D70324B305F9009FDFBE /* ANYMethodLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANYMethodLog.m; sourceTree = "<group>"; };
@@ -275,6 +283,8 @@
 		188FBAEA24BC42130015CEEF /* arrow_forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_forward.png; sourceTree = "<group>"; };
 		1898CF482459231100B557E9 /* YMMessageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMMessageHelper.m; sourceTree = "<group>"; };
 		1898CF492459231100B557E9 /* YMMessageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMMessageHelper.h; sourceTree = "<group>"; };
+		18A4148924C5C5B80069E6FD /* YMFuzzyMannger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMFuzzyMannger.h; sourceTree = "<group>"; };
+		18A4148A24C5C5B80069E6FD /* YMFuzzyMannger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMFuzzyMannger.m; sourceTree = "<group>"; };
 		18A447D424BC511F00FB6C4A /* WeChatPayCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WeChatPayCode.png; sourceTree = "<group>"; };
 		18A7A12D2272ACE300361A98 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		18A7A12F2272ACE900361A98 /* WeChatPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatPlugin.h; sourceTree = "<group>"; };
@@ -555,6 +565,8 @@
 				3632294122AFD9CF00F62EAB /* YMThemeManager.m */,
 				1853B3C222C6133C00A5C4FA /* YMIMContactsManager.h */,
 				1853B3C322C6133C00A5C4FA /* YMIMContactsManager.m */,
+				18A4148924C5C5B80069E6FD /* YMFuzzyMannger.h */,
+				18A4148A24C5C5B80069E6FD /* YMFuzzyMannger.m */,
 				188A65B42272ACBA0096663E /* TKRemoteControlCommands.plist */,
 			);
 			path = Managers;
@@ -575,6 +587,7 @@
 				36AC9D89228A81C200EA9F97 /* XMLReader.m */,
 				18D298502394EE60009EE6B0 /* YMNetWorkHelper.h */,
 				18D298512394EE60009EE6B0 /* YMNetWorkHelper.m */,
+				1850F21324C5F32400748FB7 /* YMPrivate.h */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -684,6 +697,8 @@
 				18D4C34A24236180006A20E2 /* NSObject+ThemeHook.m */,
 				18B37AB7245536ED00037B58 /* NSObject+Safe.h */,
 				18B37AB8245536ED00037B58 /* NSObject+Safe.m */,
+				1850F20E24C5F2C100748FB7 /* NSWindow+fuzzy.h */,
+				1850F20F24C5F2C100748FB7 /* NSWindow+fuzzy.m */,
 			);
 			path = Hook;
 			sourceTree = "<group>";
@@ -840,6 +855,8 @@
 				188A66442272ACBA0096663E /* fishhook.h in Headers */,
 				18D298522394EE60009EE6B0 /* YMNetWorkHelper.h in Headers */,
 				188A66232272ACBA0096663E /* NSMenuItem+Action.h in Headers */,
+				1850F21424C5F32400748FB7 /* YMPrivate.h in Headers */,
+				18A4148B24C5C5B80069E6FD /* YMFuzzyMannger.h in Headers */,
 				18A7A1582272AFE600361A98 /* GCDWebServerConnection.h in Headers */,
 				188A66322272ACBA0096663E /* TKAutoReplyCell.h in Headers */,
 				188A661C2272ACBA0096663E /* YMBaseModel.h in Headers */,
@@ -885,6 +902,7 @@
 				188A65F82272ACBA0096663E /* TKDownloadWindowController.h in Headers */,
 				18D298F2239610F8009EE6B0 /* YMAIReplyCell.h in Headers */,
 				18A7A1592272AFE600361A98 /* GCDWebServer.h in Headers */,
+				1850F21024C5F2C100748FB7 /* NSWindow+fuzzy.h in Headers */,
 				188A66292272ACBA0096663E /* NSWindowController+Action.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1098,6 +1116,7 @@
 				188A66172272ACBA0096663E /* YMAutoReplyModel.m in Sources */,
 				185DE0E123ACE208007651B5 /* NSDictionary+Safe.m in Sources */,
 				188A66422272ACBA0096663E /* MMChatsTableCellView+hook.m in Sources */,
+				18A4148C24C5C5B80069E6FD /* YMFuzzyMannger.m in Sources */,
 				18A7A1682272AFE600361A98 /* GCDWebServerStreamedResponse.m in Sources */,
 				188A66092272ACBA0096663E /* YMAssistantMenuManager.m in Sources */,
 				3644BE012285549100EDE358 /* YMUpdateManager.m in Sources */,
@@ -1106,6 +1125,7 @@
 				188A66102272ACBA0096663E /* YMWebServerManager.m in Sources */,
 				188A66122272ACBA0096663E /* YMDeviceHelper.m in Sources */,
 				18D298F3239610F8009EE6B0 /* YMAIReplyCell.m in Sources */,
+				1850F21124C5F2C100748FB7 /* NSWindow+fuzzy.m in Sources */,
 				18A7A15A2272AFE600361A98 /* GCDWebServerRequest.m in Sources */,
 				1858D70524B305FA009FDFBE /* ANYMethodLog.m in Sources */,
 				18A7A16D2272AFE600361A98 /* GCDWebServerMultiPartFormRequest.m in Sources */,

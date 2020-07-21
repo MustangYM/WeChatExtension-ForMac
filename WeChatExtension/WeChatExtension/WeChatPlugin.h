@@ -860,3 +860,57 @@ forHTTPHeaderField:(NSString *)field;
 - (BOOL)isMiniProgramProcess;
 @end
 
+@interface MMContactsDetailViewController : NSViewController
+@property(nonatomic) unsigned int mySessionId; // @synthesize mySessionId=_mySessionId;
+@property(nonatomic) __weak NSView *sendGroupMsgBox; // @synthesize sendGroupMsgBox=_sendGroupMsgBox;
+@property(nonatomic) __weak NSTextField *groupChatNameLabel; // @synthesize groupChatNameLabel=_groupChatNameLabel;
+@property(nonatomic) __weak NSImageView *groupChatAVatar; // @synthesize groupChatAVatar=_groupChatAVatar;
+@property(retain, nonatomic) NSView *groupChatContainerView; // @synthesize groupChatContainerView=_groupChatContainerView;
+@property(retain, nonatomic) NSMutableArray *openIMLabelList; // @synthesize openIMLabelList=_openIMLabelList;
+@property(retain, nonatomic) NSMutableArray *valueLabelList; // @synthesize valueLabelList=_valueLabelList;
+@property(retain, nonatomic) NSMutableArray *keyLabelList; // @synthesize keyLabelList=_keyLabelList;
+@property(nonatomic) int macKeyLabelWidth; // @synthesize macKeyLabelWidth=_macKeyLabelWidth;
+@property(nonatomic) int currentDetailIndex; // @synthesize currentDetailIndex=_currentDetailIndex;
+@property(nonatomic) int diffHeight; // @synthesize diffHeight=_diffHeight;
+@property(nonatomic) BOOL friendAdded; // @synthesize friendAdded=_friendAdded;
+@property(retain, nonatomic) WCContactData *currContactData; // @synthesize currContactData=_currContactData;
+@property(retain, nonatomic) NSData *kvGreetingRowPrototype; // @synthesize kvGreetingRowPrototype=_kvGreetingRowPrototype;
+@property(retain, nonatomic) NSData *kvRowPrototype; // @synthesize kvRowPrototype=_kvRowPrototype;
+@property(nonatomic) int addedHeight; // @synthesize addedHeight=_addedHeight;
+@property(retain, nonatomic) NSTextField *remarkInput; // @synthesize remarkInput=_remarkInput;
+@property(retain, nonatomic) NSString *originalRemark; // @synthesize originalRemark=_originalRemark;
+@property(retain, nonatomic) NSTextField *brandDescription; // @synthesize brandDescription=_brandDescription;
+@property(retain, nonatomic) NSView *greetingRow; // @synthesize greetingRow=_greetingRow;
+@property(retain, nonatomic) NSBox *dividerLine; // @synthesize dividerLine=_dividerLine;
+@property(nonatomic) __weak NSView *keyValueContainer; // @synthesize keyValueContainer=_keyValueContainer;
+@property(retain, nonatomic) NSView *keyValueRow; // @synthesize keyValueRow=_keyValueRow;
+@property(retain, nonatomic) NSTextView *descriptionTextView; // @synthesize descriptionTextView=_descriptionTextView;
+@property(nonatomic) __weak NSImageView *avatarImage; // @synthesize avatarImage=_avatarImage;
+@property(nonatomic) __weak NSImageView *sexIcon; // @synthesize sexIcon=_sexIcon;
+@property(nonatomic) __weak NSTextField *contactNameLabel; // @synthesize contactNameLabel=_contactNameLabel;
+@property __weak NSView *contactDetailContainerView; // @synthesize contactDetailContainerView=_contactDetailContainerView;
+@property(retain, nonatomic) MMView *placeHolderView; // @synthesize placeHolderView=_placeHolderView;
+@property(retain, nonatomic) NSView *detailContainerView; // @synthesize detailContainerView=_detailContainerView;
+@property(nonatomic) __weak NSScrollView *scrollViewContainer; // @synthesize scrollViewContainer=_scrollViewContainer;
+@end
+
+@interface MMFavoriteCollectionView : NSCollectionView
+
+@end
+
+@interface MMFavoriteDetailViewContoller : NSViewController
+@property(retain, nonatomic) NSArray *cellsBeingDragged; // @synthesize cellsBeingDragged=_cellsBeingDragged;
+@property(retain, nonatomic) NSArray *allPreviewItems; // @synthesize allPreviewItems=_allPreviewItems; collectionData=_collectionData;
+@property(retain, nonatomic) MMFavoriteCollectionView *collectionView; // @synthesize collectionView=_collectionView;
+@property(nonatomic) unsigned long long currentLayoutStyle; // @synthesize currentLayoutStyle=_currentLayoutStyle;
+@property(retain, nonatomic) NSMutableDictionary *viewerWindowDic; // @synthesize viewerWindowDic=_viewerWindowDic;
+@property(nonatomic) __weak NSView *noSearchResultView; // @synthesize noSearchResultView=_noSearchResultView;
+@property(retain, nonatomic) NSString *searchingString; // @synthesize searchingString=_searchingString;
+@property(nonatomic) unsigned long long lastCalledSearchTime; // @synthesize lastCalledSearchTime=_lastCalledSearchTime;
+@property(retain, nonatomic) id mouseDraggedEvent; // @synthesize mouseDraggedEvent=_mouseDraggedEvent; draggingOverlayView=_draggingOverlayView;
+@property(retain, nonatomic) NSTextField *titleTextField; // @synthesize titleTextField=_titleTextField; delegate=_delegate;
+@end
+
+@interface MMLoginStateMachine : NSObject
+
+@end

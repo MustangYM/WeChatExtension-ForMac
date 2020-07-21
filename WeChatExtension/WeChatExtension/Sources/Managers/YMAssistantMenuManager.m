@@ -206,6 +206,12 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
                                                  keyEquivalent:@""
                                                          state:TKWeChatPluginConfig.sharedConfig.usingTheme];
     
+    NSMenuItem *fuzzyModeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"迷离模式", @"Fuzzy Mode")
+           action:@selector(onChangeFuzzyMode:)
+           target:self
+    keyEquivalent:@""
+            state:[TKWeChatPluginConfig sharedConfig].fuzzyMode];
+    
     NSMenuItem *darkModeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"黑夜模式", @"Dark Mode")
                                                       action:@selector(onChangeDarkMode:)
                                                       target:self
@@ -225,7 +231,7 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
                                                         state:[TKWeChatPluginConfig sharedConfig].pinkMode];
     
     NSMenu *subBackgroundMenu = [[NSMenu alloc] initWithTitle:@""];
-    [subBackgroundMenu addItems:@[darkModeItem, blackModeItem, pinkColorItem]];
+    [subBackgroundMenu addItems:@[fuzzyModeItem, darkModeItem, blackModeItem, pinkColorItem]];
     backGroundItem.submenu = subBackgroundMenu;
     
     
@@ -709,6 +715,37 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
     }
    
 }
+
+- (void)onChangeFuzzyMode:(NSMenuItem *)item
+{
+    item.state = !item.state;
+    NSString *msg = nil;
+    if (item.state) {
+        msg = YMLanguage(@"打开迷离模式, 重启生效!",@"Turn on fuzzy mode and restart to take effect!");
+    } else {
+        msg = YMLanguage(@"关闭迷离模式, 重启生效!",@"Turn off fuzzy mode and restart to take effect!");
+    }
+    NSAlert *alert = [NSAlert alertWithMessageText:YMLanguage(@"警告", @"WARNING")
+                                     defaultButton:YMLanguage(@"取消", @"cancel")                       alternateButton:YMLanguage(@"确定重启",@"restart")
+                                       otherButton:nil                              informativeTextWithFormat:@"%@", msg];
+    NSUInteger action = [alert runModal];
+    if (action == NSAlertAlternateReturn) {
+        __weak __typeof (self) wself = self;
+        [[TKWeChatPluginConfig sharedConfig] setFuzzyMode:item.state];
+        item.state ? [[TKWeChatPluginConfig sharedConfig] setDarkMode:NO] : nil;
+        item.state ? [[TKWeChatPluginConfig sharedConfig] setBlackMode:NO]: nil;
+        item.state ? [[TKWeChatPluginConfig sharedConfig] setPinkMode:NO] : nil;
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                [[NSApplication sharedApplication] terminate:wself];
+            });
+        });
+    }  else if (action == NSAlertDefaultReturn) {
+        item.state = !item.state;
+    }
+}
+
 - (void)onChangeDarkMode:(NSMenuItem *)item
 {
     item.state = !item.state;
@@ -727,6 +764,7 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
         [[TKWeChatPluginConfig sharedConfig] setDarkMode:item.state];
         item.state ? [[TKWeChatPluginConfig sharedConfig] setBlackMode:NO]: nil;
         item.state ? [[TKWeChatPluginConfig sharedConfig] setPinkMode:NO] : nil;
+        item.state ? [[TKWeChatPluginConfig sharedConfig] setFuzzyMode:NO] : nil;
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -757,6 +795,7 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
         [[TKWeChatPluginConfig sharedConfig] setPinkMode:item.state];
         item.state ? [[TKWeChatPluginConfig sharedConfig] setDarkMode:NO] : nil;
         item.state ? [[TKWeChatPluginConfig sharedConfig] setBlackMode:NO]: nil;
+        item.state ? [[TKWeChatPluginConfig sharedConfig] setFuzzyMode:NO] : nil;
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
