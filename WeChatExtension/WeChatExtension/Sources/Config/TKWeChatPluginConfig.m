@@ -372,7 +372,7 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
     if (![self usingTheme]) {
         return kDefaultTextColor;
     }
-    return self.fuzzyMode ? kBlackModeTextColor : (self.darkMode ? kDarkModeTextColor : (self.blackMode ? kBlackModeTextColor : kPinkModeTextColor));
+    return self.fuzzyMode ? [NSColor whiteColor] : (self.darkMode ? kDarkModeTextColor : (self.blackMode ? kBlackModeTextColor : kPinkModeTextColor));
 }
 
 - (NSColor *)mainBackgroundColor {
