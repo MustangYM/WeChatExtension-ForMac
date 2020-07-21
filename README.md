@@ -25,7 +25,10 @@
 
 - 迷离模式👇 `It‘s perfect！ I love it！`
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/FuzzMode.png" width="1500px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/fuzzyMode1.png" width="1500px"/>
+</p>
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/fuzzyMode.png" width="1500px"/>
 </p>
 
 - 黑夜模式👇
