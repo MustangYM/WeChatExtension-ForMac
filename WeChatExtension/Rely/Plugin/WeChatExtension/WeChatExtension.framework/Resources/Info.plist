@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>18E226</string>
+	<string>19F101</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.6.2</string>
+	<string>2.6.3</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
@@ -27,24 +27,24 @@
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>11B500</string>
+	<string>11C504</string>
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>19B89</string>
+	<string>19B90</string>
 	<key>DTSDKName</key>
 	<string>macosx10.15</string>
 	<key>DTXcode</key>
-	<string>1120</string>
+	<string>1130</string>
 	<key>DTXcodeBuild</key>
-	<string>11B500</string>
+	<string>11C504</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.10</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2017年 WeChatExtension. All rights reserved.</string>
+	<string>Copyright © 2019年 WeChatExtension. All rights reserved.</string>
 	<key>showUpdateWindow</key>
 	<true/>
 	<key>versionInfo</key>
-	<string>v2.6.2(2020-07-21):\n👉🏻  新增“迷离模式”主题\n</string>
+	<string>v2.6.3(2020-07-27):\n👉🏻  紧急适配2.4.2免认证登录后会话一片空白\n👉🏻  修复会话标题在某些情况显示不全\n</string>
 </dict>
 </plist>

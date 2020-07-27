@@ -376,6 +376,10 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (id)getContact:(id)arg1;
 - (id)getSessionContact:(id)arg1;
 - (void)onEnterSession:(id)arg1;
+- (void)loadExtendedMsgData;
+- (void)loadBrandSessionData;
+- (void)loadSessionData;
+- (void)loadData;
 @end
 
 @interface BrandSessionMgr : NSObject
@@ -913,4 +917,46 @@ forHTTPHeaderField:(NSString *)field;
 
 @interface MMLoginStateMachine : NSObject
 
+@end
+
+@interface SyncService : NSObject
+- (BOOL)ProcessHeartBeatResponse:(id)arg1 isSessionTimeout:(char *)arg2;
+- (BOOL)FillHeartBeatRequestBuffer:(id)arg1 reqCmdId:(int *)arg2 respCmdId:(int *)arg3;
+- (void)CheckHeartBeatIfNeeded;
+- (void)StartCheckHeartBeat;
+- (void)ClearHeartBeat;
+- (void)onServerNotify:(int)arg1 cmdID:(int)arg2 notifyData:(id)arg3;
+- (void)onSyncSuccess;
+- (void)onSyncFail;
+- (void)CheckNeedToSync:(unsigned int)arg1;
+- (void)FixOpenIMSync;
+- (void)BackGroundToForeGroundSync;
+- (void)sendSyncCGIWithScene:(unsigned int)arg1;
+- (BOOL)isSyncClosed;
+- (void)OpenSync;
+- (void)CloseSync;
+- (BOOL)IsNeedSync;
+- (BOOL)IsDoingSync;
+- (BOOL)isCanStartSync;
+- (void)onContactInitSuccess;
+- (void)onContactInitFail;
+- (void)onContactInitUserNameUpdate;
+- (void)onContactInitProcessUpdate:(unsigned int)arg1;
+- (void)tryInitContact;
+- (void)onInitCGIFail;
+- (void)onInitCGIFinish;
+- (void)onInitCGIProcessed:(unsigned int)arg1;
+- (void)StartSyncOnAuthOK;
+- (void)StartInitNoSyncBuffer;
+- (void)StartInit;
+- (void)CancelInit;
+- (BOOL)IsDoingInit;
+- (BOOL)IsNeedInit;
+- (BOOL)IsFirstSync;
+- (void)UnregisterKeyExtension;
+- (void)RegisterKeyExtension;
+- (void)onServiceClearData;
+- (void)onServiceInit;
+- (void)dealloc;
+- (id)init;
 @end
