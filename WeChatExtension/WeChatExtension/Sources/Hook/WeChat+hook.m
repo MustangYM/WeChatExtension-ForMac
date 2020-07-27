@@ -133,6 +133,7 @@
     //紧急适配2.4.2
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
     [sessionMgr loadSessionData];
+    [sessionMgr loadBrandSessionData];
 }
 
 
