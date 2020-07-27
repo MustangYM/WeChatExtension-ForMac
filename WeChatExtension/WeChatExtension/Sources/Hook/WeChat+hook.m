@@ -131,9 +131,14 @@
     });
     
     //紧急适配2.4.2
-    MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
-    [sessionMgr loadSessionData];
-    [sessionMgr loadBrandSessionData];
+    if (LargerOrEqualVersion(@"2.4.2")) {
+        BOOL autoAuthEnable = [[TKWeChatPluginConfig sharedConfig] autoAuthEnable];
+        if (autoAuthEnable) {
+            MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
+            [sessionMgr loadSessionData];
+            [sessionMgr loadBrandSessionData];
+        }
+    }
 }
 
 
