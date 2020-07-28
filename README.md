@@ -3,7 +3,7 @@
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/face.png" width="1000px"/>
 </p>
 
-![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.6.2-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.4.0-blue.svg)
+![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.6.3-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.4.2-blue.svg)
 
 - 支持[企业微信](https://github.com/MustangYM/WeChatICU-ForMac)，由此进。
 - 如果你希望更简约，这里提供了[简版小助手](https://github.com/MustangYM/WeChatSeptet-ForMac)，安装方式与WeChatExtension的手动安装方式一样。
@@ -15,7 +15,7 @@
 - 到目前为止，并未发现因使用本插件会导致封号。
 
 ## 最新支持版本
--  mac版微信2.4.0.149
+-  mac版微信2.4.2
 -  微信2.4.0版本以上才支持小程序 [去下载](https://developers.weixin.qq.com/community/develop/doc/0000a0544fcfc013c8b9d164a5b801)
 
 ## 迷离/黑夜/深邃/少女 模式
@@ -184,6 +184,7 @@ sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/M
 
 ## 更新日志
 ```
+2020-07-27 修复免认证登录后, 主页面一片空白。修复部分机器会话标题显示不全。适配10.13低版本系统聊天框底部图标不显示。
 2020-07-21 新增“迷离模式”主题。
 2020-07-13 消息自动转发，移除退群监控，界面优化。
 2020-06-30 修复内存泄露导致的越用越卡顿，修复打字卡顿。

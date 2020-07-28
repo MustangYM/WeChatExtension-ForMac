@@ -15,16 +15,16 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.6.2</string>
+	<string>2.6.3</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2017年 WeChatExtension. All rights reserved.</string>
+	<string>Copyright © 2019年 WeChatExtension. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
 	<string></string>
 	<key>showUpdateWindow</key>
 	<true/>
 	<key>versionInfo</key>
-	<string>v2.6.2(2020-07-21):\n👉🏻  新增“迷离模式”主题\n</string>
+	<string>v2.6.3(2020-07-27):\n👉🏻  紧急适配2.4.2免认证登录后会话一片空白\n👉🏻  修复会话标题在某些情况显示不全\n</string>
 </dict>
 </plist>

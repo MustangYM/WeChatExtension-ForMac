@@ -71,7 +71,6 @@
         hookMethod(objc_getClass("MMContactsDetailViewController"), NSSelectorFromString(@"viewWillAppear"), [self class], @selector(hook_contactsDetailViewWillAppear));
          hookMethod(objc_getClass("MMFavoriteDetailViewContoller"), NSSelectorFromString(@"viewWillAppear"), [self class], @selector(hook_favoriteDetailViewWillAppear));
     }
-   
 }
 
 #pragma mark - 收藏
@@ -291,7 +290,7 @@
     @try {
         NSTextFieldCell *cell = [infoView.chatNameLabel valueForKey:@"cell"];
         NSAttributedString *originalText = [cell valueForKey:@"contents"];
-        NSMutableAttributedString *darkModelChatName = [[NSMutableAttributedString alloc] initWithString:originalText.string attributes:@{NSForegroundColorAttributeName : [NSColor whiteColor], NSFontAttributeName : [NSFont systemFontOfSize:16]}];
+        NSMutableAttributedString *darkModelChatName = [[NSMutableAttributedString alloc] initWithString:originalText.string attributes:@{NSForegroundColorAttributeName : [NSColor whiteColor], NSFontAttributeName : [NSFont systemFontOfSize:15]}];
         [infoView.chatNameLabel setAttributedStringValue:darkModelChatName];
     } @catch (NSException *exception) {
         
@@ -549,7 +548,7 @@
                         button.alternateImage = tempImage;
                         button.alphaValue = 1.0;
                     });
-                } else {
+                } else if (@available(macOS 10.14, *)) {
                     NSButton *button = (NSButton *)sub;
                     NSImage *tempImage = button.image;
                     button.image = button.alternateImage;
