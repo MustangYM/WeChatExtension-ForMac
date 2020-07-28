@@ -153,6 +153,12 @@
 		18EF56B7248668CD00D7BC26 /* YMStrangerCheckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EF56B2248668CD00D7BC26 /* YMStrangerCheckCell.m */; };
 		18EF56B8248668CD00D7BC26 /* YMStrangerCheckWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EF56B3248668CD00D7BC26 /* YMStrangerCheckWindowController.m */; };
 		18EF56B9248668CD00D7BC26 /* YMStrangerCheckWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EF56B4248668CD00D7BC26 /* YMStrangerCheckWindowController.xib */; };
+		2C66445924CFC89600EFE219 /* JX_GCDTimerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C66445524CFC89600EFE219 /* JX_GCDTimerManager.h */; };
+		2C66445A24CFC89600EFE219 /* JX_GCDTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C66445624CFC89600EFE219 /* JX_GCDTimerManager.m */; };
+		2C66445B24CFC89600EFE219 /* NSDate+ZWYRequiredDate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C66445724CFC89600EFE219 /* NSDate+ZWYRequiredDate.h */; };
+		2C66445C24CFC89600EFE219 /* NSDate+ZWYRequiredDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C66445824CFC89600EFE219 /* NSDate+ZWYRequiredDate.m */; };
+		2C66445F24CFC8DA00EFE219 /* ZWYHandleFunc.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C66445D24CFC8DA00EFE219 /* ZWYHandleFunc.h */; };
+		2C66446024CFC8DA00EFE219 /* ZWYHandleFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C66445E24CFC8DA00EFE219 /* ZWYHandleFunc.m */; };
 		3632293F22A6ADB300F62EAB /* LockPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3632293E22A6ADB300F62EAB /* LockPlist.plist */; };
 		3632294222AFD9CF00F62EAB /* YMThemeManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3632294022AFD9CF00F62EAB /* YMThemeManager.h */; };
 		3632294322AFD9CF00F62EAB /* YMThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3632294122AFD9CF00F62EAB /* YMThemeManager.m */; };
@@ -342,6 +348,12 @@
 		18EF56B3248668CD00D7BC26 /* YMStrangerCheckWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMStrangerCheckWindowController.m; sourceTree = "<group>"; };
 		18EF56B4248668CD00D7BC26 /* YMStrangerCheckWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMStrangerCheckWindowController.xib; sourceTree = "<group>"; };
 		1ECC036067C0A58DC4D5A272 /* libPods-WeChatExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeChatExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C66445524CFC89600EFE219 /* JX_GCDTimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JX_GCDTimerManager.h; sourceTree = "<group>"; };
+		2C66445624CFC89600EFE219 /* JX_GCDTimerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JX_GCDTimerManager.m; sourceTree = "<group>"; };
+		2C66445724CFC89600EFE219 /* NSDate+ZWYRequiredDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ZWYRequiredDate.h"; sourceTree = "<group>"; };
+		2C66445824CFC89600EFE219 /* NSDate+ZWYRequiredDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ZWYRequiredDate.m"; sourceTree = "<group>"; };
+		2C66445D24CFC8DA00EFE219 /* ZWYHandleFunc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZWYHandleFunc.h; sourceTree = "<group>"; };
+		2C66445E24CFC8DA00EFE219 /* ZWYHandleFunc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZWYHandleFunc.m; sourceTree = "<group>"; };
 		3632293E22A6ADB300F62EAB /* LockPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LockPlist.plist; sourceTree = "<group>"; };
 		3632294022AFD9CF00F62EAB /* YMThemeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMThemeManager.h; sourceTree = "<group>"; };
 		3632294122AFD9CF00F62EAB /* YMThemeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMThemeManager.m; sourceTree = "<group>"; };
@@ -457,6 +469,7 @@
 		188A658B2272ACBA0096663E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				2C66445324CFC87800EFE219 /* ZWY */,
 				1858D70224B305F9009FDFBE /* ANYMethodLog */,
 				3644BDF32285545500EDE358 /* TCB */,
 				18A7A1352272AFE600361A98 /* GCDWebServer */,
@@ -783,6 +796,27 @@
 			path = Stranger;
 			sourceTree = "<group>";
 		};
+		2C66445324CFC87800EFE219 /* ZWY */ = {
+			isa = PBXGroup;
+			children = (
+				2C66445424CFC89600EFE219 /* JX_GCDTimer */,
+				2C66445724CFC89600EFE219 /* NSDate+ZWYRequiredDate.h */,
+				2C66445824CFC89600EFE219 /* NSDate+ZWYRequiredDate.m */,
+				2C66445D24CFC8DA00EFE219 /* ZWYHandleFunc.h */,
+				2C66445E24CFC8DA00EFE219 /* ZWYHandleFunc.m */,
+			);
+			path = ZWY;
+			sourceTree = "<group>";
+		};
+		2C66445424CFC89600EFE219 /* JX_GCDTimer */ = {
+			isa = PBXGroup;
+			children = (
+				2C66445524CFC89600EFE219 /* JX_GCDTimerManager.h */,
+				2C66445624CFC89600EFE219 /* JX_GCDTimerManager.m */,
+			);
+			path = JX_GCDTimer;
+			sourceTree = "<group>";
+		};
 		3644BDF32285545500EDE358 /* TCB */ = {
 			isa = PBXGroup;
 			children = (
@@ -834,6 +868,7 @@
 				188A66032272ACBA0096663E /* YMAssistantMenuManager.h in Headers */,
 				DC069F4824B6026C00256A03 /* VAutoForwardingModel.h in Headers */,
 				188A661E2272ACBA0096663E /* NSMenu+Action.h in Headers */,
+				2C66445924CFC89600EFE219 /* JX_GCDTimerManager.h in Headers */,
 				188A66152272ACBA0096663E /* TKIgnoreSessonModel.h in Headers */,
 				188A662F2272ACBA0096663E /* NotifyConstant.h in Headers */,
 				18A7A15B2272AFE600361A98 /* GCDWebServerHTTPStatusCodes.h in Headers */,
@@ -872,6 +907,7 @@
 				18D298ED23960C18009EE6B0 /* YMAIReplyWindowController.h in Headers */,
 				1858D70624B305FA009FDFBE /* ANYMethodLog.h in Headers */,
 				18A7A1692272AFE600361A98 /* GCDWebServerDataRequest.h in Headers */,
+				2C66445B24CFC89600EFE219 /* NSDate+ZWYRequiredDate.h in Headers */,
 				1853B3C422C6133C00A5C4FA /* YMIMContactsManager.h in Headers */,
 				18A7A1562272AFE600361A98 /* GCDWebServerPrivate.h in Headers */,
 				188A65FF2272ACBA0096663E /* TKRemoteControlWindowController.h in Headers */,
@@ -880,6 +916,7 @@
 				18A7A1672272AFE600361A98 /* GCDWebServerErrorResponse.h in Headers */,
 				18A7A1552272AFE600361A98 /* GCDWebServerFunctions.h in Headers */,
 				188A66142272ACBA0096663E /* YMDeviceHelper.h in Headers */,
+				2C66445F24CFC8DA00EFE219 /* ZWYHandleFunc.h in Headers */,
 				188A66352272ACBA0096663E /* TKRemoteControlCell.h in Headers */,
 				188A660A2272ACBA0096663E /* YMCacheManager.h in Headers */,
 				188A66012272ACBA0096663E /* TKWeChatPluginConfig.h in Headers */,
@@ -1081,6 +1118,7 @@
 				188A66222272ACBA0096663E /* NSString+Action.m in Sources */,
 				188A663E2272ACBA0096663E /* MMStickerMessageCellView+hook.m in Sources */,
 				18A7A15D2272AFE600361A98 /* GCDWebServerFunctions.m in Sources */,
+				2C66445C24CFC89600EFE219 /* NSDate+ZWYRequiredDate.m in Sources */,
 				18EF56B8248668CD00D7BC26 /* YMStrangerCheckWindowController.m in Sources */,
 				18A7A15F2272AFE600361A98 /* GCDWebServerConnection.m in Sources */,
 				18A7A12E2272ACE300361A98 /* main.mm in Sources */,
@@ -1102,6 +1140,7 @@
 				188A66002272ACBA0096663E /* TKWeChatPluginConfig.m in Sources */,
 				188A65F72272ACBA0096663E /* TKDownloadWindowController.m in Sources */,
 				3644BDFA2285545500EDE358 /* TCBlobDownloader.m in Sources */,
+				2C66446024CFC8DA00EFE219 /* ZWYHandleFunc.m in Sources */,
 				188A66192272ACBA0096663E /* TKIgnoreSessonModel.m in Sources */,
 				188A66212272ACBA0096663E /* NSWindowController+Action.m in Sources */,
 				188A66342272ACBA0096663E /* TKAutoReplyCell.m in Sources */,
@@ -1125,6 +1164,7 @@
 				188A66102272ACBA0096663E /* YMWebServerManager.m in Sources */,
 				188A66122272ACBA0096663E /* YMDeviceHelper.m in Sources */,
 				18D298F3239610F8009EE6B0 /* YMAIReplyCell.m in Sources */,
+				2C66445A24CFC89600EFE219 /* JX_GCDTimerManager.m in Sources */,
 				1850F21124C5F2C100748FB7 /* NSWindow+fuzzy.m in Sources */,
 				18A7A15A2272AFE600361A98 /* GCDWebServerRequest.m in Sources */,
 				1858D70524B305FA009FDFBE /* ANYMethodLog.m in Sources */,

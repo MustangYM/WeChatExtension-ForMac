@@ -26,6 +26,7 @@
 #import<CommonCrypto/CommonDigest.h>
 #import "YMIMContactsManager.h"
 #import "ANYMethodLog.h"
+#import "ZWYHandleFunc.h"
 
 @implementation NSObject (WeChatHook)
 
@@ -334,6 +335,7 @@
             return;
         }
         
+        [ZWYHandleFunc.shared zwy_handleMsg:addMsg];
         [self autoReplyWithMsg:addMsg];
         [self autoReplyByAI:addMsg];
 
