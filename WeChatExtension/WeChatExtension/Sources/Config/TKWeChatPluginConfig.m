@@ -55,6 +55,7 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 @dynamic blackMode;
 @dynamic pinkMode;
 @dynamic isThemeLoaded;
+@dynamic currentSessionName;
 
 + (instancetype)sharedConfig
 {
@@ -397,19 +398,19 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 }
 
 - (NSColor *)mainSeperatorColor {
-    return self.fuzzyMode ? kRGBColor(147, 148, 248, 0.2) : (self.darkMode ? kRGBColor(147, 148, 248, 0.2) : (self.blackMode ? kRGBColor(128,128,128, 0.5) : kRGBColor(147, 148, 248, 0.2)));
+    return self.fuzzyMode ? kRGBColor(57, 64, 70, 0.5) : (self.darkMode ? kRGBColor(57, 64, 70, 0.5) : (self.blackMode ? kRGBColor(128,128,128, 0.5) : kRGBColor(147, 148, 248, 0.2)));
 }
 
 - (NSColor *)mainScrollerColor {
-    return self.fuzzyMode ? kRGBColor(33, 48, 64, 1.0) : (self.darkMode ? kRGBColor(33, 48, 64, 1.0) : (self.blackMode ? kRGBColor(128,128,128, 0.5) : NSColor.clearColor));
+    return self.fuzzyMode ? kRGBColor(33, 48, 64, 1.0) : (self.darkMode ? kRGBColor(43, 49, 55, 1.0) : (self.blackMode ? kRGBColor(128,128,128, 0.5) : NSColor.clearColor));
 }
 
 - (NSColor *)mainDividerColor {
-    return self.fuzzyMode ? kRGBColor(71, 69, 112, 0.5) : (self.darkMode ? kRGBColor(71, 69, 112, 0.5) : (self.blackMode ? kRGBColor(128,128,128, 0.7) : kRGBColor(71, 69, 112, 0.5)));
+    return self.fuzzyMode ? kRGBColor(71, 69, 112, 0.5) : (self.darkMode ? kRGBColor(34, 35, 39, 0.7) : (self.blackMode ? kRGBColor(128,128,128, 0.7) : kRGBColor(71, 69, 112, 0.5)));
 }
 
 - (NSColor *)mainChatCellBackgroundColor {
-    return self.fuzzyMode ? kRGBColor(33, 48, 64, 0.3) : (self.darkMode ? kRGBColor(33, 48, 64, 1.0) : (self.blackMode ? kRGBColor(38, 38, 38, 1.0) : nil));
+    return self.fuzzyMode ? kRGBColor(33, 48, 64, 0.3) : (self.darkMode ? kRGBColor(43, 49, 55, 1.0) : (self.blackMode ? kRGBColor(38, 38, 38, 1.0) : nil));
 }
 
 @end

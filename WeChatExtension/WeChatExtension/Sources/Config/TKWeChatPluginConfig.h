@@ -10,6 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "GVUserDefaults.h"
 #import <AppKit/AppKit.h>
+#import "WeChatPlugin.h"
 
 typedef NS_ENUM(NSInteger, PluginLanguageType) {
     PluginLanguageTypeZH,
@@ -46,6 +47,7 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @property (nonatomic) BOOL blackMode;                           /**<    深邃模式     */
 @property (nonatomic) BOOL pinkMode;                            /**<    少女模式     */
 @property (nonatomic) BOOL isThemeLoaded;                       /**<    是否有使用过皮肤    */
+@property (nonatomic, copy) NSString *currentSessionName;
 
 @property (nonatomic, strong) NSMutableArray *autoReplyModels;           /**<    自动回复的数组    */
 @property (nonatomic, strong) NSMutableArray *remoteControlModels;       /**<    远程控制的数组    */
@@ -58,6 +60,7 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @property (nonatomic, strong) VAutoForwardingModel *VAutoForwardingModel;      /**<    自动转发的数组    */
 @property (nonatomic, strong) YMAIAutoModel *AIReplyModel;
 @property (nonatomic) PluginLanguageType languageType;
+@property (nonatomic, strong) MMChatsTableCellView *currentChatsTableCellView;
 
 - (void)saveAutoReplyModels;
 - (void)saveRemoteControlModels;

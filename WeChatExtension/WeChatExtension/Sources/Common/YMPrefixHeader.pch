@@ -31,13 +31,13 @@
 #define kArc4random_Double_inSpace(a,b) a<b ? rand() / (float)RAND_MAX * (b-a) * 1 + (a) : rand() / (float)RAND_MAX * (a-b) * 1 + (b)
 //99 157
 #define kFuzzyBacgroundColor kRGBColor(24, 99, 157, 0.01)
-#define kDarkBacgroundColor kRGBColor(24, 34, 45, 1.0)
+#define kDarkBacgroundColor kRGBColor(41, 42, 47, 1.0)
 #define kLightDarkBacgroundColor kRGBColor(54, 54, 54, 1.0)
 #define kPinkBacgroundColor kRGBColor(229,173,177,1.0)
 #define kBlackBackgroundColor kRGBColor(31, 31, 31, 1)
 
 #define kDefaultTextColor kRGBColor(47, 47, 50, 0.7)
-#define kDarkModeTextColor kRGBColor(177, 195, 213, 1.0)
+#define kDarkModeTextColor kRGBColor(126, 140, 151, 1.0)
 #define kBlackModeTextColor kRGBColor(192,192,192, 0.8)
 #define kPinkModeTextColor kDefaultTextColor
 

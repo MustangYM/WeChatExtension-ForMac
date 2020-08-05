@@ -439,8 +439,13 @@
     cell.nickName.attributedStringValue = returnValue;
     
     if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
+        if ([TKWeChatPluginConfig.sharedConfig.currentSessionName isEqualToString: str.string]) {
+            [[YMThemeManager shareInstance] changeTheme:cell color: TKWeChatPluginConfig.sharedConfig.fuzzyMode ? kRGBColor(26,28,32, 0.5) : ((TKWeChatPluginConfig.sharedConfig.blackMode ? kRGBColor(128,128,128, 0.5) : kRGBColor(41, 42, 48, 1)))];
+            [TKWeChatPluginConfig.sharedConfig setCurrentChatsTableCellView: cell];
+            return;
+        }
         [[YMThemeManager shareInstance] changeTheme:cell color:[TKWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
-        cell.muteIndicator.normalColor = [NSColor redColor];
+        cell.muteIndicator.normalColor = [NSColor whiteColor];
     }
 }
 
@@ -453,12 +458,17 @@
         MMChatsTableCellView *cell = (MMChatsTableCellView *)self;
 
         NSColor *original = [NSColor colorWithCGColor:cell.layer.backgroundColor];
-        cell.layer.backgroundColor =  TKWeChatPluginConfig.sharedConfig.fuzzyMode ? kRGBColor(26,28,32, 0.5).CGColor : ((TKWeChatPluginConfig.sharedConfig.blackMode ? kRGBColor(128,128,128, 0.5) : kRGBColor(147, 148, 248, 0.5)).CGColor);
+        NSString *currentSessionName = cell.nickName.attributedStringValue.string;
+        cell.layer.backgroundColor =  TKWeChatPluginConfig.sharedConfig.fuzzyMode ? kRGBColor(26,28,32, 0.5).CGColor : ((TKWeChatPluginConfig.sharedConfig.blackMode ? kRGBColor(128,128,128, 0.5) : kRGBColor(41, 42, 48, 1)).CGColor);
         [cell setNeedsDisplay:YES];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            cell.layer.backgroundColor = original.CGColor;
-            [cell setNeedsDisplay:YES];
-        });
+        
+        if (TKWeChatPluginConfig.sharedConfig.currentChatsTableCellView) {
+            TKWeChatPluginConfig.sharedConfig.currentChatsTableCellView.layer.backgroundColor = original.CGColor;
+        }
+        
+        [TKWeChatPluginConfig.sharedConfig setCurrentChatsTableCellView: cell];
+        [TKWeChatPluginConfig.sharedConfig setCurrentSessionName: currentSessionName];
+
     }
 }
 
