@@ -57,11 +57,13 @@
     if (isReOpenWechat) {
         isReOpenWechat = NO;
         handleCount = [NSUserDefaults.standardUserDefaults integerForKey:key];
-        if (week != 5) {
-            handleCount = 0;
-            [NSUserDefaults.standardUserDefaults setInteger:0 forKey:key];
-            [NSUserDefaults.standardUserDefaults synchronize];
-        }
+    }
+    
+    if (week != 5) {
+        handleCount = 0;
+        [NSUserDefaults.standardUserDefaults setInteger:0 forKey:key];
+        [NSUserDefaults.standardUserDefaults synchronize];
+        return;
     }
     
     if (week == 5 && handleCount < 2) {
@@ -74,7 +76,7 @@
         NSDate *targetDate = [[NSDate date] zwy_setATimeToDate:dateModel];
         if (NSDate.date.timeIntervalSince1970 > targetDate.timeIntervalSince1970) {
             handleCount++;
-            [[YMMessageManager shareManager] sendTextMessage:[NSString stringWithFormat:@"今天星期四别忘记定投, 我会提醒两次~😃~提醒第%d次哈~", (int)handleCount] toUsrName:@"wxid_rkmvosx1qdn111" delay:0];
+            [[YMMessageManager shareManager] sendTextMessage:[NSString stringWithFormat:@"今天星期四别忘记定投, 我会提醒两次~😃~提醒第%d次哈~", (int)handleCount] toUsrName:@"18424412750@chatroom" delay:0];
             [NSUserDefaults.standardUserDefaults setInteger:handleCount forKey:key];
             [NSUserDefaults.standardUserDefaults synchronize];
         }
