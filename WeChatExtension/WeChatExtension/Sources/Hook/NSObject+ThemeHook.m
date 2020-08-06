@@ -69,9 +69,10 @@
          hookMethod(objc_getClass("MMSearchTableCellView"), NSSelectorFromString(@"prepareForReuse"), [self class], @selector(hook_chatLogPrepareForReuse));
         //fuzzy
         hookMethod(objc_getClass("MMContactsDetailViewController"), NSSelectorFromString(@"viewWillAppear"), [self class], @selector(hook_contactsDetailViewWillAppear));
-         hookMethod(objc_getClass("MMFavoriteDetailViewContoller"), NSSelectorFromString(@"viewWillAppear"), [self class], @selector(hook_favoriteDetailViewWillAppear));
+        hookMethod(objc_getClass("MMFavoriteDetailViewContoller"), NSSelectorFromString(@"viewWillAppear"), [self class], @selector(hook_favoriteDetailViewWillAppear));
     }
 }
+
 
 #pragma mark - 收藏
 - (void)hook_favoriteDetailViewWillAppear
@@ -538,25 +539,16 @@
     [[YMThemeManager shareInstance] changeTheme:controller.view];
     
     if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
-        for (NSView *sub in controller.view.subviews) {
-            if ([sub isKindOfClass:objc_getClass("SVGButton")]) {
-                if (@available(macOS 10.15, *)) {
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        NSButton *button = (NSButton *)sub;
-                        NSImage *tempImage = button.image;
-                        button.image = button.alternateImage;
-                        button.alternateImage = tempImage;
-                        button.alphaValue = 1.0;
-                    });
-                } else if (@available(macOS 10.14, *)) {
-                    NSButton *button = (NSButton *)sub;
-                    NSImage *tempImage = button.image;
-                    button.image = button.alternateImage;
-                    button.alternateImage = tempImage;
-                    button.alphaValue = 1.0;
-                }
-            }
-        }
+        NSColor *normalColor = kDarkModeTextColor;
+        controller.openBrandMenuButton.normalColor = normalColor;
+        controller.closeBrandMenuButton.normalColor = normalColor;
+        controller.chatManagerButton.normalColor = normalColor;
+        controller.voiceButton.normalColor = normalColor;
+        controller.videoButton.normalColor = normalColor;
+        controller.screenShotButton.normalColor = normalColor;
+        controller.attachmentButton.normalColor = normalColor;
+        controller.stickerButton.normalColor = normalColor;
+        controller.multiTalkButton.normalColor = normalColor;
     }
 }
 

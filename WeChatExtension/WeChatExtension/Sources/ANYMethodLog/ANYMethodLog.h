@@ -2,8 +2,8 @@
 //  ANYMethodLog.h
 //  ANYMethodLog
 //
-//  Created by qiuhaodong on 2017/1/14.
-//  Copyright © 2017年 qiuhaodong. All rights reserved.
+//  Created by qiuhaodong on 2019/1/14.
+//  Copyright © 2019年 qiuhaodong. All rights reserved.
 //
 //  https://github.com/qhd/ANYMethodLog.git
 //

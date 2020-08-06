@@ -2,8 +2,8 @@
 //  WeChatExtension.h
 //  WeChatExtension
 //
-//  Created by WeChatExtension on 2017/4/19.
-//  Copyright © 2017年 WeChatExtension. All rights reserved.
+//  Created by WeChatExtension on 2019/4/19.
+//  Copyright © 2019年 WeChatExtension. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
@@ -165,10 +165,6 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 
 @interface MMContactsViewController : NSViewController
 @property(nonatomic) __weak NSTableView *tableView;
-@end
-
-@interface MMComposeInputViewController : NSViewController
-- (void)viewDidLoad;
 @end
 
 @interface MMComposeTextView : NSTextView
@@ -959,4 +955,29 @@ forHTTPHeaderField:(NSString *)field;
 - (void)onServiceInit;
 - (void)dealloc;
 - (id)init;
+@end
+
+@interface SVGButton : NSButton
+@property(nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
+@property(retain, nonatomic) NSColor *alternateColor; // @synthesize alternateColor=_alternateColor;
+@property(retain, nonatomic) NSColor *normalColor; // @synthesize normalColor=_normalColor;
+@property(retain, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
+- (void)setup;
+- (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (id)init;
+@end
+
+@interface MMComposeInputViewController : NSViewController
+- (void)viewDidLoad;
+@property(nonatomic) __weak SVGButton *openBrandMenuButton; // @synthesize openBrandMenuButton=_openBrandMenuButton;
+@property(nonatomic) __weak SVGButton *closeBrandMenuButton; // @synthesize openBrandMenuButton=_openBrandMenuButton;
+@property(nonatomic) __weak SVGButton *chatManagerButton; // @synthesize chatManagerButton=_chatManagerButton;
+@property(nonatomic) __weak SVGButton *voiceButton; // @synthesize voiceButton=_voiceButton;
+@property(nonatomic) __weak SVGButton *videoButton; // @synthesize videoButton=_videoButton;
+@property(nonatomic) __weak SVGButton *screenShotButton; // @synthesize screenShotButton=_screenShotButton;
+@property(nonatomic) __weak SVGButton *attachmentButton; // @synthesize attachmentButton=_attachmentButton;
+@property(nonatomic) __weak SVGButton *stickerButton; // @synthesize stickerButton=_stickerButton;
+@property(nonatomic) __weak SVGButton *multiTalkButton; // @synthesize stickerButton=_stickerButton;
 @end
