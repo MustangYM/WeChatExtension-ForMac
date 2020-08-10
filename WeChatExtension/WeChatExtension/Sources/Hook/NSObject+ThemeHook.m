@@ -70,9 +70,20 @@
         //fuzzy
         hookMethod(objc_getClass("MMContactsDetailViewController"), NSSelectorFromString(@"viewWillAppear"), [self class], @selector(hook_contactsDetailViewWillAppear));
         hookMethod(objc_getClass("MMFavoriteDetailViewContoller"), NSSelectorFromString(@"viewWillAppear"), [self class], @selector(hook_favoriteDetailViewWillAppear));
+        hookMethod(objc_getClass("MMSidebarRowView"), NSSelectorFromString(@"_updateSelectionAppearance:"), [self class], @selector(hook_updateSelectionAppearance:));
     }
+    
 }
 
+#pragma mark - 联系人
+- (void)hook_updateSelectionAppearance:(id)arg1
+{
+    NSNotification *ntf = (NSNotification *)arg1;
+    if ([ntf.name containsString:@"NSWindow"]) {
+        return;
+    }
+    [self hook_updateSelectionAppearance:arg1];
+}
 
 #pragma mark - 收藏
 - (void)hook_favoriteDetailViewWillAppear
