@@ -71,8 +71,30 @@
         hookMethod(objc_getClass("MMContactsDetailViewController"), NSSelectorFromString(@"viewWillAppear"), [self class], @selector(hook_contactsDetailViewWillAppear));
         hookMethod(objc_getClass("MMFavoriteDetailViewContoller"), NSSelectorFromString(@"viewWillAppear"), [self class], @selector(hook_favoriteDetailViewWillAppear));
         hookMethod(objc_getClass("MMSidebarContactRowView"), NSSelectorFromString(@"_updateSelectionAppearance:"), [self class], @selector(hook_updateSelectionAppearance:));
+        hookMethod(objc_getClass("MMFavSidebarHeaderRowView"), NSSelectorFromString(@"initWithFrame:"), [self class], @selector(hook_sideBarHeaderInitWithFrame:));
+        hookMethod(objc_getClass("MMFavSidebarRowView"), NSSelectorFromString(@"initWithFrame:"), [self class], @selector(hook_sideBarRowInitWithFrame:));
     }
-    
+}
+
+- (id)hook_sideBarRowInitWithFrame:(struct CGRect)arg1
+{
+    MMFavSidebarRowView *rowView = [self hook_sideBarRowInitWithFrame:arg1];
+    if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
+        NSColor *normalColor = kDarkModeTextColor;
+        rowView.iconView.normalColor = normalColor;
+    }
+    return rowView;
+}
+
+- (id)hook_sideBarHeaderInitWithFrame:(struct CGRect)arg1
+{
+    MMFavSidebarHeaderRowView *rowView = [self hook_sideBarHeaderInitWithFrame:arg1];
+    if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
+        NSColor *normalColor = kDarkModeTextColor;
+        rowView.iconView.normalColor = normalColor;
+        rowView.arrowIconView.normalColor = normalColor;
+    }
+    return rowView;
 }
 
 #pragma mark - 联系人
