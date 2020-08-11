@@ -9,6 +9,7 @@
 #import "YMFuzzyManager.h"
 #import "YMThemeManager.h"
 #import "TKWeChatPluginConfig.h"
+#import "NSViewLayoutTool.h"
 
 @implementation YMFuzzyManager
 + (void)fuzzyWindowViewController:(NSWindowController *)window
@@ -34,12 +35,15 @@
     //除了MMMainWindowController， 其余均做特殊处理
     if ([window isKindOfClass:objc_getClass("MMMainWindowController")]) {
         [window.window.contentView addSubview:effView];
+        [effView fillSuperView];
     } else {
         if (window.window.contentView.subviews.count > 0) {
             NSView *firstSubView = window.window.contentView.subviews[0];
             [window.window.contentView addSubview:effView positioned:NSWindowBelow relativeTo:firstSubView];
+            [effView fillSuperView];
         } else {
             [window.window.contentView addSubview:effView];
+            [effView fillSuperView];
         }
     }
     
@@ -58,8 +62,10 @@
             NSView *firstSubView = viewController.view.subviews[0];
             [[YMThemeManager shareInstance] changeTheme:firstSubView color:[NSColor clearColor]];
             [viewController.view addSubview:effView positioned:NSWindowBelow relativeTo:firstSubView];
+            [effView fillSuperView];
         } else {
             [viewController.view addSubview:effView];
+            [effView fillSuperView];
         }
     }
 }
