@@ -12,7 +12,7 @@
 
 - 适用于Mac版的WeChat拓展功能。1.7.5代码来自于[WeChatPlugin](https://github.com/TKkk-iOSer/WeChatPlugin-MacOS)，对[TK](https://github.com/TKkk-iOSer)在此表示感谢！
 - Issues注意事项[Wiki](https://github.com/MustangYM/WeChatExtension-ForMac/wiki/Issues%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)。
-- <del>到目前为止，并未发现因使用本插件会导致封号。<del>
+- 到目前为止，并未发现因使用本插件会导致封号。
 
 ## 最新支持版本
 -  mac版微信2.4.2
