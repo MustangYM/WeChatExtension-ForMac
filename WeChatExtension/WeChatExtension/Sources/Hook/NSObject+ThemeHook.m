@@ -73,7 +73,21 @@
         hookMethod(objc_getClass("MMSidebarContactRowView"), NSSelectorFromString(@"_updateSelectionAppearance:"), [self class], @selector(hook_updateSelectionAppearance:));
         hookMethod(objc_getClass("MMFavSidebarHeaderRowView"), NSSelectorFromString(@"initWithFrame:"), [self class], @selector(hook_sideBarHeaderInitWithFrame:));
         hookMethod(objc_getClass("MMFavSidebarRowView"), NSSelectorFromString(@"initWithFrame:"), [self class], @selector(hook_sideBarRowInitWithFrame:));
+        hookMethod(objc_getClass("MMContactsDetailViewController"), @selector(sendMsgButton), [self class], @selector(hook_sendMsgButton));
     }
+}
+
+- (id)hook_sendMsgButton
+{
+    NSButton *btn = [self hook_sendMsgButton];
+    if ([TKWeChatPluginConfig sharedConfig].usingTheme) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            btn.layer.cornerRadius = 5;
+            btn.layer.borderColor = TK_RGBA(6, 193, 96, 0.2).CGColor;
+            btn.layer.borderWidth = 2;
+        });
+    }
+    return btn;
 }
 
 - (id)hook_sideBarRowInitWithFrame:(struct CGRect)arg1
@@ -807,6 +821,14 @@
     
     if ([NSStringFromClass(self.class) containsString:@"FI_"]) {
         return;
+    }
+    
+    
+    if ([self isKindOfClass:objc_getClass("MMContactsDetailViewController")]) {
+        MMContactsDetailViewController *contactsVC = (MMContactsDetailViewController *)self;
+        if (!contactsVC.currContactData) {
+            contactsVC.contactNameLabel.stringValue = @"";
+        }
     }
     
     NSViewController *viewController = (NSViewController *)self;

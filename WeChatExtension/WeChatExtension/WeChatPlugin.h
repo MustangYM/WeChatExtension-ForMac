@@ -892,6 +892,7 @@ forHTTPHeaderField:(NSString *)field;
 @property(retain, nonatomic) MMView *placeHolderView; // @synthesize placeHolderView=_placeHolderView;
 @property(retain, nonatomic) NSView *detailContainerView; // @synthesize detailContainerView=_detailContainerView;
 @property(nonatomic) __weak NSScrollView *scrollViewContainer; // @synthesize scrollViewContainer=_scrollViewContainer;
+@property(retain, nonatomic) NSButton *sendMsgButton; // @synthesize sendMsgButton=_sendMsgButton;
 @end
 
 @interface MMFavoriteCollectionView : NSCollectionView

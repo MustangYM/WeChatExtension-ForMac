@@ -26,6 +26,7 @@
 #import<CommonCrypto/CommonDigest.h>
 #import "YMIMContactsManager.h"
 #import "ANYMethodLog.h"
+#import "NSViewLayoutTool.h"
 
 @implementation NSObject (WeChatHook)
 
@@ -105,7 +106,7 @@
     }, 2);
     
     [self setup];
-    
+
 }
 
 - (void)hook_addChatMemberNeedVerifyMsg:(id)arg1 ContactList:(id)arg2
