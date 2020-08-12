@@ -28,6 +28,14 @@
         return;
     }
     
+    if ([window isKindOfClass:objc_getClass("MMPreviewWindowController")]) {
+        return;
+    }
+    
+    if ([window isKindOfClass:objc_getClass("MMPreviewChatMediaWindowController")]) {
+        return;
+    }
+    
     [window.window setOpaque:YES];
     [window.window setBackgroundColor:[NSColor clearColor]];
     NSVisualEffectView *effView = [YMThemeManager creatFuzzyEffectView:window.window];
