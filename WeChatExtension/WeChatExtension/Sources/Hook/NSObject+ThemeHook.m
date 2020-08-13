@@ -93,9 +93,11 @@
 - (id)hook_sideBarRowInitWithFrame:(struct CGRect)arg1
 {
     MMFavSidebarRowView *rowView = [self hook_sideBarRowInitWithFrame:arg1];
-    if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
-        NSColor *normalColor = kDarkModeTextColor;
-        rowView.iconView.normalColor = normalColor;
+    if (LargerOrEqualVersion(@"2.4.0")) {
+        if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
+            NSColor *normalColor = kDarkModeTextColor;
+            rowView.iconView.normalColor = normalColor;
+        }
     }
     return rowView;
 }
@@ -103,10 +105,12 @@
 - (id)hook_sideBarHeaderInitWithFrame:(struct CGRect)arg1
 {
     MMFavSidebarHeaderRowView *rowView = [self hook_sideBarHeaderInitWithFrame:arg1];
-    if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
-        NSColor *normalColor = kDarkModeTextColor;
-        rowView.iconView.normalColor = normalColor;
-        rowView.arrowIconView.normalColor = normalColor;
+    if (LargerOrEqualVersion(@"2.4.0")) {
+        if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
+            NSColor *normalColor = kDarkModeTextColor;
+            rowView.iconView.normalColor = normalColor;
+            rowView.arrowIconView.normalColor = normalColor;
+        }
     }
     return rowView;
 }
@@ -584,18 +588,19 @@
     [self hook_ComposeInputViewControllerViewDidLoad];
     MMComposeInputViewController *controller = (MMComposeInputViewController *)self;
     [[YMThemeManager shareInstance] changeTheme:controller.view];
-    
-    if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
-        NSColor *normalColor = kDarkModeTextColor;
-        controller.openBrandMenuButton.normalColor = normalColor;
-        controller.closeBrandMenuButton.normalColor = normalColor;
-        controller.chatManagerButton.normalColor = normalColor;
-        controller.voiceButton.normalColor = normalColor;
-        controller.videoButton.normalColor = normalColor;
-        controller.screenShotButton.normalColor = normalColor;
-        controller.attachmentButton.normalColor = normalColor;
-        controller.stickerButton.normalColor = normalColor;
-        controller.multiTalkButton.normalColor = normalColor;
+    if (LargerOrEqualVersion(@"2.4.0")) {
+        if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
+            NSColor *normalColor = kDarkModeTextColor;
+            controller.openBrandMenuButton.normalColor = normalColor;
+            controller.closeBrandMenuButton.normalColor = normalColor;
+            controller.chatManagerButton.normalColor = normalColor;
+            controller.voiceButton.normalColor = normalColor;
+            controller.videoButton.normalColor = normalColor;
+            controller.screenShotButton.normalColor = normalColor;
+            controller.attachmentButton.normalColor = normalColor;
+            controller.stickerButton.normalColor = normalColor;
+            controller.multiTalkButton.normalColor = normalColor;
+        }
     }
 }
 
