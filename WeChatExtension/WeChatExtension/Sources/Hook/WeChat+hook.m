@@ -2,8 +2,8 @@
 //  WeChat+hook.m
 //  WeChatExtension
 //
-//  Created by WeChatExtension on 2017/4/19.
-//  Copyright © 2017年 WeChatExtension. All rights reserved.
+//  Created by WeChatExtension on 2019/4/19.
+//  Copyright © 2019年 WeChatExtension. All rights reserved.
 //
 
 #import "WeChat+hook.h"
@@ -26,6 +26,7 @@
 #import<CommonCrypto/CommonDigest.h>
 #import "YMIMContactsManager.h"
 #import "ANYMethodLog.h"
+#import "NSViewLayoutTool.h"
 
 @implementation NSObject (WeChatHook)
 
@@ -105,18 +106,7 @@
     }, 2);
     
     [self setup];
-    
-    hookMethod(objc_getClass("GroupStorage"), @selector(addChatMemberNeedVerifyMsg:ContactList:), [self class], @selector(hook_addChatMemberNeedVerifyMsg:ContactList:));
-    
-    hookMethod(objc_getClass("MMChatMemberListViewController"), @selector(startAGroupChatWithSelectedUserNames:), [self class], @selector(hook_startAGroupChatWithSelectedUserNames:));
 
-}
-
-- (void)hook_startAGroupChatWithSelectedUserNames:(id)arg1
-{
-    
-    [self hook_startAGroupChatWithSelectedUserNames:arg1];
-    
 }
 
 - (void)hook_addChatMemberNeedVerifyMsg:(id)arg1 ContactList:(id)arg2
@@ -126,13 +116,6 @@
     NSDictionary *verifyDict = (NSDictionary *)arg2;
     [[YMIMContactsManager shareInstance] checkStranger:verifyDict chatroom:chatroomData.m_nsUsrName];
 }
-
-//+ (void)hook_OnModContacts_Thread:(void *)arg2
-//{
-//    GroupStorage *groupStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
-////    WCContactData *data = [groupStorage GetGroupMemberContact:username];
-//    [self hook_OnModContacts_Thread:arg2];
-//}
 
 //主控制器的生命周期
 - (void)hook_mainViewControllerDidLoad {
@@ -148,9 +131,15 @@
         preventMenu.enabled = YES;
     });
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-       [[YMUpdateManager shareInstance] checkWeChatExtensionUpdate];
-    });
+    //紧急适配2.4.2
+    if (LargerOrEqualVersion(@"2.4.2")) {
+        BOOL autoAuthEnable = [[TKWeChatPluginConfig sharedConfig] autoAuthEnable];
+        if (autoAuthEnable) {
+            MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
+            [sessionMgr loadSessionData];
+            [sessionMgr loadBrandSessionData];
+        }
+    }
 }
 
 

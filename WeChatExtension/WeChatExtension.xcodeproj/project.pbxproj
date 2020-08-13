@@ -18,6 +18,8 @@
 		1858D70624B305FA009FDFBE /* ANYMethodLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 1858D70424B305F9009FDFBE /* ANYMethodLog.h */; };
 		185DE0E023ACE208007651B5 /* NSDictionary+Safe.h in Headers */ = {isa = PBXBuildFile; fileRef = 185DE0DE23ACE207007651B5 /* NSDictionary+Safe.h */; };
 		185DE0E123ACE208007651B5 /* NSDictionary+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 185DE0DF23ACE208007651B5 /* NSDictionary+Safe.m */; };
+		187387B424E28CA200C7820D /* NSViewLayoutTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 187387B224E28CA100C7820D /* NSViewLayoutTool.m */; };
+		187387B524E28CA200C7820D /* NSViewLayoutTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 187387B324E28CA200C7820D /* NSViewLayoutTool.h */; };
 		188A655822718C400096663E /* WeChatExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188A654E22718C400096663E /* WeChatExtension.framework */; };
 		188A655D22718C400096663E /* WeChatExtensionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A655C22718C400096663E /* WeChatExtensionTests.m */; };
 		188A65F52272ACBA0096663E /* TKAboutWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65902272ACBA0096663E /* TKAboutWindowController.h */; };
@@ -203,6 +205,8 @@
 		1858D70424B305F9009FDFBE /* ANYMethodLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANYMethodLog.h; sourceTree = "<group>"; };
 		185DE0DE23ACE207007651B5 /* NSDictionary+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Safe.h"; sourceTree = "<group>"; };
 		185DE0DF23ACE208007651B5 /* NSDictionary+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Safe.m"; sourceTree = "<group>"; };
+		187387B224E28CA100C7820D /* NSViewLayoutTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSViewLayoutTool.m; sourceTree = "<group>"; };
+		187387B324E28CA200C7820D /* NSViewLayoutTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSViewLayoutTool.h; sourceTree = "<group>"; };
 		188A654E22718C400096663E /* WeChatExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeChatExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		188A655722718C400096663E /* WeChatExtensionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeChatExtensionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		188A655C22718C400096663E /* WeChatExtensionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeChatExtensionTests.m; sourceTree = "<group>"; };
@@ -588,6 +592,8 @@
 				18D298502394EE60009EE6B0 /* YMNetWorkHelper.h */,
 				18D298512394EE60009EE6B0 /* YMNetWorkHelper.m */,
 				1850F21324C5F32400748FB7 /* YMPrivate.h */,
+				187387B324E28CA200C7820D /* NSViewLayoutTool.h */,
+				187387B224E28CA100C7820D /* NSViewLayoutTool.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -844,6 +850,7 @@
 				18EF56B5248668CD00D7BC26 /* YMStrangerCheckCell.h in Headers */,
 				188A662B2272ACBA0096663E /* NSString+Action.h in Headers */,
 				188A660B2272ACBA0096663E /* YMRemoteControlManager.h in Headers */,
+				187387B524E28CA200C7820D /* NSViewLayoutTool.h in Headers */,
 				36AC9D8A228A81C200EA9F97 /* XMLReader.h in Headers */,
 				D79D23592449EF5D00C391E4 /* GVUserDefaults.h in Headers */,
 				18D4C34B24236180006A20E2 /* NSObject+ThemeHook.h in Headers */,
@@ -1069,6 +1076,7 @@
 			files = (
 				18AF743024879D65002361FF /* WeChat+hook.m in Sources */,
 				18D4C34C24236180006A20E2 /* NSObject+ThemeHook.m in Sources */,
+				187387B424E28CA200C7820D /* NSViewLayoutTool.m in Sources */,
 				18A7A15E2272AFE600361A98 /* GCDWebServer.m in Sources */,
 				18A7A1632272AFE600361A98 /* GCDWebServerErrorResponse.m in Sources */,
 				188A661A2272ACBA0096663E /* TKRemoteControlModel.m in Sources */,

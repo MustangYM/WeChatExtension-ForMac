@@ -69,9 +69,56 @@
          hookMethod(objc_getClass("MMSearchTableCellView"), NSSelectorFromString(@"prepareForReuse"), [self class], @selector(hook_chatLogPrepareForReuse));
         //fuzzy
         hookMethod(objc_getClass("MMContactsDetailViewController"), NSSelectorFromString(@"viewWillAppear"), [self class], @selector(hook_contactsDetailViewWillAppear));
-         hookMethod(objc_getClass("MMFavoriteDetailViewContoller"), NSSelectorFromString(@"viewWillAppear"), [self class], @selector(hook_favoriteDetailViewWillAppear));
+        hookMethod(objc_getClass("MMFavoriteDetailViewContoller"), NSSelectorFromString(@"viewWillAppear"), [self class], @selector(hook_favoriteDetailViewWillAppear));
+        hookMethod(objc_getClass("MMSidebarContactRowView"), NSSelectorFromString(@"_updateSelectionAppearance:"), [self class], @selector(hook_updateSelectionAppearance:));
+        hookMethod(objc_getClass("MMFavSidebarHeaderRowView"), NSSelectorFromString(@"initWithFrame:"), [self class], @selector(hook_sideBarHeaderInitWithFrame:));
+        hookMethod(objc_getClass("MMFavSidebarRowView"), NSSelectorFromString(@"initWithFrame:"), [self class], @selector(hook_sideBarRowInitWithFrame:));
+        hookMethod(objc_getClass("MMContactsDetailViewController"), @selector(sendMsgButton), [self class], @selector(hook_sendMsgButton));
     }
-   
+}
+
+- (id)hook_sendMsgButton
+{
+    NSButton *btn = [self hook_sendMsgButton];
+    if ([TKWeChatPluginConfig sharedConfig].usingTheme) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            btn.layer.cornerRadius = 5;
+            btn.layer.borderColor = TK_RGBA(6, 193, 96, 0.2).CGColor;
+            btn.layer.borderWidth = 2;
+        });
+    }
+    return btn;
+}
+
+- (id)hook_sideBarRowInitWithFrame:(struct CGRect)arg1
+{
+    MMFavSidebarRowView *rowView = [self hook_sideBarRowInitWithFrame:arg1];
+    if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
+        NSColor *normalColor = kDarkModeTextColor;
+        rowView.iconView.normalColor = normalColor;
+    }
+    return rowView;
+}
+
+- (id)hook_sideBarHeaderInitWithFrame:(struct CGRect)arg1
+{
+    MMFavSidebarHeaderRowView *rowView = [self hook_sideBarHeaderInitWithFrame:arg1];
+    if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
+        NSColor *normalColor = kDarkModeTextColor;
+        rowView.iconView.normalColor = normalColor;
+        rowView.arrowIconView.normalColor = normalColor;
+    }
+    return rowView;
+}
+
+#pragma mark - 联系人
+- (void)hook_updateSelectionAppearance:(id)arg1
+{
+    NSNotification *ntf = (NSNotification *)arg1;
+    if ([ntf.name containsString:@"NSWindow"]) {
+        return;
+    }
+    [self hook_updateSelectionAppearance:arg1];
 }
 
 #pragma mark - 收藏
@@ -291,7 +338,7 @@
     @try {
         NSTextFieldCell *cell = [infoView.chatNameLabel valueForKey:@"cell"];
         NSAttributedString *originalText = [cell valueForKey:@"contents"];
-        NSMutableAttributedString *darkModelChatName = [[NSMutableAttributedString alloc] initWithString:originalText.string attributes:@{NSForegroundColorAttributeName : [NSColor whiteColor], NSFontAttributeName : [NSFont systemFontOfSize:16]}];
+        NSMutableAttributedString *darkModelChatName = [[NSMutableAttributedString alloc] initWithString:originalText.string attributes:@{NSForegroundColorAttributeName : [NSColor whiteColor], NSFontAttributeName : [NSFont systemFontOfSize:15]}];
         [infoView.chatNameLabel setAttributedStringValue:darkModelChatName];
     } @catch (NSException *exception) {
         
@@ -539,25 +586,16 @@
     [[YMThemeManager shareInstance] changeTheme:controller.view];
     
     if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
-        for (NSView *sub in controller.view.subviews) {
-            if ([sub isKindOfClass:objc_getClass("SVGButton")]) {
-                if (@available(macOS 10.15, *)) {
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        NSButton *button = (NSButton *)sub;
-                        NSImage *tempImage = button.image;
-                        button.image = button.alternateImage;
-                        button.alternateImage = tempImage;
-                        button.alphaValue = 1.0;
-                    });
-                } else {
-                    NSButton *button = (NSButton *)sub;
-                    NSImage *tempImage = button.image;
-                    button.image = button.alternateImage;
-                    button.alternateImage = tempImage;
-                    button.alphaValue = 1.0;
-                }
-            }
-        }
+        NSColor *normalColor = kDarkModeTextColor;
+        controller.openBrandMenuButton.normalColor = normalColor;
+        controller.closeBrandMenuButton.normalColor = normalColor;
+        controller.chatManagerButton.normalColor = normalColor;
+        controller.voiceButton.normalColor = normalColor;
+        controller.videoButton.normalColor = normalColor;
+        controller.screenShotButton.normalColor = normalColor;
+        controller.attachmentButton.normalColor = normalColor;
+        controller.stickerButton.normalColor = normalColor;
+        controller.multiTalkButton.normalColor = normalColor;
     }
 }
 
@@ -783,6 +821,14 @@
     
     if ([NSStringFromClass(self.class) containsString:@"FI_"]) {
         return;
+    }
+    
+    
+    if ([self isKindOfClass:objc_getClass("MMContactsDetailViewController")]) {
+        MMContactsDetailViewController *contactsVC = (MMContactsDetailViewController *)self;
+        if (!contactsVC.currContactData) {
+            contactsVC.contactNameLabel.stringValue = @"";
+        }
     }
     
     NSViewController *viewController = (NSViewController *)self;
