@@ -41,7 +41,7 @@
         }
     }
     
-    [self automaticInvestmentPlanTip];
+//    [self automaticInvestmentPlanTip];
 }
 
 
