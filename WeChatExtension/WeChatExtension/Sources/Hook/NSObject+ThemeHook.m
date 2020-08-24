@@ -93,7 +93,7 @@
 - (id)hook_sideBarRowInitWithFrame:(struct CGRect)arg1
 {
     MMFavSidebarRowView *rowView = [self hook_sideBarRowInitWithFrame:arg1];
-    if (LargerOrEqualVersion(@"2.4.0")) {
+    if (LargerOrEqualVersion(@"2.4.2")) {
         if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
             NSColor *normalColor = kDarkModeTextColor;
             rowView.iconView.normalColor = normalColor;
@@ -105,7 +105,7 @@
 - (id)hook_sideBarHeaderInitWithFrame:(struct CGRect)arg1
 {
     MMFavSidebarHeaderRowView *rowView = [self hook_sideBarHeaderInitWithFrame:arg1];
-    if (LargerOrEqualVersion(@"2.4.0")) {
+    if (LargerOrEqualVersion(@"2.4.2")) {
         if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
             NSColor *normalColor = kDarkModeTextColor;
             rowView.iconView.normalColor = normalColor;
@@ -588,7 +588,7 @@
     [self hook_ComposeInputViewControllerViewDidLoad];
     MMComposeInputViewController *controller = (MMComposeInputViewController *)self;
     [[YMThemeManager shareInstance] changeTheme:controller.view];
-    if (LargerOrEqualVersion(@"2.4.0")) {
+    if (LargerOrEqualVersion(@"2.4.2")) {
         if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
             NSColor *normalColor = kDarkModeTextColor;
             controller.openBrandMenuButton.normalColor = normalColor;
