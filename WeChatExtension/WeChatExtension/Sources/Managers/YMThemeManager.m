@@ -155,16 +155,7 @@ static const NSString *DEVICE_THEME_MODE = @"DEVICE_THEME_MODE";
         // Fallback on earlier versions
     }
     effectView.state = NSVisualEffectStateActive;
-    
-    if ([superView isKindOfClass:NSWindow.class]) {
-        NSWindow *window = (NSWindow *)superView;
-        effectView.frame = CGRectMake(0, 0, window.frame.size.width + 5000, window.frame.size.height + 5000);
-        return effectView;
-    } else {
-        NSView *view = (NSView *)superView;
-        effectView.frame = CGRectMake(0, 0, view.frame.size.width + 5000, view.frame.size.height + 5000);
-        return effectView;
-    }
+    return effectView;
 }
 
 + (void)changeEffectViewMode:(NSVisualEffectView *)effectView

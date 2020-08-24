@@ -892,6 +892,7 @@ forHTTPHeaderField:(NSString *)field;
 @property(retain, nonatomic) MMView *placeHolderView; // @synthesize placeHolderView=_placeHolderView;
 @property(retain, nonatomic) NSView *detailContainerView; // @synthesize detailContainerView=_detailContainerView;
 @property(nonatomic) __weak NSScrollView *scrollViewContainer; // @synthesize scrollViewContainer=_scrollViewContainer;
+@property(retain, nonatomic) NSButton *sendMsgButton; // @synthesize sendMsgButton=_sendMsgButton;
 @end
 
 @interface MMFavoriteCollectionView : NSCollectionView
@@ -980,4 +981,18 @@ forHTTPHeaderField:(NSString *)field;
 @property(nonatomic) __weak SVGButton *attachmentButton; // @synthesize attachmentButton=_attachmentButton;
 @property(nonatomic) __weak SVGButton *stickerButton; // @synthesize stickerButton=_stickerButton;
 @property(nonatomic) __weak SVGButton *multiTalkButton; // @synthesize stickerButton=_stickerButton;
+@end
+
+@interface MMFavSidebarHeaderRowView : NSTableRowView
+@property(retain, nonatomic) MMSidebarColorIconView *arrowIconView; // @synthesize arrowIconView=_arrowIconView;
+@property(retain, nonatomic) MMSidebarColorIconView *iconView; // @synthesize iconView=_iconView;
+@property(retain, nonatomic) MMSidebarLabelTextField *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(retain, nonatomic) NSImage *arrowIcon; // @synthesize arrowIcon=_arrowIcon;
+@property(retain, nonatomic) NSImage *icon; // @synthesize icon=_icon;
+@end
+
+@interface MMFavSidebarRowView : NSTableRowView
+@property(retain, nonatomic) MMView *containerView; // @synthesize containerView=_containerView;
+@property(retain, nonatomic) MMImageView *avatarView; // @synthesize avatarView=_avatarView;
+@property(retain, nonatomic) MMSidebarColorIconView *iconView; // @synthesize iconView=_iconView;
 @end
