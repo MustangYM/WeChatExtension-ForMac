@@ -836,37 +836,142 @@
 }
 
 - (void)replyWithMsg:(AddMsg *)addMsg model:(YMAutoReplyModel *)model {
-    NSString *msgContent = addMsg.content.string;
-    if ([addMsg.fromUserName.string containsString:@"@chatroom"]) {
-        NSRange range = [msgContent rangeOfString:@":\n"];
-        if (range.length > 0) {
-            msgContent = [msgContent substringFromIndex:range.location + range.length];
-        }
-    }
     
-    NSArray *replyArray = [model.replyContent componentsSeparatedByString:@"|"];
-    int index = arc4random() % replyArray.count;
-    NSString *randomReplyContent = replyArray[index];
-    NSInteger delayTime = model.enableDelay ? model.delayTime : 0;
-    
-    if (model.enableRegex) {
-        NSString *regex = model.keyword;
-        NSError *error;
-        NSRegularExpression *regular = [NSRegularExpression regularExpressionWithPattern:regex options:NSRegularExpressionCaseInsensitive error:&error];
-        if (error) return;
-        NSInteger count = [regular numberOfMatchesInString:msgContent options:NSMatchingReportCompletion range:NSMakeRange(0, msgContent.length)];
-        if (count > 0) {
-            [[YMMessageManager shareManager] sendTextMessage:randomReplyContent toUsrName:addMsg.fromUserName.string delay:delayTime];
-        }
-    } else {
-        NSArray * keyWordArray = [model.keyword componentsSeparatedByString:@"|"];
-        [keyWordArray enumerateObjectsUsingBlock:^(NSString *keyword, NSUInteger idx, BOOL * _Nonnull stop) {
-            if ([keyword isEqualToString:@"*"] || [msgContent isEqualToString:keyword]) {
-                [[YMMessageManager shareManager] sendTextMessage:randomReplyContent toUsrName:addMsg.fromUserName.string delay:delayTime];
-                *stop = YES;
-            }
+    if(addMsg.imgStatus == 2) {
+        NSString *imageFormat = @"Content-Type: image/jpeg \r\n";
+
+        //请求
+        NSURL *requestUrl = [NSURL URLWithString:@"http://localhost:31013/vin/scanner"];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestUrl];
+        request.HTTPMethod = @"POST";
+        
+        //设置请求体
+        NSMutableData *body = [NSMutableData data];
+
+        /**请求参数**/
+        [body appendData:[@"--SPSWL\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        NSString *disposition = @"Content-Disposition: form-data; name=\"photo\";filename=\"001.jpeg\"\r\n";
+        [body appendData:[disposition dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[imageFormat dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:addMsg.imgBuf.buffer];
+        [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        /**参数结束**/
+        [body appendData:[@"--SPSWL--\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        request.HTTPBody = body;
+
+        //设置请求体的长度
+        NSInteger length = [body length];
+        [request setValue:[NSString stringWithFormat:@"%ld",length] forHTTPHeaderField:@"Content-Length"];
+
+       
+
+        //设置post请求文件上传
+        [request setValue:@"multipart/form-data;boundary=SPSWL" forHTTPHeaderField:@"Content-Type"];
+        
+        
+        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+                if(dict){
+                     NSString *resMsg;
+                    if([dict[@"code"] integerValue] == 0){
+                        resMsg = [NSString stringWithFormat:@"%@", dict[@"data"]];
+                    }else{
+                        resMsg = [NSString stringWithFormat:@"%@", dict[@"msg"]];
+                    }
+                    
+    //                NSArray *replyArray = [model.replyContent componentsSeparatedByString:@"|"];
+    //                int index = arc4random() % replyArray.count;
+                    NSInteger delayTime = model.enableDelay ? model.delayTime : 0;
+                    [[YMMessageManager shareManager] sendTextMessage:resMsg toUsrName:addMsg.fromUserName.string delay:delayTime];
+                }
+            
         }];
+    } else {
+        
+        NSString *msgContent = addMsg.content.string;
+        if ([addMsg.fromUserName.string containsString:@"@chatroom"]) {
+            NSRange range = [msgContent rangeOfString:@":\n"];
+            if (range.length > 0) {
+                msgContent = [msgContent substringFromIndex:range.location + range.length];
+            }
+        }
+        
+        //1、创建一个URL
+        NSURL *url = [NSURL URLWithString:@"http://localhost:20187/test/mytest"];
+    
+        //2、创建请求(Request)对象 这里使用的是它的子类NSMutableURLRequest,因为子类才具有设置方法和设置请求体的属性
+        NSMutableURLRequest *requst = [[NSMutableURLRequest alloc]initWithURL:url];
+        //2.1、设置请求方法
+        requst.HTTPMethod = @"POST";
+        //2.2、设置请求体,因为传入的为Data数据所有这里需要转换
+    
+        NSString *msg = [NSString stringWithFormat:@"name=%@", msgContent];
+    
+        requst.HTTPBody = [msg dataUsingEncoding:NSUTF8StringEncoding];
+        //2.3、设置请求超时时间，如果超过这个时间，请求为失败
+        requst.timeoutInterval = 10;
+    
+        //3、发送请求
+        /*
+         第一个参数:请求对象
+         第二个参数:响应头
+         第三个参数:错误信息
+         返回值:NSData类型,响应体信息
+         */
+        NSError *error = nil;
+        NSURLResponse *response = nil;
+        //发送同步请求(sendSynchronousRequest)
+        NSData *data = [NSURLConnection sendSynchronousRequest:requst returningResponse:&response error:&error];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+        NSLog(@"dsflkdsl =%@",dic[@"msg"]);
+        //如果没有错误就执行
+        if (!error) {
+    
+                //打印的服务端返回的信息以及错误信息
+        //        NSLog(@"WJS我想测试啊,%@", [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
+        //        NSLog(@"%@",error);
+        }
+        
+
+        NSInteger delayTime = model.enableDelay ? model.delayTime : 0;
+    
+        [[YMMessageManager shareManager] sendTextMessage:dic[@"data"] toUsrName:addMsg.fromUserName.string delay:delayTime];
+        
     }
+    
+//    NSString *msgContent = addMsg.content.string;
+//    if ([addMsg.fromUserName.string containsString:@"@chatroom"]) {
+//        NSRange range = [msgContent rangeOfString:@":\n"];
+//        if (range.length > 0) {
+//            msgContent = [msgContent substringFromIndex:range.location + range.length];
+//        }
+//    }
+//
+//    NSArray *replyArray = [model.replyContent componentsSeparatedByString:@"|"];
+//    int index = arc4random() % replyArray.count;
+//    NSString *randomReplyContent = replyArray[index];
+//    NSInteger delayTime = model.enableDelay ? model.delayTime : 0;
+//
+//    if (model.enableRegex) {
+//        NSString *regex = model.keyword;
+//        NSError *error;
+//        NSRegularExpression *regular = [NSRegularExpression regularExpressionWithPattern:regex options:NSRegularExpressionCaseInsensitive error:&error];
+//        if (error) return;
+//        NSInteger count = [regular numberOfMatchesInString:msgContent options:NSMatchingReportCompletion range:NSMakeRange(0, msgContent.length)];
+//        if (count > 0) {
+//            [[YMMessageManager shareManager] sendTextMessage:randomReplyContent toUsrName:addMsg.fromUserName.string delay:delayTime];
+//        }
+//    } else {
+//        NSArray * keyWordArray = [model.keyword componentsSeparatedByString:@"|"];
+//        [keyWordArray enumerateObjectsUsingBlock:^(NSString *keyword, NSUInteger idx, BOOL * _Nonnull stop) {
+//            if ([keyword isEqualToString:@"*"] || [msgContent isEqualToString:keyword]) {
+//                [[YMMessageManager shareManager] sendTextMessage:randomReplyContent toUsrName:addMsg.fromUserName.string delay:delayTime];
+//                *stop = YES;
+//            }
+//        }];
+//    }
 }
 
 /**
