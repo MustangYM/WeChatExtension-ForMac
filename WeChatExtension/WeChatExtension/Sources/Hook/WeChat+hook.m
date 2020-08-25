@@ -503,29 +503,31 @@
 - (void)hook_sortSessions {
     [self hook_sortSessions];
     
-    MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
-    NSMutableArray *arrSession = sessionMgr.m_arrSession;
-    NSMutableArray *ignoreSessions = [[[TKWeChatPluginConfig sharedConfig] ignoreSessionModels] mutableCopy];
-    
-    NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
-    [ignoreSessions enumerateObjectsUsingBlock:^(TKIgnoreSessonModel *model, NSUInteger index, BOOL * _Nonnull stop) {
-        __block NSInteger ignoreIdx = -1;
-        [arrSession enumerateObjectsUsingBlock:^(MMSessionInfo *sessionInfo, NSUInteger idx, BOOL * _Nonnull stop) {
-            if ([model.userName isEqualToString:sessionInfo.m_nsUserName] && [model.selfContact isEqualToString:currentUserName]) {
-                ignoreIdx = idx;
-                *stop = YES;
+    @synchronized (self) {
+        MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
+        NSMutableArray *arrSession = sessionMgr.m_arrSession;
+        NSMutableArray *ignoreSessions = [[[TKWeChatPluginConfig sharedConfig] ignoreSessionModels] mutableCopy];
+        
+        NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
+        [ignoreSessions enumerateObjectsUsingBlock:^(TKIgnoreSessonModel *model, NSUInteger index, BOOL * _Nonnull stop) {
+            __block NSInteger ignoreIdx = -1;
+            [arrSession enumerateObjectsUsingBlock:^(MMSessionInfo *sessionInfo, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([model.userName isEqualToString:sessionInfo.m_nsUserName] && [model.selfContact isEqualToString:currentUserName]) {
+                    ignoreIdx = idx;
+                    *stop = YES;
+                }
+            }];
+            
+            if (ignoreIdx != -1) {
+                MMSessionInfo *sessionInfo = arrSession[ignoreIdx];
+                [arrSession removeObjectAtIndex:ignoreIdx];
+                [arrSession addObject:sessionInfo];
             }
         }];
         
-        if (ignoreIdx != -1) {
-            MMSessionInfo *sessionInfo = arrSession[ignoreIdx];
-            [arrSession removeObjectAtIndex:ignoreIdx];
-            [arrSession addObject:sessionInfo];
-        }
-    }];
-    
-    WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
-    [wechat.chatsViewController.tableView reloadData];
+        WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
+        [wechat.chatsViewController.tableView reloadData];
+    }
 }
 
 
