@@ -26,7 +26,7 @@
 {
     [super windowDidLoad];
     self.titleLabel.stringValue = YMLanguage(@"微信小助手", @"WeChat Assistant");
-    self.homePageTitleLabel.stringValue = YMLanguage(@"项目主页:", @"Project Homepage:");
+    self.homePageTitleLabel.stringValue = YMLanguage(@"唯一主页:", @"Only Homepage:");
     self.WeiboLabel.stringValue = YMLanguage(@"微博:", @"Weibo:");
     self.window.backgroundColor = [NSColor whiteColor];
     NSDictionary *localInfo = [[TKWeChatPluginConfig sharedConfig] localInfoPlist];

@@ -13,6 +13,7 @@
 extern OSStatus CGSSetWindowBackgroundBlurRadius(CGSConnection connection, NSInteger   windowNumber, int radius);
 extern CGSConnection CGSDefaultConnectionForThread();
 @implementation NSWindow (fuzzy)
+
 - (void)setWindowBackgroundBlurRadius:(int)radius
 {
     CGSConnection connection = CGSDefaultConnectionForThread();

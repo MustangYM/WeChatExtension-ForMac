@@ -14,6 +14,7 @@
 #import "YMThemeManager.h"
 #import "ANYMethodLog.h"
 #import "YMFuzzyManager.h"
+#import "NSWindow+fuzzy.h"
 
 @interface NSCellAuxiliary : NSObject
 
@@ -75,6 +76,7 @@
         hookMethod(objc_getClass("MMFavSidebarRowView"), NSSelectorFromString(@"initWithFrame:"), [self class], @selector(hook_sideBarRowInitWithFrame:));
         hookMethod(objc_getClass("MMContactsDetailViewController"), @selector(sendMsgButton), [self class], @selector(hook_sendMsgButton));
     }
+    
 }
 
 - (id)hook_sendMsgButton

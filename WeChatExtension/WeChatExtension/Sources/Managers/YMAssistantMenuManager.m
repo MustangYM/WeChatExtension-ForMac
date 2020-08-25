@@ -193,13 +193,6 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
                                                    keyEquivalent:@""
                                                            state:0];
     
-    NSString *versionStr = YMLanguage(@"当前版本", @"Version");
-    NSMenuItem *currentVersionItem = [NSMenuItem menuItemWithTitle:[NSString stringWithFormat:@"%@%@",versionStr,[YMVersionManager shareManager].currentVersion]
-                                                    action:@selector(onCurrentVersion:)
-                                                    target:self
-                                             keyEquivalent:@""
-                                                     state:0];
-    
     NSMenuItem *backGroundItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"主题模式", @"Themes")
                                                         action:nil
                                                         target:self
@@ -243,19 +236,18 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
     
     NSMenu *subPluginMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.other")];
     [subPluginMenu addItems:@[enableAlfredItem,
-                             updatePluginItem,
-                             currentVersionItem]];
+                             updatePluginItem]];
     
     NSMenu *subMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.title")];
 
     [subMenu addItems:@[preventRevokeItem,
                         autoAuthItem,
                         backGroundItem,
+                        quitMonitorItem,
                         miniProgramItem,
                         newWeChatItem,
                         forwardAndReplyItem,
                         enableSystemBrowserItem,
-//                        quitMonitorItem, 退群监控
                         commandItem,
                         onTopItem,
 //                        checkZombieItem, 僵尸粉检测
