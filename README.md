@@ -16,7 +16,7 @@
 
 ## 最新支持版本
 -  mac版微信2.4.2
--  皮肤支持版本macOS 10.14及以上
+-  皮肤最低支持macOS 10.14
 -  微信2.4.0版本以上才支持小程序 [去下载](https://developers.weixin.qq.com/community/develop/doc/0000a0544fcfc013c8b9d164a5b801)
 
 ## 迷离/黑夜/深邃/少女 模式
