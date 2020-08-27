@@ -118,7 +118,7 @@
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mFp-aX-qYb">
                         <rect key="frame" x="129" y="10" width="223" height="15"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="小助手完全免费, 不在任何三方平台售卖!" id="bP3-De-Fff">
-                            <font key="font" size="12" name=".PingFangSC-Regular"/>
+                            <font key="font" metaFont="system" size="12"/>
                             <color key="textColor" red="0.66660702230000002" green="0.66670489310000003" blue="0.66658556459999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>

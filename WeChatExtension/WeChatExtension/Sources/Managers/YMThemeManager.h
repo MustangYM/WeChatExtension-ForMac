@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface YMThemeManager : NSObject
 @property (nonatomic, assign, readonly) BOOL isTempDark;
 @property (nonatomic, assign, readonly) BOOL isTempPink;
+@property (nonatomic, strong) MMChatsTableCellView *currentChatCellView;
+@property (nonatomic, strong) MMChatsTableCellView *preChatCellView;
+@property (nonatomic, copy) NSString *currentSessionName;
 + (instancetype)shareInstance;
 + (void)changeButtonTheme:(NSButton *)button;
 + (void)changeEffectViewMode:(NSVisualEffectView *)effectView;

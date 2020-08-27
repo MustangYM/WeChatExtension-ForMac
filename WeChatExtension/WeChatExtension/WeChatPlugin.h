@@ -161,6 +161,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @interface MMChatsViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
 @property(nonatomic) __weak NSTableView *tableView;
 @property(retain, nonatomic) MMBrandChatsViewController *brandChatsViewController;
+@property(retain, nonatomic) NSString *selectedUserName; // @synthesize selectedUserName=_selectedUserName;
 @end
 
 @interface MMContactsViewController : NSViewController
@@ -351,6 +352,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 
 @interface MMSessionMgr : NSObject
 @property(retain, nonatomic) NSMutableArray *m_arrSession;
+@property(retain) NSString *m_currentSessionName; // @synthesize m_currentSessionName=_m_currentSessionName;
 - (id)getAllSessions;
 - (id)GetAllSessions;
 - (id)GetSessionAtIndex:(unsigned long long)arg1;//2.3.24废弃

@@ -76,7 +76,6 @@
         hookMethod(objc_getClass("MMFavSidebarRowView"), NSSelectorFromString(@"initWithFrame:"), [self class], @selector(hook_sideBarRowInitWithFrame:));
         hookMethod(objc_getClass("MMContactsDetailViewController"), @selector(sendMsgButton), [self class], @selector(hook_sendMsgButton));
     }
-    
 }
 
 - (id)hook_sendMsgButton
@@ -495,6 +494,14 @@
     if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
         [[YMThemeManager shareInstance] changeTheme:cell color:[TKWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
         cell.muteIndicator.normalColor = [NSColor redColor];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([cell.sessionInfo.m_nsUserName isEqualToString:[YMThemeManager shareInstance].currentSessionName]) {
+                cell.layer.backgroundColor =  TKWeChatPluginConfig.sharedConfig.fuzzyMode ? kRGBColor(26,28,32, 0.5).CGColor : ((TKWeChatPluginConfig.sharedConfig.blackMode ? kRGBColor(128,128,128, 0.5) : kRGBColor(147, 148, 248, 0.5)).CGColor);
+                [cell setNeedsDisplay:YES];
+                [YMThemeManager shareInstance].preChatCellView = cell;
+            }
+        });
     }
 }
 
@@ -503,16 +510,9 @@
     [self hook_mouseDown:arg1];
     
     if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
-
         MMChatsTableCellView *cell = (MMChatsTableCellView *)self;
-
-        NSColor *original = [NSColor colorWithCGColor:cell.layer.backgroundColor];
-        cell.layer.backgroundColor =  TKWeChatPluginConfig.sharedConfig.fuzzyMode ? kRGBColor(26,28,32, 0.5).CGColor : ((TKWeChatPluginConfig.sharedConfig.blackMode ? kRGBColor(128,128,128, 0.5) : kRGBColor(147, 148, 248, 0.5)).CGColor);
-        [cell setNeedsDisplay:YES];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            cell.layer.backgroundColor = original.CGColor;
-            [cell setNeedsDisplay:YES];
-        });
+        [YMThemeManager shareInstance].currentSessionName = cell.sessionInfo.m_nsUserName;
+        [YMThemeManager shareInstance].currentChatCellView = cell;
     }
 }
 

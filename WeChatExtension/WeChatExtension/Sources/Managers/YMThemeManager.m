@@ -17,6 +17,7 @@ static const NSString *DEVICE_THEME_MODE = @"DEVICE_THEME_MODE";
 @interface YMThemeManager()
 @property (nonatomic, strong) NSArray *colors;
 @property (nonatomic, copy) NSString *fingerprint;
+@property (nonatomic, strong) NSColor *original;
 @end
 
 @implementation YMThemeManager
@@ -51,6 +52,22 @@ static const NSString *DEVICE_THEME_MODE = @"DEVICE_THEME_MODE";
         return @"2";
     }
     return @"0";
+}
+
+- (void)setCurrentChatCellView:(MMChatsTableCellView *)currentChatCellView
+{
+    if (self.currentChatCellView) {
+        self.currentChatCellView.layer.backgroundColor = self.original.CGColor;
+        [self.currentChatCellView setNeedsDisplay:YES];
+        self.preChatCellView.layer.backgroundColor = self.original.CGColor;
+        [self.preChatCellView setNeedsDisplay:YES];
+    }
+    
+    _currentChatCellView = currentChatCellView;
+    NSColor *original = [NSColor colorWithCGColor:currentChatCellView.layer.backgroundColor];
+    self.original = original;
+    currentChatCellView.layer.backgroundColor =  TKWeChatPluginConfig.sharedConfig.fuzzyMode ? kRGBColor(26,28,32, 0.5).CGColor : ((TKWeChatPluginConfig.sharedConfig.blackMode ? kRGBColor(128,128,128, 0.5) : kRGBColor(147, 148, 248, 0.5)).CGColor);
+    [currentChatCellView setNeedsDisplay:YES];
 }
 
 - (void)changeTheme:(NSView *)view
