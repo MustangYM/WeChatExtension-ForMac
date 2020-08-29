@@ -79,7 +79,8 @@
     }
 }
 
--(void)hook_drawSelectionBackground
+//会话选中高亮
+- (void)hook_drawSelectionBackground
 {
     if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
         MMChatsTableCellView *cell = (MMChatsTableCellView *)self;
