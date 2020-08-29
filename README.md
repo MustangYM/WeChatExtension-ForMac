@@ -9,7 +9,7 @@
 - 如果你希望更简约，这里提供了[简版小助手](https://github.com/MustangYM/WeChatSeptet-ForMac)，安装方式与WeChatExtension的手动安装方式一样。
 
 ## 声明
-
+- WeChatExtension完全`免费`，近期发现不少三方平台甚至某宝商家`出售`此软件，切勿`上当受骗`。
 - 适用于Mac版的WeChat拓展功能。1.7.5代码来自于[WeChatPlugin](https://github.com/TKkk-iOSer/WeChatPlugin-MacOS)，对[TK](https://github.com/TKkk-iOSer)在此表示感谢！
 - Issues注意事项[Wiki](https://github.com/MustangYM/WeChatExtension-ForMac/wiki/Issues%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)。
 - 到目前为止，并未发现因使用本插件会导致封号。
