@@ -33,8 +33,8 @@
 		188A65FD2272ACBA0096663E /* TKRemoteControlWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188A659D2272ACBA0096663E /* TKRemoteControlWindowController.xib */; };
 		188A65FE2272ACBA0096663E /* TKRemoteControlWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A659F2272ACBA0096663E /* TKRemoteControlWindowController.m */; };
 		188A65FF2272ACBA0096663E /* TKRemoteControlWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65A22272ACBA0096663E /* TKRemoteControlWindowController.h */; };
-		188A66002272ACBA0096663E /* TKWeChatPluginConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65A42272ACBA0096663E /* TKWeChatPluginConfig.m */; };
-		188A66012272ACBA0096663E /* TKWeChatPluginConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65A52272ACBA0096663E /* TKWeChatPluginConfig.h */; };
+		188A66002272ACBA0096663E /* YMWeChatPluginConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65A42272ACBA0096663E /* YMWeChatPluginConfig.m */; };
+		188A66012272ACBA0096663E /* YMWeChatPluginConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65A52272ACBA0096663E /* YMWeChatPluginConfig.h */; };
 		188A66022272ACBA0096663E /* YMCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65A72272ACBA0096663E /* YMCacheManager.m */; };
 		188A66032272ACBA0096663E /* YMAssistantMenuManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65A82272ACBA0096663E /* YMAssistantMenuManager.h */; };
 		188A66042272ACBA0096663E /* YMMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A65A92272ACBA0096663E /* YMMessageManager.m */; };
@@ -222,8 +222,8 @@
 		188A659F2272ACBA0096663E /* TKRemoteControlWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKRemoteControlWindowController.m; sourceTree = "<group>"; };
 		188A65A02272ACBA0096663E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TKRemoteControlWindowController.xib; sourceTree = "<group>"; };
 		188A65A22272ACBA0096663E /* TKRemoteControlWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKRemoteControlWindowController.h; sourceTree = "<group>"; };
-		188A65A42272ACBA0096663E /* TKWeChatPluginConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKWeChatPluginConfig.m; sourceTree = "<group>"; };
-		188A65A52272ACBA0096663E /* TKWeChatPluginConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKWeChatPluginConfig.h; sourceTree = "<group>"; };
+		188A65A42272ACBA0096663E /* YMWeChatPluginConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMWeChatPluginConfig.m; sourceTree = "<group>"; };
+		188A65A52272ACBA0096663E /* YMWeChatPluginConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMWeChatPluginConfig.h; sourceTree = "<group>"; };
 		188A65A72272ACBA0096663E /* YMCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMCacheManager.m; sourceTree = "<group>"; };
 		188A65A82272ACBA0096663E /* YMAssistantMenuManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMAssistantMenuManager.h; sourceTree = "<group>"; };
 		188A65A92272ACBA0096663E /* YMMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMMessageManager.m; sourceTree = "<group>"; };
@@ -538,8 +538,8 @@
 		188A65A32272ACBA0096663E /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				188A65A52272ACBA0096663E /* TKWeChatPluginConfig.h */,
-				188A65A42272ACBA0096663E /* TKWeChatPluginConfig.m */,
+				188A65A52272ACBA0096663E /* YMWeChatPluginConfig.h */,
+				188A65A42272ACBA0096663E /* YMWeChatPluginConfig.m */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -889,7 +889,7 @@
 				188A66142272ACBA0096663E /* YMDeviceHelper.h in Headers */,
 				188A66352272ACBA0096663E /* TKRemoteControlCell.h in Headers */,
 				188A660A2272ACBA0096663E /* YMCacheManager.h in Headers */,
-				188A66012272ACBA0096663E /* TKWeChatPluginConfig.h in Headers */,
+				188A66012272ACBA0096663E /* YMWeChatPluginConfig.h in Headers */,
 				188A662E2272ACBA0096663E /* DefineConstant.h in Headers */,
 				188A65F52272ACBA0096663E /* TKAboutWindowController.h in Headers */,
 				18A7A1302272ACE900361A98 /* WeChatPlugin.h in Headers */,
@@ -1107,7 +1107,7 @@
 				188A66362272ACBA0096663E /* TKRemoteControlCell.m in Sources */,
 				188A66062272ACBA0096663E /* YMRemoteControlManager.m in Sources */,
 				188A66252272ACBA0096663E /* NSMenu+Action.m in Sources */,
-				188A66002272ACBA0096663E /* TKWeChatPluginConfig.m in Sources */,
+				188A66002272ACBA0096663E /* YMWeChatPluginConfig.m in Sources */,
 				188A65F72272ACBA0096663E /* TKDownloadWindowController.m in Sources */,
 				3644BDFA2285545500EDE358 /* TCBlobDownloader.m in Sources */,
 				188A66192272ACBA0096663E /* TKIgnoreSessonModel.m in Sources */,

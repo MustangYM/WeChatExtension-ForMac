@@ -8,7 +8,7 @@
 
 #import "YMThemeManager.h"
 #import "YMDeviceHelper.h"
-#import "TKWeChatPluginConfig.h"
+#import "YMWeChatPluginConfig.h"
 #import "NSWindow+fuzzy.h"
 
 static const NSString *DEVICE_FINGERPRINT = @"DEVICE_FINGERPRINT";
@@ -46,28 +46,12 @@ static const NSString *DEVICE_THEME_MODE = @"DEVICE_THEME_MODE";
 
 - (NSString *)_modelValue
 {
-    if ([TKWeChatPluginConfig sharedConfig].darkMode) {
+    if ([YMWeChatPluginConfig sharedConfig].darkMode) {
         return @"1";
-    } else if ([TKWeChatPluginConfig sharedConfig].pinkMode) {
+    } else if ([YMWeChatPluginConfig sharedConfig].pinkMode) {
         return @"2";
     }
     return @"0";
-}
-
-- (void)setCurrentChatCellView:(MMChatsTableCellView *)currentChatCellView
-{
-    if (self.currentChatCellView) {
-        self.currentChatCellView.layer.backgroundColor = self.original.CGColor;
-        [self.currentChatCellView setNeedsDisplay:YES];
-        self.preChatCellView.layer.backgroundColor = self.original.CGColor;
-        [self.preChatCellView setNeedsDisplay:YES];
-    }
-    
-    _currentChatCellView = currentChatCellView;
-    NSColor *original = [NSColor colorWithCGColor:currentChatCellView.layer.backgroundColor];
-    self.original = original;
-    currentChatCellView.layer.backgroundColor =  TKWeChatPluginConfig.sharedConfig.fuzzyMode ? kRGBColor(26,28,32, 0.5).CGColor : ((TKWeChatPluginConfig.sharedConfig.blackMode ? kRGBColor(128,128,128, 0.5) : kRGBColor(147, 148, 248, 0.5)).CGColor);
-    [currentChatCellView setNeedsDisplay:YES];
 }
 
 - (void)changeTheme:(NSView *)view
@@ -145,7 +129,7 @@ static const NSString *DEVICE_THEME_MODE = @"DEVICE_THEME_MODE";
 
 + (void)changeButtonTheme:(NSButton *)button
 {
-    if (![TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
+    if (![YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
         return;
     }
     
@@ -156,7 +140,7 @@ static const NSString *DEVICE_THEME_MODE = @"DEVICE_THEME_MODE";
 #pragma mark - EffectView
 + (NSVisualEffectView *)creatFuzzyEffectView:(id)superView
 {
-    if (!TKWeChatPluginConfig.sharedConfig.fuzzyMode) {
+    if (!YMWeChatPluginConfig.sharedConfig.fuzzyMode) {
         return nil;
     }
     
@@ -177,7 +161,7 @@ static const NSString *DEVICE_THEME_MODE = @"DEVICE_THEME_MODE";
 
 + (void)changeEffectViewMode:(NSVisualEffectView *)effectView
 {
-    if (!TKWeChatPluginConfig.sharedConfig.fuzzyMode) {
+    if (!YMWeChatPluginConfig.sharedConfig.fuzzyMode) {
         return;
     }
     

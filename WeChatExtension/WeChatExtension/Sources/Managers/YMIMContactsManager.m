@@ -8,7 +8,7 @@
 
 #import "YMIMContactsManager.h"
 #import "YMMessageHelper.h"
-#import "TKWeChatPluginConfig.h"
+#import "YMWeChatPluginConfig.h"
 
 @implementation YMMonitorChildInfo
 - (instancetype)initWithDict:(NSDictionary *)dict
@@ -183,7 +183,7 @@
                          if (nick) {
                              if ([wself queryQuitMsgFromPool:key group:groupData.m_nsUsrName]) {
                                  NSString *message = nil;
-                                 if ([TKWeChatPluginConfig sharedConfig].languageType == PluginLanguageTypeZH) {
+                                 if ([YMWeChatPluginConfig sharedConfig].languageType == PluginLanguageTypeZH) {
                                      message = [NSString stringWithFormat:@"⚠️退群监控⚠️\n@%@ 已退群",nick];
                                  } else {
                                      message = [NSString stringWithFormat:@"⚠️Group-Quitting Monitor⚠️\n@%@ has quit group chat",nick];
@@ -213,7 +213,7 @@
         info.usrName = usrName;
         info.group = group;
         
-        NSMutableArray *array = [[TKWeChatPluginConfig sharedConfig] getMonitorQuitMembers];
+        NSMutableArray *array = [[YMWeChatPluginConfig sharedConfig] getMonitorQuitMembers];
         if (!array) {
             array = [NSMutableArray array];
         }
@@ -221,7 +221,7 @@
         if (array.count > 20000) {
             [array removeObjectAtIndex:0];
         }
-        [[TKWeChatPluginConfig sharedConfig] saveMonitorQuitMembers:array];
+        [[YMWeChatPluginConfig sharedConfig] saveMonitorQuitMembers:array];
     }
 }
 
@@ -231,7 +231,7 @@
         return NO;
     }
     __block BOOL flag = YES;
-    NSMutableArray *array = [[TKWeChatPluginConfig sharedConfig] getMonitorQuitMembers];
+    NSMutableArray *array = [[YMWeChatPluginConfig sharedConfig] getMonitorQuitMembers];
     [array enumerateObjectsUsingBlock:^(YMMonitorChildInfo *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         //已经有退出记录
         if ([obj.usrName isEqualToString:usrName] && [obj.group isEqualToString:group]) {

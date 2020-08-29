@@ -35,11 +35,11 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
-    if ([[TKWeChatPluginConfig sharedConfig] VAutoForwardingModel]) {
-        self.vmodel = [[TKWeChatPluginConfig sharedConfig] VAutoForwardingModel];
+    if ([[YMWeChatPluginConfig sharedConfig] VAutoForwardingModel]) {
+        self.vmodel = [[YMWeChatPluginConfig sharedConfig] VAutoForwardingModel];
     } else {
         self.vmodel = [VAutoForwardingModel new];
-        [[TKWeChatPluginConfig sharedConfig] saveAutoForwardingModel:self.vmodel];
+        [[YMWeChatPluginConfig sharedConfig] saveAutoForwardingModel:self.vmodel];
     }
 
     [self initSubviews];
@@ -74,8 +74,8 @@
         column.title = YMLocalizedString(@"assistant.autoForwarding.forwardingFromList");
         column.width = 200;
         [tableView addTableColumn:column];
-        if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
-            [[YMThemeManager shareInstance] changeTheme:tableView color:[TKWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
+        if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
+            [[YMThemeManager shareInstance] changeTheme:tableView color:[YMWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
         }
         tableView;
     });
@@ -116,8 +116,8 @@
         column.title = YMLocalizedString(@"assistant.autoForwarding.forwardingToList");
         column.width = 200;
         [forwardingToTableView addTableColumn:column];
-        if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
-            [[YMThemeManager shareInstance] changeTheme:forwardingToTableView color:[TKWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
+        if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
+            [[YMThemeManager shareInstance] changeTheme:forwardingToTableView color:[YMWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
         }
         forwardingToTableView;
     });
@@ -143,7 +143,7 @@
     self.enableButton = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoForwarding.enable") target:self action:@selector(clickEnableBtn:)];
         btn.frame = NSMakeRect(30, 20, 230, 20);
-        btn.state = [[TKWeChatPluginConfig sharedConfig] autoForwardingEnable];
+        btn.state = [[YMWeChatPluginConfig sharedConfig] autoForwardingEnable];
         [YMThemeManager changeButtonTheme:btn];
         btn;
     });
@@ -151,7 +151,7 @@
     self.enableAllFirendButton = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoForwarding.enableAllFriend") target:self action:@selector(clickEnableAllFriendBtn:)];
         btn.frame = NSMakeRect(360, 20, 230, 20);
-        btn.state = [[TKWeChatPluginConfig sharedConfig] autoForwardingAllFriend];
+        btn.state = [[YMWeChatPluginConfig sharedConfig] autoForwardingAllFriend];
         [YMThemeManager changeButtonTheme:btn];
         btn;
     });
@@ -202,7 +202,7 @@
         return;
     }
     if (self.vmodel) {
-        [[TKWeChatPluginConfig sharedConfig] saveAutoForwardingModel:self.vmodel];
+        [[YMWeChatPluginConfig sharedConfig] saveAutoForwardingModel:self.vmodel];
     }
 
 }

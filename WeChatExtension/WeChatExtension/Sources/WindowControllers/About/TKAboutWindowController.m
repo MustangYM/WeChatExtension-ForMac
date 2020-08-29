@@ -29,7 +29,7 @@
     self.homePageTitleLabel.stringValue = YMLanguage(@"唯一主页:", @"Only Homepage:");
     self.WeiboLabel.stringValue = YMLanguage(@"微博:", @"Weibo:");
     self.window.backgroundColor = [NSColor whiteColor];
-    NSDictionary *localInfo = [[TKWeChatPluginConfig sharedConfig] localInfoPlist];
+    NSDictionary *localInfo = [[YMWeChatPluginConfig sharedConfig] localInfoPlist];
     if (!localInfo) {
         return;
     }

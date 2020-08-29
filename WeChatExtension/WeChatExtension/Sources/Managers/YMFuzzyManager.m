@@ -8,13 +8,13 @@
 
 #import "YMFuzzyManager.h"
 #import "YMThemeManager.h"
-#import "TKWeChatPluginConfig.h"
+#import "YMWeChatPluginConfig.h"
 #import "NSViewLayoutTool.h"
 
 @implementation YMFuzzyManager
 + (void)fuzzyWindowViewController:(NSWindowController *)window
 {
-    if (!TKWeChatPluginConfig.sharedConfig.fuzzyMode) {
+    if (!YMWeChatPluginConfig.sharedConfig.fuzzyMode) {
         return;
     }
     
@@ -61,7 +61,7 @@
 
 + (void)fuzzyViewController:(NSViewController *)viewController
 {
-    if (!TKWeChatPluginConfig.sharedConfig.fuzzyMode) {
+    if (!YMWeChatPluginConfig.sharedConfig.fuzzyMode) {
         return;
     }
     

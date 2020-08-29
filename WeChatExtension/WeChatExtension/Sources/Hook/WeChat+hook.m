@@ -49,7 +49,7 @@
     hookClassMethod(objc_getClass("CUtility"), hasWechatInstanceMethod, [self class], @selector(hook_HasWechatInstance));
 
     //多开
-    if ([TKWeChatPluginConfig sharedConfig].isAllowMoreOpenBaby) {
+    if ([YMWeChatPluginConfig sharedConfig].isAllowMoreOpenBaby) {
         hookClassMethod(objc_getClass("NSRunningApplication"), @selector(runningApplicationsWithBundleIdentifier:), [self class], @selector(hook_runningApplicationsWithBundleIdentifier:));
     }
     
@@ -121,7 +121,7 @@
 - (void)hook_mainViewControllerDidLoad {
     [self hook_mainViewControllerDidLoad];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if ([[TKWeChatPluginConfig sharedConfig] alfredEnable]) {
+        if ([[YMWeChatPluginConfig sharedConfig] alfredEnable]) {
             [[YMWebServerManager shareManager] startServer];
         }
         NSMenu *mainMenu = [[NSApplication sharedApplication] mainMenu];
@@ -133,7 +133,7 @@
     
     //紧急适配2.4.2
     if (LargerOrEqualVersion(@"2.4.2")) {
-        BOOL autoAuthEnable = [[TKWeChatPluginConfig sharedConfig] autoAuthEnable];
+        BOOL autoAuthEnable = [[YMWeChatPluginConfig sharedConfig] autoAuthEnable];
         if (autoAuthEnable) {
             MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
             [sessionMgr loadSessionData];
@@ -155,13 +155,13 @@
 }
 
 + (void)setupWindowSticky {
-    BOOL onTop = [[TKWeChatPluginConfig sharedConfig] onTop];
+    BOOL onTop = [[YMWeChatPluginConfig sharedConfig] onTop];
     WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
     wechat.mainWindowController.window.level = onTop == NSControlStateValueOn ? NSNormalWindowLevel+2 : NSNormalWindowLevel;
 }
 
 + (void)checkPluginVersion {
-    if ([[TKWeChatPluginConfig sharedConfig] forbidCheckVersion]) return;
+    if ([[YMWeChatPluginConfig sharedConfig] forbidCheckVersion]) return;
     
     [[YMVersionManager shareManager] checkVersionFinish:^(TKVersionStatus status, NSString *message) {
         if (status == TKVersionStatusNew) {
@@ -176,7 +176,7 @@
                 if (respose == NSAlertFirstButtonReturn) {
                     [[TKDownloadWindowController downloadWindowController] show];
                 } else if (respose == NSAlertSecondButtonReturn) {
-                    [[TKWeChatPluginConfig sharedConfig] setForbidCheckVersion:YES];
+                    [[YMWeChatPluginConfig sharedConfig] setForbidCheckVersion:YES];
                 }
             });
         }
@@ -189,7 +189,7 @@
  @param btn 自动登录按钮
  */
 - (void)selectAutoLogin:(NSButton *)btn {
-    [[TKWeChatPluginConfig sharedConfig] setAutoLoginEnable:btn.state];
+    [[YMWeChatPluginConfig sharedConfig] setAutoLoginEnable:btn.state];
 }
 
 #pragma mark - hook 微信方法
@@ -236,7 +236,7 @@
 
 - (void)hook_FFToNameFavChatZZ:(id)msgData sessionMsgList:(id)arg2
 {
-    if (![[TKWeChatPluginConfig sharedConfig] preventRevokeEnable]) {
+    if (![[YMWeChatPluginConfig sharedConfig] preventRevokeEnable]) {
         [self hook_FFToNameFavChatZZ:msgData sessionMsgList:arg2];
         return;
     }
@@ -251,7 +251,7 @@
 }
 
 - (void)hook_onRevokeMsg:(id)msgData {
-    if (![[TKWeChatPluginConfig sharedConfig] preventRevokeEnable]) {
+    if (![[YMWeChatPluginConfig sharedConfig] preventRevokeEnable]) {
         [self hook_onRevokeMsg:msgData];
         return;
     }
@@ -279,7 +279,7 @@
         NSString *session =  msgDict[@"revokemsg"][@"session"];
         msgDict = nil;
         
-        NSMutableSet *revokeMsgSet = [[TKWeChatPluginConfig sharedConfig] revokeMsgSet];
+        NSMutableSet *revokeMsgSet = [[YMWeChatPluginConfig sharedConfig] revokeMsgSet];
         //      该消息已进行过防撤回处理
         if ([revokeMsgSet containsObject:newmsgid] || !newmsgid) {
             return;
@@ -292,7 +292,7 @@
         
         [[YMMessageManager shareManager] asyncRevokeMessage:revokeMsgData];
         
-        if ([revokeMsgData isSendFromSelf] && ![[TKWeChatPluginConfig sharedConfig] preventSelfRevokeEnable]) {
+        if ([revokeMsgData isSendFromSelf] && ![[YMWeChatPluginConfig sharedConfig] preventSelfRevokeEnable]) {
             
             if (LargerOrEqualVersion(@"2.3.29")) {
                 [self hook_FFToNameFavChatZZ:msgData sessionMsgList:arg2];
@@ -365,13 +365,13 @@
  
  */
 - (id)hook_getNotificationContentWithMsgData:(MessageData *)arg1 {
-    [[TKWeChatPluginConfig sharedConfig] setCurrentUserName:arg1.toUsrName];
+    [[YMWeChatPluginConfig sharedConfig] setCurrentUserName:arg1.toUsrName];
     return [self hook_getNotificationContentWithMsgData:arg1];;
 }
 
 - (void)hook_deliverNotification:(NSUserNotification *)notification {
     NSMutableDictionary *dict = [notification.userInfo mutableCopy];
-    dict[@"currnetName"] = [[TKWeChatPluginConfig sharedConfig] currentUserName];
+    dict[@"currnetName"] = [[YMWeChatPluginConfig sharedConfig] currentUserName];
     notification.userInfo = dict;
     notification.hasReplyButton = YES;
     [self hook_deliverNotification:notification];
@@ -398,10 +398,10 @@
  */
 - (void)hook_onLoginButtonClicked:(NSButton *)btn {
     AccountService *accountService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("AccountService")];
-    BOOL autoAuthEnable = [[TKWeChatPluginConfig sharedConfig] autoAuthEnable];
+    BOOL autoAuthEnable = [[YMWeChatPluginConfig sharedConfig] autoAuthEnable];
     if (autoAuthEnable && [accountService canAutoAuth]) {
-        if ([TKWeChatPluginConfig sharedConfig].launchFromNew) {
-            [TKWeChatPluginConfig sharedConfig].launchFromNew = NO;
+        if ([YMWeChatPluginConfig sharedConfig].launchFromNew) {
+            [YMWeChatPluginConfig sharedConfig].launchFromNew = NO;
             return;
         }
 
@@ -420,7 +420,7 @@
 }
 
 - (void)hook_sendLogoutCGIWithCompletion:(id)arg1 {
-    BOOL autoAuthEnable = [[TKWeChatPluginConfig sharedConfig] autoAuthEnable];
+    BOOL autoAuthEnable = [[YMWeChatPluginConfig sharedConfig] autoAuthEnable];
     WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
     if (autoAuthEnable && wechat.isAppTerminating) return;
     
@@ -428,14 +428,14 @@
 }
 
 - (void)hook_ManualLogout {
-    if ([[TKWeChatPluginConfig sharedConfig] alfredEnable]) {
+    if ([[YMWeChatPluginConfig sharedConfig] alfredEnable]) {
         [[YMWebServerManager shareManager] endServer];
     }
     
     NSMenu *mainMenu = [[NSApplication sharedApplication] mainMenu];
     NSMenuItem *pluginMenu = mainMenu.itemArray.lastObject;
     pluginMenu.enabled = NO;
-    BOOL autoAuthEnable = [[TKWeChatPluginConfig sharedConfig] autoAuthEnable];
+    BOOL autoAuthEnable = [[YMWeChatPluginConfig sharedConfig] autoAuthEnable];
     if (autoAuthEnable) return;
     
     [self hook_ManualLogout];
@@ -444,14 +444,14 @@
 - (void)hook_viewWillAppear {
     [self hook_viewWillAppear];
     
-    BOOL autoAuthEnable = [[TKWeChatPluginConfig sharedConfig] autoAuthEnable];
+    BOOL autoAuthEnable = [[YMWeChatPluginConfig sharedConfig] autoAuthEnable];
     WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
      MMLoginOneClickViewController *loginVC = wechat.mainWindowController.loginViewController.oneClickViewController;
     
     if (![self.className isEqualToString:@"MMLoginOneClickViewController"]) {
         return;
     } else {
-        if (TKWeChatPluginConfig.sharedConfig.usingTheme) {
+        if (YMWeChatPluginConfig.sharedConfig.usingTheme) {
             [[YMThemeManager shareInstance] changeTheme:loginVC.view];
         }
     }
@@ -474,7 +474,7 @@
     
     [loginVC.view addSubview:autoLoginButton];
     
-    BOOL autoLogin = [[TKWeChatPluginConfig sharedConfig] autoLoginEnable];
+    BOOL autoLogin = [[YMWeChatPluginConfig sharedConfig] autoLoginEnable];
     autoLoginButton.state = autoLogin;
 
     BOOL wechatHasRun = [self checkWeChatLaunched];
@@ -506,7 +506,7 @@
     @synchronized (self) {
         MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
         NSMutableArray *arrSession = sessionMgr.m_arrSession;
-        NSMutableArray *ignoreSessions = [[[TKWeChatPluginConfig sharedConfig] ignoreSessionModels] mutableCopy];
+        NSMutableArray *ignoreSessions = [[[YMWeChatPluginConfig sharedConfig] ignoreSessionModels] mutableCopy];
         
         NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
         [ignoreSessions enumerateObjectsUsingBlock:^(TKIgnoreSessonModel *model, NSUInteger index, BOOL * _Nonnull stop) {
@@ -568,13 +568,13 @@
 
 //  微信检测更新
 - (void)hook_checkForUpdatesInBackground {
-    if ([[TKWeChatPluginConfig sharedConfig] checkUpdateWechatEnable]) {
+    if ([[YMWeChatPluginConfig sharedConfig] checkUpdateWechatEnable]) {
         [self hook_checkForUpdatesInBackground];
     }
 }
 
 - (id)hook_sparkleUpdater {
-    if (![[TKWeChatPluginConfig sharedConfig] checkUpdateWechatEnable]) {
+    if (![[YMWeChatPluginConfig sharedConfig] checkUpdateWechatEnable]) {
         return nil;
     }
     return [self hook_sparkleUpdater];
@@ -582,7 +582,7 @@
 
 //  是否使用微信浏览器
 + (BOOL)hook_preHandleWebUrlStr:(id)arg1 withMessage:(id)arg2 {
-    if ([[TKWeChatPluginConfig sharedConfig] systemBrowserEnable]) {
+    if ([[YMWeChatPluginConfig sharedConfig] systemBrowserEnable]) {
         MMURLHandler *urlHander = [objc_getClass("MMURLHandler") defaultHandler];
         [urlHander openURLWithDefault:arg1];
         return YES;
@@ -593,7 +593,7 @@
 
 - (void)hook_handleWebViewDataItem:(id)arg1 windowId:(id)arg2 {
     WebViewDataItem *item = (WebViewDataItem *)arg1;
-    if ([[TKWeChatPluginConfig sharedConfig] systemBrowserEnable]) {
+    if ([[YMWeChatPluginConfig sharedConfig] systemBrowserEnable]) {
         MMURLHandler *urlHander = [objc_getClass("MMURLHandler") defaultHandler];
         if (LargerOrEqualLongVersion(@"2.4.0.149")) {
             [urlHander openURLWithDefault:item.urlString];
@@ -612,7 +612,7 @@
 - (void)hook_onClickSession {
     [self hook_onClickSession];
     MMChatMessageViewController *chatMessageVC = (MMChatMessageViewController *)self;
-    NSMutableSet *unreadSessionSet = [[TKWeChatPluginConfig sharedConfig] unreadSessionSet];
+    NSMutableSet *unreadSessionSet = [[YMWeChatPluginConfig sharedConfig] unreadSessionSet];
     if ([unreadSessionSet containsObject:chatMessageVC.chatContact.m_nsUsrName]) {
         [unreadSessionSet removeObject:chatMessageVC.chatContact.m_nsUsrName];
         [[YMMessageManager shareManager] clearUnRead:chatMessageVC.chatContact.m_nsUsrName];
@@ -620,7 +620,7 @@
 }
 
 - (void)hook_onUnReadCountChange:(id)arg1 {
-    NSMutableSet *unreadSessionSet = [[TKWeChatPluginConfig sharedConfig] unreadSessionSet];
+    NSMutableSet *unreadSessionSet = [[YMWeChatPluginConfig sharedConfig] unreadSessionSet];
     if ([unreadSessionSet containsObject:arg1]) {
         MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
         MMSessionInfo *sessionInfo = [sessionMgr sessionInfoByUserName:arg1];
@@ -630,7 +630,7 @@
 }
 #pragma mark - hook 系统方法
 - (void)hook_makeKeyAndOrderFront:(nullable id)sender {
-    BOOL top = [[TKWeChatPluginConfig sharedConfig] onTop];
+    BOOL top = [[YMWeChatPluginConfig sharedConfig] onTop];
     ((NSWindow *)self).level = top == NSControlStateValueOn ? NSNormalWindowLevel+2 : NSNormalWindowLevel;
     
     [self hook_makeKeyAndOrderFront:sender];
@@ -657,7 +657,7 @@
         //        该消息为公众号或者本人发送的消息
         return;
     }
-    YMAIAutoModel *AIModel = [[TKWeChatPluginConfig sharedConfig] AIReplyModel];
+    YMAIAutoModel *AIModel = [[YMWeChatPluginConfig sharedConfig] AIReplyModel];
     if (AIModel.specificContacts.count < 1) {
         return;
     }
@@ -689,7 +689,7 @@
 }
 
 - (void)autoForwardingWithMsg:(AddMsg *)msg {
-    if (![[TKWeChatPluginConfig sharedConfig] autoForwardingEnable]) return;
+    if (![[YMWeChatPluginConfig sharedConfig] autoForwardingEnable]) return;
     if (msg.msgType != 1) return;
 
     NSString *userName = msg.fromUserName.string;
@@ -706,9 +706,9 @@
         //        该消息为公众号或者本人发送的消息
         return;
     }
-    VAutoForwardingModel *model = [[TKWeChatPluginConfig sharedConfig] VAutoForwardingModel];
+    VAutoForwardingModel *model = [[YMWeChatPluginConfig sharedConfig] VAutoForwardingModel];
 
-    if ([[TKWeChatPluginConfig sharedConfig] autoForwardingAllFriend]) {
+    if ([[YMWeChatPluginConfig sharedConfig] autoForwardingAllFriend]) {
         if (![msgContact isGroupChat]) {
             [self forwardingWithMsg:msg];
         }
@@ -718,7 +718,7 @@
             if ([fromWxid containsString:@"@chatroom"]) {
                 [self forwardingWithMsg:msg];
             } else {
-                if (![[TKWeChatPluginConfig sharedConfig] autoForwardingAllFriend]) {
+                if (![[YMWeChatPluginConfig sharedConfig] autoForwardingAllFriend]) {
                     [self forwardingWithMsg:msg];
                 }
             }
@@ -756,7 +756,7 @@
         desc = [desc stringByAppendingFormat:@"用户【%@】发来一条消息", nickName];
     }
     
-    VAutoForwardingModel *model = [[TKWeChatPluginConfig sharedConfig] VAutoForwardingModel];
+    VAutoForwardingModel *model = [[YMWeChatPluginConfig sharedConfig] VAutoForwardingModel];
     [model.forwardingToContacts enumerateObjectsUsingBlock:^(NSString *toWxid, NSUInteger idx, BOOL * _Nonnull stop) {
         [[YMMessageManager shareManager] sendTextMessage:desc toUsrName:toWxid delay:0];
         [[YMMessageManager shareManager] sendTextMessage:content toUsrName:toWxid delay:0];
@@ -770,11 +770,11 @@
  */
 - (void)autoReplyWithMsg:(AddMsg *)addMsg {
     //    addMsg.msgType != 49
-    if (![[TKWeChatPluginConfig sharedConfig] autoReplyEnable]) return;
+    if (![[YMWeChatPluginConfig sharedConfig] autoReplyEnable]) return;
     if (addMsg.msgType != 1 && addMsg.msgType != 3) return;
     
-    YMAIAutoModel *AIModel = [[TKWeChatPluginConfig sharedConfig] AIReplyModel];
-    if ([[TKWeChatPluginConfig sharedConfig] autoReplyEnable]) {
+    YMAIAutoModel *AIModel = [[YMWeChatPluginConfig sharedConfig] AIReplyModel];
+    if ([[YMWeChatPluginConfig sharedConfig] autoReplyEnable]) {
         __block BOOL flag = NO;
         [AIModel.specificContacts enumerateObjectsUsingBlock:^(NSString * _Nonnull aiUsr, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([aiUsr isEqualToString:addMsg.fromUserName.string]) {
@@ -792,7 +792,7 @@
             }
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 NSString *message = nil;
-                if ([TKWeChatPluginConfig sharedConfig].languageType == PluginLanguageTypeZH) {
+                if ([YMWeChatPluginConfig sharedConfig].languageType == PluginLanguageTypeZH) {
                     message = [NSString stringWithFormat:@"⚠️警告⚠️\n您对@%@ 设置了AI回复且同时打开了自动回复\n小助手将只会对@%@ 进行AI回复",nick,nick];
                 } else {
                     message = @"You cannot set AI reply and auto reply to him at the same time";
@@ -818,7 +818,7 @@
         //        该消息为公众号或者本人发送的消息
         return;
     }
-    NSArray *autoReplyModels = [[TKWeChatPluginConfig sharedConfig] autoReplyModels];
+    NSArray *autoReplyModels = [[YMWeChatPluginConfig sharedConfig] autoReplyModels];
     [autoReplyModels enumerateObjectsUsingBlock:^(YMAutoReplyModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
         if (!model.enable) return;
         if (!model.replyContent || model.replyContent.length == 0) return;
@@ -943,7 +943,7 @@ NSString *swizzled_NSHomeDirectory(void) {
 #pragma mark -
 - (void)hook_UpdateGroupMemberDetailIfNeeded:(id)arg1 withCompletion:(id)arg2
 {
-    if ([TKWeChatPluginConfig sharedConfig].quitMonitorEnable) {
+    if ([YMWeChatPluginConfig sharedConfig].quitMonitorEnable) {
         [[YMIMContactsManager shareInstance] monitorQuitGroup:arg1];
     }
     [self hook_UpdateGroupMemberDetailIfNeeded:arg1 withCompletion:arg2];
