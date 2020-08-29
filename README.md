@@ -9,7 +9,7 @@
 - 如果你希望更简约，这里提供了[简版小助手](https://github.com/MustangYM/WeChatSeptet-ForMac)，安装方式与WeChatExtension的手动安装方式一样。
 
 ## 声明
-
+- WeChatExtension完全`免费`，近期发现不少三方平台甚至某宝商家`出售`此软件，切勿`上当受骗`。
 - 适用于Mac版的WeChat拓展功能。1.7.5代码来自于[WeChatPlugin](https://github.com/TKkk-iOSer/WeChatPlugin-MacOS)，对[TK](https://github.com/TKkk-iOSer)在此表示感谢！
 - Issues注意事项[Wiki](https://github.com/MustangYM/WeChatExtension-ForMac/wiki/Issues%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)。
 - 到目前为止，并未发现因使用本插件会导致封号。
@@ -21,8 +21,8 @@
 
 ## 迷离/黑夜/深邃/少女 模式
 - 众多软件都适配了黑夜模式，等了这么久Mac微信官方还是没做适配，所以做了这个玩票功能。
-- 少量细节没有做适配，不影响正常使用，如果你是强迫症加完美主义，`主题模式-黑夜模式-再次点击`可以`关掉`这个功能。
-<del>- 在黑夜模式中你可以打开`群成员彩色`，群聊中每个发言人的昵称颜色都会有所区别。<del>
+- 少量细节没有做适配，`主题模式-黑夜模式-再次点击`可以`关掉`这个功能。
+- 群聊中每个发言人的昵称颜色都会有所区别。
 
 - 迷离模式👇 `It‘s perfect！ I love it！`
 <p align="center">
