@@ -95,10 +95,14 @@
     MMChatsTableCellView *cell = [self hook_chatsViewControllerTableView:arg1 viewForTableColumn:arg2 row:arg3];
     
     if (cell.sessionInfo.m_uUnReadCount > 0 && cell.badgeView.style == 1) {
+        unsigned int hz = cell.sessionInfo.m_uUnReadCount;
+        if (hz > 5) {
+            hz = 5;
+        }
         CAKeyframeAnimation *rotationAnimation = [CAKeyframeAnimation animation];
         rotationAnimation.keyPath = @"transform.rotation";
-        rotationAnimation.duration = kArc4random_Double_inSpace(0.35, 0.55);
-        rotationAnimation.values = @[@(-M_PI_4 /90.0 * 2),@(M_PI_4 /90.0 * 2),@(-M_PI_4 /90.0 * 2)];
+        rotationAnimation.duration = kArc4random_Double_inSpace(0.20, 0.30) / hz;
+        rotationAnimation.values = @[@(-M_PI_4 /90.0 * hz * 2),@(M_PI_4 /90.0 * hz * 2),@(-M_PI_4 /90.0 * hz * 2)];
         rotationAnimation.repeatCount = HUGE;
         [cell.avatar.layer addAnimation:rotationAnimation forKey:nil];
         //彩蛋
@@ -121,8 +125,19 @@
 //会话选中高亮
 - (void)hook_drawSelectionBackground
 {
+    MMChatsTableCellView *cell = (MMChatsTableCellView *)self;
+    if ([YMWeChatPluginConfig sharedConfig].usingTheme) {
+        if (cell.selected) {
+            CAKeyframeAnimation *rotationAnimation = [CAKeyframeAnimation animation];
+            rotationAnimation.keyPath = @"transform.rotation";
+            rotationAnimation.duration = 0.15;
+            rotationAnimation.values = @[@(-M_PI_4 /90.0 * 5),@(M_PI_4 /90.0 * 5),@(-M_PI_4 /90.0 * 5)];
+            rotationAnimation.repeatCount = 2;
+            [cell.avatar.layer addAnimation:rotationAnimation forKey:nil];
+        }
+    }
+    
     if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
-        MMChatsTableCellView *cell = (MMChatsTableCellView *)self;
         [cell.shapeLayer removeFromSuperlayer];
         NSColor *color = nil;
         if (cell.selected) {
@@ -131,12 +146,6 @@
             } else {
                 color = kRGBColor(206,207,211, 0.4);
             }
-            CAKeyframeAnimation *rotationAnimation = [CAKeyframeAnimation animation];
-            rotationAnimation.keyPath = @"transform.rotation";
-            rotationAnimation.duration = 0.15;
-            rotationAnimation.values = @[@(-M_PI_4 /90.0 * 5),@(M_PI_4 /90.0 * 5),@(-M_PI_4 /90.0 * 5)];
-            rotationAnimation.repeatCount = 2;
-            [cell.avatar.layer addAnimation:rotationAnimation forKey:nil];
         } else {
             color = [NSColor clearColor];
         }
