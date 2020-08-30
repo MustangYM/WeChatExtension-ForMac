@@ -110,7 +110,7 @@
             CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
             animation.keyPath = @"transform.scale";
             animation.values = @[@1.0,@1.07,@1.15,@1.2,@1.15,@1.07,@1.0];
-            animation.duration = 1.0;
+            animation.duration = 0.2;
             animation.repeatCount = HUGE;
             animation.calculationMode = kCAAnimationCubic;
             [cell.avatar.layer addAnimation:animation forKey:nil];
