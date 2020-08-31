@@ -42,8 +42,8 @@
     }
     MMSessionInfo *sessionInfo = [allSessions objectAtIndex:arg2];
     
-    if ([[TKWeChatPluginConfig sharedConfig] multipleSelectionEnable]) {
-        NSMutableArray *selectSessions = [[TKWeChatPluginConfig sharedConfig] selectSessions];
+    if ([[YMWeChatPluginConfig sharedConfig] multipleSelectionEnable]) {
+        NSMutableArray *selectSessions = [[YMWeChatPluginConfig sharedConfig] selectSessions];
         if ([selectSessions containsObject:sessionInfo]) {
             [selectSessions removeObject:sessionInfo];
         } else {
@@ -69,7 +69,7 @@
     
     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
     __block BOOL isIgnore = false;
-    NSMutableArray *ignoreSessions = [[TKWeChatPluginConfig sharedConfig] ignoreSessionModels];
+    NSMutableArray *ignoreSessions = [[YMWeChatPluginConfig sharedConfig] ignoreSessionModels];
     [ignoreSessions enumerateObjectsUsingBlock:^(TKIgnoreSessonModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([model.userName isEqualToString:sessionInfo.m_nsUserName] && [model.selfContact isEqualToString:currentUserName]) {
             isIgnore = true;
@@ -77,9 +77,9 @@
         }
     }];
     
-    NSMutableArray *selectSessions = [[TKWeChatPluginConfig sharedConfig] selectSessions];
+    NSMutableArray *selectSessions = [[YMWeChatPluginConfig sharedConfig] selectSessions];
     
-    if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
+    if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
         NSColor *changeColor = kRGBColor(255, 255, 255, 1.0);
         if (isIgnore) {
             changeColor = kMainIgnoredTextColor;//kRGBColor(25, 185, 77, 1.0);
@@ -149,7 +149,7 @@
 
     if ([delegate isEqualToString:@"MMChatsViewController"]) {
         __block BOOL isIgnore = false;
-        NSMutableArray *ignoreSessions = [[TKWeChatPluginConfig sharedConfig] ignoreSessionModels];
+        NSMutableArray *ignoreSessions = [[YMWeChatPluginConfig sharedConfig] ignoreSessionModels];
         [ignoreSessions enumerateObjectsUsingBlock:^(TKIgnoreSessonModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([model.userName isEqualToString:sessionInfo.m_nsUserName] && [model.selfContact isEqualToString:currentUserName]) {
                 isIgnore = true;
@@ -160,7 +160,7 @@
         NSString *itemString = isIgnore ? YMLocalizedString(@"assistant.chat.unStickyBottom") : YMLocalizedString(@"assistant.chat.stickyBottom");
         NSMenuItem *preventRevokeItem = [[NSMenuItem alloc] initWithTitle:itemString action:@selector(contextMenuStickyBottom) keyEquivalent:@""];
         
-        BOOL multipleSelectionEnable = [[TKWeChatPluginConfig sharedConfig] multipleSelectionEnable];
+        BOOL multipleSelectionEnable = [[YMWeChatPluginConfig sharedConfig] multipleSelectionEnable];
         NSString *multipleSelectionString = multipleSelectionEnable ? YMLocalizedString(@"assistant.chat.unMultiSelect") : YMLocalizedString(@"assistant.chat.multiSelect");
         NSMenuItem *multipleSelectionItem = [[NSMenuItem alloc] initWithTitle:multipleSelectionString action:@selector(contextMenuMutipleSelection) keyEquivalent:@""];
         
@@ -191,7 +191,7 @@
     MMSessionInfo *sessionInfo = [(MMChatsTableCellView *)self sessionInfo];
     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
     
-    NSMutableArray *ignoreSessions = [[TKWeChatPluginConfig sharedConfig] ignoreSessionModels];
+    NSMutableArray *ignoreSessions = [[YMWeChatPluginConfig sharedConfig] ignoreSessionModels];
     __block NSInteger index = -1;
     [ignoreSessions enumerateObjectsUsingBlock:^(TKIgnoreSessonModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([model.userName isEqualToString:sessionInfo.m_nsUserName] && [model.selfContact isEqualToString:currentUserName]) {
@@ -225,19 +225,19 @@
     } else if ([sessionMgr respondsToSelector:@selector(sortSessions)]) {
         [sessionMgr sortSessions];
     }
-    [[TKWeChatPluginConfig sharedConfig] saveIgnoreSessionModels];
+    [[YMWeChatPluginConfig sharedConfig] saveIgnoreSessionModels];
 }
 
 - (void)contextMenuMutipleSelection
 {
-    BOOL multipleSelectionEnable = [[TKWeChatPluginConfig sharedConfig] multipleSelectionEnable];
+    BOOL multipleSelectionEnable = [[YMWeChatPluginConfig sharedConfig] multipleSelectionEnable];
     if (multipleSelectionEnable) {
-        [[[TKWeChatPluginConfig sharedConfig] selectSessions] removeAllObjects];
+        [[[YMWeChatPluginConfig sharedConfig] selectSessions] removeAllObjects];
         WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
         [wechat.chatsViewController.tableView reloadData];
     }
     
-    [[TKWeChatPluginConfig sharedConfig] setMultipleSelectionEnable:!multipleSelectionEnable];
+    [[YMWeChatPluginConfig sharedConfig] setMultipleSelectionEnable:!multipleSelectionEnable];
 }
 
 - (void)contextMenuClearUnRead
@@ -288,16 +288,16 @@
     MMSessionInfo *sessionInfo = [(MMChatsTableCellView *)self sessionInfo];
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
     
-    BOOL multipleSelection = [[TKWeChatPluginConfig sharedConfig] multipleSelectionEnable];
+    BOOL multipleSelection = [[YMWeChatPluginConfig sharedConfig] multipleSelectionEnable];
     if (multipleSelection) {
-        NSMutableArray *selectSessions = [[TKWeChatPluginConfig sharedConfig] selectSessions];
+        NSMutableArray *selectSessions = [[YMWeChatPluginConfig sharedConfig] selectSessions];
         [selectSessions  enumerateObjectsUsingBlock:^(MMSessionInfo *sessionInfo, NSUInteger idx, BOOL * _Nonnull stop) {
             NSString *sessionUserName = sessionInfo.m_nsUserName;
             if (sessionUserName.length > 0) {
                 [sessionMgr removeSessionOfUser:sessionInfo.m_nsUserName isDelMsg:NO];
             }
         }];
-        [[TKWeChatPluginConfig sharedConfig] setMultipleSelectionEnable:NO];
+        [[YMWeChatPluginConfig sharedConfig] setMultipleSelectionEnable:NO];
         WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
         [wechat.chatsViewController.tableView reloadData];
     } else if (sessionInfo.m_nsUserName.length > 0) {
@@ -312,7 +312,7 @@
          return;
     }
     
-    NSMutableSet *unreadSessionSet = [[TKWeChatPluginConfig sharedConfig] unreadSessionSet];
+    NSMutableSet *unreadSessionSet = [[YMWeChatPluginConfig sharedConfig] unreadSessionSet];
     if ([unreadSessionSet containsObject:sessionInfo.m_nsUserName]) {
          return;
     }
@@ -332,7 +332,7 @@
     }
     
     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
-    NSMutableArray *ignoreSessions = [[TKWeChatPluginConfig sharedConfig] ignoreSessionModels];
+    NSMutableArray *ignoreSessions = [[YMWeChatPluginConfig sharedConfig] ignoreSessionModels];
     __block NSInteger index = -1;
     [ignoreSessions enumerateObjectsUsingBlock:^(TKIgnoreSessonModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([model.userName isEqualToString:sessionInfo.m_nsUserName] && [model.selfContact isEqual:currentUserName]) {
@@ -353,17 +353,17 @@
         } else if ([sessionMgr respondsToSelector:@selector(sortSessions)]) {
             [sessionMgr sortSessions];
         }
-        [[TKWeChatPluginConfig sharedConfig] saveIgnoreSessionModels];
+        [[YMWeChatPluginConfig sharedConfig] saveIgnoreSessionModels];
     }
 }
 
 - (void)hook_contextMenuDelete:(id)arg1
 {
-    BOOL multipleSelection = [[TKWeChatPluginConfig sharedConfig] multipleSelectionEnable];
+    BOOL multipleSelection = [[YMWeChatPluginConfig sharedConfig] multipleSelectionEnable];
     
     if (multipleSelection) {
         MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
-        NSMutableArray *selectSessions = [[TKWeChatPluginConfig sharedConfig] selectSessions];
+        NSMutableArray *selectSessions = [[YMWeChatPluginConfig sharedConfig] selectSessions];
         
         [selectSessions  enumerateObjectsUsingBlock:^(MMSessionInfo *sessionInfo, NSUInteger idx, BOOL * _Nonnull stop) {
             NSString *sessionUserName = sessionInfo.m_nsUserName;
@@ -375,7 +375,7 @@
                 }
             }
         }];
-        [[TKWeChatPluginConfig sharedConfig] setMultipleSelectionEnable:NO];
+        [[YMWeChatPluginConfig sharedConfig] setMultipleSelectionEnable:NO];
         WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
         [wechat.chatsViewController.tableView reloadData];
     } else {

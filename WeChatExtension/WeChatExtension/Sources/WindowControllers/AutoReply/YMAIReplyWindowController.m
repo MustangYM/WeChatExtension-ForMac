@@ -9,7 +9,7 @@
 #import "YMAIReplyWindowController.h"
 #import "YMAIReplyCell.h"
 #import "YMAutoReplyModel.h"
-#import "TKWeChatPluginConfig.h"
+#import "YMWeChatPluginConfig.h"
 #import "YMThemeManager.h"
 
 @interface YMAIReplyWindowController ()<NSTabViewDelegate, NSTableViewDataSource>
@@ -26,11 +26,11 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
-    if ([[TKWeChatPluginConfig sharedConfig] AIReplyModel]) {
-        self.AIModel = [[TKWeChatPluginConfig sharedConfig] AIReplyModel];
+    if ([[YMWeChatPluginConfig sharedConfig] AIReplyModel]) {
+        self.AIModel = [[YMWeChatPluginConfig sharedConfig] AIReplyModel];
     } else {
         self.AIModel = [YMAIAutoModel new];
-        [[TKWeChatPluginConfig sharedConfig] saveAIAutoReplyModel:self.AIModel];
+        [[YMWeChatPluginConfig sharedConfig] saveAIAutoReplyModel:self.AIModel];
     }
     [self initSubviews];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowShouldClosed:) name:NSWindowWillCloseNotification object:nil];
@@ -42,7 +42,7 @@
         return;
     }
     if (self.AIModel) {
-        [[TKWeChatPluginConfig sharedConfig] saveAIAutoReplyModel:self.AIModel];
+        [[YMWeChatPluginConfig sharedConfig] saveAIAutoReplyModel:self.AIModel];
     }
 }
 
@@ -69,8 +69,8 @@
         column.title = YMLocalizedString(@"assistant.autoReply.list");
         column.width = 300;
         [tableView addTableColumn:column];
-        if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
-            [[YMThemeManager shareInstance] changeTheme:tableView color:[TKWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
+        if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
+            [[YMThemeManager shareInstance] changeTheme:tableView color:[YMWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
         }
 
         tableView;

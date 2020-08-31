@@ -69,8 +69,8 @@
         column.title = YMLocalizedString(@"assistant.autoReply.list");
         column.width = 200;
         [tableView addTableColumn:column];
-        if ([TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
-            [[YMThemeManager shareInstance] changeTheme:tableView color:[TKWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
+        if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
+            [[YMThemeManager shareInstance] changeTheme:tableView color:[YMWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
         }
         tableView;
     });
@@ -103,7 +103,7 @@
     self.enableButton = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoReply.enable") target:self action:@selector(clickEnableBtn:)];
         btn.frame = NSMakeRect(130, 20, 130, 20);
-        btn.state = [[TKWeChatPluginConfig sharedConfig] autoReplyEnable];
+        btn.state = [[YMWeChatPluginConfig sharedConfig] autoReplyEnable];
         [YMThemeManager changeButtonTheme:btn];
         btn;
     });
@@ -133,7 +133,7 @@
     [self.window.contentView.layer setNeedsDisplay];
     
     self.lastSelectIndex = -1;
-    self.autoReplyModels = [[TKWeChatPluginConfig sharedConfig] autoReplyModels];
+    self.autoReplyModels = [[YMWeChatPluginConfig sharedConfig] autoReplyModels];
     [self.tableView reloadData];
     
     __weak typeof(self) weakSelf = self;
@@ -155,7 +155,7 @@
     if (notification.object != self.window) {
         return;
     }
-    [[TKWeChatPluginConfig sharedConfig] saveAutoReplyModels];
+    [[YMWeChatPluginConfig sharedConfig] saveAutoReplyModels];
 
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <QuartzCore/QuartzCore.h>
 
 FOUNDATION_EXPORT double WeChatPluginVersionNumber;
 FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
@@ -161,6 +162,8 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @interface MMChatsViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
 @property(nonatomic) __weak NSTableView *tableView;
 @property(retain, nonatomic) MMBrandChatsViewController *brandChatsViewController;
+@property(retain, nonatomic) NSString *selectedUserName; // @synthesize selectedUserName=_selectedUserName;
+- (void)reloadTableView;
 @end
 
 @interface MMContactsViewController : NSViewController
@@ -351,6 +354,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 
 @interface MMSessionMgr : NSObject
 @property(retain, nonatomic) NSMutableArray *m_arrSession;
+@property(retain) NSString *m_currentSessionName; // @synthesize m_currentSessionName=_m_currentSessionName;
 - (id)getAllSessions;
 - (id)GetAllSessions;
 - (id)GetSessionAtIndex:(unsigned long long)arg1;//2.3.24废弃
@@ -720,6 +724,11 @@ forHTTPHeaderField:(NSString *)field;
 @property(retain, nonatomic) NSColor *normalColor; // @synthesize normalColor=_normalColor;
 @end
 
+@interface MMBadgeOverlayView : NSView
+@property(nonatomic) unsigned long long number; // @synthesize number=_number;
+@property(nonatomic) int style; // @synthesize style=_style;
+@end
+
 @interface MMChatsTableCellView : NSTableCellView
 @property(nonatomic) __weak id <MMChatsTableCellViewDelegate> delegate;
 @property(retain, nonatomic) MMSessionInfo *sessionInfo;
@@ -736,7 +745,9 @@ forHTTPHeaderField:(NSString *)field;
 @property(nonatomic) BOOL shouldRemoveHighlight; // @synthesize shouldRemoveHighlight=_shouldRemoveHighlight;
 @property(retain, nonatomic) NSView *containerView; // @synthesize containerView=_containerView;
 @property(retain, nonatomic) MMSidebarColorIconView *muteIndicator; // @synthesize muteIndicator=_muteIndicator;
-
+@property(retain, nonatomic) CAShapeLayer * _Nullable shapeLayer; // @synthesize shapeLayer=_shapeLayer;
+@property(retain, nonatomic) NSView *avatar;
+@property(retain, nonatomic) MMBadgeOverlayView *badgeView; // @synthesize badgeView=_badgeView;
 @property(nonatomic) BOOL selected; // @synthesize selected=_selected;
 - (void)menuWillOpen:(id)arg1;
 - (void)contextMenuSticky:(id)arg1;
@@ -747,6 +758,12 @@ forHTTPHeaderField:(NSString *)field;
 
 - (void)drawSelectionBackground;
 - (void)updateSelectionBackground;
+- (BOOL)isWxWorkSession;
+- (BOOL)isMentionedUnread;
+- (BOOL)isMsgStatusFailed;
+- (BOOL)isMuted;
+- (BOOL)isSticky;
+- (BOOL)isMarkUnRead;
 @end
 
 @interface CmdItem : NSObject

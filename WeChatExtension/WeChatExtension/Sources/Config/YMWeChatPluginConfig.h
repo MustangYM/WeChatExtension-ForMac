@@ -1,5 +1,5 @@
 //
-//  TKWeChatPluginConfig.h
+//  YMWeChatPluginConfig.h
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2019/4/19.
@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @class YMAIAutoModel;
 @class VAutoForwardingModel;
 
-@interface TKWeChatPluginConfig : GVUserDefaults
+@interface YMWeChatPluginConfig : GVUserDefaults
 
 @property (nonatomic) BOOL preventRevokeEnable;                 /**<    是否开启防撤回    */
 @property (nonatomic) BOOL preventSelfRevokeEnable;             /**<    是否防撤回自己    */

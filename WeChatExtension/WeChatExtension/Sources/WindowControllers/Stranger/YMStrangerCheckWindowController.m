@@ -9,7 +9,7 @@
 #import "YMStrangerCheckWindowController.h"
 #import "YMStrangerCheckCell.h"
 #import "YMAutoReplyModel.h"
-#import "TKWeChatPluginConfig.h"
+#import "YMWeChatPluginConfig.h"
 #import "YMIMContactsManager.h"
 
 @interface YMStrangerCheckWindowController ()<NSTabViewDelegate, NSTableViewDataSource>

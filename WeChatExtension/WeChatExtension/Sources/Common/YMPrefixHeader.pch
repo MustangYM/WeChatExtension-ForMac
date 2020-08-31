@@ -23,7 +23,7 @@
 #import "WeChatPlugin.h"
 #import "YMDeviceHelper.h"
 
-#import "TKWeChatPluginConfig.h"
+#import "YMWeChatPluginConfig.h"
 #import "YMSwizzledHelper.h"
 #endif
 
@@ -52,12 +52,12 @@
 #define kPinkModeIgnoredTextColor kDefaultIgnoredTextColor
 
 
-#define kMainBackgroundColor ((NSColor *)TKWeChatPluginConfig.sharedConfig.mainBackgroundColor)
-#define kMainTextColor ((NSColor *)TKWeChatPluginConfig.sharedConfig.mainTextColor)
-#define kMainIgnoredBackgroundColor ((NSColor *)TKWeChatPluginConfig.sharedConfig.mainIgnoredBackgroundColor)
-#define kMainIgnoredTextColor ((NSColor *)TKWeChatPluginConfig.sharedConfig.mainIgnoredTextColor)
-#define kMainSeperatorColor ((NSColor *)TKWeChatPluginConfig.sharedConfig.mainSeperatorColor)
-#define kMainDividerColor ((NSColor *)TKWeChatPluginConfig.sharedConfig.mainDividerColor)
-#define kMainScrollerColor ((NSColor *)TKWeChatPluginConfig.sharedConfig.mainScrollerColor)
+#define kMainBackgroundColor ((NSColor *)YMWeChatPluginConfig.sharedConfig.mainBackgroundColor)
+#define kMainTextColor ((NSColor *)YMWeChatPluginConfig.sharedConfig.mainTextColor)
+#define kMainIgnoredBackgroundColor ((NSColor *)YMWeChatPluginConfig.sharedConfig.mainIgnoredBackgroundColor)
+#define kMainIgnoredTextColor ((NSColor *)YMWeChatPluginConfig.sharedConfig.mainIgnoredTextColor)
+#define kMainSeperatorColor ((NSColor *)YMWeChatPluginConfig.sharedConfig.mainSeperatorColor)
+#define kMainDividerColor ((NSColor *)YMWeChatPluginConfig.sharedConfig.mainDividerColor)
+#define kMainScrollerColor ((NSColor *)YMWeChatPluginConfig.sharedConfig.mainScrollerColor)
 
 #endif /* YMPrefixHeader_pch */

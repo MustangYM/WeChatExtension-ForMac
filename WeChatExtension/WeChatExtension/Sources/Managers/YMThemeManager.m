@@ -8,7 +8,7 @@
 
 #import "YMThemeManager.h"
 #import "YMDeviceHelper.h"
-#import "TKWeChatPluginConfig.h"
+#import "YMWeChatPluginConfig.h"
 #import "NSWindow+fuzzy.h"
 
 static const NSString *DEVICE_FINGERPRINT = @"DEVICE_FINGERPRINT";
@@ -17,6 +17,7 @@ static const NSString *DEVICE_THEME_MODE = @"DEVICE_THEME_MODE";
 @interface YMThemeManager()
 @property (nonatomic, strong) NSArray *colors;
 @property (nonatomic, copy) NSString *fingerprint;
+@property (nonatomic, strong) NSColor *original;
 @end
 
 @implementation YMThemeManager
@@ -45,9 +46,9 @@ static const NSString *DEVICE_THEME_MODE = @"DEVICE_THEME_MODE";
 
 - (NSString *)_modelValue
 {
-    if ([TKWeChatPluginConfig sharedConfig].darkMode) {
+    if ([YMWeChatPluginConfig sharedConfig].darkMode) {
         return @"1";
-    } else if ([TKWeChatPluginConfig sharedConfig].pinkMode) {
+    } else if ([YMWeChatPluginConfig sharedConfig].pinkMode) {
         return @"2";
     }
     return @"0";
@@ -128,7 +129,7 @@ static const NSString *DEVICE_THEME_MODE = @"DEVICE_THEME_MODE";
 
 + (void)changeButtonTheme:(NSButton *)button
 {
-    if (![TKWeChatPluginConfig sharedConfig].usingDarkTheme) {
+    if (![YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
         return;
     }
     
@@ -139,7 +140,7 @@ static const NSString *DEVICE_THEME_MODE = @"DEVICE_THEME_MODE";
 #pragma mark - EffectView
 + (NSVisualEffectView *)creatFuzzyEffectView:(id)superView
 {
-    if (!TKWeChatPluginConfig.sharedConfig.fuzzyMode) {
+    if (!YMWeChatPluginConfig.sharedConfig.fuzzyMode) {
         return nil;
     }
     
@@ -160,7 +161,7 @@ static const NSString *DEVICE_THEME_MODE = @"DEVICE_THEME_MODE";
 
 + (void)changeEffectViewMode:(NSVisualEffectView *)effectView
 {
-    if (!TKWeChatPluginConfig.sharedConfig.fuzzyMode) {
+    if (!YMWeChatPluginConfig.sharedConfig.fuzzyMode) {
         return;
     }
     

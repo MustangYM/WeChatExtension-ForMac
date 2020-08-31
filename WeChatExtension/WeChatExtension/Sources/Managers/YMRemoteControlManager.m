@@ -7,7 +7,7 @@
 //
 
 #import "YMRemoteControlManager.h"
-#import "TKWeChatPluginConfig.h"
+#import "YMWeChatPluginConfig.h"
 #import "TKRemoteControlModel.h"
 #import "YMMessageManager.h"
 
@@ -38,7 +38,7 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
 
 + (void)executeRemoteControlCommandWithMsg:(NSString *)msg msgType:(MessageDataType)type
 {
-    NSArray *remoteControlModels = [TKWeChatPluginConfig sharedConfig].remoteControlModels;
+    NSArray *remoteControlModels = [YMWeChatPluginConfig sharedConfig].remoteControlModels;
     [remoteControlModels enumerateObjectsUsingBlock:^(NSArray *subModels, NSUInteger index, BOOL * _Nonnull stop) {
         [subModels enumerateObjectsUsingBlock:^(TKRemoteControlModel *model, NSUInteger idx, BOOL * _Nonnull subStop) {
             if ([self shouldExecuteRemoteControlWithModel:model msg:msg msgType:type]) {
@@ -125,7 +125,7 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
 + (void)executePluginCommand:(NSString *)cmd
 {
     NSString *callBack = @"";
-    TKWeChatPluginConfig *config = [TKWeChatPluginConfig sharedConfig];
+    YMWeChatPluginConfig *config = [YMWeChatPluginConfig sharedConfig];
     if ([cmd isEqualToString:@"getDirectiveList"]) {
         callBack = [YMRemoteControlManager remoteControlCommandsString];
     } else if ([cmd isEqualToString:@"AutoReplySwitch"]) {
@@ -153,7 +153,7 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
 {
     NSMutableString *replyContent = [NSMutableString stringWithString:YMLocalizedString(@"assistant.remoteControl.listTip")];
     
-    NSArray *remoteControlModels = [TKWeChatPluginConfig sharedConfig].remoteControlModels;
+    NSArray *remoteControlModels = [YMWeChatPluginConfig sharedConfig].remoteControlModels;
     [remoteControlModels enumerateObjectsUsingBlock:^(NSArray *subModels, NSUInteger index, BOOL * _Nonnull stop) {
         switch (index) {
             case 0:
