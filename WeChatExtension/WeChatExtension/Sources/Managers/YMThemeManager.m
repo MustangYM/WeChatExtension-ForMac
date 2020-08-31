@@ -176,4 +176,5 @@ static const NSString *DEVICE_THEME_MODE = @"DEVICE_THEME_MODE";
     }
     effectView.state = NSVisualEffectStateActive;
 }
+
 @end

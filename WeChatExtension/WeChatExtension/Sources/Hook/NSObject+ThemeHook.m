@@ -113,7 +113,7 @@
             animation.duration = 0.2;
             animation.repeatCount = HUGE;
             animation.calculationMode = kCAAnimationCubic;
-            [cell.avatar.layer addAnimation:animation forKey:nil];
+            [cell.layer addAnimation:animation forKey:nil];
         }
     } else {
         [cell.avatar.layer removeAllAnimations];
