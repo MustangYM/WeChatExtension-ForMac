@@ -471,6 +471,14 @@ This project exists thanks to all the people who contribute。
   <a href="https://github.com/onekb"><img src="https://avatars2.githubusercontent.com/u/16450084?s=400&u=0c1b4e4a48e29316be699adb10c2a5c294dccd76&v=4" width="100px;" alt="onekb"/>
   <br></br><sub><b>onekb</b></sub>
  
+   <td align="center">
+  <a href="https://github.com/pictureye"><img src="https://avatars1.githubusercontent.com/u/13998802?s=400&u=436fbdc6406b51ab87f4f6738b68b877755b0e7c&v=4" width="100px;" alt="pictureye"/>
+  <br></br><sub><b>pictureye</b></sub>
+ 
+   <td align="center">
+  <a href="https://github.com/uncleYiba"><img src="https://avatars1.githubusercontent.com/u/26616828?s=400&u=344142a2a1b519c4d52545f3e733d04fd88df069&v=4" width="100px;" alt="uncleYiba"/>
+  <br></br><sub><b>uncleYiba</b></sub>
+ 
    </td></tr></table>
 
 ## Backers
