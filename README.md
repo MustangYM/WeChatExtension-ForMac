@@ -20,7 +20,7 @@
 -  微信2.4.0版本以上才支持小程序 [去下载](https://developers.weixin.qq.com/community/develop/doc/0000a0544fcfc013c8b9d164a5b801)
 
 ## 小助手相关介绍
-- [Toptips视频介绍](https://toptips.vip/a/565)(有点古老了,现在的小助手更完善)
+- [Toptips视频介绍](https://toptips.vip/a/565)(现在的小助手更完善)
 
 ## 迷离/黑夜/深邃/少女 模式
 - 众多软件都适配了黑夜模式，等了这么久Mac微信官方还是没做适配，所以做了这个玩票功能。
