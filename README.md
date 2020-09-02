@@ -20,7 +20,7 @@
 -  微信2.4.0版本以上才支持小程序 [去下载](https://developers.weixin.qq.com/community/develop/doc/0000a0544fcfc013c8b9d164a5b801)
 
 ## 小助手相关介绍
-- [Toptips视频介绍](https://toptips.vip/a/565)(有点古老了,现在的小助手更完善)
+- [Toptips视频介绍](https://toptips.vip/a/565)(基于2.5版本的小助手介绍，现在的小助手更完善)
 
 ## 迷离/黑夜/深邃/少女 模式
 - 众多软件都适配了黑夜模式，等了这么久Mac微信官方还是没做适配，所以做了这个玩票功能。
@@ -470,6 +470,14 @@ This project exists thanks to all the people who contribute。
    <td align="center">
   <a href="https://github.com/onekb"><img src="https://avatars2.githubusercontent.com/u/16450084?s=400&u=0c1b4e4a48e29316be699adb10c2a5c294dccd76&v=4" width="100px;" alt="onekb"/>
   <br></br><sub><b>onekb</b></sub>
+ 
+   <td align="center">
+  <a href="https://github.com/pictureye"><img src="https://avatars1.githubusercontent.com/u/13998802?s=400&u=436fbdc6406b51ab87f4f6738b68b877755b0e7c&v=4" width="100px;" alt="pictureye"/>
+  <br></br><sub><b>pictureye</b></sub>
+ 
+   <td align="center">
+  <a href="https://github.com/uncleYiba"><img src="https://avatars1.githubusercontent.com/u/26616828?s=400&u=344142a2a1b519c4d52545f3e733d04fd88df069&v=4" width="100px;" alt="uncleYiba"/>
+  <br></br><sub><b>uncleYiba</b></sub>
  
    </td></tr></table>
 
