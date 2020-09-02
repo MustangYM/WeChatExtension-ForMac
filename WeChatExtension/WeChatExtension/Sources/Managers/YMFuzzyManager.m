@@ -70,7 +70,10 @@
         return;
     }
     
-    if ([viewController isKindOfClass:objc_getClass("MMChatCollectionViewController")] || [viewController isKindOfClass:objc_getClass("MMSessionListView")] || [viewController isKindOfClass:objc_getClass("MMStickerCollectionViewController")] || [viewController isKindOfClass:objc_getClass("MMContactProfileController")]) {
+    if ([viewController isKindOfClass:objc_getClass("MMChatCollectionViewController")]
+        || [viewController isKindOfClass:objc_getClass("MMSessionListView")]
+        || [viewController isKindOfClass:objc_getClass("MMStickerCollectionViewController")]
+        || [viewController isKindOfClass:objc_getClass("MMContactProfileController")]) {
         NSVisualEffectView *effView = [YMThemeManager creatFuzzyEffectView:viewController.view];
         if (viewController.view.subviews.count > 0) {
             NSView *firstSubView = viewController.view.subviews[0];

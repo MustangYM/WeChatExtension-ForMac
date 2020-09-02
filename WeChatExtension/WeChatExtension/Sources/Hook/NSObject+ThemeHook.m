@@ -77,24 +77,31 @@
         hookMethod(objc_getClass("MMContactsDetailViewController"), @selector(sendMsgButton), [self class], @selector(hook_sendMsgButton));
         hookMethod(objc_getClass("MMChatsTableCellView"), @selector(drawSelectionBackground), [self class], @selector(hook_drawSelectionBackground));
         hookMethod(objc_getClass("MMChatsViewController"), @selector(tableView:viewForTableColumn:row:), [self class], @selector(hook_chatsViewControllerTableView:viewForTableColumn:row:));
-        hookMethod(objc_getClass("MMChatsViewController"), @selector(viewDidAppear), [self class], @selector(hook_chatsViewControllerViewDidAppear));
+        hookMethod(objc_getClass("MMMainViewController"), @selector(tabbarController:didSelectViewController:), [self class], @selector(hook_tabbarController:didSelectViewController:));
     }
+
 }
 
-- (void)hook_chatsViewControllerViewDidAppear
+//Fix vc切换后动画停止
+- (void)hook_tabbarController:(id)arg1 didSelectViewController:(id)arg2
 {
-    [self hook_chatsViewControllerViewDidAppear];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
-        [sessionMgr loadSessionData];
-    });
+    [self hook_tabbarController:arg1 didSelectViewController:arg2];
+    if ([arg2 isKindOfClass:objc_getClass("MMChatsViewController")]) {
+        if ([YMThemeManager shareInstance].loadCount >= 1) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
+                [sessionMgr loadSessionData];
+            });
+        }
+        [YMThemeManager shareInstance].loadCount ++;
+    }
 }
 
 - (id)hook_chatsViewControllerTableView:(id)arg1 viewForTableColumn:(id)arg2 row:(long long)arg3
 {
     MMChatsTableCellView *cell = [self hook_chatsViewControllerTableView:arg1 viewForTableColumn:arg2 row:arg3];
     
-    if (cell.sessionInfo.m_uUnReadCount > 0 && cell.badgeView.style == 1) {
+    if (cell.sessionInfo.m_uUnReadCount > 0 && cell.badgeView.style == 0x1) {
         unsigned int hz = cell.sessionInfo.m_uUnReadCount;
         if (hz > 5) {
             hz = 5;
@@ -117,6 +124,7 @@
         }
     } else {
         [cell.avatar.layer removeAllAnimations];
+        [cell.layer removeAllAnimations];
     }
     
     return cell;
@@ -750,6 +758,10 @@
     }
     
     if ([view isKindOfClass:[objc_getClass("MMPreviewVideoPlayerView") class]]) {
+        return;
+    }
+    
+    if ([view isKindOfClass:[objc_getClass("NSTextView") class]] && ![view isKindOfClass:objc_getClass("MMComposeTextView")]) {
         return;
     }
     

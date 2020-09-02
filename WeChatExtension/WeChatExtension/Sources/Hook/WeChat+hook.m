@@ -524,9 +524,6 @@
                 [arrSession addObject:sessionInfo];
             }
         }];
-        
-        WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
-        [wechat.chatsViewController.tableView reloadData];
     }
 }
 
