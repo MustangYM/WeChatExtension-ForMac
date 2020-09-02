@@ -839,6 +839,17 @@
 
 - (void)replyWithMsg:(AddMsg *)addMsg model:(YMAutoReplyModel *)model {
     
+    NSString *userName = addMsg.fromUserName.string;
+       
+    MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
+       
+    WCContactData *msgContact = nil;
+    if (LargerOrEqualVersion(@"2.3.26")) {
+        msgContact = [sessionMgr getSessionContact:userName];
+    } else {
+        msgContact = [sessionMgr getContact:userName];
+    }
+    
     if(addMsg.imgStatus == 2) {
         NSString *imageFormat = @"Content-Type: image/jpeg \r\n";
 
@@ -901,7 +912,7 @@
         }
         
         //1、创建一个URL
-        NSURL *url = [NSURL URLWithString:@"http://localhost:20187/test/mytest"];
+        NSURL *url = [NSURL URLWithString:@"http://localhost:8081/action"];
     
         //2、创建请求(Request)对象 这里使用的是它的子类NSMutableURLRequest,因为子类才具有设置方法和设置请求体的属性
         NSMutableURLRequest *requst = [[NSMutableURLRequest alloc]initWithURL:url];
@@ -909,7 +920,7 @@
         requst.HTTPMethod = @"POST";
         //2.2、设置请求体,因为传入的为Data数据所有这里需要转换
     
-        NSString *msg = [NSString stringWithFormat:@"name=%@", msgContent];
+        NSString *msg = [NSString stringWithFormat:@"content=%@&wxid=%@", msgContent, msgContact.m_nsUsrName];
     
         requst.HTTPBody = [msg dataUsingEncoding:NSUTF8StringEncoding];
         //2.3、设置请求超时时间，如果超过这个时间，请求为失败
