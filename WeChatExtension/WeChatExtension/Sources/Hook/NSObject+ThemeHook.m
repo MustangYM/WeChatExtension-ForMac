@@ -88,7 +88,7 @@
     [self hook_tabbarController:arg1 didSelectViewController:arg2];
     if ([arg2 isKindOfClass:objc_getClass("MMChatsViewController")]) {
         if ([YMThemeManager shareInstance].loadCount >= 1) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
                 [sessionMgr loadSessionData];
             });
