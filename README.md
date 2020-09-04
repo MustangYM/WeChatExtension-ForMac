@@ -124,12 +124,12 @@ I'm sorry for GitHub's trending rules. Most users of this project are Chinese, s
 - 所以`微信多开`与`允许打开小程序`是互斥的，点击`微信多开`可关闭`允许打开小程序`，反之也是如此。
 
 ## 怎么安装?
-### 安装方式一.普通安装(clone最新版本并安装)
+### 安装方式一：普通安装(clone最新版本并安装)
 ```
 sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/MustangYM/WeChatExtension-ForMac && cd WeChatExtension-ForMac/WeChatExtension/Rely && ./Install.sh
 ```
 
-### 安装方式二.懒癌版安装
+### 安装方式二：懒癌版安装
 
 <p align="left">
 <img src="https://avatars1.githubusercontent.com/u/5035625?s=400&v=4" width="100px"/>
@@ -150,7 +150,7 @@ Oh My WeChat一键命令
 安装完成后会自动安装微信插件，可以访问 [Oh My WeChat 的项目主页](https://github.com/lmk123/oh-my-wechat#oh-my-wechat)查看更多用法。
 
 
-### 安装方式三.手动安装
+### 安装方式三：手动安装
 
 - 3.1.确保你的Mac上已经安装了微信App。
 
