@@ -177,12 +177,17 @@ Oh My WeChat一键命令
 - 3.6.重启微信，安装完成。
 
 ## 怎么卸载?
-- 自动卸载
+### 卸载方式一：自动卸载（推荐）
+```
+bash <(curl -sL https://git.io/JUO6r)
+```
+
+### 卸载方式二：自动卸载
 ```
 sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/MustangYM/WeChatExtension-ForMac && cd WeChatExtension-ForMac/WeChatExtension/Rely && ./Uninstall.sh
 ```
 
-- 手动卸载
+### 卸载方式三：手动卸载
   -  将Uninstall.sh拖到终端工具中，回车执行即可。
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190625-102808%402x.png" width="800px"/>
