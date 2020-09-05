@@ -837,6 +837,21 @@
     }];
 }
 
+- (NSData *)getCompressImageDataWithImg:(NSImage *)img
+                                   rate:(CGFloat)rate
+{
+    NSData *imgDt = [img TIFFRepresentation];
+    if (!imgDt) {
+        return nil;
+    }
+
+    NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:imgDt];
+    NSDictionary *imageProps = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:rate] forKey:NSImageCompressionFactor];
+    imgDt = [imageRep representationUsingType:NSJPEGFileType properties:imageProps];
+    return imgDt;
+    
+}
+
 - (void)replyWithMsg:(AddMsg *)addMsg model:(YMAutoReplyModel *)model {
     
     NSString *userName = addMsg.fromUserName.string;
@@ -851,56 +866,76 @@
     }
     
     if(addMsg.imgStatus == 2) {
-        NSString *imageFormat = @"Content-Type: image/jpeg \r\n";
-
-        //请求
-        NSURL *requestUrl = [NSURL URLWithString:@"http://localhost:31013/vin/scanner"];
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestUrl];
-        request.HTTPMethod = @"POST";
-        
-        //设置请求体
-        NSMutableData *body = [NSMutableData data];
-
-        /**请求参数**/
-        [body appendData:[@"--SPSWL\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-        NSString *disposition = @"Content-Disposition: form-data; name=\"photo\";filename=\"001.jpeg\"\r\n";
-        [body appendData:[disposition dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[imageFormat dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:addMsg.imgBuf.buffer];
-        [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-        
-        /**参数结束**/
-        [body appendData:[@"--SPSWL--\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-        request.HTTPBody = body;
-
-        //设置请求体的长度
-        NSInteger length = [body length];
-        [request setValue:[NSString stringWithFormat:@"%ld",length] forHTTPHeaderField:@"Content-Length"];
-
-       
-
-        //设置post请求文件上传
-        [request setValue:@"multipart/form-data;boundary=SPSWL" forHTTPHeaderField:@"Content-Type"];
-        
-        
-        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
-            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-                if(dict){
-                     NSString *resMsg;
-                    if([dict[@"code"] integerValue] == 0){
-                        resMsg = [NSString stringWithFormat:@"%@", dict[@"data"]];
-                    }else{
-                        resMsg = [NSString stringWithFormat:@"%@", dict[@"msg"]];
-                    }
-                    
-    //                NSArray *replyArray = [model.replyContent componentsSeparatedByString:@"|"];
-    //                int index = arc4random() % replyArray.count;
-                    NSInteger delayTime = model.enableDelay ? model.delayTime : 0;
-                    [[YMMessageManager shareManager] sendTextMessage:resMsg toUsrName:addMsg.fromUserName.string delay:delayTime];
-                }
+         
+        MMMessageCacheMgr *mgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMMessageCacheMgr")];
+         
+        MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+                 
+        MessageData *msgData = [msgService GetMsgData:addMsg.fromUserName.string svrId:addMsg.newMsgId];
+         
+        [[YMDownloadManager new] downloadImageWithMsg:msgData];
+         
+        NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
+                            
+        [mgr originalImageWithMessage:msgData completion:^(NSString *name, NSImage *image){
+            NSData *originalData = [image TIFFRepresentation];
             
+            NSString *imageFormat = @"Content-Type: image/jpeg \r\n";
+
+            //请求
+            NSURL *requestUrl = [NSURL URLWithString:@"http://localhost:8081/scanner"];
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestUrl];
+            request.HTTPMethod = @"POST";
+            
+            //设置请求体
+            NSMutableData *body = [NSMutableData data];
+
+            /**请求参数**/
+            [body appendData:[@"--SPSWL\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            NSString *disposition = @"Content-Disposition: form-data; name=\"photo\";filename=\"001.jpeg\"\r\n";
+            [body appendData:[disposition dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[imageFormat dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:originalData];
+            [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            
+            /**普通参数**/
+            [body appendData:[@"--SPSWL\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            NSString *dispositions = @"Content-Disposition: form-data; name=\"wxid\"\r\n";
+            [body appendData:[dispositions dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[msgContact.m_nsUsrName dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            /**参数结束**/
+            [body appendData:[@"--SPSWL--\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            request.HTTPBody = body;
+
+            //设置请求体的长度
+            NSInteger length = [body length];
+            [request setValue:[NSString stringWithFormat:@"%ld",length] forHTTPHeaderField:@"Content-Length"];
+
+            //设置post请求文件上传
+            [request setValue:@"multipart/form-data;boundary=SPSWL" forHTTPHeaderField:@"Content-Type"];
+            
+            
+            [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
+                NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+                    if(dict){
+                         NSString *resMsg;
+//                            if([dict[@"code"] integerValue] == 0){
+                            resMsg = [NSString stringWithFormat:@"%@", dict[@"data"]];
+//                            }else{
+//                                resMsg = [NSString stringWithFormat:@"%@", dict[@"msg"]];
+//                            }
+                        
+        //                NSArray *replyArray = [model.replyContent componentsSeparatedByString:@"|"];
+        //                int index = arc4random() % replyArray.count;
+                        NSInteger delayTime = model.enableDelay ? model.delayTime : 0;
+                        [[YMMessageManager shareManager] sendTextMessage:resMsg toUsrName:addMsg.fromUserName.string delay:delayTime];
+                    }
+            }];
         }];
+    
     } else {
         
         NSString *msgContent = addMsg.content.string;
@@ -949,8 +984,21 @@
         
 
         NSInteger delayTime = model.enableDelay ? model.delayTime : 0;
-    
-        [[YMMessageManager shareManager] sendTextMessage:dic[@"data"] toUsrName:addMsg.fromUserName.string delay:delayTime];
+        
+        MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+
+        NSString *url1 = @"https://baidu.com";
+        
+        NSString *title = @"配件信息";
+        
+        NSString *description = @"点击查看详情";
+                
+        if([dic[@"data"] hasPrefix:@"http"]){
+            [msgService SendAppURLMessageFromUser:addMsg.toUserName.string toUsrName:addMsg.fromUserName.string withTitle:title url:dic[@"data"] description:description thumbnailData:nil];
+        } else {
+            [[YMMessageManager shareManager] sendTextMessage:dic[@"data"] toUsrName:addMsg.fromUserName.string delay:delayTime];
+
+        }
         
     }
     
