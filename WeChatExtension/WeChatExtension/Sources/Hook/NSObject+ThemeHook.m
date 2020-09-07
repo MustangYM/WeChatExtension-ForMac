@@ -78,13 +78,23 @@
         hookMethod(objc_getClass("MMChatsTableCellView"), @selector(drawSelectionBackground), [self class], @selector(hook_drawSelectionBackground));
         hookMethod(objc_getClass("MMChatsViewController"), @selector(tableView:viewForTableColumn:row:), [self class], @selector(hook_chatsViewControllerTableView:viewForTableColumn:row:));
         hookMethod(objc_getClass("MMMainViewController"), @selector(tabbarController:didSelectViewController:), [self class], @selector(hook_tabbarController:didSelectViewController:));
+        hookMethod(objc_getClass("MMBrandChatsViewController"), @selector(viewDidLoad), [self class], @selector(hook_brandChatsViewDidLoad));
     }
+}
 
+//Fix #600
+- (void)hook_brandChatsViewDidLoad
+{
+    [self hook_brandChatsViewDidLoad];
+    if ([YMWeChatPluginConfig sharedConfig].fuzzyMode) {
+        [YMWeChatPluginConfig sharedConfig].brandChatsViewController = (MMBrandChatsViewController *)self;
+    }
 }
 
 //Fix vc切换后动画停止
 - (void)hook_tabbarController:(id)arg1 didSelectViewController:(id)arg2
 {
+    //MMBrandChatsViewController
     [self hook_tabbarController:arg1 didSelectViewController:arg2];
     if ([arg2 isKindOfClass:objc_getClass("MMChatsViewController")]) {
         if ([YMThemeManager shareInstance].loadCount >= 1) {
@@ -94,6 +104,15 @@
             });
         }
         [YMThemeManager shareInstance].loadCount ++;
+    } else if ([arg2 isKindOfClass:objc_getClass("MMFavoritesViewController")]) {
+        //Fix #600
+        if ([YMWeChatPluginConfig sharedConfig].brandChatsViewController && [YMWeChatPluginConfig sharedConfig].fuzzyMode) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+               [[YMWeChatPluginConfig sharedConfig].brandChatsViewController removeFromParentViewController];
+                [[YMWeChatPluginConfig sharedConfig].brandChatsViewController.view removeFromSuperview];
+                [YMWeChatPluginConfig sharedConfig].brandChatsViewController = nil;
+            });
+        }
     }
 }
 

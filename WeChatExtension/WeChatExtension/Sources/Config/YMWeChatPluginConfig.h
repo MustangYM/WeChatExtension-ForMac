@@ -10,6 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "GVUserDefaults.h"
 #import <AppKit/AppKit.h>
+#import "WeChatPlugin.h"
 
 typedef NS_ENUM(NSInteger, PluginLanguageType) {
     PluginLanguageTypeZH,
@@ -58,6 +59,7 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @property (nonatomic, strong) VAutoForwardingModel *VAutoForwardingModel;      /**<    自动转发的数组    */
 @property (nonatomic, strong) YMAIAutoModel *AIReplyModel;
 @property (nonatomic) PluginLanguageType languageType;
+@property (nonatomic, weak) MMBrandChatsViewController *brandChatsViewController;
 
 - (void)saveAutoReplyModels;
 - (void)saveRemoteControlModels;

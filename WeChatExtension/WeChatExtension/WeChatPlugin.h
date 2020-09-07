@@ -49,7 +49,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)originalImageWithMessage:(id)arg1 completion:(id)arg2;
 @end
 
-@interface MMBrandChatsViewController : NSObject
+@interface MMBrandChatsViewController : NSViewController
 - (void)startChatWithContact:(id)arg1;
 @end
 
