@@ -8,6 +8,9 @@
 - 支持[企业微信](https://github.com/MustangYM/WeChatICU-ForMac)，由此进。
 - 如果你希望更简约，这里提供了[简版小助手](https://github.com/MustangYM/WeChatSeptet-ForMac)，安装方式与WeChatExtension的手动安装方式一样。
 
+## Who are not capable to read Chinese☹️
+I'm sorry for GitHub's trending rules. Most users of this project are Chinese, so there is `no English wiki`.
+
 ## 声明
 - WeChatExtension完全`免费`，近期发现不少三方平台甚至某宝商家`出售`此软件，切勿`上当受骗`。
 - 适用于Mac版的WeChat拓展功能。1.7.5代码来自于[WeChatPlugin](https://github.com/TKkk-iOSer/WeChatPlugin-MacOS)，对[TK](https://github.com/TKkk-iOSer)在此表示感谢！
@@ -15,9 +18,9 @@
 - 到目前为止，并未发现因使用本插件会导致封号。
 
 ## 最新支持版本
--  mac版微信2.4.2
--  皮肤最低支持macOS 10.14
--  微信2.4.0版本以上才支持小程序 [去下载](https://developers.weixin.qq.com/community/develop/doc/0000a0544fcfc013c8b9d164a5b801)
+- mac版微信2.4.2
+- 皮肤最低支持macOS 10.14
+- 微信2.4.0版本以上才支持小程序 [去下载](https://developers.weixin.qq.com/community/develop/doc/0000a0544fcfc013c8b9d164a5b801)
 
 ## 小助手相关介绍
 - [Toptips视频介绍](https://toptips.vip/a/565)(基于2.5版本的小助手介绍，现在的小助手更完善)
@@ -121,12 +124,12 @@
 - 所以`微信多开`与`允许打开小程序`是互斥的，点击`微信多开`可关闭`允许打开小程序`，反之也是如此。
 
 ## 怎么安装?
-### 1.普通安装(clone最新版本并安装)
+### 安装方式一：普通安装(clone最新版本并安装)
 ```
 sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/MustangYM/WeChatExtension-ForMac && cd WeChatExtension-ForMac/WeChatExtension/Rely && ./Install.sh
 ```
 
-### 2.懒癌版安装
+### 安装方式二：懒癌版安装
 
 <p align="left">
 <img src="https://avatars1.githubusercontent.com/u/5035625?s=400&v=4" width="100px"/>
@@ -147,7 +150,7 @@ Oh My WeChat一键命令
 安装完成后会自动安装微信插件，可以访问 [Oh My WeChat 的项目主页](https://github.com/lmk123/oh-my-wechat#oh-my-wechat)查看更多用法。
 
 
-### 3.手动安装
+### 安装方式三：手动安装
 
 - 3.1.确保你的Mac上已经安装了微信App。
 
@@ -174,12 +177,17 @@ Oh My WeChat一键命令
 - 3.6.重启微信，安装完成。
 
 ## 怎么卸载?
-- 自动卸载
+### 卸载方式一：自动卸载（推荐）
+```
+bash <(curl -sL https://git.io/JUO6r)
+```
+
+### 卸载方式二：自动卸载
 ```
 sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/MustangYM/WeChatExtension-ForMac && cd WeChatExtension-ForMac/WeChatExtension/Rely && ./Uninstall.sh
 ```
 
-- 手动卸载
+### 卸载方式三：手动卸载
   -  将Uninstall.sh拖到终端工具中，回车执行即可。
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190625-102808%402x.png" width="800px"/>
