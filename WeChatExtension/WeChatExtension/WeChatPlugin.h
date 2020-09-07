@@ -821,6 +821,8 @@ forHTTPHeaderField:(NSString *)field;
 @end
 
 @interface MMSearchChatLogTableCellView : NSTableCellView
+@property(retain, nonatomic) MMTextField *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
+@property(retain, nonatomic) MMTextField *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (nonatomic, strong) NSColor *backgroundColor;
 - (void)setSelected:(BOOL)arg1;
 @end
