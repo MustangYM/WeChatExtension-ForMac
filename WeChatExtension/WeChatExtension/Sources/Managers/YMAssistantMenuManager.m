@@ -244,7 +244,7 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
                         autoAuthItem,
                         backGroundItem,
                         quitMonitorItem,
-                        miniProgramItem,
+//                        miniProgramItem, 小程序
                         newWeChatItem,
                         forwardAndReplyItem,
                         enableSystemBrowserItem,

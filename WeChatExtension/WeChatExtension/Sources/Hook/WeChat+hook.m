@@ -524,7 +524,7 @@
                 [arrSession addObject:sessionInfo];
             }
         }];
-        
+        //Fix 2.4.2(15650)Beta 148 （#616）
         dispatch_async(dispatch_get_main_queue(), ^{
             @try {
                 WeChat *wechat = [objc_getClass("WeChat") sharedInstance];

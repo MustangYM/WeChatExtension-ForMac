@@ -1019,3 +1019,16 @@ forHTTPHeaderField:(NSString *)field;
 @interface RFOverlayScrollView : NSScrollView
 
 @end
+
+@interface MMContactsMgrRecentRowView : NSView
+@property(retain, nonatomic) NSTextField *nameTextField; // @synthesize nameTextField=_nameTextField;
+@end
+
+@interface MMContactsListViewController : NSViewController
+@property(retain, nonatomic) CAShapeLayer *shapeLayer; // @synthesize shapeLayer=_shapeLayer;
+@end
+
+@interface MMContactsColumn3CellView : NSView
+@property(retain, nonatomic) NSTextField *titleField; // @synthesize titleField=_titleField;
+- (void)updateUIWithContact:(id)arg1;
+@end
