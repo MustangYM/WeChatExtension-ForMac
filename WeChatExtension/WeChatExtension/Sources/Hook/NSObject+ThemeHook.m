@@ -15,6 +15,7 @@
 #import "ANYMethodLog.h"
 #import "YMFuzzyManager.h"
 #import "NSWindow+fuzzy.h"
+#import "NSViewLayoutTool.h"
 
 @interface NSCellAuxiliary : NSObject
 
@@ -81,7 +82,11 @@
         hookMethod(objc_getClass("MMMainViewController"), @selector(tabbarController:didSelectViewController:), [self class], @selector(hook_tabbarController:didSelectViewController:));
         hookMethod(objc_getClass("MMBrandChatsViewController"), @selector(viewDidLoad), [self class], @selector(hook_brandChatsViewDidLoad));
     }
+    hookMethod(objc_getClass("MMContactMgrButtonView"), @selector(setHighlighted:), [self class], @selector(hook_setHighlighted:));
 }
+
+- (void)hook_setHighlighted:(char)arg2
+{}
 
 //Fix #600
 - (void)hook_brandChatsViewDidLoad
@@ -100,8 +105,12 @@
     if ([arg2 isKindOfClass:objc_getClass("MMChatsViewController")]) {
         if ([YMThemeManager shareInstance].loadCount >= 1) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
-                [sessionMgr loadSessionData];
+                @try {
+                    WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
+                    [wechat.chatsViewController.tableView reloadData];
+                } @catch (NSException *exception) {
+                    
+                }
             });
         }
         [YMThemeManager shareInstance].loadCount ++;
@@ -195,7 +204,7 @@
     if ([YMWeChatPluginConfig sharedConfig].usingTheme) {
         dispatch_async(dispatch_get_main_queue(), ^{
             btn.layer.cornerRadius = 5;
-            btn.layer.borderColor = TK_RGBA(6, 193, 96, 0.2).CGColor;
+            btn.layer.borderColor = YM_RGBA(6, 193, 96, 0.2).CGColor;
             btn.layer.borderWidth = 2;
         });
     }
@@ -719,6 +728,21 @@
         return;
     }
     
+    
+    if ([view isKindOfClass:[objc_getClass("MMContactMgrButtonView") class]]) {
+        for (NSView *sub in view.subviews) {
+            if (![sub isKindOfClass:[NSTextField class]]) {
+                [[YMThemeManager shareInstance] changeTheme:sub color:kMainBackgroundColor];
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            view.layer.cornerRadius = 5;
+            view.layer.borderColor = YM_RGBA(240, 240, 240, 0.2).CGColor;
+            view.layer.borderWidth = 1;
+        });
+        return;
+    }
+    
     if ([self isKindOfClass:[objc_getClass("MMAppReferContainerView") class]]) {
         return;
     }
@@ -913,7 +937,7 @@
     }
 }
 
-
+#pragma mark - viewDidLoad
 - (void)hook_themeViewDidLoad
 {
     [self hook_themeViewDidLoad];
@@ -956,6 +980,7 @@
     [YMFuzzyManager fuzzyViewController:viewController];
 }
 
+#pragma mark - windowDidLoad
 - (void)hook_windowDidLoad
 {
     [self hook_windowDidLoad];

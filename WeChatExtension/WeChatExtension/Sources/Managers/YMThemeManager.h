@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)shareInstance;
 + (void)changeButtonTheme:(NSButton *)button;
 + (void)changeEffectViewMode:(NSVisualEffectView *)effectView;
-+ (NSVisualEffectView *)creatFuzzyEffectView:(id)superView;
++ (NSVisualEffectView *)creatFuzzyEffectView;
 - (void)initializeModelConfig;
 - (void)changeTheme:(NSView *)view;
 - (void)changeTheme:(NSView *)view color:(NSColor *)color;

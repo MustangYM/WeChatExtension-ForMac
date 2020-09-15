@@ -138,13 +138,9 @@ static const NSString *DEVICE_THEME_MODE = @"DEVICE_THEME_MODE";
 }
 
 #pragma mark - EffectView
-+ (NSVisualEffectView *)creatFuzzyEffectView:(id)superView
++ (NSVisualEffectView *)creatFuzzyEffectView
 {
     if (!YMWeChatPluginConfig.sharedConfig.fuzzyMode) {
-        return nil;
-    }
-    
-    if (!superView) {
         return nil;
     }
     

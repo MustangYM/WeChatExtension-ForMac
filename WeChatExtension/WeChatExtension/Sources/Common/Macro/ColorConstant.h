@@ -9,13 +9,13 @@
 #ifndef Color_h
 #define Color_h
 
-#define TK_RGBA(r, g, b, a) [NSColor colorWithRed:(r) / 255.0 \
+#define YM_RGBA(r, g, b, a) [NSColor colorWithRed:(r) / 255.0 \
 green:(g) / 255.0 \
 blue:(b) / 255.0 \
 alpha:(a)]
 
-#define TK_RGB(r, g, b) TK_RGBA(r, g, b, 1.0)
-#define TK_GRAYA(c, a) TK_RGBA(c, c, c, a)
+#define TK_RGB(r, g, b) YM_RGBA(r, g, b, 1.0)
+#define TK_GRAYA(c, a) YM_RGBA(c, c, c, a)
 #define TK_GRAY(c) TK_GRAYA(c, 1.0)
 
 #define kBG1 TK_GRAY(0xec)

@@ -39,7 +39,7 @@
     
     [window.window setOpaque:YES];
     [window.window setBackgroundColor:[NSColor clearColor]];
-    NSVisualEffectView *effView = [YMThemeManager creatFuzzyEffectView:window.window];
+    NSVisualEffectView *effView = [YMThemeManager creatFuzzyEffectView];
     
     //除了MMMainWindowController， 其余均做特殊处理
     if ([window isKindOfClass:objc_getClass("MMMainWindowController")]) {
@@ -73,8 +73,11 @@
     if ([viewController isKindOfClass:objc_getClass("MMChatCollectionViewController")]
         || [viewController isKindOfClass:objc_getClass("MMSessionListView")]
         || [viewController isKindOfClass:objc_getClass("MMStickerCollectionViewController")]
-        || [viewController isKindOfClass:objc_getClass("MMContactProfileController")]) {
-        NSVisualEffectView *effView = [YMThemeManager creatFuzzyEffectView:viewController.view];
+        || [viewController isKindOfClass:objc_getClass("MMContactProfileController")]
+        || [viewController isKindOfClass:objc_getClass("MMContactsListViewController")]
+        || [viewController isKindOfClass:objc_getClass("MMContactsLeftMasterViewController")]
+        || [viewController isKindOfClass:objc_getClass("MMContactsRightDetailViewController")]) {
+        NSVisualEffectView *effView = [YMThemeManager creatFuzzyEffectView];
         if (viewController.view.subviews.count > 0) {
             NSView *firstSubView = viewController.view.subviews[0];
             [[YMThemeManager shareInstance] changeTheme:firstSubView color:[NSColor clearColor]];

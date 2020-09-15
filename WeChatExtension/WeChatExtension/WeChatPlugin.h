@@ -1015,3 +1015,7 @@ forHTTPHeaderField:(NSString *)field;
 @property(retain, nonatomic) MMImageView *avatarView; // @synthesize avatarView=_avatarView;
 @property(retain, nonatomic) MMSidebarColorIconView *iconView; // @synthesize iconView=_iconView;
 @end
+
+@interface RFOverlayScrollView : NSScrollView
+
+@end
