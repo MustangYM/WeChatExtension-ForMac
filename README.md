@@ -18,7 +18,7 @@ I'm sorry for GitHub's trending rules. Most users of this project are Chinese, s
 - 到目前为止，并未发现因使用本插件会导致封号。
 
 ## 最新支持版本
-- [下载](https://dldir1.qq.com/weixin/mac/WeChatMac_Beta.dmg)最新版微信
+- [下载最新版微信](https://dldir1.qq.com/weixin/mac/WeChatMac_Beta.dmg)
 - 皮肤最低支持macOS 10.14
 
 ## 小助手相关介绍
