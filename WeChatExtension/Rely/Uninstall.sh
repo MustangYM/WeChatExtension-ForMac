@@ -34,5 +34,5 @@ else
 fi
 
 else
-echo "\n\t未发现微信小助手"
+    echo "\n\t未发现微信小助手"
 fi
