@@ -18,9 +18,8 @@ I'm sorry for GitHub's trending rules. Most users of this project are Chinese, s
 - 到目前为止，并未发现因使用本插件会导致封号。
 
 ## 最新支持版本
-- mac版微信2.4.2
+- [下载最新版微信](https://dldir1.qq.com/weixin/mac/WeChatMac_Beta.dmg)
 - 皮肤最低支持macOS 10.14
-- 微信2.4.0版本以上才支持小程序 [去下载](https://developers.weixin.qq.com/community/develop/doc/0000a0544fcfc013c8b9d164a5b801)
 
 ## 小助手相关介绍
 - [Toptips视频介绍](https://toptips.vip/a/565)(基于2.5版本的小助手介绍，现在的小助手更完善)
