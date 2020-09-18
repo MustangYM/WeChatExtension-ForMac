@@ -492,6 +492,14 @@ This project exists thanks to all the people who contribute。
   <a href="https://github.com/uncleYiba"><img src="https://avatars1.githubusercontent.com/u/26616828?s=400&u=344142a2a1b519c4d52545f3e733d04fd88df069&v=4" width="100px;" alt="uncleYiba"/>
   <br></br><sub><b>uncleYiba</b></sub>
  
+   <td align="center">
+  <a href="https://github.com/xvalerian"><img src="https://avatars2.githubusercontent.com/u/43782518?s=400&v=4" width="100px;" alt="xvalerian"/>
+  <br></br><sub><b>xvalerian</b></sub>
+ 
+   <td align="center">
+  <a href="https://github.com/SatanZS"><img src="https://avatars0.githubusercontent.com/u/8230677?s=400&u=0a628322a190b1c1c87f033290ea32568ea33342&v=4" width="100px;" alt="SatanZS"/>
+  <br></br><sub><b>SatanZS</b></sub>
+ 
    </td></tr></table>
 
 ## Backers
