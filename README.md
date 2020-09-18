@@ -125,7 +125,7 @@ I'm sorry for GitHub's trending rules. Most users of this project are Chinese, s
 ## 怎么安装?
 ### 安装方式一：普通安装(clone最新版本并安装)
 ```
-sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/MustangYM/WeChatExtension-ForMac && cd WeChatExtension-ForMac/WeChatExtension/Rely && ./Install.sh
+sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://git.io/JU06L && cd WeChatExtension-ForMac/WeChatExtension/Rely && ./Install.sh
 ```
 
 ### 安装方式二：懒癌版安装
@@ -185,12 +185,6 @@ omw -g
 ```
 bash <(curl -sL https://git.io/JUO6r)
 ```
-
-### 卸载方式二：自动卸载
-```
-sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/MustangYM/WeChatExtension-ForMac && cd WeChatExtension-ForMac/WeChatExtension/Rely && ./Uninstall.sh
-```
-
 ### 卸载方式三：手动卸载
   -  将Uninstall.sh拖到终端工具中，回车执行即可。
 <p align="center">
