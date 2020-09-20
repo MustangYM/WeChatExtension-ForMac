@@ -244,7 +244,6 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
                         autoAuthItem,
                         backGroundItem,
                         quitMonitorItem,
-//                        miniProgramItem, 小程序
                         newWeChatItem,
                         forwardAndReplyItem,
                         enableSystemBrowserItem,
@@ -255,7 +254,11 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
                         pluginItem,
                         aboutPluginItem
                         ]];
-
+    
+    if (LargerOrEqualLongVersion(@"2.4.2.148") == NO) {
+        [subMenu insertItem:miniProgramItem atIndex:4];
+    }
+    
     id wechat = LargerOrEqualVersion(@"2.3.24") ? [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMUpdateMgr")] : [objc_getClass("WeChat") sharedInstance];
     [subMenu setSubmenu:subPluginMenu forItem:pluginItem];
     
