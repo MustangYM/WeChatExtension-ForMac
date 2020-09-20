@@ -224,7 +224,16 @@
     [picker setShowsOtherNonhumanChats:0];
     [picker setShowsOfficialAccounts:0];
     MMSessionPickerLogic *logic = [picker.listViewController valueForKey:@"m_logic"];
-    NSMutableOrderedSet *orderSet = [logic valueForKey:@"_selectedUserNamesSet"];
+    NSMutableOrderedSet *orderSet = nil;
+    if (LargerOrEqualLongVersion(@"2.4.2.148")) {
+        orderSet = [logic valueForKey:@"_groupsForSearch"];
+    } else {
+        orderSet = [logic valueForKey:@"_selectedUserNamesSet"];
+    }
+    
+    if (!orderSet) {
+        orderSet = [NSMutableOrderedSet new];
+    }
     [orderSet addObjectsFromArray:self.vmodel.forwardingFromContacts];
     [picker.choosenViewController setValue:self.vmodel.forwardingFromContacts forKey:@"selectedUserNames"];
     [picker beginSheetForWindow:self.window completionHandler:^(NSOrderedSet *a1) {
@@ -317,7 +326,17 @@
     [picker setShowsOtherNonhumanChats:0];
     [picker setShowsOfficialAccounts:0];
     MMSessionPickerLogic *logic = [picker.listViewController valueForKey:@"m_logic"];
-    NSMutableOrderedSet *orderSet = [logic valueForKey:@"_selectedUserNamesSet"];
+    NSMutableOrderedSet *orderSet = nil;
+    if (LargerOrEqualLongVersion(@"2.4.2.148")) {
+        orderSet = [logic valueForKey:@"_groupsForSearch"];
+    } else {
+       orderSet = [logic valueForKey:@"_selectedUserNamesSet"];
+    }
+    
+    if (!orderSet) {
+        orderSet = [NSMutableOrderedSet new];
+    }
+    
     [orderSet addObjectsFromArray:self.vmodel.forwardingToContacts];
     [picker.choosenViewController setValue:self.vmodel.forwardingToContacts forKey:@"selectedUserNames"];
     [picker beginSheetForWindow:self.window completionHandler:^(NSOrderedSet *a1) {

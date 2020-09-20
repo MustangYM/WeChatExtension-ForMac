@@ -242,14 +242,12 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
 
     [subMenu addItems:@[preventRevokeItem,
                         autoAuthItem,
-                        backGroundItem,
                         quitMonitorItem,
                         newWeChatItem,
                         forwardAndReplyItem,
                         enableSystemBrowserItem,
                         commandItem,
                         onTopItem,
-//                        checkZombieItem, 僵尸粉检测
                         forbidCheckUpdateItem,
                         pluginItem,
                         aboutPluginItem
@@ -257,6 +255,10 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
     
     if (LargerOrEqualLongVersion(@"2.4.2.148") == NO) {
         [subMenu insertItem:miniProgramItem atIndex:4];
+    }
+    
+    if (@available(macOS 10.14, *)) {
+        [subMenu insertItem:backGroundItem atIndex:2];
     }
     
     id wechat = LargerOrEqualVersion(@"2.3.24") ? [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMUpdateMgr")] : [objc_getClass("WeChat") sharedInstance];
