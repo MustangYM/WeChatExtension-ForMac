@@ -99,10 +99,8 @@
                 weakCellView.nickName.attributedStringValue = returnValue;
                 
                 // MARK: - Add pined image in dark mode
-                NSBundle *bundle = [NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"];
-                NSString *imgPath= [bundle pathForImageResource:@"pin.png"];
-                
-                NSImage *pined = [[NSImage alloc] initWithContentsOfFile:imgPath];
+        
+                NSImage *pined = kImageWithName(@"pin.png");
                 NSImageView *pinedView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 20, 20)];
                 [pinedView setImage:pined];
                 

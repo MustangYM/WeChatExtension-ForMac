@@ -986,6 +986,15 @@
 {
     [self hook_themeViewDidLoad];
     
+    if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
+        if ([self isKindOfClass:objc_getClass("MMChatsViewController")]) {
+            MMChatsViewController *vc = (MMChatsViewController *)self;
+            [vc.startNewChatButton setImage:kImageWithName(@"arrow_icon")];
+            [vc.startNewChatButton setAlternateImage:kImageWithName(@"arrow_icon_highlight")];
+            return;
+        }
+    }
+    
     if ([self isKindOfClass:objc_getClass("QLPreviewPasswordViewController")]) {
         return;
     }

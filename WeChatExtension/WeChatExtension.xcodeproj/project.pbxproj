@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		08294044245812FB0056E0C6 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 08294043245812FA0056E0C6 /* pin.png */; };
 		1828B9AA23BA319E008EC8E9 /* TKAboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1828B9A923BA319E008EC8E9 /* TKAboutWindowController.xib */; };
+		182CE0D025173A1F00570E17 /* arrow_icon_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 182CE0CE25173A1E00570E17 /* arrow_icon_highlight.png */; };
+		182CE0D125173A1F00570E17 /* arrow_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 182CE0CF25173A1E00570E17 /* arrow_icon.png */; };
 		1850F21024C5F2C100748FB7 /* NSWindow+fuzzy.h in Headers */ = {isa = PBXBuildFile; fileRef = 1850F20E24C5F2C100748FB7 /* NSWindow+fuzzy.h */; };
 		1850F21124C5F2C100748FB7 /* NSWindow+fuzzy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1850F20F24C5F2C100748FB7 /* NSWindow+fuzzy.m */; };
 		1850F21424C5F32400748FB7 /* YMPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 1850F21324C5F32400748FB7 /* YMPrivate.h */; };
@@ -196,6 +198,8 @@
 		1802C088239826CB0061823C /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "en-GB"; path = "en-GB.lproj/Info.plist"; sourceTree = "<group>"; };
 		1802C089239826CB0061823C /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1828B9A923BA319E008EC8E9 /* TKAboutWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKAboutWindowController.xib; sourceTree = "<group>"; };
+		182CE0CE25173A1E00570E17 /* arrow_icon_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_icon_highlight.png; sourceTree = "<group>"; };
+		182CE0CF25173A1E00570E17 /* arrow_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_icon.png; sourceTree = "<group>"; };
 		1850F20E24C5F2C100748FB7 /* NSWindow+fuzzy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSWindow+fuzzy.h"; sourceTree = "<group>"; };
 		1850F20F24C5F2C100748FB7 /* NSWindow+fuzzy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+fuzzy.m"; sourceTree = "<group>"; };
 		1850F21324C5F32400748FB7 /* YMPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMPrivate.h; sourceTree = "<group>"; };
@@ -435,6 +439,8 @@
 		188A655022718C400096663E /* WeChatExtension */ = {
 			isa = PBXGroup;
 			children = (
+				182CE0CE25173A1E00570E17 /* arrow_icon_highlight.png */,
+				182CE0CF25173A1E00570E17 /* arrow_icon.png */,
 				18ECDCF42405194800090014 /* aliPayCode.png */,
 				18A447D424BC511F00FB6C4A /* WeChatPayCode.png */,
 				08294043245812FA0056E0C6 /* pin.png */,
@@ -1005,6 +1011,7 @@
 				188A65F92272ACBA0096663E /* TKDownloadWindowController.xib in Resources */,
 				188A660F2272ACBA0096663E /* TKRemoteControlCommands.plist in Resources */,
 				18A447D524BC511F00FB6C4A /* WeChatPayCode.png in Resources */,
+				182CE0D125173A1F00570E17 /* arrow_icon.png in Resources */,
 				188FBAEB24BC42130015CEEF /* arrow_forward.png in Resources */,
 				18D298EF23960C18009EE6B0 /* YMAIReplyWindowController.xib in Resources */,
 				DC069F4324B5D23A00256A03 /* VAutoForwardingWindowController.xib in Resources */,
@@ -1012,6 +1019,7 @@
 				1828B9AA23BA319E008EC8E9 /* TKAboutWindowController.xib in Resources */,
 				18ECDCF52405194800090014 /* aliPayCode.png in Resources */,
 				188A65FB2272ACBA0096663E /* TKAutoReplyWindowController.xib in Resources */,
+				182CE0D025173A1F00570E17 /* arrow_icon_highlight.png in Resources */,
 				08294044245812FB0056E0C6 /* pin.png in Resources */,
 				3632293F22A6ADB300F62EAB /* LockPlist.plist in Resources */,
 				18B606DE23979FC6000A41DC /* order_avatar.png in Resources */,

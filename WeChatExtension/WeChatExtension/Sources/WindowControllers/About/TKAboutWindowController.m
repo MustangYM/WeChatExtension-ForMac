@@ -36,12 +36,9 @@
     NSString *localBundle = localInfo[@"CFBundleShortVersionString"];
     self.versionLabel.stringValue = [NSString stringWithFormat:@"V %@",localBundle];
     
-    NSBundle *bundle = [NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"];
-    NSString *imgPath= [bundle pathForImageResource:@"aliPayCode.png"];
-    NSImage *placeholder = [[NSImage alloc] initWithContentsOfFile:imgPath];
-    self.aliPay.image = placeholder;
+    self.aliPay.image = kImageWithName(@"aliPayCode.png");
     
-    self.WeChatPayImageView.image = [[NSImage alloc] initWithContentsOfFile:[bundle pathForImageResource:@"WeChatPayCode.png"]];
+    self.WeChatPayImageView.image = kImageWithName(@"WeChatPayCode.png");
 }
 
 - (IBAction)didClickHomepageURL:(NSButton *)sender

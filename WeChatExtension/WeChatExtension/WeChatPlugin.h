@@ -163,6 +163,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(nonatomic) __weak NSTableView *tableView;
 @property(retain, nonatomic) MMBrandChatsViewController *brandChatsViewController;
 @property(retain, nonatomic) NSString *selectedUserName; // @synthesize selectedUserName=_selectedUserName;
+@property(retain, nonatomic) NSButton *startNewChatButton;
 - (void)reloadTableView;
 @end
 

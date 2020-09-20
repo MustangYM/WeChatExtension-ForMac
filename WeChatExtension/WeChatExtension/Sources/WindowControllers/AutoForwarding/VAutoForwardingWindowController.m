@@ -161,9 +161,7 @@
     
     
     self.arrowImageView = ({
-        NSBundle *bundle = [NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"];
-           NSString *imgPath= [bundle pathForImageResource:@"arrow_forward.png"];
-           NSImage *arrowImage = [[NSImage alloc] initWithContentsOfFile:imgPath];
+        NSImage *arrowImage = kImageWithName(@"arrow_forward.png");
         NSImageView *imageView = nil;
         if (@available(macOS 10.12, *)) {
             imageView = [NSImageView imageViewWithImage:arrowImage];
