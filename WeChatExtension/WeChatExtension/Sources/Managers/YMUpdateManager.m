@@ -8,18 +8,19 @@
 
 #import "YMUpdateManager.h"
 #import "TCBlobDownloader.h"
-#import "TKCacheManager.h"
+#import "YMCacheManager.h"
 #import "TCBlobDownloadManager.h"
 
 static NSString *const INFO_PLIST_PATH = @"https://github.com/MustangYM/WeChatExtension-ForMac/blob/master/WeChatExtension/Rely/Plugin/WeChatExtension.framework.zip";
 
 @interface YMUpdateManager ()
-@property(nonatomic, strong)TCBlobDownloadManager *downloader;
+@property (nonatomic, strong) TCBlobDownloadManager *downloader;
 @end
 
 @implementation YMUpdateManager
 
-+ (instancetype)shareInstance {
++ (instancetype)shareInstance
+{
     static id share = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -28,8 +29,9 @@ static NSString *const INFO_PLIST_PATH = @"https://github.com/MustangYM/WeChatEx
     return share;
 }
 
-- (void)checkWeChatExtensionUpdate {
-    NSString *filePath = [[TKCacheManager shareManager] filePathWithName:@"Zip"];
+- (void)checkWeChatExtensionUpdate
+{
+    NSString *filePath = [[YMCacheManager shareManager] filePathWithName:@"Zip"];
     self.downloader = [TCBlobDownloadManager sharedInstance];
     [self.downloader startDownloadWithURL:[NSURL URLWithString:INFO_PLIST_PATH] customPath:filePath firstResponse:^(NSURLResponse *response) {
         

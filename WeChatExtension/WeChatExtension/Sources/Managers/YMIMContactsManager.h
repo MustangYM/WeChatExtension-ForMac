@@ -16,13 +16,17 @@
 @end
 
 @interface YMIMContactsManager : NSObject
+@property (nonatomic, copy) void(^onVerifyMsgBlock) (NSString *userName);
 + (instancetype)shareInstance;
 - (void)monitorQuitGroup:(WCContactData *)groupData;
+- (void)checkStranger:(NSDictionary *)verifyDict chatroom:(NSString *)chatroom;
 
 + (NSString *)getGroupMemberNickNameFromCache:(NSString *)username;
 + (NSString *)getGroupMemberNickName:(NSString *)username;
 + (NSString *)getWeChatNickName:(NSString *)username;
 + (NSString *)getWeChatAvatar:(NSString *)userName;
 + (MMSessionInfo *)getSessionInfo:(NSString *)userName;
++ (NSArray<WCContactData *> *)getAllFriendContacts;
++ (NSArray<WCContactData *> *)getAllFriendContactsWithOutChatroom;
 @end
 

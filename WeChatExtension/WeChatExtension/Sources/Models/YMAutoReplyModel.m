@@ -2,14 +2,15 @@
 //  YMAutoReplyModel.m
 //  WeChatExtension
 //
-//  Created by WeChatExtension on 2017/8/18.
-//  Copyright © 2017年 WeChatExtension. All rights reserved.
+//  Created by WeChatExtension on 2019/8/18.
+//  Copyright © 2019年 WeChatExtension. All rights reserved.
 //
 
 #import "YMAutoReplyModel.h"
 
 @implementation YMAutoReplyModel
-- (instancetype)initWithDict:(NSDictionary *)dict {
+- (instancetype)initWithDict:(NSDictionary *)dict
+{
     self = [super init];
     if (self) {
         self.enable = [dict[@"enable"] boolValue];
@@ -26,7 +27,8 @@
     return self;
 }
 
-- (NSDictionary *)dictionary {
+- (NSDictionary *)dictionary
+{
     return @{@"enable": @(self.enable),
              @"keyword": self.keyword,
              @"replyContent": self.replyContent,
@@ -40,11 +42,13 @@
              };
 }
 
-- (BOOL)hasEmptyKeywordOrReplyContent {
+- (BOOL)hasEmptyKeywordOrReplyContent
+{
     return (self.keyword == nil || self.replyContent == nil || [self.keyword isEqualToString:@""] || [self.replyContent isEqualToString:@""]);
 }
 
-- (NSArray *)specificContacts {
+- (NSArray *)specificContacts
+{
     if (!_specificContacts) {
         _specificContacts = [NSArray array];
     }
@@ -85,7 +89,8 @@
     return self;
 }
 
-- (NSMutableArray *)specificContacts {
+- (NSMutableArray *)specificContacts
+{
     if (!_specificContacts) {
         _specificContacts = [NSMutableArray array];
     }

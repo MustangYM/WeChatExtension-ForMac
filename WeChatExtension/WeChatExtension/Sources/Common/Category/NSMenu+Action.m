@@ -10,7 +10,8 @@
 
 @implementation NSMenu (Action)
 
-- (void)addItems:(NSArray *)subItems {
+- (void)addItems:(NSArray *)subItems
+{
     for (NSMenuItem *item in subItems) {
         NSAssert([item isKindOfClass:[NSMenuItem class]], @"the elements must be a NSMenuItem!");
         [self addItem:item];

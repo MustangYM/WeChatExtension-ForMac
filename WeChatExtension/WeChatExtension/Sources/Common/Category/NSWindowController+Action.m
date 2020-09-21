@@ -10,7 +10,8 @@
 
 @implementation NSWindowController (Action)
 
-- (void)show {
+- (void)show
+{
     [self showWindow:self];
     [self.window center];
     [self.window makeKeyWindow];
