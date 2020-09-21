@@ -127,7 +127,7 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
                                                        action:@selector(onNewWechatInstance:)
                                                        target:self
                                                 keyEquivalent:@"N"
-                                                        state:[YMWeChatPluginConfig sharedConfig].isAllowMoreOpenBaby];
+                                                        state:NO];
     NSMenuItem *miniProgramItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"允许打开小程序", @"Allow MiniProgram to open")
                                                         action:@selector(onMiniProgramItem:)
                                                         target:self
@@ -186,7 +186,12 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
                                                    keyEquivalent:@""
                                                            state:0];
     
-    //        关于小助手
+    NSMenuItem *uninstallPluginItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"卸载小助手", @"Uninstall Assistant")
+                                                         action:@selector(onUninstallPluginControl:)
+                                                         target:self
+                                                  keyEquivalent:@""
+                                                          state:0];
+    
     NSMenuItem *pluginItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.other")
                                                           action:@selector(onAboutPluginControl:)
                                                           target:self
@@ -236,7 +241,8 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
     
     NSMenu *subPluginMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.other")];
     [subPluginMenu addItems:@[enableAlfredItem,
-                             updatePluginItem]];
+                             updatePluginItem,
+                              uninstallPluginItem]];
     
     NSMenu *subMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.title")];
 
@@ -677,9 +683,18 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
     [remoteControlWC show];
 }
 
-- (void)onCurrentVersion:(NSMenuItem *)item
+- (void)onUninstallPluginControl:(NSMenuItem *)item
 {
+    NSAlert *alert = [NSAlert alertWithMessageText:YMLanguage(@"警告", @"WARNING")
+                                     defaultButton:YMLanguage(@"取消", @"cancel")                       alternateButton:YMLanguage(@"卸载",@"uninstall")
+                                       otherButton:nil
+                         informativeTextWithFormat:@"%@", YMLanguage(@"是否卸载小助手？重启生效。", @"Do you want to uninstall the assistant? Restart takes effect.")];
+    NSUInteger action = [alert runModal];
     
+    if (action == NSAlertAlternateReturn) {
+        [YMRemoteControlManager executeShellCommand:@"bash <(curl -sL https://git.io/JUO6r)"];
+        [self restartWeChat];
+    }
 }
 
 - (void)onChangeBlackMode:(NSMenuItem *)item
@@ -701,12 +716,7 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
         [[YMWeChatPluginConfig sharedConfig] setBlackMode:item.state];
         item.state ? [[YMWeChatPluginConfig sharedConfig] setDarkMode:NO] : nil;
         item.state ? [[YMWeChatPluginConfig sharedConfig] setPinkMode:NO] : nil;
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                [[NSApplication sharedApplication] terminate:wself];
-            });
-        });
+        [wself restartWeChat];
     }  else if (action == NSAlertDefaultReturn) {
         item.state = !item.state;
     }
@@ -732,12 +742,7 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
         item.state ? [[YMWeChatPluginConfig sharedConfig] setDarkMode:NO] : nil;
         item.state ? [[YMWeChatPluginConfig sharedConfig] setBlackMode:NO]: nil;
         item.state ? [[YMWeChatPluginConfig sharedConfig] setPinkMode:NO] : nil;
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                [[NSApplication sharedApplication] terminate:wself];
-            });
-        });
+        [wself restartWeChat];
     }  else if (action == NSAlertDefaultReturn) {
         item.state = !item.state;
     }
@@ -762,12 +767,7 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
         item.state ? [[YMWeChatPluginConfig sharedConfig] setBlackMode:NO]: nil;
         item.state ? [[YMWeChatPluginConfig sharedConfig] setPinkMode:NO] : nil;
         item.state ? [[YMWeChatPluginConfig sharedConfig] setFuzzyMode:NO] : nil;
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                [[NSApplication sharedApplication] terminate:wself];
-            });
-        });
+        [wself restartWeChat];
     }  else if (action == NSAlertDefaultReturn) {
         item.state = !item.state;
     }
@@ -793,16 +793,19 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
         item.state ? [[YMWeChatPluginConfig sharedConfig] setDarkMode:NO] : nil;
         item.state ? [[YMWeChatPluginConfig sharedConfig] setBlackMode:NO]: nil;
         item.state ? [[YMWeChatPluginConfig sharedConfig] setFuzzyMode:NO] : nil;
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                [[NSApplication sharedApplication] terminate:wself];
-            });
-        });
+        [wself restartWeChat];
     }  else if (action == NSAlertDefaultReturn) {
         item.state = !item.state;
     }
     
 }
 
+#pragma mark - restart
+- (void)restartWeChat
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSString *cmd = @"killall WeChat && sleep 2s && open /Applications/WeChat.app";
+        [YMRemoteControlManager executeShellCommand:cmd];
+    });
+}
 @end
