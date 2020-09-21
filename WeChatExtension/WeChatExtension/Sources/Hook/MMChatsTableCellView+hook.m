@@ -260,7 +260,12 @@
     NSMutableArray *emptyArrSession = [NSMutableArray array];
     
     [arrSession enumerateObjectsUsingBlock:^(MMSessionInfo *sessionInfo, NSUInteger idx, BOOL * _Nonnull stop) {
-        BOOL hasEmplyMsgSession = ![msgService hasMsgInChat:sessionInfo.m_nsUserName];
+        BOOL hasEmplyMsgSession = NO;
+        if (LargerOrEqualVersion(@"2.4.2")) {
+            hasEmplyMsgSession = ![msgService HasMsgInChat:sessionInfo.m_nsUserName];
+        } else {
+            hasEmplyMsgSession = ![msgService hasMsgInChat:sessionInfo.m_nsUserName];
+        }
         WCContactData *contact = sessionInfo.m_packedInfo.m_contact;
         if (![sessionInfo.m_nsUserName isEqualToString:@"brandsessionholder"] && ![contact isSelf] && hasEmplyMsgSession) {
             [emptyArrSession addObject:sessionInfo];
