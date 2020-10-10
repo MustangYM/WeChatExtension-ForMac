@@ -127,7 +127,7 @@
     }
 }
 
-- (id)hook_chatsViewControllerTableView:(id)arg1 viewForTableColumn:(id)arg2 row:(long long)arg3
+- (id)hook_chatsViewControllerTableView:(id)arg1 viewForTableColumn:(id)arg2 row:(longlong)arg3
 {
     MMChatsTableCellView *cell = [self hook_chatsViewControllerTableView:arg1 viewForTableColumn:arg2 row:arg3];
     [cell.avatar.layer removeAllAnimations];

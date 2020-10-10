@@ -22,7 +22,7 @@
     hookMethod(objc_getClass("MMChatsViewController"), @selector(tableView:rowGotMouseDown:), [self class], @selector(hooktableView:rowGotMouseDown:));
 }
 
-- (void)hooktableView:(NSTableView *)arg1 rowGotMouseDown:(long long)arg2
+- (void)hooktableView:(NSTableView *)arg1 rowGotMouseDown:(longlong)arg2
 {
     
     @try {
