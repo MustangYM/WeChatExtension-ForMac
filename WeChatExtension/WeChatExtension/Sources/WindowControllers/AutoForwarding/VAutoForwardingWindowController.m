@@ -142,7 +142,7 @@
 
     self.enableButton = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoForwarding.enable") target:self action:@selector(clickEnableBtn:)];
-        btn.frame = NSMakeRect(30, 20, 230, 20);
+        btn.frame = NSMakeRect(30, 5, 230, 20);
         btn.state = [[YMWeChatPluginConfig sharedConfig] autoForwardingEnable];
         [YMThemeManager changeButtonTheme:btn];
         btn;
@@ -150,7 +150,7 @@
 
     self.enableAllFirendButton = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoForwarding.enableAllFriend") target:self action:@selector(clickEnableAllFriendBtn:)];
-        btn.frame = NSMakeRect(360, 20, 230, 20);
+        btn.frame = NSMakeRect(30, 25, 230, 20);
         btn.state = [[YMWeChatPluginConfig sharedConfig] autoForwardingAllFriend];
         [YMThemeManager changeButtonTheme:btn];
         btn;
