@@ -23,7 +23,9 @@ static void inline dynamicMethodIMP(id self,SEL _cmd)
     [calls enumerateObjectsUsingBlock:^(NSString*  _Nonnull call, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([call containsString:@"hook_"]) {
             flag = YES;
-            if (*stop) *stop = YES;
+            if (*stop) {
+                 *stop = YES;
+            }
         }
     }];
     
