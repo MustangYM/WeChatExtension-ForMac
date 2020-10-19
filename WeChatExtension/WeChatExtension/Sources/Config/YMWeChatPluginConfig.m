@@ -56,6 +56,7 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 @dynamic pinkMode;
 @dynamic isThemeLoaded;
 @dynamic AIReplyEnable;
+@dynamic closeThemeMode;
 
 + (instancetype)sharedConfig
 {
