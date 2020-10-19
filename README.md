@@ -1,6 +1,6 @@
 
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/face1.png" width="1000px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/face1.png" width="1000px"/>
 </p>
 
 ![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.6.8-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.4.2-blue.svg)
@@ -32,30 +32,30 @@ I'm sorry for GitHub's trending rules. Most users of this project are Chinese, s
 
 - 迷离模式👇 `It‘s perfect！ I love it！`
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/fuzzyMode1.png" width="1500px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/fuzzyMode1.png" width="1500px"/>
 </p>
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/fuzzyMode.png" width="1500px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/fuzzyMode.png" width="1500px"/>
 </p>
 
 - 黑夜模式👇
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/darkMode.png" width="1500px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/darkMode.png" width="1500px"/>
 </p>
 
 - 深邃模式👇
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/blackMode.png" width="1500px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/blackMode.png" width="1500px"/>
 </p>
 
 - 少女粉模式👇
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/pinkMode.png" width="1500px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/pinkMode.png" width="1500px"/>
 </p>
 
 - 模式切换
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/changeMode.png" width="300px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/changeMode.png" width="300px"/>
 </p>
 
 ## 僵尸粉检测
@@ -66,12 +66,12 @@ I'm sorry for GitHub's trending rules. Most users of this project are Chinese, s
 ## 手机端也能收到被撤回的消息
 - 如果Mac拦截到A发送来的消息，手机也会同步收到的这条已经拦截的消息(自己发送给自己)。目前只支持同步文字消息与图片消息，其他类型也可以做，但意义不大。
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/revokeAsync.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/revokeAsync.png" width="800px"/>
 </p>
 
 - 可以对同步的消息进行筛选， 以免群消息打扰。
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190625-111206%402x.png" width="600px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20190625-111206%402x.png" width="600px"/>
 </p>
 
 ## 消息转发
@@ -79,12 +79,12 @@ I'm sorry for GitHub's trending rules. Most users of this project are Chinese, s
 - iPhone上可安装自签的微信包，实现多开，但是Bundle Id的改变导致APNS消息推送异常，无法收到消息推送？
 - 目前只能转发文字消息。选择`转发所有好友消息`时，只转发单聊消息，不转发群聊消息。
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/msgForwarding.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/msgForwarding.png" width="800px"/>
 </p>
 
 ## 免认证登录与多开
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/launch.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/launch.png" width="800px"/>
 </p>
 
 ## 同时支持自定义回复和AI自动撩妹
@@ -92,18 +92,18 @@ I'm sorry for GitHub's trending rules. Most users of this project are Chinese, s
 - 自定义自动回复。
 
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/Snipaste_2019-12-23_11-41-20.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/Snipaste_2019-12-23_11-41-20.png" width="800px"/>
 </p>
 
 ## 显示小程序详情
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191220-2004071%402x.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20191220-2004071%402x.png" width="800px"/>
 </p>
 
 ## Alfred
 - 确保你电脑中有安装Alfred，双击此文件进行安装。
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191217-1036331%402x.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20191217-1036331%402x.png" width="800px"/>
 </p>
 
 - 依次点击 `小助手` -> `开启Alfred功能`
@@ -111,12 +111,12 @@ I'm sorry for GitHub's trending rules. Most users of this project are Chinese, s
 ## 退群监控
 - 退群提醒，同一人在同一群里的退出提醒7天内不再重复提示。
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191227-200134%402x.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20191227-200134%402x.png" width="800px"/>
 </p>
 
 ## 微信多开兼容小程序
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/MiniProgram.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/MiniProgram.png" width="800px"/>
 </p>
 
 - 目前并没有找到有效的办法解决微信多开和打开小程序的冲突，当微信A能解决与小程序的冲突并共存，但此时多开的微信B还是无法打开小程序。
@@ -160,22 +160,22 @@ omw -g
 
 - 3.2.下载本项目到你的电脑里， 并双击打开。
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190619-112238.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20190619-112238.png" width="800px"/>
 </p>
 
 - 3.3.依次打开文件夹
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190619-113413%402x.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20190619-113413%402x.png" width="800px"/>
 </p>
 
 - 3.4.打开你电脑中的终端工具
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190619-113911%402x.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20190619-113911%402x.png" width="800px"/>
 </p>
  
 - 3.5.在Rely/Install.sh执行这个安装脚本
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/QQ20190425-155120%402x.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/QQ20190425-155120%402x.png" width="800px"/>
 </p>
 
 - 3.6.重启微信，安装完成。
@@ -188,7 +188,7 @@ bash <(curl -sL https://git.io/JUO6r)
 ### 卸载方式二：手动卸载
   -  将Uninstall.sh拖到终端工具中，回车执行即可。
 <p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20190625-102808%402x.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20190625-102808%402x.png" width="800px"/>
 </p>
 
 
@@ -516,7 +516,7 @@ MIT license.
 如果小助手使你的生活更美好，可以请我喝杯咖啡。
 
 
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/aliPayCode.png" height="250" hspace="50"/>&nbsp;&nbsp;&nbsp;<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WeChatPayCode.png" height="250" hspace="50"  />
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/aliPayCode.png" height="250" hspace="50"/>&nbsp;&nbsp;&nbsp;<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WeChatPayCode.png" height="250" hspace="50"  />
 
 
 - QQ群 741941325
