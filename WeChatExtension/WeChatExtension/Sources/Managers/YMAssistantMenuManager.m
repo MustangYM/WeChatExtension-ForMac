@@ -228,8 +228,14 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
                                                 keyEquivalent:@""
                                                         state:[YMWeChatPluginConfig sharedConfig].pinkMode];
     
+    NSMenuItem *closeThemeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"关闭皮肤", @"Close")
+           action:@selector(onCloseThemeModel:)
+           target:self
+    keyEquivalent:@""
+            state:NO];
+    
     NSMenu *subBackgroundMenu = [[NSMenu alloc] initWithTitle:@""];
-    [subBackgroundMenu addItems:@[fuzzyModeItem, darkModeItem, blackModeItem, pinkColorItem]];
+    [subBackgroundMenu addItems:@[fuzzyModeItem, darkModeItem, blackModeItem, pinkColorItem,closeThemeItem]];
     backGroundItem.submenu = subBackgroundMenu;
     
     
@@ -361,17 +367,12 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
 }
 
 #pragma mark - menuItem 的点击事件
-/**
- 菜单栏-微信小助手-消息防撤回 设置
- 
- @param item 消息防撤回的item
- */
 - (void)onPreventRevoke:(NSMenuItem *)item
 {
     item.state = !item.state;
     [[YMWeChatPluginConfig sharedConfig] setPreventRevokeEnable:item.state];
     if (item.state) {
-        //        防撤回自己
+        //防撤回自己
         NSMenuItem *preventSelfRevokeItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.revokeSelf")
                                                                    action:@selector(onPreventSelfRevoke:)
                                                                    target:self
@@ -785,6 +786,27 @@ static char kStrangerCheckWindowControllerKey;         //  僵尸粉检测 key
         item.state = !item.state;
     }
     
+}
+
+- (void)onCloseThemeModel:(NSMenuItem *)item
+{
+    if (![YMWeChatPluginConfig sharedConfig].usingTheme) {
+        return;
+    }
+    
+    NSString *msg = msg = YMLanguage(@"关闭皮肤模式, 重启生效!",@"Turn off Theme mode and restart to take effect!");;
+    NSAlert *alert = [NSAlert alertWithMessageText:YMLanguage(@"警告", @"WARNING")
+                                     defaultButton:YMLanguage(@"取消", @"cancel")                       alternateButton:YMLanguage(@"确定重启",@"restart")
+                                       otherButton:nil                              informativeTextWithFormat:@"%@", msg];
+    NSUInteger action = [alert runModal];
+    if (action == NSAlertAlternateReturn) {
+        __weak __typeof (self) wself = self;
+        [[YMWeChatPluginConfig sharedConfig] setPinkMode:NO];
+        [[YMWeChatPluginConfig sharedConfig] setDarkMode:NO];
+        [[YMWeChatPluginConfig sharedConfig] setBlackMode:NO];
+        [[YMWeChatPluginConfig sharedConfig] setFuzzyMode:NO];
+        [wself restartWeChat];
+    }
 }
 
 #pragma mark - restart
