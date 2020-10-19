@@ -101,7 +101,7 @@
         [[label cell] setLineBreakMode:NSLineBreakByCharWrapping];
         [[label cell] setTruncatesLastVisibleLine:YES];
         label.font = [NSFont systemFontOfSize:12];
-        label.frame = NSMakeRect(80, 400, 300, 50);
+        label.frame = NSMakeRect(80, 406, 300, 50);
         label;
     });
 
