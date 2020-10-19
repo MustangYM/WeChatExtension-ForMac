@@ -11,6 +11,7 @@
 #import "YMAutoReplyModel.h"
 #import "YMWeChatPluginConfig.h"
 #import "YMThemeManager.h"
+#import "YMIMContactsManager.h"
 
 @interface YMAIReplyWindowController ()<NSTabViewDelegate, NSTableViewDataSource>
 @property (nonatomic, strong) NSTableView *tableView;
@@ -43,6 +44,8 @@
     }
     if (self.AIModel) {
         [[YMWeChatPluginConfig sharedConfig] saveAIAutoReplyModel:self.AIModel];
+        [YMWeChatPluginConfig sharedConfig].AIReplyEnable = self.AIModel.specificContacts.count > 0;
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_AI_REPLY_CHANGE object:nil];
     }
 }
 
@@ -113,7 +116,7 @@
 - (void)addModel
 {
     MMSessionPickerWindow *picker = [objc_getClass("MMSessionPickerWindow") shareInstance];
-    [picker setType:1];
+    [picker setType:2];
     [picker setShowsGroupChats:0x1];
     [picker setShowsOtherNonhumanChats:0];
     [picker setShowsOfficialAccounts:0];
@@ -121,27 +124,29 @@
     NSMutableOrderedSet *orderSet = nil;
     if (LargerOrEqualLongVersion(@"2.4.2.148")) {
         orderSet = [logic valueForKey:@"_groupsForSearch"];
+        [picker setPreSelectedUserNames:self.AIModel.specificContacts];
     } else {
         orderSet = [logic valueForKey:@"_selectedUserNamesSet"];
+        [orderSet addObjectsFromArray:self.AIModel.specificContacts];
+        [picker.choosenViewController setValue:self.AIModel.specificContacts forKey:@"selectedUserNames"];
     }
     
     if (!orderSet) {
         orderSet = [NSMutableOrderedSet new];
     }
     
-    [orderSet addObjectsFromArray:self.AIModel.specificContacts];
-    [picker.choosenViewController setValue:self.AIModel.specificContacts forKey:@"selectedUserNames"];
     [picker beginSheetForWindow:self.window completionHandler:^(NSOrderedSet *a1) {
-        NSMutableArray *array = [NSMutableArray array];
+        NSMutableArray *array = [NSMutableArray arrayWithArray:self.AIModel.specificContacts];
         [a1 enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [array addObject:obj];
         }];
-        self.AIModel.specificContacts = [array copy];
-        
+        self.AIModel.specificContacts = [NSMutableArray arrayWithArray:array];
+
         dispatch_async(dispatch_get_main_queue(), ^{
            [self.tableView reloadData];
         });
     }];
+
 }
 
 - (void)reduceModel

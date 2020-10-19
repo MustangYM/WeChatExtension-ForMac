@@ -511,18 +511,35 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 {
     MMSessionPickerLogic *m_logic;
 }
+- (void)setPreSelectedUserNames:(id)arg1;
+- (void)setAllowsMultipleSelection:(BOOL)arg1;
+@end
+
+@interface MMSessionChoosenView : NSViewController
+@property(retain, nonatomic) NSArray *selectedUserNames;
+@property(retain, nonatomic) NSArray *selectedUsers;
+@property(retain, nonatomic) NSArray *preSelectedUserNames;
+- (void)setSelectedUserNames:(id)arg1 insertOrNot:(BOOL)arg2;
 @end
 
 @interface MMSessionPickerWindow : NSWindowController
 + (id)shareInstance;
 - (void)beginSheetForWindow:(id)arg1 completionHandler:(void(^)(id a1))arg2;
-@property(retain, nonatomic) id choosenViewController; // @synthesize
-@property(retain, nonatomic) id listViewController; // @synthesize
+- (void)beginRemoveMemberSheetForWindow:(id)arg1 assignedContact:(id)arg2 confirmButtonText:(id)arg3 completionHandler:(void(^)(id a1))arg4;
+- (void)beginAddMemberSheetForWindow:(id)arg1 preSelectedContact:(id)arg2 confirmButtonText:(id)arg3 completionHandler:(void(^)(id a1))arg4;
+@property(retain, nonatomic) MMSessionChoosenView* choosenViewController; // @synthesize
+@property(retain, nonatomic) MMSessionListView* listViewController; // @synthesize
 - (void)setShowsGroupChats:(BOOL)arg1;
 - (void)setShowsOfficialAccounts:(BOOL)arg1;
 - (void)setShowsOtherNonhumanChats:(BOOL)arg1;
 - (void)setType:(unsigned long long)arg1;
-
+- (void)setAssignedContact:(id)arg1;
+- (void)setFilteredUserNames:(id)arg1;
+- (void)setForwardMessageData:(id)arg1;
+- (void)setForwardMessageData:(id)arg1 messageCannotBeOpened:(BOOL)arg2;
+- (void)setForwardMessageDataWrap:(id)arg1 messageCannotBeOpened:(BOOL)arg2;
+- (void)setPreSelectedUserNames:(id)arg1;
+- (void)setPreSelectedContact:(id)arg1;
 @end
 
 @interface AFHTTPResponseSerializer : NSObject
