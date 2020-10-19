@@ -219,7 +219,7 @@
 - (void)addModel
 {
     MMSessionPickerWindow *picker = [objc_getClass("MMSessionPickerWindow") shareInstance];
-    [picker setType:1];
+    [picker setType:2];
     [picker setShowsGroupChats:0x1];
     [picker setShowsOtherNonhumanChats:0];
     [picker setShowsOfficialAccounts:0];
@@ -227,15 +227,17 @@
     NSMutableOrderedSet *orderSet = nil;
     if (LargerOrEqualLongVersion(@"2.4.2.148")) {
         orderSet = [logic valueForKey:@"_groupsForSearch"];
+        [picker setPreSelectedUserNames:self.vmodel.forwardingFromContacts];
     } else {
         orderSet = [logic valueForKey:@"_selectedUserNamesSet"];
+        [orderSet addObjectsFromArray:self.vmodel.forwardingFromContacts];
+        [picker.choosenViewController setValue:self.vmodel.forwardingFromContacts forKey:@"selectedUserNames"];
     }
     
     if (!orderSet) {
         orderSet = [NSMutableOrderedSet new];
     }
-    [orderSet addObjectsFromArray:self.vmodel.forwardingFromContacts];
-    [picker.choosenViewController setValue:self.vmodel.forwardingFromContacts forKey:@"selectedUserNames"];
+
     [picker beginSheetForWindow:self.window completionHandler:^(NSOrderedSet *a1) {
         NSMutableArray *array = [NSMutableArray array];
         [a1 enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -321,7 +323,7 @@
 - (void)forwardingToAdd
 {
     MMSessionPickerWindow *picker = [objc_getClass("MMSessionPickerWindow") shareInstance];
-    [picker setType:1];
+    [picker setType:2];
     [picker setShowsGroupChats:0x1];
     [picker setShowsOtherNonhumanChats:0];
     [picker setShowsOfficialAccounts:0];
@@ -329,16 +331,17 @@
     NSMutableOrderedSet *orderSet = nil;
     if (LargerOrEqualLongVersion(@"2.4.2.148")) {
         orderSet = [logic valueForKey:@"_groupsForSearch"];
+        [picker setPreSelectedUserNames:self.vmodel.forwardingToContacts];
     } else {
        orderSet = [logic valueForKey:@"_selectedUserNamesSet"];
+        [orderSet addObjectsFromArray:self.vmodel.forwardingToContacts];
+        [picker.choosenViewController setValue:self.vmodel.forwardingToContacts forKey:@"selectedUserNames"];
     }
     
     if (!orderSet) {
         orderSet = [NSMutableOrderedSet new];
     }
     
-    [orderSet addObjectsFromArray:self.vmodel.forwardingToContacts];
-    [picker.choosenViewController setValue:self.vmodel.forwardingToContacts forKey:@"selectedUserNames"];
     [picker beginSheetForWindow:self.window completionHandler:^(NSOrderedSet *a1) {
         NSMutableArray *array = [NSMutableArray array];
         [a1 enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
