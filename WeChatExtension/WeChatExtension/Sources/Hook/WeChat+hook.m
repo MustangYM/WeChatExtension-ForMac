@@ -32,7 +32,7 @@
 
 + (void)hookWeChat
 {
-  //      微信撤回消息
+    //微信撤回消息
     if (LargerOrEqualVersion(@"2.3.29")) {
 //         hookMethod(objc_getClass("AddMsgSyncCmdHandler"), @selector(handleSyncCmdId: withSyncCmdItems:onComplete:), [self class], @selector(hook_handleSyncCmdId: withSyncCmdItems:onComplete:));
         hookMethod(objc_getClass("MessageService"), @selector(FFToNameFavChatZZ:sessionMsgList:), [self class], @selector(hook_FFToNameFavChatZZ:sessionMsgList:));
@@ -42,10 +42,10 @@
         hookMethod(objc_getClass("MessageService"), revokeMsgMethod, [self class], @selector(hook_onRevokeMsg:));
     }
     
-    //      微信消息同步
+    //微信消息同步
     SEL syncBatchAddMsgsMethod = LargerOrEqualVersion(@"2.3.22") ? @selector(FFImgToOnFavInfoInfoVCZZ:isFirstSync:) : @selector(OnSyncBatchAddMsgs:isFirstSync:);
     hookMethod(objc_getClass("MessageService"), syncBatchAddMsgsMethod, [self class], @selector(hook_receivedMsg:isFirstSync:));
-    //      微信多开
+    //微信多开
     SEL hasWechatInstanceMethod = LargerOrEqualVersion(@"2.3.22") ? @selector(FFSvrChatInfoMsgWithImgZZ) : @selector(HasWechatInstance);
     hookClassMethod(objc_getClass("CUtility"), hasWechatInstanceMethod, [self class], @selector(hook_HasWechatInstance));
 
@@ -54,7 +54,7 @@
         hookClassMethod(objc_getClass("NSRunningApplication"), @selector(runningApplicationsWithBundleIdentifier:), [self class], @selector(hook_runningApplicationsWithBundleIdentifier:));
     }
     
-    //      免认证登录
+    //免认证登录
     hookMethod(objc_getClass("MMLoginOneClickViewController"), @selector(onLoginButtonClicked:), [self class], @selector(hook_onLoginButtonClicked:));
     
     SEL sendLogoutCGIWithCompletionMethod = LargerOrEqualVersion(@"2.3.22") ? @selector(FFVCRecvDataAddDataToMsgChatMgrRecvZZ:) : @selector(sendLogoutCGIWithCompletion:);
@@ -63,21 +63,21 @@
     SEL manualLogoutMethod = LargerOrEqualVersion(@"2.3.22") ? @selector(FFAddSvrMsgImgVCZZ) : @selector(ManualLogout);
     hookMethod(objc_getClass("AccountService"), manualLogoutMethod, [self class], @selector(hook_ManualLogout));
 
-    //      自动登录
+    //自动登录
     hookMethod(objc_getClass("MMLoginOneClickViewController"), @selector(viewWillAppear), [self class], @selector(hook_viewWillAppear));
-    //      置底
+    //置底
     SEL sortSessionsMethod = LargerOrEqualVersion(@"2.3.22") ? @selector(FFDataSvrMgrSvrFavZZ) : @selector(sortSessions);
     hookMethod(objc_getClass("MMSessionMgr"), sortSessionsMethod, [self class], @selector(hook_sortSessions));
-    //      窗口置顶
+    //窗口置顶
     hookMethod(objc_getClass("NSWindow"), @selector(makeKeyAndOrderFront:), [self class], @selector(hook_makeKeyAndOrderFront:));
-    //      快捷回复
+    //快捷回复
     hookMethod(objc_getClass("_NSConcreteUserNotificationCenter"), @selector(deliverNotification:), [self class], @selector(hook_deliverNotification:));
     hookMethod(objc_getClass("MMNotificationService"), @selector(userNotificationCenter:didActivateNotification:), [self class], @selector(hook_userNotificationCenter:didActivateNotification:));
     hookMethod(objc_getClass("MMNotificationService"), @selector(getNotificationContentWithMsgData:), [self class], @selector(hook_getNotificationContentWithMsgData:));
-    //      登录逻辑
+    //登录逻辑
     hookMethod(objc_getClass("MMMainViewController"), @selector(viewDidLoad), [self class], @selector(hook_mainViewControllerDidLoad));
 
-    //      自带浏览器打开链接
+    //自带浏览器打开链接
     if (LargerOrEqualVersion(@"2.3.22")) {
         hookClassMethod(objc_getClass("MMWebViewHelper"), @selector(handleWebViewDataItem:windowId:), [self class], @selector(hook_handleWebViewDataItem:windowId:));
     } else {
@@ -89,10 +89,9 @@
     
     hookMethod(objc_getClass("UserDefaultsService"), @selector(stringForKey:), [self class], @selector(hook_stringForKey:));
     
-    //    设置标记未读
+    //设置标记未读
     hookMethod(objc_getClass("MMChatMessageViewController"), @selector(onClickSession), [self class], @selector(hook_onClickSession));
     hookMethod(objc_getClass("MMSessionMgr"), @selector(onUnReadCountChange:), [self class], @selector(hook_onUnReadCountChange:));
-
     hookMethod(objc_getClass("GroupStorage"), @selector(UpdateGroupMemberDetailIfNeeded:withCompletion:), [self class], @selector(hook_UpdateGroupMemberDetailIfNeeded:withCompletion:));
     
     //左下角小手机
@@ -100,7 +99,7 @@
 
      hookMethod(objc_getClass("MMMainViewController"), @selector(onUpdateHandoffExpt:), [self class], @selector(hook_onUpdateHandoffExpt:));
     
-    //      替换沙盒路径
+    //替换沙盒路径
     rebind_symbols((struct rebinding[2]) {
         { "NSSearchPathForDirectoriesInDomains", swizzled_NSSearchPathForDirectoriesInDomains, (void *)&original_NSSearchPathForDirectoriesInDomains },
         { "NSHomeDirectory", swizzled_NSHomeDirectory, (void *)&original_NSHomeDirectory }
