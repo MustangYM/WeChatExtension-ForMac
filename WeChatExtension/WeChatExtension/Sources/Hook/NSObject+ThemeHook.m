@@ -979,6 +979,10 @@
     if ([controller isKindOfClass:[objc_getClass("MMContactsDetailViewController") class]]) {
         [[YMThemeManager shareInstance] changeTheme:view];
     }
+    
+    if ([controller isKindOfClass:[objc_getClass("MMSessionListView") class]]) {
+        [[YMThemeManager shareInstance] changeTheme:view];
+    }
 }
 
 #pragma mark - viewDidLoad
