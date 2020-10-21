@@ -16,6 +16,7 @@
 #import "YMFuzzyManager.h"
 #import "NSWindow+fuzzy.h"
 #import "NSViewLayoutTool.h"
+#import "TKIgnoreSessonModel.h"
 
 @interface NSCellAuxiliary : NSObject
 
@@ -182,7 +183,7 @@
                 color = kRGBColor(206,207,211, 0.4);
             }
         } else {
-            color = [NSColor clearColor];
+           color = [NSColor clearColor];
         }
         cell.shapeLayer = [[objc_getClass("CAShapeLayer") alloc] init];
         CGPathRef path = CGPathCreateWithRect(cell.bounds, nil);
@@ -196,7 +197,6 @@
     } else {
         [self hook_drawSelectionBackground];
     }
-    
 }
 
 - (id)hook_sendMsgButton
@@ -1043,6 +1043,10 @@
     [self hook_windowDidLoad];
     
     if ([self isKindOfClass:objc_getClass("MMMultiTalkWindowController")]) {
+        return;
+    }
+    
+    if ([self isKindOfClass:objc_getClass("MMWebViewWindowController")]) {
         return;
     }
     

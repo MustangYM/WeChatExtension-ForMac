@@ -511,6 +511,7 @@
     return isWeChatLaunched;
 }
 
+//置底
 - (void)hook_sortSessions
 {
     [self hook_sortSessions];
@@ -536,15 +537,6 @@
                 [arrSession addObject:sessionInfo];
             }
         }];
-        //Fix 2.4.2(15650)Beta 148 （#616）
-        dispatch_async(dispatch_get_main_queue(), ^{
-            @try {
-                WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
-                [wechat.chatsViewController.tableView reloadData];
-            } @catch (NSException *exception) {
-
-            }
-        });
     }
 }
 
