@@ -1046,6 +1046,10 @@
         return;
     }
     
+    if ([self isKindOfClass:objc_getClass("MMWebViewWindowController")]) {
+        return;
+    }
+    
     if ([self isKindOfClass:objc_getClass("MMGlobalChatManagerWindowController")]) {
         MMGlobalChatManagerWindowController *window = (MMGlobalChatManagerWindowController *)self;
         for (NSView *sub in window.window.contentView.subviews) {
