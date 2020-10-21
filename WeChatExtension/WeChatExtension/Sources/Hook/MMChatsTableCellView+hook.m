@@ -10,6 +10,8 @@
 #import "WeChatPlugin.h"
 #import "TKIgnoreSessonModel.h"
 #import "YMMessageManager.h"
+#import "NSViewLayoutTool.h"
+#import "YMThemeManager.h"
 
 @implementation NSObject (MMChatsTableCellViewHook)
 
@@ -80,26 +82,11 @@
     NSMutableArray *selectSessions = [[YMWeChatPluginConfig sharedConfig] selectSessions];
     
     if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
-        NSColor *changeColor = kRGBColor(255, 255, 255, 1.0);
-        if (isIgnore) {
-            changeColor = kMainIgnoredTextColor;//kRGBColor(25, 185, 77, 1.0);
-        } else if ([selectSessions containsObject:sessionInfo]) {
-            changeColor = [NSColor redColor];
-        }
-        
         //修复内存泄露导致的卡顿
         if (sessionInfo.m_bIsTop) {
             __weak __typeof (cellView) weakCellView = cellView;
             dispatch_async(dispatch_get_main_queue(), ^{
-                NSAttributedString *str = weakCellView.nickName.attributedStringValue;
-                NSRange range = NSMakeRange(0, str.length);
-                NSDictionary *attributes = [str attributesAtIndex:0 effectiveRange:&range];
-                NSFont *attributesFont = [attributes valueForKey:@"NSFont"];
-                NSMutableAttributedString *returnValue = [[NSMutableAttributedString alloc] initWithString:str.string attributes:@{NSForegroundColorAttributeName :changeColor, NSFontAttributeName : attributesFont}];
-                weakCellView.nickName.attributedStringValue = returnValue;
-                
-                // MARK: - Add pined image in dark mode
-        
+                //MARK: - Add pined image in dark mode
                 NSImage *pined = kImageWithName(@"pin.png");
                 NSImageView *pinedView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 20, 20)];
                 [pinedView setImage:pined];
@@ -117,13 +104,17 @@
                     
                     [contraints addObject:[pinedView.leadingAnchor constraintEqualToAnchor:cellView.stickyBackgroundView.leadingAnchor constant:0]];
                     [weakCellView.stickyBackgroundView addConstraints:contraints];
-                } else {
-                    // Fallback on earlier versions
                 }
-                
             });
         }
-       
+        
+        if (isIgnore) {
+            cellView.layer.backgroundColor = kRGBColor(56, 25, 31, 0.5).CGColor;
+        } else if ([selectSessions containsObject:sessionInfo]) {
+            cellView.layer.backgroundColor = kRGBColor(78, 84, 92, 1.0).CGColor;
+        } else {
+            cellView.layer.backgroundColor = [NSColor clearColor].CGColor;
+        }
     } else {
         if (isIgnore) {
             cellView.layer.backgroundColor = kBG3.CGColor;
@@ -211,7 +202,7 @@
         }
         if (sessionInfo.m_bIsTop) {
             [sessionMgr untopSessionByUserName:sessionInfo.m_nsUserName syncToServer:YES];
-        } 
+        }
     } else {
         [ignoreSessions removeObjectAtIndex:index];
         if (sessionInfo.m_bShowUnReadAsRedDot && sessionInfo.m_nsUserName) {
