@@ -83,7 +83,15 @@
         hookMethod(objc_getClass("MMMainViewController"), @selector(tabbarController:didSelectViewController:), [self class], @selector(hook_tabbarController:didSelectViewController:));
         hookMethod(objc_getClass("MMBrandChatsViewController"), @selector(viewDidLoad), [self class], @selector(hook_brandChatsViewDidLoad));
         hookMethod(objc_getClass("MMContactMgrButtonView"), @selector(setHighlighted:), [self class], @selector(hook_setHighlighted:));
+        if ([YMWeChatPluginConfig sharedConfig].fuzzyMode) {
+            hookMethod(objc_getClass("NSVisualEffectView"), @selector(material), [self class], @selector(hook_getMaterial));
+        }
     }
+}
+
+- (NSVisualEffectMaterial)hook_getMaterial
+{
+    return NSVisualEffectMaterialDark;
 }
 
 //适配通讯录管理
@@ -1078,4 +1086,5 @@
     }
     return controller;
 }
+
 @end

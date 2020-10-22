@@ -58,7 +58,6 @@
         scrollView.hasVerticalScroller = YES;
         scrollView.frame = NSMakeRect(80 + leftSpace, 50, 300, 375);
         scrollView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
-        
         scrollView;
     });
     

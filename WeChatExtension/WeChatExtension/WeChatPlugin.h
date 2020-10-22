@@ -254,6 +254,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (BOOL)QuitGroup:(id)arg1 completion:(id)arg2;
 - (BOOL)UIQuitGroup:(id)arg1;
 - (BOOL)UIQuitGroup:(id)arg1 withConfirm:(BOOL)arg2 completion:(id)arg3;
+- (id)GetGroupMemberListWithGroupUserName:(id)arg1 limit:(unsigned int)arg2 filterSelf:(BOOL)arg3;
 @end
 
 @interface ChatRoomData : NSObject

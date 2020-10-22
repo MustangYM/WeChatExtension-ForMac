@@ -126,6 +126,18 @@
     return temp;
 }
 
++ (NSArray<NSString *> *)getAllChatroomFromSessionList
+{
+    MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
+    NSMutableArray *temp = [NSMutableArray array];
+    [sessionMgr.m_arrSession enumerateObjectsUsingBlock:^(MMSessionInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.m_nsUserName containsString:@"chatroom"]) {
+            [temp addObject:obj.m_nsUserName];
+        }
+    }];
+    return temp;
+}
+
 + (MMSessionInfo *)getSessionInfo:(NSString *)userName
 {
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
