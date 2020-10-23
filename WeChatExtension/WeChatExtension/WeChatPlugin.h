@@ -1054,3 +1054,7 @@ forHTTPHeaderField:(NSString *)field;
 @property(retain, nonatomic) NSTextField *titleField; // @synthesize titleField=_titleField;
 - (void)updateUIWithContact:(id)arg1;
 @end
+
+@interface MMChatFTSSearchLogic : NSObject
+- (void)doSearchWithKeyword:(id)arg1 chatName:(id)arg2 realFromUser:(id)arg3 messageType:(unsigned int)arg4 minMsgCreateTime:(unsigned int)arg5 maxMsgCreateTime:(unsigned int)arg6 limitCount:(unsigned int)arg7 isFromGlobalSearch:(unsigned char)arg8 completion:(id)arg9;
+@end

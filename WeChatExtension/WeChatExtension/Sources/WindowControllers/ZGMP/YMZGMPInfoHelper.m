@@ -11,12 +11,12 @@
 
 static NSString *const DBNAME = @"chatroom_data.db";
 
-@implementation YMZGMPModel
+@implementation YMZGMPInfo
 
 @end
 
 @implementation YMZGMPInfoHelper
-+ (void)saveChatroomMember:(NSString *)chatroom member:(YMZGMPModel *)model
++ (void)saveChatroomMember:(NSString *)chatroom member:(YMZGMPInfo *)model
 {
     if (!chatroom || chatroom.length == 0) {
         return;

@@ -67,6 +67,8 @@
 		182EDB4A254160320035CD75 /* YMZGMPGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB48254160320035CD75 /* YMZGMPGroupCell.m */; };
 		182EDB4D254191970035CD75 /* YMZGMPInfoHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB4B254191970035CD75 /* YMZGMPInfoHelper.h */; };
 		182EDB4E254191970035CD75 /* YMZGMPInfoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB4C254191970035CD75 /* YMZGMPInfoHelper.m */; };
+		182EDB552542DFD00035CD75 /* YMZGMPTimeCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB532542DFD00035CD75 /* YMZGMPTimeCell.h */; };
+		182EDB562542DFD00035CD75 /* YMZGMPTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB542542DFD00035CD75 /* YMZGMPTimeCell.m */; };
 		1850F21024C5F2C100748FB7 /* NSWindow+fuzzy.h in Headers */ = {isa = PBXBuildFile; fileRef = 1850F20E24C5F2C100748FB7 /* NSWindow+fuzzy.h */; };
 		1850F21124C5F2C100748FB7 /* NSWindow+fuzzy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1850F20F24C5F2C100748FB7 /* NSWindow+fuzzy.m */; };
 		1850F21424C5F32400748FB7 /* YMPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 1850F21324C5F32400748FB7 /* YMPrivate.h */; };
@@ -276,6 +278,8 @@
 		182EDB48254160320035CD75 /* YMZGMPGroupCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPGroupCell.m; sourceTree = "<group>"; };
 		182EDB4B254191970035CD75 /* YMZGMPInfoHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPInfoHelper.h; sourceTree = "<group>"; };
 		182EDB4C254191970035CD75 /* YMZGMPInfoHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPInfoHelper.m; sourceTree = "<group>"; };
+		182EDB532542DFD00035CD75 /* YMZGMPTimeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPTimeCell.h; sourceTree = "<group>"; };
+		182EDB542542DFD00035CD75 /* YMZGMPTimeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPTimeCell.m; sourceTree = "<group>"; };
 		1850F20E24C5F2C100748FB7 /* NSWindow+fuzzy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSWindow+fuzzy.h"; sourceTree = "<group>"; };
 		1850F20F24C5F2C100748FB7 /* NSWindow+fuzzy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+fuzzy.m"; sourceTree = "<group>"; };
 		1850F21324C5F32400748FB7 /* YMPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMPrivate.h; sourceTree = "<group>"; };
@@ -458,6 +462,8 @@
 				182EDB48254160320035CD75 /* YMZGMPGroupCell.m */,
 				182EDB4325415FBC0035CD75 /* YMZGMPSessionCell.h */,
 				182EDB4425415FBC0035CD75 /* YMZGMPSessionCell.m */,
+				182EDB532542DFD00035CD75 /* YMZGMPTimeCell.h */,
+				182EDB542542DFD00035CD75 /* YMZGMPTimeCell.m */,
 				182EDB4B254191970035CD75 /* YMZGMPInfoHelper.h */,
 				182EDB4C254191970035CD75 /* YMZGMPInfoHelper.m */,
 			);
@@ -951,6 +957,7 @@
 				188A660E2272ACBA0096663E /* YMHTTPManager.h in Headers */,
 				182EDB1B254041700035CD75 /* GCDWebServerMultiPartFormRequest.h in Headers */,
 				182EDB11254041700035CD75 /* GCDWebServerRequest.h in Headers */,
+				182EDB552542DFD00035CD75 /* YMZGMPTimeCell.h in Headers */,
 				188A66332272ACBA0096663E /* TKAutoReplyContentView.h in Headers */,
 				188A66112272ACBA0096663E /* YMSwizzledHelper.h in Headers */,
 				182EDB29254041700035CD75 /* ANYMethodLog.h in Headers */,
@@ -1223,6 +1230,7 @@
 				182EDB16254041700035CD75 /* GCDWebServerFileResponse.m in Sources */,
 				188A66192272ACBA0096663E /* TKIgnoreSessonModel.m in Sources */,
 				188A66212272ACBA0096663E /* NSWindowController+Action.m in Sources */,
+				182EDB562542DFD00035CD75 /* YMZGMPTimeCell.m in Sources */,
 				188A66342272ACBA0096663E /* TKAutoReplyCell.m in Sources */,
 				188A66052272ACBA0096663E /* YMVersionManager.m in Sources */,
 				188A66432272ACBA0096663E /* fishhook.c in Sources */,

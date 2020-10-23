@@ -8,6 +8,7 @@
 
 #import "YMAIReplyCell.h"
 #import "YMIMContactsManager.h"
+#import "YMThemeManager.h"
 
 @interface YMAIReplyCell ()
 @property (nonatomic, strong) NSImageView *avatar;
@@ -47,7 +48,10 @@
        self.bottomLine = ({
            NSBox *line = [[NSBox alloc] init];
            line.boxType = NSBoxSeparator;
-           line.frame = NSMakeRect(0, 0, 300, 1);
+           line.frame = NSMakeRect(0, 0, 300, 0.5);
+           if (YMWeChatPluginConfig.sharedConfig.usingDarkTheme) {
+               [[YMThemeManager shareInstance] changeTheme:line color:[NSColor lightGrayColor]];
+           }
            line;
        });
        
@@ -73,7 +77,6 @@
     NSString *nickName = @"";
     WCContactData *contact = nil;
     
-    NSImage *placeholder = kImageWithName(@"order_avatar.png");
     if ([wxid containsString:@"@chatroom"]) {
         MMSessionInfo *info = [YMIMContactsManager getSessionInfo:wxid];
         nickName = info.m_packedInfo.m_contact.m_nsNickName.length > 0 ? info.m_packedInfo.m_contact.m_nsNickName : YMLanguage(@"未定义群名", @"No Group Name");
@@ -88,7 +91,7 @@
     __weak __typeof (self) wself = self;
     MMAvatarService *avatarService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMAvatarService")];
     [avatarService getAvatarImageWithContact:contact completion:^(NSImage *image) {
-        wself.avatar.image = image ?: placeholder;
+        wself.avatar.image = image ?: kImageWithName(@"order_avatar.png");
     }];
     self.nameLabel.stringValue = nickName.length > 0 ? nickName : wxid;
 }
