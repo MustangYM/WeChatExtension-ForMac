@@ -49,8 +49,6 @@
        
        self.bottomLine = ({
            NSBox *line = [[NSBox alloc] init];
-           line.boxType = NSBoxSeparator;
-           line.frame = NSMakeRect(0, 0, 200, 0.5);
            if (YMWeChatPluginConfig.sharedConfig.usingDarkTheme) {
                [[YMThemeManager shareInstance] changeTheme:line color:[NSColor lightGrayColor]];
            }
@@ -60,6 +58,11 @@
        [self addSubviews:@[self.avatar,
                            self.nameLabel,
                            self.bottomLine]];
+    
+    [self.bottomLine addConstraint:NSLayoutAttributeLeft constant:0];
+    [self.bottomLine addConstraint:NSLayoutAttributeBottom constant:0];
+    [self.bottomLine addConstraint:NSLayoutAttributeRight constant:0];
+    [self.bottomLine addHeightConstraint:0.5];
 }
 
 - (void)setMemberInfo:(YMZGMPInfo *)memberInfo

@@ -9,6 +9,7 @@
 #import "YMZGMPTimeCell.h"
 #import "YMZGMPInfoHelper.h"
 #import "YMThemeManager.h"
+#import "NSViewLayoutTool.h"
 
 @interface YMZGMPTimeCell ()
 @property (nonatomic, strong) NSTextField *timeLabel;
@@ -39,16 +40,18 @@
     });
     
     self.bottomLine = ({
-              NSBox *line = [[NSBox alloc] init];
-              line.boxType = NSBoxSeparator;
-              line.frame = NSMakeRect(0, 0, 200, 0.5);
-              if (YMWeChatPluginConfig.sharedConfig.usingDarkTheme) {
-                  [[YMThemeManager shareInstance] changeTheme:line color:[NSColor lightGrayColor]];
-              }
-              line;
-          });
+        NSBox *line = [[NSBox alloc] init];
+        if (YMWeChatPluginConfig.sharedConfig.usingDarkTheme) {
+            [[YMThemeManager shareInstance] changeTheme:line color:[NSColor lightGrayColor]];
+        }
+        line;
+    });
     
     [self addSubviews:@[self.timeLabel, self.bottomLine]];
+    [self.bottomLine addConstraint:NSLayoutAttributeLeft constant:0];
+    [self.bottomLine addConstraint:NSLayoutAttributeBottom constant:0];
+    [self.bottomLine addConstraint:NSLayoutAttributeRight constant:0];
+    [self.bottomLine addHeightConstraint:0.5];
 }
 
 - (void)setMemberInfo:(YMZGMPInfo *)memberInfo
