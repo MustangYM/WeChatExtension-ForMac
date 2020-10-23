@@ -71,26 +71,25 @@
     }
     
     NSString *nickName = @"";
-    NSString *avatarUrl = @"";
+    WCContactData *contact = nil;
     
     NSImage *placeholder = kImageWithName(@"order_avatar.png");
     if ([wxid containsString:@"@chatroom"]) {
         MMSessionInfo *info = [YMIMContactsManager getSessionInfo:wxid];
-        nickName = info.m_packedInfo.m_contact.m_nsNickName;
-        avatarUrl = info.m_packedInfo.m_contact.m_nsHeadImgUrl;
+        nickName = info.m_packedInfo.m_contact.m_nsNickName.length > 0 ? info.m_packedInfo.m_contact.m_nsNickName : YMLanguage(@"未定义群名", @"No Group Name");
+        GroupStorage *groupStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
+        contact = [groupStorage GetGroupContact:wxid];
+        if (!contact) nickName = YMLanguage(@"无效群", @"Invalid Group Name");
     } else {
-        avatarUrl = [YMIMContactsManager getWeChatAvatar:wxid];
         nickName = [YMIMContactsManager getWeChatNickName:wxid];
+        contact = [YMIMContactsManager getMemberInfo:wxid];
     }
     
     __weak __typeof (self) wself = self;
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSImage *image = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:avatarUrl]];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            wself.avatar.image = image ?: placeholder;
-            wself.nameLabel.stringValue = nickName.length > 0 ? nickName : wxid;
-        });
-        
-    });
+    MMAvatarService *avatarService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMAvatarService")];
+    [avatarService getAvatarImageWithContact:contact completion:^(NSImage *image) {
+        wself.avatar.image = image ?: placeholder;
+    }];
+    self.nameLabel.stringValue = nickName.length > 0 ? nickName : wxid;
 }
 @end

@@ -22,7 +22,7 @@ static NSString *const DBNAME = @"chatroom_data.db";
         return;
     }
     FMDatabase *dataBase = [self creatDataBase:chatroom];
-    NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (kWxid, kUserName, kAvatar, kTimestamp) VALUES ()", chatroom]
+    NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (kWxid, kUserName, kAvatar, kTimestamp) VALUES ()", chatroom];
     if ([dataBase executeUpdate:@""]) {
         
     }

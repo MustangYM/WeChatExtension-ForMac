@@ -244,6 +244,8 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 }
 - (id)GetAllGroups;
 - (id)GetGroupMemberContact:(id)arg1;
+- (id)GetGroupContactsWithUserNames:(id)arg1;
+- (id)GetGroupContact:(id)arg1;
 - (void)UpdateGroupMemberDetailIfNeeded:(id)arg1 withCompletion:(id)arg2;
 - (BOOL)IsGroupContactExist:(id)arg1;
 - (BOOL)IsGroupMemberContactExist:(id)arg1;

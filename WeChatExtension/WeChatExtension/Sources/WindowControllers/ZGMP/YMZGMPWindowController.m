@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSTableView *detailTableView;
 @property (nonatomic, strong) NSArray *dataArray;
 @property (nonatomic, strong) NSScrollView *scrollView;
+@property (nonatomic, strong) NSTableColumn *nameColumn;
 @end
 
 @implementation YMZGMPWindowController
@@ -32,7 +33,7 @@
 - (void)showWindow:(id)sender
 {
     [super showWindow:sender];
-    [self.sessionTableView reloadData];
+    [self reloadGroupData];
 }
 
 - (void)initSubviews
@@ -49,16 +50,14 @@
     self.sessionTableView = ({
         NSTableView *tableView = [[NSTableView alloc] init];
         tableView.frame = scrollView.bounds;
-        tableView.headerView = nil;
         tableView.allowsTypeSelect = YES;
         tableView.delegate = self;
         tableView.dataSource = self;
         
         NSTableColumn *nameColumn = [[NSTableColumn alloc] init];
-        nameColumn.title = YMLanguage(@"群名", @"NAME");
-        nameColumn.width = 200;
-        
+        nameColumn.width = 100;
         [tableView addTableColumn:nameColumn];
+        self.nameColumn = nameColumn;
         
         if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
             [[YMThemeManager shareInstance] changeTheme:tableView color:[YMWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
@@ -119,7 +118,19 @@
 - (void)setupData
 {
     self.dataArray = [YMIMContactsManager getAllChatroomFromSessionList];
+    [self reloadGroupData];
+}
+
+- (void)reloadGroupData
+{
     [self.sessionTableView reloadData];
+    NSString *title = nil;
+    if (([YMWeChatPluginConfig sharedConfig].languageType == PluginLanguageTypeZH)) {
+        title = [NSString stringWithFormat:@"群聊(%lu)", self.dataArray.count];
+    } else {
+        title = [NSString stringWithFormat:@"Group(%lu)", self.dataArray.count];
+    }
+    self.nameColumn.title = title;
 }
 
 - (void)changeChatroom:(NSString *)chatroom
