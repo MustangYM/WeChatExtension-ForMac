@@ -16,9 +16,13 @@
 #import "YMMessageManager.h"
 #import "YMZGMPInfoHelper.h"
 #import "YMZGMPTimeCell.h"
+#import "YMZGMPIllicitCell.h"
+#import "YMZGMPPDDCell.h"
 
 static NSString *const kNickColumnID = @"kNickColumnID";
 static NSString *const kTimeColumnID = @"kTimeColumnID";
+static NSString *const kIllicitColumnID = @"kIllicitColumnID";
+static NSString *const kPDDColumnID = @"kPDDColumnID";
 
 @interface YMZGMPWindowController () <NSTableViewDelegate, NSTableViewDataSource>
 @property (nonatomic, strong) NSTableView *sessionTableView;
@@ -103,8 +107,20 @@ static NSString *const kTimeColumnID = @"kTimeColumnID";
         timeColumn.width = 200;
         timeColumn.identifier = kTimeColumnID;
         
+        NSTableColumn *illicitColumn = [[NSTableColumn alloc] init];
+        illicitColumn.title = YMLanguage(@"违规言论", @"Illicit message");
+        illicitColumn.width = 200;
+        illicitColumn.identifier = kIllicitColumnID;
+        
+        NSTableColumn *pddColumn = [[NSTableColumn alloc] init];
+        pddColumn.title = YMLanguage(@"拼多多砍一刀", @"Pdd message");
+        pddColumn.width = 200;
+        pddColumn.identifier = kPDDColumnID;
+        
         [tableView addTableColumn:nameColumn];
         [tableView addTableColumn:timeColumn];
+        [tableView addTableColumn:illicitColumn];
+        [tableView addTableColumn:pddColumn];
         
         if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
             [[YMThemeManager shareInstance] changeTheme:tableView color:[YMWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
@@ -140,8 +156,11 @@ static NSString *const kTimeColumnID = @"kTimeColumnID";
     
     self.progress = ({
         NSProgressIndicator *progress = [[NSProgressIndicator alloc] init];
-        progress.style = NSProgressIndicatorStyleSpinning;
-        progress.alphaValue = 0.3;
+        progress.style = NSProgressIndicatorStyleBar;
+        progress.maxValue = 1.0;
+        progress.minValue = 0;
+        progress.doubleValue = 0.5;
+        progress.alphaValue = YMWeChatPluginConfig.sharedConfig.usingDarkTheme ? 1.0 : 0.3;
         progress.hidden = YES;
         [progress startAnimation:nil];
         progress;
@@ -179,7 +198,7 @@ static NSString *const kTimeColumnID = @"kTimeColumnID";
     
     [self.progress addConstraint:NSLayoutAttributeCenterX constant:0];
     [self.progress addConstraint:NSLayoutAttributeCenterY constant:0];
-    [self.progress addWidthConstraint:20];
+    [self.progress addWidthConstraint:200];
     [self.progress addHeightConstraint:20];
     
     [self.defaultImageView addConstraint:NSLayoutAttributeCenterX constant:0];
@@ -297,6 +316,22 @@ static NSString *const kTimeColumnID = @"kTimeColumnID";
         YMZGMPTimeCell *cell = [[YMZGMPTimeCell alloc] init];
         if (row < self.rightDataArray.count) {
             cell.memberInfo = self.rightDataArray[row];
+        }
+        return cell;
+    }
+    
+    if ([tableColumn.identifier isEqualToString:kIllicitColumnID]) {
+        YMZGMPIllicitCell *cell = [[YMZGMPIllicitCell alloc] init];
+        if (row < self.rightDataArray.count) {
+//            cell.memberInfo = self.rightDataArray[row];
+        }
+        return cell;
+    }
+    
+    if ([tableColumn.identifier isEqualToString:kPDDColumnID]) {
+        YMZGMPPDDCell *cell = [[YMZGMPPDDCell alloc] init];
+        if (row < self.rightDataArray.count) {
+//            cell.memberInfo = self.rightDataArray[row];
         }
         return cell;
     }

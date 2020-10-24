@@ -6,11 +6,11 @@
 //  Copyright © 2020 MustangYM. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import "YMZGMPBaseCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 @class YMZGMPInfo;
-@interface YMZGMPTimeCell : NSControl
+@interface YMZGMPTimeCell : YMZGMPBaseCell
 @property (nonatomic, strong) YMZGMPInfo *memberInfo;
 @end
 
