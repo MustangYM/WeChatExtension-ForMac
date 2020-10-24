@@ -39,6 +39,7 @@
        
        self.nameLabel = ({
            NSTextField *label = [NSTextField tk_labelWithString:@""];
+           label.editable = YES;
            label.textColor = [NSColor blackColor];
            [[label cell] setLineBreakMode:NSLineBreakByCharWrapping];
            [[label cell] setTruncatesLastVisibleLine:YES];
@@ -49,9 +50,8 @@
        
        self.bottomLine = ({
            NSBox *line = [[NSBox alloc] init];
-           if (YMWeChatPluginConfig.sharedConfig.usingDarkTheme) {
-               [[YMThemeManager shareInstance] changeTheme:line color:[NSColor lightGrayColor]];
-           }
+           line.frame = NSMakeRect(0, 0, 300, 0.5);
+           [[YMThemeManager shareInstance] changeTheme:line color:YM_RGBA(242, 242, 242, 1.0)];
            line;
        });
        
@@ -68,13 +68,17 @@
 - (void)setMemberInfo:(YMZGMPInfo *)memberInfo
 {
     _memberInfo = memberInfo;
-    WCContactData *contact = [YMIMContactsManager getMemberInfo:memberInfo.wxid];
     __weak __typeof (self) wself = self;
     MMAvatarService *avatarService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMAvatarService")];
-    [avatarService getAvatarImageWithContact:contact completion:^(NSImage *image) {
+    [avatarService getAvatarImageWithContact:memberInfo.contact completion:^(NSImage *image) {
         wself.avatar.image = image ?: kImageWithName(@"order_avatar.png");
     }];
-    self.nameLabel.stringValue = memberInfo.nick;
+    self.nameLabel.stringValue = memberInfo.contact.m_nsRemark.length > 0 ? memberInfo.contact.m_nsRemark : memberInfo.contact.m_nsNickName;
+    if (memberInfo.timestamp <= 0) {
+        [[YMThemeManager shareInstance] changeTheme:self color:YM_RGBA(99, 99, 99, 0.2)];
+    } else {
+        [[YMThemeManager shareInstance] changeTheme:self color:[NSColor clearColor]];
+    }
 }
 
 @end

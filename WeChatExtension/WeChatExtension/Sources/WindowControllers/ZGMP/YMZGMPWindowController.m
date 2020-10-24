@@ -23,10 +23,14 @@ static NSString *const kTimeColumnID = @"kTimeColumnID";
 @interface YMZGMPWindowController () <NSTableViewDelegate, NSTableViewDataSource>
 @property (nonatomic, strong) NSTableView *sessionTableView;
 @property (nonatomic, strong) NSTableView *detailTableView;
+@property (nonatomic, strong) NSView *rightContentView;
+@property (nonatomic, strong) NSView *rightPlaceholderContentView;
 @property (nonatomic, strong) NSArray *dataArray;
 @property (nonatomic, strong) NSScrollView *scrollView;
 @property (nonatomic, strong) NSTableColumn *nameColumn;
 @property (nonatomic, strong) NSMutableArray *rightDataArray;
+@property (nonatomic, strong) NSProgressIndicator *progress;
+@property (nonatomic, strong) NSImageView *defaultImageView;
 @end
 
 @implementation YMZGMPWindowController
@@ -45,7 +49,7 @@ static NSString *const kTimeColumnID = @"kTimeColumnID";
 
 - (void)initSubviews
 {
-    self.window.title = YMLanguage(@"群管理", @"ZGMP");
+    self.window.title = YMLanguage(@"群员监控", @"ZGMP");
     NSScrollView *scrollView = ({
         NSScrollView *scrollView = [[NSScrollView alloc] init];
         scrollView.hasVerticalScroller = YES;
@@ -90,12 +94,12 @@ static NSString *const kTimeColumnID = @"kTimeColumnID";
         tableView.dataSource = self;
         
         NSTableColumn *nameColumn = [[NSTableColumn alloc] init];
-        nameColumn.title = YMLanguage(@"昵称", @"NICK");
+        nameColumn.title = YMLanguage(@"昵称", @"Nick");
         nameColumn.width = 200;
         nameColumn.identifier = kNickColumnID;
         
         NSTableColumn *timeColumn = [[NSTableColumn alloc] init];
-        timeColumn.title = YMLanguage(@"最后发言时间", @"NICK");
+        timeColumn.title = YMLanguage(@"最后发言时间", @"Last message");
         timeColumn.width = 200;
         timeColumn.identifier = kTimeColumnID;
         
@@ -110,18 +114,78 @@ static NSString *const kTimeColumnID = @"kTimeColumnID";
     });
     detailScrollView.contentView.documentView = self.detailTableView;
     
+    self.rightContentView = ({
+        NSView *contentView = [[NSView alloc] init];
+        contentView.hidden = YES;
+        [[YMThemeManager shareInstance] changeTheme:contentView color:[NSColor clearColor]];
+        contentView;
+    });
+    
+    self.rightPlaceholderContentView = ({
+        NSView *contentView = [[NSView alloc] init];
+        contentView.hidden = NO;
+        [[YMThemeManager shareInstance] changeTheme:contentView color:YM_RGBA(150, 150, 150, 0.1)];
+        
+        NSImageView *imageView = [[NSImageView alloc] init];
+        imageView.image = [NSImage imageNamed:@"WeChat_Default_Logo"];
+        [contentView addSubview:imageView];
+        
+        [imageView addConstraint:NSLayoutAttributeCenterX constant:0];
+        [imageView addConstraint:NSLayoutAttributeCenterY constant:-25];
+        [imageView addWidthConstraint:50];
+        [imageView addHeightConstraint:50];
+        
+        contentView;
+    });
+    
+    self.progress = ({
+        NSProgressIndicator *progress = [[NSProgressIndicator alloc] init];
+        progress.style = NSProgressIndicatorStyleSpinning;
+        progress.alphaValue = 0.3;
+        progress.hidden = YES;
+        [progress startAnimation:nil];
+        progress;
+    });
+    
+    self.defaultImageView = ({
+        NSImageView *imageView = [[NSImageView alloc] init];
+        imageView.image = [NSImage imageNamed:@"WeChat_Default_Logo"];
+        imageView;
+    });
+    
     [self.window.contentView addSubview:scrollView];
-    [self.window.contentView addSubview:detailScrollView];
+    [self.window.contentView addSubview:self.rightPlaceholderContentView];
+    [self.window.contentView addSubview:self.rightContentView];
+    [self.rightContentView addSubview:detailScrollView];
+    [self.detailTableView addSubview:self.progress];
+    [self.rightContentView addSubview:self.defaultImageView];
+    
+    [detailScrollView fillSuperView];
     
     [scrollView addConstraint:NSLayoutAttributeLeft constant:20];
     [scrollView addConstraint:NSLayoutAttributeBottom constant:-50];
     [scrollView addWidthConstraint:200];
     [scrollView addConstraint:NSLayoutAttributeTop constant:20];
     
-    [detailScrollView addConstraint:NSLayoutAttributeLeft sibling:scrollView attribute:NSLayoutAttributeRight constant:20];
-    [detailScrollView addConstraint:NSLayoutAttributeBottom constant:-50];
-    [detailScrollView addConstraint:NSLayoutAttributeTop constant:20];
-    [detailScrollView addConstraint:NSLayoutAttributeRight constant:-20];
+    [self.rightPlaceholderContentView addConstraint:NSLayoutAttributeLeft sibling:scrollView attribute:NSLayoutAttributeRight constant:20];
+    [self.rightPlaceholderContentView addConstraint:NSLayoutAttributeBottom constant:-50];
+    [self.rightPlaceholderContentView addConstraint:NSLayoutAttributeTop constant:20];
+    [self.rightPlaceholderContentView addConstraint:NSLayoutAttributeRight constant:-20];
+    
+    [self.rightContentView addConstraint:NSLayoutAttributeLeft sibling:scrollView attribute:NSLayoutAttributeRight constant:20];
+    [self.rightContentView addConstraint:NSLayoutAttributeBottom constant:-50];
+    [self.rightContentView addConstraint:NSLayoutAttributeTop constant:20];
+    [self.rightContentView addConstraint:NSLayoutAttributeRight constant:-20];
+    
+    [self.progress addConstraint:NSLayoutAttributeCenterX constant:0];
+    [self.progress addConstraint:NSLayoutAttributeCenterY constant:0];
+    [self.progress addWidthConstraint:20];
+    [self.progress addHeightConstraint:20];
+    
+    [self.defaultImageView addConstraint:NSLayoutAttributeCenterX constant:0];
+    [self.defaultImageView addConstraint:NSLayoutAttributeCenterY constant:-25];
+    [self.defaultImageView addWidthConstraint:50];
+    [self.defaultImageView addHeightConstraint:50];
 }
 
 - (void)setupData
@@ -142,9 +206,27 @@ static NSString *const kTimeColumnID = @"kTimeColumnID";
     self.nameColumn.title = title;
 }
 
-- (void)changeChatroom:(NSString *)chatroom
+- (void)reloadDetailData
+{
+    __weak __typeof (self) wself = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+       [wself.detailTableView reloadData];
+        wself.progress.hidden = wself.rightDataArray.count > 0;
+        wself.defaultImageView.hidden = wself.rightDataArray.count > 0;
+    });
+}
+
+- (void)resetContent
 {
     [self.rightDataArray removeAllObjects];
+    [self reloadDetailData];
+    self.rightContentView.hidden = NO;
+    self.rightPlaceholderContentView.hidden = YES;
+}
+
+- (void)changeChatroom:(NSString *)chatroom
+{
+    [self resetContent];
     
     GroupStorage *groupStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
     NSArray *list = [groupStorage GetGroupMemberListWithGroupUserName:chatroom limit:500 filterSelf:YES];
@@ -155,24 +237,20 @@ static NSString *const kTimeColumnID = @"kTimeColumnID";
     [list enumerateObjectsUsingBlock:^(WCContactData *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [logic doSearchWithKeyword:obj.m_nsNickName chatName:chatroom realFromUser:0x0 messageType:0x0 minMsgCreateTime:0x0 maxMsgCreateTime:0x0 limitCount:0x0 isFromGlobalSearch:'1' completion:^(NSArray *msgs, NSString *chatroom) {
             YMZGMPInfo *info = [[YMZGMPInfo alloc] init];
-            info.nick = obj.m_nsRemark.length > 0 ? obj.m_nsRemark : obj.m_nsNickName;
-            info.wxid = obj.m_nsUsrName;
-            info.male = obj.m_uiSex;
+            info.contact = obj;
             if (msgs.count > 0) {
                 MessageData *msg = msgs[0];
                 info.timestamp = msg.msgCreateTime;
             }
             [array addObject:info];
             if (array.count == list.count) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    wself.rightDataArray = [NSMutableArray arrayWithArray:[array sortedArrayUsingComparator:^NSComparisonResult(YMZGMPInfo*  _Nonnull obj1, YMZGMPInfo*  _Nonnull obj2) {
-                        NSNumber *number1 = [NSNumber numberWithInt:obj1.timestamp];
-                        NSNumber *number2 = [NSNumber numberWithInt:obj2.timestamp];
-                        NSComparisonResult result = [number1 compare:number2];
-                        return  result == NSOrderedAscending;
-                    }]];
-                    [wself.detailTableView reloadData];
-                });
+                wself.rightDataArray = [NSMutableArray arrayWithArray:[array sortedArrayUsingComparator:^NSComparisonResult(YMZGMPInfo*  _Nonnull obj1, YMZGMPInfo*  _Nonnull obj2) {
+                    NSNumber *number1 = [NSNumber numberWithInt:obj1.timestamp];
+                    NSNumber *number2 = [NSNumber numberWithInt:obj2.timestamp];
+                    NSComparisonResult result = [number1 compare:number2];
+                    return  result == NSOrderedAscending;
+                }]];
+                [wself reloadDetailData];
             }
         }];
     }];
@@ -184,6 +262,7 @@ static NSString *const kTimeColumnID = @"kTimeColumnID";
     if (tableView == self.sessionTableView) {
         return self.dataArray.count;
     }
+    
     return self.rightDataArray.count;
 }
 
@@ -192,7 +271,8 @@ static NSString *const kTimeColumnID = @"kTimeColumnID";
     if (tableView == self.sessionTableView) {
         return 50.f;
     }
-    return 40;
+    
+    return 40.f;
 }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
@@ -221,7 +301,7 @@ static NSString *const kTimeColumnID = @"kTimeColumnID";
         return cell;
     }
     
-    return [NSView new];
+    return [[NSView alloc] init];
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification

@@ -494,11 +494,13 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @end
 
 @interface MMAvatarService : NSObject
+- (id)defaultHDAvatar;
 - (NSString *)avatarCachePath;
 - (id)_getImageFromCacheWithMD5Key:(id)arg1;
 - (void)avatarImageWithContact:(id)arg1 completion:(void (^)(NSImage *image))arg2;
 - (void)getAvatarImageWithContact:(id)arg1 completion:(void (^)(NSImage *image))arg2;
 - (void)getAvatarImageBeforeAuthOKWithUrl:(id)arg1 completion:(id)arg2;
+-(void)_fetchAvatarWithUrl:(id)arg2 withUserName:(id)arg3 isHD:(char)arg4 completion:(id)arg5;
 @end
 
 @interface NSString (MD5)

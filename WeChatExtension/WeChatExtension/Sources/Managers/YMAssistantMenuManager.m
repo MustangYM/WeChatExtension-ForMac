@@ -121,7 +121,7 @@ static char kZGMPWindowControllerKey;               //群管理 key
                                                              target:self
                                                       keyEquivalent:@""
                                                               state:[YMWeChatPluginConfig sharedConfig].quitMonitorEnable];
-    NSMenuItem *ZGMPItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"群管理", @"ZGMP")
+    NSMenuItem *ZGMPItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"群员监控", @"ZGMP")
                                                          action:@selector(onZGMPItem:)
                                                          target:self
                                                   keyEquivalent:@""
@@ -730,6 +730,7 @@ static char kZGMPWindowControllerKey;               //群管理 key
         [[YMWeChatPluginConfig sharedConfig] setBlackMode:item.state];
         item.state ? [[YMWeChatPluginConfig sharedConfig] setDarkMode:NO] : nil;
         item.state ? [[YMWeChatPluginConfig sharedConfig] setPinkMode:NO] : nil;
+        item.state ? [[YMWeChatPluginConfig sharedConfig] setFuzzyMode:NO] : nil;
         [wself restartWeChat];
     }  else if (action == NSAlertDefaultReturn) {
         item.state = !item.state;
