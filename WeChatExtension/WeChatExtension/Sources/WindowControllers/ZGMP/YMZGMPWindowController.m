@@ -19,6 +19,7 @@
 #import "YMZGMPIllicitCell.h"
 #import "YMZGMPPDDCell.h"
 #import "YMZGMPTableView.h"
+#import "NSMenuItem+Action.h"
 
 static NSString *const kNickColumnID = @"kNickColumnID";
 static NSString *const kTimeColumnID = @"kTimeColumnID";
@@ -36,6 +37,7 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
 @property (nonatomic, strong) NSMutableArray *rightDataArray;
 @property (nonatomic, strong) NSProgressIndicator *progress;
 @property (nonatomic, strong) NSImageView *defaultImageView;
+@property (nonatomic, assign) NSInteger menuRow;
 @end
 
 @implementation YMZGMPWindowController
@@ -220,7 +222,9 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
     }];
     
     self.dataArray = dataArray;
-    [self reloadGroupData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+       [self reloadGroupData];
+    });
 }
 
 - (void)reloadGroupData
@@ -362,11 +366,28 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
 }
 
 #pragma mark - YMZGMPTableViewDelegate
-- (void)ym_tableView:(YMZGMPTableView *)tableView selectRow:(NSInteger)row
+- (NSMenu *)ym_menuForTableView:(YMZGMPTableView *)tableView selectRow:(NSInteger)row
 {
+    self.menuRow = row;
     YMZGMPGroupInfo *oriInfo = self.dataArray[row];
-    oriInfo.isIgnore = YES;
-    [tableView reloadData];
+    NSString *title = nil;
+    if (oriInfo.isIgnore) {
+        title = YMLanguage(@"允许消息", @"Allow Msg");
+    } else {
+        title = YMLanguage(@"拒收消息", @"Reject Msg");
+    }
+    
+    NSMenu *menu = [[NSMenu alloc] init];
+    NSMenuItem *item1 = [NSMenuItem menuItemWithTitle:title action:@selector(refuseMsg) target:self keyEquivalent:@"" state:NO];
+    [menu addItems:@[item1]];
+    return menu;
+}
+
+- (void)refuseMsg
+{
+    YMZGMPGroupInfo *oriInfo = self.dataArray[self.menuRow];
+    oriInfo.isIgnore = !oriInfo.isIgnore;
+    [self.sessionTableView reloadData];
 }
 
 @end

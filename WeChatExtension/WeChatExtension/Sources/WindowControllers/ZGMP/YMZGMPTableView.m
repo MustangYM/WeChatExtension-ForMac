@@ -8,7 +8,6 @@
 //
 
 #import "YMZGMPTableView.h"
-#import "NSMenuItem+Action.h"
 
 @interface YMZGMPTableView ()
 
@@ -24,20 +23,12 @@
         NSInteger row = [self rowAtPoint:tablePoint];
         self.rightMouseDownRow = row;
         if (row >= 0 && row < [self numberOfRows]) {
-            NSMenu *menu = [[NSMenu alloc] init];
-            NSMenuItem *item1 = [NSMenuItem menuItemWithTitle:@"屏蔽该群" action:@selector(refuseMsg) target:self keyEquivalent:@"" state:NO];
-            [menu addItems:@[item1]];
-            return menu;
+            if ([self.zgmpDelegate respondsToSelector:@selector(ym_menuForTableView:selectRow:)]) {
+                return [self.zgmpDelegate ym_menuForTableView:self selectRow:row];
+            }
         }
     }
     return nil;
-}
-
-- (void)refuseMsg
-{
-    if ([self.zgmpDelegate respondsToSelector:@selector(ym_tableView:selectRow:)]) {
-        [self.zgmpDelegate ym_tableView:self selectRow:self.rightMouseDownRow];
-    }
 }
 
 @end
