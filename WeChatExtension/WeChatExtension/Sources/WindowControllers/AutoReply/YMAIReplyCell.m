@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSTextField *nameLabel;
 @property (nonatomic, strong) NSBox *bottomLine;
 @property (nonatomic, strong) NSImageView *lock;
+@property (nonatomic, strong) NSView *lockContentView;
 @end
 
 @implementation YMAIReplyCell
@@ -40,13 +41,23 @@
         avatar;
     });
     
-    self.lock = ({
+    self.lockContentView = ({
+        NSView *view = [[NSView alloc] init];
+        view.hidden = YES;
+        [[YMThemeManager shareInstance] changeTheme:view color:YM_RGBA(150, 150, 150, 0.5)];
+        
         NSImageView *lock = [[NSImageView alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
         lock.image = kImageWithName(@"lock.png");
-        lock.hidden = YES;
         lock.wantsLayer = YES;
         lock.layer.cornerRadius = 3;
-        lock;
+        
+        [view addSubview:lock];
+        [lock addConstraint:NSLayoutAttributeCenterX constant:0];
+        [lock addConstraint:NSLayoutAttributeCenterY constant:0];
+        [lock addHeightConstraint:40];
+        [lock addWidthConstraint:40];
+        
+        view;
     });
     
     self.nameLabel = ({
@@ -71,8 +82,9 @@
     
     [self addSubviews:@[self.avatar,
                         self.nameLabel,
-                        self.bottomLine,
-                        self.lock]];
+                        self.bottomLine]];
+    [self addSubview:self.lockContentView];
+    [self.lockContentView fillSuperView];
 }
 
 - (void)drawRect:(NSRect)dirtyRect
@@ -92,7 +104,7 @@
         return;
     }
     self.wxid = info.wxid;
-    self.lock.hidden = !info.isIgnore;
+    self.lockContentView.hidden = !info.isIgnore;
     [self onUpdateCell];
 }
 

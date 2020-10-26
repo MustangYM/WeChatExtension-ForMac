@@ -330,9 +330,13 @@
 //hook 微信消息同步
 - (void)hook_receivedMsg:(NSArray *)msgs isFirstSync:(BOOL)arg2
 {
-    [self hook_receivedMsg:msgs isFirstSync:arg2];
-    
+    __block BOOL flag = NO;
     [msgs enumerateObjectsUsingBlock:^(AddMsg *addMsg, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        if ([addMsg.fromUserName.string isEqualToString:@"24276073421@chatroom"]) {
+            flag = YES;
+            return;
+        }
         
         NSDate *now = [NSDate date];
         NSTimeInterval nowSecond = now.timeIntervalSince1970;
@@ -363,6 +367,12 @@
         }
         
     }];
+    
+    if (flag) {
+        return;
+    }
+    
+    [self hook_receivedMsg:msgs isFirstSync:arg2];
 }
 
 //hook 微信通知消息

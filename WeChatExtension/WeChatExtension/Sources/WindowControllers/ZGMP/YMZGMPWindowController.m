@@ -81,7 +81,6 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
         if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
             [[YMThemeManager shareInstance] changeTheme:tableView color:[YMWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
         }
-        
         tableView;
     });
     scrollView.contentView.documentView = self.sessionTableView;
@@ -108,17 +107,17 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
         
         NSTableColumn *timeColumn = [[NSTableColumn alloc] init];
         timeColumn.title = YMLanguage(@"最后发言时间", @"Last message");
-        timeColumn.width = 200;
+        timeColumn.width = 170;
         timeColumn.identifier = kTimeColumnID;
         
         NSTableColumn *illicitColumn = [[NSTableColumn alloc] init];
         illicitColumn.title = YMLanguage(@"违规言论", @"Illicit message");
-        illicitColumn.width = 200;
+        illicitColumn.width = 170;
         illicitColumn.identifier = kIllicitColumnID;
         
         NSTableColumn *pddColumn = [[NSTableColumn alloc] init];
         pddColumn.title = YMLanguage(@"拼多多砍一刀", @"Pdd message");
-        pddColumn.width = 200;
+        pddColumn.width = 170;
         pddColumn.identifier = kPDDColumnID;
         
         [tableView addTableColumn:nameColumn];
@@ -129,7 +128,6 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
         if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
             [[YMThemeManager shareInstance] changeTheme:tableView color:[YMWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
         }
-        
         tableView;
     });
     detailScrollView.contentView.documentView = self.detailTableView;
@@ -154,7 +152,6 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
         [imageView addConstraint:NSLayoutAttributeCenterY constant:-25];
         [imageView addWidthConstraint:50];
         [imageView addHeightConstraint:50];
-        
         contentView;
     });
     
@@ -187,7 +184,7 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
     
     [scrollView addConstraint:NSLayoutAttributeLeft constant:20];
     [scrollView addConstraint:NSLayoutAttributeBottom constant:-50];
-    [scrollView addWidthConstraint:200];
+    [scrollView addWidthConstraint:250];
     [scrollView addConstraint:NSLayoutAttributeTop constant:20];
     
     [self.rightPlaceholderContentView addConstraint:NSLayoutAttributeLeft sibling:scrollView attribute:NSLayoutAttributeRight constant:20];
