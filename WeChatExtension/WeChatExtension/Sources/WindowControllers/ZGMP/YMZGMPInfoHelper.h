@@ -10,6 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@interface YMZGMPGroupInfo : NSObject
+@property (nonatomic, copy) NSString *wxid;
+@property (nonatomic, assign) BOOL isIgnore;
+@end
+
 @interface YMZGMPInfo : NSObject
 @property (nonatomic, assign) int timestamp;
 @property (nonatomic, weak) WCContactData *contact;

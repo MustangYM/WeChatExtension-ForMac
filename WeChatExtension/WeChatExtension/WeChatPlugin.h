@@ -406,8 +406,29 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)viewDidMoveToWindow;
 @end
 
-@interface MMTableView : NSTableView
 
+@interface MMTableView : NSTableView
+@property(nonatomic) __weak id mmTableviewDelegate;
+- (void)rightMouseUp:(id)arg1;
+- (void)rightMouseDown:(id)arg1;
+- (void)didRemoveRowView:(id)arg1 forRow:(long long)arg2;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)scrollRowAtIndexToTop:(unsigned long long)arg1 animated:(BOOL)arg2;
+- (void)scrollToTopAnimated:(BOOL)arg1;
+- (void)scrollToBottomAnimated:(BOOL)arg1 completion:(id)arg2;
+- (void)setFrameSize:(struct CGSize)arg1;
+- (void)setFrame:(struct CGRect)arg1;
+@end
+
+@protocol MMTableViewDelegate <NSObject>
+@optional
+- (void)tableView:(MMTableView *)arg1 rowGotDoubleClicked:(long long)arg2;
+- (void)tableView:(MMTableView *)arg1 rowGotRightMouseUp:(long long)arg2;
+- (void)tableView:(MMTableView *)arg1 rowGotMouseUp:(long long)arg2;
+- (void)gotMouseDownNotAtRow:(MMTableView *)arg1;
+- (void)tableView:(MMTableView *)arg1 rowGotRightMouseDown:(long long)arg2;
+- (void)tableView:(MMTableView *)arg1 rowGotMouseDown:(long long)arg2;
 @end
 
 @interface MMChatMessageViewController : NSViewController

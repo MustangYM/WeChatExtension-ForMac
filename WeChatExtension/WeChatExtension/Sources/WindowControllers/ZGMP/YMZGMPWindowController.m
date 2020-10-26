@@ -18,18 +18,19 @@
 #import "YMZGMPTimeCell.h"
 #import "YMZGMPIllicitCell.h"
 #import "YMZGMPPDDCell.h"
+#import "YMZGMPTableView.h"
 
 static NSString *const kNickColumnID = @"kNickColumnID";
 static NSString *const kTimeColumnID = @"kTimeColumnID";
 static NSString *const kIllicitColumnID = @"kIllicitColumnID";
 static NSString *const kPDDColumnID = @"kPDDColumnID";
 
-@interface YMZGMPWindowController () <NSTableViewDelegate, NSTableViewDataSource>
-@property (nonatomic, strong) NSTableView *sessionTableView;
+@interface YMZGMPWindowController () <NSTableViewDelegate, NSTableViewDataSource, YMZGMPTableViewDelegate>
+@property (nonatomic, strong) YMZGMPTableView *sessionTableView;
 @property (nonatomic, strong) NSTableView *detailTableView;
 @property (nonatomic, strong) NSView *rightContentView;
 @property (nonatomic, strong) NSView *rightPlaceholderContentView;
-@property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) NSScrollView *scrollView;
 @property (nonatomic, strong) NSTableColumn *nameColumn;
 @property (nonatomic, strong) NSMutableArray *rightDataArray;
@@ -63,11 +64,12 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
     self.scrollView = scrollView;
     
     self.sessionTableView = ({
-        NSTableView *tableView = [[NSTableView alloc] init];
+        YMZGMPTableView *tableView = [[YMZGMPTableView alloc] init];
         tableView.frame = scrollView.bounds;
         tableView.allowsTypeSelect = YES;
         tableView.delegate = self;
         tableView.dataSource = self;
+        tableView.zgmpDelegate = self;
         
         NSTableColumn *nameColumn = [[NSTableColumn alloc] init];
         nameColumn.width = 100;
@@ -209,7 +211,15 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
 
 - (void)setupData
 {
-    self.dataArray = [YMIMContactsManager getAllChatroomFromSessionList];
+    NSArray *array = [YMIMContactsManager getAllChatroomFromSessionList];
+    NSMutableArray *dataArray = [NSMutableArray array];
+    [array enumerateObjectsUsingBlock:^(NSString *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        YMZGMPGroupInfo *info = [[YMZGMPGroupInfo alloc] init];
+        info.wxid = obj;
+        [dataArray addObject:info];
+    }];
+    
+    self.dataArray = dataArray;
     [self reloadGroupData];
 }
 
@@ -299,7 +309,8 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
     if (tableView == self.sessionTableView) {
         YMZGMPGroupCell *cell = [[YMZGMPGroupCell alloc] init];
         if (row < self.dataArray.count) {
-            cell.wxid = self.dataArray[row];
+            YMZGMPGroupInfo *info = self.dataArray[row];
+            cell.info = info;
         }
         return cell;
     }
@@ -344,10 +355,18 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
     NSTableView *tableView = notification.object;
     if (tableView == self.sessionTableView) {
         if (tableView.selectedRow < self.dataArray.count) {
-            NSString *usr = self.dataArray[tableView.selectedRow];
-            [self changeChatroom:usr];
+            YMZGMPGroupInfo *info = self.dataArray[tableView.selectedRow];
+            [self changeChatroom:info.wxid];
         }
     }
+}
+
+#pragma mark - YMZGMPTableViewDelegate
+- (void)ym_tableView:(YMZGMPTableView *)tableView selectRow:(NSInteger)row
+{
+    YMZGMPGroupInfo *oriInfo = self.dataArray[row];
+    oriInfo.isIgnore = YES;
+    [tableView reloadData];
 }
 
 @end

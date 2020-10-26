@@ -9,11 +9,14 @@
 #import "YMAIReplyCell.h"
 #import "YMIMContactsManager.h"
 #import "YMThemeManager.h"
+#import "NSViewLayoutTool.h"
+#import "YMZGMPInfoHelper.h"
 
 @interface YMAIReplyCell ()
 @property (nonatomic, strong) NSImageView *avatar;
 @property (nonatomic, strong) NSTextField *nameLabel;
 @property (nonatomic, strong) NSBox *bottomLine;
+@property (nonatomic, strong) NSImageView *lock;
 @end
 
 @implementation YMAIReplyCell
@@ -22,6 +25,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self _initSubViews];
+        [self.window makeFirstResponder:self];
+
     }
     return self;
 }
@@ -29,41 +34,66 @@
 - (void)_initSubViews
 {
     self.avatar = ({
-           NSImageView *avatar = [[NSImageView alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
-           avatar.wantsLayer = YES;
-           avatar.layer.cornerRadius = 3;
-           avatar;
-       });
-       
-       self.nameLabel = ({
-           NSTextField *label = [NSTextField tk_labelWithString:@""];
-           label.textColor = [NSColor blackColor];
-           [[label cell] setLineBreakMode:NSLineBreakByCharWrapping];
-           [[label cell] setTruncatesLastVisibleLine:YES];
-           label.font = [NSFont systemFontOfSize:12];
-           label.frame = NSMakeRect(50, 30, 260, 16);
-           label;
-       });
-       
-       self.bottomLine = ({
-           NSBox *line = [[NSBox alloc] init];
-           line.boxType = NSBoxSeparator;
-           line.frame = NSMakeRect(0, 0, 300, 0.5);
-           if (YMWeChatPluginConfig.sharedConfig.usingDarkTheme) {
-               [[YMThemeManager shareInstance] changeTheme:line color:[NSColor lightGrayColor]];
-           }
-           line;
-       });
-       
-       [self addSubviews:@[self.avatar,
-                           self.nameLabel,
-                           self.bottomLine]];
+        NSImageView *avatar = [[NSImageView alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
+        avatar.wantsLayer = YES;
+        avatar.layer.cornerRadius = 3;
+        avatar;
+    });
+    
+    self.lock = ({
+        NSImageView *lock = [[NSImageView alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
+        lock.image = kImageWithName(@"lock.png");
+        lock.hidden = YES;
+        lock.wantsLayer = YES;
+        lock.layer.cornerRadius = 3;
+        lock;
+    });
+    
+    self.nameLabel = ({
+        NSTextField *label = [NSTextField tk_labelWithString:@""];
+        label.textColor = [NSColor blackColor];
+        [[label cell] setLineBreakMode:NSLineBreakByCharWrapping];
+        [[label cell] setTruncatesLastVisibleLine:YES];
+        label.font = [NSFont systemFontOfSize:12];
+        label.frame = NSMakeRect(50, 30, 260, 16);
+        label;
+    });
+    
+    self.bottomLine = ({
+        NSBox *line = [[NSBox alloc] init];
+        line.boxType = NSBoxSeparator;
+        line.frame = NSMakeRect(0, 0, 300, 0.5);
+        if (YMWeChatPluginConfig.sharedConfig.usingDarkTheme) {
+            [[YMThemeManager shareInstance] changeTheme:line color:[NSColor lightGrayColor]];
+        }
+        line;
+    });
+    
+    [self addSubviews:@[self.avatar,
+                        self.nameLabel,
+                        self.bottomLine,
+                        self.lock]];
 }
 
 - (void)drawRect:(NSRect)dirtyRect
 {
     [super drawRect:dirtyRect];
    
+}
+
+- (void)onUpdateCell
+{
+}
+
+- (void)setInfo:(YMZGMPGroupInfo *)info
+{
+    _info = info;
+    if (!info.wxid) {
+        return;
+    }
+    self.wxid = info.wxid;
+    self.lock.hidden = !info.isIgnore;
+    [self onUpdateCell];
 }
 
 - (void)setWxid:(NSString *)wxid

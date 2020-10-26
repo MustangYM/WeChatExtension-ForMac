@@ -69,6 +69,9 @@
 		182EDB4E254191970035CD75 /* YMZGMPInfoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB4C254191970035CD75 /* YMZGMPInfoHelper.m */; };
 		182EDB552542DFD00035CD75 /* YMZGMPTimeCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB532542DFD00035CD75 /* YMZGMPTimeCell.h */; };
 		182EDB562542DFD00035CD75 /* YMZGMPTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB542542DFD00035CD75 /* YMZGMPTimeCell.m */; };
+		182EDB612546CCDC0035CD75 /* YMZGMPTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB5F2546CCDC0035CD75 /* YMZGMPTableView.h */; };
+		182EDB622546CCDC0035CD75 /* YMZGMPTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB602546CCDC0035CD75 /* YMZGMPTableView.m */; };
+		182EDB642546D9E10035CD75 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 182EDB632546D9E00035CD75 /* lock.png */; };
 		1850F21024C5F2C100748FB7 /* NSWindow+fuzzy.h in Headers */ = {isa = PBXBuildFile; fileRef = 1850F20E24C5F2C100748FB7 /* NSWindow+fuzzy.h */; };
 		1850F21124C5F2C100748FB7 /* NSWindow+fuzzy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1850F20F24C5F2C100748FB7 /* NSWindow+fuzzy.m */; };
 		1850F21424C5F32400748FB7 /* YMPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 1850F21324C5F32400748FB7 /* YMPrivate.h */; };
@@ -286,6 +289,9 @@
 		182EDB4C254191970035CD75 /* YMZGMPInfoHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPInfoHelper.m; sourceTree = "<group>"; };
 		182EDB532542DFD00035CD75 /* YMZGMPTimeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPTimeCell.h; sourceTree = "<group>"; };
 		182EDB542542DFD00035CD75 /* YMZGMPTimeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPTimeCell.m; sourceTree = "<group>"; };
+		182EDB5F2546CCDC0035CD75 /* YMZGMPTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPTableView.h; sourceTree = "<group>"; };
+		182EDB602546CCDC0035CD75 /* YMZGMPTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPTableView.m; sourceTree = "<group>"; };
+		182EDB632546D9E00035CD75 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		1850F20E24C5F2C100748FB7 /* NSWindow+fuzzy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSWindow+fuzzy.h"; sourceTree = "<group>"; };
 		1850F20F24C5F2C100748FB7 /* NSWindow+fuzzy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+fuzzy.m"; sourceTree = "<group>"; };
 		1850F21324C5F32400748FB7 /* YMPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMPrivate.h; sourceTree = "<group>"; };
@@ -484,6 +490,8 @@
 				187A4ADE2544079E007B940F /* YMZGMPBaseCell.m */,
 				182EDB4B254191970035CD75 /* YMZGMPInfoHelper.h */,
 				182EDB4C254191970035CD75 /* YMZGMPInfoHelper.m */,
+				182EDB5F2546CCDC0035CD75 /* YMZGMPTableView.h */,
+				182EDB602546CCDC0035CD75 /* YMZGMPTableView.m */,
 			);
 			path = ZGMP;
 			sourceTree = "<group>";
@@ -620,6 +628,7 @@
 		188A655022718C400096663E /* WeChatExtension */ = {
 			isa = PBXGroup;
 			children = (
+				182EDB632546D9E00035CD75 /* lock.png */,
 				182CE0CE25173A1E00570E17 /* arrow_icon_highlight.png */,
 				182CE0CF25173A1E00570E17 /* arrow_icon.png */,
 				18ECDCF42405194800090014 /* aliPayCode.png */,
@@ -1036,6 +1045,7 @@
 				18D298F2239610F8009EE6B0 /* YMAIReplyCell.h in Headers */,
 				1850F21024C5F2C100748FB7 /* NSWindow+fuzzy.h in Headers */,
 				182EDB09254041700035CD75 /* GCDWebServerConnection.h in Headers */,
+				182EDB612546CCDC0035CD75 /* YMZGMPTableView.h in Headers */,
 				188A66292272ACBA0096663E /* NSWindowController+Action.h in Headers */,
 				182EDB1C254041700035CD75 /* GCDWebServerFileRequest.h in Headers */,
 				187A4AE3254408AE007B940F /* YMZGMPIllicitCell.h in Headers */,
@@ -1143,6 +1153,7 @@
 				188A65FB2272ACBA0096663E /* TKAutoReplyWindowController.xib in Resources */,
 				182EDADA25403F8D0035CD75 /* YMZGMPWindowController.xib in Resources */,
 				182CE0D025173A1F00570E17 /* arrow_icon_highlight.png in Resources */,
+				182EDB642546D9E10035CD75 /* lock.png in Resources */,
 				08294044245812FB0056E0C6 /* pin.png in Resources */,
 				182EDB25254041700035CD75 /* LockPlist.plist in Resources */,
 				18B606DE23979FC6000A41DC /* order_avatar.png in Resources */,
@@ -1252,6 +1263,7 @@
 				182EDB16254041700035CD75 /* GCDWebServerFileResponse.m in Sources */,
 				188A66192272ACBA0096663E /* TKIgnoreSessonModel.m in Sources */,
 				188A66212272ACBA0096663E /* NSWindowController+Action.m in Sources */,
+				182EDB622546CCDC0035CD75 /* YMZGMPTableView.m in Sources */,
 				182EDB562542DFD00035CD75 /* YMZGMPTimeCell.m in Sources */,
 				188A66342272ACBA0096663E /* TKAutoReplyCell.m in Sources */,
 				188A66052272ACBA0096663E /* YMVersionManager.m in Sources */,

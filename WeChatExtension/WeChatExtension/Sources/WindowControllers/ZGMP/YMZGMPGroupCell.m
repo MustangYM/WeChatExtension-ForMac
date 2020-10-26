@@ -7,6 +7,7 @@
 //
 
 #import "YMZGMPGroupCell.h"
+#import "YMZGMPInfoHelper.h"
 
 @implementation YMZGMPGroupCell
 
@@ -14,6 +15,11 @@
     [super drawRect:dirtyRect];
     
     // Drawing code here.
+}
+
+- (void)onUpdateCell
+{
+    
 }
 
 @end

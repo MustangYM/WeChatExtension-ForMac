@@ -11,6 +11,10 @@
 
 static NSString *const DBNAME = @"chatroom_data.db";
 
+@implementation YMZGMPGroupInfo
+
+@end
+
 @implementation YMZGMPInfo
 
 @end
