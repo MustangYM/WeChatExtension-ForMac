@@ -108,6 +108,9 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
     [needSaveModels writeToFile:self.autoReplyPlistFilePath atomically:YES];
 }
 
+#pragma mark - 群员监控
+
+
 #pragma mark - 自动转发
 - (NSArray *)VAutoForwardingModel
 {

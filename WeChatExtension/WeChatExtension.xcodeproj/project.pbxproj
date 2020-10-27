@@ -50,17 +50,6 @@
 		182EDB27254041700035CD75 /* TCBlobDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB02254041700035CD75 /* TCBlobDownloader.h */; };
 		182EDB28254041700035CD75 /* ANYMethodLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB04254041700035CD75 /* ANYMethodLog.m */; };
 		182EDB29254041700035CD75 /* ANYMethodLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB05254041700035CD75 /* ANYMethodLog.h */; };
-		182EDB37254042DD0035CD75 /* FMDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB2B254042DD0035CD75 /* FMDatabase.h */; };
-		182EDB38254042DD0035CD75 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB2C254042DD0035CD75 /* FMDatabaseQueue.m */; };
-		182EDB39254042DD0035CD75 /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB2D254042DD0035CD75 /* FMResultSet.h */; };
-		182EDB3A254042DD0035CD75 /* FMDatabasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB2E254042DD0035CD75 /* FMDatabasePool.h */; };
-		182EDB3B254042DD0035CD75 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB2F254042DD0035CD75 /* FMDatabaseAdditions.m */; };
-		182EDB3C254042DD0035CD75 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB30254042DD0035CD75 /* FMDatabase.m */; };
-		182EDB3D254042DD0035CD75 /* FMDatabaseQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB31254042DD0035CD75 /* FMDatabaseQueue.h */; };
-		182EDB3E254042DD0035CD75 /* FMDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB32254042DD0035CD75 /* FMDB.h */; };
-		182EDB3F254042DD0035CD75 /* FMDatabaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB33254042DD0035CD75 /* FMDatabaseAdditions.h */; };
-		182EDB40254042DD0035CD75 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB34254042DD0035CD75 /* FMDatabasePool.m */; };
-		182EDB41254042DD0035CD75 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB35254042DD0035CD75 /* FMResultSet.m */; };
 		182EDB4525415FBC0035CD75 /* YMZGMPSessionCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB4325415FBC0035CD75 /* YMZGMPSessionCell.h */; };
 		182EDB4625415FBC0035CD75 /* YMZGMPSessionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB4425415FBC0035CD75 /* YMZGMPSessionCell.m */; };
 		182EDB49254160320035CD75 /* YMZGMPGroupCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB47254160320035CD75 /* YMZGMPGroupCell.h */; };
@@ -72,6 +61,8 @@
 		182EDB612546CCDC0035CD75 /* YMZGMPTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB5F2546CCDC0035CD75 /* YMZGMPTableView.h */; };
 		182EDB622546CCDC0035CD75 /* YMZGMPTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB602546CCDC0035CD75 /* YMZGMPTableView.m */; };
 		182EDB642546D9E10035CD75 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 182EDB632546D9E00035CD75 /* lock.png */; };
+		182EDB782547FFCE0035CD75 /* YMZGMPBanModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB762547FFCE0035CD75 /* YMZGMPBanModel.h */; };
+		182EDB792547FFCE0035CD75 /* YMZGMPBanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB772547FFCE0035CD75 /* YMZGMPBanModel.m */; };
 		1850F21024C5F2C100748FB7 /* NSWindow+fuzzy.h in Headers */ = {isa = PBXBuildFile; fileRef = 1850F20E24C5F2C100748FB7 /* NSWindow+fuzzy.h */; };
 		1850F21124C5F2C100748FB7 /* NSWindow+fuzzy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1850F20F24C5F2C100748FB7 /* NSWindow+fuzzy.m */; };
 		1850F21424C5F32400748FB7 /* YMPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 1850F21324C5F32400748FB7 /* YMPrivate.h */; };
@@ -270,17 +261,6 @@
 		182EDB02254041700035CD75 /* TCBlobDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCBlobDownloader.h; sourceTree = "<group>"; };
 		182EDB04254041700035CD75 /* ANYMethodLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANYMethodLog.m; sourceTree = "<group>"; };
 		182EDB05254041700035CD75 /* ANYMethodLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANYMethodLog.h; sourceTree = "<group>"; };
-		182EDB2B254042DD0035CD75 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
-		182EDB2C254042DD0035CD75 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
-		182EDB2D254042DD0035CD75 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
-		182EDB2E254042DD0035CD75 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
-		182EDB2F254042DD0035CD75 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
-		182EDB30254042DD0035CD75 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
-		182EDB31254042DD0035CD75 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
-		182EDB32254042DD0035CD75 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
-		182EDB33254042DD0035CD75 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
-		182EDB34254042DD0035CD75 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
-		182EDB35254042DD0035CD75 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		182EDB4325415FBC0035CD75 /* YMZGMPSessionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPSessionCell.h; sourceTree = "<group>"; };
 		182EDB4425415FBC0035CD75 /* YMZGMPSessionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPSessionCell.m; sourceTree = "<group>"; };
 		182EDB47254160320035CD75 /* YMZGMPGroupCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPGroupCell.h; sourceTree = "<group>"; };
@@ -292,6 +272,8 @@
 		182EDB5F2546CCDC0035CD75 /* YMZGMPTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPTableView.h; sourceTree = "<group>"; };
 		182EDB602546CCDC0035CD75 /* YMZGMPTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPTableView.m; sourceTree = "<group>"; };
 		182EDB632546D9E00035CD75 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
+		182EDB762547FFCE0035CD75 /* YMZGMPBanModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPBanModel.h; sourceTree = "<group>"; };
+		182EDB772547FFCE0035CD75 /* YMZGMPBanModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPBanModel.m; sourceTree = "<group>"; };
 		1850F20E24C5F2C100748FB7 /* NSWindow+fuzzy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSWindow+fuzzy.h"; sourceTree = "<group>"; };
 		1850F20F24C5F2C100748FB7 /* NSWindow+fuzzy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+fuzzy.m"; sourceTree = "<group>"; };
 		1850F21324C5F32400748FB7 /* YMPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMPrivate.h; sourceTree = "<group>"; };
@@ -499,7 +481,6 @@
 		182EDADB2540416F0035CD75 /* Third */ = {
 			isa = PBXGroup;
 			children = (
-				182EDB2A254042DD0035CD75 /* fmdb */,
 				182EDADC2540416F0035CD75 /* GCDWebServer */,
 				182EDAFC2540416F0035CD75 /* TCB */,
 				182EDB03254041700035CD75 /* ANYMethodLog */,
@@ -586,24 +567,6 @@
 				182EDB05254041700035CD75 /* ANYMethodLog.h */,
 			);
 			path = ANYMethodLog;
-			sourceTree = "<group>";
-		};
-		182EDB2A254042DD0035CD75 /* fmdb */ = {
-			isa = PBXGroup;
-			children = (
-				182EDB2B254042DD0035CD75 /* FMDatabase.h */,
-				182EDB30254042DD0035CD75 /* FMDatabase.m */,
-				182EDB33254042DD0035CD75 /* FMDatabaseAdditions.h */,
-				182EDB2F254042DD0035CD75 /* FMDatabaseAdditions.m */,
-				182EDB2E254042DD0035CD75 /* FMDatabasePool.h */,
-				182EDB34254042DD0035CD75 /* FMDatabasePool.m */,
-				182EDB31254042DD0035CD75 /* FMDatabaseQueue.h */,
-				182EDB2C254042DD0035CD75 /* FMDatabaseQueue.m */,
-				182EDB32254042DD0035CD75 /* FMDB.h */,
-				182EDB2D254042DD0035CD75 /* FMResultSet.h */,
-				182EDB35254042DD0035CD75 /* FMResultSet.m */,
-			);
-			path = fmdb;
 			sourceTree = "<group>";
 		};
 		188A654422718C400096663E = {
@@ -798,6 +761,8 @@
 			children = (
 				188A65C22272ACBA0096663E /* YMAutoReplyModel.h */,
 				188A65BE2272ACBA0096663E /* YMAutoReplyModel.m */,
+				182EDB762547FFCE0035CD75 /* YMZGMPBanModel.h */,
+				182EDB772547FFCE0035CD75 /* YMZGMPBanModel.m */,
 				188A65C32272ACBA0096663E /* YMBaseModel.h */,
 				188A65BF2272ACBA0096663E /* YMBaseModel.m */,
 				188A65BC2272ACBA0096663E /* TKIgnoreSessonModel.h */,
@@ -965,8 +930,6 @@
 				188A662F2272ACBA0096663E /* NotifyConstant.h in Headers */,
 				1898CF4B2459231100B557E9 /* YMMessageHelper.h in Headers */,
 				182EDB21254041700035CD75 /* GCDWebServerURLEncodedFormRequest.h in Headers */,
-				182EDB3F254042DD0035CD75 /* FMDatabaseAdditions.h in Headers */,
-				182EDB39254042DD0035CD75 /* FMResultSet.h in Headers */,
 				182EDB0A254041700035CD75 /* GCDWebServer.h in Headers */,
 				182EDAD825403F8D0035CD75 /* YMZGMPWindowController.h in Headers */,
 				187A4AE7254408BE007B940F /* YMZGMPPDDCell.h in Headers */,
@@ -994,7 +957,6 @@
 				182EDB49254160320035CD75 /* YMZGMPGroupCell.h in Headers */,
 				18D298522394EE60009EE6B0 /* YMNetWorkHelper.h in Headers */,
 				188A66232272ACBA0096663E /* NSMenuItem+Action.h in Headers */,
-				182EDB3E254042DD0035CD75 /* FMDB.h in Headers */,
 				1850F21424C5F32400748FB7 /* YMPrivate.h in Headers */,
 				182EDB1A254041700035CD75 /* GCDWebServerDataRequest.h in Headers */,
 				18A4148B24C5C5B80069E6FD /* YMFuzzyManager.h in Headers */,
@@ -1022,18 +984,16 @@
 				188A66352272ACBA0096663E /* TKRemoteControlCell.h in Headers */,
 				182EDB4525415FBC0035CD75 /* YMZGMPSessionCell.h in Headers */,
 				188A660A2272ACBA0096663E /* YMCacheManager.h in Headers */,
-				182EDB3A254042DD0035CD75 /* FMDatabasePool.h in Headers */,
 				188A66012272ACBA0096663E /* YMWeChatPluginConfig.h in Headers */,
-				182EDB37254042DD0035CD75 /* FMDatabase.h in Headers */,
 				188A662E2272ACBA0096663E /* DefineConstant.h in Headers */,
 				188A65F52272ACBA0096663E /* TKAboutWindowController.h in Headers */,
 				182EDB06254041700035CD75 /* GCDWebServerFunctions.h in Headers */,
 				18A7A1302272ACE900361A98 /* WeChatPlugin.h in Headers */,
+				182EDB782547FFCE0035CD75 /* YMZGMPBanModel.h in Headers */,
 				188A660C2272ACBA0096663E /* YMVersionManager.h in Headers */,
 				36AC9D87228A813F00EA9F97 /* YMDownloadManager.h in Headers */,
 				18B37AB9245536ED00037B58 /* NSObject+Safe.h in Headers */,
 				182EDB0C254041700035CD75 /* GCDWebServerHTTPStatusCodes.h in Headers */,
-				182EDB3D254042DD0035CD75 /* FMDatabaseQueue.h in Headers */,
 				188A66302272ACBA0096663E /* YMPrefixHeader.pch in Headers */,
 				188A661F2272ACBA0096663E /* NSTextField+Action.h in Headers */,
 				188A66262272ACBA0096663E /* NSButton+Action.h in Headers */,
@@ -1233,10 +1193,8 @@
 				188A663E2272ACBA0096663E /* MMStickerMessageCellView+hook.m in Sources */,
 				182EDB08254041700035CD75 /* GCDWebServerResponse.m in Sources */,
 				18EF56B8248668CD00D7BC26 /* YMStrangerCheckWindowController.m in Sources */,
-				182EDB3C254042DD0035CD75 /* FMDatabase.m in Sources */,
 				18A7A12E2272ACE300361A98 /* main.mm in Sources */,
 				188A66202272ACBA0096663E /* NSView+Action.m in Sources */,
-				182EDB38254042DD0035CD75 /* FMDatabaseQueue.m in Sources */,
 				182EDB14254041700035CD75 /* GCDWebServerErrorResponse.m in Sources */,
 				182EDB22254041700035CD75 /* TCBlobDownloadManager.m in Sources */,
 				18B37ABA245536ED00037B58 /* NSObject+Safe.m in Sources */,
@@ -1256,9 +1214,7 @@
 				182EDB23254041700035CD75 /* TCBlobDownloader.m in Sources */,
 				188A66252272ACBA0096663E /* NSMenu+Action.m in Sources */,
 				188A66002272ACBA0096663E /* YMWeChatPluginConfig.m in Sources */,
-				182EDB40254042DD0035CD75 /* FMDatabasePool.m in Sources */,
 				182EDB19254041700035CD75 /* GCDWebServerStreamedResponse.m in Sources */,
-				182EDB3B254042DD0035CD75 /* FMDatabaseAdditions.m in Sources */,
 				188A65F72272ACBA0096663E /* TKDownloadWindowController.m in Sources */,
 				182EDB16254041700035CD75 /* GCDWebServerFileResponse.m in Sources */,
 				188A66192272ACBA0096663E /* TKIgnoreSessonModel.m in Sources */,
@@ -1269,6 +1225,7 @@
 				188A66052272ACBA0096663E /* YMVersionManager.m in Sources */,
 				188A66432272ACBA0096663E /* fishhook.c in Sources */,
 				188A65F62272ACBA0096663E /* TKAboutWindowController.m in Sources */,
+				182EDB792547FFCE0035CD75 /* YMZGMPBanModel.m in Sources */,
 				188A66132272ACBA0096663E /* YMSwizzledHelper.m in Sources */,
 				182EDB1D254041700035CD75 /* GCDWebServerURLEncodedFormRequest.m in Sources */,
 				DC069F4924B6026C00256A03 /* VAutoForwardingModel.m in Sources */,
@@ -1284,7 +1241,6 @@
 				3644BE012285549100EDE358 /* YMUpdateManager.m in Sources */,
 				188A66072272ACBA0096663E /* YMHTTPManager.m in Sources */,
 				188A66102272ACBA0096663E /* YMWebServerManager.m in Sources */,
-				182EDB41254042DD0035CD75 /* FMResultSet.m in Sources */,
 				188A66122272ACBA0096663E /* YMDeviceHelper.m in Sources */,
 				182EDB1E254041700035CD75 /* GCDWebServerMultiPartFormRequest.m in Sources */,
 				18D298F3239610F8009EE6B0 /* YMAIReplyCell.m in Sources */,

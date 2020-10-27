@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface YMZGMPInfoHelper : NSObject
-+ (void)saveChatroomMember:(NSString *)chatroom member:(YMZGMPInfo *)model;
+
 @end
 
 NS_ASSUME_NONNULL_END
