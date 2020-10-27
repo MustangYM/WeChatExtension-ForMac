@@ -134,7 +134,12 @@ static char kZGMPWindowControllerKey;               //群管理 key
                                                        state:NO];
     
     NSMenu *groupMrgMenu = [[NSMenu alloc] initWithTitle:YMLanguage(@"群助手", @"Group Assistant")];
-    [groupMrgMenu addItems:@[quitMonitorItem,ZGMPItem]];
+    NSMutableArray *groupArray = [NSMutableArray array];
+    [groupArray addObject:quitMonitorItem];
+    if (LargerOrEqualLongVersion(@"2.4.2.148")) {
+        [groupArray addObject:ZGMPItem];
+    }
+    [groupMrgMenu addItems:groupArray];
     groupMrgItem.submenu = groupMrgMenu;
     
     //登录新微信

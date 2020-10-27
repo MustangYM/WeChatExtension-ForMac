@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) int timestamp;
 @property (nonatomic, assign) int sensitive;
 @property (nonatomic, assign) int pdd;
+@property (nonatomic, assign) int totalMsgs;
 @property (nonatomic, weak) WCContactData *contact;
 @end
 

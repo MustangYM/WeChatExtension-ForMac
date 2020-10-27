@@ -30,7 +30,7 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
 
 @interface YMZGMPWindowController () <NSTableViewDelegate, NSTableViewDataSource, YMZGMPTableViewDelegate>
 @property (nonatomic, strong) YMZGMPTableView *sessionTableView;
-@property (nonatomic, strong) NSTableView *detailTableView;
+@property (nonatomic, strong) YMZGMPTableView *detailTableView;
 @property (nonatomic, strong) NSView *rightContentView;
 @property (nonatomic, strong) NSView *rightPlaceholderContentView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -39,7 +39,10 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
 @property (nonatomic, strong) NSMutableArray *rightDataArray;
 @property (nonatomic, strong) NSProgressIndicator *progress;
 @property (nonatomic, strong) NSImageView *defaultImageView;
+@property (nonatomic, strong) NSTextField *detailLabel;
 @property (nonatomic, assign) NSInteger menuRow;
+@property (nonatomic, assign) NSInteger sessionSelectRow;
+@property (nonatomic, assign) NSInteger detailSelectRow;
 @end
 
 @implementation YMZGMPWindowController
@@ -98,11 +101,12 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
     });
     
     self.detailTableView = ({
-        NSTableView *tableView = [[NSTableView alloc] init];
+        YMZGMPTableView *tableView = [[YMZGMPTableView alloc] init];
         tableView.frame = scrollView.bounds;
         tableView.allowsTypeSelect = YES;
         tableView.delegate = self;
         tableView.dataSource = self;
+        tableView.zgmpDelegate = self;
         
         NSTableColumn *nameColumn = [[NSTableColumn alloc] init];
         nameColumn.title = YMLanguage(@"昵称", @"Nick");
@@ -177,9 +181,21 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
         imageView;
     });
     
+    self.detailLabel = ({
+        NSTextField *label = [NSTextField tk_labelWithString:YMLanguage(@"根据本地聊天记录生成榜单，方便私域社群管理。提倡言论自由的理想主义世界，尽量不做为T人依据！", @"Create a list based on local chat logs to facilitate the management of private community and promote the idealistic world of free speech. Try not to use it as a basis for remove the member!")];
+        label.textColor = [NSColor blackColor];
+        [[label cell] setLineBreakMode:NSLineBreakByTruncatingMiddle];
+        [[label cell] setTruncatesLastVisibleLine:YES];
+        label.font = [NSFont systemFontOfSize:10];
+        label.textColor = [NSColor lightGrayColor];
+        label.alignment = NSTextAlignmentCenter;
+        label;
+    });
+    
     [self.window.contentView addSubview:scrollView];
     [self.window.contentView addSubview:self.rightPlaceholderContentView];
     [self.window.contentView addSubview:self.rightContentView];
+    [self.window.contentView addSubview:self.detailLabel];
     [self.rightContentView addSubview:detailScrollView];
     [self.detailTableView addSubview:self.progress];
     [self.rightContentView addSubview:self.defaultImageView];
@@ -200,6 +216,11 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
     [self.rightContentView addConstraint:NSLayoutAttributeBottom constant:-50];
     [self.rightContentView addConstraint:NSLayoutAttributeTop constant:20];
     [self.rightContentView addConstraint:NSLayoutAttributeRight constant:-20];
+    
+    [self.detailLabel addConstraint:NSLayoutAttributeBottom constant:-12];
+    [self.detailLabel addConstraint:NSLayoutAttributeLeft constant:100];
+    [self.detailLabel addConstraint:NSLayoutAttributeRight constant:-100];
+    [self.detailLabel addHeightConstraint:20];
     
     [self.progress addConstraint:NSLayoutAttributeCenterX constant:0];
     [self.progress addConstraint:NSLayoutAttributeCenterY constant:0];
@@ -306,6 +327,7 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
             info.contact = obj;
             info.sensitive = sensitive;
             info.pdd = pdd;
+            info.totalMsgs = msgs.count;
             if (msgs.count > 0) {
                 MessageData *msg = msgs[0];
                 info.timestamp = msg.msgCreateTime;
@@ -393,31 +415,51 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
 {
     NSTableView *tableView = notification.object;
     if (tableView == self.sessionTableView) {
+        self.sessionSelectRow = tableView.selectedRow;
         if (tableView.selectedRow < self.dataArray.count) {
             YMZGMPGroupInfo *info = self.dataArray[tableView.selectedRow];
             [self changeChatroom:info.wxid];
-            BOOL a =  [[YMDFAFilter shareInstance] filterSensitiveWords:@"你好啊我去吃饭了"];
-            NSLog(@"yanmao - %hhd",a);
         }
+    } else {
+        self.detailSelectRow = tableView.selectedRow;
     }
 }
 
 #pragma mark - YMZGMPTableViewDelegate
 - (NSMenu *)ym_menuForTableView:(YMZGMPTableView *)tableView selectRow:(NSInteger)row
 {
-    self.menuRow = row;
-    YMZGMPGroupInfo *oriInfo = self.dataArray[row];
-    NSString *title = nil;
-    if (oriInfo.isIgnore) {
-        title = YMLanguage(@"允许消息", @"Allow Msg");
-    } else {
-        title = YMLanguage(@"拒收消息", @"Reject Msg");
+    if (tableView == self.sessionTableView) {
+        self.menuRow = row;
+          YMZGMPGroupInfo *oriInfo = self.dataArray[row];
+          NSString *title = nil;
+          if (oriInfo.isIgnore) {
+              title = YMLanguage(@"允许消息", @"Allow Msg");
+          } else {
+              title = YMLanguage(@"拒收消息", @"Reject Msg");
+          }
+          
+          NSMenu *menu = [[NSMenu alloc] init];
+          NSMenuItem *item1 = [NSMenuItem menuItemWithTitle:title action:@selector(refuseMsg) target:self keyEquivalent:@"" state:NO];
+          [menu addItems:@[item1]];
+          return menu;
     }
-    
-    NSMenu *menu = [[NSMenu alloc] init];
-    NSMenuItem *item1 = [NSMenuItem menuItemWithTitle:title action:@selector(refuseMsg) target:self keyEquivalent:@"" state:NO];
-    [menu addItems:@[item1]];
-    return menu;
+    return nil;
+}
+
+- (void)ym_doubleClickForTableView:(YMZGMPTableView *)tableView
+{
+    if (tableView == self.detailTableView) {
+        YMZGMPGroupInfo *groupInfo = self.dataArray[self.sessionSelectRow];
+        YMZGMPInfo *info = self.rightDataArray[self.detailSelectRow];
+       MMSessionInfo *sessionInfo = [YMIMContactsManager getSessionInfo:groupInfo.wxid];
+        
+        WindowCenter *windowCenter = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("WindowCenter")];
+        MMChatManagerWindowController *window = [windowCenter getWindowController:@"MMChatManagerWindowController" makeIfNecessary:0x1];
+        window.chatContact = sessionInfo.m_packedInfo.m_contact;
+        window.searchKey = info.contact.m_nsNickName;
+        [window pushWindow:self];
+        [window showWindow:self];
+    }
 }
 
 - (void)refuseMsg

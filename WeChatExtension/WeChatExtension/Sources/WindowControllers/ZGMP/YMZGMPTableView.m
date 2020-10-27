@@ -18,17 +18,31 @@
 - (NSMenu *)menuForEvent:(NSEvent *)event
 {
     if (event.type == 3) {
-        NSPoint point = [event locationInWindow];
-        NSPoint tablePoint = [self convertPoint:point toView:self.window.contentView];
-        NSInteger row = [self rowAtPoint:tablePoint];
-        self.rightMouseDownRow = row;
-        if (row >= 0 && row < [self numberOfRows]) {
+        self.rightMouseDownRow = [self rowWithEvent:event];
+        if (self.rightMouseDownRow >= 0 && self.rightMouseDownRow < [self numberOfRows]) {
             if ([self.zgmpDelegate respondsToSelector:@selector(ym_menuForTableView:selectRow:)]) {
-                return [self.zgmpDelegate ym_menuForTableView:self selectRow:row];
+                return [self.zgmpDelegate ym_menuForTableView:self selectRow:self.rightMouseDownRow];
             }
         }
     }
     return nil;
+}
+
+- (void)mouseDown:(NSEvent *)event
+{
+    [super mouseDown:event];
+    if (event.pressure == 1 && event.clickCount == 2) {
+        if ([self.zgmpDelegate respondsToSelector:@selector(ym_doubleClickForTableView:)]) {
+            [self.zgmpDelegate ym_doubleClickForTableView:self];
+        }
+    }
+}
+
+- (NSInteger)rowWithEvent:(NSEvent *)event
+{
+    NSPoint point = [event locationInWindow];
+    NSPoint tablePoint = [self convertPoint:point toView:self.window.contentView];
+    return [self rowAtPoint:tablePoint];
 }
 
 @end

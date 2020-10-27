@@ -8,6 +8,7 @@
 
 #import "YMZGMPIllicitCell.h"
 #import "YMZGMPInfoHelper.h"
+#import "YMThemeManager.h"
 
 @implementation YMZGMPIllicitCell
 
@@ -21,9 +22,14 @@
 {
     _memberInfo = memberInfo;
     if (memberInfo.sensitive > 0) {
-        self.msgLabel.stringValue = [NSString stringWithFormat:@"%d条",memberInfo.sensitive];
+        self.msgLabel.stringValue = [NSString stringWithFormat:@"%d%@",memberInfo.sensitive, memberInfo.sensitive == 1 ? YMLanguage(@"条", @"message") : YMLanguage(@"条", @"messages")];
     } else {
         self.msgLabel.stringValue = @"";
+    }
+    if (memberInfo.timestamp <= 0) {
+        [[YMThemeManager shareInstance] changeTheme:self color:YM_RGBA(99, 99, 99, 0.2)];
+    } else {
+        [[YMThemeManager shareInstance] changeTheme:self color:[NSColor clearColor]];
     }
 }
 

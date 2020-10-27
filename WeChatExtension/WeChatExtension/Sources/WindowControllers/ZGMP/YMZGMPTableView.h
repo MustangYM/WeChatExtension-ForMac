@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol YMZGMPTableViewDelegate <NSObject>
 @optional
 - (NSMenu *)ym_menuForTableView:(YMZGMPTableView *)tableView selectRow:(NSInteger)row;
+- (void)ym_doubleClickForTableView:(YMZGMPTableView *)tableView;
 @end
 
 @interface YMZGMPTableView : NSTableView

@@ -18,7 +18,7 @@
 - (void)setMemberInfo:(YMZGMPInfo *)memberInfo
 {
     _memberInfo = memberInfo;
-    self.msgLabel.stringValue = [self timeDistanceWithTimestamp:memberInfo.timestamp];
+    self.msgLabel.stringValue = [NSString stringWithFormat:@"%@ (%d%@)",[self timeDistanceWithTimestamp:memberInfo.timestamp], memberInfo.totalMsgs, memberInfo.totalMsgs < 2 ? YMLanguage(@"条", @"message") : YMLanguage(@"条", @"messages")];
     if (memberInfo.timestamp <= 0) {
         [[YMThemeManager shareInstance] changeTheme:self color:YM_RGBA(99, 99, 99, 0.2)];
     } else {

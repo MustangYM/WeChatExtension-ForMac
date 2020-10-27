@@ -8,6 +8,7 @@
 
 #import "YMZGMPPDDCell.h"
 #import "YMZGMPInfoHelper.h"
+#import "YMThemeManager.h"
 
 @implementation YMZGMPPDDCell
 
@@ -21,9 +22,15 @@
 {
     _memberInfo = memberInfo;
     if (memberInfo.pdd > 0) {
-        self.msgLabel.stringValue = [NSString stringWithFormat:@"%d条",memberInfo.pdd];
+        self.msgLabel.stringValue = [NSString stringWithFormat:@"%d%@",memberInfo.pdd, memberInfo.pdd == 1 ? YMLanguage(@"条", @"message") : YMLanguage(@"条", @"messages")];
     } else {
         self.msgLabel.stringValue = @"";
+    }
+    
+    if (memberInfo.timestamp <= 0) {
+        [[YMThemeManager shareInstance] changeTheme:self color:YM_RGBA(99, 99, 99, 0.2)];
+    } else {
+        [[YMThemeManager shareInstance] changeTheme:self color:[NSColor clearColor]];
     }
 }
 

@@ -979,6 +979,28 @@ forHTTPHeaderField:(NSString *)field;
 - (id)initWithFrame:(struct CGRect)arg1;
 @end
 
+@interface MMChatManagerDetailViewController : NSViewController
+
+@end
+
+@interface MMChatManagerWindowController : NSWindowController
+@property(retain, nonatomic) MMChatManagerDetailViewController *chatManagerDetailViewController; // @synthesize chatManagerDetailViewController=_chatManagerDetailViewController;
+@property(nonatomic) __weak NSView *detailContainer; // @synthesize detailContainer=_detailContainer;
+@property(nonatomic) __weak NSView *divider; // @synthesize divider=_divider;
+@property(retain, nonatomic) NSString *searchKey; // @synthesize searchKey=_searchKey;
+@property(retain, nonatomic) WCContactData *chatContact; // @synthesize chatContact=_chatContact;
+- (void)layoutVerticalAlignForPlaceHolder;
+- (void)searchAction:(id)arg1;
+- (void)onModifyContacts:(id)arg1;
+- (BOOL)windowShouldClose:(id)arg1;
+- (void)windowDidResignKeyAction:(id)arg1;
+- (void)showWindow:(id)arg1;
+- (void)pushWindow:(id)arg1;
+- (void)windowDidLoad;
+- (void)dealloc;
+- (id)initWithWindowNibName:(id)arg1;
+@end
+
 @interface MMGlobalChatManagerWindowController : NSWindowController
 
 @end
@@ -1143,4 +1165,19 @@ forHTTPHeaderField:(NSString *)field;
 
 @interface MMChatFTSSearchLogic : NSObject
 - (void)doSearchWithKeyword:(id)arg1 chatName:(id)arg2 realFromUser:(id)arg3 messageType:(unsigned int)arg4 minMsgCreateTime:(unsigned int)arg5 maxMsgCreateTime:(unsigned int)arg6 limitCount:(unsigned int)arg7 isFromGlobalSearch:(unsigned char)arg8 completion:(id)arg9;
+@end
+
+@interface WindowCenter : NSObject
+- (id)getWindowController:(id)arg1 makeIfNecessary:(BOOL)arg2;
+- (id)getWindowController:(id)arg1;
+- (void)pop:(id)arg1 withIdentifier:(id)arg2;
+- (void)popWithoutIdentifier:(id)arg1;
+- (void)pop:(id)arg1;
+- (void)push:(id)arg1 withIdentifier:(id)arg2 sender:(id)arg3;
+- (void)push:(id)arg1 withIdentifier:(id)arg2;
+- (void)push:(id)arg1 sender:(id)arg2;
+- (void)push:(id)arg1;
+- (void)pushWithoutIdentifier:(id)arg1;
+- (void)onServiceClearData;
+- (void)onServiceInit;
 @end
