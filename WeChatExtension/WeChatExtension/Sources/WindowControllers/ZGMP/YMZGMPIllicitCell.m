@@ -7,6 +7,7 @@
 //
 
 #import "YMZGMPIllicitCell.h"
+#import "YMZGMPInfoHelper.h"
 
 @implementation YMZGMPIllicitCell
 
@@ -14,6 +15,16 @@
     [super drawRect:dirtyRect];
     
     // Drawing code here.
+}
+
+- (void)setMemberInfo:(YMZGMPInfo *)memberInfo
+{
+    _memberInfo = memberInfo;
+    if (memberInfo.sensitive > 0) {
+        self.msgLabel.stringValue = [NSString stringWithFormat:@"%d条",memberInfo.sensitive];
+    } else {
+        self.msgLabel.stringValue = @"";
+    }
 }
 
 @end

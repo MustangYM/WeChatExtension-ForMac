@@ -7,6 +7,7 @@
 //
 
 #import "YMZGMPPDDCell.h"
+#import "YMZGMPInfoHelper.h"
 
 @implementation YMZGMPPDDCell
 
@@ -14,6 +15,16 @@
     [super drawRect:dirtyRect];
     
     // Drawing code here.
+}
+
+- (void)setMemberInfo:(YMZGMPInfo *)memberInfo
+{
+    _memberInfo = memberInfo;
+    if (memberInfo.pdd > 0) {
+        self.msgLabel.stringValue = [NSString stringWithFormat:@"%d条",memberInfo.pdd];
+    } else {
+        self.msgLabel.stringValue = @"";
+    }
 }
 
 @end

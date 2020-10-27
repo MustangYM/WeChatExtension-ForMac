@@ -9,9 +9,9 @@
 #import "YMZGMPBaseCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+@class YMZGMPInfo;
 @interface YMZGMPPDDCell : YMZGMPBaseCell
-
+@property (nonatomic, strong) YMZGMPInfo *memberInfo;
 @end
 
 NS_ASSUME_NONNULL_END

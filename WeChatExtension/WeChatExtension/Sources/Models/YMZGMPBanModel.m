@@ -9,14 +9,14 @@
 #import "YMZGMPBanModel.h"
 #import "NSDictionary+Safe.h"
 
-@implementation YMBanModel
+@implementation YMZGMPBanModel
+
 - (instancetype)initWithDict:(NSDictionary *)dict
 {
     self = [super init];
     if (self) {
         self.wxid = [dict stringForKey:@"wxid"];
         self.nick = [dict stringForKey:@"nick"];
-        self.imagePath = [dict stringForKey:@"imagePath"];
     }
     return self;
 }
@@ -25,14 +25,15 @@
 {
     return @{
         @"wxid" : self.wxid?:@"",
-        @"nick" : self.nick?:@"",
-        @"imagePath" : self.imagePath?:@""
+        @"nick" : self.nick?:@""
     };
 }
 
-@end
+- (BOOL)hasEmptyKeywordOrReplyContent
+{
+    return (self.wxid == nil || self.nick == nil || [self.wxid isEqualToString:@""] || [self.nick isEqualToString:@""]);
+}
 
-@implementation YMZGMPBanModel
 - (void)encodeWithCoder:(NSCoder *)coder
 {
     unsigned int count = 0;
@@ -64,11 +65,4 @@
     return self;
 }
 
-- (NSMutableArray<YMBanModel *> *)bans
-{
-    if (!_bans) {
-        _bans = [NSMutableArray array];
-    }
-    return _bans;
-}
 @end

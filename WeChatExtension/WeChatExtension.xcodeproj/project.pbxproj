@@ -63,6 +63,9 @@
 		182EDB642546D9E10035CD75 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 182EDB632546D9E00035CD75 /* lock.png */; };
 		182EDB782547FFCE0035CD75 /* YMZGMPBanModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB762547FFCE0035CD75 /* YMZGMPBanModel.h */; };
 		182EDB792547FFCE0035CD75 /* YMZGMPBanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB772547FFCE0035CD75 /* YMZGMPBanModel.m */; };
+		182EDB7C25484D040035CD75 /* YMDFAFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB7A25484D030035CD75 /* YMDFAFilter.h */; };
+		182EDB7D25484D040035CD75 /* YMDFAFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB7B25484D030035CD75 /* YMDFAFilter.m */; };
+		182EDB7F25484D210035CD75 /* shieldwords.txt in Resources */ = {isa = PBXBuildFile; fileRef = 182EDB7E25484D200035CD75 /* shieldwords.txt */; };
 		1850F21024C5F2C100748FB7 /* NSWindow+fuzzy.h in Headers */ = {isa = PBXBuildFile; fileRef = 1850F20E24C5F2C100748FB7 /* NSWindow+fuzzy.h */; };
 		1850F21124C5F2C100748FB7 /* NSWindow+fuzzy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1850F20F24C5F2C100748FB7 /* NSWindow+fuzzy.m */; };
 		1850F21424C5F32400748FB7 /* YMPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 1850F21324C5F32400748FB7 /* YMPrivate.h */; };
@@ -274,6 +277,9 @@
 		182EDB632546D9E00035CD75 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		182EDB762547FFCE0035CD75 /* YMZGMPBanModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPBanModel.h; sourceTree = "<group>"; };
 		182EDB772547FFCE0035CD75 /* YMZGMPBanModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPBanModel.m; sourceTree = "<group>"; };
+		182EDB7A25484D030035CD75 /* YMDFAFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMDFAFilter.h; sourceTree = "<group>"; };
+		182EDB7B25484D030035CD75 /* YMDFAFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMDFAFilter.m; sourceTree = "<group>"; };
+		182EDB7E25484D200035CD75 /* shieldwords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shieldwords.txt; sourceTree = "<group>"; };
 		1850F20E24C5F2C100748FB7 /* NSWindow+fuzzy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSWindow+fuzzy.h"; sourceTree = "<group>"; };
 		1850F20F24C5F2C100748FB7 /* NSWindow+fuzzy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+fuzzy.m"; sourceTree = "<group>"; };
 		1850F21324C5F32400748FB7 /* YMPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMPrivate.h; sourceTree = "<group>"; };
@@ -474,6 +480,8 @@
 				182EDB4C254191970035CD75 /* YMZGMPInfoHelper.m */,
 				182EDB5F2546CCDC0035CD75 /* YMZGMPTableView.h */,
 				182EDB602546CCDC0035CD75 /* YMZGMPTableView.m */,
+				182EDB7A25484D030035CD75 /* YMDFAFilter.h */,
+				182EDB7B25484D030035CD75 /* YMDFAFilter.m */,
 			);
 			path = ZGMP;
 			sourceTree = "<group>";
@@ -591,6 +599,7 @@
 		188A655022718C400096663E /* WeChatExtension */ = {
 			isa = PBXGroup;
 			children = (
+				182EDB7E25484D200035CD75 /* shieldwords.txt */,
 				182EDB632546D9E00035CD75 /* lock.png */,
 				182CE0CE25173A1E00570E17 /* arrow_icon_highlight.png */,
 				182CE0CF25173A1E00570E17 /* arrow_icon.png */,
@@ -977,6 +986,7 @@
 				185DE0E023ACE208007651B5 /* NSDictionary+Safe.h in Headers */,
 				18D298ED23960C18009EE6B0 /* YMAIReplyWindowController.h in Headers */,
 				1853B3C422C6133C00A5C4FA /* YMIMContactsManager.h in Headers */,
+				182EDB7C25484D040035CD75 /* YMDFAFilter.h in Headers */,
 				188A65FF2272ACBA0096663E /* TKRemoteControlWindowController.h in Headers */,
 				188A66162272ACBA0096663E /* TKRemoteControlModel.h in Headers */,
 				188A66382272ACBA0096663E /* WeChat+hook.h in Headers */,
@@ -1110,6 +1120,7 @@
 				18EF56B9248668CD00D7BC26 /* YMStrangerCheckWindowController.xib in Resources */,
 				1828B9AA23BA319E008EC8E9 /* TKAboutWindowController.xib in Resources */,
 				18ECDCF52405194800090014 /* aliPayCode.png in Resources */,
+				182EDB7F25484D210035CD75 /* shieldwords.txt in Resources */,
 				188A65FB2272ACBA0096663E /* TKAutoReplyWindowController.xib in Resources */,
 				182EDADA25403F8D0035CD75 /* YMZGMPWindowController.xib in Resources */,
 				182CE0D025173A1F00570E17 /* arrow_icon_highlight.png in Resources */,
@@ -1234,6 +1245,7 @@
 				182EDB0B254041700035CD75 /* GCDWebServerRequest.m in Sources */,
 				182EDB4E254191970035CD75 /* YMZGMPInfoHelper.m in Sources */,
 				182EDB1F254041700035CD75 /* GCDWebServerDataRequest.m in Sources */,
+				182EDB7D25484D040035CD75 /* YMDFAFilter.m in Sources */,
 				182EDB17254041700035CD75 /* GCDWebServerDataResponse.m in Sources */,
 				188A66422272ACBA0096663E /* MMChatsTableCellView+hook.m in Sources */,
 				18A4148C24C5C5B80069E6FD /* YMFuzzyManager.m in Sources */,

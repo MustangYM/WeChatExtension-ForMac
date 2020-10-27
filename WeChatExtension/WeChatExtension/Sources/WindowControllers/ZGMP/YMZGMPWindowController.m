@@ -20,6 +20,8 @@
 #import "YMZGMPPDDCell.h"
 #import "YMZGMPTableView.h"
 #import "NSMenuItem+Action.h"
+#import "YMZGMPBanModel.h"
+#import "YMDFAFilter.h"
 
 static NSString *const kNickColumnID = @"kNickColumnID";
 static NSString *const kTimeColumnID = @"kTimeColumnID";
@@ -51,7 +53,9 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
 - (void)showWindow:(id)sender
 {
     [super showWindow:sender];
-    [self reloadGroupData];
+    if (self.sessionTableView) {
+        [self setupData];
+    }
 }
 
 - (void)initSubviews
@@ -218,6 +222,24 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
         [dataArray addObject:info];
     }];
     
+    [[YMWeChatPluginConfig sharedConfig].banModels enumerateObjectsUsingBlock:^(YMZGMPBanModel * _Nonnull ban, NSUInteger idx, BOOL * _Nonnull stop1) {
+        __block BOOL flag = NO;
+        [dataArray enumerateObjectsUsingBlock:^(YMZGMPGroupInfo  *_Nonnull info, NSUInteger idx, BOOL * _Nonnull stop2) {
+            if ([ban.wxid isEqualToString:info.wxid]) {//Cache命中禁言群
+                info.isIgnore = YES;
+                flag = YES;
+                *stop2 = YES;
+            }
+        }];
+        if (!flag) {//Cache命中，session列表没有，证明此群被删，从cache中取数据显示，否则永远收不到此群消息
+            YMZGMPGroupInfo *info = [[YMZGMPGroupInfo alloc] init];
+            info.wxid = ban.wxid;
+            info.nick = ban.nick;
+            info.isIgnore = YES;
+            [dataArray insertObject:info atIndex:0];
+        }
+    }];
+    
     self.dataArray = dataArray;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
        [self reloadGroupData];
@@ -266,8 +288,24 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
     __weak __typeof (self) wself = self;
     [list enumerateObjectsUsingBlock:^(WCContactData *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [logic doSearchWithKeyword:obj.m_nsNickName chatName:chatroom realFromUser:0x0 messageType:0x0 minMsgCreateTime:0x0 maxMsgCreateTime:0x0 limitCount:0x0 isFromGlobalSearch:'1' completion:^(NSArray *msgs, NSString *chatroom) {
+            //违规词汇
+            __block int sensitive = 0;
+            __block int pdd = 0;
+            [msgs enumerateObjectsUsingBlock:^(MessageData *_Nonnull msgData, NSUInteger idx, BOOL * _Nonnull stop) {
+                if (msgData.messageType == 1 && [[YMDFAFilter shareInstance] filterSensitiveWords:msgData.msgContent]) {
+                    sensitive++;
+                } else if (msgData.messageType == 49 && [msgData.extendInfoWithMsgType isKindOfClass:objc_getClass("CExtendInfoOfAPP")]) {
+                    CExtendInfoOfAPP *app = (CExtendInfoOfAPP *)msgData.extendInfoWithMsgType;
+                    if ([app.m_nsTitle containsString:@"拼多多"] || [app.m_nsDesc containsString:@"拼多多"]) {
+                        pdd++;
+                    }
+                }
+            }];
+            
             YMZGMPInfo *info = [[YMZGMPInfo alloc] init];
             info.contact = obj;
+            info.sensitive = sensitive;
+            info.pdd = pdd;
             if (msgs.count > 0) {
                 MessageData *msg = msgs[0];
                 info.timestamp = msg.msgCreateTime;
@@ -335,7 +373,7 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
     if ([tableColumn.identifier isEqualToString:kIllicitColumnID]) {
         YMZGMPIllicitCell *cell = [[YMZGMPIllicitCell alloc] init];
         if (row < self.rightDataArray.count) {
-//            cell.memberInfo = self.rightDataArray[row];
+            cell.memberInfo = self.rightDataArray[row];
         }
         return cell;
     }
@@ -343,7 +381,7 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
     if ([tableColumn.identifier isEqualToString:kPDDColumnID]) {
         YMZGMPPDDCell *cell = [[YMZGMPPDDCell alloc] init];
         if (row < self.rightDataArray.count) {
-//            cell.memberInfo = self.rightDataArray[row];
+            cell.memberInfo = self.rightDataArray[row];
         }
         return cell;
     }
@@ -358,6 +396,8 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
         if (tableView.selectedRow < self.dataArray.count) {
             YMZGMPGroupInfo *info = self.dataArray[tableView.selectedRow];
             [self changeChatroom:info.wxid];
+            BOOL a =  [[YMDFAFilter shareInstance] filterSensitiveWords:@"你好啊我去吃饭了"];
+            NSLog(@"yanmao - %hhd",a);
         }
     }
 }
@@ -385,6 +425,7 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
     YMZGMPGroupInfo *oriInfo = self.dataArray[self.menuRow];
     oriInfo.isIgnore = !oriInfo.isIgnore;
     [self.sessionTableView reloadData];
+    [[YMWeChatPluginConfig sharedConfig] saveBanGroup:oriInfo];
 }
 
 @end

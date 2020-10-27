@@ -27,6 +27,8 @@
 #import "YMIMContactsManager.h"
 #import "ANYMethodLog.h"
 #import "NSViewLayoutTool.h"
+#import "YMZGMPBanModel.h"
+#import "YMDFAFilter.h"
 
 @implementation NSObject (WeChatHook)
 
@@ -140,6 +142,8 @@
             [sessionMgr loadBrandSessionData];
         }
     }
+    
+    [YMDFAFilter shareInstance];
 }
 
 
@@ -331,12 +335,16 @@
 - (void)hook_receivedMsg:(NSArray *)msgs isFirstSync:(BOOL)arg2
 {
     __block BOOL flag = NO;
-    [msgs enumerateObjectsUsingBlock:^(AddMsg *addMsg, NSUInteger idx, BOOL * _Nonnull stop) {
+    [msgs enumerateObjectsUsingBlock:^(AddMsg *addMsg, NSUInteger idx, BOOL * _Nonnull stop1) {
         
-        if ([addMsg.fromUserName.string isEqualToString:@"24276073421@chatroom"]) {
-            flag = YES;
-            return;
-        }
+        //群管理中阻止群消息
+        [[YMWeChatPluginConfig sharedConfig].banModels enumerateObjectsUsingBlock:^(YMZGMPBanModel  *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop2) {
+            if ([addMsg.fromUserName.string isEqualToString:obj.wxid]) {
+                flag = YES;
+                *stop2 = YES;
+                return;
+            }
+        }];
         
         NSDate *now = [NSDate date];
         NSTimeInterval nowSecond = now.timeIntervalSince1970;

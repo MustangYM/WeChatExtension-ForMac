@@ -17,8 +17,7 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
     PluginLanguageTypeEN
 };
 
-@class YMAIAutoModel;
-@class VAutoForwardingModel;
+@class YMAIAutoModel, VAutoForwardingModel, YMZGMPGroupInfo;
 
 @interface YMWeChatPluginConfig : GVUserDefaults
 
@@ -51,19 +50,22 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @property (nonatomic) BOOL closeThemeMode;                      /**<    原始模式     */
 @property (nonatomic) BOOL isThemeLoaded;                       /**<    是否有使用过皮肤    */
 
-@property (nonatomic, strong) NSMutableArray *autoReplyModels;           /**<    自动回复的数组    */
-@property (nonatomic, strong) NSMutableArray *remoteControlModels;       /**<    远程控制的数组    */
-@property (nonatomic, strong) NSMutableArray *ignoreSessionModels;       /**<    聊天置底的数组    */
+@property (nonatomic, strong) NSMutableArray *autoReplyModels;           /**<    自动回复的    */
+@property (nonatomic, strong) NSMutableArray *remoteControlModels;       /**<    远程控制的    */
+@property (nonatomic, strong) NSMutableArray *ignoreSessionModels;       /**<    聊天置底的    */
 @property (nonatomic, strong) NSMutableArray *selectSessions;            /**<    已经选中的会话    */
-@property (nonatomic, strong) NSMutableSet *revokeMsgSet;                /**<    撤回的消息集合    */
-@property (nonatomic, strong) NSMutableSet *unreadSessionSet;            /**<    标记未读消息集合    */
+@property (nonatomic, strong) NSMutableSet *revokeMsgSet;                /**<    撤回的消息    */
+@property (nonatomic, strong) NSMutableSet *unreadSessionSet;            /**<    标记未读消息    */
 @property (nonatomic, copy, readonly) NSDictionary *localInfoPlist;
 @property (nonatomic, copy, readonly) NSDictionary *romoteInfoPlist;
 @property (nonatomic, strong) VAutoForwardingModel *VAutoForwardingModel;      /**<    自动转发的数组    */
+@property (nonatomic, strong) NSMutableArray *banModels;                /**<    屏蔽的群    */
 @property (nonatomic, strong) YMAIAutoModel *AIReplyModel;
 @property (nonatomic) PluginLanguageType languageType;
 @property (nonatomic, weak) MMBrandChatsViewController *brandChatsViewController;
 
+- (void)saveBanGroup:(YMZGMPGroupInfo *)info;
+- (void)saveBanModels;
 - (void)saveAutoReplyModels;
 - (void)saveRemoteControlModels;
 - (void)saveIgnoreSessionModels;

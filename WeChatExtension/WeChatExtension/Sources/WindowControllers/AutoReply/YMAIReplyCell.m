@@ -11,6 +11,7 @@
 #import "YMThemeManager.h"
 #import "NSViewLayoutTool.h"
 #import "YMZGMPInfoHelper.h"
+#import "YMCacheManager.h"
 
 @interface YMAIReplyCell ()
 @property (nonatomic, strong) NSImageView *avatar;
@@ -105,6 +106,9 @@
     }
     self.wxid = info.wxid;
     self.lockContentView.hidden = !info.isIgnore;
+    
+//        [[YMCacheManager shareManager] cacheImage:self.avatar.image chatroom:info.wxid];
+    info.nick = self.nameLabel.stringValue;
     [self onUpdateCell];
 }
 
@@ -121,7 +125,7 @@
     
     if ([wxid containsString:@"@chatroom"]) {
         MMSessionInfo *info = [YMIMContactsManager getSessionInfo:wxid];
-        nickName = info.m_packedInfo.m_contact.m_nsNickName.length > 0 ? info.m_packedInfo.m_contact.m_nsNickName : YMLanguage(@"未定义群名", @"No Group Name");
+        nickName = info.m_packedInfo.m_contact.m_nsNickName.length > 0 ? info.m_packedInfo.m_contact.m_nsNickName : (self.info.nick ?: YMLanguage(@"未定义群名", @"No Group Name"));
         GroupStorage *groupStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
         contact = [groupStorage GetGroupContact:wxid];
         if (!contact) nickName = YMLanguage(@"无效群", @"Invalid Group Name");
