@@ -32,8 +32,6 @@
 {
     self.avatar = ({
            NSImageView *avatar = [[NSImageView alloc] initWithFrame:CGRectMake(5, 5, 30, 30)];
-           avatar.wantsLayer = YES;
-           avatar.layer.cornerRadius = 3;
            avatar;
        });
        

@@ -43,6 +43,8 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
 @property (nonatomic, assign) NSInteger menuRow;
 @property (nonatomic, assign) NSInteger sessionSelectRow;
 @property (nonatomic, assign) NSInteger detailSelectRow;
+@property (nonatomic, assign) NSInteger page;
+@property (nonatomic, copy) NSString *currentChatroom;
 @end
 
 @implementation YMZGMPWindowController
@@ -283,6 +285,12 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
 {
     __weak __typeof (self) wself = self;
     dispatch_async(dispatch_get_main_queue(), ^{
+        self.rightDataArray = [NSMutableArray arrayWithArray:[self.rightDataArray sortedArrayUsingComparator:^NSComparisonResult(YMZGMPInfo*  _Nonnull obj1, YMZGMPInfo*  _Nonnull obj2) {
+            NSNumber *number1 = [NSNumber numberWithInt:obj1.timestamp];
+            NSNumber *number2 = [NSNumber numberWithInt:obj2.timestamp];
+            NSComparisonResult result = [number1 compare:number2];
+            return  result == NSOrderedAscending;
+        }]];
        [wself.detailTableView reloadData];
         wself.progress.hidden = wself.rightDataArray.count > 0;
         wself.defaultImageView.hidden = wself.rightDataArray.count > 0;
@@ -292,6 +300,7 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
 - (void)resetContent
 {
     [self.rightDataArray removeAllObjects];
+    self.page = 0;
     [self reloadDetailData];
     self.rightContentView.hidden = NO;
     self.rightPlaceholderContentView.hidden = YES;
@@ -299,15 +308,26 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
 
 - (void)changeChatroom:(NSString *)chatroom
 {
-    [self resetContent];
-    
     GroupStorage *groupStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
     NSArray *list = [groupStorage GetGroupMemberListWithGroupUserName:chatroom limit:500 filterSelf:YES];
+    
+    NSInteger loc = self.page == 0 ? 0 : self.page * 20 + 1;
+    NSUInteger length = 20;
+    if (loc + 20 > list.count) {
+        length = list.count - loc;
+    }
+    
+    if (length <= 0 || loc >= list.count) {
+        return;
+    }
+
+    NSArray *limitArray = [list subarrayWithRange:NSMakeRange(loc, length)];
     
     MMChatFTSSearchLogic *logic = [[objc_getClass("MMChatFTSSearchLogic") alloc] init];
     NSMutableArray *array = [NSMutableArray array];
     __weak __typeof (self) wself = self;
-    [list enumerateObjectsUsingBlock:^(WCContactData *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    
+    [limitArray enumerateObjectsUsingBlock:^(WCContactData *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [logic doSearchWithKeyword:obj.m_nsNickName chatName:chatroom realFromUser:0x0 messageType:0x0 minMsgCreateTime:0x0 maxMsgCreateTime:0x0 limitCount:0x0 isFromGlobalSearch:'1' completion:^(NSArray *msgs, NSString *chatroom) {
             //违规词汇
             __block int sensitive = 0;
@@ -322,7 +342,7 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
                     }
                 }
             }];
-            
+
             YMZGMPInfo *info = [[YMZGMPInfo alloc] init];
             info.contact = obj;
             info.sensitive = sensitive;
@@ -333,14 +353,16 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
                 info.timestamp = msg.msgCreateTime;
             }
             [array addObject:info];
-            if (array.count == list.count) {
-                wself.rightDataArray = [NSMutableArray arrayWithArray:[array sortedArrayUsingComparator:^NSComparisonResult(YMZGMPInfo*  _Nonnull obj1, YMZGMPInfo*  _Nonnull obj2) {
-                    NSNumber *number1 = [NSNumber numberWithInt:obj1.timestamp];
-                    NSNumber *number2 = [NSNumber numberWithInt:obj2.timestamp];
-                    NSComparisonResult result = [number1 compare:number2];
-                    return  result == NSOrderedAscending;
-                }]];
+            if (array.count == limitArray.count) {
+              NSArray *temp = [NSArray arrayWithArray:[array sortedArrayUsingComparator:^NSComparisonResult(YMZGMPInfo*  _Nonnull obj1, YMZGMPInfo*  _Nonnull obj2) {
+                   NSNumber *number1 = [NSNumber numberWithInt:obj1.timestamp];
+                   NSNumber *number2 = [NSNumber numberWithInt:obj2.timestamp];
+                   NSComparisonResult result = [number1 compare:number2];
+                   return  result == NSOrderedAscending;
+               }]];
+                [wself.rightDataArray addObjectsFromArray:temp];
                 [wself reloadDetailData];
+                wself.page ++;
             }
         }];
     }];
@@ -418,6 +440,8 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
         self.sessionSelectRow = tableView.selectedRow;
         if (tableView.selectedRow < self.dataArray.count) {
             YMZGMPGroupInfo *info = self.dataArray[tableView.selectedRow];
+            self.currentChatroom = info.wxid;
+            [self resetContent];
             [self changeChatroom:info.wxid];
         }
     } else {
@@ -471,8 +495,19 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
 }
 
 #pragma mark - Refresh
+//TO DO logic分离，tableView区分，菊花，窗口Ntf去掉
 - (void)ym_loadingFooterForTableView:(YMZGMPTableView *)tableView
 {
-    NSLog(@"刷新");
+    if (tableView == self.detailTableView) {
+        [self changeChatroom:self.currentChatroom];
+    }
+}
+
+- (NSMutableArray *)rightDataArray
+{
+    if (!_rightDataArray) {
+        _rightDataArray = [NSMutableArray array];
+    }
+    return _rightDataArray;
 }
 @end

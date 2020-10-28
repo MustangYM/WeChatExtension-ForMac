@@ -94,11 +94,14 @@
     if  (originSizeAndOffSize >= clipView.documentRect.size.height ) {
         if (self.state == YMZGMPRefreshTableViewStateDefault) {
             self.state = YMZGMPRefreshTableViewStateTriggered;
+            CGFloat old;
+            CGFloat new = clipView.documentVisibleRect.origin.y;
+            if (old == new) return;
             [self doFooterLoading:[[NSDate date] timeIntervalSince1970]];
+             old = clipView.documentVisibleRect.origin.y;
         } else if(self.state == YMZGMPRefreshTableViewStateTriggered ) {
             if (self.state != YMZGMPRefreshTableViewStateLoading) {
                 self.state = YMZGMPRefreshTableViewStateLoading;
-                [self doFooterLoading:[[NSDate date] timeIntervalSince1970]];
             }
         }
         
@@ -120,7 +123,6 @@
     if (self.isLastPage) {
         return;
     }
-    
     if ([self.zgmpDelegate respondsToSelector:@selector(ym_loadingFooterForTableView:)]) {
         [self.zgmpDelegate ym_loadingFooterForTableView:self];
     }
