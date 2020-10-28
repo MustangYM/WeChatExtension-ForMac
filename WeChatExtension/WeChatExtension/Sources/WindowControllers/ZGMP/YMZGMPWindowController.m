@@ -451,7 +451,7 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
     if (tableView == self.detailTableView) {
         YMZGMPGroupInfo *groupInfo = self.dataArray[self.sessionSelectRow];
         YMZGMPInfo *info = self.rightDataArray[self.detailSelectRow];
-       MMSessionInfo *sessionInfo = [YMIMContactsManager getSessionInfo:groupInfo.wxid];
+        MMSessionInfo *sessionInfo = [YMIMContactsManager getSessionInfo:groupInfo.wxid];
         
         WindowCenter *windowCenter = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("WindowCenter")];
         MMChatManagerWindowController *window = [windowCenter getWindowController:@"MMChatManagerWindowController" makeIfNecessary:0x1];
@@ -470,4 +470,9 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
     [[YMWeChatPluginConfig sharedConfig] saveBanGroup:oriInfo];
 }
 
+#pragma mark - Refresh
+- (void)ym_loadingFooterForTableView:(YMZGMPTableView *)tableView
+{
+    NSLog(@"刷新");
+}
 @end
