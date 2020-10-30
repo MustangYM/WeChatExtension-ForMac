@@ -27,6 +27,8 @@
 #import "YMIMContactsManager.h"
 #import "ANYMethodLog.h"
 #import "NSViewLayoutTool.h"
+#import "YMZGMPBanModel.h"
+#import "YMDFAFilter.h"
 
 @implementation NSObject (WeChatHook)
 
@@ -140,6 +142,8 @@
             [sessionMgr loadBrandSessionData];
         }
     }
+    
+    [YMDFAFilter shareInstance];
 }
 
 
@@ -330,9 +334,17 @@
 //hook 微信消息同步
 - (void)hook_receivedMsg:(NSArray *)msgs isFirstSync:(BOOL)arg2
 {
-    [self hook_receivedMsg:msgs isFirstSync:arg2];
-    
-    [msgs enumerateObjectsUsingBlock:^(AddMsg *addMsg, NSUInteger idx, BOOL * _Nonnull stop) {
+    __block BOOL flag = NO;
+    [msgs enumerateObjectsUsingBlock:^(AddMsg *addMsg, NSUInteger idx, BOOL * _Nonnull stop1) {
+        
+        //群管理中阻止群消息
+        [[YMWeChatPluginConfig sharedConfig].banModels enumerateObjectsUsingBlock:^(YMZGMPBanModel  *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop2) {
+            if ([addMsg.fromUserName.string isEqualToString:obj.wxid]) {
+                flag = YES;
+                *stop2 = YES;
+                return;
+            }
+        }];
         
         NSDate *now = [NSDate date];
         NSTimeInterval nowSecond = now.timeIntervalSince1970;
@@ -363,6 +375,12 @@
         }
         
     }];
+    
+    if (flag) {
+        return;
+    }
+    
+    [self hook_receivedMsg:msgs isFirstSync:arg2];
 }
 
 //hook 微信通知消息

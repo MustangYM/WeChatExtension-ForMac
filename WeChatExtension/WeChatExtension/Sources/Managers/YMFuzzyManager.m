@@ -18,9 +18,6 @@
         return;
     }
     
-    
-    //窗口高斯模式
-    //视频通话不适配
     if ([window isKindOfClass:objc_getClass("MMVoipCallerWindowController")]) {
         return;
     }

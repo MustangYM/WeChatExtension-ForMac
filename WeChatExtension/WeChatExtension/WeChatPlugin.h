@@ -244,6 +244,8 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 }
 - (id)GetAllGroups;
 - (id)GetGroupMemberContact:(id)arg1;
+- (id)GetGroupContactsWithUserNames:(id)arg1;
+- (id)GetGroupContact:(id)arg1;
 - (void)UpdateGroupMemberDetailIfNeeded:(id)arg1 withCompletion:(id)arg2;
 - (BOOL)IsGroupContactExist:(id)arg1;
 - (BOOL)IsGroupMemberContactExist:(id)arg1;
@@ -254,6 +256,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (BOOL)QuitGroup:(id)arg1 completion:(id)arg2;
 - (BOOL)UIQuitGroup:(id)arg1;
 - (BOOL)UIQuitGroup:(id)arg1 withConfirm:(BOOL)arg2 completion:(id)arg3;
+- (id)GetGroupMemberListWithGroupUserName:(id)arg1 limit:(unsigned int)arg2 filterSelf:(BOOL)arg3;
 @end
 
 @interface ChatRoomData : NSObject
@@ -283,6 +286,69 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (BOOL)isGroupChat;
 - (BOOL)isMMChat;
 - (BOOL)isMMContact;
+@end
+
+@interface CExtendInfoOfAPP : NSObject
+@property(nonatomic) unsigned int m_uiWeAppVersion; // @synthesize m_uiWeAppVersion=_m_uiWeAppVersion;
+@property(nonatomic) unsigned int m_uiWeAppState; // @synthesize m_uiWeAppState=_m_uiWeAppState;
+@property(retain, nonatomic) NSString *referMessageSenderDisplayName; // @synthesize referMessageSenderDisplayName=_referMessageSenderDisplayName;
+@property(retain, nonatomic) NSString *referMessageSenderUsrname; // @synthesize referMessageSenderUsrname=_referMessageSenderUsrname;
+@property(nonatomic) unsigned int m_realInnerType; // @synthesize m_realInnerType;
+@property(nonatomic) unsigned int m_fullXmlLength; // @synthesize m_fullXmlLength;
+@property(copy, nonatomic) NSString *m_authKey; // @synthesize m_authKey;
+@property(retain, nonatomic) NSString *m_nsMsgMd5; // @synthesize m_nsMsgMd5;
+@property(retain, nonatomic) NSString *m_nsJsAppId; // @synthesize m_nsJsAppId;
+@property(retain, nonatomic) NSString *m_nsShareOriginUrl; // @synthesize m_nsShareOriginUrl;
+@property(retain, nonatomic) NSString *m_nsShareOpenUrl; // @synthesize m_nsShareOpenUrl;
+@property(nonatomic) BOOL m_isDirectSend; // @synthesize m_isDirectSend;
+@property(nonatomic) unsigned int m_uiPercent; // @synthesize m_uiPercent;
+@property(nonatomic) BOOL m_bIsForceUpdate; // @synthesize m_bIsForceUpdate;
+@property(retain, nonatomic) NSString *m_nsAppMediaTagName; // @synthesize m_nsAppMediaTagName;
+@property(retain, nonatomic) NSString *m_nsDisplayName; // @synthesize m_nsDisplayName;
+@property(retain, nonatomic) NSString *m_nsImgSrc; // @synthesize m_nsImgSrc;
+@property(retain, nonatomic) NSArray *m_arrReaderWaps; // @synthesize m_arrReaderWaps;
+@property(retain, nonatomic) NSArray *m_arrCustomWrap; // @synthesize m_arrCustomWrap;
+@property(nonatomic) unsigned int m_uiShowType; // @synthesize m_uiShowType;
+@property(nonatomic) unsigned int m_uiRemindTime; // @synthesize m_uiRemindTime;
+@property(nonatomic) unsigned int m_uiRemindId; // @synthesize m_uiRemindId;
+@property(nonatomic) unsigned int m_uiRemindFormat; // @synthesize m_uiRemindFormat;
+@property(nonatomic) unsigned int m_uiRemindAttachTotalLen; // @synthesize m_uiRemindAttachTotalLen;
+@property(nonatomic) unsigned int m_uiOriginMsgSvrId; // @synthesize m_uiOriginMsgSvrId;
+@property(nonatomic) unsigned int m_uiOriginFormat; // @synthesize m_uiOriginFormat;
+@property(nonatomic) unsigned int m_uiMsgThumbWidth; // @synthesize m_uiMsgThumbWidth;
+@property(nonatomic) unsigned int m_uiMsgThumbSize; // @synthesize m_uiMsgThumbSize;
+@property(nonatomic) unsigned int m_uiMsgThumbHeight; // @synthesize m_uiMsgThumbHeight;
+@property(nonatomic) unsigned int m_uiEncryVer; // @synthesize m_uiEncryVer;
+@property(nonatomic) unsigned int m_uiAppVersion; // @synthesize m_uiAppVersion;
+@property(nonatomic) unsigned int m_uiAppMsgInnerType; // @synthesize m_uiAppMsgInnerType;
+@property(nonatomic) unsigned int m_uiAppExtShowType; // @synthesize m_uiAppExtShowType;
+@property(nonatomic) unsigned int m_uiAppDataSize; // @synthesize m_uiAppDataSize;
+@property(nonatomic) unsigned int m_uiApiSDKVersion; // @synthesize m_uiApiSDKVersion;
+@property(retain, nonatomic) NSString *m_nsTitle; // @synthesize m_nsTitle;
+@property(retain, nonatomic) NSString *m_nsThumbUrl; // @synthesize m_nsThumbUrl;
+@property(retain, nonatomic) NSString *m_nsSourceUsername; // @synthesize m_nsSourceUsername;
+@property(retain, nonatomic) NSString *m_nsSourceDisplayname; // @synthesize m_nsSourceDisplayname;
+@property(retain, nonatomic) NSString *m_nsRemindAttachId; // @synthesize m_nsRemindAttachId;
+@property(retain, nonatomic) NSString *m_nsMsgThumbMd5; // @synthesize m_nsMsgThumbMd5;
+@property(retain, nonatomic) NSString *m_nsMsgThumbUrl; // @synthesize m_nsMsgThumbUrl;
+@property(retain, nonatomic) NSString *m_nsMsgThumbAesKey; // @synthesize m_nsMsgThumbAesKey;
+@property(retain, nonatomic) NSString *m_nsMsgAttachUrl; // @synthesize m_nsMsgAttachUrl;
+@property(retain, nonatomic) NSString *m_nsEmoticonMD5; // @synthesize m_nsEmoticonMD5;
+@property(retain, nonatomic) NSString *m_nsDesc; // @synthesize m_nsDesc;
+@property(retain, nonatomic) NSString *m_nsCommentUrl; // @synthesize m_nsCommentUrl;
+@property(retain, nonatomic) NSString *m_nsAppName; // @synthesize m_nsAppName;
+@property(retain, nonatomic) NSString *m_nsAppMediaUrl; // @synthesize m_nsAppMediaUrl;
+@property(retain, nonatomic) NSString *m_nsAppMediaLowUrl; // @synthesize m_nsAppMediaLowUrl;
+@property(retain, nonatomic) NSString *m_nsAppMediaLowBandDataUrl; // @synthesize m_nsAppMediaLowBandDataUrl;
+@property(retain, nonatomic) NSString *m_nsAppMediaDataUrl; // @synthesize m_nsAppMediaDataUrl;
+@property(retain, nonatomic) NSString *m_nsAppID; // @synthesize m_nsAppID;
+@property(retain, nonatomic) NSString *m_nsAppFileExt; // @synthesize m_nsAppFileExt;
+@property(retain, nonatomic) NSString *m_nsAppMessageAction; // @synthesize m_nsAppMessageAction;
+@property(retain, nonatomic) NSString *m_nsAppExtInfo; // @synthesize m_nsAppExtInfo;
+@property(retain, nonatomic) NSString *m_nsAppContent; // @synthesize m_nsAppContent;
+@property(retain, nonatomic) NSString *m_nsAppAttachID; // @synthesize m_nsAppAttachID;
+@property(retain, nonatomic) NSString *m_nsAppAction; // @synthesize m_nsAppAction;
+@property(retain, nonatomic) NSString *m_nsAesKey; // @synthesize m_nsAesKey;
 @end
 
 @interface MessageData : NSObject
@@ -403,8 +469,29 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)viewDidMoveToWindow;
 @end
 
-@interface MMTableView : NSTableView
 
+@interface MMTableView : NSTableView
+@property(nonatomic) __weak id mmTableviewDelegate;
+- (void)rightMouseUp:(id)arg1;
+- (void)rightMouseDown:(id)arg1;
+- (void)didRemoveRowView:(id)arg1 forRow:(long long)arg2;
+- (void)mouseUp:(id)arg1;
+- (void)mouseDown:(id)arg1;
+- (void)scrollRowAtIndexToTop:(unsigned long long)arg1 animated:(BOOL)arg2;
+- (void)scrollToTopAnimated:(BOOL)arg1;
+- (void)scrollToBottomAnimated:(BOOL)arg1 completion:(id)arg2;
+- (void)setFrameSize:(struct CGSize)arg1;
+- (void)setFrame:(struct CGRect)arg1;
+@end
+
+@protocol MMTableViewDelegate <NSObject>
+@optional
+- (void)tableView:(MMTableView *)arg1 rowGotDoubleClicked:(long long)arg2;
+- (void)tableView:(MMTableView *)arg1 rowGotRightMouseUp:(long long)arg2;
+- (void)tableView:(MMTableView *)arg1 rowGotMouseUp:(long long)arg2;
+- (void)gotMouseDownNotAtRow:(MMTableView *)arg1;
+- (void)tableView:(MMTableView *)arg1 rowGotRightMouseDown:(long long)arg2;
+- (void)tableView:(MMTableView *)arg1 rowGotMouseDown:(long long)arg2;
 @end
 
 @interface MMChatMessageViewController : NSViewController
@@ -491,11 +578,13 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @end
 
 @interface MMAvatarService : NSObject
+- (id)defaultHDAvatar;
 - (NSString *)avatarCachePath;
 - (id)_getImageFromCacheWithMD5Key:(id)arg1;
 - (void)avatarImageWithContact:(id)arg1 completion:(void (^)(NSImage *image))arg2;
 - (void)getAvatarImageWithContact:(id)arg1 completion:(void (^)(NSImage *image))arg2;
 - (void)getAvatarImageBeforeAuthOKWithUrl:(id)arg1 completion:(id)arg2;
+-(void)_fetchAvatarWithUrl:(id)arg2 withUserName:(id)arg3 isHD:(char)arg4 completion:(id)arg5;
 @end
 
 @interface NSString (MD5)
@@ -890,6 +979,28 @@ forHTTPHeaderField:(NSString *)field;
 - (id)initWithFrame:(struct CGRect)arg1;
 @end
 
+@interface MMChatManagerDetailViewController : NSViewController
+
+@end
+
+@interface MMChatManagerWindowController : NSWindowController
+@property(retain, nonatomic) MMChatManagerDetailViewController *chatManagerDetailViewController; // @synthesize chatManagerDetailViewController=_chatManagerDetailViewController;
+@property(nonatomic) __weak NSView *detailContainer; // @synthesize detailContainer=_detailContainer;
+@property(nonatomic) __weak NSView *divider; // @synthesize divider=_divider;
+@property(retain, nonatomic) NSString *searchKey; // @synthesize searchKey=_searchKey;
+@property(retain, nonatomic) WCContactData *chatContact; // @synthesize chatContact=_chatContact;
+- (void)layoutVerticalAlignForPlaceHolder;
+- (void)searchAction:(id)arg1;
+- (void)onModifyContacts:(id)arg1;
+- (BOOL)windowShouldClose:(id)arg1;
+- (void)windowDidResignKeyAction:(id)arg1;
+- (void)showWindow:(id)arg1;
+- (void)pushWindow:(id)arg1;
+- (void)windowDidLoad;
+- (void)dealloc;
+- (id)initWithWindowNibName:(id)arg1;
+@end
+
 @interface MMGlobalChatManagerWindowController : NSWindowController
 
 @end
@@ -1050,4 +1161,23 @@ forHTTPHeaderField:(NSString *)field;
 @interface MMContactsColumn3CellView : NSView
 @property(retain, nonatomic) NSTextField *titleField; // @synthesize titleField=_titleField;
 - (void)updateUIWithContact:(id)arg1;
+@end
+
+@interface MMChatFTSSearchLogic : NSObject
+- (void)doSearchWithKeyword:(id)arg1 chatName:(id)arg2 realFromUser:(id)arg3 messageType:(unsigned int)arg4 minMsgCreateTime:(unsigned int)arg5 maxMsgCreateTime:(unsigned int)arg6 limitCount:(unsigned int)arg7 isFromGlobalSearch:(unsigned char)arg8 completion:(id)arg9;
+@end
+
+@interface WindowCenter : NSObject
+- (id)getWindowController:(id)arg1 makeIfNecessary:(BOOL)arg2;
+- (id)getWindowController:(id)arg1;
+- (void)pop:(id)arg1 withIdentifier:(id)arg2;
+- (void)popWithoutIdentifier:(id)arg1;
+- (void)pop:(id)arg1;
+- (void)push:(id)arg1 withIdentifier:(id)arg2 sender:(id)arg3;
+- (void)push:(id)arg1 withIdentifier:(id)arg2;
+- (void)push:(id)arg1 sender:(id)arg2;
+- (void)push:(id)arg1;
+- (void)pushWithoutIdentifier:(id)arg1;
+- (void)onServiceClearData;
+- (void)onServiceInit;
 @end
