@@ -51,7 +51,7 @@
     });
 }
 
-- (void)updateDetailData:(NSString *)chatroom completion:(void(^)(NSArray *ary))completion finally:(void(^)())finally
+- (void)updateDetailData:(NSString *)chatroom completion:(void(^)(NSArray *ary))completion finally:(void(^)(void))finally
 {
     if (self.isLoading) {
         return;
@@ -67,8 +67,8 @@
     }
     
     GroupStorage *groupStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
-    NSArray *list = [groupStorage GetGroupMemberListWithGroupUserName:chatroom limit:500 filterSelf:YES];
-    NSInteger loc = self.page == 0 ? 0 : self.page * 20 + 1;
+    NSArray *list = [groupStorage GetGroupMemberListWithGroupUserName:chatroom limit:500 filterSelf:NO];
+    NSInteger loc = self.page == 0 ? 0 : self.page * 20;
     NSUInteger length = 20;
     if (loc + 20 > list.count) {
         length = list.count - loc;
