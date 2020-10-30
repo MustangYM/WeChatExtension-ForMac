@@ -8,6 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		08294044245812FB0056E0C6 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 08294043245812FA0056E0C6 /* pin.png */; };
+		181A10A9254BC49D00A07D52 /* YMZGMPIllicitCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 181A109D254BC49D00A07D52 /* YMZGMPIllicitCell.h */; };
+		181A10AA254BC49D00A07D52 /* YMZGMPBaseCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 181A109E254BC49D00A07D52 /* YMZGMPBaseCell.h */; };
+		181A10AB254BC49D00A07D52 /* YMZGMPPDDCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A109F254BC49D00A07D52 /* YMZGMPPDDCell.m */; };
+		181A10AC254BC49D00A07D52 /* YMZGMPTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A10A0254BC49D00A07D52 /* YMZGMPTimeCell.m */; };
+		181A10AD254BC49D00A07D52 /* YMZGMPGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A10A1254BC49D00A07D52 /* YMZGMPGroupCell.m */; };
+		181A10AE254BC49D00A07D52 /* YMZGMPSessionCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 181A10A2254BC49D00A07D52 /* YMZGMPSessionCell.h */; };
+		181A10AF254BC49D00A07D52 /* YMZGMPIllicitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A10A3254BC49D00A07D52 /* YMZGMPIllicitCell.m */; };
+		181A10B0254BC49D00A07D52 /* YMZGMPPDDCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 181A10A4254BC49D00A07D52 /* YMZGMPPDDCell.h */; };
+		181A10B1254BC49D00A07D52 /* YMZGMPBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A10A5254BC49D00A07D52 /* YMZGMPBaseCell.m */; };
+		181A10B2254BC49D00A07D52 /* YMZGMPTimeCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 181A10A6254BC49D00A07D52 /* YMZGMPTimeCell.h */; };
+		181A10B3254BC49D00A07D52 /* YMZGMPSessionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A10A7254BC49D00A07D52 /* YMZGMPSessionCell.m */; };
+		181A10B4254BC49D00A07D52 /* YMZGMPGroupCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 181A10A8254BC49D00A07D52 /* YMZGMPGroupCell.h */; };
+		181A10BD254BEB9200A07D52 /* YMTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 181A10BB254BEB9200A07D52 /* YMTableView.h */; };
+		181A10BE254BEB9200A07D52 /* YMTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A10BC254BEB9200A07D52 /* YMTableView.m */; };
+		181A10C2254BEF7D00A07D52 /* YMZGMPSessionTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 181A10C0254BEF7D00A07D52 /* YMZGMPSessionTableView.h */; };
+		181A10C3254BEF7D00A07D52 /* YMZGMPSessionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A10C1254BEF7D00A07D52 /* YMZGMPSessionTableView.m */; };
+		181A10C6254BEF8F00A07D52 /* YMZGMPDetailTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 181A10C4254BEF8F00A07D52 /* YMZGMPDetailTableView.h */; };
+		181A10C7254BEF8F00A07D52 /* YMZGMPDetailTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A10C5254BEF8F00A07D52 /* YMZGMPDetailTableView.m */; };
+		181A10CE254BFD9300A07D52 /* YMZGMPDetailLogic.h in Headers */ = {isa = PBXBuildFile; fileRef = 181A10CC254BFD9300A07D52 /* YMZGMPDetailLogic.h */; };
+		181A10CF254BFD9300A07D52 /* YMZGMPDetailLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A10CD254BFD9300A07D52 /* YMZGMPDetailLogic.m */; };
 		1828B9AA23BA319E008EC8E9 /* TKAboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1828B9A923BA319E008EC8E9 /* TKAboutWindowController.xib */; };
 		182CE0D025173A1F00570E17 /* arrow_icon_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 182CE0CE25173A1E00570E17 /* arrow_icon_highlight.png */; };
 		182CE0D125173A1F00570E17 /* arrow_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 182CE0CF25173A1E00570E17 /* arrow_icon.png */; };
@@ -50,16 +70,8 @@
 		182EDB27254041700035CD75 /* TCBlobDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB02254041700035CD75 /* TCBlobDownloader.h */; };
 		182EDB28254041700035CD75 /* ANYMethodLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB04254041700035CD75 /* ANYMethodLog.m */; };
 		182EDB29254041700035CD75 /* ANYMethodLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB05254041700035CD75 /* ANYMethodLog.h */; };
-		182EDB4525415FBC0035CD75 /* YMZGMPSessionCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB4325415FBC0035CD75 /* YMZGMPSessionCell.h */; };
-		182EDB4625415FBC0035CD75 /* YMZGMPSessionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB4425415FBC0035CD75 /* YMZGMPSessionCell.m */; };
-		182EDB49254160320035CD75 /* YMZGMPGroupCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB47254160320035CD75 /* YMZGMPGroupCell.h */; };
-		182EDB4A254160320035CD75 /* YMZGMPGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB48254160320035CD75 /* YMZGMPGroupCell.m */; };
 		182EDB4D254191970035CD75 /* YMZGMPInfoHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB4B254191970035CD75 /* YMZGMPInfoHelper.h */; };
 		182EDB4E254191970035CD75 /* YMZGMPInfoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB4C254191970035CD75 /* YMZGMPInfoHelper.m */; };
-		182EDB552542DFD00035CD75 /* YMZGMPTimeCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB532542DFD00035CD75 /* YMZGMPTimeCell.h */; };
-		182EDB562542DFD00035CD75 /* YMZGMPTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB542542DFD00035CD75 /* YMZGMPTimeCell.m */; };
-		182EDB612546CCDC0035CD75 /* YMZGMPTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB5F2546CCDC0035CD75 /* YMZGMPTableView.h */; };
-		182EDB622546CCDC0035CD75 /* YMZGMPTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB602546CCDC0035CD75 /* YMZGMPTableView.m */; };
 		182EDB642546D9E10035CD75 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 182EDB632546D9E00035CD75 /* lock.png */; };
 		182EDB782547FFCE0035CD75 /* YMZGMPBanModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDB762547FFCE0035CD75 /* YMZGMPBanModel.h */; };
 		182EDB792547FFCE0035CD75 /* YMZGMPBanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDB772547FFCE0035CD75 /* YMZGMPBanModel.m */; };
@@ -75,12 +87,6 @@
 		185DE0E123ACE208007651B5 /* NSDictionary+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 185DE0DF23ACE208007651B5 /* NSDictionary+Safe.m */; };
 		187387B424E28CA200C7820D /* NSViewLayoutTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 187387B224E28CA100C7820D /* NSViewLayoutTool.m */; };
 		187387B524E28CA200C7820D /* NSViewLayoutTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 187387B324E28CA200C7820D /* NSViewLayoutTool.h */; };
-		187A4ADF2544079E007B940F /* YMZGMPBaseCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 187A4ADD2544079E007B940F /* YMZGMPBaseCell.h */; };
-		187A4AE02544079E007B940F /* YMZGMPBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187A4ADE2544079E007B940F /* YMZGMPBaseCell.m */; };
-		187A4AE3254408AE007B940F /* YMZGMPIllicitCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 187A4AE1254408AE007B940F /* YMZGMPIllicitCell.h */; };
-		187A4AE4254408AE007B940F /* YMZGMPIllicitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187A4AE2254408AE007B940F /* YMZGMPIllicitCell.m */; };
-		187A4AE7254408BE007B940F /* YMZGMPPDDCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 187A4AE5254408BE007B940F /* YMZGMPPDDCell.h */; };
-		187A4AE8254408BE007B940F /* YMZGMPPDDCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187A4AE6254408BE007B940F /* YMZGMPPDDCell.m */; };
 		188A655822718C400096663E /* WeChatExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188A654E22718C400096663E /* WeChatExtension.framework */; };
 		188A655D22718C400096663E /* WeChatExtensionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A655C22718C400096663E /* WeChatExtensionTests.m */; };
 		188A65F52272ACBA0096663E /* TKAboutWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 188A65902272ACBA0096663E /* TKAboutWindowController.h */; };
@@ -222,6 +228,27 @@
 		1802C087239826CB0061823C /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/TKRemoteControlWindowController.strings"; sourceTree = "<group>"; };
 		1802C088239826CB0061823C /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "en-GB"; path = "en-GB.lproj/Info.plist"; sourceTree = "<group>"; };
 		1802C089239826CB0061823C /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		181A109D254BC49D00A07D52 /* YMZGMPIllicitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMZGMPIllicitCell.h; sourceTree = "<group>"; };
+		181A109E254BC49D00A07D52 /* YMZGMPBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMZGMPBaseCell.h; sourceTree = "<group>"; };
+		181A109F254BC49D00A07D52 /* YMZGMPPDDCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMZGMPPDDCell.m; sourceTree = "<group>"; };
+		181A10A0254BC49D00A07D52 /* YMZGMPTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMZGMPTimeCell.m; sourceTree = "<group>"; };
+		181A10A1254BC49D00A07D52 /* YMZGMPGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMZGMPGroupCell.m; sourceTree = "<group>"; };
+		181A10A2254BC49D00A07D52 /* YMZGMPSessionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMZGMPSessionCell.h; sourceTree = "<group>"; };
+		181A10A3254BC49D00A07D52 /* YMZGMPIllicitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMZGMPIllicitCell.m; sourceTree = "<group>"; };
+		181A10A4254BC49D00A07D52 /* YMZGMPPDDCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMZGMPPDDCell.h; sourceTree = "<group>"; };
+		181A10A5254BC49D00A07D52 /* YMZGMPBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMZGMPBaseCell.m; sourceTree = "<group>"; };
+		181A10A6254BC49D00A07D52 /* YMZGMPTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMZGMPTimeCell.h; sourceTree = "<group>"; };
+		181A10A7254BC49D00A07D52 /* YMZGMPSessionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMZGMPSessionCell.m; sourceTree = "<group>"; };
+		181A10A8254BC49D00A07D52 /* YMZGMPGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMZGMPGroupCell.h; sourceTree = "<group>"; };
+		181A10BB254BEB9200A07D52 /* YMTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMTableView.h; sourceTree = "<group>"; };
+		181A10BC254BEB9200A07D52 /* YMTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMTableView.m; sourceTree = "<group>"; };
+		181A10BF254BED1200A07D52 /* YMTableViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMTableViewProtocol.h; sourceTree = "<group>"; };
+		181A10C0254BEF7D00A07D52 /* YMZGMPSessionTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPSessionTableView.h; sourceTree = "<group>"; };
+		181A10C1254BEF7D00A07D52 /* YMZGMPSessionTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPSessionTableView.m; sourceTree = "<group>"; };
+		181A10C4254BEF8F00A07D52 /* YMZGMPDetailTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPDetailTableView.h; sourceTree = "<group>"; };
+		181A10C5254BEF8F00A07D52 /* YMZGMPDetailTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPDetailTableView.m; sourceTree = "<group>"; };
+		181A10CC254BFD9300A07D52 /* YMZGMPDetailLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPDetailLogic.h; sourceTree = "<group>"; };
+		181A10CD254BFD9300A07D52 /* YMZGMPDetailLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPDetailLogic.m; sourceTree = "<group>"; };
 		1828B9A923BA319E008EC8E9 /* TKAboutWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKAboutWindowController.xib; sourceTree = "<group>"; };
 		182CE0CE25173A1E00570E17 /* arrow_icon_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_icon_highlight.png; sourceTree = "<group>"; };
 		182CE0CF25173A1E00570E17 /* arrow_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_icon.png; sourceTree = "<group>"; };
@@ -264,16 +291,8 @@
 		182EDB02254041700035CD75 /* TCBlobDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCBlobDownloader.h; sourceTree = "<group>"; };
 		182EDB04254041700035CD75 /* ANYMethodLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANYMethodLog.m; sourceTree = "<group>"; };
 		182EDB05254041700035CD75 /* ANYMethodLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANYMethodLog.h; sourceTree = "<group>"; };
-		182EDB4325415FBC0035CD75 /* YMZGMPSessionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPSessionCell.h; sourceTree = "<group>"; };
-		182EDB4425415FBC0035CD75 /* YMZGMPSessionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPSessionCell.m; sourceTree = "<group>"; };
-		182EDB47254160320035CD75 /* YMZGMPGroupCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPGroupCell.h; sourceTree = "<group>"; };
-		182EDB48254160320035CD75 /* YMZGMPGroupCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPGroupCell.m; sourceTree = "<group>"; };
 		182EDB4B254191970035CD75 /* YMZGMPInfoHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPInfoHelper.h; sourceTree = "<group>"; };
 		182EDB4C254191970035CD75 /* YMZGMPInfoHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPInfoHelper.m; sourceTree = "<group>"; };
-		182EDB532542DFD00035CD75 /* YMZGMPTimeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPTimeCell.h; sourceTree = "<group>"; };
-		182EDB542542DFD00035CD75 /* YMZGMPTimeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPTimeCell.m; sourceTree = "<group>"; };
-		182EDB5F2546CCDC0035CD75 /* YMZGMPTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPTableView.h; sourceTree = "<group>"; };
-		182EDB602546CCDC0035CD75 /* YMZGMPTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPTableView.m; sourceTree = "<group>"; };
 		182EDB632546D9E00035CD75 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		182EDB762547FFCE0035CD75 /* YMZGMPBanModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPBanModel.h; sourceTree = "<group>"; };
 		182EDB772547FFCE0035CD75 /* YMZGMPBanModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPBanModel.m; sourceTree = "<group>"; };
@@ -289,12 +308,6 @@
 		185DE0DF23ACE208007651B5 /* NSDictionary+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Safe.m"; sourceTree = "<group>"; };
 		187387B224E28CA100C7820D /* NSViewLayoutTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSViewLayoutTool.m; sourceTree = "<group>"; };
 		187387B324E28CA200C7820D /* NSViewLayoutTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSViewLayoutTool.h; sourceTree = "<group>"; };
-		187A4ADD2544079E007B940F /* YMZGMPBaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPBaseCell.h; sourceTree = "<group>"; };
-		187A4ADE2544079E007B940F /* YMZGMPBaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPBaseCell.m; sourceTree = "<group>"; };
-		187A4AE1254408AE007B940F /* YMZGMPIllicitCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPIllicitCell.h; sourceTree = "<group>"; };
-		187A4AE2254408AE007B940F /* YMZGMPIllicitCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPIllicitCell.m; sourceTree = "<group>"; };
-		187A4AE5254408BE007B940F /* YMZGMPPDDCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPPDDCell.h; sourceTree = "<group>"; };
-		187A4AE6254408BE007B940F /* YMZGMPPDDCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPPDDCell.m; sourceTree = "<group>"; };
 		188A654E22718C400096663E /* WeChatExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeChatExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		188A655722718C400096663E /* WeChatExtensionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeChatExtensionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		188A655C22718C400096663E /* WeChatExtensionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeChatExtensionTests.m; sourceTree = "<group>"; };
@@ -458,28 +471,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		181A109C254BC49D00A07D52 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				181A109E254BC49D00A07D52 /* YMZGMPBaseCell.h */,
+				181A10A5254BC49D00A07D52 /* YMZGMPBaseCell.m */,
+				181A10A8254BC49D00A07D52 /* YMZGMPGroupCell.h */,
+				181A10A1254BC49D00A07D52 /* YMZGMPGroupCell.m */,
+				181A109D254BC49D00A07D52 /* YMZGMPIllicitCell.h */,
+				181A10A3254BC49D00A07D52 /* YMZGMPIllicitCell.m */,
+				181A10A4254BC49D00A07D52 /* YMZGMPPDDCell.h */,
+				181A109F254BC49D00A07D52 /* YMZGMPPDDCell.m */,
+				181A10A2254BC49D00A07D52 /* YMZGMPSessionCell.h */,
+				181A10A7254BC49D00A07D52 /* YMZGMPSessionCell.m */,
+				181A10A6254BC49D00A07D52 /* YMZGMPTimeCell.h */,
+				181A10A0254BC49D00A07D52 /* YMZGMPTimeCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		181A10B5254BC4C700A07D52 /* YMZGMPTableView */ = {
+			isa = PBXGroup;
+			children = (
+				181A10BF254BED1200A07D52 /* YMTableViewProtocol.h */,
+				181A10BB254BEB9200A07D52 /* YMTableView.h */,
+				181A10BC254BEB9200A07D52 /* YMTableView.m */,
+				181A10C0254BEF7D00A07D52 /* YMZGMPSessionTableView.h */,
+				181A10C1254BEF7D00A07D52 /* YMZGMPSessionTableView.m */,
+				181A10C4254BEF8F00A07D52 /* YMZGMPDetailTableView.h */,
+				181A10C5254BEF8F00A07D52 /* YMZGMPDetailTableView.m */,
+			);
+			path = YMZGMPTableView;
+			sourceTree = "<group>";
+		};
 		182EDAD425403F4F0035CD75 /* ZGMP */ = {
 			isa = PBXGroup;
 			children = (
+				181A10B5254BC4C700A07D52 /* YMZGMPTableView */,
+				181A109C254BC49D00A07D52 /* Cell */,
 				182EDAD525403F8C0035CD75 /* YMZGMPWindowController.h */,
 				182EDAD625403F8C0035CD75 /* YMZGMPWindowController.m */,
 				182EDAD725403F8C0035CD75 /* YMZGMPWindowController.xib */,
-				182EDB47254160320035CD75 /* YMZGMPGroupCell.h */,
-				182EDB48254160320035CD75 /* YMZGMPGroupCell.m */,
-				182EDB4325415FBC0035CD75 /* YMZGMPSessionCell.h */,
-				182EDB4425415FBC0035CD75 /* YMZGMPSessionCell.m */,
-				182EDB532542DFD00035CD75 /* YMZGMPTimeCell.h */,
-				182EDB542542DFD00035CD75 /* YMZGMPTimeCell.m */,
-				187A4AE1254408AE007B940F /* YMZGMPIllicitCell.h */,
-				187A4AE2254408AE007B940F /* YMZGMPIllicitCell.m */,
-				187A4AE5254408BE007B940F /* YMZGMPPDDCell.h */,
-				187A4AE6254408BE007B940F /* YMZGMPPDDCell.m */,
-				187A4ADD2544079E007B940F /* YMZGMPBaseCell.h */,
-				187A4ADE2544079E007B940F /* YMZGMPBaseCell.m */,
+				181A10CC254BFD9300A07D52 /* YMZGMPDetailLogic.h */,
+				181A10CD254BFD9300A07D52 /* YMZGMPDetailLogic.m */,
 				182EDB4B254191970035CD75 /* YMZGMPInfoHelper.h */,
 				182EDB4C254191970035CD75 /* YMZGMPInfoHelper.m */,
-				182EDB5F2546CCDC0035CD75 /* YMZGMPTableView.h */,
-				182EDB602546CCDC0035CD75 /* YMZGMPTableView.m */,
 				182EDB7A25484D030035CD75 /* YMDFAFilter.h */,
 				182EDB7B25484D030035CD75 /* YMDFAFilter.m */,
 			);
@@ -934,6 +970,7 @@
 				188A66032272ACBA0096663E /* YMAssistantMenuManager.h in Headers */,
 				DC069F4824B6026C00256A03 /* VAutoForwardingModel.h in Headers */,
 				188A661E2272ACBA0096663E /* NSMenu+Action.h in Headers */,
+				181A10C2254BEF7D00A07D52 /* YMZGMPSessionTableView.h in Headers */,
 				182EDB26254041700035CD75 /* TCBlobDownload.h in Headers */,
 				188A66152272ACBA0096663E /* TKIgnoreSessonModel.h in Headers */,
 				188A662F2272ACBA0096663E /* NotifyConstant.h in Headers */,
@@ -941,29 +978,28 @@
 				182EDB21254041700035CD75 /* GCDWebServerURLEncodedFormRequest.h in Headers */,
 				182EDB0A254041700035CD75 /* GCDWebServer.h in Headers */,
 				182EDAD825403F8D0035CD75 /* YMZGMPWindowController.h in Headers */,
-				187A4AE7254408BE007B940F /* YMZGMPPDDCell.h in Headers */,
 				18EF56B5248668CD00D7BC26 /* YMStrangerCheckCell.h in Headers */,
 				188A662B2272ACBA0096663E /* NSString+Action.h in Headers */,
 				188A660B2272ACBA0096663E /* YMRemoteControlManager.h in Headers */,
 				182EDB4D254191970035CD75 /* YMZGMPInfoHelper.h in Headers */,
 				187387B524E28CA200C7820D /* NSViewLayoutTool.h in Headers */,
 				182EDB18254041700035CD75 /* GCDWebServerErrorResponse.h in Headers */,
+				181A10CE254BFD9300A07D52 /* YMZGMPDetailLogic.h in Headers */,
 				36AC9D8A228A81C200EA9F97 /* XMLReader.h in Headers */,
 				182EDB13254041700035CD75 /* GCDWebServerStreamedResponse.h in Headers */,
 				182EDB07254041700035CD75 /* GCDWebServerPrivate.h in Headers */,
 				D79D23592449EF5D00C391E4 /* GVUserDefaults.h in Headers */,
 				18D4C34B24236180006A20E2 /* NSObject+ThemeHook.h in Headers */,
+				181A10B4254BC49D00A07D52 /* YMZGMPGroupCell.h in Headers */,
 				3632294222AFD9CF00F62EAB /* YMThemeManager.h in Headers */,
 				188A660E2272ACBA0096663E /* YMHTTPManager.h in Headers */,
 				182EDB1B254041700035CD75 /* GCDWebServerMultiPartFormRequest.h in Headers */,
 				182EDB11254041700035CD75 /* GCDWebServerRequest.h in Headers */,
-				182EDB552542DFD00035CD75 /* YMZGMPTimeCell.h in Headers */,
 				188A66332272ACBA0096663E /* TKAutoReplyContentView.h in Headers */,
 				188A66112272ACBA0096663E /* YMSwizzledHelper.h in Headers */,
 				182EDB29254041700035CD75 /* ANYMethodLog.h in Headers */,
 				182EDB12254041700035CD75 /* GCDWebServerFileResponse.h in Headers */,
 				188A66442272ACBA0096663E /* fishhook.h in Headers */,
-				182EDB49254160320035CD75 /* YMZGMPGroupCell.h in Headers */,
 				18D298522394EE60009EE6B0 /* YMNetWorkHelper.h in Headers */,
 				188A66232272ACBA0096663E /* NSMenuItem+Action.h in Headers */,
 				1850F21424C5F32400748FB7 /* YMPrivate.h in Headers */,
@@ -972,8 +1008,8 @@
 				188A66322272ACBA0096663E /* TKAutoReplyCell.h in Headers */,
 				188A661C2272ACBA0096663E /* YMBaseModel.h in Headers */,
 				188A66272272ACBA0096663E /* NSView+Action.h in Headers */,
+				181A10BD254BEB9200A07D52 /* YMTableView.h in Headers */,
 				DC069F4124B5D23A00256A03 /* VAutoForwardingWindowController.h in Headers */,
-				187A4ADF2544079E007B940F /* YMZGMPBaseCell.h in Headers */,
 				188A663B2272ACBA0096663E /* MMStickerMessageCellView+hook.h in Headers */,
 				182EDB27254041700035CD75 /* TCBlobDownloader.h in Headers */,
 				182EDB24254041700035CD75 /* TCBlobDownloadManager.h in Headers */,
@@ -992,22 +1028,25 @@
 				188A66382272ACBA0096663E /* WeChat+hook.h in Headers */,
 				188A66142272ACBA0096663E /* YMDeviceHelper.h in Headers */,
 				188A66352272ACBA0096663E /* TKRemoteControlCell.h in Headers */,
-				182EDB4525415FBC0035CD75 /* YMZGMPSessionCell.h in Headers */,
 				188A660A2272ACBA0096663E /* YMCacheManager.h in Headers */,
+				181A10AE254BC49D00A07D52 /* YMZGMPSessionCell.h in Headers */,
 				188A66012272ACBA0096663E /* YMWeChatPluginConfig.h in Headers */,
 				188A662E2272ACBA0096663E /* DefineConstant.h in Headers */,
 				188A65F52272ACBA0096663E /* TKAboutWindowController.h in Headers */,
 				182EDB06254041700035CD75 /* GCDWebServerFunctions.h in Headers */,
 				18A7A1302272ACE900361A98 /* WeChatPlugin.h in Headers */,
 				182EDB782547FFCE0035CD75 /* YMZGMPBanModel.h in Headers */,
+				181A10AA254BC49D00A07D52 /* YMZGMPBaseCell.h in Headers */,
 				188A660C2272ACBA0096663E /* YMVersionManager.h in Headers */,
 				36AC9D87228A813F00EA9F97 /* YMDownloadManager.h in Headers */,
 				18B37AB9245536ED00037B58 /* NSObject+Safe.h in Headers */,
 				182EDB0C254041700035CD75 /* GCDWebServerHTTPStatusCodes.h in Headers */,
 				188A66302272ACBA0096663E /* YMPrefixHeader.pch in Headers */,
 				188A661F2272ACBA0096663E /* NSTextField+Action.h in Headers */,
+				181A10B2254BC49D00A07D52 /* YMZGMPTimeCell.h in Headers */,
 				188A66262272ACBA0096663E /* NSButton+Action.h in Headers */,
 				188A66372272ACBA0096663E /* MMChatsTableCellView+hook.h in Headers */,
+				181A10C6254BEF8F00A07D52 /* YMZGMPDetailTableView.h in Headers */,
 				182EDB15254041700035CD75 /* GCDWebServerDataResponse.h in Headers */,
 				188A662A2272ACBA0096663E /* NSDate+Action.h in Headers */,
 				188A661B2272ACBA0096663E /* YMAutoReplyModel.h in Headers */,
@@ -1015,10 +1054,10 @@
 				18D298F2239610F8009EE6B0 /* YMAIReplyCell.h in Headers */,
 				1850F21024C5F2C100748FB7 /* NSWindow+fuzzy.h in Headers */,
 				182EDB09254041700035CD75 /* GCDWebServerConnection.h in Headers */,
-				182EDB612546CCDC0035CD75 /* YMZGMPTableView.h in Headers */,
+				181A10B0254BC49D00A07D52 /* YMZGMPPDDCell.h in Headers */,
 				188A66292272ACBA0096663E /* NSWindowController+Action.h in Headers */,
 				182EDB1C254041700035CD75 /* GCDWebServerFileRequest.h in Headers */,
-				187A4AE3254408AE007B940F /* YMZGMPIllicitCell.h in Headers */,
+				181A10A9254BC49D00A07D52 /* YMZGMPIllicitCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1196,12 +1235,14 @@
 				188A65FE2272ACBA0096663E /* TKRemoteControlWindowController.m in Sources */,
 				DC069F4224B5D23A00256A03 /* VAutoForwardingWindowController.m in Sources */,
 				36AC9D86228A813F00EA9F97 /* YMDownloadManager.m in Sources */,
-				187A4AE8254408BE007B940F /* YMZGMPPDDCell.m in Sources */,
 				18D298EE23960C18009EE6B0 /* YMAIReplyWindowController.m in Sources */,
+				181A10B1254BC49D00A07D52 /* YMZGMPBaseCell.m in Sources */,
+				181A10CF254BFD9300A07D52 /* YMZGMPDetailLogic.m in Sources */,
 				188A66022272ACBA0096663E /* YMCacheManager.m in Sources */,
-				182EDB4A254160320035CD75 /* YMZGMPGroupCell.m in Sources */,
+				181A10AD254BC49D00A07D52 /* YMZGMPGroupCell.m in Sources */,
 				188A66222272ACBA0096663E /* NSString+Action.m in Sources */,
 				188A663E2272ACBA0096663E /* MMStickerMessageCellView+hook.m in Sources */,
+				181A10B3254BC49D00A07D52 /* YMZGMPSessionCell.m in Sources */,
 				182EDB08254041700035CD75 /* GCDWebServerResponse.m in Sources */,
 				18EF56B8248668CD00D7BC26 /* YMStrangerCheckWindowController.m in Sources */,
 				18A7A12E2272ACE300361A98 /* main.mm in Sources */,
@@ -1213,6 +1254,7 @@
 				188A662C2272ACBA0096663E /* NSMenuItem+Action.m in Sources */,
 				188A661D2272ACBA0096663E /* NSButton+Action.m in Sources */,
 				36AC9D8B228A81C200EA9F97 /* XMLReader.m in Sources */,
+				181A10AC254BC49D00A07D52 /* YMZGMPTimeCell.m in Sources */,
 				1898CF4A2459231100B557E9 /* YMMessageHelper.m in Sources */,
 				188A66282272ACBA0096663E /* NSTextField+Action.m in Sources */,
 				182EDB0E254041700035CD75 /* GCDWebServerFunctions.m in Sources */,
@@ -1221,7 +1263,6 @@
 				182EDAD925403F8D0035CD75 /* YMZGMPWindowController.m in Sources */,
 				188A66362272ACBA0096663E /* TKRemoteControlCell.m in Sources */,
 				188A66062272ACBA0096663E /* YMRemoteControlManager.m in Sources */,
-				182EDB4625415FBC0035CD75 /* YMZGMPSessionCell.m in Sources */,
 				182EDB23254041700035CD75 /* TCBlobDownloader.m in Sources */,
 				188A66252272ACBA0096663E /* NSMenu+Action.m in Sources */,
 				188A66002272ACBA0096663E /* YMWeChatPluginConfig.m in Sources */,
@@ -1230,9 +1271,9 @@
 				182EDB16254041700035CD75 /* GCDWebServerFileResponse.m in Sources */,
 				188A66192272ACBA0096663E /* TKIgnoreSessonModel.m in Sources */,
 				188A66212272ACBA0096663E /* NSWindowController+Action.m in Sources */,
-				182EDB622546CCDC0035CD75 /* YMZGMPTableView.m in Sources */,
-				182EDB562542DFD00035CD75 /* YMZGMPTimeCell.m in Sources */,
 				188A66342272ACBA0096663E /* TKAutoReplyCell.m in Sources */,
+				181A10AB254BC49D00A07D52 /* YMZGMPPDDCell.m in Sources */,
+				181A10BE254BEB9200A07D52 /* YMTableView.m in Sources */,
 				188A66052272ACBA0096663E /* YMVersionManager.m in Sources */,
 				188A66432272ACBA0096663E /* fishhook.c in Sources */,
 				188A65F62272ACBA0096663E /* TKAboutWindowController.m in Sources */,
@@ -1245,6 +1286,7 @@
 				182EDB0B254041700035CD75 /* GCDWebServerRequest.m in Sources */,
 				182EDB4E254191970035CD75 /* YMZGMPInfoHelper.m in Sources */,
 				182EDB1F254041700035CD75 /* GCDWebServerDataRequest.m in Sources */,
+				181A10C3254BEF7D00A07D52 /* YMZGMPSessionTableView.m in Sources */,
 				182EDB7D25484D040035CD75 /* YMDFAFilter.m in Sources */,
 				182EDB17254041700035CD75 /* GCDWebServerDataResponse.m in Sources */,
 				188A66422272ACBA0096663E /* MMChatsTableCellView+hook.m in Sources */,
@@ -1256,16 +1298,16 @@
 				188A66122272ACBA0096663E /* YMDeviceHelper.m in Sources */,
 				182EDB1E254041700035CD75 /* GCDWebServerMultiPartFormRequest.m in Sources */,
 				18D298F3239610F8009EE6B0 /* YMAIReplyCell.m in Sources */,
-				187A4AE4254408AE007B940F /* YMZGMPIllicitCell.m in Sources */,
 				1850F21124C5F2C100748FB7 /* NSWindow+fuzzy.m in Sources */,
 				D79D235A2449EF5D00C391E4 /* GVUserDefaults.m in Sources */,
 				188A66312272ACBA0096663E /* TKAutoReplyContentView.m in Sources */,
 				188A66242272ACBA0096663E /* NSDate+Action.m in Sources */,
 				182EDB0F254041700035CD75 /* GCDWebServer.m in Sources */,
 				18D298532394EE60009EE6B0 /* YMNetWorkHelper.m in Sources */,
-				187A4AE02544079E007B940F /* YMZGMPBaseCell.m in Sources */,
 				182EDB28254041700035CD75 /* ANYMethodLog.m in Sources */,
 				3632294322AFD9CF00F62EAB /* YMThemeManager.m in Sources */,
+				181A10C7254BEF8F00A07D52 /* YMZGMPDetailTableView.m in Sources */,
+				181A10AF254BC49D00A07D52 /* YMZGMPIllicitCell.m in Sources */,
 				188A66042272ACBA0096663E /* YMMessageManager.m in Sources */,
 				1853B3C522C6133C00A5C4FA /* YMIMContactsManager.m in Sources */,
 			);
