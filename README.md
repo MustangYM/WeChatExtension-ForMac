@@ -108,10 +108,16 @@ I'm sorry for GitHub's trending rules. Most users of this project are Chinese, s
 
 - 依次点击 `小助手` -> `开启Alfred功能`
 - 打开你的Alfred搜索框，输入 `wx `(wx后面接一个空格)，即可开启Alfred控制微信之旅
+
 ## 退群监控
 - 退群提醒，同一人在同一群里的退出提醒7天内不再重复提示。
 <p align="center">
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20191227-200134%402x.png" width="800px"/>
+</p>
+
+## 群员监控
+<p align="center">
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/ZGMP.png" width="800px"/>
 </p>
 
 ## 微信多开兼容小程序
