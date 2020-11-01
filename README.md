@@ -8,7 +8,7 @@
 - 支持[企业微信](https://github.com/MustangYM/WeChatICU-ForMac)，由此进。
 - 如果你希望更简约，这里提供了[简版小助手](https://github.com/MustangYM/WeChatSeptet-ForMac)，安装方式与WeChatExtension的手动安装方式一样。
 
-## Most users of this project are Chinese, so there is `no English wiki`
+#### Most users of this project are Chinese, so there is `no English wiki`
 
 ## 声明
 - WeChatExtension完全`免费`，近期发现不少三方平台甚至某宝商家`出售`此软件，切勿`上当受骗`。
