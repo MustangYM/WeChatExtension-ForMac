@@ -35,7 +35,7 @@
 
 - 模式切换
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/changeMode.png" width="300px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/change_theme.png" width="300px"/>
 </p>
 
 ## 僵尸粉检测
