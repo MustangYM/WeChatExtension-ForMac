@@ -480,7 +480,7 @@ This project exists thanks to all the people who contribute。
 
 ## 交流与支持
 - QQ群：`741941325`。
-- 封面图的骷髅与乌鸦元素来自于史泰龙的电影《The Expendables》（敢死队）海报。
+- 封面图的`骷髅`与`乌鸦`元素来自于`史泰龙`的电影`《The Expendables》`（敢死队）海报。
 - 插件中的图标、本页所有Logo、预览图均出自本人`蹩脚`的[Photoshop](https://www.adobe.com/products/photoshop.html)设计。
 - 如果小助手使你的生活更美好，可以`请我喝杯咖啡`。
 
