@@ -96,14 +96,6 @@
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/ZGMP.png" width="800px"/>
 </p>
 
-## 微信多开兼容小程序
-<p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/MiniProgram.png" width="800px"/>
-</p>
-
-- 目前并没有找到有效的办法解决微信多开和打开小程序的冲突，当微信A能解决与小程序的冲突并共存，但此时多开的微信B还是无法打开小程序。
-- 所以`微信多开`与`允许打开小程序`是互斥的，点击`微信多开`可关闭`允许打开小程序`，反之也是如此。
-
 ## 怎么安装?
 ### 安装方式一：普通安装(clone最新版本并安装)
 ```
