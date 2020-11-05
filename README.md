@@ -51,7 +51,7 @@
 
 - 可以对同步的消息进行筛选， 以免群消息打扰。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20190625-111206%402x.png" width="600px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/revokeMessage.png" width="1500px"/>
 </p>
 
 ## 消息转发
