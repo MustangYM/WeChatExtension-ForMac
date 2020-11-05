@@ -29,7 +29,7 @@
 - 群聊中每个发言人的昵称颜色都会有所区别。
 - 在皮肤模式下，未读消息头像会轻微可爱`摇动`，未读数超过`99条`的会话有`彩蛋`。
 
-- 迷离模式👇 `It‘s perfect！ I love it！`
+- 迷离模式👇 `It‘s perfect！ I love it！`，如果你的迷离模式`未生效`，打开`系统偏好设置` -> `辅助功能` -> `显示`，不要勾选`减少透明度`或`提供对比度`
 <p align="center">
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/fuzzyMode1.png" width="1500px"/>
 </p>
