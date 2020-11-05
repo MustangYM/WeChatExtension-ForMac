@@ -28,28 +28,9 @@
 - 少量细节没有做适配，`主题模式-黑夜模式-再次点击`可以`关掉`这个功能。
 - 群聊中每个发言人的昵称颜色都会有所区别。
 - 在皮肤模式下，未读消息头像会轻微可爱`摇动`，未读数超过`99条`的会话有`彩蛋`。
-
-- 迷离模式👇 `It‘s perfect！ I love it！`，如果你的迷离模式`未生效`，打开`系统偏好设置` -> `辅助功能` -> `显示`，不要勾选`减少透明度`或`提供对比度`
+- 如果你的迷离模式`未生效`，打开`系统偏好设置` -> `辅助功能` -> `显示`，不要勾选`减少透明度`或`提供对比度`
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/fuzzyMode1.png" width="1500px"/>
-</p>
-<p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/fuzzyMode.png" width="1500px"/>
-</p>
-
-- 黑夜模式👇
-<p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/darkMode.png" width="1500px"/>
-</p>
-
-- 深邃模式👇
-<p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/blackMode.png" width="1500px"/>
-</p>
-
-- 少女粉模式👇
-<p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/pinkMode.png" width="1500px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/theme_compoment.png" width="1500px"/>
 </p>
 
 - 模式切换
