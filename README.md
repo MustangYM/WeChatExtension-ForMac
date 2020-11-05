@@ -7,8 +7,7 @@
 
 - 支持[企业微信](https://github.com/MustangYM/WeChatICU-ForMac)，由此进。
 - 如果你希望更简约，这里提供了[简版小助手](https://github.com/MustangYM/WeChatSeptet-ForMac)，安装方式与WeChatExtension的手动安装方式一样。
-
-#### Most users of this project are Chinese, so there is `no English wiki`
+- Most users of this project are Chinese, so there is `no English wiki`
 
 ## 声明
 - WeChatExtension完全`免费`，近期发现不少三方平台甚至某宝商家`出售`此软件，切勿`上当受骗`。
@@ -221,7 +220,7 @@ bash <(curl -sL https://git.io/JUO6r)
 This project exists thanks to all the people who contribute。
 <a href="https://github.com/MustangYM/WeChatExtension-ForMac/graphs/contributors"><img src="https://opencollective.com/mustangym666/contributors.svg?width=890&button=false" /></a>
 
-## 感谢捐赠者
+## 感谢捐赠者 Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/mustangym666#backer)]
 <table><tr>
    <td align="center">
   <a href="https://github.com/EGOISTK21"><img src="https://avatars0.githubusercontent.com/u/17921692?s=400&v=4" width="100px;" alt="EGOISTK21"/>
@@ -477,26 +476,17 @@ This project exists thanks to all the people who contribute。
   
    </td></tr></table>
 
-## Backers
-
-Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/mustangym666#backer)]
-
 <a href="https://opencollective.com/mustangym666#backers" target="_blank"><img src="https://opencollective.com/mustangym666/backers.svg?width=890"></a>
 
-## License
-
-MIT license. 
-
 ## 交流与支持
-如果小助手使你的生活更美好，可以请我喝杯咖啡。
-
+- QQ群：`741941325`。
+- 封面图的骷髅与乌鸦元素来自于史泰龙的电影《The Expendables》（敢死队）海报。
+- 插件中的图标、本页所有Logo、预览图均出自本人`蹩脚`的[Photoshop](https://www.adobe.com/products/photoshop.html)设计。
+- 如果小助手使你的生活更美好，可以`请我喝杯咖啡`。
 
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/aliPayCode.png" height="250" hspace="50"/>&nbsp;&nbsp;&nbsp;<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WeChatPayCode.png" height="250" hspace="50"  />
 
 
-- QQ群 741941325
-
 ## 免责声明
-
-本项目遵循MIT协议，方便交流与学习，包括但不限于本项目的衍生品都禁止在损害WeChat官方利益情况下进行盈利。如果您发现本项目有侵犯您的知识产权，请与我取得联系，我会及时修改或删除。
+本项目遵循`MIT license`，方便交流与学习，包括但不限于本项目的衍生品都禁止在损害WeChat官方利益情况下进行盈利。如果您发现本项目有侵犯您的知识产权，请与我取得联系，我会及时修改或删除。
 
