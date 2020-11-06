@@ -143,7 +143,7 @@ omw -g
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/install2.png" width="1500px"/>
 </p>
 
-- 3.6.`重启`微信，安装完成。
+- 3.5.`重启`微信，安装完成。
 
 ## 怎么卸载?
 ### 卸载方式一：自动卸载（推荐）
