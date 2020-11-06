@@ -54,7 +54,7 @@
 - iPhone上可安装自签的微信包，实现多开，但是Bundle Id的改变导致APNS消息推送异常，无法收到消息推送？
 - 目前只能转发文字消息。选择`转发所有好友消息`时，只转发单聊消息，不转发群聊消息。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/msgForwarding.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/fowardMessage.png" width="1500px"/>
 </p>
 
 ## 免认证登录与多开
@@ -133,25 +133,17 @@ omw -g
 
 - 3.2.下载本项目到你的电脑里， 并双击打开。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20190619-112238.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/install1.png" width="1500px"/>
 </p>
 
-- 3.3.依次打开文件夹
+- 3.3.依次打开文件夹`WeChatExtension/Rely/Install.sh`。
+
+- 3.4.将`Install.sh`拖入终端工具中按`回车`执行安装。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20190619-113413%402x.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/install2.png" width="1500px"/>
 </p>
 
-- 3.4.打开你电脑中的终端工具
-<p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20190619-113911%402x.png" width="800px"/>
-</p>
- 
-- 3.5.在Rely/Install.sh执行这个安装脚本
-<p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/QQ20190425-155120%402x.png" width="800px"/>
-</p>
-
-- 3.6.重启微信，安装完成。
+- 3.6.`重启`微信，安装完成。
 
 ## 怎么卸载?
 ### 卸载方式一：自动卸载（推荐）
@@ -161,7 +153,7 @@ bash <(curl -sL https://git.io/JUO6r)
 ### 卸载方式二：手动卸载
   -  将Uninstall.sh拖到终端工具中，回车执行即可。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20190625-102808%402x.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/uninstall.png" width="1500px"/>
 </p>
 
 
