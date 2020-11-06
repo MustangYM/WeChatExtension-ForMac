@@ -476,11 +476,11 @@ This project exists thanks to all the people who contribute。
 
 ## 交流
 - QQ群：`741941325`。
-- 小助手的第一个版本部分代码是我在河边看人`钓鱼`掏出电脑写的。
-- 皮肤颜色的搭配采纳了大量群友的反馈和建议，经过激烈的讨论甚至投票仍然不能统一意见，那就干脆做`两套`吧，所以才会出现`黑夜`和`深邃`两款如此相近的暗色调主题。向提供过建议和意见的朋友们表示`感谢`，原则上`不再接收`颜色建议pr更改。
+- 小助手的第一个版本`部分代码`是我在河边看人`钓鱼`时写的。
+- 皮肤的颜色搭配采纳了大量群友的反馈和建议，经过激烈的讨论甚至投票仍然不能统一意见，那就干脆做`两套`吧，所以才会出现`黑夜`和`深邃`两款如此相近的`暗色调主题`。向朋友们表示`感谢`。
 - 封面图的`骷髅`与`乌鸦`元素来自于`史泰龙`的电影`《The Expendables》`（敢死队）海报。
 - 插件中的`图标`、本页所有`Logo`、预览图均出自本人`蹩脚`的[Photoshop](https://www.adobe.com/products/photoshop.html)设计。
-- `官方微信`工整的代码与规范的命名让小助手的逆向工作比较`顺利`，自己的工作能影响成千上万人的工作生活，这使我感到`快乐`，也是我的`源动力`。
+- 我渺小的工作能影响成千上万人的工作和生活，这奇妙的感觉使我感到`快乐`，也是我的`源动力`。
 - 如果小助手使你的生活更美好，可以`请我喝杯咖啡`。
 
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/aliPayCode.png" height="250" hspace="50"/>&nbsp;&nbsp;&nbsp;<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WeChatPayCode.png" height="250" hspace="50"  />
