@@ -22,10 +22,9 @@
 ## 小助手相关介绍
 - [Toptips视频介绍](https://toptips.vip/a/565)(基于2.5版本的小助手介绍，现在的小助手更完善)。
 
-## 迷离/黑夜/深邃/少女 模式
-- 众多软件都适配了黑夜模式，等了这么久Mac微信官方还是没做适配，所以做了这个玩票功能。
-- 少量细节没有做适配，`主题模式-黑夜模式-再次点击`可以`关掉`这个功能。
-- 群聊中每个发言人的昵称颜色都会有所区别。
+## 迷离/黑夜/深邃/少女 皮肤模式
+- 少量细节没有做适配，`主题模式-关闭皮肤`可以`关掉`这个功能。
+- 群聊中每个发言人的`昵称颜色`都会有所区别。
 - 在皮肤模式下，未读消息头像会轻微可爱`摇动`，未读数超过`99条`的会话有`彩蛋`。
 - 如果你的迷离模式`未生效`，打开`系统偏好设置` -> `辅助功能` -> `显示`，不要勾选`减少透明度`或`提供对比度`。
 <p align="center">
@@ -475,10 +474,13 @@ This project exists thanks to all the people who contribute。
 
 <a href="https://opencollective.com/mustangym666#backers" target="_blank"><img src="https://opencollective.com/mustangym666/backers.svg?width=890"></a>
 
-## 交流与支持
+## 交流
 - QQ群：`741941325`。
+- 小助手的第一个版本部分代码是我在河边看人`钓鱼`掏出电脑写的。
+- 皮肤颜色的搭配采纳了大量群友的反馈和建议，经过激烈的讨论甚至投票仍然不能统一意见，那就干脆做`两套`吧，所以才会出现`黑夜`和`深邃`两款如此相近的暗色调主题。向提供过建议和意见的朋友们表示`感谢`，原则上`不再接收`颜色建议pr更改。
 - 封面图的`骷髅`与`乌鸦`元素来自于`史泰龙`的电影`《The Expendables》`（敢死队）海报。
-- 插件中的图标、本页所有Logo、预览图均出自本人`蹩脚`的[Photoshop](https://www.adobe.com/products/photoshop.html)设计。
+- 插件中的`图标`、本页所有`Logo`、预览图均出自本人`蹩脚`的[Photoshop](https://www.adobe.com/products/photoshop.html)设计。
+- `官方微信`工整的代码与规范的命名让小助手的逆向工作比较`顺利`，自己的工作能影响成千上万人的工作生活，这使我感到`快乐`，也是我的`源动力`。
 - 如果小助手使你的生活更美好，可以`请我喝杯咖啡`。
 
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/aliPayCode.png" height="250" hspace="50"/>&nbsp;&nbsp;&nbsp;<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WeChatPayCode.png" height="250" hspace="50"  />
