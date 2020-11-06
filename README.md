@@ -58,6 +58,7 @@
 </p>
 
 ## 免认证登录与多开
+- 可以`同时`登录`多个`微信号。
 <p align="center">
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/launch.png" width="800px"/>
 </p>
@@ -71,6 +72,7 @@
 </p>
 
 ## 显示小程序详情
+- 即便Mac微信现在可以`打开`小程序，暂时还`不支持`游戏小程序，所以`保留`了此功能。
 <p align="center">
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20191220-2004071%402x.png" width="800px"/>
 </p>
@@ -91,6 +93,9 @@
 </p>
 
 ## 群员监控
+- 群员监控Window中，鼠标右键单击左侧`Session`列表某行出现`拒收消息`，可以在Mac上完全拒收此群消息，避免打扰。
+- 右侧列表是依次是`昵称`、相关`发言时间与条数`、`违规言论`、`拼多多砍一刀`。
+- 此功能暂时属于`实验性质`，毕竟对大部人并不会使用到。
 <p align="center">
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/ZGMP.png" width="800px"/>
 </p>
