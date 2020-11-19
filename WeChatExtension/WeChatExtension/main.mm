@@ -14,7 +14,9 @@
 
 static void __attribute__((constructor)) initialize(void) {
     NSLog(@"++++++++ WeChatExtension loaded ++++++++");
-    [NSObject hookTheme];
+    if (@available(macOS 10.14, *)) {
+        [NSObject hookTheme];
+    }
     [NSObject hookWeChat];
     [NSObject hookMMChatsTableCellView];
     [NSObject hookMMStickerMessageCellView];

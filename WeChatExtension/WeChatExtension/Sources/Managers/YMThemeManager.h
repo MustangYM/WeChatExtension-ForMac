@@ -13,10 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface YMThemeManager : NSObject
 @property (nonatomic, assign, readonly) BOOL isTempDark;
 @property (nonatomic, assign, readonly) BOOL isTempPink;
+@property (nonatomic, assign) int loadCount;
 + (instancetype)shareInstance;
 + (void)changeButtonTheme:(NSButton *)button;
 + (void)changeEffectViewMode:(NSVisualEffectView *)effectView;
-+ (NSVisualEffectView *)creatFuzzyEffectView:(id)superView;
++ (NSVisualEffectView *)creatFuzzyEffectView;
 - (void)initializeModelConfig;
 - (void)changeTheme:(NSView *)view;
 - (void)changeTheme:(NSView *)view color:(NSColor *)color;

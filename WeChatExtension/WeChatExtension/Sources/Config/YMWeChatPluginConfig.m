@@ -1,34 +1,37 @@
 //
-//  TKWeChatPluginConfig.m
+//  YMWeChatPluginConfig.m
 //  WeChatExtension
 //
 //  Created by WeChatExtension on 2019/4/19.
 //  Copyright © 2019年 WeChatExtension. All rights reserved.
 //
 
-#import "TKWeChatPluginConfig.h"
+#import "YMWeChatPluginConfig.h"
 #import "TKRemoteControlModel.h"
 #import "YMAutoReplyModel.h"
 #import "VAutoForwardingModel.h"
 #import "TKIgnoreSessonModel.h"
 #import "WeChatPlugin.h"
 #import "YMIMContactsManager.h"
+#import "YMZGMPBanModel.h"
+#import "YMZGMPInfoHelper.h"
 
 static NSString * const kTKWeChatResourcesPath = @"/Applications/WeChat.app/Contents/MacOS/WeChatExtension.framework/Resources/";
 static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubusercontent.com/MustangYM/WeChatExtension-ForMac/master/WeChatExtension/WeChatExtension/Base.lproj/Info.plist";
 
-@interface TKWeChatPluginConfig ()
+@interface YMWeChatPluginConfig ()
 
 @property (nonatomic, copy) NSString *remoteControlPlistFilePath;
 @property (nonatomic, copy) NSString *autoReplyPlistFilePath;
 @property (nonatomic, copy) NSString *ignoreSessionPlistFilePath;
+@property (nonatomic, copy) NSString *bansPlistFilePath;
 @property (nonatomic, copy) NSString *quitMemberPlistPath;
 @property (nonatomic, copy) NSDictionary *localInfoPlist;
 @property (nonatomic, copy) NSDictionary *romoteInfoPlist;
 
 @end
 
-@implementation TKWeChatPluginConfig
+@implementation YMWeChatPluginConfig
 
 @dynamic preventRevokeEnable;
 @dynamic preventSelfRevokeEnable;
@@ -55,13 +58,15 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 @dynamic blackMode;
 @dynamic pinkMode;
 @dynamic isThemeLoaded;
+@dynamic AIReplyEnable;
+@dynamic closeThemeMode;
 
 + (instancetype)sharedConfig
 {
-    static TKWeChatPluginConfig *config = nil;
+    static YMWeChatPluginConfig *config = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        config = [TKWeChatPluginConfig standardUserDefaults];
+        config = [YMWeChatPluginConfig standardUserDefaults];
     });
     return config;
 }
@@ -104,6 +109,43 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
         [needSaveModels addObject:model.dictionary];
     }];
     [needSaveModels writeToFile:self.autoReplyPlistFilePath atomically:YES];
+}
+
+#pragma mark - 群员监控
+- (void)saveBanModels
+{
+    NSMutableArray *bans = [NSMutableArray array];
+    [_banModels enumerateObjectsUsingBlock:^(YMZGMPBanModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+        [bans addObject:model.dictionary];
+    }];
+    [bans writeToFile:self.bansPlistFilePath atomically:YES];
+}
+
+- (void)saveBanGroup:(YMZGMPGroupInfo *)info
+{
+    __weak __typeof (self) wself = self;
+    __block BOOL flag = NO;
+    [self.banModels enumerateObjectsUsingBlock:^(YMZGMPBanModel  *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([info.wxid isEqualToString:obj.wxid]) {
+            flag = YES;
+            if (!info.isIgnore) [wself.banModels removeObject:obj];
+        }
+    }];
+    if (info.isIgnore && !flag) {
+        YMZGMPBanModel *ban = [[YMZGMPBanModel alloc] init];
+        ban.wxid = info.wxid;
+        ban.nick = info.nick;
+        [self.banModels addObject:ban];
+    }
+    [self saveBanModels];
+}
+
+- (NSMutableArray *)banModels
+{
+    if (!_banModels) {
+        _banModels = [self getModelsWithClass:[YMZGMPBanModel class] filePath:self.bansPlistFilePath];
+    }
+    return _banModels;
 }
 
 #pragma mark - 自动转发
@@ -244,6 +286,14 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
     return _quitMemberPlistPath;
 }
 
+- (NSString *)bansPlistFilePath
+{
+    if (!_bansPlistFilePath) {
+        _bansPlistFilePath = [self getSandboxFilePathWithPlistName:@"bansPlist.plist"];
+    }
+    return _bansPlistFilePath;
+}
+
 #pragma mark -
 - (void)saveMonitorQuitMembers:(NSMutableArray *)members
 {
@@ -354,7 +404,7 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 
 - (NSString *)languageSetting:(NSString *)chinese english:(NSString *)english
 {
-    if ([TKWeChatPluginConfig sharedConfig].languageType == PluginLanguageTypeZH) {
+    if ([YMWeChatPluginConfig sharedConfig].languageType == PluginLanguageTypeZH) {
         return chinese;
     }
     return english;

@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.6.4</string>
+	<string>2.7.0</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
@@ -45,6 +45,6 @@
 	<key>showUpdateWindow</key>
 	<true/>
 	<key>versionInfo</key>
-	<string>v2.6.4(2020-08-13):\n👉🏻  聊天输入框/表情选择/收藏界面图标优化\n👉🏻 修复联系人列表/详情页面若干BUG\n</string>
+	<string>v2.6.8(2020-10-31):\n👉🏻  修复清除空会话失效\n👉🏻  优化置底、公众号浏览\n👉🏻  新增一键卸载小助手\n👉🏻  新增关闭皮肤选项\n👉🏻  新增群员监控、拒收群消息\n</string>
 </dict>
 </plist>

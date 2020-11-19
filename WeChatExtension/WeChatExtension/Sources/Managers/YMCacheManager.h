@@ -19,4 +19,6 @@
 - (NSString *)cacheEmotionMessage:(MessageData *)emotionMsg;
 - (NSString *)cacheAvatarWithContact:(WCContactData *)contact;
 - (NSString *)cacheImageData:(NSData *)imageData withFileName:(NSString *)fileName completion:(void (^)(BOOL))completion;
+- (void)cacheImage:(NSImage *)image chatroom:(NSString *)chatroom;
+- (NSImage *)imageWithChatroom:(NSString *)chatroom;
 @end
