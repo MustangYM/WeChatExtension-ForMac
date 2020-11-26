@@ -322,7 +322,6 @@
             [msg setMsgContent:newMsgContent];
             [msg setMsgCreateTime:[revokeMsgData msgCreateTime]];
             //   [msg setMesLocalID:[revokeMsgData mesLocalID]];
-            
             msg;
         });
         
