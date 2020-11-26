@@ -106,8 +106,6 @@
     }
     self.wxid = info.wxid;
     self.lockContentView.hidden = !info.isIgnore;
-    
-//        [[YMCacheManager shareManager] cacheImage:self.avatar.image chatroom:info.wxid];
     info.nick = self.nameLabel.stringValue;
     [self onUpdateCell];
 }

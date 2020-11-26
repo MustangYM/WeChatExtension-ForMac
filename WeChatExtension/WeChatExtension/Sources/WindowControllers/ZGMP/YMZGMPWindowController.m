@@ -36,6 +36,7 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
 @property (nonatomic, strong) NSView *rightPlaceholderContentView;
 @property (nonatomic, strong) NSScrollView *scrollView;
 @property (nonatomic, strong) NSTableColumn *nameColumn;
+@property (nonatomic, strong) NSTableColumn *memberColumn;
 @property (nonatomic, strong) NSProgressIndicator *progress;
 @property (nonatomic, strong) NSProgressIndicator *loadMoreProgress;
 @property (nonatomic, strong) NSTextField *detailLabel;
@@ -55,6 +56,7 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
     [super windowDidLoad];
     [self initSubviews];
     [self setupSessionData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowShouldClosed:) name:NSWindowWillCloseNotification object:nil];
 }
 
 - (void)showWindow:(id)sender
@@ -63,6 +65,14 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
     if (self.sessionTableView) {
         [self setupSessionData];
     }
+}
+
+- (void)windowShouldClosed:(NSNotification *)notification
+{
+    if (notification.object != self.window) {
+        return;
+    }
+    [self resetDetailData:YES];
 }
 
 - (void)setupSessionData
@@ -111,17 +121,24 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
             return  result == NSOrderedAscending;
         }]];
        [wself.detailTableView reloadData];
+        NSString *title = nil;
+        if (([YMWeChatPluginConfig sharedConfig].languageType == PluginLanguageTypeZH)) {
+            title = [NSString stringWithFormat:@"昵称(%lu)", wself.rightDataArray.count];
+        } else {
+            title = [NSString stringWithFormat:@"Nick(%lu)", wself.rightDataArray.count];
+        }
+        wself.memberColumn.title = title;
         wself.progress.hidden = wself.rightDataArray.count > 0;
         wself.defaultImageView.hidden = wself.rightDataArray.count > 0;
     });
 }
 
-- (void)resetDetailData
+- (void)resetDetailData:(BOOL)isDefault
 {
     [self.rightDataArray removeAllObjects];
     [self sortAndReloadDetailData];
-    self.rightContentView.hidden = NO;
-    self.rightPlaceholderContentView.hidden = YES;
+    self.rightContentView.hidden = isDefault;
+    self.rightPlaceholderContentView.hidden = !isDefault;
 }
 
 #pragma mark - NSTableViewDelegate & NSTableViewDataSource
@@ -197,7 +214,7 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
         if (tableView.selectedRow < self.dataArray.count) {
             YMZGMPGroupInfo *info = self.dataArray[tableView.selectedRow];
             self.currentChatroom = info.wxid;
-            [self resetDetailData];
+            [self resetDetailData:NO];
             [self changeChatroom:info.wxid loadMore:NO];
         }
     } else {
@@ -316,6 +333,7 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
         nameColumn.title = YMLanguage(@"昵称", @"Nick");
         nameColumn.width = 200;
         nameColumn.identifier = kNickColumnID;
+        self.memberColumn = nameColumn;
         
         NSTableColumn *timeColumn = [[NSTableColumn alloc] init];
         timeColumn.title = YMLanguage(@"最后发言时间", @"Last message");

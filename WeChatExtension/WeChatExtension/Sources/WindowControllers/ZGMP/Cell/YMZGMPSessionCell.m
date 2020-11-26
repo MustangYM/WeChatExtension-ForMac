@@ -66,6 +66,9 @@
 - (void)setMemberInfo:(YMZGMPInfo *)memberInfo
 {
     _memberInfo = memberInfo;
+    if (!memberInfo.contact) {
+        return;
+    }
     __weak __typeof (self) wself = self;
     MMAvatarService *avatarService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMAvatarService")];
     [avatarService getAvatarImageWithContact:memberInfo.contact completion:^(NSImage *image) {

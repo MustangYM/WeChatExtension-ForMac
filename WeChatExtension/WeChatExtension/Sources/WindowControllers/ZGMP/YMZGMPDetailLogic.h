@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface YMZGMPDetailLogic : NSObject
 - (void)updateSessionData:(void(^)(NSArray *ary))completion;
-- (void)updateDetailData:(NSString *)chatroom completion:(void(^)(NSArray *ary))completion finally:(void(^)())finally;
+- (void)updateDetailData:(NSString *)chatroom completion:(void(^)(NSArray *ary))completion finally:(void(^)(void))finally;
 @end
 
 NS_ASSUME_NONNULL_END

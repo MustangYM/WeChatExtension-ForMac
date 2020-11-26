@@ -22,7 +22,7 @@
 {
     _memberInfo = memberInfo;
     if (memberInfo.sensitive > 0) {
-        self.msgLabel.stringValue = [NSString stringWithFormat:@"%d%@",memberInfo.sensitive, memberInfo.sensitive == 1 ? YMLanguage(@"条", @"message") : YMLanguage(@"条", @"messages")];
+        self.msgLabel.stringValue = [NSString stringWithFormat:@"%d %@",memberInfo.sensitive, memberInfo.sensitive == 1 ? YMLanguage(@"条", @"msg") : YMLanguage(@"条", @"msgs")];
     } else {
         self.msgLabel.stringValue = @"";
     }
