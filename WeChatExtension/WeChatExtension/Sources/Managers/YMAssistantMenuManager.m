@@ -170,93 +170,17 @@ static char kZGMPWindowControllerKey;               //群管理 key
                                                           keyEquivalent:@""
                                                                   state:![[YMWeChatPluginConfig sharedConfig] checkUpdateWechatEnable]];
     
-    //开启 Alfred
-    NSMenuItem *enableAlfredItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.enableAlfred")
-                                                          action:@selector(onEnableaAlfred:)
-                                                          target:self
-                                                   keyEquivalent:@""
-                                                           state:[[YMWeChatPluginConfig sharedConfig] alfredEnable]];
-
-    //更新小助手
-    NSMenuItem *updatePluginItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.updateAssistant")
-                                                          action:@selector(onUpdatePluginControl:)
-                                                          target:self
-                                                   keyEquivalent:@""
-                                                           state:0];
-    //关于小助手
     NSMenuItem *aboutPluginItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.aboutAssistant")
-                                                          action:@selector(onAboutPluginControl:)
-                                                          target:self
-                                                   keyEquivalent:@""
-                                                           state:0];
-    
-    NSMenuItem *uninstallPluginItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"卸载小助手", @"Uninstall Assistant")
-                                                         action:@selector(onUninstallPluginControl:)
+                                                         action:@selector(onAboutPluginControl:)
                                                          target:self
                                                   keyEquivalent:@""
                                                           state:0];
     
-    NSMenuItem *pluginItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.other")
-                                                          action:@selector(onAboutPluginControl:)
-                                                          target:self
-                                                   keyEquivalent:@""
-                                                           state:0];
-    
-    NSMenuItem *backGroundItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"主题模式", @"Themes")
-                                                        action:nil
-                                                        target:self
-                                                 keyEquivalent:@""
-                                                         state:YMWeChatPluginConfig.sharedConfig.usingTheme];
-    
-    NSMenuItem *fuzzyModeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"迷离模式", @"Fuzzy Mode")
-           action:@selector(onChangeFuzzyMode:)
-           target:self
-    keyEquivalent:@""
-            state:[YMWeChatPluginConfig sharedConfig].fuzzyMode];
-    
-    NSMenuItem *darkModeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"黑夜模式", @"Dark Mode")
-                                                      action:@selector(onChangeDarkMode:)
-                                                      target:self
-                                               keyEquivalent:@""
-                                                       state:[YMWeChatPluginConfig sharedConfig].darkMode];
-    
-    NSMenuItem *blackModeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"深邃模式", @"Black Mode")
-                                                       action:@selector(onChangeBlackMode:)
-                                                       target:self
-                                                keyEquivalent:@""
-                                                        state:YMWeChatPluginConfig.sharedConfig.blackMode];
-    
-    NSMenuItem *pinkColorItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"少女模式", @"Pink Mode")
-                                                       action:@selector(onChangePinkModel:)
-                                                       target:self
-                                                keyEquivalent:@""
-                                                        state:[YMWeChatPluginConfig sharedConfig].pinkMode];
-    
-    NSMenuItem *closeThemeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"关闭皮肤", @"Close")
-           action:@selector(onCloseThemeModel:)
-           target:self
-    keyEquivalent:@""
-            state:NO];
-    
-    NSMenu *subBackgroundMenu = [[NSMenu alloc] initWithTitle:@""];
-    [subBackgroundMenu addItems:@[fuzzyModeItem, darkModeItem, blackModeItem, pinkColorItem,closeThemeItem]];
-    backGroundItem.submenu = subBackgroundMenu;
-    
-    NSMenu *groupMgrMenu = [self creatQuitGroupMenu];
-    
-    NSMenuItem *checkZombieItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"检测僵尸粉", @"Check Stranger")
-           action:@selector(onCheckZombie:)
-           target:self
-    keyEquivalent:@""
-            state:0];
-    
-    NSMenu *subPluginMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.other")];
-    [subPluginMenu addItems:@[enableAlfredItem,
-                             updatePluginItem,
-                              uninstallPluginItem]];
+    NSMenuItem *groupMgrMenu = [self creatQuitGroupMenu];
+    NSMenuItem *pluginItem = [self creatAboutAssistantMenu];
+    NSMenuItem *backGroundItem = [self creatThemeMenu];
     
     NSMenu *subMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.title")];
-
     [subMenu addItems:@[preventRevokeItem,
                         autoAuthItem,
                         groupMgrMenu,
@@ -278,8 +202,6 @@ static char kZGMPWindowControllerKey;               //群管理 key
         [subMenu insertItem:backGroundItem atIndex:2];
     }
     
-    [subMenu setSubmenu:subPluginMenu forItem:pluginItem];
-    
     NSMenuItem *menuItem = [[NSMenuItem alloc] init];
     [menuItem setTitle:YMLocalizedString(@"assistant.menu.title")];
     [menuItem setSubmenu:subMenu];
@@ -291,18 +213,18 @@ static char kZGMPWindowControllerKey;               //群管理 key
 }
 
 #pragma mark - CreatMenuItem
-- (NSMenu *)creatQuitGroupMenu
+- (NSMenuItem *)creatQuitGroupMenu
 {
     NSMenuItem *quitMonitorItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"退群监控", @"Group-Quitting Monitor")
-                                                             action:@selector(onQuitMonitorItem:)
-                                                             target:self
-                                                      keyEquivalent:@""
-                                                              state:[YMWeChatPluginConfig sharedConfig].quitMonitorEnable];
-    NSMenuItem *ZGMPItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"群员监控", @"ZGMP")
-                                                         action:@selector(onZGMPItem:)
+                                                         action:@selector(onQuitMonitorItem:)
                                                          target:self
                                                   keyEquivalent:@""
-                                                          state:NO];
+                                                          state:[YMWeChatPluginConfig sharedConfig].quitMonitorEnable];
+    NSMenuItem *ZGMPItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"群员监控", @"ZGMP")
+                                                  action:@selector(onZGMPItem:)
+                                                  target:self
+                                           keyEquivalent:@""
+                                                   state:NO];
     
     NSMenuItem *groupMrgItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"群助手", @"Group Assistant")
                                                       action:nil
@@ -318,7 +240,83 @@ static char kZGMPWindowControllerKey;               //群管理 key
     }
     [groupMrgMenu addItems:groupArray];
     groupMrgItem.submenu = groupMrgMenu;
-    return groupMrgMenu;
+    return groupMrgItem;
+}
+
+- (NSMenuItem *)creatAboutAssistantMenu
+{
+    NSMenuItem *enableAlfredItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.enableAlfred")
+                                                          action:@selector(onEnableaAlfred:)
+                                                          target:self
+                                                   keyEquivalent:@""
+                                                           state:[[YMWeChatPluginConfig sharedConfig] alfredEnable]];
+    
+    NSMenuItem *updatePluginItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.updateAssistant")
+                                                          action:@selector(onUpdatePluginControl:)
+                                                          target:self
+                                                   keyEquivalent:@""
+                                                           state:0];
+    
+    NSMenuItem *uninstallPluginItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"卸载小助手", @"Uninstall Assistant")
+                                                             action:@selector(onUninstallPluginControl:)
+                                                             target:self
+                                                      keyEquivalent:@""
+                                                              state:0];
+    NSMenuItem *pluginItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.other")
+                                                    action:@selector(onAboutPluginControl:)
+                                                    target:self
+                                             keyEquivalent:@""
+                                                     state:0];
+    NSMenu *subPluginMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.other")];
+    [subPluginMenu addItems:@[enableAlfredItem,
+                              updatePluginItem,
+                              uninstallPluginItem]];
+    pluginItem.submenu = subPluginMenu;
+    return pluginItem;
+}
+
+- (NSMenuItem *)creatThemeMenu
+{
+    NSMenuItem *backGroundItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"主题模式", @"Themes")
+                                                        action:nil
+                                                        target:self
+                                                 keyEquivalent:@""
+                                                         state:YMWeChatPluginConfig.sharedConfig.usingTheme];
+    
+    NSMenuItem *fuzzyModeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"迷离模式", @"Fuzzy Mode")
+                                                       action:@selector(onChangeFuzzyMode:)
+                                                       target:self
+                                                keyEquivalent:@""
+                                                        state:[YMWeChatPluginConfig sharedConfig].fuzzyMode];
+    
+    NSMenuItem *darkModeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"黑夜模式", @"Dark Mode")
+                                                      action:@selector(onChangeDarkMode:)
+                                                      target:self
+                                               keyEquivalent:@""
+                                                       state:[YMWeChatPluginConfig sharedConfig].darkMode];
+    
+    NSMenuItem *blackModeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"深邃模式", @"Black Mode")
+                                                       action:@selector(onChangeBlackMode:)
+                                                       target:self
+                                                keyEquivalent:@""
+                                                        state:YMWeChatPluginConfig.sharedConfig.blackMode];
+    
+    NSMenuItem *pinkColorItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"少女模式", @"Pink Mode")
+                                                       action:@selector(onChangePinkModel:)
+                                                       target:self
+                                                keyEquivalent:@""
+                                                        state:[YMWeChatPluginConfig sharedConfig].pinkMode];
+    
+    NSMenuItem *closeThemeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"关闭皮肤", @"Close")
+                                                        action:@selector(onCloseThemeModel:)
+                                                        target:self
+                                                 keyEquivalent:@""
+                                                         state:NO];
+    
+    NSMenu *subBackgroundMenu = [[NSMenu alloc] initWithTitle:@""];
+    [subBackgroundMenu addItems:@[fuzzyModeItem, darkModeItem, blackModeItem, pinkColorItem,closeThemeItem]];
+    backGroundItem.submenu = subBackgroundMenu;
+    return backGroundItem;
 }
 
 - (void)weChatPluginConfigAIReplyChange
