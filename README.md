@@ -471,6 +471,12 @@ This project exists thanks to all the people who contribute。
   <a href="https://github.com/SatanZS"><img src="https://avatars0.githubusercontent.com/u/8230677?s=400&u=0a628322a190b1c1c87f033290ea32568ea33342&v=4" width="100px;" alt="SatanZS"/>
   <br></br><sub><b>SatanZS</b></sub>
   
+   <td align="center">
+  <a href="https://github.com/huiyi0521"><img src="https://avatars1.githubusercontent.com/u/25707915?s=400&v=4" width="100px;" alt="huiyi0521"/>
+  <br></br><sub><b>huiyi0521</b></sub>
+ 
+   </td></tr></table>
+  
    </td></tr></table>
 
 <a href="https://opencollective.com/mustangym666#backers" target="_blank"><img src="https://opencollective.com/mustangym666/backers.svg?width=890"></a>
