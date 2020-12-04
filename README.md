@@ -3,13 +3,11 @@
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/face1.png" width="1000px"/>
 </p>
 
-![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.6.8-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.4.2-blue.svg)
+![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.7.0-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.4.2-blue.svg)
 
 - 支持[企业微信](https://github.com/MustangYM/WeChatICU-ForMac)，由此进。
 - 如果你希望更简约，这里提供了[简版小助手](https://github.com/MustangYM/WeChatSeptet-ForMac)，安装方式与WeChatExtension的手动安装方式一样。
-
-## Who are not capable to read Chinese☹️
-I'm sorry for GitHub's trending rules. Most users of this project are Chinese, so there is `no English wiki`.
+- Most users of this project are Chinese, so there is `NO ENGLISH WIKI`.
 
 ## 声明
 - WeChatExtension完全`免费`，近期发现不少三方平台甚至某宝商家`出售`此软件，切勿`上当受骗`。
@@ -22,40 +20,20 @@ I'm sorry for GitHub's trending rules. Most users of this project are Chinese, s
 - 皮肤最低支持macOS 10.14。
 
 ## 小助手相关介绍
-- [Toptips视频介绍](https://toptips.vip/a/565)(基于2.5版本的小助手介绍，现在的小助手更完善)。
+- [Toptips视频介绍(゜-゜)つロ 干杯~](https://www.bilibili.com/video/BV1Xi4y1b72c?from=search&seid=863944292302073615)(基于2.5版本的小助手介绍，现在的小助手更完善)。
 
-## 迷离/黑夜/深邃/少女 模式
-- 众多软件都适配了黑夜模式，等了这么久Mac微信官方还是没做适配，所以做了这个玩票功能。
-- 少量细节没有做适配，`主题模式-黑夜模式-再次点击`可以`关掉`这个功能。
-- 群聊中每个发言人的昵称颜色都会有所区别。
+## 迷离/黑夜/深邃/少女 皮肤模式
+- 少量细节没有做适配，`主题模式-关闭皮肤`可以`关掉`这个功能。
+- 群聊中每个发言人的`昵称颜色`都会有所区别。
 - 在皮肤模式下，未读消息头像会轻微可爱`摇动`，未读数超过`99条`的会话有`彩蛋`。
-
-- 迷离模式👇 `It‘s perfect！ I love it！`
+- 如果你的迷离模式`未生效`，打开`系统偏好设置` -> `辅助功能` -> `显示`，不要勾选`减少透明度`或`提供对比度`。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/fuzzyMode1.png" width="1500px"/>
-</p>
-<p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/fuzzyMode.png" width="1500px"/>
-</p>
-
-- 黑夜模式👇
-<p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/darkMode.png" width="1500px"/>
-</p>
-
-- 深邃模式👇
-<p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/blackMode.png" width="1500px"/>
-</p>
-
-- 少女粉模式👇
-<p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/pinkMode.png" width="1500px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/theme_compoment.png" width="1500px"/>
 </p>
 
 - 模式切换
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/changeMode.png" width="300px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/change_theme.png" width="300px"/>
 </p>
 
 ## 僵尸粉检测
@@ -64,14 +42,10 @@ I'm sorry for GitHub's trending rules. Most users of this project are Chinese, s
 <del>- 检测完，一旦你自己退出群聊或者删除群，此群就算解散了，所以不会留下痕迹。</del>
 
 ## 手机端也能收到被撤回的消息
-- 如果Mac拦截到A发送来的消息，手机也会同步收到的这条已经拦截的消息(自己发送给自己)。目前只支持同步文字消息与图片消息，其他类型也可以做，但意义不大。
+- 如果Mac拦截到A发送来的消息，手机也会同步收到的这条已经拦截的消息(自己发送给自己)。目前只支持同步文字消息与图片消息。
+- 可以对同步的消息进行勾选，以免群消息打扰。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/revokeAsync.png" width="800px"/>
-</p>
-
-- 可以对同步的消息进行筛选， 以免群消息打扰。
-<p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20190625-111206%402x.png" width="600px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/revokeMessage.png" width="1500px"/>
 </p>
 
 ## 消息转发
@@ -79,10 +53,11 @@ I'm sorry for GitHub's trending rules. Most users of this project are Chinese, s
 - iPhone上可安装自签的微信包，实现多开，但是Bundle Id的改变导致APNS消息推送异常，无法收到消息推送？
 - 目前只能转发文字消息。选择`转发所有好友消息`时，只转发单聊消息，不转发群聊消息。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/msgForwarding.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/fowardMessage.png" width="1500px"/>
 </p>
 
 ## 免认证登录与多开
+- 可以`同时`登录`多个`微信号。
 <p align="center">
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/launch.png" width="800px"/>
 </p>
@@ -96,6 +71,7 @@ I'm sorry for GitHub's trending rules. Most users of this project are Chinese, s
 </p>
 
 ## 显示小程序详情
+- 即便Mac微信现在可以`打开`小程序，暂时还`不支持`游戏小程序，所以`保留`了此功能。
 <p align="center">
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20191220-2004071%402x.png" width="800px"/>
 </p>
@@ -108,19 +84,21 @@ I'm sorry for GitHub's trending rules. Most users of this project are Chinese, s
 
 - 依次点击 `小助手` -> `开启Alfred功能`
 - 打开你的Alfred搜索框，输入 `wx `(wx后面接一个空格)，即可开启Alfred控制微信之旅
+
 ## 退群监控
 - 退群提醒，同一人在同一群里的退出提醒7天内不再重复提示。
 <p align="center">
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20191227-200134%402x.png" width="800px"/>
 </p>
 
-## 微信多开兼容小程序
+## 群员监控
+- 微信版本`>=2.4.2（15650）`才支持此功能。
+- 群员监控Window中，鼠标右键单击左侧`Session`列表某行出现`拒收消息`，可以在Mac上完全拒收此群消息，避免打扰。
+- 右侧列表是依次是`昵称`、相关`发言时间与条数`、`违规言论`、`拼多多砍一刀`。
+- 此功能暂时属于`实验性质`。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/MiniProgram.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/ZGMP.png" width="800px"/>
 </p>
-
-- 目前并没有找到有效的办法解决微信多开和打开小程序的冲突，当微信A能解决与小程序的冲突并共存，但此时多开的微信B还是无法打开小程序。
-- 所以`微信多开`与`允许打开小程序`是互斥的，点击`微信多开`可关闭`允许打开小程序`，反之也是如此。
 
 ## 怎么安装?
 ### 安装方式一：普通安装(clone最新版本并安装)
@@ -160,25 +138,17 @@ omw -g
 
 - 3.2.下载本项目到你的电脑里， 并双击打开。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20190619-112238.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/install1.png" width="1500px"/>
 </p>
 
-- 3.3.依次打开文件夹
+- 3.3.依次打开文件夹`WeChatExtension/Rely/Install.sh`。
+
+- 3.4.将`Install.sh`拖入终端工具中按`回车`执行安装。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20190619-113413%402x.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/install2.png" width="1500px"/>
 </p>
 
-- 3.4.打开你电脑中的终端工具
-<p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20190619-113911%402x.png" width="800px"/>
-</p>
- 
-- 3.5.在Rely/Install.sh执行这个安装脚本
-<p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/QQ20190425-155120%402x.png" width="800px"/>
-</p>
-
-- 3.6.重启微信，安装完成。
+- 3.5.`重启`微信，安装完成。
 
 ## 怎么卸载?
 ### 卸载方式一：自动卸载（推荐）
@@ -188,13 +158,14 @@ bash <(curl -sL https://git.io/JUO6r)
 ### 卸载方式二：手动卸载
   -  将Uninstall.sh拖到终端工具中，回车执行即可。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20190625-102808%402x.png" width="800px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/uninstall.png" width="1500px"/>
 </p>
 
 
 
 ## 更新日志
 ```
+2020-10-31  修复清除空会话失效，优化置底、公众号浏览，新增一键卸载小助手，新增关闭皮肤选项，新增群员监控、拒收群消息。
 2020-09-20 系统低于macOS10.14不再支持皮肤，修复2.4.2 (15650)选取联系人Crash，优化UI细节。
 2020-09-16 适配微信2.4.2(15650)Beta 148，修复微信会话列表为空，新增通讯录管理皮肤适配，小程序成为独立模块，多开与小程序终于完美兼容，喜极而泣！
 2020-08-28 重构退群监控，会话列表选中高亮，修复部分低版本微信Crash。
@@ -246,7 +217,7 @@ bash <(curl -sL https://git.io/JUO6r)
 This project exists thanks to all the people who contribute。
 <a href="https://github.com/MustangYM/WeChatExtension-ForMac/graphs/contributors"><img src="https://opencollective.com/mustangym666/contributors.svg?width=890&button=false" /></a>
 
-## 感谢捐赠者
+## 感谢捐赠者 Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/mustangym666#backer)]
 <table><tr>
    <td align="center">
   <a href="https://github.com/EGOISTK21"><img src="https://avatars0.githubusercontent.com/u/17921692?s=400&v=4" width="100px;" alt="EGOISTK21"/>
@@ -500,28 +471,26 @@ This project exists thanks to all the people who contribute。
   <a href="https://github.com/SatanZS"><img src="https://avatars0.githubusercontent.com/u/8230677?s=400&u=0a628322a190b1c1c87f033290ea32568ea33342&v=4" width="100px;" alt="SatanZS"/>
   <br></br><sub><b>SatanZS</b></sub>
   
+   <td align="center">
+  <a href="https://github.com/huiyi0521"><img src="https://avatars1.githubusercontent.com/u/25707915?s=400&v=4" width="100px;" alt="huiyi0521"/>
+  <br></br><sub><b>huiyi0521</b></sub>
+ 
    </td></tr></table>
-
-## Backers
-
-Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/mustangym666#backer)]
+  
+   </td></tr></table>
 
 <a href="https://opencollective.com/mustangym666#backers" target="_blank"><img src="https://opencollective.com/mustangym666/backers.svg?width=890"></a>
 
-## License
-
-MIT license. 
-
-## 交流与支持
-如果小助手使你的生活更美好，可以请我喝杯咖啡。
-
+## 交流
+- QQ群：`741941325`。
+- 皮肤的颜色搭配采纳了大量群友的反馈和建议，经过激烈的讨论甚至投票仍然不能统一意见，那就干脆做`两套`吧，所以才会出现`黑夜`和`深邃`两款如此相近的`暗色调主题`，所以颜色上不再接受pr，向朋友们表示`感谢`。
+- 封面图的`骷髅`与`乌鸦`元素来自于`史泰龙`的电影`《The Expendables》`（敢死队）海报。
+- 插件中的`图标`、本页所有`Logo`、预览图均出自本人`蹩脚`的[Photoshop](https://www.adobe.com/products/photoshop.html)设计。
+- 如果小助手使你的生活更美好，可以`请我喝杯咖啡`。
 
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/aliPayCode.png" height="250" hspace="50"/>&nbsp;&nbsp;&nbsp;<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WeChatPayCode.png" height="250" hspace="50"  />
 
 
-- QQ群 741941325
-
 ## 免责声明
-
-本项目遵循MIT协议，方便交流与学习，包括但不限于本项目的衍生品都禁止在损害WeChat官方利益情况下进行盈利。如果您发现本项目有侵犯您的知识产权，请与我取得联系，我会及时修改或删除。
+本项目遵循`MIT license`，方便交流与学习，包括但不限于本项目的衍生品都禁止在损害WeChat官方利益情况下进行盈利。如果您发现本项目有侵犯您的知识产权，请与我取得联系，我会及时修改或删除。
 
