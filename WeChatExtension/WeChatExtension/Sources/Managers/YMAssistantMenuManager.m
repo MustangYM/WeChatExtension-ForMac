@@ -56,76 +56,6 @@ static char kZGMPWindowControllerKey;               //群管理 key
 #pragma mark - MainItems
 - (void)initAssistantMenuItems
 {
-    NSMenuItem *preventRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"开启消息防撤回", @"Revoke")
-                                                           action:@selector(onPreventRevoke:)
-                                                           target:self
-                                                    keyEquivalent:@"T"
-                                                            state:[[YMWeChatPluginConfig sharedConfig] preventRevokeEnable]];
-    if ([[YMWeChatPluginConfig sharedConfig] preventRevokeEnable]) {
-        NSMenuItem *preventSelfRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"拦截自己撤回的消息", @"Revoke Self")
-                                                                   action:@selector(onPreventSelfRevoke:)
-                                                                   target:self
-                                                            keyEquivalent:@""
-                                                                    state:[[YMWeChatPluginConfig sharedConfig] preventSelfRevokeEnable]];
-        
-        NSMenuItem *preventAsyncRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"防撤回同步到手机", @"Revoke Sync To Phone")
-                                                                   action:@selector(onPreventAsyncRevokeToPhone:)
-                                                                   target:self
-                                                            keyEquivalent:@""
-                                                                    state:[[YMWeChatPluginConfig sharedConfig] preventAsyncRevokeToPhone]];
-        
-        if ([[YMWeChatPluginConfig sharedConfig] preventAsyncRevokeToPhone]) {
-            NSMenuItem *asyncRevokeSignalItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"同步单聊", @"Sync Single Chat")
-                                                                       action:@selector(onAsyncRevokeSignal:)
-                                                                       target:self
-                                                                keyEquivalent:@""
-                                                                        state:[[YMWeChatPluginConfig sharedConfig] preventAsyncRevokeSignal]];
-            NSMenuItem *asyncRevokeChatRoomItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"同步群聊", @"Sync Group Chat")
-                                                                         action:@selector(onAsyncRevokeChatRoom:)
-                                                                         target:self
-                                                                  keyEquivalent:@""
-                                                                          state:[[YMWeChatPluginConfig sharedConfig] preventAsyncRevokeChatRoom]];
-            NSMenu *subAsyncMenu = [[NSMenu alloc] initWithTitle:@""];
-            [subAsyncMenu addItems:@[asyncRevokeSignalItem, asyncRevokeChatRoomItem]];
-            preventAsyncRevokeItem.submenu = subAsyncMenu;
-        }
-        
-        
-        NSMenu *subPreventMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.revoke")];
-        [subPreventMenu addItems:@[preventSelfRevokeItem, preventAsyncRevokeItem]];
-        preventRevokeItem.submenu = subPreventMenu;
-    }
-    
-    
-    NSMenuItem *forwardAndReplyItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"转发与回复", @"Auto Chat")
-           action:nil
-           target:self
-    keyEquivalent:@""
-            state:NO];
-    
-    //自动回复
-    NSMenuItem *autoReplyItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.autoReply")
-                                                       action:@selector(onAutoReply:)
-                                                       target:self
-                                                keyEquivalent:@"k"
-                                                        state:[[YMWeChatPluginConfig sharedConfig] autoReplyEnable]];
-    //自动转发
-    NSMenuItem *autoForwardingItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.autoForwarding")
-                                                            action:@selector(onAutoForwarding:)
-                                                            target:self
-                                                     keyEquivalent:@"K"
-                                                             state:[[YMWeChatPluginConfig sharedConfig] autoForwardingEnable]];
-    
-    //自动回复
-    NSMenuItem *autoAIReplyItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"AI回复设置", @"AI-ReplySetting")
-                                                          action:@selector(onAutoAIReply:)
-                                                          target:self
-                                                   keyEquivalent:@"k"
-                                                           state:[[YMWeChatPluginConfig sharedConfig] AIReplyEnable]];
-    NSMenu *autoChatMenu = [[NSMenu alloc] initWithTitle:YMLanguage(@"转发与回复", @"Auto Chat")];
-    [autoChatMenu addItems:@[autoReplyItem, autoForwardingItem, autoAIReplyItem]];
-    forwardAndReplyItem.submenu = autoChatMenu;
-    
     //登录新微信
     NSMenuItem *newWeChatItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.newWeChat")
                                                        action:@selector(onNewWechatInstance:)
@@ -176,9 +106,11 @@ static char kZGMPWindowControllerKey;               //群管理 key
                                                   keyEquivalent:@""
                                                           state:0];
     
-    NSMenuItem *groupMgrMenu = [self creatQuitGroupMenu];
     NSMenuItem *pluginItem = [self creatAboutAssistantMenu];
+    NSMenuItem *groupMgrMenu = [self creatQuitGroupMenu];
     NSMenuItem *backGroundItem = [self creatThemeMenu];
+    NSMenuItem *preventRevokeItem = [self creatRevokeMenuItem];
+    NSMenuItem *forwardAndReplyItem = [self creatAutoReplyMenuItem];
     
     NSMenu *subMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.title")];
     [subMenu addItems:@[preventRevokeItem,
@@ -193,23 +125,103 @@ static char kZGMPWindowControllerKey;               //群管理 key
                         pluginItem,
                         aboutPluginItem
                         ]];
-    
+    //此版本微信官方包已将小程序独立
     if (LargerOrEqualLongVersion(@"2.4.2.148") == NO) {
         [subMenu insertItem:miniProgramItem atIndex:4];
     }
     
+    //低于10.14不适配皮肤
     if (@available(macOS 10.14, *)) {
         [subMenu insertItem:backGroundItem atIndex:2];
     }
     
     NSMenuItem *menuItem = [[NSMenuItem alloc] init];
+    menuItem.target = self;
+    menuItem.enabled = NO;
     [menuItem setTitle:YMLocalizedString(@"assistant.menu.title")];
     [menuItem setSubmenu:subMenu];
-    menuItem.target = self;
     [[[NSApplication sharedApplication] mainMenu] addItem:menuItem];
-    menuItem.enabled = NO;
-    
     [self addObserverWeChatConfig];
+}
+
+#pragma mark - AutoReplyMenuItem
+- (NSMenuItem *)creatAutoReplyMenuItem
+{
+    NSMenuItem *forwardAndReplyItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"转发与回复", @"Auto Chat")
+                                                             action:nil
+                                                             target:self
+                                                      keyEquivalent:@""
+                                                              state:NO];
+    
+    //自动回复
+    NSMenuItem *autoReplyItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.autoReply")
+                                                       action:@selector(onAutoReply:)
+                                                       target:self
+                                                keyEquivalent:@"k"
+                                                        state:[[YMWeChatPluginConfig sharedConfig] autoReplyEnable]];
+    //自动转发
+    NSMenuItem *autoForwardingItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.autoForwarding")
+                                                            action:@selector(onAutoForwarding:)
+                                                            target:self
+                                                     keyEquivalent:@"K"
+                                                             state:[[YMWeChatPluginConfig sharedConfig] autoForwardingEnable]];
+    
+    //自动回复
+    NSMenuItem *autoAIReplyItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"AI回复设置", @"AI-ReplySetting")
+                                                         action:@selector(onAutoAIReply:)
+                                                         target:self
+                                                  keyEquivalent:@"k"
+                                                          state:[[YMWeChatPluginConfig sharedConfig] AIReplyEnable]];
+    NSMenu *autoChatMenu = [[NSMenu alloc] initWithTitle:YMLanguage(@"转发与回复", @"Auto Chat")];
+    [autoChatMenu addItems:@[autoReplyItem, autoForwardingItem, autoAIReplyItem]];
+    forwardAndReplyItem.submenu = autoChatMenu;
+    return forwardAndReplyItem;
+}
+
+#pragma mark - RevokeMenuItem
+- (NSMenuItem *)creatRevokeMenuItem
+{
+    NSMenuItem *preventRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"开启消息防撤回", @"Revoke")
+                                                           action:@selector(onPreventRevoke:)
+                                                           target:self
+                                                    keyEquivalent:@"T"
+                                                            state:[[YMWeChatPluginConfig sharedConfig] preventRevokeEnable]];
+    if ([[YMWeChatPluginConfig sharedConfig] preventRevokeEnable]) {
+        NSMenuItem *preventSelfRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"拦截自己撤回的消息", @"Revoke Self")
+                                                                   action:@selector(onPreventSelfRevoke:)
+                                                                   target:self
+                                                            keyEquivalent:@""
+                                                                    state:[[YMWeChatPluginConfig sharedConfig] preventSelfRevokeEnable]];
+        
+        NSMenuItem *preventAsyncRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"防撤回同步到手机", @"Revoke Sync To Phone")
+                                                                    action:@selector(onPreventAsyncRevokeToPhone:)
+                                                                    target:self
+                                                             keyEquivalent:@""
+                                                                     state:[[YMWeChatPluginConfig sharedConfig] preventAsyncRevokeToPhone]];
+        
+        if ([[YMWeChatPluginConfig sharedConfig] preventAsyncRevokeToPhone]) {
+            NSMenuItem *asyncRevokeSignalItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"同步单聊", @"Sync Single Chat")
+                                                                       action:@selector(onAsyncRevokeSignal:)
+                                                                       target:self
+                                                                keyEquivalent:@""
+                                                                        state:[[YMWeChatPluginConfig sharedConfig] preventAsyncRevokeSignal]];
+            NSMenuItem *asyncRevokeChatRoomItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"同步群聊", @"Sync Group Chat")
+                                                                         action:@selector(onAsyncRevokeChatRoom:)
+                                                                         target:self
+                                                                  keyEquivalent:@""
+                                                                          state:[[YMWeChatPluginConfig sharedConfig] preventAsyncRevokeChatRoom]];
+            NSMenu *subAsyncMenu = [[NSMenu alloc] initWithTitle:@""];
+            [subAsyncMenu addItems:@[asyncRevokeSignalItem, asyncRevokeChatRoomItem]];
+            preventAsyncRevokeItem.submenu = subAsyncMenu;
+        }
+        
+        
+        NSMenu *subPreventMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.revoke")];
+        [subPreventMenu addItems:@[preventSelfRevokeItem, preventAsyncRevokeItem]];
+        preventRevokeItem.submenu = subPreventMenu;
+    }
+    
+    return preventRevokeItem;
 }
 
 #pragma mark - CreatMenuItem
