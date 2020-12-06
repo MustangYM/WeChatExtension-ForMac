@@ -498,7 +498,8 @@
     BOOL autoLogin = [[YMWeChatPluginConfig sharedConfig] autoLoginEnable];
     autoLoginButton.state = autoLogin;
 
-    BOOL wechatHasRun = [self checkWeChatLaunched];
+    BOOL wechatHasRun = [YMDeviceHelper checkWeChatLaunched];
+    int wechatLaunchCount = [YMDeviceHelper checkWeChatLaunchedCount];
     BOOL autoAuthEnable = [[YMWeChatPluginConfig sharedConfig] autoAuthEnable];
     
     if (autoAuthEnable) {
@@ -509,25 +510,11 @@
                 [loginVC onLoginButtonClicked:nil];
             });
         }
-    }else{
-        if (autoLogin && wechatHasRun) {
+    } else {
+        if (autoLogin && wechatLaunchCount < 2) {
             [loginVC onLoginButtonClicked:nil];
         }
     }
-}
-
-- (BOOL)checkWeChatLaunched
-{
-    NSArray *ary = [[NSWorkspace sharedWorkspace] launchedApplications];
-    __block BOOL isWeChatLaunched = NO;
-    [ary enumerateObjectsUsingBlock:^(NSDictionary *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSLog(@"启动微信");
-        NSString *bundleID = [obj valueForKey:@"NSApplicationBundleIdentifier"];
-        if ([bundleID isEqualToString:@"com.tencent.xinWeChat"]) {
-            isWeChatLaunched = YES;
-        }
-    }];
-    return isWeChatLaunched;
 }
 
 //置底
