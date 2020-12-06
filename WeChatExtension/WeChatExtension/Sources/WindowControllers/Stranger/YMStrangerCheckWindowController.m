@@ -9,7 +9,7 @@
 #import "YMStrangerCheckWindowController.h"
 #import "YMStrangerCheckCell.h"
 #import "YMAutoReplyModel.h"
-#import "TKWeChatPluginConfig.h"
+#import "YMWeChatPluginConfig.h"
 #import "YMIMContactsManager.h"
 
 @interface YMStrangerCheckWindowController ()<NSTabViewDelegate, NSTableViewDataSource>
@@ -167,7 +167,7 @@
         wself.currentChatroom = chatroom;
         __block int64_t i = 0;
         wself.addButton.enabled = NO;
-        NSArray *contacts = [YMIMContactsManager getAllFriendContactsWithOutChatroom];
+    NSArray *contacts = [YMIMContactsManager getAllFriendContactsWithOutChatroom];
         NSMutableArray *tempArray = [NSMutableArray arrayWithArray:contacts];
         
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:5.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
@@ -196,8 +196,8 @@
             
             if (tempArray.count > 0) {
                 [tempArray  removeObjectAtIndex:0];
-            }
-        }];
+        }
+    }];
         wself.timer = timer;
         [timer fire];
     }];

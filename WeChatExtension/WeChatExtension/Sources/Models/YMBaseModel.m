@@ -2,8 +2,8 @@
 //  YMBaseModel.m
 //  WeChatExtension
 //
-//  Created by WeChatExtension on 2017/9/17.
-//  Copyright © 2017年 WeChatExtension. All rights reserved.
+//  Created by WeChatExtension on 2019/9/17.
+//  Copyright © 2019年 WeChatExtension. All rights reserved.
 //
 
 #import "YMBaseModel.h"

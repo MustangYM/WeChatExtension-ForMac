@@ -72,10 +72,8 @@
     
     NSString *nickName = @"";
     NSString *avatarUrl = @"";
-    NSBundle *bundle = [NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"];
-    NSString *imgPath= [bundle pathForImageResource:@"order_avatar.png"];
-    NSImage *placeholder = [[NSImage alloc] initWithContentsOfFile:imgPath];
     
+    NSImage *placeholder = kImageWithName(@"order_avatar.png");
     if ([wxid containsString:@"@chatroom"]) {
         MMSessionInfo *info = [YMIMContactsManager getSessionInfo:wxid];
         nickName = info.m_packedInfo.m_contact.m_nsNickName;

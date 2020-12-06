@@ -7,7 +7,7 @@
 //
 
 #import "YMVersionManager.h"
-#import "TKWeChatPluginConfig.h"
+#import "YMWeChatPluginConfig.h"
 #import "YMHTTPManager.h"
 #import "YMRemoteControlManager.h"
 #import "YMCacheManager.h"
@@ -35,8 +35,8 @@
 - (void)checkVersionFinish:(void (^)(TKVersionStatus, NSString *))finish
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSDictionary *localInfo = [[TKWeChatPluginConfig sharedConfig] localInfoPlist];
-        NSDictionary *romoteInfo = [[TKWeChatPluginConfig sharedConfig] romoteInfoPlist];
+        NSDictionary *localInfo = [[YMWeChatPluginConfig sharedConfig] localInfoPlist];
+        NSDictionary *romoteInfo = [[YMWeChatPluginConfig sharedConfig] romoteInfoPlist];
         NSString *localBundle = localInfo[@"CFBundleShortVersionString"];
         NSString *romoteBundle = romoteInfo[@"CFBundleShortVersionString"];
         

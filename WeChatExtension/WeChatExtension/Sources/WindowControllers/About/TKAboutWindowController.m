@@ -26,22 +26,19 @@
 {
     [super windowDidLoad];
     self.titleLabel.stringValue = YMLanguage(@"微信小助手", @"WeChat Assistant");
-    self.homePageTitleLabel.stringValue = YMLanguage(@"项目主页:", @"Project Homepage:");
+    self.homePageTitleLabel.stringValue = YMLanguage(@"唯一主页:", @"Only Homepage:");
     self.WeiboLabel.stringValue = YMLanguage(@"微博:", @"Weibo:");
     self.window.backgroundColor = [NSColor whiteColor];
-    NSDictionary *localInfo = [[TKWeChatPluginConfig sharedConfig] localInfoPlist];
+    NSDictionary *localInfo = [[YMWeChatPluginConfig sharedConfig] localInfoPlist];
     if (!localInfo) {
         return;
     }
     NSString *localBundle = localInfo[@"CFBundleShortVersionString"];
     self.versionLabel.stringValue = [NSString stringWithFormat:@"V %@",localBundle];
     
-    NSBundle *bundle = [NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"];
-    NSString *imgPath= [bundle pathForImageResource:@"aliPayCode.png"];
-    NSImage *placeholder = [[NSImage alloc] initWithContentsOfFile:imgPath];
-    self.aliPay.image = placeholder;
+    self.aliPay.image = kImageWithName(@"aliPayCode.png");
     
-    self.WeChatPayImageView.image = [[NSImage alloc] initWithContentsOfFile:[bundle pathForImageResource:@"WeChatPayCode.png"]];
+    self.WeChatPayImageView.image = kImageWithName(@"WeChatPayCode.png");
 }
 
 - (IBAction)didClickHomepageURL:(NSButton *)sender

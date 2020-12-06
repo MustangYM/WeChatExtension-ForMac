@@ -10,12 +10,14 @@
 
 #define LargerOrEqualVersion(version) [YMDeviceHelper isLargerOrEqualVersion:version]
 #define LargerOrEqualLongVersion(version) [YMDeviceHelper isLargeOrEqualLongVersion:version]
+#define kImageWithName(name) [YMDeviceHelper imageWithName:name]
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YMDeviceHelper : NSObject
 + (BOOL)isLargerOrEqualVersion:(NSString *)version;
 + (BOOL)isLargeOrEqualLongVersion:(NSString *)version;
 + (NSString *)deviceFingerprint;
++ (NSImage *)imageWithName:(NSString *)imageName;
 @end
 
 NS_ASSUME_NONNULL_END

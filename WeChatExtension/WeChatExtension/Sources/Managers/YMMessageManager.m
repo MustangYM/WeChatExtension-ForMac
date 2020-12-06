@@ -149,15 +149,15 @@
 
 - (void)asyncRevokeMessage:(MessageData *)revokeMsgData
 {
-    if (![TKWeChatPluginConfig sharedConfig].preventAsyncRevokeToPhone) {
+    if (![YMWeChatPluginConfig sharedConfig].preventAsyncRevokeToPhone) {
         return;
     }
     
-    if (![[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeSignal] && ![revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
+    if (![[YMWeChatPluginConfig sharedConfig] preventAsyncRevokeSignal] && ![revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
         return;
     }
     
-    if (![[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeChatRoom] && [revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
+    if (![[YMWeChatPluginConfig sharedConfig] preventAsyncRevokeChatRoom] && [revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
         return;
     }
     

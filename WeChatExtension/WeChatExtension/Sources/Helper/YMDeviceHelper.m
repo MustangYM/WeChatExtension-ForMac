@@ -41,4 +41,14 @@
     uuidValue = [uuidValue stringByReplacingOccurrencesOfString:@"-" withString:@""];
     return uuidValue;
 }
+
++ (NSImage *)imageWithName:(NSString *)imageName
+{
+    if (!imageName || imageName.length == 0) {
+        return nil;
+    }
+    NSBundle *bundle = [NSBundle bundleWithIdentifier:@"MustangYM.WeChatExtension"];
+    NSString *imgPath = [bundle pathForImageResource:imageName];
+    return [[NSImage alloc] initWithContentsOfFile:imgPath];
+}
 @end

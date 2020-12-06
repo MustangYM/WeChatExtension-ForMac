@@ -20,7 +20,23 @@ app_executable_path="${app_bundle_path}/${app_name}"
 app_executable_backup_path="${app_executable_path}_backup"
 framework_path="${app_bundle_path}/${framework_name}.framework"
 
+# 先执行卸载流程
+if [ -f "$app_executable_backup_path" ]
+then
+rm "$app_executable_path"
+rm -rf "$framework_path"
+mv "$app_executable_backup_path" "$app_executable_path"
 
+if [ -f "$app_executable_backup_path" ]
+then
+    echo "卸载失败，请到 /Applications/WeChat.app/Contents/MacOS 路径，删除 WeChatPlugin.framework、WeChat 两个文件文件，并将 WeChat_backup 重命名为 WeChat"
+else
+    echo "\n\t卸载旧小助手成功,安装新版中..."
+fi
+#未发现小助手
+fi
+
+# 执行安装流程
 # 对 WeChat 赋予权限
 if [ ! -w "$wechat_path" ]
 then
