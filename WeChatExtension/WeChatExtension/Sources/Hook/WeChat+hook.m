@@ -471,8 +471,7 @@
 - (void)hook_viewWillAppear
 {
     [self hook_viewWillAppear];
-    
-    BOOL autoAuthEnable = [[YMWeChatPluginConfig sharedConfig] autoAuthEnable];
+   
     WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
      MMLoginOneClickViewController *loginVC = wechat.mainWindowController.loginViewController.oneClickViewController;
     
@@ -484,11 +483,6 @@
         }
     }
     
-    if (!autoAuthEnable) {
-        return;
-    }
-    
-
     NSButton *autoLoginButton = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:@"" target:self action:@selector(selectAutoLogin:)];
         btn.frame = NSMakeRect(110, 60, 80, 30);
@@ -506,12 +500,20 @@
     autoLoginButton.state = autoLogin;
 
     BOOL wechatHasRun = [self checkWeChatLaunched];
-    AccountService *accountService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("AccountService")];
-    if (autoLogin && wechatHasRun && [accountService canAutoAuth]) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
+    BOOL autoAuthEnable = [[YMWeChatPluginConfig sharedConfig] autoAuthEnable];
+    
+    if (autoAuthEnable) {
+        AccountService *accountService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("AccountService")];
+        if (autoLogin && wechatHasRun && [accountService canAutoAuth]) {
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
+                [loginVC onLoginButtonClicked:nil];
+            });
+        }
+    }else{
+        if (autoLogin && wechatHasRun) {
             [loginVC onLoginButtonClicked:nil];
-        });
+        }
     }
 }
 
