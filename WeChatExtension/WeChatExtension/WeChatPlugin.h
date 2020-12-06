@@ -448,6 +448,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)loadBrandSessionData;
 - (void)loadSessionData;
 - (void)loadData;
+- (void)updateGroupChatSessionIfNeeded;
 @end
 
 @interface BrandSessionMgr : NSObject
@@ -1065,7 +1066,30 @@ forHTTPHeaderField:(NSString *)field;
 
 @end
 
+@interface SyncCGI : NSObject
+- (void)callSyncFail;
+- (void)callSyncSucc;
+- (BOOL)shouldContinueOpenIMSync:(id)arg1 withResponse:(id)arg2;
+- (BOOL)shouldContinueNewSync:(id)arg1 withResponse:(id)arg2;
+- (BOOL)handleSyncResponse:(id)arg1;
+- (void)handleOpenIMSyncResponse:(id)arg1 sessionId:(unsigned int)arg2;
+- (void)handleNewSyncResponse:(id)arg1 sessionId:(unsigned int)arg2;
+- (void)OnResponseCGI:(BOOL)arg1 sessionId:(unsigned int)arg2 cgiWrap:(id)arg3;
+- (void)doOpenIMSyncRequest;
+- (void)doNewSyncRequest;
+- (void)startSync;
+- (void)OnReceiveNotifyData:(id)arg1;
+- (void)FixOpenIMSync;
+- (void)BackGroundToForeGroundSync;
+- (void)NeedToSync:(unsigned int)arg1;
+- (void)Stop;
+- (void)dealloc;
+@end
+
 @interface SyncService : NSObject
+{
+ SyncCGI *_syncCGI;
+}
 - (BOOL)ProcessHeartBeatResponse:(id)arg1 isSessionTimeout:(char *)arg2;
 - (BOOL)FillHeartBeatRequestBuffer:(id)arg1 reqCmdId:(int *)arg2 respCmdId:(int *)arg3;
 - (void)CheckHeartBeatIfNeeded;
