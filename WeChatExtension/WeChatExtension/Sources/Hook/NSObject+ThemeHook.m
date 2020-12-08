@@ -750,7 +750,6 @@
         return;
     }
     
-    
     if ([view isKindOfClass:[objc_getClass("MMContactMgrButtonView") class]]) {
         for (NSView *sub in view.subviews) {
             if (![sub isKindOfClass:[NSTextField class]]) {
@@ -844,19 +843,32 @@
     
     if ([view isKindOfClass:[objc_getClass("NewNoteContentView") class]]) {
         [[YMThemeManager shareInstance] changeTheme:view];
+        return;
     }
+    
+    [self addSubViewDealView:view];
+    [self addSubViewDealControllerWithView:view];
+}
 
-    #pragma mark - view
+#pragma mark - AddSubView-DealView
+- (void)addSubViewDealView:(NSView *)view
+{
+    if (!view) {
+        return;
+    }
+    
     if ([view isKindOfClass:[objc_getClass("MMSessionPickerListGroupRowView") class]]) {
         for (NSView *sub in view.subviews) {
             if (![sub isKindOfClass:[NSTextField class]]) {
                 [[YMThemeManager shareInstance] changeTheme:sub];
             }
         }
+        return;
     }
 
     if ([view isKindOfClass:[objc_getClass("MMSplitView") class]]) {
         [[YMThemeManager shareInstance] changeTheme:view color:[NSColor redColor]];
+        return;
     }
     
     if ([view isKindOfClass:[objc_getClass("MMContactsMgrGroupRowView") class]]) {
@@ -865,6 +877,7 @@
                 [[YMThemeManager shareInstance] changeTheme:sub];
             }
         }
+        return;
     }
     
     //编辑联系人"标签"
@@ -889,18 +902,22 @@
         }
         
         [[YMThemeManager shareInstance] changeTheme:view];
+        return;
     }
     
     if ([view isKindOfClass:[objc_getClass("JNWClipView") class]]) {
         [[YMThemeManager shareInstance] changeTheme:view];
+        return;
     }
     
     if ([view isKindOfClass:[objc_getClass("_NSBrowserFlippedClipView") class]]) {
         [[YMThemeManager shareInstance] changeTheme:view];
+        return;
     }
     
     if ([view isKindOfClass:[objc_getClass("NSClipView") class]]) {
         [[YMThemeManager shareInstance] changeTheme:view];
+        return;
     }
     
     if ([view isKindOfClass:[objc_getClass("MMComposeTextView") class]]) {
@@ -908,10 +925,12 @@
         textView.insertionPointColor = [NSColor whiteColor];
         textView.textColor = [NSColor whiteColor];
         textView.backgroundColor = [YMWeChatPluginConfig sharedConfig].mainBackgroundColor;
+        return;
     }
     
     if ([view isKindOfClass:[objc_getClass("SwipeDeleteView") class]]) {
         [[YMThemeManager shareInstance] changeTheme:view];
+        return;
     }
     
     
@@ -919,6 +938,7 @@
         for (NSView *sub in view.subviews) {
             [[YMThemeManager shareInstance] changeTheme:sub];
         }
+        return;
     }
     
     
@@ -926,12 +946,14 @@
         for (NSView *sub in view.subviews) {
             [[YMThemeManager shareInstance] changeTheme:sub];
         }
+        return;
     }
     
     if ([view isKindOfClass:[objc_getClass("MMFavoritesListNoteCell") class]]) {
         for (NSView *sub in view.subviews) {
             [[YMThemeManager shareInstance] changeTheme:sub];
         }
+        return;
     }
     
     //公众号
@@ -952,11 +974,18 @@
                 }
             }
         });
+        return;
+    }
+}
+
+#pragma mark - AddSubView-DealController
+- (void)addSubViewDealControllerWithView:(NSView *)view
+{
+    if (!view) {
+        return;
     }
     
-    #pragma mark - controller
     NSViewController *controller = [self findResponderController:view];
-    
     if ([controller isKindOfClass:[objc_getClass("MMChatMessageViewController") class]]) {
         MMChatMessageViewController *msgViewController = (MMChatMessageViewController *)controller;
         [msgViewController.messageTableView setBackgroundColor:kMainBackgroundColor];
@@ -968,24 +997,29 @@
                 [YMThemeManager changeEffectViewMode:(NSVisualEffectView *)view];
             }
         }
+        return;
     }
     
     if ([controller isKindOfClass:[objc_getClass("MMFavoriteDetailViewContoller") class]]) {
         [[YMThemeManager shareInstance] changeTheme:view];
+        return;
     }
     
     if ([controller isKindOfClass:[objc_getClass("MMComposeInputViewController") class]]) {
         [[YMThemeManager shareInstance] changeTheme:view];
+        return;
     }
     
     if ([controller isKindOfClass:[objc_getClass("MMMainViewController") class]]) {
         if (![view isKindOfClass:objc_getClass("_NSImageViewSimpleImageView")]) {
             [[YMThemeManager shareInstance] changeTheme:view];
         }
+        return;
     }
     
     if ([controller isKindOfClass:[objc_getClass("MMContactsDetailViewController") class]]) {
         [[YMThemeManager shareInstance] changeTheme:view];
+        return;
     }
     
     if ([controller isKindOfClass:[objc_getClass("MMSessionListView") class]]) {

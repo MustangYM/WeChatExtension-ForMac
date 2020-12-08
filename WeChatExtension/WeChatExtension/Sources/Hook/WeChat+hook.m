@@ -150,7 +150,6 @@
 + (void)setup
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
         //窗口置顶初始化
         [self setupWindowSticky];
     });
@@ -217,8 +216,6 @@
 }
 
 - (void)hook_originalImageDidLoadWithUniqueID:(id)arg1 image:(id)arg2; {
-    
-    
     return [self hook_originalImageDidLoadWithUniqueID:arg1 image:arg2];
 }
 
@@ -566,7 +563,7 @@
         hookMethod(objc_getClass("MMUpdateMgr"), @selector(sparkleUpdater), [self class], @selector(hook_sparkleUpdater));
     } else {
         if ([wechat respondsToSelector:@selector(checkForUpdatesInBackground)]) {
-            //      去除刚启动微信更新弹窗提醒
+            //去除刚启动微信更新弹窗提醒
             hookMethod(objc_getClass("WeChat"), @selector(checkForUpdatesInBackground), [self class], @selector(hook_checkForUpdatesInBackground));
         }
     }
@@ -576,7 +573,7 @@
     [self hook_applicationDidFinishLaunching:arg1];
 }
 
-//  强制用户退出时保存聊天记录
+//强制用户退出时保存聊天记录
 - (id)hook_stringForKey:(NSString *)key
 {
     if ([key isEqualToString:@"kMMUserDefaultsKey_SaveChatHistory"]) {
@@ -631,7 +628,7 @@
     }
 }
 
-//  设置标记未读
+//设置标记未读
 - (void)hook_onClickSession
 {
     [self hook_onClickSession];
@@ -653,6 +650,30 @@
     }
     [self hook_onUnReadCountChange:arg1];
 }
+
+#pragma mark - QuiteMonitor
+- (void)hook_UpdateGroupMemberDetailIfNeeded:(id)arg1 withCompletion:(id)arg2
+{
+    if ([YMWeChatPluginConfig sharedConfig].quitMonitorEnable) {
+        [[YMIMContactsManager shareInstance] monitorQuitGroup:arg1];
+    }
+    [self hook_UpdateGroupMemberDetailIfNeeded:arg1 withCompletion:arg2];
+}
+
+- (void)hook_onUpdateHandoffExpt:(BOOL)arg1
+{
+    [self hook_onUpdateHandoffExpt:YES];
+}
+
+- (void)hook_MainViewDidLoad
+{
+    [self hook_MainViewDidLoad];
+    if (LargerOrEqualVersion(@"2.4.0")) {
+        MMMainViewController *mainVC = (MMMainViewController *)self;
+        [mainVC onUpdateHandoffExpt:YES];
+    }
+}
+
 #pragma mark - hook 系统方法
 - (void)hook_makeKeyAndOrderFront:(nullable id)sender
 {
@@ -663,7 +684,6 @@
 }
 
 #pragma mark - Other
-
 - (void)autoReplyByAI:(AddMsg *)addMsg
 {
     if (addMsg.msgType != 1) {
@@ -682,7 +702,7 @@
     }
     
     if ([msgContact isBrandContact] || [msgContact isSelf]) {
-        //        该消息为公众号或者本人发送的消息
+        //该消息为公众号或者本人发送的消息
         return;
     }
     YMAIAutoModel *AIModel = [[YMWeChatPluginConfig sharedConfig] AIReplyModel];
@@ -736,7 +756,7 @@
         msgContact = [sessionMgr getContact:userName];
     }
     if ([msgContact isBrandContact] || [msgContact isSelf]) {
-        //        该消息为公众号或者本人发送的消息
+        //该消息为公众号或者本人发送的消息
         return;
     }
     VAutoForwardingModel *model = [[YMWeChatPluginConfig sharedConfig] VAutoForwardingModel];
@@ -797,11 +817,7 @@
     }];
 }
 
-/**
- 自动回复
- 
- @param addMsg 接收的消息
- */
+//自动回复
 - (void)autoReplyWithMsg:(AddMsg *)addMsg
 {
     //    addMsg.msgType != 49
@@ -923,11 +939,7 @@
     }
 }
 
-/**
- 远程控制
- 
- @param addMsg 接收的消息
- */
+//远程控制
 - (void)remoteControlWithMsg:(AddMsg *)addMsg
 {
     NSDate *now = [NSDate date];
@@ -994,29 +1006,5 @@ static NSString *(*original_NSHomeDirectory)(void);
 
 NSString *swizzled_NSHomeDirectory(void) {
     return [NSString stringWithFormat:@"%@/Library/Containers/com.tencent.xinWeChat/Data",original_NSHomeDirectory()];
-}
-
-
-#pragma mark -
-- (void)hook_UpdateGroupMemberDetailIfNeeded:(id)arg1 withCompletion:(id)arg2
-{
-    if ([YMWeChatPluginConfig sharedConfig].quitMonitorEnable) {
-        [[YMIMContactsManager shareInstance] monitorQuitGroup:arg1];
-    }
-    [self hook_UpdateGroupMemberDetailIfNeeded:arg1 withCompletion:arg2];
-}
-
-- (void)hook_onUpdateHandoffExpt:(BOOL)arg1
-{
-    [self hook_onUpdateHandoffExpt:YES];
-}
-
-- (void)hook_MainViewDidLoad
-{
-    [self hook_MainViewDidLoad];
-    if (LargerOrEqualVersion(@"2.4.0")) {
-        MMMainViewController *mainVC = (MMMainViewController *)self;
-        [mainVC onUpdateHandoffExpt:YES];
-    }
 }
 @end
