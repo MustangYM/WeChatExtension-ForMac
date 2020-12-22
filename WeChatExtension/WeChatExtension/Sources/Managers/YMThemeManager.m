@@ -167,4 +167,22 @@ static const NSArray *colors() {
     effectView.state = NSVisualEffectStateActive;
 }
 
+#pragma mark - ChatsCell
+- (void)chatsCellViewAnimation:(MMChatsTableCellView *)cell isSelected:(BOOL)isSelected
+{
+    if (!cell) {
+        return;
+    }
+    
+    if ([YMWeChatPluginConfig sharedConfig].usingTheme) {
+        if (isSelected) {
+            CAKeyframeAnimation *rotationAnimation = [CAKeyframeAnimation animation];
+            rotationAnimation.keyPath = @"transform.rotation";
+            rotationAnimation.duration = 0.15;
+            rotationAnimation.values = @[@(-M_PI_4 /90.0 * 5),@(M_PI_4 /90.0 * 5),@(-M_PI_4 /90.0 * 5)];
+            rotationAnimation.repeatCount = 2;
+            [cell.avatar.layer addAnimation:rotationAnimation forKey:nil];
+        }
+    }
+}
 @end

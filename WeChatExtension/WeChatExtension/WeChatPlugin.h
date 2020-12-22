@@ -867,7 +867,8 @@ forHTTPHeaderField:(NSString *)field;
 @property(nonatomic) BOOL shouldRemoveHighlight; // @synthesize shouldRemoveHighlight=_shouldRemoveHighlight;
 @property(retain, nonatomic) NSView *containerView; // @synthesize containerView=_containerView;
 @property(retain, nonatomic) id muteIndicator;//MMSidebarColorIconView SVGImageView
-@property(retain, nonatomic) CAShapeLayer * _Nullable shapeLayer; // @synthesize shapeLayer=_shapeLayer;
+@property(retain, nonatomic) CAShapeLayer * _Nullable shapeLayer; // @synthesize shapeLayer=_shapeLayer;_focusingLineLayer
+@property(retain, nonatomic) CAShapeLayer * _Nullable focusingLineLayer; // @synthesize shapeLayer=_shapeLayer;
 @property(retain, nonatomic) NSView *avatar;
 @property(retain, nonatomic) MMBadgeOverlayView *badgeView; // @synthesize badgeView=_badgeView;
 @property(nonatomic) BOOL selected; // @synthesize selected=_selected;
@@ -932,6 +933,8 @@ forHTTPHeaderField:(NSString *)field;
 
 @interface MMChatMemberListViewController : NSViewController
 - (void)startAGroupChatWithSelectedUserNames:(id)arg1;
+@property(nonatomic) __weak MMTableView *tableView;
+@property(retain, nonatomic) MMView *backgroundView; 
 @end
 
 @interface MMContactProfileController : NSViewController
@@ -1237,4 +1240,13 @@ forHTTPHeaderField:(NSString *)field;
 - (void)sendFriendVerifyMessage:(id)arg1 withVerifyContactWrap:(id)arg2;
 - (void)sendVerifyUserRequestWithUserName:(id)arg1 opCode:(int)arg2 verifyMsg:(id)arg3 ticket:(id)arg4 verifyContactWrap:(id)arg5 completion:(id)arg6;
 - (void)showFriendVerifyWindowWithContact:(id)arg1 groupChatUserName:(id)arg2 completion:(id)arg3;
+@end
+
+@interface MMTextView : NSTextView
+@property(retain, nonatomic) NSColor *selectedTextColor; // @synthesize selectedTextColor=_selectedTextColor;
+@property(retain, nonatomic) NSColor *normalTextColor; // @synthesize normalTextColor=_normalTextColor;
+@end
+
+@interface MMSystemMessageCellView : MMMessageCellView
+@property(retain, nonatomic) MMTextView *msgTextView; // @synthesize msgTextView=_msgTextView;
 @end

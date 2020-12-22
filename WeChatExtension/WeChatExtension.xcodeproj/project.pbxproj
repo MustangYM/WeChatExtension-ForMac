@@ -171,6 +171,7 @@
 		18B5D4A022FAC7AD008206F5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B5D49F22FAC7AD008206F5 /* Security.framework */; };
 		18B5D4A222FAC7B9008206F5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B5D4A122FAC7B9008206F5 /* libz.tbd */; };
 		18B5D4A422FAC7C1008206F5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B5D4A322FAC7C1008206F5 /* libc++.tbd */; };
+		18C5A34025922B65006F12F0 /* barbuttonicon_more_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C5A33F25922B65006F12F0 /* barbuttonicon_more_white.png */; };
 		18D298522394EE60009EE6B0 /* YMNetWorkHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D298502394EE60009EE6B0 /* YMNetWorkHelper.h */; };
 		18D298532394EE60009EE6B0 /* YMNetWorkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D298512394EE60009EE6B0 /* YMNetWorkHelper.m */; };
 		18D298ED23960C18009EE6B0 /* YMAIReplyWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 18D298EA23960C18009EE6B0 /* YMAIReplyWindowController.h */; };
@@ -398,6 +399,7 @@
 		18B5D49F22FAC7AD008206F5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		18B5D4A122FAC7B9008206F5 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		18B5D4A322FAC7C1008206F5 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		18C5A33F25922B65006F12F0 /* barbuttonicon_more_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barbuttonicon_more_white.png; sourceTree = "<group>"; };
 		18D298502394EE60009EE6B0 /* YMNetWorkHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMNetWorkHelper.h; sourceTree = "<group>"; };
 		18D298512394EE60009EE6B0 /* YMNetWorkHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMNetWorkHelper.m; sourceTree = "<group>"; };
 		18D298EA23960C18009EE6B0 /* YMAIReplyWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMAIReplyWindowController.h; sourceTree = "<group>"; };
@@ -939,6 +941,7 @@
 		18FDE6D02591CEFF00BAE497 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				18C5A33F25922B65006F12F0 /* barbuttonicon_more_white.png */,
 				18FDE6E12591D55400BAE497 /* Chat-Inspector-Mute-we.png */,
 				18FDE6D12591CEFF00BAE497 /* pin.png */,
 				18FDE6D22591CEFF00BAE497 /* lock.png */,
@@ -1181,6 +1184,7 @@
 				1828B9AA23BA319E008EC8E9 /* TKAboutWindowController.xib in Resources */,
 				182EDB7F25484D210035CD75 /* shieldwords.txt in Resources */,
 				188A65FB2272ACBA0096663E /* TKAutoReplyWindowController.xib in Resources */,
+				18C5A34025922B65006F12F0 /* barbuttonicon_more_white.png in Resources */,
 				18FDE6DD2591CEFF00BAE497 /* aliPayCode.png in Resources */,
 				182EDADA25403F8D0035CD75 /* YMZGMPWindowController.xib in Resources */,
 				18FDE6DB2591CEFF00BAE497 /* WeChatPayCode.png in Resources */,
