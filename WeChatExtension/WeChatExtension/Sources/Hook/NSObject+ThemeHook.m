@@ -57,6 +57,7 @@
         hookMethod(objc_getClass("NSAlert"), @selector(setMessageText:), [self class], @selector(hook_setMessageText:));
         hookMethod(objc_getClass("NSTextFieldCell"), @selector(setTextColor:), [self class], @selector(hook_setTextFieldCellColor:));
         hookMethod(objc_getClass("MMChatInfoView"), @selector(updateChatName), [self class], @selector(hook_updateChatName));
+        hookMethod(objc_getClass("MMChatInfoView"), @selector(initWithCoder:), [self class], @selector(hook_chatInfoViewInitWithFrame:));
         hookClassMethod(objc_getClass("MMComposeTextView"), @selector(preprocessTextAttributes:), [self class], @selector(hook_preprocessTextAttributes:));
         hookMethod(objc_getClass("MMMessageCellView"), @selector(updateGroupChatNickName), [self class], @selector(hook_updateGroupChatNickName));
         hookMethod(objc_getClass("MMCTTextView"), @selector(setAttributedString:), [self class], @selector(hook_textFieldSetTextColor:));
@@ -485,7 +486,9 @@
 {
     [self hook_updateChatName];
     MMChatInfoView *infoView = (MMChatInfoView *)self;
-    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        infoView.chatDetailButton.image = kImageWithName(@"pin.png");
+    });
     @try {
         NSTextFieldCell *cell = [infoView.chatNameLabel valueForKey:@"cell"];
         NSAttributedString *originalText = [cell valueForKey:@"contents"];
@@ -494,6 +497,12 @@
     } @catch (NSException *exception) {
         
     };
+}
+
+- (id)hook_chatInfoViewInitWithFrame:(id)arg1
+{
+    MMChatInfoView *infoView = [self hook_chatInfoViewInitWithFrame:arg1];
+    return infoView;
 }
 
 - (void)hook_setTextFieldCellColor:(NSColor *)color
@@ -637,7 +646,13 @@
     cell.nickName.attributedStringValue = returnValue;
     
     if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
-        cell.muteIndicator.normalColor = [NSColor redColor];
+        if (LargerOrEqualVersion(@"2.6.0")) {
+            SVGImageView *svg = (SVGImageView *)cell.muteIndicator;
+            svg.image = kImageWithName(@"Chat-Inspector-Mute-we.png");
+        } else {
+            MMSidebarColorIconView *indicator = (MMSidebarColorIconView *)cell.muteIndicator;
+            indicator.normalColor = [NSColor redColor];
+        }
     }
 }
 

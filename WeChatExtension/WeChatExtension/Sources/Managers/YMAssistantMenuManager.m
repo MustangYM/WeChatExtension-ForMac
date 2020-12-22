@@ -112,6 +112,12 @@ static char kZGMPWindowControllerKey;               //群管理 key
     NSMenuItem *preventRevokeItem = [self creatRevokeMenuItem];
     NSMenuItem *forwardAndReplyItem = [self creatAutoReplyMenuItem];
     
+    NSMenuItem *checkZombieItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"检测僵尸粉", @"Check Stranger")
+           action:@selector(onCheckZombie:)
+           target:self
+    keyEquivalent:@""
+            state:0];
+    
     NSMenu *subMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.title")];
     [subMenu addItems:@[preventRevokeItem,
                         autoAuthItem,
@@ -123,7 +129,8 @@ static char kZGMPWindowControllerKey;               //群管理 key
                         onTopItem,
                         forbidCheckUpdateItem,
                         pluginItem,
-                        aboutPluginItem
+                        aboutPluginItem,
+//                        checkZombieItem
                         ]];
     //此版本微信官方包已将小程序独立
     if (LargerOrEqualLongVersion(@"2.4.2.148") == NO) {
