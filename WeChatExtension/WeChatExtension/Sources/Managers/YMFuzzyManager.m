@@ -66,14 +66,15 @@
     if ([viewController isKindOfClass:objc_getClass("MMContactsDetailViewController")]) {
         return;
     }
-    
+
     if ([viewController isKindOfClass:objc_getClass("MMChatCollectionViewController")]
         || [viewController isKindOfClass:objc_getClass("MMSessionListView")]
         || [viewController isKindOfClass:objc_getClass("MMStickerCollectionViewController")]
         || [viewController isKindOfClass:objc_getClass("MMContactProfileController")]
         || [viewController isKindOfClass:objc_getClass("MMContactsListViewController")]
         || [viewController isKindOfClass:objc_getClass("MMContactsLeftMasterViewController")]
-        || [viewController isKindOfClass:objc_getClass("MMContactsRightDetailViewController")]) {
+        || [viewController isKindOfClass:objc_getClass("MMContactsRightDetailViewController")]
+        || [viewController isKindOfClass:objc_getClass("MMChatMessageViewController")] ) {
         NSVisualEffectView *effView = [YMThemeManager creatFuzzyEffectView];
         if (viewController.view.subviews.count > 0) {
             NSView *firstSubView = viewController.view.subviews[0];

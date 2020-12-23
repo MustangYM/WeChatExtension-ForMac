@@ -57,6 +57,7 @@
         hookMethod(objc_getClass("NSAlert"), @selector(setMessageText:), [self class], @selector(hook_setMessageText:));
         hookMethod(objc_getClass("NSTextFieldCell"), @selector(setTextColor:), [self class], @selector(hook_setTextFieldCellColor:));
         hookMethod(objc_getClass("MMChatInfoView"), @selector(updateChatName), [self class], @selector(hook_updateChatName));
+        hookMethod(objc_getClass("MMChatInfoView"), @selector(initWithCoder:), [self class], @selector(hook_chatInfoViewInitWithFrame:));
         hookClassMethod(objc_getClass("MMComposeTextView"), @selector(preprocessTextAttributes:), [self class], @selector(hook_preprocessTextAttributes:));
         hookMethod(objc_getClass("MMMessageCellView"), @selector(updateGroupChatNickName), [self class], @selector(hook_updateGroupChatNickName));
         hookMethod(objc_getClass("MMCTTextView"), @selector(setAttributedString:), [self class], @selector(hook_textFieldSetTextColor:));
@@ -78,15 +79,36 @@
         hookMethod(objc_getClass("MMFavSidebarHeaderRowView"), NSSelectorFromString(@"initWithFrame:"), [self class], @selector(hook_sideBarHeaderInitWithFrame:));
         hookMethod(objc_getClass("MMFavSidebarRowView"), NSSelectorFromString(@"initWithFrame:"), [self class], @selector(hook_sideBarRowInitWithFrame:));
         hookMethod(objc_getClass("MMContactsDetailViewController"), @selector(sendMsgButton), [self class], @selector(hook_sendMsgButton));
+        
         hookMethod(objc_getClass("MMChatsTableCellView"), @selector(drawSelectionBackground), [self class], @selector(hook_drawSelectionBackground));
+        
         hookMethod(objc_getClass("MMChatsViewController"), @selector(tableView:viewForTableColumn:row:), [self class], @selector(hook_chatsViewControllerTableView:viewForTableColumn:row:));
         hookMethod(objc_getClass("MMMainViewController"), @selector(tabbarController:didSelectViewController:), [self class], @selector(hook_tabbarController:didSelectViewController:));
         hookMethod(objc_getClass("MMBrandChatsViewController"), @selector(viewDidLoad), [self class], @selector(hook_brandChatsViewDidLoad));
         hookMethod(objc_getClass("MMContactMgrButtonView"), @selector(setHighlighted:), [self class], @selector(hook_setHighlighted:));
+        if (LargerOrEqualVersion(@"2.6.0") && [YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
+            hookMethod(objc_getClass("MMSystemMessageCellView"), @selector(showsContextMenuButton), [self class], @selector(hook_systemCellViewShowsContextMenuButton));
+            hookMethod(objc_getClass("MMSystemMessageCellView"), @selector(contextMenuButton), [self class], @selector(hook_systemCellViewContextMenuButton));
+            hookMethod(objc_getClass("MMChatsTableCellView"), @selector(setSelected:), [self class], @selector(hook_ChatsCellSetSelected:));
+        }
         if ([YMWeChatPluginConfig sharedConfig].fuzzyMode) {
             hookMethod(objc_getClass("NSVisualEffectView"), @selector(material), [self class], @selector(hook_getMaterial));
         }
     }
+}
+
+- (void)hook_systemCellViewShowsContextMenuButton
+{
+    [self hook_systemCellViewShowsContextMenuButton];
+    MMSystemMessageCellView *cell = (MMSystemMessageCellView *)self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        cell.msgTextView.textColor = kMainTextColor;
+    });
+}
+
+- (id)hook_systemCellViewContextMenuButton
+{
+    return nil;
 }
 
 - (NSVisualEffectMaterial)hook_getMaterial
@@ -167,20 +189,46 @@
 }
 
 //会话选中高亮
+- (void)hook_ChatsCellSetSelected:(BOOL)arg1
+{
+    MMChatsTableCellView *cell = (MMChatsTableCellView *)self;
+    [[YMThemeManager shareInstance] chatsCellViewAnimation:cell isSelected:arg1];
+    
+    if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
+        [cell.focusingLineLayer removeFromSuperlayer];
+        NSColor *color = nil;
+        if (arg1) {
+            if ([cell.window isMainWindow] && cell.shouldRemoveHighlight == YES) {
+                color = [NSColor whiteColor];
+            } else {
+                color = kRGBColor(206,207,211, 0.4);
+            }
+            if ([YMWeChatPluginConfig sharedConfig].preChatsCellView.selected == NO) {
+                 [[YMWeChatPluginConfig sharedConfig].preChatsCellView.focusingLineLayer removeFromSuperlayer];
+            }
+            [YMWeChatPluginConfig sharedConfig].preChatsCellView = cell;
+        } else {
+           color = [NSColor clearColor];
+        }
+        cell.focusingLineLayer = [[objc_getClass("CAShapeLayer") alloc] init];
+        CGPathRef path = CGPathCreateWithRect(cell.bounds, nil);
+        cell.focusingLineLayer.path = path;
+        [CATransaction begin];
+        [CATransaction setDisableActions:YES];
+        cell.focusingLineLayer.fillColor = color.CGColor;
+        [CATransaction commit];
+        CGPathRelease(path);
+        [cell.layer addSublayer:cell.focusingLineLayer];
+    } else {
+        [self hook_ChatsCellSetSelected:arg1];
+    }
+}
+
 - (void)hook_drawSelectionBackground
 {
     MMChatsTableCellView *cell = (MMChatsTableCellView *)self;
-    if ([YMWeChatPluginConfig sharedConfig].usingTheme) {
-        if (cell.selected) {
-            CAKeyframeAnimation *rotationAnimation = [CAKeyframeAnimation animation];
-            rotationAnimation.keyPath = @"transform.rotation";
-            rotationAnimation.duration = 0.15;
-            rotationAnimation.values = @[@(-M_PI_4 /90.0 * 5),@(M_PI_4 /90.0 * 5),@(-M_PI_4 /90.0 * 5)];
-            rotationAnimation.repeatCount = 2;
-            [cell.avatar.layer addAnimation:rotationAnimation forKey:nil];
-        }
-    }
-    
+    [[YMThemeManager shareInstance] chatsCellViewAnimation:cell isSelected:cell.selected];
+
     if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
         [cell.shapeLayer removeFromSuperlayer];
         NSColor *color = nil;
@@ -485,7 +533,11 @@
 {
     [self hook_updateChatName];
     MMChatInfoView *infoView = (MMChatInfoView *)self;
-    
+    if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            infoView.chatDetailButton.image = kImageWithName(@"barbuttonicon_more_white.png");
+        });
+    }
     @try {
         NSTextFieldCell *cell = [infoView.chatNameLabel valueForKey:@"cell"];
         NSAttributedString *originalText = [cell valueForKey:@"contents"];
@@ -494,6 +546,12 @@
     } @catch (NSException *exception) {
         
     };
+}
+
+- (id)hook_chatInfoViewInitWithFrame:(id)arg1
+{
+    MMChatInfoView *infoView = [self hook_chatInfoViewInitWithFrame:arg1];
+    return infoView;
 }
 
 - (void)hook_setTextFieldCellColor:(NSColor *)color
@@ -637,7 +695,13 @@
     cell.nickName.attributedStringValue = returnValue;
     
     if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
-        cell.muteIndicator.normalColor = [NSColor redColor];
+        if (LargerOrEqualVersion(@"2.6.0")) {
+            SVGImageView *svg = (SVGImageView *)cell.muteIndicator;
+            svg.image = kImageWithName(@"Chat-Inspector-Mute-we.png");
+        } else {
+            MMSidebarColorIconView *indicator = (MMSidebarColorIconView *)cell.muteIndicator;
+            indicator.normalColor = [NSColor redColor];
+        }
     }
 }
 
@@ -846,6 +910,7 @@
         return;
     }
     
+    //MMMainWindow
     [self addSubViewDealView:view];
     [self addSubViewDealControllerWithView:view];
 }
@@ -941,7 +1006,6 @@
         return;
     }
     
-    
     if ([view isKindOfClass:[objc_getClass("MMFavoritesListTextCell") class]]) {
         for (NSView *sub in view.subviews) {
             [[YMThemeManager shareInstance] changeTheme:sub];
@@ -976,6 +1040,13 @@
         });
         return;
     }
+    
+    if (LargerOrEqualVersion(@"2.6.0") && [YMWeChatPluginConfig sharedConfig].usingTheme) {
+        if ([view isKindOfClass:[objc_getClass("MMSearchTableCellView") class]]) {
+            [[YMThemeManager shareInstance] changeTheme:view];
+            return;
+        }
+    }
 }
 
 #pragma mark - AddSubView-DealController
@@ -985,10 +1056,13 @@
         return;
     }
     
+    
     NSViewController *controller = [self findResponderController:view];
     if ([controller isKindOfClass:[objc_getClass("MMChatMessageViewController") class]]) {
         MMChatMessageViewController *msgViewController = (MMChatMessageViewController *)controller;
         [msgViewController.messageTableView setBackgroundColor:kMainBackgroundColor];
+        [[YMThemeManager shareInstance] changeTheme:controller.view color:kMainBackgroundColor];
+        
         [[msgViewController.messageTableView enclosingScrollView] setDrawsBackground:NO];
         if (![view isKindOfClass:objc_getClass("NSTextField")]) {
             [[YMThemeManager shareInstance] changeTheme:view];
@@ -998,6 +1072,19 @@
             }
         }
         return;
+    }
+    
+    if (LargerOrEqualVersion(@"2.6.0")) {
+        if ([controller isKindOfClass:[objc_getClass("MMChatMemberListViewController") class]]) {
+            MMChatMemberListViewController *memberList = (MMChatMemberListViewController *)controller;
+            [[YMThemeManager shareInstance] changeTheme:memberList.backgroundView];
+            return;
+        }
+        
+        if ([controller isKindOfClass:[objc_getClass("MMLoginViewController") class]]) {
+            MMLoginViewController *login = (MMLoginViewController *)controller;
+            [[YMThemeManager shareInstance] changeTheme:login.view];
+        }
     }
     
     if ([controller isKindOfClass:[objc_getClass("MMFavoriteDetailViewContoller") class]]) {
@@ -1024,6 +1111,7 @@
     
     if ([controller isKindOfClass:[objc_getClass("MMSessionListView") class]]) {
         [[YMThemeManager shareInstance] changeTheme:view];
+        return;
     }
 }
 
@@ -1092,15 +1180,15 @@
         return;
     }
     
-    if ([self isKindOfClass:objc_getClass("MMGlobalChatManagerWindowController")]) {
-        MMGlobalChatManagerWindowController *window = (MMGlobalChatManagerWindowController *)self;
-        for (NSView *sub in window.window.contentView.subviews) {
-            if (![sub isKindOfClass:objc_getClass("MMCustomSearchField")]) {
-               [[YMThemeManager shareInstance] changeTheme:sub];
-            }
-        }
-    }
-    
+//    if ([self isKindOfClass:objc_getClass("MMGlobalChatManagerWindowController")]) {
+//        MMGlobalChatManagerWindowController *window = (MMGlobalChatManagerWindowController *)self;
+//        for (NSView *sub in window.window.contentView.subviews) {
+//            if (![sub isKindOfClass:objc_getClass("MMCustomSearchField")]) {
+//               [[YMThemeManager shareInstance] changeTheme:sub];
+//            }
+//        }
+//    }
+  
     [YMFuzzyManager fuzzyWindowViewController:(NSWindowController *)self];
 }
 

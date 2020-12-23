@@ -34,8 +34,12 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (id)init;
 @end
 
+@class WCContactData;
 @interface MMMessageSendLogic : NSObject
 - (void)sendImageMessageWithImage:(id)arg1;
+- (void)sendVideoMessageWithFileUrl:(id)arg1;
+- (void)sendVideoMessageWithFileUrl:(id)arg1 leavedMessage:(id)arg2;
+@property(retain, nonatomic) WCContactData *currnetChatContact;
 @end
 
 @interface MMCDNDownloadMgrExt : NSObject
@@ -221,6 +225,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (id)GetGroupContact:(id)arg1;
 - (id)GetAllGroups;
 - (id)GetGroupContactList:(id)arg1 ContactType:(id)arg2;
+- (BOOL)IsFriendContact:(id)arg1;
 @end
 
 @interface GroupMember : NSObject
@@ -831,11 +836,19 @@ forHTTPHeaderField:(NSString *)field;
 @property(retain, nonatomic) NSImage *image; // @synthesize image=_image;
 @property(retain, nonatomic) NSColor *selectedColor; // @synthesize selectedColor=_selectedColor;
 @property(retain, nonatomic) NSColor *normalColor; // @synthesize normalColor=_normalColor;
+@property(retain, nonatomic) NSColor *imageColor; // @synthesize imageColor=_imageColor;
 @end
 
 @interface MMBadgeOverlayView : NSView
 @property(nonatomic) unsigned long long number; // @synthesize number=_number;
 @property(nonatomic) int style; // @synthesize style=_style;
+@end
+
+@interface SVGImageView : NSImageView
+@property(nonatomic) BOOL bFlipped; // @synthesize bFlipped=_bFlipped;
+@property(nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
+@property(retain, nonatomic) NSColor *imageColor; // @synthesize imageColor=_imageColor;
+@property(retain, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
 @end
 
 @interface MMChatsTableCellView : NSTableCellView
@@ -853,8 +866,9 @@ forHTTPHeaderField:(NSString *)field;
 @property(retain, nonatomic) NSView *stickyBackgroundView; // @synthesize stickyBackgroundView=_stickyBackgroundView;
 @property(nonatomic) BOOL shouldRemoveHighlight; // @synthesize shouldRemoveHighlight=_shouldRemoveHighlight;
 @property(retain, nonatomic) NSView *containerView; // @synthesize containerView=_containerView;
-@property(retain, nonatomic) MMSidebarColorIconView *muteIndicator; // @synthesize muteIndicator=_muteIndicator;
-@property(retain, nonatomic) CAShapeLayer * _Nullable shapeLayer; // @synthesize shapeLayer=_shapeLayer;
+@property(retain, nonatomic) id muteIndicator;//MMSidebarColorIconView SVGImageView
+@property(retain, nonatomic) CAShapeLayer * _Nullable shapeLayer; // @synthesize shapeLayer=_shapeLayer;_focusingLineLayer
+@property(retain, nonatomic) CAShapeLayer * _Nullable focusingLineLayer; // @synthesize shapeLayer=_shapeLayer;
 @property(retain, nonatomic) NSView *avatar;
 @property(retain, nonatomic) MMBadgeOverlayView *badgeView; // @synthesize badgeView=_badgeView;
 @property(nonatomic) BOOL selected; // @synthesize selected=_selected;
@@ -919,6 +933,8 @@ forHTTPHeaderField:(NSString *)field;
 
 @interface MMChatMemberListViewController : NSViewController
 - (void)startAGroupChatWithSelectedUserNames:(id)arg1;
+@property(nonatomic) __weak MMTableView *tableView;
+@property(retain, nonatomic) MMView *backgroundView; 
 @end
 
 @interface MMContactProfileController : NSViewController
@@ -936,8 +952,10 @@ forHTTPHeaderField:(NSString *)field;
 - (void)setSelected:(BOOL)arg1;
 @end
 
+@class SVGButton;
 @interface MMChatInfoView : NSView
 @property(retain, nonatomic) MMTextField *chatNameLabel; // @synthesize chatNameLabel=_chatNameLabel;
+@property(nonatomic) __weak SVGButton *chatDetailButton; // @synthesize chatDetailButton=_chatDetailButton;
 @end
 
 @interface MMMessageCellView : NSView
@@ -1204,4 +1222,31 @@ forHTTPHeaderField:(NSString *)field;
 - (void)pushWithoutIdentifier:(id)arg1;
 - (void)onServiceClearData;
 - (void)onServiceInit;
+@end
+
+@interface MMVerifyContactWrap : NSObject
+@property(retain, nonatomic) NSString *sourceNickName; // @synthesize sourceNickName=_sourceNickName;
+@property(retain, nonatomic) NSString *sourceUserName; // @synthesize sourceUserName=_sourceUserName;
+@property(retain, nonatomic) NSString *chatRoomUserName; // @synthesize chatRoomUserName=_chatRoomUserName;
+@property(retain, nonatomic) WCContactData *verifyContact; // @synthesize verifyContact=_verifyContact;
+@property(nonatomic) unsigned int flag; // @synthesize flag=_flag;
+@property(retain, nonatomic) NSString *ticket; // @synthesize ticket=_ticket;
+@property(nonatomic) unsigned int scene; // @synthesize scene=_scene;
+@property(retain, nonatomic) NSString *originalUsrName; // @synthesize originalUsrName=_originalUsrName;
+@property(retain, nonatomic) NSString *usrName; // @synthesize usrName=_usrName;
+@end
+
+@interface MMFriendRequestMgr : NSObject
+- (void)sendFriendVerifyMessage:(id)arg1 withVerifyContactWrap:(id)arg2;
+- (void)sendVerifyUserRequestWithUserName:(id)arg1 opCode:(int)arg2 verifyMsg:(id)arg3 ticket:(id)arg4 verifyContactWrap:(id)arg5 completion:(id)arg6;
+- (void)showFriendVerifyWindowWithContact:(id)arg1 groupChatUserName:(id)arg2 completion:(id)arg3;
+@end
+
+@interface MMTextView : NSTextView
+@property(retain, nonatomic) NSColor *selectedTextColor; // @synthesize selectedTextColor=_selectedTextColor;
+@property(retain, nonatomic) NSColor *normalTextColor; // @synthesize normalTextColor=_normalTextColor;
+@end
+
+@interface MMSystemMessageCellView : MMMessageCellView
+@property(retain, nonatomic) MMTextView *msgTextView; // @synthesize msgTextView=_msgTextView;
 @end
