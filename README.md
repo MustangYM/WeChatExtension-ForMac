@@ -103,8 +103,8 @@
 ## 怎么安装?
 ### 安装方式一：下载pkg包一键安装
 - 点击主页右侧`Release`，找到相应版本，点击下载`WeChatExtension.pkg`包，双击打开安装即可（2.8.0小助手开始支持）。
-<p align="left">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/blob/master/Pictures/pkgInstall.png" width="100px"/>
+<p align="center">
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/pkgInstall.png" width="800px"/>
 </p>
 
 ### 安装方式二：普通安装(clone最新版本并安装)
