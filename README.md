@@ -101,18 +101,13 @@
 </p>
 
 ## 怎么安装?
-### 安装方式一：下载pkg包一键安装
-- 点击主页右侧`Release`，找到相应版本，点击下载`WeChatExtension.pkg`包，双击打开安装即可（2.8.0小助手开始支持）。
-<p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/pkgInstall.png" width="800px"/>
-</p>
 
-### 安装方式二：普通安装(clone最新版本并安装)
+### 安装方式一：普通安装(clone最新版本并安装)
 ```
 sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/MustangYM/WeChatExtension-ForMac && cd WeChatExtension-ForMac/WeChatExtension/Rely && ./Install.sh
 ```
 
-### 安装方式三：懒癌版安装
+### 安装方式二：懒癌版安装
 
 <p align="left">
 <img src="https://avatars1.githubusercontent.com/u/5035625?s=400&v=4" width="100px"/>
@@ -137,9 +132,13 @@ omw -g
 
 安装完成后会自动安装微信插件，可以访问 [Oh My WeChat 的项目主页](https://github.com/lmk123/oh-my-wechat#oh-my-wechat)查看更多用法。
 
+### 安装方式三：下载pkg包一键安装
+- 点击主页右侧`Release`，找到相应版本，点击下载`WeChatExtension.pkg`包，双击打开安装即可（2.8.0小助手开始支持）。
+<p align="center">
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/pkgInstall.png" width="800px"/>
+</p>
 
 ### 安装方式四：手动安装
-
 - 3.1.确保你的Mac上已经安装了微信App。
 
 - 3.2.下载本项目到你的电脑里， 并双击打开。
