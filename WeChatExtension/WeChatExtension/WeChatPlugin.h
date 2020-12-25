@@ -1255,3 +1255,13 @@ forHTTPHeaderField:(NSString *)field;
 @interface MMSystemMessageCellView : MMMessageCellView
 @property(retain, nonatomic) MMTextView *msgTextView; // @synthesize msgTextView=_msgTextView;
 @end
+
+@interface MMSessionCreateSessionButtonRowView : NSTableRowView
+
+@property(retain, nonatomic) NSTextField *titleField; // @synthesize titleField=_titleField;
+@property(retain, nonatomic) NSView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@end
+
+@interface MMSessionPickerListSwitchSelectMode : NSTableRowView
+
+@end

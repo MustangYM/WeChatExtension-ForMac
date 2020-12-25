@@ -937,6 +937,22 @@
         return;
     }
     
+    if ([view isKindOfClass:[objc_getClass("MMSessionCreateSessionButtonRowView") class]]) {
+        MMSessionCreateSessionButtonRowView *rowView = (MMSessionCreateSessionButtonRowView *)view;
+        [[YMThemeManager shareInstance] changeTheme:rowView.backgroundView];
+        rowView.backgroundView.layer.cornerRadius = 5;
+        rowView.backgroundView.layer.borderColor = YM_RGBA(240, 240, 240, 0.2).CGColor;
+        rowView.backgroundView.layer.borderWidth = 1;
+        return;
+    }
+    
+    if ([view isKindOfClass:[objc_getClass("MMSessionPickerListSwitchSelectMode") class]]) {
+        MMSessionPickerListSwitchSelectMode *pickRow = (MMSessionPickerListSwitchSelectMode *)view;
+        pickRow.backgroundColor = kMainBackgroundColor;
+       
+        return;
+    }
+    
     if ([view isKindOfClass:[objc_getClass("MMSessionPickerListGroupRowView") class]]) {
         for (NSView *sub in view.subviews) {
             if (![sub isKindOfClass:[NSTextField class]]) {
