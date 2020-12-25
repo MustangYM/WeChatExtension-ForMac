@@ -90,6 +90,7 @@
             hookMethod(objc_getClass("MMSystemMessageCellView"), @selector(showsContextMenuButton), [self class], @selector(hook_systemCellViewShowsContextMenuButton));
             hookMethod(objc_getClass("MMSystemMessageCellView"), @selector(contextMenuButton), [self class], @selector(hook_systemCellViewContextMenuButton));
             hookMethod(objc_getClass("MMChatsTableCellView"), @selector(setSelected:), [self class], @selector(hook_ChatsCellSetSelected:));
+            hookMethod(objc_getClass("MMChatInfoView"), @selector(updateChatDetailButton), [self class], @selector(hook_updateChatDetailButton));
         }
         if ([YMWeChatPluginConfig sharedConfig].fuzzyMode) {
             hookMethod(objc_getClass("NSVisualEffectView"), @selector(material), [self class], @selector(hook_getMaterial));
@@ -449,6 +450,9 @@
         Class cc1Class = NSClassFromString(@"MMContactsColumn1CellView");
         Class cmtgClass = NSClassFromString(@"MMContactsMgrTagRowView");
         Class cc3Class = NSClassFromString(@"MMContactsColumn3CellView");
+        Class stcClass = NSClassFromString(@"MMSearchTableCellView");
+        Class sspClass = NSClassFromString(@"MMSessionPickerListRowView");
+        Class sspcClass = NSClassFromString(@"MMSessionPickerChoosenCellView");
         
         for (int i = 0; i < 5; i++) {
             if (sv == nil) {
@@ -463,6 +467,9 @@
                 || [sv isKindOfClass:cc1Class]
                 || [sv isKindOfClass:cmtgClass]
                 || [sv isKindOfClass:cc3Class]
+                || [sv isKindOfClass:stcClass]
+                || [sv isKindOfClass:sspClass]
+                || [sv isKindOfClass:sspcClass]
                 ) {
                 [a addAttributes:@{
                     NSForegroundColorAttributeName: kMainTextColor
@@ -533,11 +540,6 @@
 {
     [self hook_updateChatName];
     MMChatInfoView *infoView = (MMChatInfoView *)self;
-    if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            infoView.chatDetailButton.image = kImageWithName(@"barbuttonicon_more_white.png");
-        });
-    }
     @try {
         NSTextFieldCell *cell = [infoView.chatNameLabel valueForKey:@"cell"];
         NSAttributedString *originalText = [cell valueForKey:@"contents"];
@@ -546,6 +548,16 @@
     } @catch (NSException *exception) {
         
     };
+}
+
+- (void)hook_updateChatDetailButton
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        MMChatInfoView *infoView = (MMChatInfoView *)self;
+        if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
+            infoView.chatDetailButton.image = kImageWithName(@"barbuttonicon_more_white.png");
+        }
+    });
 }
 
 - (id)hook_chatInfoViewInitWithFrame:(id)arg1
@@ -800,6 +812,9 @@
             controller.attachmentButton.normalColor = normalColor;
             controller.stickerButton.normalColor = normalColor;
             controller.multiTalkButton.normalColor = normalColor;
+            if (LargerOrEqualVersion(@"2.6.0")) {
+                controller.liveButton.imageColor = normalColor;
+            }
         }
     }
 }
@@ -1111,6 +1126,10 @@
     
     if ([controller isKindOfClass:[objc_getClass("MMSessionListView") class]]) {
         [[YMThemeManager shareInstance] changeTheme:view];
+        return;
+    }
+    if ([controller isKindOfClass:[objc_getClass("MMSessionChoosenView") class]]) {
+        [[YMThemeManager shareInstance] changeTheme:controller.view];
         return;
     }
 }

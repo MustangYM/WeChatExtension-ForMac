@@ -231,24 +231,24 @@
 
 
 #pragma mark - 撤回
-- (void)hook_handleSyncCmdId:(id)arg1 withSyncCmdItems:(id)arg2 onComplete:(id)arg3
-{
-    NSArray <CmdItem *>*p_arg2 = (NSArray *)arg2;
-    __weak __typeof (self) wself = self;
-    [p_arg2 enumerateObjectsUsingBlock:^(CmdItem * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
-        AddMsg *addMsg = [objc_getClass("AddMsg") parseFromData:item.cmdBuf.buffer];
-        NSString *msg = addMsg.content.string;
-        if ([msg rangeOfString:@"<sysmsg"].length <= 0) {
-            if ([msg containsString:@"开始聊天了"]) {
-                return;
-            }
-          [wself hook_handleSyncCmdId:arg1 withSyncCmdItems:arg2 onComplete:arg3];
-          return;
-        }
+//- (void)hook_handleSyncCmdId:(id)arg1 withSyncCmdItems:(id)arg2 onComplete:(id)arg3
+//{
+//    NSArray <CmdItem *>*p_arg2 = (NSArray *)arg2;
+//    __weak __typeof (self) wself = self;
+//    [p_arg2 enumerateObjectsUsingBlock:^(CmdItem * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
+//        AddMsg *addMsg = [objc_getClass("AddMsg") parseFromData:item.cmdBuf.buffer];
+//        NSString *msg = addMsg.content.string;
+//        if ([msg rangeOfString:@"<sysmsg"].length <= 0) {
+//            if ([msg containsString:@"开始聊天了"]) {
+//                return;
+//            }
+//          [wself hook_handleSyncCmdId:arg1 withSyncCmdItems:arg2 onComplete:arg3];
+//          return;
+//        }
         //备用撤回
 //        [wself _doParseRevokeMsg:msg msgData:nil arg1:arg1 arg2:arg2 arg3:arg3];
-    }];
-}
+//    }];
+//}
 
 - (void)hook_FFToNameFavChatZZ:(id)msgData sessionMsgList:(id)arg2
 {
@@ -346,13 +346,13 @@
     __block BOOL flag = NO;
     [msgs enumerateObjectsUsingBlock:^(AddMsg *addMsg, NSUInteger idx, BOOL * _Nonnull stop1) {
     
-        if ([addMsg.content.string containsString:@"可以开始聊天了"]) {
-            ContactStorage *contactStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("ContactStorage")];
-            BOOL isFriend = [contactStorage IsFriendContact:addMsg.fromUserName.string];
+//        if ([addMsg.content.string containsString:@"可以开始聊天了"]) {
+//            ContactStorage *contactStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("ContactStorage")];
+//            BOOL isFriend = [contactStorage IsFriendContact:addMsg.fromUserName.string];
 //            if (isFriend) {
-                return;
+//                return;
 //            }
-        }
+//        }
         
         //群管理中阻止群消息
         [[YMWeChatPluginConfig sharedConfig].banModels enumerateObjectsUsingBlock:^(YMZGMPBanModel  *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop2) {

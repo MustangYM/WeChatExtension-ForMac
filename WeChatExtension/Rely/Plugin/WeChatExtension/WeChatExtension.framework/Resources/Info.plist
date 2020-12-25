@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>19F101</string>
+	<string>18E226</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -27,17 +27,17 @@
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>11C504</string>
+	<string>11B500</string>
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>19B90</string>
+	<string>19B89</string>
 	<key>DTSDKName</key>
 	<string>macosx10.15</string>
 	<key>DTXcode</key>
-	<string>1130</string>
+	<string>1120</string>
 	<key>DTXcodeBuild</key>
-	<string>11C504</string>
+	<string>11B500</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.10</string>
 	<key>NSHumanReadableCopyright</key>
@@ -45,6 +45,6 @@
 	<key>showUpdateWindow</key>
 	<true/>
 	<key>versionInfo</key>
-	<string>v2.6.8(2020-10-31):\n👉🏻  修复清除空会话失效\n👉🏻  优化置底、公众号浏览\n👉🏻  新增一键卸载小助手\n👉🏻  新增关闭皮肤选项\n👉🏻  新增群员监控、拒收群消息\n</string>
+	<string>v2.7.0(2020-10-31):\n👉🏻  修复清除空会话失效\n👉🏻  优化置底、公众号浏览\n👉🏻  新增一键卸载小助手\n👉🏻  新增关闭皮肤选项\n👉🏻  新增群员监控、拒收群消息\n</string>
 </dict>
 </plist>

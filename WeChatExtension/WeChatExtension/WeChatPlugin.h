@@ -1161,6 +1161,10 @@ forHTTPHeaderField:(NSString *)field;
 - (id)init;
 @end
 
+@interface LVSVGImageButton : SVGImageView
+@property(retain, nonatomic) NSColor *alternateColor;
+@end
+
 @interface MMComposeInputViewController : NSViewController
 - (void)viewDidLoad;
 @property(nonatomic) __weak SVGButton *openBrandMenuButton; // @synthesize openBrandMenuButton=_openBrandMenuButton;
@@ -1172,6 +1176,7 @@ forHTTPHeaderField:(NSString *)field;
 @property(nonatomic) __weak SVGButton *attachmentButton; // @synthesize attachmentButton=_attachmentButton;
 @property(nonatomic) __weak SVGButton *stickerButton; // @synthesize stickerButton=_stickerButton;
 @property(nonatomic) __weak SVGButton *multiTalkButton; // @synthesize stickerButton=_stickerButton;
+@property(retain, nonatomic) LVSVGImageButton *liveButton;
 @end
 
 @interface MMFavSidebarHeaderRowView : NSTableRowView
