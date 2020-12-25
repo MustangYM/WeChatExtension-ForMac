@@ -48,8 +48,10 @@
                 if (![romoteInfo[@"showUpdateWindow"] boolValue]) {
                      return;
                 }
-                NSString *versionMsg = [romoteInfo[@"versionInfo"] stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
-                finish(TKVersionStatusNew, versionMsg);
+                if ([self compareVersion:localBundle to:romoteBundle] == 1) {
+                    NSString *versionMsg = [romoteInfo[@"versionInfo"] stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
+                    finish(TKVersionStatusNew, versionMsg);
+                }
             }
         });
     });
@@ -81,5 +83,36 @@
 - (void)cancelDownload
 {
     [[YMHTTPManager shareManager] cancelDownload];
+}
+
+//版本2大于版本1, 返回1; 否则返回-1. 版本号相等,返回0;
+- (NSInteger)compareVersion:(NSString *)v1 to:(NSString *)v2 {
+    if (!v1 && !v2) {
+        return 0;
+    }
+    
+    if (!v1 && v2) {
+        return 1;
+    }
+    
+    if (v1 && !v2) {
+        return -1;
+    }
+    
+    NSArray *v1Array = [v1 componentsSeparatedByString:@"."];
+    NSArray *v2Array = [v2 componentsSeparatedByString:@"."];
+    NSInteger bigCount = (v1Array.count > v2Array.count) ? v1Array.count : v2Array.count;
+    
+    for (int i = 0; i < bigCount; i++) {
+        NSInteger value1 = (v1Array.count > i) ? [[v1Array objectAtIndex:i] integerValue] : 0;
+        NSInteger value2 = (v2Array.count > i) ? [[v2Array objectAtIndex:i] integerValue] : 0;
+        if (value1 > value2) {
+            return -1;
+        } else if (value1 < value2) {
+            return 1;
+        }
+    }
+    
+    return 0;
 }
 @end
