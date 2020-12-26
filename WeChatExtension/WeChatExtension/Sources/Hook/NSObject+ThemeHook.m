@@ -695,6 +695,7 @@
     [self hook_fileListViewDidLoad];
     MMFileListViewController *fileListVC = (MMFileListViewController *)self;
     [[YMThemeManager shareInstance] changeTheme:fileListVC.view];
+    [[YMThemeManager shareInstance] changeTheme:fileListVC.headerContainer];
 }
 
 - (void)hook_showWindow:(nullable id)sender
