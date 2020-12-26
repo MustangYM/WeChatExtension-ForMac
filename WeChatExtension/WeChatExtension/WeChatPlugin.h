@@ -918,7 +918,7 @@ forHTTPHeaderField:(NSString *)field;
 @end
 
 @interface MMFileListViewController : NSViewController
-
+@property(nonatomic) __weak NSView *headerContainer;
 @end
 
 @interface MMPreferencesWindowController : NSWindowController

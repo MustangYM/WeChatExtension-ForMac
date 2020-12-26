@@ -56,7 +56,6 @@
     do {
         [[YMThemeManager shareInstance] changeTheme:window.window.contentView color:kMainBackgroundColor];
         [window.window setBackgroundColor:kMainBackgroundColor];
-        NSLog(@"yanmao - %@",window);
     } while (CGRectEqualToRect(window.window.contentView.frame, CGRectZero));
 }
 
