@@ -52,8 +52,12 @@
             [effView fillSuperView];
         }
     }
-    
-    [[YMThemeManager shareInstance] changeTheme:window.window.contentView];
+
+    do {
+        [[YMThemeManager shareInstance] changeTheme:window.window.contentView color:kMainBackgroundColor];
+        [window.window setBackgroundColor:kMainBackgroundColor];
+        NSLog(@"yanmao - %@",window);
+    } while (CGRectEqualToRect(window.window.contentView.frame, CGRectZero));
 }
 
 + (void)fuzzyViewController:(NSViewController *)viewController
@@ -74,7 +78,8 @@
         || [viewController isKindOfClass:objc_getClass("MMContactsListViewController")]
         || [viewController isKindOfClass:objc_getClass("MMContactsLeftMasterViewController")]
         || [viewController isKindOfClass:objc_getClass("MMContactsRightDetailViewController")]
-        || [viewController isKindOfClass:objc_getClass("MMChatMessageViewController")] ) {
+        || [viewController isKindOfClass:objc_getClass("MMChatMessageViewController")]
+        || [viewController isKindOfClass:objc_getClass("MMSessionChoosenView")]) {
         NSVisualEffectView *effView = [YMThemeManager creatFuzzyEffectView];
         if (viewController.view.subviews.count > 0) {
             NSView *firstSubView = viewController.view.subviews[0];

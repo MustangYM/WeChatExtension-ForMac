@@ -79,8 +79,15 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(retain, nonatomic) MMLoginOneClickViewController *oneClickViewController;
 @end
 
+@interface MMMouseEventView : NSView
+
+@end
+
+@class MMMainViewController;
 @interface MMMainWindowController : NSWindowController
+@property(retain, nonatomic) MMMouseEventView *maskView;
 @property(retain, nonatomic) MMLoginViewController *loginViewController;
+@property(retain, nonatomic) MMMainViewController *mainViewController; // @synthesize mainViewController=_mainViewController;
 - (void)onAuthOK;
 - (void)onLogOut;
 @end
@@ -1161,6 +1168,10 @@ forHTTPHeaderField:(NSString *)field;
 - (id)init;
 @end
 
+@interface LVSVGImageButton : SVGImageView
+@property(retain, nonatomic) NSColor *alternateColor;
+@end
+
 @interface MMComposeInputViewController : NSViewController
 - (void)viewDidLoad;
 @property(nonatomic) __weak SVGButton *openBrandMenuButton; // @synthesize openBrandMenuButton=_openBrandMenuButton;
@@ -1172,6 +1183,7 @@ forHTTPHeaderField:(NSString *)field;
 @property(nonatomic) __weak SVGButton *attachmentButton; // @synthesize attachmentButton=_attachmentButton;
 @property(nonatomic) __weak SVGButton *stickerButton; // @synthesize stickerButton=_stickerButton;
 @property(nonatomic) __weak SVGButton *multiTalkButton; // @synthesize stickerButton=_stickerButton;
+@property(retain, nonatomic) LVSVGImageButton *liveButton;
 @end
 
 @interface MMFavSidebarHeaderRowView : NSTableRowView
@@ -1249,4 +1261,22 @@ forHTTPHeaderField:(NSString *)field;
 
 @interface MMSystemMessageCellView : MMMessageCellView
 @property(retain, nonatomic) MMTextView *msgTextView; // @synthesize msgTextView=_msgTextView;
+@end
+
+@interface MMSessionCreateSessionButtonRowView : NSTableRowView
+
+@property(retain, nonatomic) NSTextField *titleField; // @synthesize titleField=_titleField;
+@property(retain, nonatomic) NSView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@end
+
+@interface MMSessionPickerListSwitchSelectMode : NSTableRowView
+
+@end
+
+@interface MMContactMgrButtonView : NSView
+@property(nonatomic) BOOL highlighted; // @synthesize highlighted=_highlighted;
+@property(retain, nonatomic) CALayer *borderLayer; // @synthesize borderLayer=_borderLayer;
+@property(retain, nonatomic) NSImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
+@property(retain, nonatomic) NSTextField *titleTextField; // @synthesize titleTextField=_titleTextField;
+@property(retain, nonatomic) NSView *contentView; // @synthesize contentView=_contentView;
 @end
