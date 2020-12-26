@@ -941,12 +941,19 @@
         return;
     }
     
-    if ([view isKindOfClass:[objc_getClass("MMSessionCreateSessionButtonRowView") class]]) {
-        MMSessionCreateSessionButtonRowView *rowView = (MMSessionCreateSessionButtonRowView *)view;
-        [[YMThemeManager shareInstance] changeTheme:rowView.backgroundView];
-        rowView.backgroundView.layer.cornerRadius = 5;
-        rowView.backgroundView.layer.borderColor = YM_RGBA(240, 240, 240, 0.2).CGColor;
-        rowView.backgroundView.layer.borderWidth = 1;
+    if (LargerOrEqualVersion(@"2.6.0")) {
+        if ([view isKindOfClass:[objc_getClass("MMSessionCreateSessionButtonRowView") class]]) {
+            MMSessionCreateSessionButtonRowView *rowView = (MMSessionCreateSessionButtonRowView *)view;
+            [[YMThemeManager shareInstance] changeTheme:rowView.backgroundView];
+            rowView.backgroundView.layer.cornerRadius = 5;
+            rowView.backgroundView.layer.borderColor = YM_RGBA(240, 240, 240, 0.2).CGColor;
+            rowView.backgroundView.layer.borderWidth = 1;
+            return;
+        }
+    }
+    
+    if ([view isKindOfClass:[objc_getClass("JNWScrollView") class]]) {
+        [[YMThemeManager shareInstance] changeTheme:view];
         return;
     }
     
