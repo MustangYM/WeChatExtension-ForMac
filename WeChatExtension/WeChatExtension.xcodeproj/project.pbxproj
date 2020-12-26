@@ -27,8 +27,6 @@
 		181A10C7254BEF8F00A07D52 /* YMZGMPDetailTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A10C5254BEF8F00A07D52 /* YMZGMPDetailTableView.m */; };
 		181A10CE254BFD9300A07D52 /* YMZGMPDetailLogic.h in Headers */ = {isa = PBXBuildFile; fileRef = 181A10CC254BFD9300A07D52 /* YMZGMPDetailLogic.h */; };
 		181A10CF254BFD9300A07D52 /* YMZGMPDetailLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A10CD254BFD9300A07D52 /* YMZGMPDetailLogic.m */; };
-		181C4F9025965ADD0044527D /* Eminem.png in Resources */ = {isa = PBXBuildFile; fileRef = 181C4F8F25965ADC0044527D /* Eminem.png */; };
-		181C4F92259665690044527D /* 5431608920284_.pic_hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 181C4F91259665690044527D /* 5431608920284_.pic_hd.png */; };
 		1828B9AA23BA319E008EC8E9 /* TKAboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1828B9A923BA319E008EC8E9 /* TKAboutWindowController.xib */; };
 		182EDAD825403F8D0035CD75 /* YMZGMPWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 182EDAD525403F8C0035CD75 /* YMZGMPWindowController.h */; };
 		182EDAD925403F8D0035CD75 /* YMZGMPWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182EDAD625403F8C0035CD75 /* YMZGMPWindowController.m */; };
@@ -254,8 +252,6 @@
 		181A10C5254BEF8F00A07D52 /* YMZGMPDetailTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPDetailTableView.m; sourceTree = "<group>"; };
 		181A10CC254BFD9300A07D52 /* YMZGMPDetailLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPDetailLogic.h; sourceTree = "<group>"; };
 		181A10CD254BFD9300A07D52 /* YMZGMPDetailLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPDetailLogic.m; sourceTree = "<group>"; };
-		181C4F8F25965ADC0044527D /* Eminem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eminem.png; sourceTree = "<group>"; };
-		181C4F91259665690044527D /* 5431608920284_.pic_hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5431608920284_.pic_hd.png; sourceTree = "<group>"; };
 		1828B9A923BA319E008EC8E9 /* TKAboutWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TKAboutWindowController.xib; sourceTree = "<group>"; };
 		182EDAD525403F8C0035CD75 /* YMZGMPWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMZGMPWindowController.h; sourceTree = "<group>"; };
 		182EDAD625403F8C0035CD75 /* YMZGMPWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMZGMPWindowController.m; sourceTree = "<group>"; };
@@ -949,8 +945,6 @@
 				18FDE6E12591D55400BAE497 /* Chat-Inspector-Mute-we.png */,
 				18FDE6D12591CEFF00BAE497 /* pin.png */,
 				18FDE6D22591CEFF00BAE497 /* lock.png */,
-				181C4F8F25965ADC0044527D /* Eminem.png */,
-				181C4F91259665690044527D /* 5431608920284_.pic_hd.png */,
 				18FDE6D32591CEFF00BAE497 /* WeChatPayCode.png */,
 				18FDE6D42591CEFF00BAE497 /* arrow_forward.png */,
 				18FDE6D52591CEFF00BAE497 /* aliPayCode.png */,
@@ -1173,8 +1167,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				181C4F92259665690044527D /* 5431608920284_.pic_hd.png in Resources */,
-				181C4F9025965ADD0044527D /* Eminem.png in Resources */,
 				18FDE6DC2591CEFF00BAE497 /* arrow_forward.png in Resources */,
 				18FDE6DF2591CEFF00BAE497 /* arrow_icon_highlight.png in Resources */,
 				18FDE6E22591D55400BAE497 /* Chat-Inspector-Mute-we.png in Resources */,

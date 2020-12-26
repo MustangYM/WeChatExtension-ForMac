@@ -31,6 +31,8 @@
     }
     
     if (YMWeChatPluginConfig.sharedConfig.usingTheme) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
         hookMethod(objc_getClass("MMTextField"), @selector(setTextColor:), [self class], @selector(hook_setTextColor:));
         hookMethod([NSTextField class], @selector(setAttributedStringValue:), [self class], @selector(hook_textFieldSetAttributedStringValue:));
         hookMethod(objc_getClass("MMTextView"), NSSelectorFromString(@"shouldDisableSetFrameOrigin"), [self class], @selector(hook_shouldDisableSetFrameOrigin));
@@ -47,7 +49,6 @@
         hookMethod(objc_getClass("MMFileListViewController"), @selector(viewDidLoad), [self class], @selector(hook_fileListViewDidLoad));
         hookMethod(objc_getClass("MMPreferencesWindowController"), @selector(windowDidLoad), [self class], @selector(hook_preferencesWindowDidLoad));
         hookMethod(objc_getClass("MMChatMemberListViewController"), @selector(viewDidLoad), [self class], @selector(hook_memberListViewDidLoad));
-        hookMethod(objc_getClass("MMChatsTableCellView"), @selector(mouseDown:), [self class], @selector(hook_mouseDown:));
         hookMethod(objc_getClass("MMChatDetailSplitView"), @selector(setPreferredDividerColor:), [self class], @selector(hook_setPreferredDividerColor:));
         hookMethod(objc_getClass("NSViewController"), @selector(viewDidLoad), [self class], @selector(hook_themeViewDidLoad));
         hookMethod(objc_getClass("MMComposeTextView"), @selector(setTextColor:), [self class], @selector(hook_composeSetTextColor:));
@@ -81,7 +82,6 @@
         hookMethod(objc_getClass("MMContactsDetailViewController"), @selector(sendMsgButton), [self class], @selector(hook_sendMsgButton));
         
         hookMethod(objc_getClass("MMChatsTableCellView"), @selector(drawSelectionBackground), [self class], @selector(hook_drawSelectionBackground));
-        
         hookMethod(objc_getClass("MMChatsViewController"), @selector(tableView:viewForTableColumn:row:), [self class], @selector(hook_chatsViewControllerTableView:viewForTableColumn:row:));
         hookMethod(objc_getClass("MMMainViewController"), @selector(tabbarController:didSelectViewController:), [self class], @selector(hook_tabbarController:didSelectViewController:));
         hookMethod(objc_getClass("MMBrandChatsViewController"), @selector(viewDidLoad), [self class], @selector(hook_brandChatsViewDidLoad));
@@ -91,12 +91,17 @@
             hookMethod(objc_getClass("MMSystemMessageCellView"), @selector(contextMenuButton), [self class], @selector(hook_systemCellViewContextMenuButton));
             hookMethod(objc_getClass("MMChatsTableCellView"), @selector(setSelected:), [self class], @selector(hook_ChatsCellSetSelected:));
             hookMethod(objc_getClass("MMChatInfoView"), @selector(updateChatDetailButton), [self class], @selector(hook_updateChatDetailButton));
+             hookMethod(objc_getClass("MMSessionCreateSessionButtonRowView"), @selector(setHighlighted:), [self class], @selector(hook_creatSessionSetHighlighted:));
         }
         if ([YMWeChatPluginConfig sharedConfig].fuzzyMode) {
             hookMethod(objc_getClass("NSVisualEffectView"), @selector(material), [self class], @selector(hook_getMaterial));
         }
+#pragma clang diagnostic pop
     }
 }
+
+- (void)hook_creatSessionSetHighlighted:(BOOL)arg1
+{}
 
 - (void)hook_systemCellViewShowsContextMenuButton
 {
@@ -452,7 +457,9 @@
         Class cc3Class = NSClassFromString(@"MMContactsColumn3CellView");
         Class stcClass = NSClassFromString(@"MMSearchTableCellView");
         Class sspClass = NSClassFromString(@"MMSessionPickerListRowView");
-        Class sspcClass = NSClassFromString(@"MMSessionPickerChoosenCellView");
+        Class sspccClass = NSClassFromString(@"MMSessionPickerChoosenCellView");
+        Class sspcClass = NSClassFromString(@"MMSessionPickerChoosenRowView");
+        Class cbcClass = NSClassFromString(@"MMChatBaseCellView");
         
         for (int i = 0; i < 5; i++) {
             if (sv == nil) {
@@ -470,6 +477,8 @@
                 || [sv isKindOfClass:stcClass]
                 || [sv isKindOfClass:sspClass]
                 || [sv isKindOfClass:sspcClass]
+                || [sv isKindOfClass:sspccClass]
+                || [sv isKindOfClass:cbcClass]
                 ) {
                 [a addAttributes:@{
                     NSForegroundColorAttributeName: kMainTextColor
@@ -717,15 +726,6 @@
     }
 }
 
-- (void)hook_mouseDown:(id)arg1
-{
-    [self hook_mouseDown:arg1];
-    
-    if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
-        MMChatsTableCellView *cell = (MMChatsTableCellView *)self;
-    }
-}
-
 - (void)hook_setAttributedStringValue:(NSAttributedString *)arg1
 {
     struct mach_header *mh_addr = _dyld_get_image_header(0);
@@ -840,6 +840,10 @@
             view.layer.borderColor = YM_RGBA(240, 240, 240, 0.2).CGColor;
             view.layer.borderWidth = 1;
         });
+        return;
+    }
+    
+    if ([view isKindOfClass:[objc_getClass("_NSImageViewSimpleImageView") class]]) {
         return;
     }
     
@@ -1089,7 +1093,6 @@
         return;
     }
     
-    
     NSViewController *controller = [self findResponderController:view];
     if ([controller isKindOfClass:[objc_getClass("MMChatMessageViewController") class]]) {
         MMChatMessageViewController *msgViewController = (MMChatMessageViewController *)controller;
@@ -1217,14 +1220,14 @@
         return;
     }
     
-//    if ([self isKindOfClass:objc_getClass("MMGlobalChatManagerWindowController")]) {
-//        MMGlobalChatManagerWindowController *window = (MMGlobalChatManagerWindowController *)self;
-//        for (NSView *sub in window.window.contentView.subviews) {
-//            if (![sub isKindOfClass:objc_getClass("MMCustomSearchField")]) {
-//               [[YMThemeManager shareInstance] changeTheme:sub];
-//            }
-//        }
-//    }
+    if ([self isKindOfClass:objc_getClass("MMGlobalChatManagerWindowController")]) {
+        MMGlobalChatManagerWindowController *window = (MMGlobalChatManagerWindowController *)self;
+        for (NSView *sub in window.window.contentView.subviews) {
+            if (![sub isKindOfClass:objc_getClass("MMCustomSearchField")]) {
+               [[YMThemeManager shareInstance] changeTheme:sub];
+            }
+        }
+    }
   
     [YMFuzzyManager fuzzyWindowViewController:(NSWindowController *)self];
 }

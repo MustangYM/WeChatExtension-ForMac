@@ -1272,3 +1272,11 @@ forHTTPHeaderField:(NSString *)field;
 @interface MMSessionPickerListSwitchSelectMode : NSTableRowView
 
 @end
+
+@interface MMContactMgrButtonView : NSView
+@property(nonatomic) BOOL highlighted; // @synthesize highlighted=_highlighted;
+@property(retain, nonatomic) CALayer *borderLayer; // @synthesize borderLayer=_borderLayer;
+@property(retain, nonatomic) NSImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
+@property(retain, nonatomic) NSTextField *titleTextField; // @synthesize titleTextField=_titleTextField;
+@property(retain, nonatomic) NSView *contentView; // @synthesize contentView=_contentView;
+@end

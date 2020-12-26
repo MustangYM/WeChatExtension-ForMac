@@ -37,7 +37,10 @@
 {
     //微信撤回消息
     if (LargerOrEqualVersion(@"2.3.29")) {
-         hookMethod(objc_getClass("AddMsgSyncCmdHandler"), @selector(handleSyncCmdId: withSyncCmdItems:onComplete:), [self class], @selector(hook_handleSyncCmdId: withSyncCmdItems:onComplete:));
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+        hookMethod(objc_getClass("AddMsgSyncCmdHandler"), @selector(handleSyncCmdId: withSyncCmdItems:onComplete:), [self class], @selector(hook_handleSyncCmdId: withSyncCmdItems:onComplete:));
+#pragma clang diagnostic pop
         hookMethod(objc_getClass("MessageService"), @selector(FFToNameFavChatZZ:sessionMsgList:), [self class], @selector(hook_FFToNameFavChatZZ:sessionMsgList:));
       
     } else {
@@ -105,8 +108,10 @@
 
      hookMethod(objc_getClass("MMMainViewController"), @selector(onUpdateHandoffExpt:), [self class], @selector(hook_onUpdateHandoffExpt:));
     
-    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
     hookClassMethod(objc_getClass("MMCGIRequester"), @selector(requestCGI: Body:Response:), [self class], @selector(hook_requestCGI: Body:Response:));
+#pragma clang diagnostic pop
     //替换沙盒路径
     rebind_symbols((struct rebinding[2]) {
         { "NSSearchPathForDirectoriesInDomains", swizzled_NSSearchPathForDirectoriesInDomains, (void *)&original_NSSearchPathForDirectoriesInDomains },

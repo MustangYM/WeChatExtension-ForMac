@@ -39,58 +39,25 @@
     NSVisualEffectView *effView = [YMThemeManager creatFuzzyEffectView];
     
     //除了MMMainWindowController， 其余均做特殊处理
-//    if ([window isKindOfClass:objc_getClass("MMMainWindowController")]) {
-//        [window.window.contentView addSubview:effView];
-//        [effView fillSuperView];
-//    } else {
-//        if (window.window.contentView.subviews.count > 0) {
-//            NSView *firstSubView = window.window.contentView.subviews[0];
-//            [window.window.contentView addSubview:effView positioned:NSWindowBelow relativeTo:firstSubView];
-//            [effView fillSuperView];
-//        } else {
-//            [window.window.contentView addSubview:effView];
-//            [effView fillSuperView];
-//        }
-//    }
-    
-//        if ([window isKindOfClass:objc_getClass("MMMainWindowController")]) {
-//            NSImageView *imageV = [[NSImageView alloc] init];
-//            imageV.image = kImageWithName(@"Eminem.png");
-//            [window.window.contentView addSubview:imageV];
-//            [imageV fillSuperView];
-//        } else {
-//            if (window.window.contentView.subviews.count > 0) {
-//                NSImageView *imageV = [[NSImageView alloc] init];
-//                imageV.image = kImageWithName(@"Eminem.png");
-//                [window.window.contentView addSubview:imageV];
-//                [imageV fillSuperView];
-//            } else {
-//                NSImageView *imageV = [[NSImageView alloc] init];
-//                imageV.image = kImageWithName(@"Eminem.png");
-//                [window.window.contentView addSubview:imageV];
-//                [imageV fillSuperView];
-//            }
-//        }
+    if ([window isKindOfClass:objc_getClass("MMMainWindowController")]) {
+        [window.window.contentView addSubview:effView];
+        [effView fillSuperView];
+    } else {
+        if (window.window.contentView.subviews.count > 0) {
+            NSView *firstSubView = window.window.contentView.subviews[0];
+            [window.window.contentView addSubview:effView positioned:NSWindowBelow relativeTo:firstSubView];
+            [effView fillSuperView];
+        } else {
+            [window.window.contentView addSubview:effView];
+            [effView fillSuperView];
+        }
+    }
 
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [window.window setOpaque:NO];
+    do {
         [[YMThemeManager shareInstance] changeTheme:window.window.contentView color:kMainBackgroundColor];
         [window.window setBackgroundColor:kMainBackgroundColor];
-        NSImageView *imageV = [[NSImageView alloc] init];
-        imageV.imageScaling = NSImageScaleAxesIndependently;
-        imageV.image = kImageWithName(@"Eminem.png");
-        imageV.alphaValue = 0.85;
-        [window.window.contentView addSubview:imageV];
-        [imageV fillSuperView];
-        
-        CGFloat hz = 5;
-        CAKeyframeAnimation *rotationAnimation = [CAKeyframeAnimation animation];
-        rotationAnimation.keyPath = @"transform.rotation";
-        rotationAnimation.duration = kArc4random_Double_inSpace(0.20, 0.30) / hz;
-        rotationAnimation.values = @[@(-M_PI_4 /90.0 * hz * 2),@(M_PI_4 /90.0 * hz * 2),@(-M_PI_4 /90.0 * hz * 2)];
-        rotationAnimation.repeatCount = HUGE;
-        [imageV.layer addAnimation:rotationAnimation forKey:nil];
-    });
+        NSLog(@"yanmao - %@",window);
+    } while (CGRectEqualToRect(window.window.contentView.frame, CGRectZero));
 }
 
 + (void)fuzzyViewController:(NSViewController *)viewController
@@ -117,10 +84,10 @@
         if (viewController.view.subviews.count > 0) {
             NSView *firstSubView = viewController.view.subviews[0];
             [[YMThemeManager shareInstance] changeTheme:firstSubView color:[NSColor clearColor]];
-//            [viewController.view addSubview:effView positioned:NSWindowBelow relativeTo:firstSubView];
+            [viewController.view addSubview:effView positioned:NSWindowBelow relativeTo:firstSubView];
             [effView fillSuperView];
         } else {
-//            [viewController.view addSubview:effView];
+            [viewController.view addSubview:effView];
             [effView fillSuperView];
         }
     }
