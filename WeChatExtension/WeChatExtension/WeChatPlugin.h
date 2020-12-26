@@ -79,8 +79,15 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(retain, nonatomic) MMLoginOneClickViewController *oneClickViewController;
 @end
 
+@interface MMMouseEventView : NSView
+
+@end
+
+@class MMMainViewController;
 @interface MMMainWindowController : NSWindowController
+@property(retain, nonatomic) MMMouseEventView *maskView;
 @property(retain, nonatomic) MMLoginViewController *loginViewController;
+@property(retain, nonatomic) MMMainViewController *mainViewController; // @synthesize mainViewController=_mainViewController;
 - (void)onAuthOK;
 - (void)onLogOut;
 @end

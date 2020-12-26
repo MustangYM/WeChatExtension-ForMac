@@ -947,9 +947,11 @@
     }
     
     if ([view isKindOfClass:[objc_getClass("MMSessionPickerListSwitchSelectMode") class]]) {
-        MMSessionPickerListSwitchSelectMode *pickRow = (MMSessionPickerListSwitchSelectMode *)view;
-        pickRow.backgroundColor = kMainBackgroundColor;
-       
+        for (NSView *sub in view.subviews) {
+            if (![sub isKindOfClass:[NSTextField class]] && ![sub isKindOfClass:objc_getClass("MMButton")]) {
+                [[YMThemeManager shareInstance] changeTheme:sub];
+            }
+        }
         return;
     }
     
