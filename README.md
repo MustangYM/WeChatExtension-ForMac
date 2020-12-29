@@ -139,21 +139,21 @@ omw -g
 </p>
 
 ### 安装方式四：手动安装
-- 3.1.确保你的Mac上已经安装了微信App。
+- 4.1.确保你的Mac上已经安装了微信App。
 
-- 3.2.下载本项目到你的电脑里， 并双击打开。
+- 4.2.下载本项目到你的电脑里， 并双击打开。
 <p align="center">
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/install1.png" width="1500px"/>
 </p>
 
-- 3.3.依次打开文件夹`WeChatExtension/Rely/Install.sh`。
+- 4.3.依次打开文件夹`WeChatExtension/Rely/Install.sh`。
 
-- 3.4.将`Install.sh`拖入终端工具中按`回车`执行安装。
+- 4.4.将`Install.sh`拖入终端工具中按`回车`执行安装。
 <p align="center">
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/install2.png" width="1500px"/>
 </p>
 
-- 3.5.`重启`微信，安装完成。
+- 4.5.`重启`微信，安装完成。
 
 ## 怎么卸载?
 ### 卸载方式一：自动卸载（推荐）
