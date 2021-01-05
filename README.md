@@ -501,7 +501,7 @@ This project exists thanks to all the people who contribute。
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/aliPayCode.png" height="250" hspace="50"/>&nbsp;&nbsp;&nbsp;<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WeChatPayCode.png" height="250" hspace="50"  />
 
 
-## 免责声明
+## License
 <a href="LICENSE"><img src="https://img.shields.io/github/license/fstudio/clangbuilder.svg"></a>
 <a href="https://996.icu"><img src="https://img.shields.io/badge/link-996.icu-red.svg"></a>
 
