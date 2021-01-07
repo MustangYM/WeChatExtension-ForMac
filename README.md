@@ -217,6 +217,9 @@ bash <(curl -sL https://git.io/JUO6r)
 
 ```
 
+## TO DO
+- 皮肤模式下，多选消息转发BUG。
+
 ## Contributors
 
 This project exists thanks to all the people who contribute。
