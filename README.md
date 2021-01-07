@@ -219,6 +219,7 @@ bash <(curl -sL https://git.io/JUO6r)
 
 ## TO DO
 - 皮肤模式下，多选消息转发BUG。
+- BigSur引用消息或许会Crash（未复现）。
 
 ## Contributors
 
