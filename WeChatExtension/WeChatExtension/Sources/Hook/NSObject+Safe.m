@@ -23,7 +23,9 @@ static void inline dynamicMethodIMP(id self,SEL _cmd)
     [calls enumerateObjectsUsingBlock:^(NSString*  _Nonnull call, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([call containsString:@"hook_"]) {
             flag = YES;
-            if (*stop) *stop = YES;
+            if (*stop) {
+                 *stop = YES;
+            }
         }
     }];
     
@@ -40,8 +42,8 @@ static void inline dynamicMethodIMP(id self,SEL _cmd)
 @implementation NSObject (Safe)
 + (void)load
 {
-    hookMethod(objc_getClass("NSObject"), @selector(methodSignatureForSelector:), [self class], @selector(safe_methodSignatureForSEL:));
-    hookMethod(objc_getClass("NSObject"), @selector(forwardInvocation:), [self class], @selector(safe_forwardInvocation:));
+//    hookMethod(objc_getClass("NSObject"), @selector(methodSignatureForSelector:), [self class], @selector(safe_methodSignatureForSEL:));
+//    hookMethod(objc_getClass("NSObject"), @selector(forwardInvocation:), [self class], @selector(safe_forwardInvocation:));
 }
 
 - (NSMethodSignature *)safe_methodSignatureForSEL:(SEL)arg1

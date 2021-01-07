@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)changeTheme:(NSView *)view;
 - (void)changeTheme:(NSView *)view color:(NSColor *)color;
 - (NSColor *)randomColor:(NSString *)string;
+- (void)chatsCellViewAnimation:(MMChatsTableCellView *)cell isSelected:(BOOL)isSelected;
 @end
 
 NS_ASSUME_NONNULL_END

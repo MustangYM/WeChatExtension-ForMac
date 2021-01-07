@@ -171,6 +171,35 @@ static NSString * const kWeChatResourcesPath = @"/Applications/WeChat.app/Conten
 
 }
 
+- (void)cacheImage:(NSImage *)image chatroom:(NSString *)chatroom
+{
+    if (!image || chatroom.length == 0) {
+        return;
+    }
+    
+    NSString *imgMd5Str = [chatroom performSelector:@selector(md5String)];
+    NSString *userCache =  [objc_getClass("PathUtility") GetCurUserDocumentPath];
+    NSString *imgPath = [NSString stringWithFormat:@"%@/avatar/%@",userCache, imgMd5Str];
+    
+    NSFileManager *fileMgr = [NSFileManager defaultManager];
+    if (imgPath && ![fileMgr fileExistsAtPath:imgPath]) {
+      NSData *imageData = [image TIFFRepresentation];
+      [imageData writeToFile:imgPath atomically:YES];
+    }
+}
+
+- (NSImage *)imageWithChatroom:(NSString *)chatroom
+{
+    if (!chatroom || chatroom.length == 0) {
+        return nil;
+    }
+    NSString *imgMd5Str = [chatroom performSelector:@selector(md5String)];
+    NSString *userCache =  [objc_getClass("PathUtility") GetCurUserDocumentPath];
+    NSString *imgPath = [NSString stringWithFormat:@"%@/avatar/%@",userCache, imgMd5Str];
+    NSImage *image = [[NSImage alloc] initWithData:[NSData dataWithContentsOfFile:imgPath]];
+    return image;
+}
+
 - (NSString *)getUpdateSandboxFilePathWithName:(NSString *)Name
 {
     return [self _getSandBoxPath:@"/WeChatExtension/Update/" name:Name];

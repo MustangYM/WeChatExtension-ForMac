@@ -17,8 +17,7 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
     PluginLanguageTypeEN
 };
 
-@class YMAIAutoModel;
-@class VAutoForwardingModel;
+@class YMAIAutoModel, VAutoForwardingModel, YMZGMPGroupInfo;
 
 @interface YMWeChatPluginConfig : GVUserDefaults
 
@@ -28,6 +27,7 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @property (nonatomic) BOOL preventAsyncRevokeSignal;            /**<    只同步单聊    */
 @property (nonatomic) BOOL preventAsyncRevokeChatRoom;          /**<    只同步群聊    */
 @property (nonatomic) BOOL autoReplyEnable;                     /**<    是否开启自动回复  */
+@property (nonatomic) BOOL AIReplyEnable;                     /**<    是否开启自动回复  */
 @property (nonatomic) BOOL autoForwardingEnable;                /**<    是否开启自动转发  */
 @property (nonatomic) BOOL autoForwardingAllFriend;             /**<    开启自动转发所有好友消息  */
 @property (nonatomic) BOOL autoAuthEnable;                      /**<    是否免认证登录    */
@@ -42,25 +42,31 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @property (nonatomic) BOOL systemBrowserEnable;                 /**<    是否使用自身浏览器打开连接   */
 @property (nonatomic, copy) NSString *currentUserName;          /**<    当前用户的id     */
 @property (nonatomic) BOOL isAllowMoreOpenBaby;                 /**<    子WeChat多开     */
-@property (nonatomic) BOOL fuzzyMode;                            /**<    模糊模式     */
+
+@property (nonatomic) BOOL fuzzyMode;                           /**<    模糊模式     */
 @property (nonatomic) BOOL darkMode;                            /**<    黑暗模式     */
 @property (nonatomic) BOOL blackMode;                           /**<    深邃模式     */
 @property (nonatomic) BOOL pinkMode;                            /**<    少女模式     */
+@property (nonatomic) BOOL closeThemeMode;                      /**<    原始模式     */
 @property (nonatomic) BOOL isThemeLoaded;                       /**<    是否有使用过皮肤    */
 
-@property (nonatomic, strong) NSMutableArray *autoReplyModels;           /**<    自动回复的数组    */
-@property (nonatomic, strong) NSMutableArray *remoteControlModels;       /**<    远程控制的数组    */
-@property (nonatomic, strong) NSMutableArray *ignoreSessionModels;       /**<    聊天置底的数组    */
+@property (nonatomic, strong) NSMutableArray *autoReplyModels;           /**<    自动回复的    */
+@property (nonatomic, strong) NSMutableArray *remoteControlModels;       /**<    远程控制的    */
+@property (nonatomic, strong) NSMutableArray *ignoreSessionModels;       /**<    聊天置底的    */
 @property (nonatomic, strong) NSMutableArray *selectSessions;            /**<    已经选中的会话    */
-@property (nonatomic, strong) NSMutableSet *revokeMsgSet;                /**<    撤回的消息集合    */
-@property (nonatomic, strong) NSMutableSet *unreadSessionSet;            /**<    标记未读消息集合    */
+@property (nonatomic, strong) NSMutableSet *revokeMsgSet;                /**<    撤回的消息    */
+@property (nonatomic, strong) NSMutableSet *unreadSessionSet;            /**<    标记未读消息    */
 @property (nonatomic, copy, readonly) NSDictionary *localInfoPlist;
 @property (nonatomic, copy, readonly) NSDictionary *romoteInfoPlist;
 @property (nonatomic, strong) VAutoForwardingModel *VAutoForwardingModel;      /**<    自动转发的数组    */
+@property (nonatomic, strong) NSMutableArray *banModels;                /**<    屏蔽的群    */
 @property (nonatomic, strong) YMAIAutoModel *AIReplyModel;
 @property (nonatomic) PluginLanguageType languageType;
 @property (nonatomic, weak) MMBrandChatsViewController *brandChatsViewController;
+@property (nonatomic, weak) MMChatsTableCellView *preChatsCellView;
 
+- (void)saveBanGroup:(YMZGMPGroupInfo *)info;
+- (void)saveBanModels;
 - (void)saveAutoReplyModels;
 - (void)saveRemoteControlModels;
 - (void)saveIgnoreSessionModels;

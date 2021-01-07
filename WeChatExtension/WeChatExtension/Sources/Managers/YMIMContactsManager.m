@@ -92,6 +92,20 @@
     return temp;
 }
 
++ (WCContactData *)getMemberInfo:(NSString *)userName
+{
+    NSArray *arr = [self getAllFriendContacts];
+    __block WCContactData *temp = nil;
+    [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        WCContactData *contactData = (WCContactData *)obj;
+        if ([contactData.m_nsUsrName isEqualToString:userName]) {
+            temp = contactData;
+        }
+    }];
+    
+    return temp;
+}
+
 + (NSArray<WCContactData *> *)getAllFriendContacts
 {
     ContactStorage *contactStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("ContactStorage")];
@@ -123,6 +137,18 @@
         }
     }];
     
+    return temp;
+}
+
++ (NSArray<NSString *> *)getAllChatroomFromSessionList
+{
+    MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
+    NSMutableArray *temp = [NSMutableArray array];
+    [sessionMgr.m_arrSession enumerateObjectsUsingBlock:^(MMSessionInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.m_nsUserName containsString:@"chatroom"]) {
+            [temp addObject:obj.m_nsUserName];
+        }
+    }];
     return temp;
 }
 

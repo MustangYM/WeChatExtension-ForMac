@@ -236,9 +236,22 @@
     [picker setShowsOtherNonhumanChats:0];
     [picker setShowsOfficialAccounts:0];
     MMSessionPickerLogic *logic = [picker.listViewController valueForKey:@"m_logic"];
-    NSMutableOrderedSet *orderSet = [logic valueForKey:@"_selectedUserNamesSet"];
-
-    [orderSet addObjectsFromArray:self.model.specificContacts];
+    NSMutableOrderedSet *orderSet = nil;
+    NSMutableArray *selectUsrs = nil;
+    if (LargerOrEqualLongVersion(@"2.4.2.148")) {
+        selectUsrs = [logic valueForKey:@"_selectedUserNames"];
+        if (!selectUsrs) {
+            selectUsrs = [NSMutableArray new];
+        }
+        [selectUsrs addObjectsFromArray:self.model.specificContacts];
+    } else {
+        orderSet = [logic valueForKey:@"_selectedUserNamesSet"];
+        if (!orderSet) {
+            orderSet = [NSMutableOrderedSet new];
+        }
+        [orderSet addObjectsFromArray:self.model.specificContacts];
+    }
+    
     [picker.choosenViewController setValue:self.model.specificContacts forKey:@"selectedUserNames"];
     [picker beginSheetForWindow:self.window completionHandler:^(NSOrderedSet *a1) {
         NSMutableArray *array = [NSMutableArray array];

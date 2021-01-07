@@ -11,6 +11,7 @@
 #import "YMAutoReplyModel.h"
 #import "YMWeChatPluginConfig.h"
 #import "YMIMContactsManager.h"
+#import "YMMessageManager.h"
 
 @interface YMStrangerCheckWindowController ()<NSTabViewDelegate, NSTableViewDataSource>
 @property (nonatomic, strong) NSTableView *tableView;
@@ -24,7 +25,6 @@
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) NSProgressIndicator *progress;
 @property (nonatomic, strong) NSTextField *indicatorLabel;
-@property (nonatomic, strong) NSString *currentChatroom;
 @end
 
 @implementation YMStrangerCheckWindowController
@@ -45,10 +45,7 @@
     self.timer = nil;
     self.progress.hidden = YES;
     self.indicatorLabel.hidden = YES;
-    GroupStorage *groupStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
-    [groupStorage UIQuitGroup:self.currentChatroom];
     self.addButton.enabled = YES;
-    self.currentChatroom = nil;
 }
 
 - (void)initSubviews
@@ -126,92 +123,139 @@
 
 - (void)onCheckStranger
 {
-    self.contactMgr = [YMIMContactsManager shareInstance];
-    __weak __typeof (self) wself = self;
-    self.contactMgr.onVerifyMsgBlock = ^(NSString *userName) {
-        if (![wself.dataArray containsObject:userName]) {
-            [wself.dataArray addObject:userName];
-            [wself.tableView reloadData];
-        }
-    };
+    //wxid_twv3erlvwmtx21
+//    [[YMMessageManager shareManager] sendImageMessage:@"" toUserName:@"wxid_twv3erlvwmtx21"];
+        //wxid_0168281683015    wxid_rf9u664z4mj712
+        ContactStorage *contactStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("ContactStorage")];
+    __block int64_t i = 0;
+    self.addButton.enabled = NO;
+    NSArray *contacts = [YMIMContactsManager getAllFriendContactsWithOutChatroom];
+    NSMutableArray *tempArray = [NSMutableArray arrayWithArray:contacts];
     
-    GroupStorage *groupStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
-    
-    MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
-    NSArray *sessions = sessionMgr.m_arrSession;
-    
-    NSMutableArray *successArray = [NSMutableArray array];
-    NSString *currentUsrName = [objc_getClass("CUtility") GetCurrentUserName];
-    [sessions enumerateObjectsUsingBlock:^(MMSessionInfo *_Nonnull sessionInfo, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (sessionInfo.m_packedInfo.m_contact.m_uiSex != 0 && ![sessionInfo.m_nsUserName containsString:@"@chatroom"] && ![currentUsrName isEqualToString:sessionInfo.m_nsUserName]) {
-            GroupMember *member = [[objc_getClass("GroupMember") alloc] init];
-            member.m_nsMemberName = sessionInfo.m_nsUserName;
-            [successArray addObject:member];
-            if (successArray.count == 2) {
-                *stop = YES;
-            }
-        }
-    }];
-    
-    [groupStorage CreateGroupChatWithTopic:nil groupMembers:[NSArray arrayWithArray:successArray] completion:^(NSString *chatroom) {
-        NSLog(@"验证-创群成功%@",chatroom);
-        if (chatroom.length < 1) {
-            NSLog(@"验证-创群失败%@",chatroom);
-            NSAlert *alert = [NSAlert alertWithMessageText:YMLanguage(@"警告", @"WARNING")
-                                             defaultButton:YMLanguage(@"取消", @"cancel")                       alternateButton:YMLanguage(@"确定",@"sure")
-                                               otherButton:nil                              informativeTextWithFormat:@"%@", YMLanguage(@"检测失败, 微信系统繁忙, 过一个小时后再试!", @"Detection failed, system busy!")];
-            NSUInteger action = [alert runModal];
-            return ;
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        if (tempArray.count <= 1) {
+            [self onRelease];
+            return;
         }
         
-        wself.currentChatroom = chatroom;
-        __block int64_t i = 0;
-        wself.addButton.enabled = NO;
-        NSArray *contacts = [YMIMContactsManager getAllFriendContactsWithOutChatroom];
-        NSMutableArray *tempArray = [NSMutableArray arrayWithArray:contacts];
+        i++;
+        int64_t min = tempArray.count * 1 / 60;
         
-        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:5.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
-            if (tempArray.count <= 1) {
-                [wself onRelease:groupStorage];
-                return;
-            }
-            
-            i++;
-            int64_t min = tempArray.count * 5 / 60;
-            
-            NSString *enMsg = [NSString stringWithFormat:@"%lld/%ld %lld minutes to scan", i, contacts.count, min];
-            NSString *zhMsg = [NSString stringWithFormat:@"%lld/%ld 检测还需约%lld分钟", i, contacts.count, min];
-            [wself.indicatorLabel setStringValue:YMLanguage(zhMsg, enMsg)];
-            wself.progress.hidden = NO;
-            wself.indicatorLabel.hidden = NO;
-            
-            WCContactData *contactData = [tempArray firstObject];
-            GroupMember *member = [[objc_getClass("GroupMember") alloc] init];
-            member.m_nsMemberName = contactData.m_nsUsrName;
-            [groupStorage AddGroupMembers:@[member] withGroupUserName:chatroom completion:^(NSString *str) {
-                NSLog(@"验证-添加成功");
-            }];
-            
-            NSLog(@"验证-添加群聊%@",contactData.m_nsUsrName);
-            
-            if (tempArray.count > 0) {
-                [tempArray  removeObjectAtIndex:0];
+        NSString *enMsg = [NSString stringWithFormat:@"%lld/%ld %lld minutes to scan", i, contacts.count, min];
+        NSString *zhMsg = [NSString stringWithFormat:@"%lld/%ld 检测还需约%lld分钟", i, contacts.count, min];
+        [self.indicatorLabel setStringValue:YMLanguage(zhMsg, enMsg)];
+        self.progress.hidden = NO;
+        self.indicatorLabel.hidden = NO;
+        
+        WCContactData *contactData = [tempArray firstObject];
+        
+        WCContactData *data = [YMIMContactsManager getMemberInfo:contactData.m_nsUsrName];
+        MMFriendRequestMgr *requestMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMFriendRequestMgr")];
+        MMVerifyContactWrap *verifyWrap = [objc_getClass("MMVerifyContactWrap") new];
+        verifyWrap.usrName = contactData.m_nsUsrName;
+        verifyWrap.verifyContact = data;
+        __weak __typeof (self) wself = self;
+        [requestMgr sendVerifyUserRequestWithUserName:contactData.m_nsUsrName opCode:1 verifyMsg:nil ticket:nil verifyContactWrap:verifyWrap completion:^(int a, int b, NSString *c, NSString *d){
+            //不是好友 1 2 id @"
+            //是好友 1 0 id @""
+            if (b == 2) {
+                [wself.dataArray addObject:contactData.m_nsUsrName];
+                [wself.tableView reloadData];
             }
         }];
-        wself.timer = timer;
-        [timer fire];
+
+        
+        if (tempArray.count > 0) {
+            [tempArray  removeObjectAtIndex:0];
+        }
     }];
+    self.timer = timer;
+    [timer fire];
+    
+//    self.contactMgr = [YMIMContactsManager shareInstance];
+//    __weak __typeof (self) wself = self;
+//    self.contactMgr.onVerifyMsgBlock = ^(NSString *userName) {
+//        if (![wself.dataArray containsObject:userName]) {
+//            [wself.dataArray addObject:userName];
+//            [wself.tableView reloadData];
+//        }
+//    };
+
+//    GroupStorage *groupStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
+//
+//    MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
+//    NSArray *sessions = sessionMgr.m_arrSession;
+//
+//    NSMutableArray *successArray = [NSMutableArray array];
+//    NSString *currentUsrName = [objc_getClass("CUtility") GetCurrentUserName];
+//    [sessions enumerateObjectsUsingBlock:^(MMSessionInfo *_Nonnull sessionInfo, NSUInteger idx, BOOL * _Nonnull stop) {
+//        if (sessionInfo.m_packedInfo.m_contact.m_uiSex != 0 && ![sessionInfo.m_nsUserName containsString:@"@chatroom"] && ![currentUsrName isEqualToString:sessionInfo.m_nsUserName]) {
+//            GroupMember *member = [[objc_getClass("GroupMember") alloc] init];
+//            member.m_nsMemberName = sessionInfo.m_nsUserName;
+//            [successArray addObject:member];
+//            if (successArray.count == 2) {
+//                *stop = YES;
+//            }
+//        }
+//    }];
+//
+//    [groupStorage CreateGroupChatWithTopic:nil groupMembers:[NSArray arrayWithArray:successArray] completion:^(NSString *chatroom) {
+//        NSLog(@"验证-创群成功%@",chatroom);
+//        if (chatroom.length < 1) {
+//            NSLog(@"验证-创群失败%@",chatroom);
+//            NSAlert *alert = [NSAlert alertWithMessageText:YMLanguage(@"警告", @"WARNING")
+//                                             defaultButton:YMLanguage(@"取消", @"cancel")                       alternateButton:YMLanguage(@"确定",@"sure")
+//                                               otherButton:nil                              informativeTextWithFormat:@"%@", YMLanguage(@"检测失败, 微信系统繁忙, 过一个小时后再试!", @"Detection failed, system busy!")];
+//            NSUInteger action = [alert runModal];
+//            return ;
+//        }
+//
+//        wself.currentChatroom = chatroom;
+//        __block int64_t i = 0;
+//        wself.addButton.enabled = NO;
+//    NSArray *contacts = [YMIMContactsManager getAllFriendContactsWithOutChatroom];
+//        NSMutableArray *tempArray = [NSMutableArray arrayWithArray:contacts];
+//
+//        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:5.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
+//            if (tempArray.count <= 1) {
+//                [wself onRelease:groupStorage];
+//                return;
+//            }
+//
+//            i++;
+//            int64_t min = tempArray.count * 5 / 60;
+//
+//            NSString *enMsg = [NSString stringWithFormat:@"%lld/%ld %lld minutes to scan", i, contacts.count, min];
+//            NSString *zhMsg = [NSString stringWithFormat:@"%lld/%ld 检测还需约%lld分钟", i, contacts.count, min];
+//            [wself.indicatorLabel setStringValue:YMLanguage(zhMsg, enMsg)];
+//            wself.progress.hidden = NO;
+//            wself.indicatorLabel.hidden = NO;
+//
+//            WCContactData *contactData = [tempArray firstObject];
+//            GroupMember *member = [[objc_getClass("GroupMember") alloc] init];
+//            member.m_nsMemberName = contactData.m_nsUsrName;
+//            [groupStorage AddGroupMembers:@[member] withGroupUserName:chatroom completion:^(NSString *str) {
+//                NSLog(@"验证-添加成功");
+//            }];
+//
+//            NSLog(@"验证-添加群聊%@",contactData.m_nsUsrName);
+//
+//            if (tempArray.count > 0) {
+//                [tempArray  removeObjectAtIndex:0];
+//        }
+//    }];
+//        wself.timer = timer;
+//        [timer fire];
+//    }];
 }
 
-- (void)onRelease:(GroupStorage *)groupStorage
+- (void)onRelease
 {
     [self.timer invalidate];
     self.timer = nil;
     self.progress.hidden = YES;
     self.indicatorLabel.hidden = YES;
-     [groupStorage UIQuitGroup:self.currentChatroom];
     self.addButton.enabled = YES;
-    self.currentChatroom = nil;
     
     NSString *zhMsg = [NSString stringWithFormat:@"检测完成! 总共发现%ld个僵尸粉",self.dataArray.count];
     NSString *enMsg = [NSString stringWithFormat:@"Scan complete! %ld strangers found",self.dataArray.count];

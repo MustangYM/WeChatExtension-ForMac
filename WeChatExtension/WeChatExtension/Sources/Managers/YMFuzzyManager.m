@@ -18,9 +18,6 @@
         return;
     }
     
-    
-    //窗口高斯模式
-    //视频通话不适配
     if ([window isKindOfClass:objc_getClass("MMVoipCallerWindowController")]) {
         return;
     }
@@ -55,8 +52,11 @@
             [effView fillSuperView];
         }
     }
-    
-    [[YMThemeManager shareInstance] changeTheme:window.window.contentView];
+
+    do {
+        [[YMThemeManager shareInstance] changeTheme:window.window.contentView color:kMainBackgroundColor];
+        [window.window setBackgroundColor:kMainBackgroundColor];
+    } while (CGRectEqualToRect(window.window.contentView.frame, CGRectZero));
 }
 
 + (void)fuzzyViewController:(NSViewController *)viewController
@@ -69,14 +69,16 @@
     if ([viewController isKindOfClass:objc_getClass("MMContactsDetailViewController")]) {
         return;
     }
-    
+
     if ([viewController isKindOfClass:objc_getClass("MMChatCollectionViewController")]
         || [viewController isKindOfClass:objc_getClass("MMSessionListView")]
         || [viewController isKindOfClass:objc_getClass("MMStickerCollectionViewController")]
         || [viewController isKindOfClass:objc_getClass("MMContactProfileController")]
         || [viewController isKindOfClass:objc_getClass("MMContactsListViewController")]
         || [viewController isKindOfClass:objc_getClass("MMContactsLeftMasterViewController")]
-        || [viewController isKindOfClass:objc_getClass("MMContactsRightDetailViewController")]) {
+        || [viewController isKindOfClass:objc_getClass("MMContactsRightDetailViewController")]
+        || [viewController isKindOfClass:objc_getClass("MMChatMessageViewController")]
+        || [viewController isKindOfClass:objc_getClass("MMSessionChoosenView")]) {
         NSVisualEffectView *effView = [YMThemeManager creatFuzzyEffectView];
         if (viewController.view.subviews.count > 0) {
             NSView *firstSubView = viewController.view.subviews[0];

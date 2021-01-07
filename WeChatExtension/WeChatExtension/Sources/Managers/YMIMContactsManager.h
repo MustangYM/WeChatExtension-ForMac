@@ -25,7 +25,9 @@
 + (NSString *)getGroupMemberNickName:(NSString *)username;
 + (NSString *)getWeChatNickName:(NSString *)username;
 + (NSString *)getWeChatAvatar:(NSString *)userName;
++ (WCContactData *)getMemberInfo:(NSString *)userName;
 + (MMSessionInfo *)getSessionInfo:(NSString *)userName;
++ (NSArray<NSString *> *)getAllChatroomFromSessionList;
 + (NSArray<WCContactData *> *)getAllFriendContacts;
 + (NSArray<WCContactData *> *)getAllFriendContactsWithOutChatroom;
 @end

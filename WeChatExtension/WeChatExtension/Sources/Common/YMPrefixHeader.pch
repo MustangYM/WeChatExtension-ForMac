@@ -27,10 +27,13 @@
 #import "YMSwizzledHelper.h"
 #endif
 
+#define TIME_START NSDate *startTime = [NSDate date]
+#define TIME_END NSLog(@"Time: %f", -[startTime timeIntervalSinceNow])
+
 #define kRGBColor(r,g,b,a) [NSColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
 #define kArc4random_Double_inSpace(a,b) a<b ? rand() / (float)RAND_MAX * (b-a) * 1 + (a) : rand() / (float)RAND_MAX * (a-b) * 1 + (b)
 //99 157
-#define kFuzzyBacgroundColor kRGBColor(24, 99, 157, 0.01)
+#define kFuzzyBacgroundColor kRGBColor(41, 43, 57, 0.01)
 #define kDarkBacgroundColor kRGBColor(24, 34, 45, 1.0)
 #define kLightDarkBacgroundColor kRGBColor(54, 54, 54, 1.0)
 #define kPinkBacgroundColor kRGBColor(229,173,177,1.0)
