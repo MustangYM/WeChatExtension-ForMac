@@ -20,7 +20,7 @@
 
 ## 小助手相关介绍
 - [Toptips视频介绍(゜-゜)つロ 干杯~](https://www.bilibili.com/video/BV1Xi4y1b72c?from=search&seid=863944292302073615)(基于2.5版本的小助手介绍，现在的小助手更完善)。
-- 经过两年的不间断的维护已成长为[最受欢迎的Objective-C项目](https://github.com/kon9chunkit/GitHub-Chinese-Top-Charts#Objective-C)，请放心使用。
+- 经过两年的不间断的维护已成长为[最受欢迎的Objective-C项目](https://github.com/kon9chunkit/GitHub-Chinese-Top-Charts#Objective-C)之一，请放心使用。
 [![Stargazers over time](https://starchart.cc/MustangYM/WeChatExtension-ForMac.svg)](https://starchart.cc/MustangYM/WeChatExtension-ForMac)
 
 ## 迷离/黑夜/深邃/少女 皮肤模式
