@@ -20,6 +20,8 @@
 
 ## 小助手相关介绍
 - [Toptips视频介绍(゜-゜)つロ 干杯~](https://www.bilibili.com/video/BV1Xi4y1b72c?from=search&seid=863944292302073615)(基于2.5版本的小助手介绍，现在的小助手更完善)。
+- 迄今为止已成长为最受欢迎的Objective-C项目之一。
+[![Stargazers over time](https://starchart.cc/MustangYM/WeChatExtension-ForMac.svg)](https://starchart.cc/MustangYM/WeChatExtension-ForMac)
 
 ## 迷离/黑夜/深邃/少女 皮肤模式
 - 少量细节没有做适配，`主题模式-关闭皮肤`可以`关掉`这个功能。
@@ -503,7 +505,6 @@ This project exists thanks to all the people who contribute。
 - 如果小助手使你的生活更美好，可以`请我喝杯咖啡`。
 
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/aliPayCode.png" height="250" hspace="50"/>&nbsp;&nbsp;&nbsp;<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WeChatPayCode.png" height="250" hspace="50"  />
-
 
 ## License
 <a href="LICENSE"><img src="https://img.shields.io/github/license/fstudio/clangbuilder.svg"></a>
