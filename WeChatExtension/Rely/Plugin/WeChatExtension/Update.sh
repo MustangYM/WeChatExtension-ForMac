@@ -12,9 +12,9 @@ framework_path="${app_bundle_path}/${framework_name}.framework"
 # 极少部分机器会出现签名异常情况，先执行卸载流程
 if [ -f "$app_executable_backup_path" ]
 then
-rm "$app_executable_path"
-rm -rf "$framework_path"
-mv "$app_executable_backup_path" "$app_executable_path"
+sudo rm "$app_executable_path"
+sudo rm -rf "$framework_path"
+sudo mv "$app_executable_backup_path" "$app_executable_path"
 
 if [ ! -f "$app_executable_backup_path" ]
 then
