@@ -20,12 +20,20 @@ app_executable_path="${app_bundle_path}/${app_name}"
 app_executable_backup_path="${app_executable_path}_backup"
 framework_path="${app_bundle_path}/${framework_name}.framework"
 
+# 执行安装流程
+# 对 WeChat 赋予权限
+if [ ! -w "$wechat_path" ]
+then
+echo -e "\n\n为了将小助手写入微信, 请输入密码 ： "
+sudo chown -R $(whoami) "$wechat_path"
+fi
+
 # 先执行卸载流程
 if [ -f "$app_executable_backup_path" ]
 then
-rm "$app_executable_path"
-rm -rf "$framework_path"
-mv "$app_executable_backup_path" "$app_executable_path"
+sudo rm "$app_executable_path"
+sudo rm -rf "$framework_path"
+sudo mv "$app_executable_backup_path" "$app_executable_path"
 
 if [ -f "$app_executable_backup_path" ]
 then
@@ -34,14 +42,6 @@ else
     echo "\n\t卸载旧小助手成功,安装新版中..."
 fi
 #未发现小助手
-fi
-
-# 执行安装流程
-# 对 WeChat 赋予权限
-if [ ! -w "$wechat_path" ]
-then
-echo -e "\n\n为了将小助手写入微信, 请输入密码 ： "
-sudo chown -R $(whoami) "$wechat_path"
 fi
 
 # 判断是否已经存在备份文件 或者 是否强制覆盖安装
