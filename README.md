@@ -170,7 +170,7 @@ bash <(curl -sL https://git.io/JUO6r)
 
 ## 更新日志
 ```
-2012-12-24 适配微信2.6.0（16787），新增pkg安装包安装模式。
+2020-12-24 适配微信2.6.0（16787），新增pkg安装包安装模式。
 2020-10-31 修复清除空会话失效，优化置底、公众号浏览，新增一键卸载小助手，新增关闭皮肤选项，新增群员监控、拒收群消息。
 2020-09-20 系统低于macOS10.14不再支持皮肤，修复2.4.2 (15650)选取联系人Crash，优化UI细节。
 2020-09-16 适配微信2.4.2(15650)Beta 148，修复微信会话列表为空，新增通讯录管理皮肤适配，小程序成为独立模块，多开与小程序终于完美兼容，喜极而泣！
@@ -492,7 +492,8 @@ This project exists thanks to all the people who contribute。
 <a href="https://opencollective.com/mustangym666#backers" target="_blank"><img src="https://opencollective.com/mustangym666/backers.svg?width=890"></a>
 
 ## 交流
-- QQ群：`741941325`。
+- QQ①群：`741941325`。
+- QQ②群：`905526964`。
 - 皮肤的颜色搭配采纳了大量群友的反馈和建议，经过激烈的讨论甚至投票仍然不能统一意见，那就干脆做`两套`吧，所以才会出现`黑夜`和`深邃`两款如此相近的`暗色调主题`，所以颜色上不再接受pr，向朋友们表示`感谢`。
 - 封面图的`骷髅`与`乌鸦`元素来自于`史泰龙`的电影`《The Expendables》`（敢死队）海报。
 - 插件中的`图标`、本页所有`Logo`、预览图均出自本人`蹩脚`的[Photoshop](https://www.adobe.com/products/photoshop.html)设计。
