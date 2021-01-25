@@ -8,7 +8,7 @@
 
 #import "YMIMContactsManager.h"
 #import "YMMessageHelper.h"
-#import "TKWeChatPluginConfig.h"
+#import "YMWeChatPluginConfig.h"
 
 @implementation YMMonitorChildInfo
 - (instancetype)initWithDict:(NSDictionary *)dict
@@ -33,6 +33,8 @@
 
 @interface YMIMContactsManager()
 @property (nonatomic, strong) NSMutableArray *cachePool;
+@property (nonatomic, strong) NSMutableArray *taskQueue;
+@property (nonatomic, strong) NSTimer *taskTimer;
 @end
 
 @implementation YMIMContactsManager
@@ -90,6 +92,20 @@
     return temp;
 }
 
++ (WCContactData *)getMemberInfo:(NSString *)userName
+{
+    NSArray *arr = [self getAllFriendContacts];
+    __block WCContactData *temp = nil;
+    [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        WCContactData *contactData = (WCContactData *)obj;
+        if ([contactData.m_nsUsrName isEqualToString:userName]) {
+            temp = contactData;
+        }
+    }];
+    
+    return temp;
+}
+
 + (NSArray<WCContactData *> *)getAllFriendContacts
 {
     ContactStorage *contactStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("ContactStorage")];
@@ -124,6 +140,18 @@
     return temp;
 }
 
++ (NSArray<NSString *> *)getAllChatroomFromSessionList
+{
+    MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
+    NSMutableArray *temp = [NSMutableArray array];
+    [sessionMgr.m_arrSession enumerateObjectsUsingBlock:^(MMSessionInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.m_nsUserName containsString:@"chatroom"]) {
+            [temp addObject:obj.m_nsUserName];
+        }
+    }];
+    return temp;
+}
+
 + (MMSessionInfo *)getSessionInfo:(NSString *)userName
 {
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
@@ -142,34 +170,62 @@
         return;
     }
     
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSArray *memListArray = [groupData.m_nsChatRoomMemList componentsSeparatedByString:@";"];
-          NSDictionary *allDictionary = [(NSMutableDictionary *)groupData.m_chatRoomData valueForKey:@"m_dicData"];
-          if (memListArray.count < allDictionary.allKeys.count) {
-              __weak __typeof (self) wself = self;
-              [allDictionary enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSDictionary * _Nonnull obj, BOOL * _Nonnull stop) {
-                  if (![memListArray containsObject:key]) {
-                      NSString *nick = [YMIMContactsManager getGroupMemberNickName:key];
-                      
-                      if (nick) {
-                          if ([wself queryQuitMsgFromPool:key group:groupData.m_nsUsrName]) {
-                              NSString *message = nil;
-                              if ([TKWeChatPluginConfig sharedConfig].languageType == PluginLanguageTypeZH) {
-                                  message = [NSString stringWithFormat:@"⚠️退群监控⚠️\n@%@ 已退群\n(此消息仅本人可见,7天内不再提示此人退群信息)",nick];
-                              } else {
-                                  message = [NSString stringWithFormat:@"⚠️Group-Quitting Monitor⚠️\n@%@ has quit group chat\n(This message is only visible to me, Don't prompt this person to quit within 7 days)",nick];
-                              }
-                              
-                              [YMMessageHelper addLocalWarningMsg:message fromUsr:groupData.m_nsUsrName];
-                              [self addQuitMsgToPool:key group:groupData.m_nsUsrName];
-                          }
-                      }
-                  }
-              }];
-          }
-    });
+    __block BOOL flag = NO;
+    [self.taskQueue enumerateObjectsUsingBlock:^(WCContactData  *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.m_nsUsrName isEqualToString:groupData.m_nsUsrName]) {
+            flag = YES;
+            if (*stop) *stop = YES;
+        }
+    }];
+    
+    if (flag) return;
+    
+    [self.taskQueue addObject:groupData];
+    
+    if (!self.taskTimer) {
+        self.taskTimer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(onDoQuitGroupTask) userInfo:nil repeats:YES];
+        [[NSRunLoop mainRunLoop] addTimer:self.taskTimer forMode:NSDefaultRunLoopMode];
+    }
 }
 
+- (void)onDoQuitGroupTask
+{
+    if (self.taskQueue.count == 0) {
+        [self.taskTimer invalidate];
+        self.taskTimer = nil;
+        return;
+    }
+    
+    @synchronized (self) {
+        __weak __typeof (self) wself = self;
+         [self.taskQueue enumerateObjectsUsingBlock:^(WCContactData  *_Nonnull groupData, NSUInteger idx, BOOL * _Nonnull stop) {
+             NSArray *memListArray = [groupData.m_nsChatRoomMemList componentsSeparatedByString:@";"];
+             NSDictionary *allDictionary = [(NSMutableDictionary *)groupData.m_chatRoomData valueForKey:@"m_dicData"];
+             if (memListArray.count < allDictionary.allKeys.count) {
+                 [allDictionary enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSDictionary * _Nonnull obj, BOOL * _Nonnull stop) {
+                     if (![memListArray containsObject:key]) {
+                         NSString *nick = [YMIMContactsManager getGroupMemberNickName:key];
+                         
+                         if (nick) {
+                             if ([wself queryQuitMsgFromPool:key group:groupData.m_nsUsrName]) {
+                                 NSString *message = nil;
+                                 if ([YMWeChatPluginConfig sharedConfig].languageType == PluginLanguageTypeZH) {
+                                     message = [NSString stringWithFormat:@"⚠️退群监控⚠️\n@%@ 已退群",nick];
+                                 } else {
+                                     message = [NSString stringWithFormat:@"⚠️Group-Quitting Monitor⚠️\n@%@ has quit group chat",nick];
+                                 }
+                                 
+                                 [YMMessageHelper addLocalWarningMsg:message fromUsr:groupData.m_nsUsrName];
+                                 [self addQuitMsgToPool:key group:groupData.m_nsUsrName];
+                             }
+                         }
+                     }
+                 }];
+             }
+             [wself.taskQueue removeObject:groupData];
+         }];
+    }
+}
 
 - (void)addQuitMsgToPool:(NSString *)usrName group:(NSString *)group
 {
@@ -183,15 +239,15 @@
         info.usrName = usrName;
         info.group = group;
         
-        NSMutableArray *array = [[TKWeChatPluginConfig sharedConfig] getMonitorQuitMembers];
+        NSMutableArray *array = [[YMWeChatPluginConfig sharedConfig] getMonitorQuitMembers];
         if (!array) {
             array = [NSMutableArray array];
         }
         [array addObject:info];
-        if (array.count > 1000) {
+        if (array.count > 20000) {
             [array removeObjectAtIndex:0];
         }
-        [[TKWeChatPluginConfig sharedConfig] saveMonitorQuitMembers:array];
+        [[YMWeChatPluginConfig sharedConfig] saveMonitorQuitMembers:array];
     }
 }
 
@@ -200,14 +256,12 @@
     if (!usrName || !group) {
         return NO;
     }
-    NSTimeInterval current = [[NSDate date] timeIntervalSince1970];
     __block BOOL flag = YES;
-    NSMutableArray *array = [[TKWeChatPluginConfig sharedConfig] getMonitorQuitMembers];
+    NSMutableArray *array = [[YMWeChatPluginConfig sharedConfig] getMonitorQuitMembers];
     [array enumerateObjectsUsingBlock:^(YMMonitorChildInfo *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        //已经有退出记录
         if ([obj.usrName isEqualToString:usrName] && [obj.group isEqualToString:group]) {
-            if (current - obj.quitTimestamp < 60 * 60 * 24 * 7) {
-                flag = NO;
-            }
+            flag = NO;
         }
     }];
     return flag;
@@ -229,4 +283,12 @@
     }];
 }
 
+#pragma mark - Private
+- (NSMutableArray *)taskQueue
+{
+    if (!_taskQueue) {
+        _taskQueue = [NSMutableArray array];
+    }
+    return _taskQueue;
+}
 @end

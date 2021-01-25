@@ -2,13 +2,13 @@
 //  TKRemoteControlWindowController.m
 //  WeChatExtension
 //
-//  Created by WeChatExtension on 2017/8/8.
-//  Copyright © 2017年 WeChatExtension. All rights reserved.
+//  Created by WeChatExtension on 2019/8/8.
+//  Copyright © 2019年 WeChatExtension. All rights reserved.
 //
 
 #import "TKRemoteControlWindowController.h"
 #import "TKRemoteControlModel.h"
-#import "TKWeChatPluginConfig.h"
+#import "YMWeChatPluginConfig.h"
 #import "TKRemoteControlCell.h"
 
 @interface TKRemoteControlWindowController () <NSWindowDelegate, NSTabViewDelegate, NSTableViewDelegate, NSTableViewDataSource>
@@ -66,7 +66,7 @@
 {
     self.window.contentView.layer.backgroundColor = [NSColor whiteColor].CGColor;
     [self.window.contentView.layer setNeedsDisplay];
-    self.remoteControlModels = [[TKWeChatPluginConfig sharedConfig] remoteControlModels][0];
+    self.remoteControlModels = [[YMWeChatPluginConfig sharedConfig] remoteControlModels][0];
 }
 
 /**
@@ -75,7 +75,7 @@
  */
 - (BOOL)windowShouldClose:(id)sender
 {
-    [[TKWeChatPluginConfig sharedConfig] saveRemoteControlModels];
+    [[YMWeChatPluginConfig sharedConfig] saveRemoteControlModels];
     return YES;
 }
 
@@ -103,7 +103,7 @@
 - (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem
 {
     NSInteger selectTabIndex = [tabViewItem.identifier integerValue];
-    self.remoteControlModels = [[TKWeChatPluginConfig sharedConfig] remoteControlModels][selectTabIndex];
+    self.remoteControlModels = [[YMWeChatPluginConfig sharedConfig] remoteControlModels][selectTabIndex];
     [self.tableView reloadData];
 }
 

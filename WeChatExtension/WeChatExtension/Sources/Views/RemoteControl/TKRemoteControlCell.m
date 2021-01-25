@@ -2,8 +2,8 @@
 //  TKRemoteControlCell.m
 //  WeChatExtension
 //
-//  Created by WeChatExtension on 2017/8/8.
-//  Copyright © 2017年 WeChatExtension. All rights reserved.
+//  Created by WeChatExtension on 2019/8/8.
+//  Copyright © 2019年 WeChatExtension. All rights reserved.
 //
 
 #import "TKRemoteControlCell.h"

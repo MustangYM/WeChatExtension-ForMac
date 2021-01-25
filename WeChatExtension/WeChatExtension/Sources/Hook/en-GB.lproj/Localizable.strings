@@ -12,6 +12,7 @@
 "assistant.menu.revoke" = "Revoke";
 "assistant.menu.revokeSelf" = "Revoke Self";
 "assistant.menu.autoReply" = "Auto-Reply";
+"assistant.menu.autoForwarding" = "Auto-Forwarding";
 "assistant.menu.autoAIReply" = "AI-ReplySetting";
 "assistant.menu.quitMonitorItem" = "Group-Quitting Monitor";
 "assistant.menu.newWeChat" = "New WeChat";
@@ -20,7 +21,7 @@
 "assistant.menu.freeLogin" = "Free-Login";
 "assistant.menu.systemBrowser" = "System Browser";
 "assistant.menu.forbidCheck" = "Forbid Update";
-"assistant.menu.other" = "Wechat Assistant🌚";
+"assistant.menu.other" = "Wechat Assistant🇨🇳";
 "assistant.menu.enableAlfred" = "Enable Alfred";
 "assistant.menu.updateAssistant" = "Update Wechat Assistant…";
 "assistant.menu.aboutAssistant" = "About Wechat Assistant";
@@ -118,6 +119,12 @@
 "assistant.autoReply.alert.content" = "Please refine your outstanding auto-reply settings";
 "assistant.autoReply.warning" = "Warning";
 
+// 自动转发
+"assistant.autoForwarding.title" = "Auto-Forwarding";
+"assistant.autoForwarding.forwardingFromList" = "Forwarding From List";
+"assistant.autoForwarding.forwardingToList" = "Forwarding To List";
+"assistant.autoForwarding.enable" = "Enable Auto-Forwarding"
+"assistant.autoForwarding.enableAllFriend" = "Forwarding All friends"
 
 //  版本更新
 "assistant.update.alret.cancle" = "Cancel";

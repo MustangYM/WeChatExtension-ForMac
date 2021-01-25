@@ -2,8 +2,8 @@
 //  TKAutoReplyContentView.m
 //  WeChatExtension
 //
-//  Created by WeChatExtension on 2017/8/20.
-//  Copyright © 2017年 WeChatExtension. All rights reserved.
+//  Created by WeChatExtension on 2019/8/20.
+//  Copyright © 2019年 WeChatExtension. All rights reserved.
 //
 
 #import "TKAutoReplyContentView.h"
@@ -205,7 +205,7 @@
     [super viewDidMoveToSuperview];
     self.layer.backgroundColor = [kBG2 CGColor];
     self.layer.borderWidth = 1;
-    self.layer.borderColor = [TK_RGBA(0, 0, 0, 0.1) CGColor];
+    self.layer.borderColor = [YM_RGBA(0, 0, 0, 0.1) CGColor];
     self.layer.cornerRadius = 3;
     self.layer.masksToBounds = YES;
     [self.layer setNeedsDisplay];
@@ -236,9 +236,22 @@
     [picker setShowsOtherNonhumanChats:0];
     [picker setShowsOfficialAccounts:0];
     MMSessionPickerLogic *logic = [picker.listViewController valueForKey:@"m_logic"];
-    NSMutableOrderedSet *orderSet = [logic valueForKey:@"_selectedUserNamesSet"];
-
-    [orderSet addObjectsFromArray:self.model.specificContacts];
+    NSMutableOrderedSet *orderSet = nil;
+    NSMutableArray *selectUsrs = nil;
+    if (LargerOrEqualLongVersion(@"2.4.2.148")) {
+        selectUsrs = [logic valueForKey:@"_selectedUserNames"];
+        if (!selectUsrs) {
+            selectUsrs = [NSMutableArray new];
+        }
+        [selectUsrs addObjectsFromArray:self.model.specificContacts];
+    } else {
+        orderSet = [logic valueForKey:@"_selectedUserNamesSet"];
+        if (!orderSet) {
+            orderSet = [NSMutableOrderedSet new];
+        }
+        [orderSet addObjectsFromArray:self.model.specificContacts];
+    }
+    
     [picker.choosenViewController setValue:self.model.specificContacts forKey:@"selectedUserNames"];
     [picker beginSheetForWindow:self.window completionHandler:^(NSOrderedSet *a1) {
         NSMutableArray *array = [NSMutableArray array];
