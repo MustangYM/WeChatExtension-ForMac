@@ -2,13 +2,13 @@
 //  TKRemoteControlWindowController.m
 //  WeChatExtension
 //
-//  Created by WeChatExtension on 2017/8/8.
-//  Copyright © 2017年 WeChatExtension. All rights reserved.
+//  Created by WeChatExtension on 2019/8/8.
+//  Copyright © 2019年 WeChatExtension. All rights reserved.
 //
 
 #import "TKRemoteControlWindowController.h"
 #import "TKRemoteControlModel.h"
-#import "TKWeChatPluginConfig.h"
+#import "YMWeChatPluginConfig.h"
 #import "TKRemoteControlCell.h"
 
 @interface TKRemoteControlWindowController () <NSWindowDelegate, NSTabViewDelegate, NSTableViewDelegate, NSTableViewDataSource>
@@ -21,14 +21,16 @@
 
 @implementation TKRemoteControlWindowController
 
-- (void)windowDidLoad {
+- (void)windowDidLoad
+{
     [super windowDidLoad];
 
     [self setup];
     [self initSubviews];
 }
 
-- (void)initSubviews {
+- (void)initSubviews
+{
     CGFloat scrollViewWidth = self.tabView.frame.size.width -100;
     CGFloat scrollViewHeight = self.tabView.frame.size.height -110;
     
@@ -60,27 +62,31 @@
     [self.tabView addSubview:scrollView];
 }
 
-- (void)setup {
+- (void)setup
+{
     self.window.contentView.layer.backgroundColor = [NSColor whiteColor].CGColor;
     [self.window.contentView.layer setNeedsDisplay];
-    self.remoteControlModels = [[TKWeChatPluginConfig sharedConfig] remoteControlModels][0];
+    self.remoteControlModels = [[YMWeChatPluginConfig sharedConfig] remoteControlModels][0];
 }
 
 /**
  关闭窗口事件
 
  */
-- (BOOL)windowShouldClose:(id)sender {
-    [[TKWeChatPluginConfig sharedConfig] saveRemoteControlModels];
+- (BOOL)windowShouldClose:(id)sender
+{
+    [[YMWeChatPluginConfig sharedConfig] saveRemoteControlModels];
     return YES;
 }
 
 #pragma mark - NSTableViewDataSource && NSTableViewDelegate
-- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
+{
     return self.remoteControlModels.count;
 }
 
-- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
     TKRemoteControlCell *cell = [[TKRemoteControlCell alloc] init];
     cell.frame = NSMakeRect(0, 0, self.tabView.frame.size.width, 40);
     [cell setupWithData:self.remoteControlModels[row]];
@@ -88,14 +94,16 @@
     return cell;
 }
 
-- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row{
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
+{
     return 50;
 }
 
 #pragma mark - NSTabViewDelegate
-- (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem {
+- (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem
+{
     NSInteger selectTabIndex = [tabViewItem.identifier integerValue];
-    self.remoteControlModels = [[TKWeChatPluginConfig sharedConfig] remoteControlModels][selectTabIndex];
+    self.remoteControlModels = [[YMWeChatPluginConfig sharedConfig] remoteControlModels][selectTabIndex];
     [self.tableView reloadData];
 }
 

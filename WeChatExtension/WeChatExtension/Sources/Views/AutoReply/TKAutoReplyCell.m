@@ -2,8 +2,8 @@
 //  TKAutoReplyCell.m
 //  WeChatExtension
 //
-//  Created by WeChatExtension on 2017/8/21.
-//  Copyright © 2017年 WeChatExtension. All rights reserved.
+//  Created by WeChatExtension on 2019/8/21.
+//  Copyright © 2019年 WeChatExtension. All rights reserved.
 //
 
 #import "TKAutoReplyCell.h"
@@ -19,7 +19,8 @@
 
 @implementation TKAutoReplyCell
 
-- (instancetype)init {
+- (instancetype)init
+{
     self = [super init];
     if (self) {
         [self initSubviews];
@@ -27,7 +28,8 @@
     return self;
 }
 
-- (void)initSubviews {
+- (void)initSubviews
+{
     self.selectBtn = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:@"" target:self action:@selector(clickSelectBtn:)];
         btn.frame = NSMakeRect(5, 15, 20, 20);
@@ -70,17 +72,23 @@
                         self.bottomLine]];
 }
 
-- (void)clickSelectBtn:(NSButton *)btn {
+- (void)clickSelectBtn:(NSButton *)btn
+{
     self.model.enable = btn.state;
     if (!self.model.enableSingleReply && !self.model.enableGroupReply && btn.state == YES) {
         self.model.enableSingleReply = YES;
-        if (self.updateModel) self.updateModel();
+        if (self.updateModel) {
+             self.updateModel();
+        }
     }
 }
 
-- (void)setModel:(YMAutoReplyModel *)model {
+- (void)setModel:(YMAutoReplyModel *)model
+{
     _model = model;
-    if (model.keyword == nil && model.replyContent == nil) return;
+    if (model.keyword == nil && model.replyContent == nil) {
+         return;
+    }
     
     self.selectBtn.state = model.enable;
     self.keywordLabel.stringValue = model.keyword != nil ? model.keyword : @"";

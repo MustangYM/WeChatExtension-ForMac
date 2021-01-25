@@ -2,13 +2,14 @@
 //  TKAutoReplyWindowController.m
 //  WeChatExtension
 //
-//  Created by WeChatExtension on 2017/4/19.
-//  Copyright © 2017年 WeChatExtension. All rights reserved.
+//  Created by WeChatExtension on 2019/4/19.
+//  Copyright © 2019年 WeChatExtension. All rights reserved.
 //
 
 #import "TKAutoReplyWindowController.h"
 #import "TKAutoReplyContentView.h"
 #import "TKAutoReplyCell.h"
+#import "YMThemeManager.h"
 
 @interface TKAutoReplyWindowController () <NSWindowDelegate, NSTableViewDelegate, NSTableViewDataSource>
 
@@ -26,14 +27,16 @@
 
 @implementation TKAutoReplyWindowController
 
-- (void)windowDidLoad {
+- (void)windowDidLoad
+{
     [super windowDidLoad];
     
     [self initSubviews];
     [self setup];
 }
 
-- (void)showWindow:(id)sender {
+- (void)showWindow:(id)sender
+{
     [super showWindow:sender];
     [self.tableView reloadData];
     [self.contentView setHidden:YES];
@@ -45,7 +48,8 @@
     }
 }
 
-- (void)initSubviews {
+- (void)initSubviews
+{
     NSScrollView *scrollView = ({
         NSScrollView *scrollView = [[NSScrollView alloc] init];
         scrollView.hasVerticalScroller = YES;
@@ -65,7 +69,9 @@
         column.title = YMLocalizedString(@"assistant.autoReply.list");
         column.width = 200;
         [tableView addTableColumn:column];
-        
+        if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
+            [[YMThemeManager shareInstance] changeTheme:tableView color:[YMWeChatPluginConfig sharedConfig].mainChatCellBackgroundColor];
+        }
         tableView;
     });
     
@@ -97,8 +103,8 @@
     self.enableButton = ({
         NSButton *btn = [NSButton tk_checkboxWithTitle:YMLocalizedString(@"assistant.autoReply.enable") target:self action:@selector(clickEnableBtn:)];
         btn.frame = NSMakeRect(130, 20, 130, 20);
-        btn.state = [[TKWeChatPluginConfig sharedConfig] autoReplyEnable];
-        
+        btn.state = [[YMWeChatPluginConfig sharedConfig] autoReplyEnable];
+        [YMThemeManager changeButtonTheme:btn];
         btn;
     });
     
@@ -120,13 +126,14 @@
                                            self.enableButton]];
 }
 
-- (void)setup {
+- (void)setup
+{
     self.window.title = YMLocalizedString(@"assistant.autoReply.title");
     self.window.contentView.layer.backgroundColor = [kBG1 CGColor];
     [self.window.contentView.layer setNeedsDisplay];
     
     self.lastSelectIndex = -1;
-    self.autoReplyModels = [[TKWeChatPluginConfig sharedConfig] autoReplyModels];
+    self.autoReplyModels = [[YMWeChatPluginConfig sharedConfig] autoReplyModels];
     [self.tableView reloadData];
     
     __weak typeof(self) weakSelf = self;
@@ -143,20 +150,23 @@
  关闭窗口事件
  
  */
-- (void)windowShouldClosed:(NSNotification *)notification {
+- (void)windowShouldClosed:(NSNotification *)notification
+{
     if (notification.object != self.window) {
         return;
     }
-    [[TKWeChatPluginConfig sharedConfig] saveAutoReplyModels];
+    [[YMWeChatPluginConfig sharedConfig] saveAutoReplyModels];
 
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - addButton & reduceButton ClickAction
-- (void)addModel {
+- (void)addModel
+{
     if (self.contentView.hidden) {
         self.contentView.hidden = NO;
     }
@@ -170,7 +180,7 @@
     
     if (self.autoReplyModels.count > 0 && emptyModelIndex != -1) {
         [self.alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
-            if(returnCode == NSAlertFirstButtonReturn){
+            if (returnCode == NSAlertFirstButtonReturn) {
                 if (self.tableView.selectedRow != -1) {
                     [self.tableView deselectRow:self.tableView.selectedRow];
                 }
@@ -188,7 +198,8 @@
     [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:self.autoReplyModels.count - 1] byExtendingSelection:YES];
 }
 
-- (void)reduceModel {
+- (void)reduceModel
+{
     NSInteger index = self.tableView.selectedRow;
     if (index > -1) {
         [self.autoReplyModels removeObjectAtIndex:index];
@@ -202,16 +213,19 @@
     }
 }
 
-- (void)clickEnableBtn:(NSButton *)btn {
+- (void)clickEnableBtn:(NSButton *)btn
+{
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_AUTO_REPLY_CHANGE object:nil];
 }
 
 #pragma mark - NSTableViewDataSource && NSTableViewDelegate
-- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
+{
     return self.autoReplyModels.count;
 }
 
-- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
     TKAutoReplyCell *cell = [[TKAutoReplyCell alloc] init];
     cell.frame = NSMakeRect(0, 0, self.tableView.frame.size.width, 40);
     cell.model = self.autoReplyModels[row];
@@ -222,11 +236,13 @@
     return cell;
 }
 
-- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
+{
     return 50;
 }
 
-- (void)tableViewSelectionDidChange:(NSNotification *)notification {
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
     NSTableView *tableView = notification.object;
     self.contentView.hidden = tableView.selectedRow == -1;
     self.reduceButton.enabled = tableView.selectedRow != -1;
@@ -245,7 +261,7 @@
         
         if (emptyModelIndex != -1 && tableView.selectedRow != emptyModelIndex) {
             [self.alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
-                if(returnCode == NSAlertFirstButtonReturn){
+                if (returnCode == NSAlertFirstButtonReturn) {
                     if (self.tableView.selectedRow != -1) {
                         [self.tableView deselectRow:self.tableView.selectedRow];
                     }

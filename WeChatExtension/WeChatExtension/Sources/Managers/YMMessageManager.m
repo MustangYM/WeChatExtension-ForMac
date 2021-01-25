@@ -9,7 +9,7 @@
 #import "YMMessageManager.h"
 #import "WeChatPlugin.h"
 #import <MediaPlayer/MediaPlayer.h>
-#import "TKCacheManager.h"
+#import "YMCacheManager.h"
 #import "YMDownloadManager.h"
 #import "YMIMContactsManager.h"
 
@@ -19,7 +19,8 @@
 
 @implementation YMMessageManager
 
-+ (instancetype)shareManager {
++ (instancetype)shareManager
+{
     static id manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -28,12 +29,14 @@
     return manager;
 }
 
-- (void)sendTextMessageToSelf:(id)msgContent {
+- (void)sendTextMessageToSelf:(id)msgContent
+{
     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
     [self sendTextMessage:msgContent toUsrName:currentUserName delay:0];
 }
 
-- (void)sendTextMessage:(id)msgContent toUsrName:(id)toUser delay:(NSInteger)delayTime {
+- (void)sendTextMessage:(id)msgContent toUsrName:(id)toUser delay:(NSInteger)delayTime
+{
     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
     if (delayTime == 0) {
         [self.service SendTextMessage:currentUserName toUsrName:toUser msgText:msgContent atUserList:nil];
@@ -47,56 +50,9 @@
     });
 }
 
-- (void)sendImageMessage:(id)msgContent toUserName:(id)toUser {
-    NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
-    NSImage *image = [[NSImage alloc] initWithContentsOfFile:@"/Users/mustangym/Desktop/231548072054_.pic.jpg"];
-    NSData *originalData = [image TIFFRepresentation];
-    NSData *thumData = [self getCompressImageDataWithImg:image rate:0.07];
-    SendImageInfo *info = [[objc_getClass("SendImageInfo") alloc] init];
-    info.m_uiThumbWidth = 120;
-    info.m_uiThumbHeight = 67;
-    info.m_uiOriginalWidth  = 1920;
-    info.m_uiOriginalHeight = 1080;
-    [self.service SendImgMessage:currentUserName toUsrName:toUser thumbImgData:thumData midImgData:thumData imgData:originalData imgInfo:info];
-}
-
-- (void)sendVideoMessage:(id)msgContent toUserName:(id)toUser {
-    NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
-    NSString *path = @"/Users/mustangym/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/674ee0d7348d38ffe4c08885f4bafe11/Message/MessageTemp/82fbc4af3eb8d0ec7a94741888c5d56d/Video/1548316408491888_1548316686660991_1548319384284652.mp4";
-    SendVideoinfo *videoInfo = [[objc_getClass("SendVideoInfo") alloc] init];
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    videoInfo.video_path = path;
-    NSImage *face = [objc_getClass("MMFileTypeHelper") firstFrameImageOfVideoWithFilePath:path];
-    NSData *imgDt = [face TIFFRepresentation];
-    NSString *thumPath = [[TKCacheManager shareManager] cacheImageData:imgDt withFileName:@"sdswqq" completion:nil];
-    videoInfo.video_size = (int)[data length];
-    videoInfo.thumb_path = thumPath;
-    [self.service SendVideoMessage:currentUserName toUsrName:toUser videoInfo:videoInfo msgType:43 refMesageData:nil];
-}
-
-- (void)sendLocationMessage:(NSString *)toUser latitude:(double)latitude longitude:(double)longitude poiName:(id)poiName label:(id)label {
-    NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
-    
-    [self.service SendLocationMsgFromUser:currentUserName toUser:toUser withLatitude:latitude longitude:longitude poiName:@"北京朝阳区潘家园" label:@"我就测试"];
-}
-
-- (void)sendUserCardMessage:(NSString *)toUser contact:(WCContactData *)contact {
-    NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
-    [self.service SendNamecardMsgFromUser:currentUserName toUser:toUser containingContact:contact];
-}
-
-- (void)sendEmoticonMessage:(NSString *)toUser emoticonMD5:(NSString *)MD5 {
-    NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
-    [self.service SendEmoticonMsgFromUsr:currentUserName toUsrName:toUser md5:MD5 emoticonType:1];
-}
-
-- (void)sendURLMessage:(NSString *)toUser title:(NSString *)title url:(NSString *)url description:(NSString *)description thumImgData:(NSData *)imgData {
-    NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
-    [self.service SendAppURLMessageFromUser:currentUserName toUsrName:toUser withTitle:title url:url description:description thumbnailData:imgData];
-}
-
 - (NSData *)getCompressImageDataWithImg:(NSImage *)img
-                                   rate:(CGFloat)rate{
+                                   rate:(CGFloat)rate
+{
     NSData *imgDt = [img TIFFRepresentation];
     if (!imgDt) {
         return nil;
@@ -109,7 +65,8 @@
     
 }
 
-- (void)clearUnRead:(id)arg1 {
+- (void)clearUnRead:(id)arg1
+{
     MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
     if ([service respondsToSelector:@selector(ClearUnRead:FromCreateTime:ToCreateTime:)]) {
         [service ClearUnRead:arg1 FromCreateTime:0 ToCreateTime:0];
@@ -118,11 +75,14 @@
     }
 }
 
-- (NSString *)getMessageContentWithData:(MessageData *)msgData {
-    if (!msgData) return @"";
+- (NSString *)getMessageContentWithData:(MessageData *)msgData
+{
+    if (!msgData) {
+         return @"";
+    }
     
     NSString *msgContent = [msgData summaryString:NO] ?: @"";
-    if (msgData.m_nsTitle && (msgData.isAppBrandMsg || [msgContent isEqualToString:WXLocalizedString(@"Message_type_unsupport")])){
+    if (msgData.m_nsTitle && (msgData.isAppBrandMsg || [msgContent isEqualToString:WXLocalizedString(@"Message_type_unsupport")])) {
         NSString *content = msgData.m_nsTitle ?:@"";
         if (msgContent) {
             msgContent = [msgContent stringByAppendingString:content];
@@ -138,7 +98,8 @@
     return msgContent;
 }
 
-- (NSArray <MessageData *> *)getMsgListWithChatName:(id)arg1 minMesLocalId:(unsigned int)arg2 limitCnt:(NSInteger)arg3 {
+- (NSArray<MessageData *> *)getMsgListWithChatName:(id)arg1 minMesLocalId:(unsigned int)arg2 limitCnt:(NSInteger)arg3
+{
     MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
     char hasMore = '1';
     NSArray *array = @[];
@@ -158,8 +119,11 @@
     return [[array reverseObjectEnumerator] allObjects];
 }
 
-- (void)playVoiceWithMessageData:(MessageData *)msgData {
-    if (!msgData.isVoiceMsg) return;
+- (void)playVoiceWithMessageData:(MessageData *)msgData
+{
+    if (!msgData.isVoiceMsg) {
+         return;
+    }
     
     if (msgData.IsUnPlayed) {
         msgData.msgStatus = 4;
@@ -183,16 +147,17 @@
     }
 }
 
-- (void)asyncRevokeMessage:(MessageData *)revokeMsgData {
-    if (![TKWeChatPluginConfig sharedConfig].preventAsyncRevokeToPhone) {
+- (void)asyncRevokeMessage:(MessageData *)revokeMsgData
+{
+    if (![YMWeChatPluginConfig sharedConfig].preventAsyncRevokeToPhone) {
         return;
     }
     
-    if (![[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeSignal] && ![revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
+    if (![[YMWeChatPluginConfig sharedConfig] preventAsyncRevokeSignal] && ![revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
         return;
     }
     
-    if (![[TKWeChatPluginConfig sharedConfig] preventAsyncRevokeChatRoom] && [revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
+    if (![[YMWeChatPluginConfig sharedConfig] preventAsyncRevokeChatRoom] && [revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
         return;
     }
     
@@ -266,7 +231,8 @@
     }
 }
 
-- (MessageService *)service {
+- (MessageService *)service
+{
     if (!_service) {
         _service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
     }

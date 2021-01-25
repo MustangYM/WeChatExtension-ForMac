@@ -11,14 +11,16 @@
 
 @implementation NSObject (MMStickerMessageCellView)
 
-+ (void)hookMMStickerMessageCellView {
++ (void)hookMMStickerMessageCellView
+{
     hookMethod(objc_getClass("MMStickerMessageCellView"), @selector(contextMenu), [self class], @selector(hook_contextMenu));
     if (LargerOrEqualVersion(@"2.3.22")) {
          hookMethod(objc_getClass("MMStickerMessageCellView"), @selector(contextMenuExport), [self class], @selector(hook_contextMenuExport));
     }
 }
 
-- (id)hook_contextMenu {
+- (id)hook_contextMenu
+{
     NSMenu *menu = [self hook_contextMenu];
     if ([self.className isEqualToString:@"MMStickerMessageCellView"]) {
         NSMenuItem *copyItem = [[NSMenuItem alloc] initWithTitle:WXLocalizedString(@"Message.Menu.Copy") action:@selector(contextMenuCopyEmoji) keyEquivalent:@""];
@@ -30,11 +32,13 @@
     return menu;
 }
 
-- (void)contextMenuExport {
+- (void)contextMenuExport
+{
     [self exportEmoji];
 }
 
-- (void)hook_contextMenuExport {
+- (void)hook_contextMenuExport
+{
     if (![self.className isEqualToString:@"MMStickerMessageCellView"]) {
         [self hook_contextMenu];
         return;
@@ -42,7 +46,8 @@
     [self exportEmoji];
 }
 
-- (void)exportEmoji {
+- (void)exportEmoji
+{
     MMStickerMessageCellView *currentCellView = (MMStickerMessageCellView *)self;
     MMMessageTableItem *item = currentCellView.messageTableItem;
     if (!item.message || !item.message.m_nsEmoticonMD5) {
@@ -50,7 +55,9 @@
     }
     EmoticonMgr *emoticonMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("EmoticonMgr")];
     NSData *imageData = [emoticonMgr getEmotionDataWithMD5:item.message.m_nsEmoticonMD5];
-    if (!imageData) return;
+    if (!imageData) {
+         return;
+    }
     
     NSSavePanel *savePanel = ({
         NSSavePanel *panel = [NSSavePanel savePanel];
@@ -70,7 +77,8 @@
     }];
 }
 
-- (void)contextMenuCopyEmoji {
+- (void)contextMenuCopyEmoji
+{
     if ([self.className isEqualToString:@"MMStickerMessageCellView"]) {
         MMMessageTableItem *item = [self valueForKey:@"messageTableItem"];
         if (!item.message || !item.message.m_nsEmoticonMD5) {
@@ -78,7 +86,9 @@
         }
         EmoticonMgr *emoticonMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("EmoticonMgr")];
         NSData *imageData = [emoticonMgr getEmotionDataWithMD5:item.message.m_nsEmoticonMD5];
-        if (!imageData) return;
+        if (!imageData) {
+             return;
+        }
 
         NSString *imageType = [NSObject getTypeForImageData:imageData];
         NSString *imageName = [NSString stringWithFormat:@"temp_paste_image_%@.%@", item.message.m_nsEmoticonMD5, imageType];
@@ -93,7 +103,8 @@
     }
 }
 
-+ (NSString *)getTypeForImageData:(NSData *)data {
++ (NSString *)getTypeForImageData:(NSData *)data
+{
     uint8_t c;
     [data getBytes:&c length:1];
     switch (c) {

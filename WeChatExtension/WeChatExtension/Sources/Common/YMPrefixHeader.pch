@@ -1,0 +1,66 @@
+//
+//  YMPrefixHeader.pch
+//  WeChatExtension
+//
+//  Created by WeChatExtension on 2019/8/20.
+//  Copyright © 2019年 WeChatExtension. All rights reserved.
+//
+
+#ifndef YMPrefixHeader_pch
+#define YMPrefixHeader_pch
+
+#ifdef __OBJC__
+#import "ColorConstant.h"
+#import "DefineConstant.h"
+#import "NotifyConstant.h"
+#import "NSView+Action.h"
+#import "NSButton+Action.h"
+#import "NSTextField+Action.h"
+#import "NSMenu+Action.h"
+#import "NSString+Action.h"
+#import "NSDate+Action.h"
+#import "NSWindowController+Action.h"
+#import "WeChatPlugin.h"
+#import "YMDeviceHelper.h"
+
+#import "YMWeChatPluginConfig.h"
+#import "YMSwizzledHelper.h"
+#endif
+
+#define TIME_START NSDate *startTime = [NSDate date]
+#define TIME_END NSLog(@"Time: %f", -[startTime timeIntervalSinceNow])
+
+#define kRGBColor(r,g,b,a) [NSColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+#define kArc4random_Double_inSpace(a,b) a<b ? rand() / (float)RAND_MAX * (b-a) * 1 + (a) : rand() / (float)RAND_MAX * (a-b) * 1 + (b)
+//99 157
+#define kFuzzyBacgroundColor kRGBColor(41, 43, 57, 0.01)
+#define kDarkBacgroundColor kRGBColor(24, 34, 45, 1.0)
+#define kLightDarkBacgroundColor kRGBColor(54, 54, 54, 1.0)
+#define kPinkBacgroundColor kRGBColor(229,173,177,1.0)
+#define kBlackBackgroundColor kRGBColor(31, 31, 31, 1)
+
+#define kDefaultTextColor kRGBColor(47, 47, 50, 0.7)
+#define kDarkModeTextColor kRGBColor(177, 195, 213, 1.0)
+#define kBlackModeTextColor kRGBColor(192,192,192, 0.8)
+#define kPinkModeTextColor kDefaultTextColor
+
+#define kDefaultIgnoredBackgroundColor kRGBColor(128,128,128, 1)
+#define kDarkModeIgnoredBackgroundColor kBG3
+#define kBlackModeIgnoredBackgroundColor kBG3
+#define kPinkModeIgnoredBackgroundColor kDefaultIgnoredBackgroundColor
+
+#define kDefaultIgnoredTextColor kRGBColor(25, 185, 77, 1.0)
+#define kDarkModeIgnoredTextColor kRGBColor(25, 185, 77, 1.0)
+#define kBlackModeIgnoredTextColor kRGBColor(192,192,192, 0.5)
+#define kPinkModeIgnoredTextColor kDefaultIgnoredTextColor
+
+
+#define kMainBackgroundColor ((NSColor *)YMWeChatPluginConfig.sharedConfig.mainBackgroundColor)
+#define kMainTextColor ((NSColor *)YMWeChatPluginConfig.sharedConfig.mainTextColor)
+#define kMainIgnoredBackgroundColor ((NSColor *)YMWeChatPluginConfig.sharedConfig.mainIgnoredBackgroundColor)
+#define kMainIgnoredTextColor ((NSColor *)YMWeChatPluginConfig.sharedConfig.mainIgnoredTextColor)
+#define kMainSeperatorColor ((NSColor *)YMWeChatPluginConfig.sharedConfig.mainSeperatorColor)
+#define kMainDividerColor ((NSColor *)YMWeChatPluginConfig.sharedConfig.mainDividerColor)
+#define kMainScrollerColor ((NSColor *)YMWeChatPluginConfig.sharedConfig.mainScrollerColor)
+
+#endif /* YMPrefixHeader_pch */
