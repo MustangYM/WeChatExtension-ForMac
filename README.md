@@ -3,7 +3,7 @@
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/face1.png" width="1000px"/>
 </p>
 
-![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.8.0-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.6.0-blue.svg) 
+![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.8.2-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.6.1-blue.svg) 
 - 支持[企业微信](https://github.com/MustangYM/WeChatICU-ForMac)，由此进。
 - 如果你希望更简约，这里提供了[简版小助手](https://github.com/MustangYM/WeChatSeptet-ForMac)，安装方式与WeChatExtension的手动安装方式一样。
 - Most users of this project are Chinese, so there is `NO ENGLISH WIKI`.
@@ -20,7 +20,9 @@
 
 ## 小助手相关介绍
 - [Toptips视频介绍(゜-゜)つロ 干杯~](https://www.bilibili.com/video/BV1Xi4y1b72c?from=search&seid=863944292302073615)(基于2.5版本的小助手介绍，现在的小助手更完善)。
-- 经过两年的不间断的维护已成长为[最受欢迎的Objective-C项目](https://github.com/kon9chunkit/GitHub-Chinese-Top-Charts#Objective-C)之一，请放心使用。
+- 经过两年的不间断的维护已成长为最受欢迎的`Objective-C`项目之一，请放心使用。
+  - [中文榜](https://github.com/kon9chunkit/GitHub-Chinese-Top-Charts#Objective-C)。（娱乐数据，仅供参考）
+  - [OC总榜](https://github-trending.com/repo/Objective-C)。（娱乐数据，仅供参考）
 <p align="left">
 <img src="https://starchart.cc/MustangYM/WeChatExtension-ForMac.svg" width="800px"/>
 </p>
@@ -135,28 +137,22 @@ omw -g
 
 安装完成后会自动安装微信插件，可以访问 [Oh My WeChat 的项目主页](https://github.com/lmk123/oh-my-wechat#oh-my-wechat)查看更多用法。
 
-### 安装方式三：下载pkg包一键安装
-- 点击主页右侧`Release`，找到相应版本，点击下载`WeChatExtension.pkg`包，双击打开安装即可（2.8.0小助手开始支持）。
-<p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/pkgInstall.png" width="800px"/>
-</p>
+### 安装方式三：手动安装
+- 3.1.确保你的Mac上已经安装了微信App。
 
-### 安装方式四：手动安装
-- 4.1.确保你的Mac上已经安装了微信App。
-
-- 4.2.下载本项目到你的电脑里， 并双击打开。
+- 3.2.下载本项目到你的电脑里， 并双击打开。
 <p align="center">
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/install1.png" width="1500px"/>
 </p>
 
-- 4.3.依次打开文件夹`WeChatExtension/Rely/Install.sh`。
+- 3.3.依次打开文件夹`WeChatExtension/Rely/Install.sh`。
 
-- 4.4.将`Install.sh`拖入终端工具中按`回车`执行安装。
+- 3.4.将`Install.sh`拖入终端工具中按`回车`执行安装。
 <p align="center">
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/install2.png" width="1500px"/>
 </p>
 
-- 4.5.`重启`微信，安装完成。
+- 3.5.`重启`微信，安装完成。
 
 ## 怎么卸载?
 ### 卸载方式一：自动卸载（推荐）
@@ -173,6 +169,7 @@ bash <(curl -sL https://git.io/JUO6r)
 
 ## 更新日志
 ```
+2021-01-15 适配微信v2.6.1(16837)，群员监控可查看具体违规言论，修复2.6以上多选BUG。
 2020-12-24 适配微信2.6.0（16787），新增pkg安装包安装模式。
 2020-10-31 修复清除空会话失效，优化置底、公众号浏览，新增一键卸载小助手，新增关闭皮肤选项，新增群员监控、拒收群消息。
 2020-09-20 系统低于macOS10.14不再支持皮肤，修复2.4.2 (15650)选取联系人Crash，优化UI细节。
@@ -222,7 +219,6 @@ bash <(curl -sL https://git.io/JUO6r)
 ```
 
 ## TO DO
-- 皮肤模式下，多选消息转发BUG。
 - BigSur引用消息或许会Crash（未复现）。
 
 ## Contributors
