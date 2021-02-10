@@ -504,12 +504,14 @@ This project exists thanks to all the people who contribute。
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/aliPayCode.png" height="250" hspace="50"/>&nbsp;&nbsp;&nbsp;<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WeChatPayCode.png" height="250" hspace="50"  />
 
 ## Special Thanks
-- [WeChatPlugin](https://github.com/TKkk-iOSer/WeChatPlugin-MacOS)
+- [WeChatPlugin-MacOS](https://github.com/TKkk-iOSer/WeChatPlugin-MacOS)
 - [insert_dylib](https://github.com/Tyilo/insert_dylib)
 - [fishhook](https://github.com/facebook/fishhook)
+- [Alfred](https://www.alfredapp.com/)
 - [GCDWebServer](https://github.com/swisspol/GCDWebServer)
 - [TCBlobDownload](https://github.com/thibaultcha/TCBlobDownload)
 - [ANYMethodLog](https://github.com/qhd/ANYMethodLog)
+- 排名分先后
 
 ## License
 <a href="LICENSE"><img src="https://img.shields.io/github/license/fstudio/clangbuilder.svg"></a>
