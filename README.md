@@ -505,7 +505,7 @@ This project exists thanks to all the people who contribute。
 
 ## Special Thanks
 - [WeChatPlugin](https://github.com/TKkk-iOSer/WeChatPlugin-MacOS)
-- [insert_dylib]https://github.com/Tyilo/insert_dylib
+- [insert_dylib](https://github.com/Tyilo/insert_dylib)
 - [fishhook](https://github.com/facebook/fishhook)
 - [GCDWebServer](https://github.com/swisspol/GCDWebServer)
 - [TCBlobDownload](https://github.com/thibaultcha/TCBlobDownload)
