@@ -9,8 +9,8 @@
 - Most users of this project are Chinese, so there is `NO ENGLISH WIKI`.
 
 ## 声明
-- Issues注意事项[Wiki](https://github.com/MustangYM/WeChatExtension-ForMac/wiki/Issues%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)。
 - 到目前为止，并未发现因使用本插件会导致封号。
+- Issues注意事项[Wiki](https://github.com/MustangYM/WeChatExtension-ForMac/wiki/Issues%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)。
 
 ## 最新支持版本
 - [下载最新版微信](https://dldir1.qq.com/weixin/mac/WeChatMac_Beta.dmg)。
