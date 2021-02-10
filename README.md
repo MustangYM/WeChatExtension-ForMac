@@ -510,7 +510,6 @@ This project exists thanks to all the people who contribute。
 - [GCDWebServer](https://github.com/swisspol/GCDWebServer)
 - [TCBlobDownload](https://github.com/thibaultcha/TCBlobDownload)
 - [ANYMethodLog](https://github.com/qhd/ANYMethodLog)
-- 排名分先后
 
 ## License
 <a href="LICENSE"><img src="https://img.shields.io/github/license/fstudio/clangbuilder.svg"></a>
