@@ -9,7 +9,7 @@
 - Most users of this project are Chinese, so there is `NO ENGLISH WIKI`.
 
 ## 声明以及常见问题
-- 暂未适配macOS11，不处理macOS11相关bug，`2021-02-0`8后安装插件后`无法启动`可能是[签名问题](https://github.com/MustangYM/WeChatExtension-ForMac/issues/816)导致的!
+- 暂未适配macOS11，不处理macOS11相关bug，`2021-02-08`后安装插件后`无法启动`可能是[签名问题](https://github.com/MustangYM/WeChatExtension-ForMac/issues/816)导致的!
 - 到目前为止，并未发现因使用本插件会导致封号。
 - Issues注意事项[Wiki](https://github.com/MustangYM/WeChatExtension-ForMac/wiki/Issues%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)。
 
