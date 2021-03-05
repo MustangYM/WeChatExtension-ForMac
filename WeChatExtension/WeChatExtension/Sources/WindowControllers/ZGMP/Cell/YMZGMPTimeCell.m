@@ -35,7 +35,7 @@
     NSTimeInterval time = [[NSDate date] timeIntervalSince1970] - timestamp;
     NSInteger small = time / 60;
     if (small == 0) {
-        return [NSString stringWithFormat:@"%@", YMLanguage(@"刚刚", @"Just now")];
+        return [NSString stringWithFormat:@"%@", YMLanguage(@"刚刚", @"just now")];
     }
     if (small < 60) {
         return [NSString stringWithFormat:@"%ld%@", small, YMLanguage(@"分钟前", @"minutes ago")];

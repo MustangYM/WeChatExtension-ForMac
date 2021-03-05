@@ -63,6 +63,7 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @property (nonatomic, strong) YMAIAutoModel *AIReplyModel;
 @property (nonatomic) PluginLanguageType languageType;
 @property (nonatomic, weak) MMBrandChatsViewController *brandChatsViewController;
+@property (nonatomic, weak) MMChatsTableCellView *preChatsCellView;
 
 - (void)saveBanGroup:(YMZGMPGroupInfo *)info;
 - (void)saveBanModels;

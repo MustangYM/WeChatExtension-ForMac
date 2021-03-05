@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.7.0</string>
+	<string>2.8.2</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>NSHumanReadableCopyright</key>
@@ -25,6 +25,6 @@
 	<key>showUpdateWindow</key>
 	<true/>
 	<key>versionInfo</key>
-	<string>v2.7.0(2020-10-31):\n👉🏻  修复清除空会话失效\n👉🏻  优化置底、公众号浏览\n👉🏻  新增一键卸载小助手\n👉🏻  新增关闭皮肤选项\n👉🏻  新增群员监控、拒收群消息\n</string>
+	<string>v2.8.2(2021-01-15):\n👉🏻  适配微信v2.6.1(16837)\n👉🏻  群员监控可查看具体违规言论 \n👉🏻  修复2.6以上多选BUG \n👉🏻  祝大家新春快乐 注意疫情 保重🙏\n</string>
 </dict>
 </plist>

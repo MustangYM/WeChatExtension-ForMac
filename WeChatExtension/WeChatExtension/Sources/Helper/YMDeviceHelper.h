@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)isLargeOrEqualLongVersion:(NSString *)version;
 + (NSString *)deviceFingerprint;
 + (NSImage *)imageWithName:(NSString *)imageName;
++ (BOOL)checkWeChatLaunched;
++ (int)checkWeChatLaunchedCount;
 @end
 
 NS_ASSUME_NONNULL_END

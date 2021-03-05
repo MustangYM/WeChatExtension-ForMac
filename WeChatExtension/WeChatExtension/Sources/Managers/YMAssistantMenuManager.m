@@ -42,106 +42,20 @@ static char kZGMPWindowControllerKey;               //群管理 key
     return manager;
 }
 
+#pragma mark - 监听 WeChatPluginConfig
+- (void)addObserverWeChatConfig
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigAutoReplyChange) name:NOTIFY_AUTO_REPLY_CHANGE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigAutoForwardingChange) name:NOTIFY_AUTO_FORWARDING_CHANGE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigAutoForwardingAllChange) name:NOTIFY_AUTO_FORWARDING_ALL_FRIEND_CHANGE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigPreventRevokeChange) name:NOTIFY_PREVENT_REVOKE_CHANGE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigAutoAuthChange) name:NOTIFY_AUTO_AUTH_CHANGE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigAIReplyChange) name:NOTIFY_AI_REPLY_CHANGE object:nil];
+}
+
+#pragma mark - MainItems
 - (void)initAssistantMenuItems
 {
-    NSMenuItem *preventRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"开启消息防撤回", @"Revoke")
-                                                           action:@selector(onPreventRevoke:)
-                                                           target:self
-                                                    keyEquivalent:@"T"
-                                                            state:[[YMWeChatPluginConfig sharedConfig] preventRevokeEnable]];
-    if ([[YMWeChatPluginConfig sharedConfig] preventRevokeEnable]) {
-        NSMenuItem *preventSelfRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"拦截自己撤回的消息", @"Revoke Self")
-                                                                   action:@selector(onPreventSelfRevoke:)
-                                                                   target:self
-                                                            keyEquivalent:@""
-                                                                    state:[[YMWeChatPluginConfig sharedConfig] preventSelfRevokeEnable]];
-        
-        NSMenuItem *preventAsyncRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"防撤回同步到手机", @"Revoke Sync To Phone")
-                                                                   action:@selector(onPreventAsyncRevokeToPhone:)
-                                                                   target:self
-                                                            keyEquivalent:@""
-                                                                    state:[[YMWeChatPluginConfig sharedConfig] preventAsyncRevokeToPhone]];
-        
-        if ([[YMWeChatPluginConfig sharedConfig] preventAsyncRevokeToPhone]) {
-            NSMenuItem *asyncRevokeSignalItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"同步单聊", @"Sync Single Chat")
-                                                                       action:@selector(onAsyncRevokeSignal:)
-                                                                       target:self
-                                                                keyEquivalent:@""
-                                                                        state:[[YMWeChatPluginConfig sharedConfig] preventAsyncRevokeSignal]];
-            NSMenuItem *asyncRevokeChatRoomItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"同步群聊", @"Sync Group Chat")
-                                                                         action:@selector(onAsyncRevokeChatRoom:)
-                                                                         target:self
-                                                                  keyEquivalent:@""
-                                                                          state:[[YMWeChatPluginConfig sharedConfig] preventAsyncRevokeChatRoom]];
-            NSMenu *subAsyncMenu = [[NSMenu alloc] initWithTitle:@""];
-            [subAsyncMenu addItems:@[asyncRevokeSignalItem, asyncRevokeChatRoomItem]];
-            preventAsyncRevokeItem.submenu = subAsyncMenu;
-        }
-        
-        
-        NSMenu *subPreventMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.revoke")];
-        [subPreventMenu addItems:@[preventSelfRevokeItem, preventAsyncRevokeItem]];
-        preventRevokeItem.submenu = subPreventMenu;
-    }
-    
-    
-    NSMenuItem *forwardAndReplyItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"转发与回复", @"Auto Chat")
-           action:nil
-           target:self
-    keyEquivalent:@""
-            state:NO];
-    
-    //自动回复
-    NSMenuItem *autoReplyItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.autoReply")
-                                                       action:@selector(onAutoReply:)
-                                                       target:self
-                                                keyEquivalent:@"k"
-                                                        state:[[YMWeChatPluginConfig sharedConfig] autoReplyEnable]];
-    //自动转发
-    NSMenuItem *autoForwardingItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.autoForwarding")
-                                                            action:@selector(onAutoForwarding:)
-                                                            target:self
-                                                     keyEquivalent:@"K"
-                                                             state:[[YMWeChatPluginConfig sharedConfig] autoForwardingEnable]];
-    
-    //自动回复
-    NSMenuItem *autoAIReplyItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"AI回复设置", @"AI-ReplySetting")
-                                                          action:@selector(onAutoAIReply:)
-                                                          target:self
-                                                   keyEquivalent:@"k"
-                                                           state:[[YMWeChatPluginConfig sharedConfig] AIReplyEnable]];
-    NSMenu *autoChatMenu = [[NSMenu alloc] initWithTitle:YMLanguage(@"转发与回复", @"Auto Chat")];
-    [autoChatMenu addItems:@[autoReplyItem, autoForwardingItem, autoAIReplyItem]];
-    forwardAndReplyItem.submenu = autoChatMenu;
-    
-    
-    //退群监控
-    NSMenuItem *quitMonitorItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"退群监控", @"Group-Quitting Monitor")
-                                                             action:@selector(onQuitMonitorItem:)
-                                                             target:self
-                                                      keyEquivalent:@""
-                                                              state:[YMWeChatPluginConfig sharedConfig].quitMonitorEnable];
-    NSMenuItem *ZGMPItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"群员监控", @"ZGMP")
-                                                         action:@selector(onZGMPItem:)
-                                                         target:self
-                                                  keyEquivalent:@""
-                                                          state:NO];
-    
-    NSMenuItem *groupMrgItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"群助手", @"Group Assistant")
-                                                      action:nil
-                                                      target:self
-                                               keyEquivalent:@""
-                                                       state:NO];
-    
-    NSMenu *groupMrgMenu = [[NSMenu alloc] initWithTitle:YMLanguage(@"群助手", @"Group Assistant")];
-    NSMutableArray *groupArray = [NSMutableArray array];
-    [groupArray addObject:quitMonitorItem];
-    if (LargerOrEqualLongVersion(@"2.4.2.148")) {
-        [groupArray addObject:ZGMPItem];
-    }
-    [groupMrgMenu addItems:groupArray];
-    groupMrgItem.submenu = groupMrgMenu;
-    
     //登录新微信
     NSMenuItem *newWeChatItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.newWeChat")
                                                        action:@selector(onNewWechatInstance:)
@@ -186,38 +100,202 @@ static char kZGMPWindowControllerKey;               //群管理 key
                                                           keyEquivalent:@""
                                                                   state:![[YMWeChatPluginConfig sharedConfig] checkUpdateWechatEnable]];
     
-    //开启 Alfred
+    NSMenuItem *aboutPluginItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.aboutAssistant")
+                                                         action:@selector(onAboutPluginControl:)
+                                                         target:self
+                                                  keyEquivalent:@""
+                                                          state:0];
+    
+    NSMenuItem *pluginItem = [self creatAboutAssistantMenu];
+    NSMenuItem *groupMgrMenu = [self creatQuitGroupMenu];
+    NSMenuItem *backGroundItem = [self creatThemeMenu];
+    NSMenuItem *preventRevokeItem = [self creatRevokeMenuItem];
+    NSMenuItem *forwardAndReplyItem = [self creatAutoReplyMenuItem];
+    
+    NSMenuItem *checkZombieItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"检测僵尸粉", @"Check Stranger")
+           action:@selector(onCheckZombie:)
+           target:self
+    keyEquivalent:@""
+            state:0];
+    
+    NSMenu *subMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.title")];
+    [subMenu addItems:@[preventRevokeItem,
+                        autoAuthItem,
+                        groupMgrMenu,
+                        newWeChatItem,
+                        forwardAndReplyItem,
+                        enableSystemBrowserItem,
+                        commandItem,
+                        onTopItem,
+                        forbidCheckUpdateItem,
+                        pluginItem,
+                        aboutPluginItem,
+//                        checkZombieItem
+                        ]];
+    //此版本微信官方包已将小程序独立
+    if (LargerOrEqualLongVersion(@"2.4.2.148") == NO) {
+        [subMenu insertItem:miniProgramItem atIndex:4];
+    }
+    
+    //低于10.14不适配皮肤
+    if (@available(macOS 10.14, *)) {
+        [subMenu insertItem:backGroundItem atIndex:2];
+    }
+    
+    NSMenuItem *menuItem = [[NSMenuItem alloc] init];
+    menuItem.target = self;
+    menuItem.enabled = NO;
+    [menuItem setTitle:YMLocalizedString(@"assistant.menu.title")];
+    [menuItem setSubmenu:subMenu];
+    [[[NSApplication sharedApplication] mainMenu] addItem:menuItem];
+    [self addObserverWeChatConfig];
+}
+
+#pragma mark - AutoReplyMenuItem
+- (NSMenuItem *)creatAutoReplyMenuItem
+{
+    NSMenuItem *forwardAndReplyItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"转发与回复", @"Auto Chat")
+                                                             action:nil
+                                                             target:self
+                                                      keyEquivalent:@""
+                                                              state:NO];
+    
+    //自动回复
+    NSMenuItem *autoReplyItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.autoReply")
+                                                       action:@selector(onAutoReply:)
+                                                       target:self
+                                                keyEquivalent:@"k"
+                                                        state:[[YMWeChatPluginConfig sharedConfig] autoReplyEnable]];
+    //自动转发
+    NSMenuItem *autoForwardingItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.autoForwarding")
+                                                            action:@selector(onAutoForwarding:)
+                                                            target:self
+                                                     keyEquivalent:@"K"
+                                                             state:[[YMWeChatPluginConfig sharedConfig] autoForwardingEnable]];
+    
+    //自动回复
+    NSMenuItem *autoAIReplyItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"AI回复设置", @"AI-ReplySetting")
+                                                         action:@selector(onAutoAIReply:)
+                                                         target:self
+                                                  keyEquivalent:@"k"
+                                                          state:[[YMWeChatPluginConfig sharedConfig] AIReplyEnable]];
+    NSMenu *autoChatMenu = [[NSMenu alloc] initWithTitle:YMLanguage(@"转发与回复", @"Auto Chat")];
+    [autoChatMenu addItems:@[autoReplyItem, autoForwardingItem, autoAIReplyItem]];
+    forwardAndReplyItem.submenu = autoChatMenu;
+    return forwardAndReplyItem;
+}
+
+#pragma mark - RevokeMenuItem
+- (NSMenuItem *)creatRevokeMenuItem
+{
+    NSMenuItem *preventRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"开启消息防撤回", @"Revoke")
+                                                           action:@selector(onPreventRevoke:)
+                                                           target:self
+                                                    keyEquivalent:@"T"
+                                                            state:[[YMWeChatPluginConfig sharedConfig] preventRevokeEnable]];
+    if ([[YMWeChatPluginConfig sharedConfig] preventRevokeEnable]) {
+        NSMenuItem *preventSelfRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"拦截自己撤回的消息", @"Revoke Self")
+                                                                   action:@selector(onPreventSelfRevoke:)
+                                                                   target:self
+                                                            keyEquivalent:@""
+                                                                    state:[[YMWeChatPluginConfig sharedConfig] preventSelfRevokeEnable]];
+        
+        NSMenuItem *preventAsyncRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"防撤回同步到手机", @"Revoke Sync To Phone")
+                                                                    action:@selector(onPreventAsyncRevokeToPhone:)
+                                                                    target:self
+                                                             keyEquivalent:@""
+                                                                     state:[[YMWeChatPluginConfig sharedConfig] preventAsyncRevokeToPhone]];
+        
+        if ([[YMWeChatPluginConfig sharedConfig] preventAsyncRevokeToPhone]) {
+            NSMenuItem *asyncRevokeSignalItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"同步单聊", @"Sync Single Chat")
+                                                                       action:@selector(onAsyncRevokeSignal:)
+                                                                       target:self
+                                                                keyEquivalent:@""
+                                                                        state:[[YMWeChatPluginConfig sharedConfig] preventAsyncRevokeSignal]];
+            NSMenuItem *asyncRevokeChatRoomItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"同步群聊", @"Sync Group Chat")
+                                                                         action:@selector(onAsyncRevokeChatRoom:)
+                                                                         target:self
+                                                                  keyEquivalent:@""
+                                                                          state:[[YMWeChatPluginConfig sharedConfig] preventAsyncRevokeChatRoom]];
+            NSMenu *subAsyncMenu = [[NSMenu alloc] initWithTitle:@""];
+            [subAsyncMenu addItems:@[asyncRevokeSignalItem, asyncRevokeChatRoomItem]];
+            preventAsyncRevokeItem.submenu = subAsyncMenu;
+        }
+        
+        
+        NSMenu *subPreventMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.revoke")];
+        [subPreventMenu addItems:@[preventSelfRevokeItem, preventAsyncRevokeItem]];
+        preventRevokeItem.submenu = subPreventMenu;
+    }
+    
+    return preventRevokeItem;
+}
+
+#pragma mark - CreatMenuItem
+- (NSMenuItem *)creatQuitGroupMenu
+{
+    NSMenuItem *quitMonitorItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"退群监控", @"Group-Quitting Monitor")
+                                                         action:@selector(onQuitMonitorItem:)
+                                                         target:self
+                                                  keyEquivalent:@""
+                                                          state:[YMWeChatPluginConfig sharedConfig].quitMonitorEnable];
+    NSMenuItem *ZGMPItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"群员监控", @"ZGMP")
+                                                  action:@selector(onZGMPItem:)
+                                                  target:self
+                                           keyEquivalent:@""
+                                                   state:NO];
+    
+    NSMenuItem *groupMrgItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"群助手", @"Group Assistant")
+                                                      action:nil
+                                                      target:self
+                                               keyEquivalent:@""
+                                                       state:NO];
+    
+    NSMenu *groupMrgMenu = [[NSMenu alloc] initWithTitle:YMLanguage(@"群助手", @"Group Assistant")];
+    NSMutableArray *groupArray = [NSMutableArray array];
+    [groupArray addObject:quitMonitorItem];
+    if (LargerOrEqualLongVersion(@"2.4.2.148")) {
+        [groupArray addObject:ZGMPItem];
+    }
+    [groupMrgMenu addItems:groupArray];
+    groupMrgItem.submenu = groupMrgMenu;
+    return groupMrgItem;
+}
+
+- (NSMenuItem *)creatAboutAssistantMenu
+{
     NSMenuItem *enableAlfredItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.enableAlfred")
                                                           action:@selector(onEnableaAlfred:)
                                                           target:self
                                                    keyEquivalent:@""
                                                            state:[[YMWeChatPluginConfig sharedConfig] alfredEnable]];
-
-    //更新小助手
+    
     NSMenuItem *updatePluginItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.updateAssistant")
                                                           action:@selector(onUpdatePluginControl:)
                                                           target:self
                                                    keyEquivalent:@""
                                                            state:0];
-    //关于小助手
-    NSMenuItem *aboutPluginItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.aboutAssistant")
-                                                          action:@selector(onAboutPluginControl:)
-                                                          target:self
-                                                   keyEquivalent:@""
-                                                           state:0];
     
     NSMenuItem *uninstallPluginItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"卸载小助手", @"Uninstall Assistant")
-                                                         action:@selector(onUninstallPluginControl:)
-                                                         target:self
-                                                  keyEquivalent:@""
-                                                          state:0];
-    
+                                                             action:@selector(onUninstallPluginControl:)
+                                                             target:self
+                                                      keyEquivalent:@""
+                                                              state:0];
     NSMenuItem *pluginItem = [NSMenuItem menuItemWithTitle:YMLocalizedString(@"assistant.menu.other")
-                                                          action:@selector(onAboutPluginControl:)
-                                                          target:self
-                                                   keyEquivalent:@""
-                                                           state:0];
-    
+                                                    action:@selector(onAboutPluginControl:)
+                                                    target:self
+                                             keyEquivalent:@""
+                                                     state:0];
+    NSMenu *subPluginMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.other")];
+    [subPluginMenu addItems:@[enableAlfredItem,
+                              updatePluginItem,
+                              uninstallPluginItem]];
+    pluginItem.submenu = subPluginMenu;
+    return pluginItem;
+}
+
+- (NSMenuItem *)creatThemeMenu
+{
     NSMenuItem *backGroundItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"主题模式", @"Themes")
                                                         action:nil
                                                         target:self
@@ -225,10 +303,10 @@ static char kZGMPWindowControllerKey;               //群管理 key
                                                          state:YMWeChatPluginConfig.sharedConfig.usingTheme];
     
     NSMenuItem *fuzzyModeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"迷离模式", @"Fuzzy Mode")
-           action:@selector(onChangeFuzzyMode:)
-           target:self
-    keyEquivalent:@""
-            state:[YMWeChatPluginConfig sharedConfig].fuzzyMode];
+                                                       action:@selector(onChangeFuzzyMode:)
+                                                       target:self
+                                                keyEquivalent:@""
+                                                        state:[YMWeChatPluginConfig sharedConfig].fuzzyMode];
     
     NSMenuItem *darkModeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"黑夜模式", @"Dark Mode")
                                                       action:@selector(onChangeDarkMode:)
@@ -249,86 +327,15 @@ static char kZGMPWindowControllerKey;               //群管理 key
                                                         state:[YMWeChatPluginConfig sharedConfig].pinkMode];
     
     NSMenuItem *closeThemeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"关闭皮肤", @"Close")
-           action:@selector(onCloseThemeModel:)
-           target:self
-    keyEquivalent:@""
-            state:NO];
+                                                        action:@selector(onCloseThemeModel:)
+                                                        target:self
+                                                 keyEquivalent:@""
+                                                         state:NO];
     
     NSMenu *subBackgroundMenu = [[NSMenu alloc] initWithTitle:@""];
     [subBackgroundMenu addItems:@[fuzzyModeItem, darkModeItem, blackModeItem, pinkColorItem,closeThemeItem]];
     backGroundItem.submenu = subBackgroundMenu;
-    
-    
-    NSMenuItem *checkZombieItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"检测僵尸粉", @"Check Stranger")
-           action:@selector(onCheckZombie:)
-           target:self
-    keyEquivalent:@""
-            state:0];
-    
-    NSMenu *subPluginMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.other")];
-    [subPluginMenu addItems:@[enableAlfredItem,
-                             updatePluginItem,
-                              uninstallPluginItem]];
-    
-    NSMenu *subMenu = [[NSMenu alloc] initWithTitle:YMLocalizedString(@"assistant.menu.title")];
-
-    [subMenu addItems:@[preventRevokeItem,
-                        autoAuthItem,
-                        groupMrgItem,
-                        newWeChatItem,
-                        forwardAndReplyItem,
-                        enableSystemBrowserItem,
-                        commandItem,
-                        onTopItem,
-                        forbidCheckUpdateItem,
-                        pluginItem,
-                        aboutPluginItem
-                        ]];
-    
-    if (LargerOrEqualLongVersion(@"2.4.2.148") == NO) {
-        [subMenu insertItem:miniProgramItem atIndex:4];
-    }
-    
-    if (@available(macOS 10.14, *)) {
-        [subMenu insertItem:backGroundItem atIndex:2];
-    }
-    
-    id wechat = LargerOrEqualVersion(@"2.3.24") ? [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMUpdateMgr")] : [objc_getClass("WeChat") sharedInstance];
-    [subMenu setSubmenu:subPluginMenu forItem:pluginItem];
-    
-    NSMenuItem *menuItem = [[NSMenuItem alloc] init];
-    [menuItem setTitle:YMLocalizedString(@"assistant.menu.title")];
-    [menuItem setSubmenu:subMenu];
-    menuItem.target = self;
-    [[[NSApplication sharedApplication] mainMenu] addItem:menuItem];
-    menuItem.enabled = NO;
-    
-    [self addObserverWeChatConfig];
-}
-
-#pragma mark - 僵尸粉
-- (void)onCheckZombie:(NSMenuItem *)item
-{
-    
-    WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
-    YMStrangerCheckWindowController *autoReplyWC = objc_getAssociatedObject(wechat, &kStrangerCheckWindowControllerKey);
-
-    if (!autoReplyWC) {
-        autoReplyWC = [[YMStrangerCheckWindowController alloc] initWithWindowNibName:@"YMStrangerCheckWindowController"];
-        objc_setAssociatedObject(wechat, &kStrangerCheckWindowControllerKey, autoReplyWC, OBJC_ASSOCIATION_RETAIN);
-    }
-    [autoReplyWC show];
-}
-
-#pragma mark - 监听 WeChatPluginConfig
-- (void)addObserverWeChatConfig
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigAutoReplyChange) name:NOTIFY_AUTO_REPLY_CHANGE object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigAutoForwardingChange) name:NOTIFY_AUTO_FORWARDING_CHANGE object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigAutoForwardingAllChange) name:NOTIFY_AUTO_FORWARDING_ALL_FRIEND_CHANGE object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigPreventRevokeChange) name:NOTIFY_PREVENT_REVOKE_CHANGE object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigAutoAuthChange) name:NOTIFY_AUTO_AUTH_CHANGE object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatPluginConfigAIReplyChange) name:NOTIFY_AI_REPLY_CHANGE object:nil];
+    return backGroundItem;
 }
 
 - (void)weChatPluginConfigAIReplyChange
@@ -386,7 +393,19 @@ static char kZGMPWindowControllerKey;               //群管理 key
     subItem.state = state;
 }
 
-#pragma mark - menuItem 的点击事件
+#pragma mark - onMenuItemTap
+- (void)onCheckZombie:(NSMenuItem *)item
+{
+    WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
+    YMStrangerCheckWindowController *autoReplyWC = objc_getAssociatedObject(wechat, &kStrangerCheckWindowControllerKey);
+
+    if (!autoReplyWC) {
+        autoReplyWC = [[YMStrangerCheckWindowController alloc] initWithWindowNibName:@"YMStrangerCheckWindowController"];
+        objc_setAssociatedObject(wechat, &kStrangerCheckWindowControllerKey, autoReplyWC, OBJC_ASSOCIATION_RETAIN);
+    }
+    [autoReplyWC show];
+}
+
 - (void)onPreventRevoke:(NSMenuItem *)item
 {
     item.state = !item.state;
@@ -432,11 +451,6 @@ static char kZGMPWindowControllerKey;               //群管理 key
     
 }
 
-/**
- 菜单栏-微信小助手-消息防撤回-拦截自己消息 设置
- 
- @param item 消息防撤回的item
- */
 - (void)onPreventSelfRevoke:(NSMenuItem *)item
 {
     item.state = !item.state;
@@ -480,11 +494,6 @@ static char kZGMPWindowControllerKey;               //群管理 key
     [[YMWeChatPluginConfig sharedConfig] setPreventAsyncRevokeChatRoom:item.state];
 }
 
-/**
- 菜单栏-微信小助手-自动回复 设置
- 
- @param item 自动回复设置的item
- */
 - (void)onAutoReply:(NSMenuItem *)item
 {
     WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
@@ -497,11 +506,6 @@ static char kZGMPWindowControllerKey;               //群管理 key
     [autoReplyWC show];
 }
 
-/**
-菜单栏-微信小助手-自动转发 设置
-
-@param item 自动转发设置的item
-*/
 - (void)onAutoForwarding:(NSMenuItem *)item
 {
     NSLog(@"Item clicked");
@@ -591,11 +595,6 @@ static char kZGMPWindowControllerKey;               //群管理 key
     }
 }
 
-/**
- 菜单栏-帮助-远程控制 MAC OS 设置
- 
- @param item 远程控制的item
- */
 - (void)onRemoteControl:(NSMenuItem *)item
 {
     WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
@@ -609,22 +608,12 @@ static char kZGMPWindowControllerKey;               //群管理 key
     [remoteControlWC show];
 }
 
-/**
- 菜单栏-微信小助手-免认证登录 设置
- 
- @param item 免认证登录的 item
- */
 - (void)onAutoAuthControl:(NSMenuItem *)item
 {
     item.state = !item.state;
     [[YMWeChatPluginConfig sharedConfig] setAutoAuthEnable:item.state];
 }
 
-/**
- 菜单栏-微信小助手-微信窗口置顶
- 
- @param item 窗口置顶的 item
- */
 - (void)onWechatOnTopControl:(NSMenuItem *)item
 {
     item.state = !item.state;
@@ -638,11 +627,6 @@ static char kZGMPWindowControllerKey;               //群管理 key
     }];
 }
 
-/**
- 菜单栏-微信小助手-更新小助手
- 
- @param item 更新小助手的 item
- */
 - (void)onUpdatePluginControl:(NSMenuItem *)item
 {
     [[YMWeChatPluginConfig sharedConfig] setForbidCheckVersion:NO];

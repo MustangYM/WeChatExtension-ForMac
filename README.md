@@ -3,24 +3,28 @@
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/face1.png" width="1000px"/>
 </p>
 
-![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.7.0-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.4.2-blue.svg)
-
+![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.8.2-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.6.1-blue.svg) 
 - 支持[企业微信](https://github.com/MustangYM/WeChatICU-ForMac)，由此进。
 - 如果你希望更简约，这里提供了[简版小助手](https://github.com/MustangYM/WeChatSeptet-ForMac)，安装方式与WeChatExtension的手动安装方式一样。
-- Most users of this project are Chinese, so there is `no English wiki`.
+- Most users of this project are Chinese, so there is `NO ENGLISH WIKI`.
 
-## 声明
-- WeChatExtension完全`免费`，近期发现不少三方平台甚至某宝商家`出售`此软件，切勿`上当受骗`。
-- 适用于Mac版的WeChat拓展功能。1.7.5代码来自于[WeChatPlugin](https://github.com/TKkk-iOSer/WeChatPlugin-MacOS)，对[TK](https://github.com/TKkk-iOSer)在此表示感谢！
-- Issues注意事项[Wiki](https://github.com/MustangYM/WeChatExtension-ForMac/wiki/Issues%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)。
+## 声明以及常见问题
+- 暂未适配macOS11，不处理macOS11相关bug，`2021-02-08`后安装插件后`无法启动`可能是[签名问题](https://github.com/MustangYM/WeChatExtension-ForMac/issues/816)导致的!
 - 到目前为止，并未发现因使用本插件会导致封号。
+- Issues注意事项[Wiki](https://github.com/MustangYM/WeChatExtension-ForMac/wiki/Issues%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)。
 
 ## 最新支持版本
 - [下载最新版微信](https://dldir1.qq.com/weixin/mac/WeChatMac_Beta.dmg)。
 - 皮肤最低支持macOS 10.14。
 
 ## 小助手相关介绍
-- [Toptips视频介绍](https://toptips.vip/a/565)(基于2.5版本的小助手介绍，现在的小助手更完善)。
+- [Toptips视频介绍(゜-゜)つロ 干杯~](https://www.bilibili.com/video/BV1Xi4y1b72c?from=search&seid=863944292302073615)(基于2.5版本的小助手介绍，现在的小助手更完善)。
+- 经过两年的不间断的维护已成长为最受欢迎的`Objective-C`项目之一，请放心使用。
+  - [中文榜](https://github.com/kon9chunkit/GitHub-Chinese-Top-Charts#Objective-C)。（娱乐数据，仅供参考）
+  - [OC总榜](https://github-trending.com/repo/Objective-C)。（娱乐数据，仅供参考）
+<p align="left">
+<img src="https://starchart.cc/MustangYM/WeChatExtension-ForMac.svg" width="800px"/>
+</p>
 
 ## 迷离/黑夜/深邃/少女 皮肤模式
 - 少量细节没有做适配，`主题模式-关闭皮肤`可以`关掉`这个功能。
@@ -95,15 +99,16 @@
 - 微信版本`>=2.4.2（15650）`才支持此功能。
 - 群员监控Window中，鼠标右键单击左侧`Session`列表某行出现`拒收消息`，可以在Mac上完全拒收此群消息，避免打扰。
 - 右侧列表是依次是`昵称`、相关`发言时间与条数`、`违规言论`、`拼多多砍一刀`。
-- 此功能暂时属于`实验性质`，毕竟对大部人并不会使用到。
+- 此功能暂时属于`实验性质`。
 <p align="center">
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/ZGMP.png" width="800px"/>
 </p>
 
 ## 怎么安装?
+
 ### 安装方式一：普通安装(clone最新版本并安装)
 ```
-sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/MustangYM/WeChatExtension-ForMac && cd WeChatExtension-ForMac/WeChatExtension/Rely && ./Install.sh
+sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/MustangYM/WeChatExtension-ForMac && cd WeChatExtension-ForMac/WeChatExtension/Rely && ./Install.sh && cd ~
 ```
 
 ### 安装方式二：懒癌版安装
@@ -131,9 +136,7 @@ omw -g
 
 安装完成后会自动安装微信插件，可以访问 [Oh My WeChat 的项目主页](https://github.com/lmk123/oh-my-wechat#oh-my-wechat)查看更多用法。
 
-
 ### 安装方式三：手动安装
-
 - 3.1.确保你的Mac上已经安装了微信App。
 
 - 3.2.下载本项目到你的电脑里， 并双击打开。
@@ -165,7 +168,9 @@ bash <(curl -sL https://git.io/JUO6r)
 
 ## 更新日志
 ```
-2020-10-31  修复清除空会话失效，优化置底、公众号浏览，新增一键卸载小助手，新增关闭皮肤选项，新增群员监控、拒收群消息。
+2021-01-15 适配微信v2.6.1(16837)，群员监控可查看具体违规言论，修复2.6以上多选BUG。
+2020-12-24 适配微信2.6.0（16787），新增pkg安装包安装模式。
+2020-10-31 修复清除空会话失效，优化置底、公众号浏览，新增一键卸载小助手，新增关闭皮肤选项，新增群员监控、拒收群消息。
 2020-09-20 系统低于macOS10.14不再支持皮肤，修复2.4.2 (15650)选取联系人Crash，优化UI细节。
 2020-09-16 适配微信2.4.2(15650)Beta 148，修复微信会话列表为空，新增通讯录管理皮肤适配，小程序成为独立模块，多开与小程序终于完美兼容，喜极而泣！
 2020-08-28 重构退群监控，会话列表选中高亮，修复部分低版本微信Crash。
@@ -211,6 +216,9 @@ bash <(curl -sL https://git.io/JUO6r)
 2019-05-10 现在在最新版的微信中的多开和消息撤回是可以用的，如果不能用，请检查小助手的版本。
 
 ```
+
+## TO DO
+- BigSur引用消息或许会Crash（未复现）。
 
 ## Contributors
 
@@ -471,20 +479,42 @@ This project exists thanks to all the people who contribute。
   <a href="https://github.com/SatanZS"><img src="https://avatars0.githubusercontent.com/u/8230677?s=400&u=0a628322a190b1c1c87f033290ea32568ea33342&v=4" width="100px;" alt="SatanZS"/>
   <br></br><sub><b>SatanZS</b></sub>
   
+   <td align="center">
+  <a href="https://github.com/huiyi0521"><img src="https://avatars1.githubusercontent.com/u/25707915?s=400&v=4" width="100px;" alt="huiyi0521"/>
+  <br></br><sub><b>huiyi0521</b></sub>
+  
+   <td align="center">
+  <a href="https://github.com/findyou"><img src="https://avatars3.githubusercontent.com/u/6084594?s=400&u=859774b13ae172e04894150094211ed2239cfec9&v=4" width="100px;" alt="findyou"/>
+  <br></br><sub><b>findyou</b></sub>
+ 
+   </td></tr></table>
+  
    </td></tr></table>
 
 <a href="https://opencollective.com/mustangym666#backers" target="_blank"><img src="https://opencollective.com/mustangym666/backers.svg?width=890"></a>
 
 ## 交流
-- QQ群：`741941325`。
-- 皮肤的颜色搭配采纳了大量群友的反馈和建议，经过激烈的讨论甚至投票仍然不能统一意见，那就干脆做`两套`吧，所以才会出现`黑夜`和`深邃`两款如此相近的`暗色调主题`，所以颜色上不再接受pr，向朋友们表示`感谢`。
+- QQ①群：`741941325`。
+- QQ②群：`905526964`。
+- 皮肤的颜色搭配采纳了大量朋友的反馈和建议，最终并未能统一意见，那就干脆做`两套`吧，所以才会出现`黑夜`和`深邃`两款如此相近的`暗色调主题`，所以颜色上不再接受pr。
 - 封面图的`骷髅`与`乌鸦`元素来自于`史泰龙`的电影`《The Expendables》`（敢死队）海报。
 - 插件中的`图标`、本页所有`Logo`、预览图均出自本人`蹩脚`的[Photoshop](https://www.adobe.com/products/photoshop.html)设计。
 - 如果小助手使你的生活更美好，可以`请我喝杯咖啡`。
 
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/aliPayCode.png" height="250" hspace="50"/>&nbsp;&nbsp;&nbsp;<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WeChatPayCode.png" height="250" hspace="50"  />
 
+## Special Thanks
+- [WeChatPlugin-MacOS](https://github.com/TKkk-iOSer/WeChatPlugin-MacOS)
+- [insert_dylib](https://github.com/Tyilo/insert_dylib)
+- [fishhook](https://github.com/facebook/fishhook)
+- [Alfred](https://www.alfredapp.com/)
+- [GCDWebServer](https://github.com/swisspol/GCDWebServer)
+- [TCBlobDownload](https://github.com/thibaultcha/TCBlobDownload)
+- [ANYMethodLog](https://github.com/qhd/ANYMethodLog)
 
-## 免责声明
+## License
+<a href="LICENSE"><img src="https://img.shields.io/github/license/fstudio/clangbuilder.svg"></a>
+<a href="https://996.icu"><img src="https://img.shields.io/badge/link-996.icu-red.svg"></a>
+
 本项目遵循`MIT license`，方便交流与学习，包括但不限于本项目的衍生品都禁止在损害WeChat官方利益情况下进行盈利。如果您发现本项目有侵犯您的知识产权，请与我取得联系，我会及时修改或删除。
 
