@@ -8,11 +8,10 @@
 - 如果你希望更简约，这里提供了[简版小助手](https://github.com/MustangYM/WeChatSeptet-ForMac)，安装方式与WeChatExtension的手动安装方式一样。
 - Most users of this project are Chinese, so there is `NO ENGLISH WIKI`.
 
-## 声明
-- WeChatExtension完全`免费`，近期发现不少三方平台甚至某宝商家`出售`此软件，切勿`上当受骗`。
-- 适用于Mac版的WeChat拓展功能。1.7.5代码来自于[WeChatPlugin](https://github.com/TKkk-iOSer/WeChatPlugin-MacOS)，对[TK](https://github.com/TKkk-iOSer)在此表示感谢！
-- Issues注意事项[Wiki](https://github.com/MustangYM/WeChatExtension-ForMac/wiki/Issues%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)。
+## 声明以及常见问题
+- 暂未适配macOS11，不处理macOS11相关bug，`2021-02-08`后安装插件后`无法启动`可能是[签名问题](https://github.com/MustangYM/WeChatExtension-ForMac/issues/816)导致的!
 - 到目前为止，并未发现因使用本插件会导致封号。
+- Issues注意事项[Wiki](https://github.com/MustangYM/WeChatExtension-ForMac/wiki/Issues%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)。
 
 ## 最新支持版本
 - [下载最新版微信](https://dldir1.qq.com/weixin/mac/WeChatMac_Beta.dmg)。
@@ -20,7 +19,9 @@
 
 ## 小助手相关介绍
 - [Toptips视频介绍(゜-゜)つロ 干杯~](https://www.bilibili.com/video/BV1Xi4y1b72c?from=search&seid=863944292302073615)(基于2.5版本的小助手介绍，现在的小助手更完善)。
-- 经过两年的不间断的维护已成长为[最受欢迎的Objective-C项目](https://github.com/kon9chunkit/GitHub-Chinese-Top-Charts#Objective-C)之一，请放心使用。
+- 经过两年的不间断的维护已成长为最受欢迎的`Objective-C`项目之一，请放心使用。
+  - [中文榜](https://github.com/kon9chunkit/GitHub-Chinese-Top-Charts#Objective-C)。（娱乐数据，仅供参考）
+  - [OC总榜](https://github-trending.com/repo/Objective-C)。（娱乐数据，仅供参考）
 <p align="left">
 <img src="https://starchart.cc/MustangYM/WeChatExtension-ForMac.svg" width="800px"/>
 </p>
@@ -107,7 +108,7 @@
 
 ### 安装方式一：普通安装(clone最新版本并安装)
 ```
-sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/MustangYM/WeChatExtension-ForMac && cd WeChatExtension-ForMac/WeChatExtension/Rely && ./Install.sh
+sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/MustangYM/WeChatExtension-ForMac && cd WeChatExtension-ForMac/WeChatExtension/Rely && ./Install.sh && cd ~
 ```
 
 ### 安装方式二：懒癌版安装
@@ -501,6 +502,15 @@ This project exists thanks to all the people who contribute。
 - 如果小助手使你的生活更美好，可以`请我喝杯咖啡`。
 
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/aliPayCode.png" height="250" hspace="50"/>&nbsp;&nbsp;&nbsp;<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WeChatPayCode.png" height="250" hspace="50"  />
+
+## Special Thanks
+- [WeChatPlugin-MacOS](https://github.com/TKkk-iOSer/WeChatPlugin-MacOS)
+- [insert_dylib](https://github.com/Tyilo/insert_dylib)
+- [fishhook](https://github.com/facebook/fishhook)
+- [Alfred](https://www.alfredapp.com/)
+- [GCDWebServer](https://github.com/swisspol/GCDWebServer)
+- [TCBlobDownload](https://github.com/thibaultcha/TCBlobDownload)
+- [ANYMethodLog](https://github.com/qhd/ANYMethodLog)
 
 ## License
 <a href="LICENSE"><img src="https://img.shields.io/github/license/fstudio/clangbuilder.svg"></a>
