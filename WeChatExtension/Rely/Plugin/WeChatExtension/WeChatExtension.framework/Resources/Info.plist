@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.8.1</string>
+	<string>2.8.3</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
@@ -27,19 +27,17 @@
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>12B45b</string>
-	<key>DTPlatformName</key>
-	<string>macosx</string>
+	<string>11C504</string>
 	<key>DTPlatformVersion</key>
-	<string>11.0</string>
+	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>20A2408</string>
+	<string>19B90</string>
 	<key>DTSDKName</key>
-	<string>macosx11.0</string>
+	<string>macosx10.15</string>
 	<key>DTXcode</key>
-	<string>1220</string>
+	<string>1130</string>
 	<key>DTXcodeBuild</key>
-	<string>12B45b</string>
+	<string>11C504</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.10</string>
 	<key>NSHumanReadableCopyright</key>
@@ -47,6 +45,6 @@
 	<key>showUpdateWindow</key>
 	<true/>
 	<key>versionInfo</key>
-	<string>v2.8.1(2020-12-26):\n👉🏻  适配微信v2.6.0 (16787)\n👉🏻  修复消息撤回Bug \n👉🏻  适配联系人和会话选择界面和若干问题 \n👉🏻  暂未适配BigSur\n</string>
+	<string>v2.8.3(2021-02-09):\n👉🏻  修复签名失效(重装微信后安装2.8.3小助手即可)\n</string>
 </dict>
 </plist>

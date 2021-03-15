@@ -3,16 +3,15 @@
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/face1.png" width="1000px"/>
 </p>
 
-![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.8.0-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.6.0-blue.svg) 
+![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.8.2-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.6.1-blue.svg) 
 - 支持[企业微信](https://github.com/MustangYM/WeChatICU-ForMac)，由此进。
 - 如果你希望更简约，这里提供了[简版小助手](https://github.com/MustangYM/WeChatSeptet-ForMac)，安装方式与WeChatExtension的手动安装方式一样。
 - Most users of this project are Chinese, so there is `NO ENGLISH WIKI`.
 
-## 声明
-- WeChatExtension完全`免费`，近期发现不少三方平台甚至某宝商家`出售`此软件，切勿`上当受骗`。
-- 适用于Mac版的WeChat拓展功能。1.7.5代码来自于[WeChatPlugin](https://github.com/TKkk-iOSer/WeChatPlugin-MacOS)，对[TK](https://github.com/TKkk-iOSer)在此表示感谢！
-- Issues注意事项[Wiki](https://github.com/MustangYM/WeChatExtension-ForMac/wiki/Issues%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)。
+## 声明以及常见问题
+- 暂未适配macOS11，不处理macOS11相关bug，`2021-02-08`后安装插件后`无法启动`可能是[签名问题](https://github.com/MustangYM/WeChatExtension-ForMac/issues/816)导致的!
 - 到目前为止，并未发现因使用本插件会导致封号。
+- Issues注意事项[Wiki](https://github.com/MustangYM/WeChatExtension-ForMac/wiki/Issues%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)。
 
 ## 最新支持版本
 - [下载最新版微信](https://dldir1.qq.com/weixin/mac/WeChatMac_Beta.dmg)。
@@ -20,6 +19,12 @@
 
 ## 小助手相关介绍
 - [Toptips视频介绍(゜-゜)つロ 干杯~](https://www.bilibili.com/video/BV1Xi4y1b72c?from=search&seid=863944292302073615)(基于2.5版本的小助手介绍，现在的小助手更完善)。
+- 经过两年的不间断的维护已成长为最受欢迎的`Objective-C`项目之一，请放心使用。
+  - [中文榜](https://github.com/kon9chunkit/GitHub-Chinese-Top-Charts#Objective-C)。（娱乐数据，仅供参考）
+  - [OC总榜](https://github-trending.com/repo/Objective-C)。（娱乐数据，仅供参考）
+<p align="left">
+<img src="https://starchart.cc/MustangYM/WeChatExtension-ForMac.svg" width="800px"/>
+</p>
 
 ## 迷离/黑夜/深邃/少女 皮肤模式
 - 少量细节没有做适配，`主题模式-关闭皮肤`可以`关掉`这个功能。
@@ -103,7 +108,7 @@
 
 ### 安装方式一：普通安装(clone最新版本并安装)
 ```
-sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/MustangYM/WeChatExtension-ForMac && cd WeChatExtension-ForMac/WeChatExtension/Rely && ./Install.sh
+sudo rm -r -f WeChatExtension-ForMac && git clone --depth=1 https://github.com/MustangYM/WeChatExtension-ForMac && cd WeChatExtension-ForMac/WeChatExtension/Rely && ./Install.sh && cd ~
 ```
 
 ### 安装方式二：懒癌版安装
@@ -131,28 +136,22 @@ omw -g
 
 安装完成后会自动安装微信插件，可以访问 [Oh My WeChat 的项目主页](https://github.com/lmk123/oh-my-wechat#oh-my-wechat)查看更多用法。
 
-### 安装方式三：下载pkg包一键安装
-- 点击主页右侧`Release`，找到相应版本，点击下载`WeChatExtension.pkg`包，双击打开安装即可（2.8.0小助手开始支持）。
-<p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/pkgInstall.png" width="800px"/>
-</p>
+### 安装方式三：手动安装
+- 3.1.确保你的Mac上已经安装了微信App。
 
-### 安装方式四：手动安装
-- 4.1.确保你的Mac上已经安装了微信App。
-
-- 4.2.下载本项目到你的电脑里， 并双击打开。
+- 3.2.下载本项目到你的电脑里， 并双击打开。
 <p align="center">
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/install1.png" width="1500px"/>
 </p>
 
-- 4.3.依次打开文件夹`WeChatExtension/Rely/Install.sh`。
+- 3.3.依次打开文件夹`WeChatExtension/Rely/Install.sh`。
 
-- 4.4.将`Install.sh`拖入终端工具中按`回车`执行安装。
+- 3.4.将`Install.sh`拖入终端工具中按`回车`执行安装。
 <p align="center">
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/install2.png" width="1500px"/>
 </p>
 
-- 4.5.`重启`微信，安装完成。
+- 3.5.`重启`微信，安装完成。
 
 ## 怎么卸载?
 ### 卸载方式一：自动卸载（推荐）
@@ -169,6 +168,7 @@ bash <(curl -sL https://git.io/JUO6r)
 
 ## 更新日志
 ```
+2021-01-15 适配微信v2.6.1(16837)，群员监控可查看具体违规言论，修复2.6以上多选BUG。
 2020-12-24 适配微信2.6.0（16787），新增pkg安装包安装模式。
 2020-10-31 修复清除空会话失效，优化置底、公众号浏览，新增一键卸载小助手，新增关闭皮肤选项，新增群员监控、拒收群消息。
 2020-09-20 系统低于macOS10.14不再支持皮肤，修复2.4.2 (15650)选取联系人Crash，优化UI细节。
@@ -216,6 +216,9 @@ bash <(curl -sL https://git.io/JUO6r)
 2019-05-10 现在在最新版的微信中的多开和消息撤回是可以用的，如果不能用，请检查小助手的版本。
 
 ```
+
+## TO DO
+- BigSur引用消息或许会Crash（未复现）。
 
 ## Contributors
 
@@ -500,6 +503,14 @@ This project exists thanks to all the people who contribute。
 
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/aliPayCode.png" height="250" hspace="50"/>&nbsp;&nbsp;&nbsp;<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WeChatPayCode.png" height="250" hspace="50"  />
 
+## Special Thanks
+- [WeChatPlugin-MacOS](https://github.com/TKkk-iOSer/WeChatPlugin-MacOS)
+- [insert_dylib](https://github.com/Tyilo/insert_dylib)
+- [fishhook](https://github.com/facebook/fishhook)
+- [Alfred](https://www.alfredapp.com/)
+- [GCDWebServer](https://github.com/swisspol/GCDWebServer)
+- [TCBlobDownload](https://github.com/thibaultcha/TCBlobDownload)
+- [ANYMethodLog](https://github.com/qhd/ANYMethodLog)
 
 ## License
 <a href="LICENSE"><img src="https://img.shields.io/github/license/fstudio/clangbuilder.svg"></a>
