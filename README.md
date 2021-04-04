@@ -8,6 +8,21 @@
 - 如果你希望更简约，这里提供了[简版小助手](https://github.com/MustangYM/WeChatSeptet-ForMac)，安装方式与WeChatExtension的手动安装方式一样。
 - Most users of this project are Chinese, so there is `NO ENGLISH WIKI`.
 
+# 警告⚠️请停止你们的盈利行为
+- [全国最大制售微信外挂软件案宣判！主犯获刑10年](https://tech.ifeng.com/c/85A5xn6wYpo)，有不少三方盗版网站在`售卖甚`至通过`改编`此项目开源代码进行`非法获利`，这已经超出我本人所能控制范围，这并非我的初衷，此项目是免费开源，请各三方网站停止售卖此MIT协议项目。
+
+| 警告网站 | 非法获利形式 |
+| --- | --- |
+| [Mac69](https://www.mac69.com/mac/5587.html) | 需要300积分VIP免费 |
+| [Mac金币](https://www.macjb.com/mac/3628.html) | 需300积分 |
+| [CSDN](https://download.csdn.net/download/weixin_42142062/15043017) | 需28积分 |
+| [米铺网](http://www.mipuo.com/37672.html) | 会员形式下载盈利 |
+| [imacapp](https://www.imacapp.net/4055.html) | 50积分 |
+| [xuanziyuan](https://mac.xuanziyuan.com/421401.html) | 3.5积分 |
+| [淘宝店铺MacRuoRuo](https://item.taobao.com/item.htm?spm=a230r.7195193.1997079397.11.10941121totpfD&id=618366544551&abbucket=13) | 15元 |
+| 欢迎大家踊跃举报，抵制！ | ... |
+
+
 ## 声明以及常见问题
 - 暂未适配macOS11，不处理macOS11相关bug，`2021-02-08`后安装插件后`无法启动`可能是[签名问题](https://github.com/MustangYM/WeChatExtension-ForMac/issues/816)导致的!
 - 到目前为止，并未发现因使用本插件会导致封号。
