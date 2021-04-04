@@ -14,14 +14,14 @@
 
 | 警告网站 | 非法获利形式 |
 | --- | --- |
-| [Mac69](https://www.mac69.com/mac/5587.html) | 非法售卖300积分VIP免费 |
-| [Mac金币](https://www.macjb.com/mac/3628.html) | 非法售卖300积分 |
-| [CSDN](https://download.csdn.net/download/weixin_42142062/15043017) | 非法售卖28积分 |
-| [米铺网](http://www.mipuo.com/37672.html) | 会员形式下载盈利 |
+| [Mac69](https://www.mac69.com/mac/5587.html) | 非法售卖300积分VIP免费/次 |
+| [Mac金币](https://www.macjb.com/mac/3628.html) | 非法售卖300积分/次 |
+| [CSDN](https://download.csdn.net/download/weixin_42142062/15043017) | 非法售卖28积分/次 |
+| [米铺网](http://www.mipuo.com/37672.html) | 会员形式下载盈利/次 |
 | [imacapp](https://www.imacapp.net/4055.html) | 非法售卖50积分 |
-| [xuanziyuan](https://mac.xuanziyuan.com/421401.html) | 非法售卖3.5积分 |
-| [淘宝店铺MacRuoRuo](https://item.taobao.com/item.htm?spm=a230r.7195193.1997079397.11.10941121totpfD&id=618366544551&abbucket=13) | 非法售卖15元 |
-| [macv.com](https://www.macv.com/mac/2356.html) | 非法售卖300积分 |
+| [xuanziyuan](https://mac.xuanziyuan.com/421401.html) | 非法售卖3.5积分/次 |
+| [淘宝店铺MacRuoRuo](https://item.taobao.com/item.htm?spm=a230r.7195193.1997079397.11.10941121totpfD&id=618366544551&abbucket=13) | 非法售卖15元/次 |
+| [macv.com](https://www.macv.com/mac/2356.html) | 非法售卖300积分/次 |
 | 欢迎大家踊跃举报，抵制！ | ... |
 
 
