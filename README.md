@@ -8,23 +8,6 @@
 - 如果你希望更简约，这里提供了[简版小助手](https://github.com/MustangYM/WeChatSeptet-ForMac)，安装方式与WeChatExtension的手动安装方式一样。
 - Most users of this project are Chinese, so there is `NO ENGLISH WIKI`.
 
-## ⚠️警告⚠️
-- [全国最大制售微信外挂软件案宣判！主犯获刑10年](https://tech.ifeng.com/c/85A5xn6wYpo)。
-- 有不少三方盗版网站在**售卖**甚至通过**改编**此项目开源代码进行**非法获利**，这已经超出我本人所能控制范围，这并非我的初衷，此项目是**免费开源**，严厉**谴责**及**警告**以下售卖此项目的网站或个人立即停止**非法盈利**。
-
-| 警告网站 | 非法获利形式 |
-| --- | --- |
-| [Mac69](https://www.mac69.com/mac/5587.html) | 非法售卖300积分VIP免费/次 |
-| [Mac金币](https://www.macjb.com/mac/3628.html) | 非法售卖300积分/次 |
-| [CSDN](https://download.csdn.net/download/weixin_42142062/15043017) | 非法售卖28积分/次 |
-| [米铺网](http://www.mipuo.com/37672.html) | 会员形式下载盈利/次 |
-| [imacapp](https://www.imacapp.net/4055.html) | 非法售卖50积分 |
-| [xuanziyuan](https://mac.xuanziyuan.com/421401.html) | 非法售卖3.5积分/次 |
-| [淘宝店铺MacRuoRuo](https://item.taobao.com/item.htm?spm=a230r.7195193.1997079397.11.10941121totpfD&id=618366544551&abbucket=13) | 非法售卖15元/次 |
-| [macv.com](https://www.macv.com/mac/2356.html) | 非法售卖300积分/次 |
-| 欢迎大家踊跃举报，抵制！ | ... |
-
-
 ## 声明以及常见问题
 - 暂未适配macOS11，不处理macOS11相关bug，`2021-02-08`后安装插件后`无法启动`可能是[签名问题](https://github.com/MustangYM/WeChatExtension-ForMac/issues/816)导致的!
 - 到目前为止，并未发现因使用本插件会导致封号。
