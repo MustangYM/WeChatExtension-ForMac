@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>19F101</string>
+	<string>20C69</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.8.3</string>
+	<string>2.8.2</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
@@ -27,17 +27,19 @@
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>11C504</string>
+	<string>12D4e</string>
+	<key>DTPlatformName</key>
+	<string>macosx</string>
 	<key>DTPlatformVersion</key>
-	<string>GM</string>
+	<string>11.1</string>
 	<key>DTSDKBuild</key>
-	<string>19B90</string>
+	<string>20C63</string>
 	<key>DTSDKName</key>
-	<string>macosx10.15</string>
+	<string>macosx11.1</string>
 	<key>DTXcode</key>
-	<string>1130</string>
+	<string>1240</string>
 	<key>DTXcodeBuild</key>
-	<string>11C504</string>
+	<string>12D4e</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.10</string>
 	<key>NSHumanReadableCopyright</key>
@@ -45,6 +47,6 @@
 	<key>showUpdateWindow</key>
 	<true/>
 	<key>versionInfo</key>
-	<string>v2.8.3(2021-02-09):\n👉🏻  修复签名失效(重装微信后安装2.8.3小助手即可)\n</string>
+	<string>v2.8.2(2021-01-15):\n👉🏻  适配微信v2.6.1(16837)\n👉🏻  群员监控可查看具体违规言论 \n👉🏻  修复2.6以上多选BUG \n👉🏻  祝大家新春快乐 注意疫情 保重🙏\n</string>
 </dict>
 </plist>
