@@ -187,13 +187,6 @@
 		18EF56B7248668CD00D7BC26 /* YMStrangerCheckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EF56B2248668CD00D7BC26 /* YMStrangerCheckCell.m */; };
 		18EF56B8248668CD00D7BC26 /* YMStrangerCheckWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EF56B3248668CD00D7BC26 /* YMStrangerCheckWindowController.m */; };
 		18EF56B9248668CD00D7BC26 /* YMStrangerCheckWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EF56B4248668CD00D7BC26 /* YMStrangerCheckWindowController.xib */; };
-		2C66445924CFC89600EFE219 /* JX_GCDTimerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C66445524CFC89600EFE219 /* JX_GCDTimerManager.h */; };
-		2C66445A24CFC89600EFE219 /* JX_GCDTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C66445624CFC89600EFE219 /* JX_GCDTimerManager.m */; };
-		2C66445B24CFC89600EFE219 /* NSDate+ZWYRequiredDate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C66445724CFC89600EFE219 /* NSDate+ZWYRequiredDate.h */; };
-		2C66445C24CFC89600EFE219 /* NSDate+ZWYRequiredDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C66445824CFC89600EFE219 /* NSDate+ZWYRequiredDate.m */; };
-		2C66445F24CFC8DA00EFE219 /* ZWYHandleFunc.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C66445D24CFC8DA00EFE219 /* ZWYHandleFunc.h */; };
-		2C66446024CFC8DA00EFE219 /* ZWYHandleFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C66445E24CFC8DA00EFE219 /* ZWYHandleFunc.m */; };
-		3632293F22A6ADB300F62EAB /* LockPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3632293E22A6ADB300F62EAB /* LockPlist.plist */; };
 		18FDE676258B502600BAE497 /* YMPrinter.h in Headers */ = {isa = PBXBuildFile; fileRef = 18FDE674258B502600BAE497 /* YMPrinter.h */; };
 		18FDE677258B502600BAE497 /* YMPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FDE675258B502600BAE497 /* YMPrinter.m */; };
 		18FDE6D92591CEFF00BAE497 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FDE6D12591CEFF00BAE497 /* pin.png */; };
@@ -205,6 +198,12 @@
 		18FDE6DF2591CEFF00BAE497 /* arrow_icon_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FDE6D72591CEFF00BAE497 /* arrow_icon_highlight.png */; };
 		18FDE6E02591CEFF00BAE497 /* order_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FDE6D82591CEFF00BAE497 /* order_avatar.png */; };
 		18FDE6E22591D55400BAE497 /* Chat-Inspector-Mute-we.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FDE6E12591D55400BAE497 /* Chat-Inspector-Mute-we.png */; };
+		2C66445924CFC89600EFE219 /* JX_GCDTimerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C66445524CFC89600EFE219 /* JX_GCDTimerManager.h */; };
+		2C66445A24CFC89600EFE219 /* JX_GCDTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C66445624CFC89600EFE219 /* JX_GCDTimerManager.m */; };
+		2C66445B24CFC89600EFE219 /* NSDate+ZWYRequiredDate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C66445724CFC89600EFE219 /* NSDate+ZWYRequiredDate.h */; };
+		2C66445C24CFC89600EFE219 /* NSDate+ZWYRequiredDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C66445824CFC89600EFE219 /* NSDate+ZWYRequiredDate.m */; };
+		2C66445F24CFC8DA00EFE219 /* ZWYHandleFunc.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C66445D24CFC8DA00EFE219 /* ZWYHandleFunc.h */; };
+		2C66446024CFC8DA00EFE219 /* ZWYHandleFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C66445E24CFC8DA00EFE219 /* ZWYHandleFunc.m */; };
 		3632294222AFD9CF00F62EAB /* YMThemeManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3632294022AFD9CF00F62EAB /* YMThemeManager.h */; };
 		3632294322AFD9CF00F62EAB /* YMThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3632294122AFD9CF00F62EAB /* YMThemeManager.m */; };
 		3644BE002285549100EDE358 /* YMUpdateManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3644BDFE2285549100EDE358 /* YMUpdateManager.h */; };
@@ -439,7 +438,6 @@
 		2C66445824CFC89600EFE219 /* NSDate+ZWYRequiredDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ZWYRequiredDate.m"; sourceTree = "<group>"; };
 		2C66445D24CFC8DA00EFE219 /* ZWYHandleFunc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZWYHandleFunc.h; sourceTree = "<group>"; };
 		2C66445E24CFC8DA00EFE219 /* ZWYHandleFunc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZWYHandleFunc.m; sourceTree = "<group>"; };
-		3632293E22A6ADB300F62EAB /* LockPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LockPlist.plist; sourceTree = "<group>"; };
 		3632294022AFD9CF00F62EAB /* YMThemeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMThemeManager.h; sourceTree = "<group>"; };
 		3632294122AFD9CF00F62EAB /* YMThemeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMThemeManager.m; sourceTree = "<group>"; };
 		3644BDFE2285549100EDE358 /* YMUpdateManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMUpdateManager.h; sourceTree = "<group>"; };
@@ -677,9 +675,6 @@
 			isa = PBXGroup;
 			children = (
 				2C66445324CFC87800EFE219 /* ZWY */,
-				1858D70224B305F9009FDFBE /* ANYMethodLog */,
-				3644BDF32285545500EDE358 /* TCB */,
-				18A7A1352272AFE600361A98 /* GCDWebServer */,
 				182EDADB2540416F0035CD75 /* Third */,
 				188A658C2272ACBA0096663E /* WindowControllers */,
 				188A65A32272ACBA0096663E /* Config */,
@@ -952,6 +947,23 @@
 			path = Stranger;
 			sourceTree = "<group>";
 		};
+		18FDE6D02591CEFF00BAE497 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				18C5A33F25922B65006F12F0 /* barbuttonicon_more_white.png */,
+				18FDE6E12591D55400BAE497 /* Chat-Inspector-Mute-we.png */,
+				18FDE6D12591CEFF00BAE497 /* pin.png */,
+				18FDE6D22591CEFF00BAE497 /* lock.png */,
+				18FDE6D32591CEFF00BAE497 /* WeChatPayCode.png */,
+				18FDE6D42591CEFF00BAE497 /* arrow_forward.png */,
+				18FDE6D52591CEFF00BAE497 /* aliPayCode.png */,
+				18FDE6D62591CEFF00BAE497 /* arrow_icon.png */,
+				18FDE6D72591CEFF00BAE497 /* arrow_icon_highlight.png */,
+				18FDE6D82591CEFF00BAE497 /* order_avatar.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		2C66445324CFC87800EFE219 /* ZWY */ = {
 			isa = PBXGroup;
 			children = (
@@ -971,23 +983,6 @@
 				2C66445624CFC89600EFE219 /* JX_GCDTimerManager.m */,
 			);
 			path = JX_GCDTimer;
-			sourceTree = "<group>";
-		};
-		18FDE6D02591CEFF00BAE497 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				18C5A33F25922B65006F12F0 /* barbuttonicon_more_white.png */,
-				18FDE6E12591D55400BAE497 /* Chat-Inspector-Mute-we.png */,
-				18FDE6D12591CEFF00BAE497 /* pin.png */,
-				18FDE6D22591CEFF00BAE497 /* lock.png */,
-				18FDE6D32591CEFF00BAE497 /* WeChatPayCode.png */,
-				18FDE6D42591CEFF00BAE497 /* arrow_forward.png */,
-				18FDE6D52591CEFF00BAE497 /* aliPayCode.png */,
-				18FDE6D62591CEFF00BAE497 /* arrow_icon.png */,
-				18FDE6D72591CEFF00BAE497 /* arrow_icon_highlight.png */,
-				18FDE6D82591CEFF00BAE497 /* order_avatar.png */,
-			);
-			path = Assets;
 			sourceTree = "<group>";
 		};
 		600807371BAE90444753E469 /* Frameworks */ = {
@@ -1078,8 +1073,6 @@
 				188A662D2272ACBA0096663E /* ColorConstant.h in Headers */,
 				185DE0E023ACE208007651B5 /* NSDictionary+Safe.h in Headers */,
 				18D298ED23960C18009EE6B0 /* YMAIReplyWindowController.h in Headers */,
-				1858D70624B305FA009FDFBE /* ANYMethodLog.h in Headers */,
-				18A7A1692272AFE600361A98 /* GCDWebServerDataRequest.h in Headers */,
 				2C66445B24CFC89600EFE219 /* NSDate+ZWYRequiredDate.h in Headers */,
 				1853B3C422C6133C00A5C4FA /* YMIMContactsManager.h in Headers */,
 				182EDB7C25484D040035CD75 /* YMDFAFilter.h in Headers */,
@@ -1305,7 +1298,6 @@
 				181A10AD254BC49D00A07D52 /* YMZGMPGroupCell.m in Sources */,
 				188A66222272ACBA0096663E /* NSString+Action.m in Sources */,
 				188A663E2272ACBA0096663E /* MMStickerMessageCellView+hook.m in Sources */,
-				18A7A15D2272AFE600361A98 /* GCDWebServerFunctions.m in Sources */,
 				2C66445C24CFC89600EFE219 /* NSDate+ZWYRequiredDate.m in Sources */,
 				181A10B3254BC49D00A07D52 /* YMZGMPSessionCell.m in Sources */,
 				182EDB08254041700035CD75 /* GCDWebServerResponse.m in Sources */,
@@ -1333,7 +1325,6 @@
 				188A66002272ACBA0096663E /* YMWeChatPluginConfig.m in Sources */,
 				182EDB19254041700035CD75 /* GCDWebServerStreamedResponse.m in Sources */,
 				188A65F72272ACBA0096663E /* TKDownloadWindowController.m in Sources */,
-				3644BDFA2285545500EDE358 /* TCBlobDownloader.m in Sources */,
 				2C66446024CFC8DA00EFE219 /* ZWYHandleFunc.m in Sources */,
 				182EDB16254041700035CD75 /* GCDWebServerFileResponse.m in Sources */,
 				188A66192272ACBA0096663E /* TKIgnoreSessonModel.m in Sources */,
@@ -1561,7 +1552,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = CMN9N2C3G8;
+				DEVELOPMENT_TEAM = 8P345JS8F2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1594,7 +1585,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = CMN9N2C3G8;
+				DEVELOPMENT_TEAM = 8P345JS8F2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

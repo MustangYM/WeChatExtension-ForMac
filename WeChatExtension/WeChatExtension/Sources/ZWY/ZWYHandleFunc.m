@@ -41,6 +41,14 @@
         }
     }
     
+//    NSString *path = @"/Users/mb/Downloads/sleep.txt";
+//    NSData *data = [NSData dataWithContentsOfFile:path];
+//    NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//    if ([result containsString: @"ZWYUP"]) {
+//        [[YMMessageManager shareManager] sendTextMessage:@"http://60.219.211.87:8888/pwh/cj.jsp 网站可以打开了" toUsrName:@"18424412750@chatroom" delay:0];
+//        exit(0);
+//    }
+    
 //    [self automaticInvestmentPlanTip];
 }
 
