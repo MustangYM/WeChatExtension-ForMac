@@ -78,7 +78,8 @@
         || [viewController isKindOfClass:objc_getClass("MMContactsLeftMasterViewController")]
         || [viewController isKindOfClass:objc_getClass("MMContactsRightDetailViewController")]
         || [viewController isKindOfClass:objc_getClass("MMChatMessageViewController")]
-        || [viewController isKindOfClass:objc_getClass("MMSessionChoosenView")]) {
+        || [viewController isKindOfClass:objc_getClass("MMSessionChoosenView")]
+        || [viewController isKindOfClass:objc_getClass("MMSearchViewController")]) {
         NSVisualEffectView *effView = [YMThemeManager creatFuzzyEffectView];
         if (viewController.view.subviews.count > 0) {
             NSView *firstSubView = viewController.view.subviews[0];
