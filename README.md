@@ -21,7 +21,7 @@
 - [Toptips视频介绍(゜-゜)つロ 干杯~](https://www.bilibili.com/video/BV1Xi4y1b72c?from=search&seid=863944292302073615)(基于2.5版本的小助手介绍，现在的小助手更完善)。
 - 经过两年的不间断的维护已成长为最受欢迎的`Objective-C`项目之一，请放心使用。
   - [中文榜](https://github.com/kon9chunkit/GitHub-Chinese-Top-Charts#Objective-C)。（娱乐数据，仅供参考）
- <del> - [OC总榜](https://github-trending.com/repo/Objective-C)。（娱乐数据，仅供参考）</del>
+  - [OC总榜](https://github-trending.com/repo/Objective-C)。（娱乐数据，仅供参考）
 <p align="left">
 <img src="https://starchart.cc/MustangYM/WeChatExtension-ForMac.svg" width="800px"/>
 </p>
