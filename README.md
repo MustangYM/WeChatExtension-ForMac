@@ -492,6 +492,40 @@ This project exists thanks to all the people who contribute。
    <td align="center">
   <a href="https://github.com/findyou"><img src="https://avatars3.githubusercontent.com/u/6084594?s=400&u=859774b13ae172e04894150094211ed2239cfec9&v=4" width="100px;" alt="findyou"/>
   <br></br><sub><b>findyou</b></sub>
+  
+  <td align="center">
+  <a href="https://github.com/the-eric-kwok"><img src="https://avatars.githubusercontent.com/u/16463312?v=4" width="100px;" alt="EricKwok"/>
+  <br></br><sub><b>EricKwok</b></sub>
+  
+  <td align="center">
+  <a href="https://github.com/cqz0955"><img src="https://avatars.githubusercontent.com/u/80302661?v=4" width="100px;" alt="Jarod816"/>
+  <br></br><sub><b>Jarod816</b></sub>
+ 
+   </td></tr></table>
+  
+   </td></tr></table>
+   
+   <table><tr>
+   
+  <td align="center">
+  <a href="https://github.com/imjonat"><img src="https://avatars.githubusercontent.com/u/42567368?v=4" width="100px;" alt="imjonat"/>
+  <br></br><sub><b>imjonat</b></sub>
+  
+  <td align="center">
+  <a href="https://github.com/newdimitri"><img src="https://avatars.githubusercontent.com/u/11519247?v=4" width="100px;" alt="newdimitri"/>
+  <br></br><sub><b>newdimitri</b></sub>
+  
+  <td align="center">
+  <a href="https://github.com/liosen"><img src="https://avatars.githubusercontent.com/u/33013300?v=4" width="100px;" alt="liosen"/>
+  <br></br><sub><b>liosen</b></sub>
+  
+  <td align="center">
+  <a href="https://github.com/max-yeah"><img src="https://avatars.githubusercontent.com/u/26541990?v=4" width="100px;" alt="max-yeah"/>
+  <br></br><sub><b>max-yeah</b></sub>
+  
+  <td align="center">
+  <a href="https://github.com/xiaohuoni"><img src="https://avatars.githubusercontent.com/u/11746742?v=4" width="100px;" alt="xiaohuoni"/>
+  <br></br><sub><b>xiaohuoni</b></sub>
  
    </td></tr></table>
   
