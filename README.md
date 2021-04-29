@@ -508,10 +508,6 @@ This project exists thanks to all the people who contribute。
    <table><tr>
    
   <td align="center">
-  <a href="https://github.com/imjonat"><img src="https://avatars.githubusercontent.com/u/42567368?v=4" width="100px;" alt="imjonat"/>
-  <br></br><sub><b>imjonat</b></sub>
-  
-  <td align="center">
   <a href="https://github.com/newdimitri"><img src="https://avatars.githubusercontent.com/u/11519247?v=4" width="100px;" alt="newdimitri"/>
   <br></br><sub><b>newdimitri</b></sub>
   
