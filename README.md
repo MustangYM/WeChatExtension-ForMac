@@ -538,7 +538,7 @@ This project exists thanks to all the people who contribute。
 - 插件中的`图标`、本页所有`Logo`、预览图均出自本人`蹩脚`的[Photoshop](https://www.adobe.com/products/photoshop.html)设计。
 - 如果小助手使你的生活更美好，可以`请我喝杯咖啡`。
 
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/aliPayCode.png" height="250" hspace="50"/>&nbsp;&nbsp;&nbsp;<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WeChatPayCode.png" height="250" hspace="50"  />
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/aliPayCode.png" height="250" hspace="50"/>&nbsp;&nbsp;&nbsp;<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WeChatPayCode.png" height="250" hspace="50"  />
 
 ## Special Thanks
 - [WeChatPlugin-MacOS](https://github.com/TKkk-iOSer/WeChatPlugin-MacOS)
