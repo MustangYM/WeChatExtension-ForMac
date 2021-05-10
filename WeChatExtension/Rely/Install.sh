@@ -2,9 +2,12 @@
 
 wechat_path="/Applications/WeChat.app"
 
+echo "请将微信拖入终端"
+read custom_path
+
 if [ ! -d "$wechat_path" ]
 then
-wechat_path="/Applications/微信.app"
+wechat_path=$custom_path
 if [ ! -d "$wechat_path" ]
 then
 echo -e "\n\n应用程序文件夹中未发现微信，请检查微信是否有重命名或者移动路径位置"
