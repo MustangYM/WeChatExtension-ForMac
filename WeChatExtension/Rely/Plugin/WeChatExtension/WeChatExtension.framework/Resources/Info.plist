@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.8.3</string>
+	<string>2.8.4</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
@@ -45,6 +45,6 @@
 	<key>showUpdateWindow</key>
 	<true/>
 	<key>versionInfo</key>
-	<string>v2.8.3(2021-02-09):\n👉🏻  修复签名失效(重装微信后安装2.8.3小助手即可)\n</string>
+	<string>v2.8.4(2021-05-12Beta):\n👉🏻  适配3.0.3 (18062)\n👉🏻 做了大量适配工作 \n👉🏻  发布上帝模式Beta版本\n👉🏻  纪念汶川512大地震\n</string>
 </dict>
 </plist>
