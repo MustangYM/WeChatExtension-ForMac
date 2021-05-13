@@ -5,7 +5,7 @@
 //  Created by MustangYM on 2020/10/21.
 //  Copyright © 2020 MustangYM. All rights reserved.
 //
-
+//群员检测
 #import "YMZGMPWindowController.h"
 #import "YMThemeManager.h"
 #import "NSViewLayoutTool.h"

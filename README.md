@@ -17,6 +17,23 @@
 - [下载最新版微信](https://dldir1.qq.com/weixin/mac/WeChatMac_Beta.dmg)。
 - 皮肤最低支持macOS 10.14。
 
+## ⚠️警告⚠️
+- [全国最大制售微信外挂软件案宣判！主犯获刑10年](https://tech.ifeng.com/c/85A5xn6wYpo)。
+- 有不少三方盗版网站在**售卖**甚至通过**改编**此项目开源代码进行**非法获利**，这已经超出我本人所能控制范围，这并非我的初衷，此项目是**免费开源**，严厉**谴责**及**警告**以下售卖此项目的网站或个人立即停止**非法盈利**。
+- 小助手将不再开源！以表抗议！！！直至你们停止盈利！
+
+| 警告网站 | 非法获利形式 |
+| --- | --- |
+| [Mac69](https://www.mac69.com/mac/5587.html) | 非法售卖300积分VIP免费/次 |
+| [Mac金币](https://www.macjb.com/mac/3628.html) | 非法售卖300积分/次 |
+| [CSDN](https://download.csdn.net/download/weixin_42142062/15043017) | 非法售卖28积分/次 |
+| [米铺网](http://www.mipuo.com/37672.html) | 会员形式下载盈利/次 |
+| [imacapp](https://www.imacapp.net/4055.html) | 非法售卖50积分 |
+| [xuanziyuan](https://mac.xuanziyuan.com/421401.html) | 非法售卖3.5积分/次 |
+| [淘宝店铺MacRuoRuo](https://item.taobao.com/item.htm?spm=a230r.7195193.1997079397.11.10941121totpfD&id=618366544551&abbucket=13) | 非法售卖15元/次 |
+| [macv.com](https://www.macv.com/mac/2356.html) | 非法售卖300积分/次 |
+| 欢迎大家踊跃举报，抵制！| ... |
+
 ## 小助手相关介绍
 - [Toptips视频介绍(゜-゜)つロ 干杯~](https://www.bilibili.com/video/BV1Xi4y1b72c?from=search&seid=863944292302073615)(基于2.5版本的小助手介绍，现在的小助手更完善)。
 - 经过两年的不间断的维护已成长为最受欢迎的`Objective-C`项目之一，请放心使用。
@@ -174,6 +191,8 @@ omw un
 
 ## 更新日志
 ```
+2021-05-13 消除主窗口在上帝模式下部分黑色, 实现全透明，优化Tab切换后聊天窗口在上帝模式下的渲染逻辑, 减缓卡顿。
+2021-05-12 2.8.4为Beta版本，适配3.0.3 (18062)，做了大量适配工作，发布上帝模式Beta版本，与非法售卖小助手网站抗争到底，小助手不再开源，纪念汶川512大地震。
 2021-01-15 适配微信v2.6.1(16837)，群员监控可查看具体违规言论，修复2.6以上多选BUG。
 2020-12-24 适配微信2.6.0（16787），新增pkg安装包安装模式。
 2020-10-31 修复清除空会话失效，优化置底、公众号浏览，新增一键卸载小助手，新增关闭皮肤选项，新增群员监控、拒收群消息。
@@ -492,6 +511,36 @@ This project exists thanks to all the people who contribute。
    <td align="center">
   <a href="https://github.com/findyou"><img src="https://avatars3.githubusercontent.com/u/6084594?s=400&u=859774b13ae172e04894150094211ed2239cfec9&v=4" width="100px;" alt="findyou"/>
   <br></br><sub><b>findyou</b></sub>
+  
+  <td align="center">
+  <a href="https://github.com/the-eric-kwok"><img src="https://avatars.githubusercontent.com/u/16463312?v=4" width="100px;" alt="EricKwok"/>
+  <br></br><sub><b>EricKwok</b></sub>
+  
+  <td align="center">
+  <a href="https://github.com/cqz0955"><img src="https://avatars.githubusercontent.com/u/80302661?v=4" width="100px;" alt="Jarod816"/>
+  <br></br><sub><b>Jarod816</b></sub>
+ 
+   </td></tr></table>
+  
+   </td></tr></table>
+   
+   <table><tr>
+   
+  <td align="center">
+  <a href="https://github.com/newdimitri"><img src="https://avatars.githubusercontent.com/u/11519247?v=4" width="100px;" alt="newdimitri"/>
+  <br></br><sub><b>newdimitri</b></sub>
+  
+  <td align="center">
+  <a href="https://github.com/liosen"><img src="https://avatars.githubusercontent.com/u/33013300?v=4" width="100px;" alt="liosen"/>
+  <br></br><sub><b>liosen</b></sub>
+  
+  <td align="center">
+  <a href="https://github.com/max-yeah"><img src="https://avatars.githubusercontent.com/u/26541990?v=4" width="100px;" alt="max-yeah"/>
+  <br></br><sub><b>max-yeah</b></sub>
+  
+  <td align="center">
+  <a href="https://github.com/xiaohuoni"><img src="https://avatars.githubusercontent.com/u/11746742?v=4" width="100px;" alt="xiaohuoni"/>
+  <br></br><sub><b>xiaohuoni</b></sub>
  
    </td></tr></table>
   
@@ -508,7 +557,7 @@ This project exists thanks to all the people who contribute。
 - 插件中的`图标`、本页所有`Logo`、预览图均出自本人`蹩脚`的[Photoshop](https://www.adobe.com/products/photoshop.html)设计。
 - 如果小助手使你的生活更美好，可以`请我喝杯咖啡`。
 
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/aliPayCode.png" height="250" hspace="50"/>&nbsp;&nbsp;&nbsp;<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WeChatPayCode.png" height="250" hspace="50"  />
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/aliPayCode.png" height="250" hspace="50"/>&nbsp;&nbsp;&nbsp;<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WeChatPayCode.png" height="250" hspace="50"  />
 
 ## Special Thanks
 - [WeChatPlugin-MacOS](https://github.com/TKkk-iOSer/WeChatPlugin-MacOS)

@@ -280,7 +280,7 @@
     if (LargerOrEqualVersion(@"2.4.2")) {
         if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
             NSColor *normalColor = kDarkModeTextColor;
-            rowView.iconView.normalColor = normalColor;
+            rowView.iconView.imageColor = normalColor;
         }
     }
     return rowView;
@@ -292,7 +292,7 @@
     if (LargerOrEqualVersion(@"2.4.2")) {
         if ([YMWeChatPluginConfig sharedConfig].usingDarkTheme) {
             NSColor *normalColor = kDarkModeTextColor;
-            rowView.iconView.normalColor = normalColor;
+            rowView.iconView.imageColor = normalColor;
             rowView.arrowIconView.normalColor = normalColor;
         }
     }
