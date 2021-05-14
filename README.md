@@ -541,6 +541,10 @@ This project exists thanks to all the people who contribute。
   <td align="center">
   <a href="https://github.com/xiaohuoni"><img src="https://avatars.githubusercontent.com/u/11746742?v=4" width="100px;" alt="xiaohuoni"/>
   <br></br><sub><b>xiaohuoni</b></sub>
+  
+  <td align="center">
+  <a href="https://github.com/bluelove56"><img src="https://avatars.githubusercontent.com/u/68936214?v=4" width="100px;" alt="bluelove56"/>
+  <br></br><sub><b>bluelove56</b></sub>
  
    </td></tr></table>
   
