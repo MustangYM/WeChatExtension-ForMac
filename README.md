@@ -43,11 +43,16 @@
 <img src="https://starchart.cc/MustangYM/WeChatExtension-ForMac.svg" width="800px"/>
 </p>
 
-## 迷离/黑夜/深邃/少女 皮肤模式
+## 迷离/黑夜/上帝/少女 皮肤模式
 - 少量细节没有做适配，`主题模式-关闭皮肤`可以`关掉`这个功能。
 - 群聊中每个发言人的`昵称颜色`都会有所区别。
 - 在皮肤模式下，未读消息头像会轻微可爱`摇动`，未读数超过`99条`的会话有`彩蛋`。
 - 如果你的迷离模式`未生效`，打开`系统偏好设置` -> `辅助功能` -> `显示`，不要勾选`减少透明度`或`提供对比度`。
+
+<p align="center">
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WechatIMG85.png" width="1500px"/>
+</p>
+
 <p align="center">
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/theme_compoment.png" width="1500px"/>
 </p>
