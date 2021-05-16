@@ -1,6 +1,6 @@
 
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/face1.png" width="1000px"/>
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/face3.png" width="1000px"/>
 </p>
 
 ![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.8.2-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.6.1-blue.svg) 
