@@ -9,7 +9,8 @@
 - Most users of this project are Chinese, so there is `NO ENGLISH WIKI`.
 
 ## 声明以及常见问题
-- 暂未适配macOS11，不处理macOS11相关bug，`2021-02-08`后安装插件后`无法启动`可能是[签名问题](https://github.com/MustangYM/WeChatExtension-ForMac/issues/816)导致的!
+- 2021-02-08后安装插件后**无法启动**, **解决方案**[看这里](https://github.com/MustangYM/WeChatExtension-ForMac/issues/816), [看这里](https://github.com/MustangYM/WeChatExtension-ForMac/issues/816), [看这里](https://github.com/MustangYM/WeChatExtension-ForMac/issues/816)!
+- 作者没有macOS11设备, 暂未适配macOS11，不处理macOS11相关bug。
 - 到目前为止，并未发现因使用本插件会导致封号。
 - Issues注意事项[Wiki](https://github.com/MustangYM/WeChatExtension-ForMac/wiki/Issues%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)。
 
@@ -561,10 +562,11 @@ This project exists thanks to all the people who contribute。
 - QQ①群：`741941325`(满)。
 - QQ②群：`905526964`(满)。
 - QQ③群：`220655053`。
-- 皮肤的颜色搭配采纳了大量朋友的反馈和建议，最终并未能统一意见，那就干脆做`两套`吧，所以才会出现`黑夜`和`深邃`两款如此相近的`暗色调主题`，所以颜色上不再接受pr。
-- 封面图的`骷髅`与`乌鸦`元素来自于`史泰龙`的电影`《The Expendables》`（敢死队）海报。
+- 皮肤的颜色搭配采纳了大量朋友的反馈和建议，最终并未能统一意见，那就干脆做**两套**吧，所以才会出现**黑夜**和**深邃**两款如此相近的**暗色调主题**，所以颜色上不再接受pr。
+- **少女模式**的颜色搭配感谢[Artemis-13](https://github.com/Artemis-13)提供建议，颜色叫**茱萸粉**。
+- 封面图的**骷髅**与**乌鸦**元素来自于**史泰龙**的电影`《The Expendables》`（敢死队）海报。
 - 插件中的`图标`、本页所有`Logo`、预览图均出自本人`蹩脚`的[Photoshop](https://www.adobe.com/products/photoshop.html)设计。
-- 如果小助手使你的生活更美好，可以`请我喝杯咖啡`。
+- 如果小助手使你的生活更美好，可以**请我喝杯咖啡**。
 
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/aliPayCode.png" height="250" hspace="50"/>&nbsp;&nbsp;&nbsp;<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WeChatPayCode.png" height="250" hspace="50"  />
 
