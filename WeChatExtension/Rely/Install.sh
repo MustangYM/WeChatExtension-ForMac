@@ -57,4 +57,12 @@ fi
 if [[ "$result" == 'y' ]]; then
     cp -r "${shell_path}/Plugin/WeChatExtension/${framework_name}.framework" ${app_bundle_path}
     ${shell_path}/insert_dylib --all-yes "${framework_path}/${framework_name}" "$app_executable_backup_path" "$app_executable_path"
+    echo ""
+    read -t 150 -p "需要对微信重新签名才能运行，是否立即重新签名(可能需要输入密码)？[y/n] " result
+    if [ "$result" == 'y' ] || [ "$result" == 'Y' ]; then
+        sudo codesign --sign - --force --deep $wechat_path
+    else
+        echo "你选择不要立即签名，如果微信无法正常启动，请手动执行以下命令："
+        echo "sudo codesign --sign - --force --deep $wechat_path"
+    fi
 fi
