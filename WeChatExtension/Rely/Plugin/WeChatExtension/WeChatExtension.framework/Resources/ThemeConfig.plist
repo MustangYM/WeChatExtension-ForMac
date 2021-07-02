@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>data</key>
+	<array>
+		<dict>
+			<key>pic</key>
+			<string>banksy作品 医疗天使</string>
+			<key>desc</key>
+			<string>https://z3.ax1x.com/2021/07/02/Rcq9Y9.jpg</string>
+		</dict>
+		<dict>
+			<key>desc</key>
+			<string>banksy作品 无人机</string>
+			<key>pic</key>
+			<string>https://z3.ax1x.com/2021/07/02/Rcqy0U.jpg</string>
+		</dict>
+		<dict>
+			<key>desc</key>
+			<string>banksy作品 跪在地上的人</string>
+			<key>pic</key>
+			<string>https://z3.ax1x.com/2021/07/02/Rcq67F.jpg</string>
+		</dict>
+	</array>
+</dict>
+</plist>

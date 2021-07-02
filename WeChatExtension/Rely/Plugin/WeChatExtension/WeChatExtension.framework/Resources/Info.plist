@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>19F101</string>
+	<string>20G5023d</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.8.5</string>
+	<string>2.9.0</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
@@ -45,6 +45,6 @@
 	<key>showUpdateWindow</key>
 	<true/>
 	<key>versionInfo</key>
-	<string>v2.8.5(2021-05-13):\n👉🏻  消除主窗口在上帝模式下部分黑色, 实现全透明, 处女座摸鱼必备!\n👉🏻 优化Tab切换后聊天窗口在上帝模式下的渲染逻辑, 减缓卡顿 \n</string>
+	<string>v2.9.0(2021-07-03):\n👉🏻 全新上帝模式 \n</string>
 </dict>
 </plist>
