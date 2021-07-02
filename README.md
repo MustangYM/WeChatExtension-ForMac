@@ -9,7 +9,8 @@
 - Most users of this project are Chinese, so there is `NO ENGLISH WIKI`.
 
 ## 声明以及常见问题
-- 暂未适配macOS11，不处理macOS11相关bug，`2021-02-08`后安装插件后`无法启动`可能是[签名问题](https://github.com/MustangYM/WeChatExtension-ForMac/issues/816)导致的!
+- 2021-02-08后安装插件后**无法启动**, **解决方案**[看这里](https://github.com/MustangYM/WeChatExtension-ForMac/issues/816), [看这里](https://github.com/MustangYM/WeChatExtension-ForMac/issues/816), [看这里](https://github.com/MustangYM/WeChatExtension-ForMac/issues/816)!
+- 作者只有macOS11设备, 只适配macOS11，不处理macOS11以下相关bug。
 - 到目前为止，并未发现因使用本插件会导致封号。
 - Issues注意事项[Wiki](https://github.com/MustangYM/WeChatExtension-ForMac/wiki/Issues%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)。
 
@@ -43,11 +44,16 @@
 <img src="https://starchart.cc/MustangYM/WeChatExtension-ForMac.svg" width="800px"/>
 </p>
 
-## 迷离/黑夜/深邃/少女 皮肤模式
+## 迷离/黑夜/上帝/少女 皮肤模式
 - 少量细节没有做适配，`主题模式-关闭皮肤`可以`关掉`这个功能。
 - 群聊中每个发言人的`昵称颜色`都会有所区别。
 - 在皮肤模式下，未读消息头像会轻微可爱`摇动`，未读数超过`99条`的会话有`彩蛋`。
 - 如果你的迷离模式`未生效`，打开`系统偏好设置` -> `辅助功能` -> `显示`，不要勾选`减少透明度`或`提供对比度`。
+
+<p align="center">
+<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WechatIMG85.png" width="1500px"/>
+</p>
+
 <p align="center">
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/theme_compoment.png" width="1500px"/>
 </p>
@@ -191,6 +197,7 @@ omw un
 
 ## 更新日志
 ```
+2021-05-13 消除主窗口在上帝模式下部分黑色, 实现全透明，优化Tab切换后聊天窗口在上帝模式下的渲染逻辑, 减缓卡顿。
 2021-05-12 2.8.4为Beta版本，适配3.0.3 (18062)，做了大量适配工作，发布上帝模式Beta版本，与非法售卖小助手网站抗争到底，小助手不再开源，纪念汶川512大地震。
 2021-01-15 适配微信v2.6.1(16837)，群员监控可查看具体违规言论，修复2.6以上多选BUG。
 2020-12-24 适配微信2.6.0（16787），新增pkg安装包安装模式。
@@ -540,6 +547,20 @@ This project exists thanks to all the people who contribute。
   <td align="center">
   <a href="https://github.com/xiaohuoni"><img src="https://avatars.githubusercontent.com/u/11746742?v=4" width="100px;" alt="xiaohuoni"/>
   <br></br><sub><b>xiaohuoni</b></sub>
+  
+  <td align="center">
+  <a href="https://github.com/bluelove56"><img src="https://avatars.githubusercontent.com/u/68936214?v=4" width="100px;" alt="bluelove56"/>
+  <br></br><sub><b>bluelove56</b></sub>
+ 
+   </td></tr></table>
+  
+   </td></tr></table>
+   
+   <table><tr>
+   
+  <td align="center">
+  <a href="https://github.com/HenryLuoCN"><img src="https://avatars.githubusercontent.com/u/72094520?v=4" width="100px;" alt="HenryLuoCN"/>
+  <br></br><sub><b>HenryLuoCN</b></sub>
  
    </td></tr></table>
   
@@ -551,10 +572,11 @@ This project exists thanks to all the people who contribute。
 - QQ①群：`741941325`(满)。
 - QQ②群：`905526964`(满)。
 - QQ③群：`220655053`。
-- 皮肤的颜色搭配采纳了大量朋友的反馈和建议，最终并未能统一意见，那就干脆做`两套`吧，所以才会出现`黑夜`和`深邃`两款如此相近的`暗色调主题`，所以颜色上不再接受pr。
-- 封面图的`骷髅`与`乌鸦`元素来自于`史泰龙`的电影`《The Expendables》`（敢死队）海报。
+- 皮肤的颜色搭配采纳了大量朋友的反馈和建议，最终并未能统一意见，那就干脆做**两套**吧，所以才会出现**黑夜**和**深邃**两款如此相近的**暗色调主题**，所以颜色上不再接受pr。
+- **少女模式**的颜色搭配感谢[Artemis-13](https://github.com/Artemis-13)提供建议，颜色叫**茱萸粉**。
+- 封面图的**骷髅**与**乌鸦**元素来自于**史泰龙**的电影`《The Expendables》`（敢死队）海报。
 - 插件中的`图标`、本页所有`Logo`、预览图均出自本人`蹩脚`的[Photoshop](https://www.adobe.com/products/photoshop.html)设计。
-- 如果小助手使你的生活更美好，可以`请我喝杯咖啡`。
+- 如果小助手使你的生活更美好，可以**请我喝杯咖啡**。
 
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/aliPayCode.png" height="250" hspace="50"/>&nbsp;&nbsp;&nbsp;<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WeChatPayCode.png" height="250" hspace="50"  />
 
