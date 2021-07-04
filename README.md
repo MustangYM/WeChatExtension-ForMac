@@ -14,10 +14,6 @@
 - 到目前为止，并未发现因使用本插件会导致封号。
 - Issues注意事项[Wiki](https://github.com/MustangYM/WeChatExtension-ForMac/wiki/Issues%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)。
 
-## 最新支持版本
-- [下载最新版微信](https://dldir1.qq.com/weixin/mac/WeChatMac_Beta.dmg)。
-- 不再支持macOS 11以下系统，因为我没有低于macOS 11版本的机器。
-
 ## ⚠️警告⚠️
 - [全国最大制售微信外挂软件案宣判！主犯获刑10年](https://tech.ifeng.com/c/85A5xn6wYpo)。
 - 有不少三方盗版网站在**售卖**甚至通过**改编**此项目开源代码进行**非法获利**，这已经超出我本人所能控制范围，这并非我的初衷，此项目是**免费开源**，严厉**谴责**及**警告**以下售卖此项目的网站或个人立即停止**非法盈利**。
