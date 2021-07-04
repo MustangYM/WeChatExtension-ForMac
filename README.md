@@ -3,7 +3,7 @@
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/face1.png" width="1000px"/>
 </p>
 
-![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.8.2-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%202.6.1-blue.svg) 
+![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.9.0-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%203.1.2-blue.svg) 
 - 支持[企业微信](https://github.com/MustangYM/WeChatICU-ForMac)，由此进。
 - 如果你希望更简约，这里提供了[简版小助手](https://github.com/MustangYM/WeChatSeptet-ForMac)，安装方式与WeChatExtension的手动安装方式一样。
 - Most users of this project are Chinese, so there is `NO ENGLISH WIKI`.
@@ -197,6 +197,7 @@ omw un
 
 ## 更新日志
 ```
+2021-07-03 适配Version. 3.1.2 (18766)，低于macOS11不再适配。全新上帝模式。
 2021-05-13 消除主窗口在上帝模式下部分黑色, 实现全透明，优化Tab切换后聊天窗口在上帝模式下的渲染逻辑, 减缓卡顿。
 2021-05-12 2.8.4为Beta版本，适配3.0.3 (18062)，做了大量适配工作，发布上帝模式Beta版本，与非法售卖小助手网站抗争到底，小助手不再开源，纪念汶川512大地震。
 2021-01-15 适配微信v2.6.1(16837)，群员监控可查看具体违规言论，修复2.6以上多选BUG。
