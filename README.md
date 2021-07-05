@@ -51,7 +51,7 @@
 </p>
 
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/theme_compoment.png" width="1500px"/>
+<img src="https://z3.ax1x.com/2021/07/06/RIGlyq.png" width="1500px"/>
 </p>
 
 - 模式切换
