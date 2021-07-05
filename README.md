@@ -47,7 +47,7 @@
 - 如果你的迷离模式`未生效`，打开`系统偏好设置` -> `辅助功能` -> `显示`，不要勾选`减少透明度`或`提供对比度`。
 
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WechatIMG85.png" width="1500px"/>
+<img src="https://z3.ax1x.com/2021/07/06/RIGEef.gif" width="1500px"/>
 </p>
 
 <p align="center">
