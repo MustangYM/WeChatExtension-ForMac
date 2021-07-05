@@ -75,7 +75,7 @@
 - iPhone上可安装自签的微信包，实现多开，但是Bundle Id的改变导致APNS消息推送异常，无法收到消息推送？
 - 目前只能转发文字消息。选择`转发所有好友消息`时，只转发单聊消息，不转发群聊消息。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/fowardMessage.png" width="1500px"/>
+<img src="https://z3.ax1x.com/2021/07/06/RIGdp9.png" width="1500px"/>
 </p>
 
 ## 免认证登录与多开
