@@ -166,7 +166,7 @@ omw 会从 [GitHub 仓库](https://github.com/MustangYM/WeChatExtension-ForMac)�
 
 - 3.4.将`Install.sh`拖入终端工具中按`回车`执行安装。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/install2.png" width="1500px"/>
+<img src="https://z3.ax1x.com/2021/07/06/RIGrm6.png" width="1500px"/>
 </p>
 
 - 3.5.`重启`微信，安装完成。
