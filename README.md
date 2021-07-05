@@ -60,15 +60,13 @@
 </p>
 
 ## 僵尸粉检测
-<del>- 通过建立一个微信群，将被检测对象拉入群中，拉失败的就是非好友。</del>
-<del>- 只要你自己不在群里发消息，这个群理论上是不算存在的，别人也就无从发现。</del>
-<del>- 检测完，一旦你自己退出群聊或者删除群，此群就算解散了，所以不会留下痕迹。</del>
+- 无感检测！
 
 ## 手机端也能收到被撤回的消息
 - 如果Mac拦截到A发送来的消息，手机也会同步收到的这条已经拦截的消息(自己发送给自己)。目前只支持同步文字消息与图片消息。
 - 可以对同步的消息进行勾选，以免群消息打扰。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/revokeMessage.png" width="1500px"/>
+<img src="https://z3.ax1x.com/2021/07/06/RIGGwT.png" width="1500px"/>
 </p>
 
 ## 消息转发
