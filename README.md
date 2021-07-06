@@ -3,7 +3,7 @@
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/face1.png" width="1000px"/>
 </p>
 
-![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.9.0-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%203.1.2-blue.svg) 
+![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.9.1-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%203.1.2-blue.svg) 
 - 支持[企业微信](https://github.com/MustangYM/WeChatICU-ForMac)，由此进。
 - 如果你希望更简约，这里提供了[简版小助手](https://github.com/MustangYM/WeChatSeptet-ForMac)，安装方式与WeChatExtension的手动安装方式一样。
 - Most users of this project are Chinese, so there is `NO ENGLISH WIKI`.
@@ -13,10 +13,6 @@
 - 作者只有macOS11设备, 只适配macOS11，不处理macOS11以下相关bug。
 - 到目前为止，并未发现因使用本插件会导致封号。
 - Issues注意事项[Wiki](https://github.com/MustangYM/WeChatExtension-ForMac/wiki/Issues%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)。
-
-## 最新支持版本
-- [下载最新版微信](https://dldir1.qq.com/weixin/mac/WeChatMac_Beta.dmg)。
-- 皮肤最低支持macOS 10.14。
 
 ## ⚠️警告⚠️
 - [全国最大制售微信外挂软件案宣判！主犯获刑10年](https://tech.ifeng.com/c/85A5xn6wYpo)。
@@ -50,12 +46,13 @@
 - 在皮肤模式下，未读消息头像会轻微可爱`摇动`，未读数超过`99条`的会话有`彩蛋`。
 - 如果你的迷离模式`未生效`，打开`系统偏好设置` -> `辅助功能` -> `显示`，不要勾选`减少透明度`或`提供对比度`。
 
+- 上帝模式可选一张图片做背景。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WechatIMG85.png" width="1500px"/>
+<img src="https://z3.ax1x.com/2021/07/06/RIGEef.gif" width="1500px"/>
 </p>
 
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/theme_compoment.png" width="1500px"/>
+<img src="https://z3.ax1x.com/2021/07/06/RIGlyq.png" width="1500px"/>
 </p>
 
 - 模式切换
@@ -64,15 +61,13 @@
 </p>
 
 ## 僵尸粉检测
-<del>- 通过建立一个微信群，将被检测对象拉入群中，拉失败的就是非好友。</del>
-<del>- 只要你自己不在群里发消息，这个群理论上是不算存在的，别人也就无从发现。</del>
-<del>- 检测完，一旦你自己退出群聊或者删除群，此群就算解散了，所以不会留下痕迹。</del>
+- 无感检测！
 
 ## 手机端也能收到被撤回的消息
 - 如果Mac拦截到A发送来的消息，手机也会同步收到的这条已经拦截的消息(自己发送给自己)。目前只支持同步文字消息与图片消息。
 - 可以对同步的消息进行勾选，以免群消息打扰。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/revokeMessage.png" width="1500px"/>
+<img src="https://z3.ax1x.com/2021/07/06/RIGGwT.png" width="1500px"/>
 </p>
 
 ## 消息转发
@@ -80,7 +75,7 @@
 - iPhone上可安装自签的微信包，实现多开，但是Bundle Id的改变导致APNS消息推送异常，无法收到消息推送？
 - 目前只能转发文字消息。选择`转发所有好友消息`时，只转发单聊消息，不转发群聊消息。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/fowardMessage.png" width="1500px"/>
+<img src="https://z3.ax1x.com/2021/07/06/RIGdp9.png" width="1500px"/>
 </p>
 
 ## 免认证登录与多开
@@ -171,7 +166,7 @@ omw 会从 [GitHub 仓库](https://github.com/MustangYM/WeChatExtension-ForMac)�
 
 - 3.4.将`Install.sh`拖入终端工具中按`回车`执行安装。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/install2.png" width="1500px"/>
+<img src="https://z3.ax1x.com/2021/07/06/RIGrm6.png" width="1500px"/>
 </p>
 
 - 3.5.`重启`微信，安装完成。
@@ -197,6 +192,7 @@ omw un
 
 ## 更新日志
 ```
+2021-07-05 修复2.9.0中点击聊天记录闪退BUG。
 2021-07-03 适配Version. 3.1.2 (18766)，低于macOS11不再适配。全新上帝模式。
 2021-05-13 消除主窗口在上帝模式下部分黑色, 实现全透明，优化Tab切换后聊天窗口在上帝模式下的渲染逻辑, 减缓卡顿。
 2021-05-12 2.8.4为Beta版本，适配3.0.3 (18062)，做了大量适配工作，发布上帝模式Beta版本，与非法售卖小助手网站抗争到底，小助手不再开源，纪念汶川512大地震。
