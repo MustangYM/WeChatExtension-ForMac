@@ -1,5 +1,3 @@
-# ⚠️小助手已不再安全, 可能会导致封号, 不建议使用⚠️
-
 <p align="center">
 <img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/face1.png" width="1000px"/>
 </p>
