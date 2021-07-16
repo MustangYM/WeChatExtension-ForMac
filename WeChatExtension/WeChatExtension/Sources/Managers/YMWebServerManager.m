@@ -275,10 +275,16 @@ static int port=52700;
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (content.length > 0) {
                     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
-                    [messageService SendTextMessage:currentUserName
-                                          toUsrName:requestBody[@"userId"]
-                                            msgText:requestBody[@"content"]
-                                         atUserList:nil];
+                    
+                    if (LargerOrEqualVersion(@"3.0.2")) {
+                        FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+                        [service FFProcessTReqZZ:currentUserName toUsrName:requestBody[@"userId"] msgText:requestBody[@"content"] atUserList:nil];
+                    } else {
+                        [messageService SendTextMessage:currentUserName
+                         toUsrName:requestBody[@"userId"]
+                           msgText:requestBody[@"content"]
+                        atUserList:nil];
+                    }
                     [[YMMessageManager shareManager] clearUnRead:requestBody[@"userId"]];
                     
                 } else if (content.length == 0 && requestBody[@"srvId"]) {

@@ -134,7 +134,7 @@ static const NSArray *colors() {
 #pragma mark - EffectView
 + (NSVisualEffectView *)creatFuzzyEffectView
 {
-    if (!YMWeChatPluginConfig.sharedConfig.fuzzyMode) {
+    if (!YMWeChatPluginConfig.sharedConfig.fuzzyMode && !YMWeChatPluginConfig.sharedConfig.skinMode) {
         return nil;
     }
     
@@ -151,9 +151,9 @@ static const NSArray *colors() {
 
 + (void)changeEffectViewMode:(NSVisualEffectView *)effectView
 {
-    if (!YMWeChatPluginConfig.sharedConfig.fuzzyMode) {
-        return;
-    }
+     if (!YMWeChatPluginConfig.sharedConfig.fuzzyMode && !YMWeChatPluginConfig.sharedConfig.skinMode) {
+           return ;
+       }
     
     if (!effectView) {
         return ;

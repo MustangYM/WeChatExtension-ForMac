@@ -252,7 +252,10 @@
     
     [arrSession enumerateObjectsUsingBlock:^(MMSessionInfo *sessionInfo, NSUInteger idx, BOOL * _Nonnull stop) {
         BOOL hasEmplyMsgSession = NO;
-        if (LargerOrEqualVersion(@"2.4.2")) {
+        if (LargerOrEqualVersion(@"3.0.2")) {
+            FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+            hasEmplyMsgSession = ![service HasMsgInChat:sessionInfo.m_nsUserName];
+        } else if (LargerOrEqualVersion(@"2.4.2")) {
             hasEmplyMsgSession = ![msgService HasMsgInChat:sessionInfo.m_nsUserName];
         } else {
             hasEmplyMsgSession = ![msgService hasMsgInChat:sessionInfo.m_nsUserName];
@@ -313,7 +316,14 @@
     
     [unreadSessionSet addObject:sessionInfo.m_nsUserName];
     MMSessionMgr *sessionMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MMSessionMgr")];
-    [sessionMgr changeSessionUnreadCountWithUserName:sessionInfo.m_nsUserName to:sessionInfo.m_uUnReadCount + 1];
+    if ([sessionMgr respondsToSelector:@selector(changeSessionUnreadCountWithUserName:to:)]) {
+        [sessionMgr changeSessionUnreadCountWithUserName:sessionInfo.m_nsUserName to:sessionInfo.m_uUnReadCount + 1];
+        return;
+    }
+    
+    if ([sessionMgr respondsToSelector:@selector(changeSessionUnreadCountWithUserName:to:isMarkUnread:)]) {
+        [sessionMgr changeSessionUnreadCountWithUserName:sessionInfo.m_nsUserName to:sessionInfo.m_uUnReadCount + 1 isMarkUnread:YES];
+    }
 }
 
 - (void)hook_contextMenuSticky:(id)arg1

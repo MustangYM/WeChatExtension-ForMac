@@ -12,6 +12,7 @@
 #import "YMCacheManager.h"
 #import "YMDownloadManager.h"
 #import "YMIMContactsManager.h"
+#import "BS2UPLoader.h"
 
 @interface YMMessageManager()
 @property (nonatomic, strong) MessageService *service;
@@ -39,13 +40,24 @@
 {
     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
     if (delayTime == 0) {
-        [self.service SendTextMessage:currentUserName toUsrName:toUser msgText:msgContent atUserList:nil];
+        
+        if (LargerOrEqualVersion(@"3.0.2")) {
+            FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+            [service FFProcessTReqZZ:currentUserName toUsrName:toUser msgText:msgContent atUserList:nil];
+        } else {
+            [self.service SendTextMessage:currentUserName toUsrName:toUser msgText:msgContent atUserList:nil];
+        }
         return;
     }
     __weak __typeof (self) wself = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [wself.service SendTextMessage:currentUserName toUsrName:toUser msgText:msgContent atUserList:nil];
+            if (LargerOrEqualVersion(@"3.0.2")) {
+                FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+                [service FFProcessTReqZZ:currentUserName toUsrName:toUser msgText:msgContent atUserList:nil];
+            } else {
+                [wself.service SendTextMessage:currentUserName toUsrName:toUser msgText:msgContent atUserList:nil];
+            }
         });
     });
 }
@@ -67,11 +79,20 @@
 
 - (void)clearUnRead:(id)arg1
 {
-    MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
-    if ([service respondsToSelector:@selector(ClearUnRead:FromCreateTime:ToCreateTime:)]) {
-        [service ClearUnRead:arg1 FromCreateTime:0 ToCreateTime:0];
-    } else if ([service respondsToSelector:@selector(ClearUnRead:FromID:ToID:)]) {
-        [service ClearUnRead:arg1 FromID:0 ToID:0];
+    if (LargerOrEqualVersion(@"3.0.2")) {
+        FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+        if ([service respondsToSelector:@selector(ClearUnRead:FromCreateTime:ToCreateTime:)]) {
+            [service ClearUnRead:arg1 FromCreateTime:0 ToCreateTime:0];
+        } else if ([service respondsToSelector:@selector(ClearUnRead:FromID:ToID:)]) {
+            [service ClearUnRead:arg1 FromID:0 ToID:0];
+        }
+    } else {
+        MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+        if ([service respondsToSelector:@selector(ClearUnRead:FromCreateTime:ToCreateTime:)]) {
+            [service ClearUnRead:arg1 FromCreateTime:0 ToCreateTime:0];
+        } else if ([service respondsToSelector:@selector(ClearUnRead:FromID:ToID:)]) {
+            [service ClearUnRead:arg1 FromID:0 ToID:0];
+        }
     }
 }
 
@@ -104,7 +125,12 @@
     char hasMore = '1';
     NSArray *array = @[];
     
-    if (LargerOrEqualVersion(@"2.3.29")) {
+    if (LargerOrEqualVersion(@"3.0.2")) {
+        FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+        if ([service respondsToSelector:@selector(GetMsgListWithChatName:fromCreateTime:localId:limitCnt:hasMore:sortAscend:)]) {
+            array = [service GetMsgListWithChatName:arg1 fromCreateTime:0 localId:arg2 limitCnt:arg3 hasMore:&hasMore sortAscend:YES];
+        }
+    } else if (LargerOrEqualVersion(@"2.3.29")) {
         if ([service respondsToSelector:@selector(GetMsgListWithChatName:fromCreateTime:localId:limitCnt:hasMore:sortAscend:)]) {
             array = [service GetMsgListWithChatName:arg1 fromCreateTime:0 localId:arg2 limitCnt:arg3 hasMore:&hasMore sortAscend:YES];
         }
@@ -186,9 +212,21 @@
                 NSArray *msgAry = [revokeMsgData.msgContent componentsSeparatedByString:@":"];
                 NSString *msgContent = msgAry.count > 1 ? msgAry[1] : revokeMsgData.msgContent;
                 msgContent = [msgContent stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-                [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"--拦截到一条撤回消息--\n群名:%@\n撤回人:%@\n内容:%@", msgContact.m_nsNickName.length > 0 ? msgContact.m_nsNickName : @"群聊", msgFromNickName, msgContent] atUserList:nil];
+                NSString *tipMsg = [NSString stringWithFormat:@"--拦截到一条撤回消息--\n群名:%@\n撤回人:%@\n内容:%@", msgContact.m_nsNickName.length > 0 ? msgContact.m_nsNickName : @"群聊", msgFromNickName, msgContent];
+                if (LargerOrEqualVersion(@"3.0.2")) {
+                    FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+                    [service FFProcessTReqZZ:currentUserName toUsrName:currentUserName msgText:tipMsg atUserList:nil];
+                } else {
+                   [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:tipMsg atUserList:nil];
+                }
             } else {
-                [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"--拦截到一条撤回消息--\n撤回人:%@\n内容:%@", msgFromNickName,revokeMsgData.msgContent] atUserList:nil];
+                NSString *tipMsg = [NSString stringWithFormat:@"--拦截到一条撤回消息--\n撤回人:%@\n内容:%@", msgFromNickName,revokeMsgData.msgContent];
+                if (LargerOrEqualVersion(@"3.0.2")) {
+                    FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+                    [service FFProcessTReqZZ:currentUserName toUsrName:currentUserName msgText:tipMsg atUserList:nil];
+                } else {
+                    [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:tipMsg atUserList:nil];
+                }
             }
         } else {
             // Fallback on earlier versions
@@ -196,9 +234,21 @@
     } else if (revokeMsgData.messageType == 3) {
         if (@available(macOS 10.10, *)) {
             if ([revokeMsgData.fromUsrName containsString:@"@chatroom"]) {
-                [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"--拦截到一条撤回消息--\n群名:%@\n撤回人:%@\n内容:[图片]", msgContact.m_nsNickName.length > 0 ? msgContact.m_nsNickName : @"群聊", msgFromNickName] atUserList:nil];
+                NSString *tipMsg = [NSString stringWithFormat:@"--拦截到一条撤回消息--\n群名:%@\n撤回人:%@\n内容:[图片]", msgContact.m_nsNickName.length > 0 ? msgContact.m_nsNickName : @"群聊", msgFromNickName];
+                if (LargerOrEqualVersion(@"3.0.2")) {
+                    FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+                    [service FFProcessTReqZZ:currentUserName toUsrName:currentUserName msgText:tipMsg atUserList:nil];
+                } else {
+                   [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:tipMsg atUserList:nil];
+                }
             } else {
-                [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:[NSString stringWithFormat:@"--拦截到一条撤回消息--\n%@:[图片]",msgFromNickName] atUserList:nil];
+                NSString *tipMsg = [NSString stringWithFormat:@"--拦截到一条撤回消息--\n%@:[图片]",msgFromNickName];
+                if (LargerOrEqualVersion(@"3.0.2")) {
+                    FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+                    [service FFProcessTReqZZ:currentUserName toUsrName:currentUserName msgText:tipMsg atUserList:nil];
+                } else {
+                    [msgService SendTextMessage:currentUserName toUsrName:currentUserName msgText:tipMsg atUserList:nil];
+                }
             }
         } else {
             // Fallback on earlier versions
@@ -218,14 +268,27 @@
                 info.m_uiThumbHeight = 67;
                 info.m_uiOriginalWidth  = 1920;
                 info.m_uiOriginalHeight = 1080;
+                
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [msgService SendImgMessage:currentUserName toUsrName:currentUserName thumbImgData:thumData midImgData:thumData imgData:originalData imgInfo:info];
+                      [[[BS2UPLoader alloc] init] upLoadImage:image type:@"resource" name:@"123.png" completion:^(NSDictionary *responseObject) {
+                                      
+                                  } error:^(NSError *error) {
+                                      
+                                  }];
+                });
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (LargerOrEqualVersion(@"3.0.2")) {
+                        FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+                        [service SendImgMessage:currentUserName toUsrName:currentUserName thumbImgData:thumData midImgData:thumData imgData:originalData imgInfo:info];
+                    } else {
+                       [msgService SendImgMessage:currentUserName toUsrName:currentUserName thumbImgData:thumData midImgData:thumData imgData:originalData imgInfo:info];
+                    }
                 });
             }];
         });
     } else if (revokeMsgData.messageType == 43) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
             [[[YMDownloadManager alloc] init] downloadVideoWithMsg:revokeMsgData];
         });
     }

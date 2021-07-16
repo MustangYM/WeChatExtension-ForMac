@@ -52,11 +52,10 @@
             [effView fillSuperView];
         }
     }
-
     do {
         [[YMThemeManager shareInstance] changeTheme:window.window.contentView color:kMainBackgroundColor];
         [window.window setBackgroundColor:kMainBackgroundColor];
-    } while (CGRectEqualToRect(window.window.contentView.frame, CGRectZero));
+    } while (CGRectEqualToRect(window.window.frame, CGRectZero));
 }
 
 + (void)fuzzyViewController:(NSViewController *)viewController
@@ -69,7 +68,7 @@
     if ([viewController isKindOfClass:objc_getClass("MMContactsDetailViewController")]) {
         return;
     }
-
+    
     if ([viewController isKindOfClass:objc_getClass("MMChatCollectionViewController")]
         || [viewController isKindOfClass:objc_getClass("MMSessionListView")]
         || [viewController isKindOfClass:objc_getClass("MMStickerCollectionViewController")]
@@ -79,7 +78,9 @@
         || [viewController isKindOfClass:objc_getClass("MMContactsRightDetailViewController")]
         || [viewController isKindOfClass:objc_getClass("MMChatMessageViewController")]
         || [viewController isKindOfClass:objc_getClass("MMSessionChoosenView")]
-        || [viewController isKindOfClass:objc_getClass("MMSearchViewController")]) {
+        || [viewController isKindOfClass:objc_getClass("MMComposeInputViewController")]
+        || [viewController isKindOfClass:objc_getClass("MMFileListViewController")]
+        || [viewController isKindOfClass:objc_getClass("MMFileSplitViewController")]) {
         NSVisualEffectView *effView = [YMThemeManager creatFuzzyEffectView];
         if (viewController.view.subviews.count > 0) {
             NSView *firstSubView = viewController.view.subviews[0];

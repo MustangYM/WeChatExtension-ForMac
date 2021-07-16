@@ -47,6 +47,7 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @property (nonatomic) BOOL darkMode;                            /**<    黑暗模式     */
 @property (nonatomic) BOOL blackMode;                           /**<    深邃模式     */
 @property (nonatomic) BOOL pinkMode;                            /**<    少女模式     */
+@property (nonatomic) BOOL skinMode;                            /**<    皮肤模式     */
 @property (nonatomic) BOOL closeThemeMode;                      /**<    原始模式     */
 @property (nonatomic) BOOL isThemeLoaded;                       /**<    是否有使用过皮肤    */
 
@@ -64,6 +65,8 @@ typedef NS_ENUM(NSInteger, PluginLanguageType) {
 @property (nonatomic) PluginLanguageType languageType;
 @property (nonatomic, weak) MMBrandChatsViewController *brandChatsViewController;
 @property (nonatomic, weak) MMChatsTableCellView *preChatsCellView;
+@property (nonatomic, weak) MMChatMessageViewController *messageVc;
+@property (nonatomic, weak) NSView *dragEventView;//公众号标题栏
 
 - (void)saveBanGroup:(YMZGMPGroupInfo *)info;
 - (void)saveBanModels;

@@ -21,6 +21,7 @@
 #import "YMIMContactsManager.h"
 #import "YMStrangerCheckWindowController.h"
 #import "YMZGMPWindowController.h"
+#import "YMThemeSettingWindowViewController.h"
 
 static char kAutoReplyWindowControllerKey;          //自动回复窗口的关联 key
 static char kAutoForwardingWindowControllerKey;     //自动转发窗口的关联 key
@@ -29,7 +30,7 @@ static char kRemoteControlWindowControllerKey;      //远程控制窗口的关�
 static char kAboutWindowControllerKey;              //关于窗口的关联 key
 static char kStrangerCheckWindowControllerKey;      //僵尸粉检测 key
 static char kZGMPWindowControllerKey;               //群管理 key
-
+static char kThemeSettingWindowViewController;      //班克斯皮肤
 @implementation YMAssistantMenuManager
 
 + (instancetype)shareManager
@@ -129,9 +130,13 @@ static char kZGMPWindowControllerKey;               //群管理 key
                         onTopItem,
                         forbidCheckUpdateItem,
                         pluginItem,
-                        aboutPluginItem,
-//                        checkZombieItem
+                        aboutPluginItem
                         ]];
+    
+    if (LargerOrEqualVersion(@"3.1.0")) {
+        [subMenu insertItem:checkZombieItem atIndex:3];
+    }
+    
     //此版本微信官方包已将小程序独立
     if (LargerOrEqualLongVersion(@"2.4.2.148") == NO) {
         [subMenu insertItem:miniProgramItem atIndex:4];
@@ -326,6 +331,12 @@ static char kZGMPWindowControllerKey;               //群管理 key
                                                 keyEquivalent:@""
                                                         state:[YMWeChatPluginConfig sharedConfig].pinkMode];
     
+    NSMenuItem *skinItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"上帝模式", @"God Mode")
+                                                  action:@selector(onChangeSkinModel:)
+                                                  target:self
+                                           keyEquivalent:@""
+                                                   state:[YMWeChatPluginConfig sharedConfig].skinMode];
+    
     NSMenuItem *closeThemeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"关闭皮肤", @"Close")
                                                         action:@selector(onCloseThemeModel:)
                                                         target:self
@@ -333,7 +344,7 @@ static char kZGMPWindowControllerKey;               //群管理 key
                                                          state:NO];
     
     NSMenu *subBackgroundMenu = [[NSMenu alloc] initWithTitle:@""];
-    [subBackgroundMenu addItems:@[fuzzyModeItem, darkModeItem, blackModeItem, pinkColorItem,closeThemeItem]];
+    [subBackgroundMenu addItems:@[fuzzyModeItem, darkModeItem, blackModeItem, pinkColorItem, skinItem, closeThemeItem]];
     backGroundItem.submenu = subBackgroundMenu;
     return backGroundItem;
 }
@@ -720,6 +731,7 @@ static char kZGMPWindowControllerKey;               //群管理 key
         item.state ? [[YMWeChatPluginConfig sharedConfig] setDarkMode:NO] : nil;
         item.state ? [[YMWeChatPluginConfig sharedConfig] setPinkMode:NO] : nil;
         item.state ? [[YMWeChatPluginConfig sharedConfig] setFuzzyMode:NO] : nil;
+        item.state ? [[YMWeChatPluginConfig sharedConfig] setSkinMode:NO] : nil;
         [wself restartWeChat];
     }  else if (action == NSAlertDefaultReturn) {
         item.state = !item.state;
@@ -746,6 +758,7 @@ static char kZGMPWindowControllerKey;               //群管理 key
         item.state ? [[YMWeChatPluginConfig sharedConfig] setDarkMode:NO] : nil;
         item.state ? [[YMWeChatPluginConfig sharedConfig] setBlackMode:NO]: nil;
         item.state ? [[YMWeChatPluginConfig sharedConfig] setPinkMode:NO] : nil;
+        item.state ? [[YMWeChatPluginConfig sharedConfig] setSkinMode:NO] : nil;
         [wself restartWeChat];
     }  else if (action == NSAlertDefaultReturn) {
         item.state = !item.state;
@@ -771,6 +784,7 @@ static char kZGMPWindowControllerKey;               //群管理 key
         item.state ? [[YMWeChatPluginConfig sharedConfig] setBlackMode:NO]: nil;
         item.state ? [[YMWeChatPluginConfig sharedConfig] setPinkMode:NO] : nil;
         item.state ? [[YMWeChatPluginConfig sharedConfig] setFuzzyMode:NO] : nil;
+        item.state ? [[YMWeChatPluginConfig sharedConfig] setSkinMode:NO] : nil;
         [wself restartWeChat];
     }  else if (action == NSAlertDefaultReturn) {
         item.state = !item.state;
@@ -797,10 +811,50 @@ static char kZGMPWindowControllerKey;               //群管理 key
         item.state ? [[YMWeChatPluginConfig sharedConfig] setDarkMode:NO] : nil;
         item.state ? [[YMWeChatPluginConfig sharedConfig] setBlackMode:NO]: nil;
         item.state ? [[YMWeChatPluginConfig sharedConfig] setFuzzyMode:NO] : nil;
+        item.state ? [[YMWeChatPluginConfig sharedConfig] setSkinMode:NO] : nil;
         [wself restartWeChat];
     }  else if (action == NSAlertDefaultReturn) {
         item.state = !item.state;
     }
+    
+}
+
+//https://z3.ax1x.com/2021/07/02/Rcq9Y9.jpg
+//https://z3.ax1x.com/2021/07/02/Rcqy0U.jpg
+//https://z3.ax1x.com/2021/07/02/Rcq67F.jpg
+- (void)onChangeSkinModel:(NSMenuItem *)item
+{
+    WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
+    YMThemeSettingWindowViewController *remoteControlWC = objc_getAssociatedObject(wechat, &kThemeSettingWindowViewController);
+    
+    if (!remoteControlWC) {
+        remoteControlWC = [[YMThemeSettingWindowViewController alloc] initWithWindowNibName:@"YMThemeSettingWindowViewController"];
+        objc_setAssociatedObject(wechat, &kThemeSettingWindowViewController, remoteControlWC, OBJC_ASSOCIATION_RETAIN);
+    }
+    [remoteControlWC show];
+    
+//    item.state = !item.state;
+//    NSString *msg = nil;
+//    if (item.state) {
+//        msg = YMLanguage(@"打上帝模式, 重启生效!",@"Turn on Pink mode and restart to take effect!");
+//    } else {
+//        msg = YMLanguage(@"关闭上帝模式, 重启生效!",@"Turn off Pink mode and restart to take effect!");
+//    }
+//    NSAlert *alert = [NSAlert alertWithMessageText:YMLanguage(@"警告", @"WARNING")
+//                                     defaultButton:YMLanguage(@"取消", @"cancel")                       alternateButton:YMLanguage(@"确定重启",@"restart")
+//                                       otherButton:nil                              informativeTextWithFormat:@"%@", msg];
+//    NSUInteger action = [alert runModal];
+//    if (action == NSAlertAlternateReturn) {
+//        __weak __typeof (self) wself = self;
+//        [[YMWeChatPluginConfig sharedConfig] setSkinMode:item.state];
+//        item.state ? [[YMWeChatPluginConfig sharedConfig] setDarkMode:NO] : nil;
+//        item.state ? [[YMWeChatPluginConfig sharedConfig] setBlackMode:NO]: nil;
+//        item.state ? [[YMWeChatPluginConfig sharedConfig] setFuzzyMode:NO] : nil;
+//        item.state ? [[YMWeChatPluginConfig sharedConfig] setPinkMode:NO] : nil;
+//        [wself restartWeChat];
+//    }  else if (action == NSAlertDefaultReturn) {
+//        item.state = !item.state;
+//    }
     
 }
 
@@ -817,6 +871,7 @@ static char kZGMPWindowControllerKey;               //群管理 key
     NSUInteger action = [alert runModal];
     if (action == NSAlertAlternateReturn) {
         __weak __typeof (self) wself = self;
+        [[YMWeChatPluginConfig sharedConfig] setSkinMode:NO];
         [[YMWeChatPluginConfig sharedConfig] setPinkMode:NO];
         [[YMWeChatPluginConfig sharedConfig] setDarkMode:NO];
         [[YMWeChatPluginConfig sharedConfig] setBlackMode:NO];

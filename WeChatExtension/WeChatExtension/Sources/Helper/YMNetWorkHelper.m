@@ -89,7 +89,27 @@ static NSString const *AI_API = @"https://api.ai.qq.com/fcgi-bin/nlp/nlp_textcha
     [self.manager POST:url parameters:parame progress:^(NSProgress *uploadProgress) {
         
     } success:^(NSURLSessionDataTask *task, id   _Nullable responseObject) {
+        if ([responseObject isKindOfClass:NSDictionary.class]) {
+            NSDictionary *dict = (NSDictionary *)responseObject;
+            success ? success(dict) : nil;
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError *error) {
+        failure ? failure(error , nil) : nil;
+    }];
+}
+
+- (void)POST:(NSString *)url
+  parametersStr:(NSString *)parame
+     success:(void (^) (id responsobject))success
+     failure:(void (^) (NSError *error , NSString *failureMsg))failure
+{
+    [self.manager POST:url parameters:parame progress:^(NSProgress *uploadProgress) {
         
+    } success:^(NSURLSessionDataTask *task, id   _Nullable responseObject) {
+        if ([responseObject isKindOfClass:NSDictionary.class]) {
+            NSDictionary *dict = (NSDictionary *)responseObject;
+            success ? success(dict) : nil;
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError *error) {
         failure ? failure(error , nil) : nil;
     }];
@@ -108,8 +128,13 @@ static NSString const *AI_API = @"https://api.ai.qq.com/fcgi-bin/nlp/nlp_textcha
     if (!_manager) {
         _manager = [objc_getClass("AFHTTPSessionManager") manager];
         _manager.requestSerializer = [objc_getClass("AFHTTPRequestSerializer") serializer];
-        [_manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//        [_manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
         _manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain",nil];
+        [_manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [_manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        [_manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+        _manager.requestSerializer.timeoutInterval = 15.f;
+        [_manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     }
     
     return _manager;

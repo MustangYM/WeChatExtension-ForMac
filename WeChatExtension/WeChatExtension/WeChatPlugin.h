@@ -133,6 +133,39 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (id)ForwardMessage:(id)arg1 toUser:(id)arg2 errMsg:(id *)arg3;
 @end
 
+@interface FFProcessReqsvrZZ : NSObject
+- (void)onAddMsg:(id)arg1 msgData:(id)arg2;
+- (void)notifyAddMsgOnMainThread:(id)arg1 msgData:(id)arg2;
+- (void)onRevokeMsg:(id)arg1;
+- (void)FFToNameFavChatZZ:(id)arg1;
+- (void)FFToNameFavChatZZ:(id)arg1 sessionMsgList:(id)arg2;
+- (void)OnSyncBatchAddMsgs:(NSArray *)arg1 isFirstSync:(BOOL)arg2;
+- (void)OnSyncBatchAddFunctionMsgs:(id)arg1 isFirstSync:(BOOL)arg2;
+- (void)FFImgToOnFavInfoInfoVCZZ:(id)arg1 isFirstSync:(BOOL)arg2;
+- (id)GetMsgListWithChatName:(id)arg1 fromCreateTime:(unsigned int)arg2 limitCnt:(NSInteger)arg3 hasMore:(char *)arg4 sortAscend:(BOOL)arg5;
+- (id)FFProcessTReqZZ:(id)arg1 toUsrName:(id)arg2 msgText:(id)arg3 atUserList:(id)arg4;
+- (id)SendImgMessage:(id)arg1 toUsrName:(id)arg2 thumbImgData:(id)arg3 midImgData:(id)arg4 imgData:(id)arg5 imgInfo:(id)arg6;
+- (id)SendVideoMessage:(id)arg1 toUsrName:(id)arg2 videoInfo:(id)arg3 msgType:(unsigned int)arg4 refMesageData:(id)arg5;
+- (id)SendLocationMsgFromUser:(id)arg1 toUser:(id)arg2 withLatitude:(double)arg3 longitude:(double)arg4 poiName:(id)arg5 label:(id)arg6;
+- (id)SendNamecardMsgFromUser:(id)arg1 toUser:(id)arg2 containingContact:(id)arg3;
+- (id)SendEmoticonMsgFromUsr:(id)arg1 toUsrName:(id)arg2 md5:(id)arg3 emoticonType:(unsigned int)arg4;
+- (id)SendAppURLMessageFromUser:(id)arg1 toUsrName:(id)arg2 withTitle:(id)arg3 url:(id)arg4 description:(id)arg5 thumbnailData:(id)arg6;
+
+- (id)GetMsgData:(id)arg1 svrId:(long)arg2;
+- (void)AddLocalMsg:(id)arg1 msgData:(id)arg2;
+- (void)TranscribeVoiceMessage:(id)arg1 completion:(void (^)(void))arg2;
+- (BOOL)ClearUnRead:(id)arg1 FromID:(unsigned int)arg2 ToID:(unsigned int)arg3;
+- (BOOL)ClearUnRead:(id)arg1 FromCreateTime:(unsigned int)arg2 ToCreateTime:(unsigned int)arg3;
+- (BOOL)hasMsgInChat:(id)arg1;
+- (BOOL)HasMsgInChat:(id)arg1;
+- (id)GetMsgListWithChatName:(id)arg1 fromLocalId:(unsigned int)arg2 limitCnt:(NSInteger)arg3 hasMore:(char *)arg4 sortAscend:(BOOL)arg5;
+- (id)GetMsgListWithChatName:(id)arg1 fromMinCreateTime:(unsigned int)arg2 localId:(unsigned long long)arg3 limitCnt:(unsigned int)arg4 hasMore:(char *)arg5;
+- (id)GetMsgListWithChatName:(id)arg1 fromCreateTime:(unsigned int)arg2 localId:(unsigned long long)arg3 limitCnt:(unsigned int)arg4 hasMore:(char *)arg5 sortAscend:(BOOL)arg6;
+
+- (id)ForwardMessage:(id)arg1 toUser:(id)arg2 errMsg:(id *)arg3;
+- (void)DelMsg:(id)arg1 msgList:(id)arg2 isDelAll:(BOOL)arg3 isManual:(BOOL)arg4;
+@end
+
 @interface IMessageExt : NSObject
 - (void)onMsgDownloadThumbOK:(NSString *)arg1 msgData:(id)arg2;
 @end
@@ -195,7 +228,10 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 
 @end
 
+@class MMView;
 @interface MMMainViewController : NSViewController
+@property(nonatomic) __weak MMView *tabbarContainer;
+@property(retain, nonatomic) NSVisualEffectView *visualEffectView;
 @property(retain, nonatomic) MMChatsViewController *chatsViewController;
 @property(nonatomic) __weak MMHandoffButton *handoffButton; // @synthesize handoffButton=_handoffButton;
 - (void)viewDidLoad;
@@ -450,6 +486,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)deleteSessionWithoutSyncToServerWithUserName:(id)arg1;
 - (void)storageDeleteSessionInfo:(id)arg1;
 - (void)changeSessionUnreadCountWithUserName:(id)arg1 to:(unsigned int)arg2;
+- (void)changeSessionUnreadCountWithUserName:(id)arg1 to:(unsigned int)arg2 isMarkUnread:(BOOL)arg3;
 - (void)removeSessionOfUser:(id)arg1 isDelMsg:(BOOL)arg2;
 - (void)sortSessions;
 - (void)FFDataSvrMgrSvrFavZZ;
@@ -461,6 +498,8 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)loadSessionData;
 - (void)loadData;
 - (void)updateGroupChatSessionIfNeeded;
+- (void)removeSessionOfUser:(id)arg1 isDelMsg:(BOOL)arg2;
+- (void)onMsgDeletedForSession:(id)arg1;
 @end
 
 @interface BrandSessionMgr : NSObject
@@ -622,6 +661,34 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @property(retain, nonatomic) NSArray *selectedUsers;
 @property(retain, nonatomic) NSArray *preSelectedUserNames;
 - (void)setSelectedUserNames:(id)arg1 insertOrNot:(BOOL)arg2;
+@end
+
+@interface MMSessionPickerRow : NSObject
+{
+    BOOL _chosen;
+    BOOL _preSelected;
+    unsigned long long _type;
+    NSString *_title;
+    NSString *_tagTitle;
+    NSString *_tagId;
+    NSString *_tagsContent;
+    WCContactData *_contact;
+    MMSearchResultItem *_searchResultItem;
+}
+
++ (id)createSessionButtonRow;
++ (id)loadingRow;
++ (id)groupRowUnderCreateButtonWithTitle:(id)arg1;
++ (id)groupRowWithTitle:(id)arg1;
+@property(retain, nonatomic) MMSearchResultItem *searchResultItem; // @synthesize searchResultItem=_searchResultItem;
+@property(nonatomic) BOOL preSelected; // @synthesize preSelected=_preSelected;
+@property(nonatomic) BOOL chosen; // @synthesize chosen=_chosen;
+@property(retain, nonatomic) WCContactData *contact; // @synthesize contact=_contact;
+@property(retain, nonatomic) NSString *tagsContent; // @synthesize tagsContent=_tagsContent;
+@property(retain, nonatomic) NSString *tagId; // @synthesize tagId=_tagId;
+@property(retain, nonatomic) NSString *tagTitle; // @synthesize tagTitle=_tagTitle;
+@property(retain, nonatomic) NSString *title; // @synthesize title=_title;
+@property(nonatomic) unsigned long long type; // @synthesize type=_type;
 @end
 
 @interface MMSessionPickerWindow : NSWindowController
@@ -1279,4 +1346,27 @@ forHTTPHeaderField:(NSString *)field;
 @property(retain, nonatomic) NSImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 @property(retain, nonatomic) NSTextField *titleTextField; // @synthesize titleTextField=_titleTextField;
 @property(retain, nonatomic) NSView *contentView; // @synthesize contentView=_contentView;
+@end
+
+@interface TXCRSA : NSObject
+
++ (id)decryptData:(id)arg1 publicKey:(id)arg2;
++ (id)decryptString:(id)arg1 publicKey:(id)arg2;
+
++ (id)encryptData:(id)arg1 publicKey:(id)arg2;
++ (id)encryptString:(id)arg1 publicKey:(id)arg2;
+
++ (id)decryptData1:(id)arg1 privateKey:(id)arg2;
++ (id)decryptData:(id)arg1 privateKey:(id)arg2;
++ (id)decryptString:(id)arg1 privateKey:(id)arg2;
+
++ (id)encryptData:(id)arg1 privateKey:(id)arg2;
++ (id)encryptString:(id)arg1 privateKey:(id)arg2;
+
++ (id)stripPrivateKeyHeader:(id)arg1;
++ (id)stripPublicKeyHeader:(id)arg1;
+
+@end
+@interface MMComposeInputScrollView : NSView
+
 @end

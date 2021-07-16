@@ -36,7 +36,9 @@
 + (void)hookWeChat
 {
     //微信撤回消息
-    if (LargerOrEqualVersion(@"2.3.29")) {
+    if (LargerOrEqualVersion(@"3.0.2")) {
+        hookMethod(objc_getClass("FFProcessReqsvrZZ"), @selector(FFToNameFavChatZZ:sessionMsgList:), [self class], @selector(hook_FFToNameFavChatZZ:sessionMsgList:));
+    } else if (LargerOrEqualVersion(@"2.3.29")) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
         hookMethod(objc_getClass("AddMsgSyncCmdHandler"), @selector(handleSyncCmdId: withSyncCmdItems:onComplete:), [self class], @selector(hook_handleSyncCmdId: withSyncCmdItems:onComplete:));
@@ -50,7 +52,12 @@
     
     //微信消息同步
     SEL syncBatchAddMsgsMethod = LargerOrEqualVersion(@"2.3.22") ? @selector(FFImgToOnFavInfoInfoVCZZ:isFirstSync:) : @selector(OnSyncBatchAddMsgs:isFirstSync:);
-    hookMethod(objc_getClass("MessageService"), syncBatchAddMsgsMethod, [self class], @selector(hook_receivedMsg:isFirstSync:));
+    //0x0000000100da639e
+    if (LargerOrEqualVersion(@"3.0.2")) {
+        hookMethod(objc_getClass("FFProcessReqsvrZZ"), syncBatchAddMsgsMethod, [self class], @selector(hook_receivedMsg:isFirstSync:));
+    } else {
+        hookMethod(objc_getClass("MessageService"), syncBatchAddMsgsMethod, [self class], @selector(hook_receivedMsg:isFirstSync:));
+    }
     
     hookMethod(objc_getClass("MMChatMessageDataSource"), @selector(onAddMsg:msgData:), [self class], @selector(hook_onAddMsg:msgData:));
     
@@ -108,6 +115,10 @@
 
      hookMethod(objc_getClass("MMMainViewController"), @selector(onUpdateHandoffExpt:), [self class], @selector(hook_onUpdateHandoffExpt:));
     
+        hookMethod(objc_getClass("FFProcessReqsvrZZ"), @selector(notifyModMsgOnMainThread:msgData:), [self class], @selector(hook_notifyModMsgOnMainThread:msgData:));
+    hookMethod(objc_getClass("MMSessionPickerWindow"), @selector(beginSheetForWindow: completionHandler: cancelHandler:), [self class], @selector(hook_beginSheetForWindow: completionHandler: cancelHandler:));
+
+    
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
     hookClassMethod(objc_getClass("MMCGIRequester"), @selector(requestCGI: Body:Response:), [self class], @selector(hook_requestCGI: Body:Response:));
@@ -119,6 +130,28 @@
     }, 2);
     
     [self setup];
+}
+
+- (void)hook_beginSheetForWindow:(id)arg1 completionHandler:(id)arg2 cancelHandler:(id)arg3
+{
+    
+    [self hook_beginSheetForWindow:arg1 completionHandler:arg2 cancelHandler:arg3];
+}
+
+//所有收到的消息都会来
+- (void)hook_notifyModMsgOnMainThread:(id)arg1 msgData:(id)arg2
+{
+    if ([arg2 isKindOfClass:objc_getClass("MessageData")]) {
+        MessageData *msg = (MessageData *)arg2;
+        if ([msg.msgContent isEqualToString:@"وُحخ ̷̴̐خ ̷̴̐خ ̷̴̐خ امارتيخ ̷̴̐خ"]) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+                [service DelMsg:msg.toUsrName msgList:@[msg] isDelAll:0 isManual:1];
+            });
+            return;
+        }
+    }
+    [self hook_notifyModMsgOnMainThread:arg1 msgData:arg2];
 }
 
 + (id)hook_requestCGI:(unsigned int)arg1 Body:(id)arg2 Response:(id)arg3
@@ -314,7 +347,13 @@
         
         //获取原始的撤回提示消息
         MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
-        MessageData *revokeMsgData = [msgService GetMsgData:session svrId:[newmsgid integerValue]];
+        MessageData *revokeMsgData = nil;
+        if (LargerOrEqualVersion(@"3.0.2")) {
+            FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+            revokeMsgData = [service GetMsgData:session svrId:[newmsgid integerValue]];
+        } else {
+           revokeMsgData = [msgService GetMsgData:session svrId:[newmsgid integerValue]];
+        }
         
         [[YMMessageManager shareManager] asyncRevokeMessage:revokeMsgData];
         
@@ -340,7 +379,12 @@
             msg;
         });
         
-        [msgService AddLocalMsg:session msgData:newMsgData];
+        if (LargerOrEqualVersion(@"3.0.2")) {
+            FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+            [service AddLocalMsg:session msgData:newMsgData];
+        } else {
+            [msgService AddLocalMsg:session msgData:newMsgData];
+        }
     }
 }
                           
@@ -349,15 +393,18 @@
 - (void)hook_receivedMsg:(NSArray *)msgs isFirstSync:(BOOL)arg2
 {
     __block BOOL flag = NO;
+    [[YMVersionManager shareManager] doCheckVersion];
     [msgs enumerateObjectsUsingBlock:^(AddMsg *addMsg, NSUInteger idx, BOOL * _Nonnull stop1) {
-    
-//        if ([addMsg.content.string containsString:@"可以开始聊天了"]) {
-//            ContactStorage *contactStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("ContactStorage")];
-//            BOOL isFriend = [contactStorage IsFriendContact:addMsg.fromUserName.string];
-//            if (isFriend) {
-//                return;
-//            }
-//        }
+        
+        if ([addMsg.content.string containsString:@"开启了朋友验证"]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"k_MONITER_STRANGE" object:addMsg.fromUserName.string userInfo:nil];
+            return;
+        }
+        
+        if ([addMsg.content.string containsString:@"发送消息过于频繁"]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"k_MONITER_BUSY" object:addMsg.fromUserName.string userInfo:nil];
+            return;
+        }
         
         //群管理中阻止群消息
         [[YMWeChatPluginConfig sharedConfig].banModels enumerateObjectsUsingBlock:^(YMZGMPBanModel  *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop2) {
@@ -388,7 +435,14 @@
         
         if (addMsg.msgType == 3) {
             MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
-            MessageData *msgData = [msgService GetMsgData:addMsg.fromUserName.string svrId:addMsg.newMsgId];
+            MessageData *msgData = nil;
+            if (LargerOrEqualVersion(@"3.0.2")) {
+                FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+                msgData = [service GetMsgData:addMsg.fromUserName.string svrId:addMsg.newMsgId];
+            } else {
+                msgData = [msgService GetMsgData:addMsg.fromUserName.string svrId:addMsg.newMsgId];
+            }
+            
             [[YMDownloadManager new] downloadImageWithMsg:msgData];
         }
         
@@ -409,7 +463,7 @@
 - (id)hook_getNotificationContentWithMsgData:(MessageData *)arg1
 {
     [[YMWeChatPluginConfig sharedConfig] setCurrentUserName:arg1.toUsrName];
-    return [self hook_getNotificationContentWithMsgData:arg1];;
+    return [self hook_getNotificationContentWithMsgData:arg1];
 }
 
 - (void)hook_deliverNotification:(NSUserNotification *)notification
@@ -428,8 +482,14 @@
         NSString *instanceUserName = [objc_getClass("CUtility") GetCurrentUserName];
         NSString *currentUserName = notification.userInfo[@"currnetName"];
         if ([instanceUserName isEqualToString:currentUserName]) {
-            MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
-            [service SendTextMessage:currentUserName toUsrName:chatName msgText:notification.response.string atUserList:nil];
+            
+            if (LargerOrEqualVersion(@"3.0.2")) {
+                FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+                [service FFProcessTReqZZ:currentUserName toUsrName:chatName msgText:notification.response.string atUserList:nil];
+            } else {
+                MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+                [service SendTextMessage:currentUserName toUsrName:chatName msgText:notification.response.string atUserList:nil];
+            }
             [[YMMessageManager shareManager] clearUnRead:chatName];
         }
     } else {
@@ -824,7 +884,15 @@
         NSArray *contents = [msg.content.string componentsSeparatedByString:@":\n"];
         NSString *groupMemberWxid = contents[0];
         MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
-        MessageData *msgData = [msgService GetMsgData:msg.fromUserName.string svrId:msg.newMsgId];
+        
+        MessageData *msgData = nil;
+        if (LargerOrEqualVersion(@"3.0.2")) {
+            FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+            msgData = [service GetMsgData:msg.fromUserName.string svrId:msg.newMsgId];
+        } else {
+            msgData = [msgService GetMsgData:msg.fromUserName.string svrId:msg.newMsgId];
+        }
+        
         NSLog(@"%@", msgData.groupChatSenderDisplayName);
         NSString *groupMemberNickName = msgData.groupChatSenderDisplayName.length > 0
             ? msgData.groupChatSenderDisplayName : [YMIMContactsManager getGroupMemberNickName:groupMemberWxid];

@@ -9,6 +9,7 @@
 #import "TKAutoReplyContentView.h"
 #import "WeChatPlugin.h"
 #import "YMThemeManager.h"
+#import "YMIMContactsManager.h"
 
 @interface TKAutoReplyContentView () <NSTextFieldDelegate>
 
@@ -238,7 +239,13 @@
     MMSessionPickerLogic *logic = [picker.listViewController valueForKey:@"m_logic"];
     NSMutableOrderedSet *orderSet = nil;
     NSMutableArray *selectUsrs = nil;
-    if (LargerOrEqualLongVersion(@"2.4.2.148")) {
+    if (LargerOrEqualVersion(@"3.1.0")) {
+        selectUsrs = [logic valueForKey:@"_selectedRows"];
+        if (!selectUsrs) {
+            selectUsrs = [NSMutableArray new];
+        }
+        [selectUsrs addObjectsFromArray:self.model.specificContacts];
+    } else if (LargerOrEqualLongVersion(@"2.4.2.148")) {
         selectUsrs = [logic valueForKey:@"_selectedUserNames"];
         if (!selectUsrs) {
             selectUsrs = [NSMutableArray new];
@@ -252,14 +259,25 @@
         [orderSet addObjectsFromArray:self.model.specificContacts];
     }
     
-    [picker.choosenViewController setValue:self.model.specificContacts forKey:@"selectedUserNames"];
+    if (LargerOrEqualVersion(@"3.1.0")) {
+        NSMutableArray *arr = [NSMutableArray array];
+        [self.model.specificContacts enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            MMSessionPickerRow *row = [objc_getClass("MMSessionPickerRow") new];
+            row.contact = [YMIMContactsManager getMemberInfo:obj];
+            [arr addObject:row];
+        }];
+        [picker.choosenViewController setValue:arr forKey:@"selectedRows"];
+    } else {
+        [picker.choosenViewController setValue:self.model.specificContacts forKey:@"selectedUserNames"];
+    }
     [picker beginSheetForWindow:self.window completionHandler:^(NSOrderedSet *a1) {
         NSMutableArray *array = [NSMutableArray array];
         [a1 enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [array addObject:obj];
+                [array addObject:obj];
         }];
         self.model.specificContacts = [array copy];
     }];
+    
 }
 
 - (void)controlTextDidEndEditing:(NSNotification *)notification

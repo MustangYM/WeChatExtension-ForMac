@@ -42,8 +42,8 @@ static void inline dynamicMethodIMP(id self,SEL _cmd)
 @implementation NSObject (Safe)
 + (void)load
 {
-//    hookMethod(objc_getClass("NSObject"), @selector(methodSignatureForSelector:), [self class], @selector(safe_methodSignatureForSEL:));
-//    hookMethod(objc_getClass("NSObject"), @selector(forwardInvocation:), [self class], @selector(safe_forwardInvocation:));
+    hookMethod(objc_getClass("NSObject"), @selector(methodSignatureForSelector:), [self class], @selector(safe_methodSignatureForSEL:));
+    hookMethod(objc_getClass("NSObject"), @selector(forwardInvocation:), [self class], @selector(safe_forwardInvocation:));
 }
 
 - (NSMethodSignature *)safe_methodSignatureForSEL:(SEL)arg1

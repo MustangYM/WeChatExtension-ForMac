@@ -18,10 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface YMZGMPInfo : NSObject
 @property (nonatomic, assign) int timestamp;
-@property (nonatomic, assign) int sensitive;
 @property (nonatomic, assign) int pdd;
 @property (nonatomic, assign) NSInteger totalMsgs;
 @property (nonatomic, strong) WCContactData *contact;
+@property (nonatomic, strong) NSArray <MessageData *>*sensitiveMsgs;
 @end
 
 @interface YMZGMPInfoHelper : NSObject

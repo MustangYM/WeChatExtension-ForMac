@@ -25,8 +25,14 @@ static NSString * const kRemoteControlAppleScript = @"osascript /Applications/We
 {
     NSString *currentUserName = [objc_getClass("CUtility") GetCurrentUserName];
     NSString *callBack = [NSString stringWithFormat:@"%@\n\n\n%@", YMLocalizedString(@"assistant.remoteControl.voiceRecall"), msg];
-    MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
-    [service SendTextMessage:currentUserName toUsrName:currentUserName msgText:callBack atUserList:nil];
+    
+    if (LargerOrEqualVersion(@"3.0.2")) {
+        FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+        [service FFProcessTReqZZ:currentUserName toUsrName:currentUserName msgText:callBack atUserList:nil];
+    } else {
+        MessageService *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+        [service SendTextMessage:currentUserName toUsrName:currentUserName msgText:callBack atUserList:nil];
+    }
     
     [self executeRemoteControlCommandWithMsg:msg msgType:MessageDataTypeVoice];
 }

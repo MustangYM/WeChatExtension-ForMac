@@ -86,11 +86,17 @@
     [limitArray enumerateObjectsUsingBlock:^(WCContactData *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [logic doSearchWithKeyword:obj.m_nsNickName chatName:chatroom realFromUser:0x0 messageType:0x0 minMsgCreateTime:0x0 maxMsgCreateTime:0x0 limitCount:0x0 isFromGlobalSearch:'1' completion:^(NSArray *msgs, NSString *chatroom) {
             //违规词汇
-            __block int sensitive = 0;
+            NSMutableArray *sensitiveMsgs = [NSMutableArray array];
             __block int pdd = 0;
             [msgs enumerateObjectsUsingBlock:^(MessageData *_Nonnull msgData, NSUInteger idx, BOOL * _Nonnull stop) {
                 if (msgData.messageType == 1 && [[YMDFAFilter shareInstance] filterSensitiveWords:msgData.msgContent]) {
-                    sensitive++;
+                    if ([msgData.msgContent containsString:@":\n"]) {
+                        if ([msgData.msgContent containsString:obj.m_nsUsrName]) {
+                            [sensitiveMsgs addObject:msgData];
+                        }
+                    } else {
+                        [sensitiveMsgs addObject:msgData];
+                    }
                 } else if (msgData.messageType == 49 && [msgData.extendInfoWithMsgType isKindOfClass:objc_getClass("CExtendInfoOfAPP")]) {
                     CExtendInfoOfAPP *app = (CExtendInfoOfAPP *)msgData.extendInfoWithMsgType;
                     if ([app.m_nsTitle containsString:@"拼多多"] || [app.m_nsDesc containsString:@"拼多多"]) {
@@ -101,7 +107,7 @@
 
             YMZGMPInfo *info = [[YMZGMPInfo alloc] init];
             info.contact = obj;
-            info.sensitive = sensitive;
+            info.sensitiveMsgs = sensitiveMsgs;
             info.pdd = pdd;
             info.totalMsgs = msgs.count;
             if (msgs.count > 0) {

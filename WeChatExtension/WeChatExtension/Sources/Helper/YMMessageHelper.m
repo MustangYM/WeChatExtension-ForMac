@@ -16,8 +16,15 @@
     if (!addMsg) {
         return nil;
     }
-    MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
-    return [msgService GetMsgData:addMsg.fromUserName.string svrId:addMsg.newMsgId];
+    
+    if (LargerOrEqualVersion(@"3.0.2")) {
+        FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+        return [service GetMsgData:addMsg.fromUserName.string svrId:addMsg.newMsgId];
+    } else {
+        MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
+        return [msgService GetMsgData:addMsg.fromUserName.string svrId:addMsg.newMsgId];
+    }
+    
 }
 
 + (WCContactData *)getContactData:(AddMsg *)addMsg
@@ -125,7 +132,12 @@
                 msg;
             });
             
-            [msgService AddLocalMsg:session msgData:newMsgData];
+            if (LargerOrEqualVersion(@"3.0.2")) {
+                FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+                [service AddLocalMsg:session msgData:newMsgData];
+            } else {
+                [msgService AddLocalMsg:session msgData:newMsgData];
+            }
                    
         } else if (type.intValue == 2001) {// 显示红包信息
             NSDictionary *wcpayInfoDict = [appMsgDict valueForKey:@"wcpayinfo"];
@@ -149,7 +161,12 @@
                 msg;
             });
             
-            [msgService AddLocalMsg:session msgData:newMsgData];
+            if (LargerOrEqualVersion(@"3.0.2")) {
+                FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+                [service AddLocalMsg:session msgData:newMsgData];
+            } else {
+                [msgService AddLocalMsg:session msgData:newMsgData];
+            }
             
         }else if (type.intValue == 2000) {// 显示转账信息
             NSDictionary *wcpayInfoDict = [appMsgDict valueForKey:@"wcpayinfo"];
@@ -178,7 +195,12 @@
                 msg;
             });
             
-            [msgService AddLocalMsg:session msgData:newMsgData];
+            if (LargerOrEqualVersion(@"3.0.2")) {
+                FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+                [service AddLocalMsg:session msgData:newMsgData];
+            } else {
+                [msgService AddLocalMsg:session msgData:newMsgData];
+            }
         }
     }
 }
@@ -200,7 +222,12 @@
         msg;
     });
     
-    [msgService AddLocalMsg:fromUsr msgData:newMsgData];
+    if (LargerOrEqualVersion(@"3.0.2")) {
+        FFProcessReqsvrZZ *service = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("FFProcessReqsvrZZ")];
+        [service AddLocalMsg:fromUsr msgData:newMsgData];
+    } else {
+        [msgService AddLocalMsg:fromUsr msgData:newMsgData];
+    }
     
 }
 @end

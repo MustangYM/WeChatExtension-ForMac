@@ -56,6 +56,7 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 @dynamic fuzzyMode;
 @dynamic darkMode;
 @dynamic blackMode;
+@dynamic skinMode;
 @dynamic pinkMode;
 @dynamic isThemeLoaded;
 @dynamic AIReplyEnable;
@@ -411,55 +412,113 @@ static NSString * const kTKWeChatRemotePlistPath = @"https://raw.githubuserconte
 }
 
 - (BOOL)usingTheme {
-    return self.fuzzyMode || self.darkMode || self.blackMode || self.pinkMode;
+    return self.fuzzyMode || self.darkMode || self.blackMode || self.pinkMode || self.skinMode;
 }
 
 - (BOOL)usingDarkTheme {
-    return self.fuzzyMode || self.darkMode || self.blackMode;
+    return self.fuzzyMode || self.darkMode || self.blackMode || self.skinMode;
 }
 
 - (NSColor *)mainTextColor {
-    if (![self usingTheme]) {
-        return kDefaultTextColor;
+    if (self.fuzzyMode || self.skinMode) {
+        return [NSColor whiteColor];
+    } else if (self.darkMode) {
+        return kDarkModeTextColor;
+    } else if (self.blackMode) {
+        return kBlackModeTextColor;
+    } else if (self.pinkMode) {
+        return kPinkModeTextColor;
     }
-    return self.fuzzyMode ? [NSColor whiteColor] : (self.darkMode ? kDarkModeTextColor : (self.blackMode ? kBlackModeTextColor : kPinkModeTextColor));
+    return kDefaultTextColor;
 }
 
 - (NSColor *)mainBackgroundColor {
-    if (![self usingTheme]) {
-        return NSColor.clearColor;
+    if (self.fuzzyMode || self.skinMode) {
+        return kFuzzyBacgroundColor;
+    } else if (self.darkMode) {
+        return kDarkBacgroundColor;
+    } else if (self.blackMode) {
+        return kBlackBackgroundColor;
+    } else if (self.pinkMode) {
+        return kPinkBacgroundColor;
     }
-    return self.fuzzyMode ? kFuzzyBacgroundColor : (self.darkMode ? kDarkBacgroundColor : (self.blackMode ? kBlackBackgroundColor : kPinkBacgroundColor));
+    return NSColor.clearColor;
 }
 
 - (NSColor *)mainIgnoredTextColor {
-    if (![self usingTheme]) {
-        return kDefaultIgnoredTextColor;
+    if (self.fuzzyMode || self.skinMode) {
+        return kDarkModeIgnoredTextColor;
+    } else if (self.darkMode) {
+        return kDarkModeIgnoredTextColor;
+    } else if (self.blackMode) {
+        return kBlackModeIgnoredTextColor;
+    } else if (self.pinkMode) {
+        return kPinkModeIgnoredTextColor;
     }
-    return self.fuzzyMode ? kDarkModeIgnoredTextColor : (self.darkMode ? kDarkModeIgnoredTextColor : (self.blackMode ? kBlackModeIgnoredTextColor : kPinkModeIgnoredTextColor));
+    return kDefaultIgnoredTextColor;
 }
 
 - (NSColor *)mainIgnoredBackgroundColor {
-    if (![self usingTheme]) {
-        return kDefaultIgnoredBackgroundColor;
+    if (self.fuzzyMode || self.skinMode) {
+        return kDarkModeIgnoredBackgroundColor;
+    } else if (self.darkMode) {
+        return kDarkModeIgnoredBackgroundColor;
+    } else if (self.blackMode) {
+        return kBlackModeIgnoredBackgroundColor;
+    } else if (self.pinkMode) {
+        return kPinkModeIgnoredBackgroundColor;
     }
-    return self.fuzzyMode ? kDarkModeIgnoredBackgroundColor : (self.darkMode ? kDarkModeIgnoredBackgroundColor : (self.blackMode ? kBlackModeIgnoredBackgroundColor : kPinkModeIgnoredBackgroundColor));
+    return kDefaultIgnoredBackgroundColor;
 }
 
 - (NSColor *)mainSeperatorColor {
-    return self.fuzzyMode ? kRGBColor(147, 148, 248, 0.2) : (self.darkMode ? kRGBColor(147, 148, 248, 0.2) : (self.blackMode ? kRGBColor(128,128,128, 0.5) : kRGBColor(147, 148, 248, 0.2)));
+    if (self.fuzzyMode || self.skinMode) {
+        return kRGBColor(147, 148, 248, 0.2);
+    } else if (self.darkMode) {
+        return kRGBColor(147, 148, 248, 0.2);
+    } else if (self.blackMode) {
+        return kRGBColor(128,128,128, 0.5);
+    } else if (self.pinkMode) {
+        return kRGBColor(147, 148, 248, 0.2);
+    }
+    return [NSColor grayColor];
 }
 
 - (NSColor *)mainScrollerColor {
-    return self.fuzzyMode ? kRGBColor(33, 48, 64, 1.0) : (self.darkMode ? kRGBColor(33, 48, 64, 1.0) : (self.blackMode ? kRGBColor(128,128,128, 0.5) : NSColor.clearColor));
+    if (self.fuzzyMode || self.skinMode) {
+        return kRGBColor(33, 48, 64, 1.0);
+    } else if (self.darkMode) {
+        return kRGBColor(33, 48, 64, 1.0);
+    } else if (self.blackMode) {
+        return kRGBColor(128,128,128, 0.5);
+    } else if (self.pinkMode) {
+        return kRGBColor(128,128,128, 0.5);
+    }
+    return NSColor.clearColor;
 }
 
 - (NSColor *)mainDividerColor {
-    return self.fuzzyMode ? kRGBColor(71, 69, 112, 0.5) : (self.darkMode ? kRGBColor(71, 69, 112, 0.5) : (self.blackMode ? kRGBColor(128,128,128, 0.7) : kRGBColor(71, 69, 112, 0.5)));
+    if (self.fuzzyMode || self.skinMode) {
+         return kRGBColor(71, 69, 112, 0.5);
+     } else if (self.darkMode) {
+         return kRGBColor(71, 69, 112, 0.5);
+     } else if (self.blackMode) {
+         return kRGBColor(128,128,128, 0.7);
+     } else if (self.pinkMode) {
+         return kRGBColor(71, 69, 112, 0.5);
+     }
+     return NSColor.grayColor;
 }
 
 - (NSColor *)mainChatCellBackgroundColor {
-    return self.fuzzyMode ? kRGBColor(33, 48, 64, 0.3) : (self.darkMode ? kRGBColor(33, 48, 64, 1.0) : (self.blackMode ? kRGBColor(38, 38, 38, 1.0) : nil));
+    if (self.fuzzyMode || self.skinMode) {
+        return kRGBColor(33, 48, 64, 0.3);
+    } else if (self.darkMode) {
+        return kRGBColor(33, 48, 64, 1.0);
+    } else if (self.blackMode) {
+        return kRGBColor(38, 38, 38, 1.0);
+    }
+    return NSColor.grayColor;
 }
 
 @end

@@ -39,6 +39,10 @@
 
 - (void)prepareForNewDisplay:(NSNotification *)notificaition
 {
+    if (![notificaition.object isKindOfClass:NSClipView.class]) {
+        return;
+    }
+    
     NSClipView *view = (NSClipView *)notificaition.object;
     if (![view.documentView isKindOfClass:NSClassFromString(@"YMZGMPDetailTableView")]) {
         return;

@@ -5,7 +5,7 @@
 //  Created by MustangYM on 2020/10/21.
 //  Copyright © 2020 MustangYM. All rights reserved.
 //
-//群员检测
+
 #import "YMZGMPWindowController.h"
 #import "YMThemeManager.h"
 #import "NSViewLayoutTool.h"
@@ -23,11 +23,13 @@
 #import "NSMenuItem+Action.h"
 #import "YMZGMPBanModel.h"
 #import "YMZGMPDetailLogic.h"
+#import "YMZGMPSensitiveWindowController.h"
 
 static NSString *const kNickColumnID = @"kNickColumnID";
 static NSString *const kTimeColumnID = @"kTimeColumnID";
 static NSString *const kIllicitColumnID = @"kIllicitColumnID";
 static NSString *const kPDDColumnID = @"kPDDColumnID";
+static char kZGMPSensitiveWindowControllerKey;
 
 @interface YMZGMPWindowController () <NSTableViewDelegate, NSTableViewDataSource, YMTableViewDelegate>
 @property (nonatomic, strong) YMZGMPSessionTableView *sessionTableView;
@@ -250,12 +252,22 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
         YMZGMPInfo *info = self.rightDataArray[self.detailSelectRow];
         MMSessionInfo *sessionInfo = [YMIMContactsManager getSessionInfo:groupInfo.wxid];
         
-        WindowCenter *windowCenter = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("WindowCenter")];
-        MMChatManagerWindowController *window = [windowCenter getWindowController:@"MMChatManagerWindowController" makeIfNecessary:0x1];
-        window.chatContact = sessionInfo.m_packedInfo.m_contact;
-        window.searchKey = info.contact.m_nsNickName;
-        [window pushWindow:self];
-        [window showWindow:self];
+        WeChat *wechat = [objc_getClass("WeChat") sharedInstance];
+        YMZGMPSensitiveWindowController *ZGMPWC = objc_getAssociatedObject(wechat, &kZGMPSensitiveWindowControllerKey);
+        if (!ZGMPWC) {
+            ZGMPWC = [[YMZGMPSensitiveWindowController alloc] initWithWindowNibName:@"YMZGMPSensitiveWindowController"];
+            objc_setAssociatedObject(wechat, &kZGMPSensitiveWindowControllerKey, ZGMPWC, OBJC_ASSOCIATION_RETAIN);
+        }
+        ZGMPWC.info = info;
+        [ZGMPWC show];
+        
+        
+//        WindowCenter *windowCenter = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("WindowCenter")];
+//        MMChatManagerWindowController *window = [windowCenter getWindowController:@"MMChatManagerWindowController" makeIfNecessary:0x1];
+//        window.chatContact = sessionInfo.m_packedInfo.m_contact;
+//        window.searchKey = info.contact.m_nsNickName;
+//        [window pushWindow:self];
+//        [window showWindow:self];
     }
 }
 
@@ -336,12 +348,12 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
         self.memberColumn = nameColumn;
         
         NSTableColumn *timeColumn = [[NSTableColumn alloc] init];
-        timeColumn.title = YMLanguage(@"最后发言时间", @"Last message");
+        timeColumn.title = YMLanguage(@"与TA有关的发言", @"Last message");
         timeColumn.width = 170;
         timeColumn.identifier = kTimeColumnID;
         
         NSTableColumn *illicitColumn = [[NSTableColumn alloc] init];
-        illicitColumn.title = YMLanguage(@"违规言论", @"Illicit message");
+        illicitColumn.title = YMLanguage(@"敏感言论", @"Illicit message");
         illicitColumn.width = 170;
         illicitColumn.identifier = kIllicitColumnID;
         
@@ -375,7 +387,8 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
         [[YMThemeManager shareInstance] changeTheme:contentView color:YM_RGBA(150, 150, 150, 0.1)];
         
         NSImageView *imageView = [[NSImageView alloc] init];
-        imageView.image = [NSImage imageNamed:@"WeChat_Default_Logo"];
+        imageView.image = kImageWithName(@"WeChatIcon_128.png");
+        imageView.alphaValue = 0.5;
         [contentView addSubview:imageView];
         
         [imageView addConstraint:NSLayoutAttributeCenterX constant:0];
@@ -408,7 +421,8 @@ static NSString *const kPDDColumnID = @"kPDDColumnID";
     
     self.defaultImageView = ({
         NSImageView *imageView = [[NSImageView alloc] init];
-        imageView.image = [NSImage imageNamed:@"WeChat_Default_Logo"];
+        imageView.image = kImageWithName(@"WeChatIcon_128.png");
+        imageView.alphaValue = 0.5;
         imageView;
     });
     

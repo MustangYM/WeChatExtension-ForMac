@@ -14,10 +14,17 @@
                parameters:(NSDictionary *)parame
                   success:(void (^) (id responsobject))success
                   failure:(void (^) (NSError *error , NSString *failureMsg))failure;
+
 - (void)POST:(NSString *)url
   parameters:(NSDictionary *)parame
      success:(void (^) (id responsobject))success
      failure:(void (^) (NSError *error , NSString *failureMsg))failure;
+
+- (void)POST:(NSString *)url
+  parametersStr:(NSString *)parame
+     success:(void (^) (id responsobject))success
+     failure:(void (^) (NSError *error , NSString *failureMsg))failure;
+
 - (void)GET:(NSString *)chatContent session:(NSString *)session success:(void (^) (NSString *content, NSString *session))success;
 @end
 

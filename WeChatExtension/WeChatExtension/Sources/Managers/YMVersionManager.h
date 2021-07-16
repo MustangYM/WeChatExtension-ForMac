@@ -19,5 +19,5 @@ typedef NS_ENUM(NSUInteger, TKVersionStatus) {
 - (void)checkVersionFinish:(void (^)(TKVersionStatus, NSString *))finish;
 - (void)downloadPluginProgress:(void (^)(NSProgress *downloadProgress))downloadProgressBlock completionHandler:(void (^)(NSString *filePath, NSError * _Nullable error))completionHandler;
 - (void)cancelDownload;
-
+- (void)doCheckVersion;
 @end

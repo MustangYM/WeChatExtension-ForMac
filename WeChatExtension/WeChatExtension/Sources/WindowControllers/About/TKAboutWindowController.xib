@@ -89,8 +89,8 @@
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="DWb-lu-csg"/>
                     </imageView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9bt-fv-6EG">
-                        <rect key="frame" x="162" y="35" width="77" height="16"/>
-                        <buttonCell key="cell" type="bevel" title="MustangYM" bezelStyle="regularSquare" alignment="left" imageScaling="proportionallyDown" inset="2" id="mrz-f2-xVL">
+                        <rect key="frame" x="158" y="35" width="84" height="16"/>
+                        <buttonCell key="cell" type="bevel" title="一顿饭六碗丶" bezelStyle="regularSquare" alignment="left" imageScaling="proportionallyDown" inset="2" id="mrz-f2-xVL">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -100,7 +100,7 @@
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3LV-xw-q9v">
-                        <rect key="frame" x="102" y="35" width="54" height="16"/>
+                        <rect key="frame" x="98" y="35" width="54" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Weibo :" id="5Z4-Ie-98i">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -118,15 +118,15 @@
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mFp-aX-qYb">
                         <rect key="frame" x="129" y="10" width="223" height="15"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="小助手完全免费, 不在任何三方平台售卖!" id="bP3-De-Fff">
-                            <font key="font" metaFont="system" size="12"/>
+                            <font key="font" metaFont="cellTitle"/>
                             <color key="textColor" red="0.66660702230000002" green="0.66670489310000003" blue="0.66658556459999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W9K-Dc-V3M">
-                        <rect key="frame" x="257" y="36" width="106" height="15"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="QQ群: 741941325" id="bDk-Z8-tgm">
-                            <font key="font" metaFont="system" size="12"/>
+                        <rect key="frame" x="260" y="36" width="112" height="15"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="QQ群: 905526964" id="bDk-Z8-tgm">
+                            <font key="font" metaFont="cellTitle"/>
                             <color key="textColor" red="0.66660702230000002" green="0.66670489310000003" blue="0.66658556459999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
