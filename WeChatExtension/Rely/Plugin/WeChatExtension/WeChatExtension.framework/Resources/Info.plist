@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.8.1</string>
+	<string>2.9.2</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
@@ -47,6 +47,6 @@
 	<key>showUpdateWindow</key>
 	<true/>
 	<key>versionInfo</key>
-	<string>v2.8.1(2020-12-26):\n👉🏻  适配微信v2.6.0 (16787)\n👉🏻  修复消息撤回Bug \n👉🏻  适配联系人和会话选择界面和若干问题 \n👉🏻  暂未适配BigSur\n</string>
+	<string>v2.9.2(2020-12-26):\n👉🏻  不再维护\n</string>
 </dict>
 </plist>
