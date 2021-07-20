@@ -6,13 +6,14 @@
 精准的斩首让我感到不安，本人确实也无精力再维护一个用户量如此庞大的项目。感谢大家与我一起打造了一个理想主义世界，
 所有未开源部分代码已全部开源，小助手将永久停更，不再维护和回答相关任何问题。开源不死，江湖再见。
     Eventually came the day, July 12, 2021, a large number of banned warning was issued for
-WeChatExtension users. I have no ability or desire to fight against WeChat.It has been a free project, 
-nevertheless, my two WeChat accounts was banned from logging  "restricted login, can not be unblocked", 
-citing the reason of “release of WeChat plug-in software sales information”. The precise decapitation 
-makes me uneasy, and I really don't have the energy to maintain a project with such a large number of users.
-Thank you all for building an idealistic world with me.All non-open source part of the code has now opened.  
-The WeChatExtension will stop permanently and no longer maintain and answer any relevant questions. 
-Long live open-source, Farewell.（Appreciate @AidanWY for his translation with 洛杉矶市中心口音）
+WeChatExtension users. I have no ability or desire to fight against WeChat.It has been a 
+free project, nevertheless, my two WeChat accounts was banned from logging  "restricted login,
+can not be unblocked", citing the reason of “release of WeChat plug-in software sales information”. 
+The precise decapitation makes me uneasy, and I really don't have the energy to maintain a project 
+with such a large number of users.Thank you all for building an idealistic world with me.All non-open 
+source part of the code has now opened.  The WeChatExtension will stop permanently and no longer 
+maintain and answer any relevant questions. Long live open-source, Farewell.
+（Appreciate @AidanWY for his translation with 洛杉矶郊区口音）
                                                                            
                                                                            MustangYM 2021-7-17
 ```
