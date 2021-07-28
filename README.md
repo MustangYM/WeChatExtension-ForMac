@@ -591,9 +591,6 @@ This project exists thanks to all the people who contribute。
 <a href="https://opencollective.com/mustangym666#backers" target="_blank"><img src="https://opencollective.com/mustangym666/backers.svg?width=890"></a>
 
 ## 交流
-- QQ①群：`741941325`(满)。
-- QQ②群：`905526964`(满)。
-- QQ③群：`220655053`。
 - 皮肤的颜色搭配采纳了大量朋友的反馈和建议，最终并未能统一意见，那就干脆做**两套**吧，所以才会出现**黑夜**和**深邃**两款如此相近的**暗色调主题**，所以颜色上不再接受pr。
 - **少女模式**的颜色搭配感谢[Artemis-13](https://github.com/Artemis-13)提供建议，颜色叫**茱萸粉**。
 - 封面图的**骷髅**与**乌鸦**元素来自于**史泰龙**的电影`《The Expendables》`（敢死队）海报。
