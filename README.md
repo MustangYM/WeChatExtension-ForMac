@@ -85,7 +85,7 @@ maintain and answer any relevant questions. Long live open-source, Farewell.
 </p>
 
 ## 僵尸粉检测
-- 无感检测！
+- 无感检测！（发布的第三天就有傻逼公众号公布了检测漏洞，已被封，切勿再使用。）
 
 ## 手机端也能收到被撤回的消息
 - 如果Mac拦截到A发送来的消息，手机也会同步收到的这条已经拦截的消息(自己发送给自己)。目前只支持同步文字消息与图片消息。
