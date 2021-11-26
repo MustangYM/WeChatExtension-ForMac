@@ -19,7 +19,7 @@ maintain and answer any relevant questions. Long live open-source, Farewell.
 ```
 ### 善后
 - 不建议再使用小助手。
-- 删除已安装小助手的**微信**（这样做不会删除聊天记录，切勿操作如**腾讯柠檬**提醒的删除**残余垃圾**，会导致**聊天记录丢失**）
+- 删除已安装小助手的**微信**（这样做不会删除聊天记录，切勿操作如**腾讯柠檬**提醒的删除**残余垃圾**，会导致**聊天记录丢失**）。
 - 请安装从**AppStore**或者[官方网站](https://weixin.qq.com/)下载的**官方版微信**。
 
 
@@ -591,8 +591,8 @@ This project exists thanks to all the people who contribute。
 <a href="https://opencollective.com/mustangym666#backers" target="_blank"><img src="https://opencollective.com/mustangym666/backers.svg?width=890"></a>
 
 ## 交流
-- 皮肤的颜色搭配采纳了大量朋友的反馈和建议，最终并未能统一意见，那就干脆做**两套**吧，所以才会出现**黑夜**和**深邃**两款如此相近的**暗色调主题**，所以颜色上不再接受pr。
-- **少女模式**的颜色搭配感谢[Artemis-13](https://github.com/Artemis-13)提供建议，颜色叫**茱萸粉**。
+- 皮肤的颜色搭配采纳了大量朋友的反馈和建议，感谢。
+- **少女模式**的颜色搭配感谢[Artemis-13](https://github.com/Artemis-13)提供建议，称之**茱萸粉**。
 - 封面图的**骷髅**与**乌鸦**元素来自于**史泰龙**的电影`《The Expendables》`（敢死队）海报。
 - 插件中的`图标`、本页所有`Logo`、预览图均出自本人`蹩脚`的[Photoshop](https://www.adobe.com/products/photoshop.html)设计。
 
