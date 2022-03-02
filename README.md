@@ -1,5 +1,5 @@
 # 终章
-### 致所有小助手用户
+### <del/>致所有小助手用户<del/>
 ```
     最终还是迎来了这一天，2021年7月12号开始陆续大面积对小助手用户进行封号警告，本人无能力也无意愿与微信对抗。
 这一直以来是一个免费项目，直至本人两个微信号接连“限制登录，不可解封”，理由是“因涉及发布微信外挂软件售卖信息”，如此
@@ -13,7 +13,7 @@ The precise decapitation makes me uneasy, and I really don't have the energy to 
 with such a large number of users.Thank you all for building an idealistic world with me.All non-open 
 source part of the code has now opened.  The WeChatExtension will stop permanently and no longer 
 maintain and answer any relevant questions. Long live open-source, Farewell.
-（Appreciate @AidanWY for his translation with 洛杉矶郊区口音）
+（Appreciate @AidanWY for his translation with 洛杉矶郊区口音
                                                                            
                                                                            MustangYM 2021-7-17
 ```
