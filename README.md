@@ -57,7 +57,7 @@
 
 - 模式切换
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/change_theme.png" width="300px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/change_theme.png" width="300px"/>
 </p>
 
 ## 僵尸粉检测
@@ -81,7 +81,7 @@
 ## 免认证登录与多开
 - 可以`同时`登录`多个`微信号。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/launch.png" width="800px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/launch.png" width="800px"/>
 </p>
 
 ## 同时支持自定义回复和AI自动撩妹
@@ -89,19 +89,19 @@
 - 自定义自动回复。
 
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/Snipaste_2019-12-23_11-41-20.png" width="800px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/Snipaste_2019-12-23_11-41-20.png" width="800px"/>
 </p>
 
 ## 显示小程序详情
 - 即便Mac微信现在可以`打开`小程序，暂时还`不支持`游戏小程序，所以`保留`了此功能。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20191220-2004071%402x.png" width="800px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191220-2004071%402x.png" width="800px"/>
 </p>
 
 ## Alfred
 - 确保你电脑中有安装Alfred，双击此文件进行安装。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20191217-1036331%402x.png" width="800px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191217-1036331%402x.png" width="800px"/>
 </p>
 
 - 依次点击 `小助手` -> `开启Alfred功能`
@@ -110,7 +110,7 @@
 ## 退群监控
 - 退群提醒，同一人在同一群里的退出提醒7天内不再重复提示。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/WX20191227-200134%402x.png" width="800px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191227-200134%402x.png" width="800px"/>
 </p>
 
 ## 群员监控
@@ -119,7 +119,7 @@
 - 右侧列表是依次是`昵称`、相关`发言时间与条数`、`违规言论`、`拼多多砍一刀`。
 - 此功能暂时属于`实验性质`。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/ZGMP.png" width="800px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/ZGMP.png" width="800px"/>
 </p>
 
 ## 怎么安装?
@@ -159,7 +159,7 @@ omw 会从 [GitHub 仓库](https://github.com/MustangYM/WeChatExtension-ForMac)�
 
 - 3.2.下载本项目到你的电脑里， 并双击打开。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/install1.png" width="1500px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/install1.png" width="1500px"/>
 </p>
 
 - 3.3.依次打开文件夹`WeChatExtension/Rely/Install.sh`。
@@ -179,7 +179,7 @@ bash <(curl -sL https://git.io/JUO6r)
 ### 卸载方式二：手动卸载
   -  将Uninstall.sh拖到终端工具中，回车执行即可。
 <p align="center">
-<img src="https://gitee.com/MustangYM/we-chat-extension-source/raw/master/Pictures/uninstall.png" width="1500px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/uninstall.png" width="1500px"/>
 </p>
 
 ### 卸载方式三：使用 Oh My Wechat 卸载
