@@ -1,6 +1,6 @@
 
 <p align="center">
-<img src="https://s1.ax1x.com/2022/04/08/L9Mglq.png" width="1000px"/>
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/face1.png" width="1000px"/>
 </p>
 
 ![platform](https://img.shields.io/badge/platform-macos-lightgrey.svg)  [![release](https://img.shields.io/badge/release-v2.9.2-brightgreen.svg)](https://github.com/MustangYM/WeChatExtension-ForMac/releases)  ![support](https://img.shields.io/badge/support-wechat%203.1.2-blue.svg) 
