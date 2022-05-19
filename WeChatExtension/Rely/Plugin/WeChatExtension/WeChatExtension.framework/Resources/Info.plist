@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>20G5023d</string>
+	<string>21E230</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.9.3</string>
+	<string>3.3.1</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
@@ -27,17 +27,19 @@
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>11C504</string>
+	<string>13A1030d</string>
+	<key>DTPlatformName</key>
+	<string>macosx</string>
 	<key>DTPlatformVersion</key>
-	<string>GM</string>
+	<string>12.0</string>
 	<key>DTSDKBuild</key>
-	<string>19B90</string>
+	<string>21A344</string>
 	<key>DTSDKName</key>
-	<string>macosx10.15</string>
+	<string>macosx12.0</string>
 	<key>DTXcode</key>
-	<string>1130</string>
+	<string>1310</string>
 	<key>DTXcodeBuild</key>
-	<string>11C504</string>
+	<string>13A1030d</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.10</string>
 	<key>NSHumanReadableCopyright</key>
@@ -45,6 +47,6 @@
 	<key>showUpdateWindow</key>
 	<true/>
 	<key>versionInfo</key>
-	<string>v2.9.3(2022-03-02):\n👉🏻 The Gift For The World \n</string>
+	<string>v3.3.1(2022-05-19):\n👉🏻 做了大量适配工作 \n</string>
 </dict>
 </plist>
