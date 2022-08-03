@@ -48,11 +48,11 @@
 
 - 上帝模式可选一张图片做背景。
 <p align="center">
-<img src="https://z3.ax1x.com/2021/07/06/RIGEef.gif" width="1500px"/>
+<img src="https://z3.ax1x.com/2021/07/06/RIGEef.gif" width="1000px"/>
 </p>
 
 <p align="center">
-<img src="https://z3.ax1x.com/2021/07/06/RIGlyq.png" width="1500px"/>
+<img src="https://z3.ax1x.com/2021/07/06/RIGlyq.png" width="1000px"/>
 </p>
 
 - 模式切换
