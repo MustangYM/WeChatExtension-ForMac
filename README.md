@@ -7,8 +7,8 @@
 - 支持[企业微信](https://github.com/MustangYM/WeChatICU-ForMac)，由此进。
 - 如果你希望更简约，这里提供了[简版小助手](https://github.com/MustangYM/WeChatSeptet-ForMac)，安装方式与WeChatExtension的手动安装方式一样。
 - Most users of this project are Chinese, so there is `NO ENGLISH WIKI`.
-# [唯一tg群](https://t.me/WeChatExtension)
-# [唯一tg发布订阅频道](https://t.me/WeChatExtensionForMac)
+# [点击加入](https://t.me/WeChatExtension)唯一tg群(2022-8-31)
+# [点击订阅](https://t.me/WeChatExtensionForMac)唯一tg发布订阅频道(202-8-31)
 
 ## 声明以及常见问题
 - 2021-02-08后安装插件后**无法启动**, **解决方案**[看这里](https://github.com/MustangYM/WeChatExtension-ForMac/issues/816), [看这里](https://github.com/MustangYM/WeChatExtension-ForMac/issues/816), [看这里](https://github.com/MustangYM/WeChatExtension-ForMac/issues/816)!
