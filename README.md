@@ -574,6 +574,7 @@ This project exists thanks to all the people who contribute。
 - **少女模式**的颜色搭配感谢[Artemis-13](https://github.com/Artemis-13)提供建议，称之**茱萸粉**。
 - 封面图的**骷髅**与**乌鸦**元素来自于**史泰龙**的电影`《The Expendables》`（敢死队）海报。
 - 插件中的`图标`、本页所有`Logo`、预览图均出自本人`蹩脚`的[Photoshop](https://www.adobe.com/products/photoshop.html)设计。
+- 能自定义颜色吗
 
 ## Special Thanks
 - [WeChatPlugin-MacOS](https://github.com/TKkk-iOSer/WeChatPlugin-MacOS)
