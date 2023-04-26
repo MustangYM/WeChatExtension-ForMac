@@ -12,7 +12,7 @@ exit
 fi
 fi
 
-app_name="WeChat"
+app_name="微信"
 framework_name="WeChatExtension"
 app_bundle_path="${wechat_path}/Contents/MacOS"
 app_executable_path="${app_bundle_path}/${app_name}"
