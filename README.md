@@ -38,9 +38,8 @@
 - 经过两年的不间断的维护已成长为最受欢迎的`Objective-C`项目之一，请放心使用。
   - [中文榜](https://github.com/GrowingGit/GitHub-Chinese-Top-Charts/blob/master/content/charts/overall/software/Objective-C.md)。（娱乐数据，仅供参考）
   - [OC总榜](https://github-trending.com/repo/Objective-C)。（娱乐数据，仅供参考）
-<p align="left">
-<img src="https://starchart.cc/MustangYM/WeChatExtension-ForMac.svg" width="800px"/>
-</p>
+
+<img src="https://api.star-history.com/svg?repos=MustangYM/WeChatExtension-ForMac&type=Date" alt="Star History Chart" width="600" height="356" align="center">
 
 ## 迷离/黑夜/上帝/少女 皮肤模式
 - 少量细节没有做适配，`主题模式-关闭皮肤`可以`关掉`这个功能。
