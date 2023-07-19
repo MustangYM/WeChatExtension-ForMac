@@ -41,29 +41,6 @@
 
 <img src="https://api.star-history.com/svg?repos=MustangYM/WeChatExtension-ForMac&type=Date" alt="Star History Chart" width="600" height="356" align="center">
 
-## 迷离/黑夜/上帝/少女 皮肤模式
-- 少量细节没有做适配，`主题模式-关闭皮肤`可以`关掉`这个功能。
-- 群聊中每个发言人的`昵称颜色`都会有所区别。
-- 在皮肤模式下，未读消息头像会轻微可爱`摇动`，未读数超过`99条`的会话有`彩蛋`。
-- 如果你的迷离模式`未生效`，打开`系统偏好设置` -> `辅助功能` -> `显示`，不要勾选`减少透明度`或`提供对比度`。
-
-- 上帝模式可选一张图片做背景。
-<p align="center">
-<img src="https://z3.ax1x.com/2021/07/06/RIGEef.gif" width="800px"/>
-</p>
-
-<p align="center">
-<img src="https://z3.ax1x.com/2021/07/06/RIGlyq.png" width="1000px"/>
-</p>
-
-- 模式切换
-<p align="center">
-<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/change_theme.png" width="300px"/>
-</p>
-
-## 僵尸粉检测
-- 无感检测！（发布的第三天就有XX公众号公布了检测漏洞，已被封，切勿再使用。）
-
 ## 手机端也能收到被撤回的消息
 - 如果Mac拦截到A发送来的消息，手机也会同步收到的这条已经拦截的消息(自己发送给自己)。目前只支持同步文字消息与图片消息。
 - 可以对同步的消息进行勾选，以免群消息打扰。
@@ -97,6 +74,26 @@
 - 即便Mac微信现在可以`打开`小程序，暂时还`不支持`游戏小程序，所以`保留`了此功能。
 <p align="center">
 <img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/WX20191220-2004071%402x.png" width="800px"/>
+</p>
+
+## 迷离/黑夜/上帝/少女 皮肤模式
+- 少量细节没有做适配，`主题模式-关闭皮肤`可以`关掉`这个功能。
+- 群聊中每个发言人的`昵称颜色`都会有所区别。
+- 在皮肤模式下，未读消息头像会轻微可爱`摇动`，未读数超过`99条`的会话有`彩蛋`。
+- 如果你的迷离模式`未生效`，打开`系统偏好设置` -> `辅助功能` -> `显示`，不要勾选`减少透明度`或`提供对比度`。
+
+- 上帝模式可选一张图片做背景。
+<p align="center">
+<img src="https://z3.ax1x.com/2021/07/06/RIGEef.gif" width="800px"/>
+</p>
+
+<p align="center">
+<img src="https://z3.ax1x.com/2021/07/06/RIGlyq.png" width="1000px"/>
+</p>
+
+- 模式切换
+<p align="center">
+<img src="https://github.com/MustangYM/WeChatExtensionSources/blob/master/Pictures/change_theme.png" width="300px"/>
 </p>
 
 ## Alfred
