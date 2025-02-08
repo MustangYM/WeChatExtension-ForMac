@@ -585,4 +585,4 @@ This project exists thanks to all the people who contribute。
 <a href="https://996.icu"><img src="https://img.shields.io/badge/link-996.icu-red.svg"></a>
 
 本项目遵循`MIT license`，方便交流与学习，包括但不限于本项目的衍生品都禁止在损害WeChat官方利益情况下进行盈利。如果您发现本项目有侵犯您的知识产权，请与我取得联系，我会及时修改或删除。
-
+[<img src="https://api.gitsponsors.com/api/badge/img?id=183345962" height="20">](https://api.gitsponsors.com/api/badge/link?p=zcpiiLIACn2lG7+Mq7jBBwZ2xYNecpe3qow0GYMvuFyfwP27fNmBXMJoVsVfI0aXf5mkkMQfzkiZqrWqtDpN//EmzRpjFNYVtYUROROJ4XN8lcyusKasy9CJJIRoNXn+VBfmtHEehvhdsWnrcStkQg==)
